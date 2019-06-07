@@ -1,6 +1,7 @@
 # Structured data for TYPO3 with the schema extension
 
 [![TYPO3](https://img.shields.io/badge/TYPO3-9%20LTS-orange.svg)](https://typo3.org/)
+[![Build Status](https://travis-ci.org/brotkrueml/schema.svg?branch=master)](https://travis-ci.org/brotkrueml/schema)
 
 ## Requirements
 
