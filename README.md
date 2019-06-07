@@ -17,14 +17,16 @@ The structured data is inserted on a web page in [JSON-LD](https://json-ld.org/)
 and can be checked with Google's [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool).
 
 Just a small desclaimer: Only accepted terms are available, [pending types and 
-properties](https://pending.schema.org/) are not available. But if the are integrated
+properties](https://pending.schema.org/) are not available. But if they are integrated
 into the core vocabulary, they are available within the next update.
 
 ## Installation
 
 ### Installation With Composer
 
-(to be described)
+The recommended way to install this extension is by using Composer. In your Composer based TYPO3 project root, just type
+
+    composer req brotkrueml/schema
 
 ### Installation As An Extension From The TYPO3 Extension Repository (TER)
 
