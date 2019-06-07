@@ -1,0 +1,53 @@
+{
+    "name": "brotkrueml/schema",
+    "type": "typo3-cms-extension",
+    "description": "schema.org structured data for your website",
+    "homepage": "https://brot.krue.ml/",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "keywords": [
+        "TYPO3 CMS",
+        "TYPO3 extension",
+        "JSON-LD",
+        "Structured data",
+        "SEO",
+        "schema.org"
+    ],
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "typo3/cms-core": "^9.5"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "^1.6",
+        "phpunit/phpunit": "^8.1",
+        "typo3/testing-framework": "^4.13"
+    },
+    "replace": {
+        "schema": "self.version",
+        "typo3-ter/schema": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brotkrueml\\Schema\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Brotkrueml\\Schema\\Generator\\": "Generator/Classes/",
+            "Brotkrueml\\Schema\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "sort-packages" : true,
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/web"
+        }
+    }
+}

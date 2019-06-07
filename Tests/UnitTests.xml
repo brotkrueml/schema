@@ -1,0 +1,18 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="Unit tests">
+            <directory>Unit/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>../Classes/</directory>
+            <directory>../Generator/Classes/</directory>
+            <file>../Classes/ViewHelper/ThingViewHelperTest.php</file>
+            <exclude>
+                <directory>../Classes/Model/</directory>
+                <directory>../Classes/ViewHelper/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

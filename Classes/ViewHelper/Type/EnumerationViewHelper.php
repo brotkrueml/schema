@@ -1,0 +1,24 @@
+<?php
+declare(strict_types = 1);
+
+namespace Brotkrueml\Schema\ViewHelper\Type;
+
+/**
+ * This file is part of the "schema" extension for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ */
+
+/**
+ * Lists or enumerations—for example, a list of cuisines or music genres, etc.
+ *
+ * schema.org version 3.6
+ */
+class EnumerationViewHelper extends IntangibleViewHelper
+{
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+    }
+}
