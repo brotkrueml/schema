@@ -1,0 +1,28 @@
+language: php
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.2
+      env: TYPO3_VERSION=^9
+    - php: 7.3
+      env: TYPO3_VERSION=^9
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
+  - composer self-update
+  - composer --version
+
+before_script:
+  - composer require typo3/cms-core=$TYPO3_VERSION
+  - git checkout composer.json
+  - export TYPO3_PATH_WEB=$PWD/Build/web
+
+script:
+  - find . -name \*.php  ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} > /dev/null \;
+  - .Build/bin/phpunit -c Tests/UnitTests.xml --coverage-text --coverage-clover .Build/logs/clover.xml
