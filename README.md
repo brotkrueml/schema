@@ -81,7 +81,7 @@ For that there is the schema manager:
     );
     $schemaManager->addType($person);
 
-That's it ... if you call the according page the structured data are embedded
+That's it ... if you call the according page the structured data is embedded
 automatically into the head section:
 
     {
@@ -113,7 +113,7 @@ Another possible way to insert the structured data is via a Fluid template:
         jobTitle="Software Developer"
     >
         <schema:type.corporation
-            as="worksFor"
+            -as="worksFor"
             name="Acme Ltd."
             image="https:/example.org/logo.png"
             url="https://example.org/"
@@ -121,7 +121,7 @@ Another possible way to insert the structured data is via a Fluid template:
         />
     </schema:person>
 
-The "as" property is a special property for the child where you can set the property for
+The "-as" property is a special property for the child where you can set the property for
 the parent type.
 
 #### Connecting Types Via -id Argument
@@ -197,6 +197,6 @@ feature:
 
 #### Remarks About The Special Arguments
 
-The dash as a suffix in the view helper argument signals that the argument is not an official one (-as, -specificType)
+The dash as a suffix in the view helper argument signals that the argument is not an official schema.org property (-as, -specificType)
 or has a special meaning (-id transforms to @id). So there should be no collisions with future properties of the schema.org
 vocabulary.
