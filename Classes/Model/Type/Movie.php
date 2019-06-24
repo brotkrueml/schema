@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Movie extends AbstractType
 {
-    use TypeTrait\MovieTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MovieTrait;
     use TypeTrait\ThingTrait;
 }

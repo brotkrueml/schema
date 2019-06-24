@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class HowToSection extends AbstractType
 {
-    use TypeTrait\ItemListTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\ListItemTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ItemListTrait;
+    use TypeTrait\ListItemTrait;
+    use TypeTrait\ThingTrait;
 }

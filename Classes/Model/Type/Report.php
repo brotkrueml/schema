@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Report extends AbstractType
 {
-    use TypeTrait\ReportTrait;
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ReportTrait;
     use TypeTrait\ThingTrait;
 }

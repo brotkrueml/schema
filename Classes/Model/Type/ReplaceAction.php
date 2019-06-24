@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReplaceAction extends AbstractType
 {
-    use TypeTrait\ReplaceActionTrait;
-    use TypeTrait\UpdateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ReplaceActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\UpdateActionTrait;
 }

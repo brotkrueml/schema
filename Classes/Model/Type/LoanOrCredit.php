@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class LoanOrCredit extends AbstractType
 {
-    use TypeTrait\LoanOrCreditTrait;
     use TypeTrait\FinancialProductTrait;
+    use TypeTrait\LoanOrCreditTrait;
     use TypeTrait\ServiceTrait;
     use TypeTrait\ThingTrait;
 }

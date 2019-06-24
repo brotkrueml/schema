@@ -19,8 +19,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class PoliceStation extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
-    use TypeTrait\PlaceTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

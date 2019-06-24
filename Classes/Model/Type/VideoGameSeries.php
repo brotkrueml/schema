@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class VideoGameSeries extends AbstractType
 {
-    use TypeTrait\VideoGameSeriesTrait;
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeriesTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\VideoGameSeriesTrait;
 }

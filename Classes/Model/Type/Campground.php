@@ -19,9 +19,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class Campground extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\LodgingBusinessTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\LodgingBusinessTrait;
-    use TypeTrait\LocalBusinessTrait;
-    use TypeTrait\OrganizationTrait;
 }

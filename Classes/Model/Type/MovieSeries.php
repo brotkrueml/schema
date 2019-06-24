@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MovieSeries extends AbstractType
 {
-    use TypeTrait\MovieSeriesTrait;
-    use TypeTrait\CreativeWorkSeriesTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\CreativeWorkSeriesTrait;
+    use TypeTrait\MovieSeriesTrait;
+    use TypeTrait\ThingTrait;
 }

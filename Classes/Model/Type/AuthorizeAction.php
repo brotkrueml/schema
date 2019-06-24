@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class AuthorizeAction extends AbstractType
 {
-    use TypeTrait\AuthorizeActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\AuthorizeActionTrait;
     use TypeTrait\ThingTrait;
 }

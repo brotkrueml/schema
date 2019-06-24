@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TrainTrip extends AbstractType
 {
+    use TypeTrait\ThingTrait;
     use TypeTrait\TrainTripTrait;
     use TypeTrait\TripTrait;
-    use TypeTrait\ThingTrait;
 }

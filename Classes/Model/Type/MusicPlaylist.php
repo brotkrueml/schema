@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MusicPlaylist extends AbstractType
 {
-    use TypeTrait\MusicPlaylistTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MusicPlaylistTrait;
     use TypeTrait\ThingTrait;
 }

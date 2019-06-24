@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ConfirmAction extends AbstractType
 {
-    use TypeTrait\InformActionTrait;
-    use TypeTrait\CommunicateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\InformActionTrait;
     use TypeTrait\ThingTrait;
 }

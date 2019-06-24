@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class CommentAction extends AbstractType
 {
+    use TypeTrait\ActionTrait;
     use TypeTrait\CommentActionTrait;
     use TypeTrait\CommunicateActionTrait;
-    use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
 }

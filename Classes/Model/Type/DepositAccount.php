@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DepositAccount extends AbstractType
 {
-    use TypeTrait\InvestmentOrDepositTrait;
     use TypeTrait\FinancialProductTrait;
+    use TypeTrait\InvestmentOrDepositTrait;
     use TypeTrait\ServiceTrait;
     use TypeTrait\ThingTrait;
 }

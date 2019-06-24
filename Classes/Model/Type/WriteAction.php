@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class WriteAction extends AbstractType
 {
-    use TypeTrait\WriteActionTrait;
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WriteActionTrait;
 }

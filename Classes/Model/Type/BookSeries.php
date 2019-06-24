@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class BookSeries extends AbstractType
 {
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeriesTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\CreativeWorkTrait;
 }

@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ImageObject extends AbstractType
 {
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ImageObjectTrait;
     use TypeTrait\MediaObjectTrait;
-    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
 }

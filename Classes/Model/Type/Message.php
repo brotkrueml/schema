@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Message extends AbstractType
 {
-    use TypeTrait\MessageTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MessageTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,9 +18,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class LodgingBusiness extends AbstractType
 {
-    use TypeTrait\LodgingBusinessTrait;
     use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\LodgingBusinessTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\OrganizationTrait;
 }

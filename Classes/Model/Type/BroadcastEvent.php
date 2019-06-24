@@ -19,7 +19,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class BroadcastEvent extends AbstractType
 {
     use TypeTrait\BroadcastEventTrait;
-    use TypeTrait\PublicationEventTrait;
     use TypeTrait\EventTrait;
+    use TypeTrait\PublicationEventTrait;
     use TypeTrait\ThingTrait;
 }

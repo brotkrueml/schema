@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DataFeed extends AbstractType
 {
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DataFeedTrait;
     use TypeTrait\DatasetTrait;
-    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
 }

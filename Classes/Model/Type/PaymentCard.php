@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PaymentCard extends AbstractType
 {
-    use TypeTrait\ThingTrait;
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

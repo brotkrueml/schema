@@ -18,9 +18,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class RsvpAction extends AbstractType
 {
-    use TypeTrait\RsvpActionTrait;
-    use TypeTrait\InformActionTrait;
-    use TypeTrait\CommunicateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\InformActionTrait;
+    use TypeTrait\RsvpActionTrait;
     use TypeTrait\ThingTrait;
 }

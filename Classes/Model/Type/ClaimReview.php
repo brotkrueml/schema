@@ -19,7 +19,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class ClaimReview extends AbstractType
 {
     use TypeTrait\ClaimReviewTrait;
-    use TypeTrait\ReviewTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ReviewTrait;
     use TypeTrait\ThingTrait;
 }

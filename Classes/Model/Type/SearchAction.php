@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class SearchAction extends AbstractType
 {
-    use TypeTrait\SearchActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\SearchActionTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class AppendAction extends AbstractType
 {
-    use TypeTrait\InsertActionTrait;
-    use TypeTrait\UpdateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\InsertActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\UpdateActionTrait;
 }

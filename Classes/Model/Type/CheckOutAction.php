@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class CheckOutAction extends AbstractType
 {
-    use TypeTrait\CommunicateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\CommunicateActionTrait;
     use TypeTrait\ThingTrait;
 }

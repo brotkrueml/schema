@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TrackAction extends AbstractType
 {
-    use TypeTrait\TrackActionTrait;
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TrackActionTrait;
 }

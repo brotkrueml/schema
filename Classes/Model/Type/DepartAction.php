@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DepartAction extends AbstractType
 {
-    use TypeTrait\MoveActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\MoveActionTrait;
     use TypeTrait\ThingTrait;
 }

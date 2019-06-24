@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class RadioSeries extends AbstractType
 {
-    use TypeTrait\RadioSeriesTrait;
-    use TypeTrait\CreativeWorkSeriesTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\CreativeWorkSeriesTrait;
+    use TypeTrait\RadioSeriesTrait;
+    use TypeTrait\ThingTrait;
 }

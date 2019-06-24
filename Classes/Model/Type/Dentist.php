@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Dentist extends AbstractType
 {
-    use TypeTrait\OrganizationTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

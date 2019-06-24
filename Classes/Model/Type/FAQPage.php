@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class FAQPage extends AbstractType
 {
-    use TypeTrait\WebPageTrait;
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WebPageTrait;
 }

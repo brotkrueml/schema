@@ -18,9 +18,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class VideoGame extends AbstractType
 {
-    use TypeTrait\VideoGameTrait;
-    use TypeTrait\SoftwareApplicationTrait;
     use TypeTrait\CreativeWorkTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\GameTrait;
+    use TypeTrait\SoftwareApplicationTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\VideoGameTrait;
 }

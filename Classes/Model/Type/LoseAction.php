@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class LoseAction extends AbstractType
 {
-    use TypeTrait\LoseActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\LoseActionTrait;
     use TypeTrait\ThingTrait;
 }

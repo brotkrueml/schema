@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TipAction extends AbstractType
 {
-    use TypeTrait\TipActionTrait;
-    use TypeTrait\TradeActionTrait;
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TipActionTrait;
+    use TypeTrait\TradeActionTrait;
 }

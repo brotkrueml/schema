@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PerformAction extends AbstractType
 {
+    use TypeTrait\ActionTrait;
     use TypeTrait\PerformActionTrait;
     use TypeTrait\PlayActionTrait;
-    use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
 }

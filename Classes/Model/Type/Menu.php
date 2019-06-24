@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Menu extends AbstractType
 {
-    use TypeTrait\MenuTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MenuTrait;
     use TypeTrait\ThingTrait;
 }

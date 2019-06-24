@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class InviteAction extends AbstractType
 {
-    use TypeTrait\InviteActionTrait;
-    use TypeTrait\CommunicateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\InviteActionTrait;
     use TypeTrait\ThingTrait;
 }

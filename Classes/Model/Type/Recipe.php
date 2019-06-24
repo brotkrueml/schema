@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Recipe extends AbstractType
 {
-    use TypeTrait\RecipeTrait;
-    use TypeTrait\HowToTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\HowToTrait;
+    use TypeTrait\RecipeTrait;
     use TypeTrait\ThingTrait;
 }

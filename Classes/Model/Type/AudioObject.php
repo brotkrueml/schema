@@ -19,7 +19,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class AudioObject extends AbstractType
 {
     use TypeTrait\AudioObjectTrait;
-    use TypeTrait\MediaObjectTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MediaObjectTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class EndorseAction extends AbstractType
 {
-    use TypeTrait\EndorseActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\EndorseActionTrait;
     use TypeTrait\ThingTrait;
 }

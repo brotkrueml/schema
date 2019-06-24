@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class VideoObject extends AbstractType
 {
-    use TypeTrait\VideoObjectTrait;
-    use TypeTrait\MediaObjectTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MediaObjectTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\VideoObjectTrait;
 }

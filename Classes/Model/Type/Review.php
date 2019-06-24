@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Review extends AbstractType
 {
-    use TypeTrait\ReviewTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ReviewTrait;
     use TypeTrait\ThingTrait;
 }

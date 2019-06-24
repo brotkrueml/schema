@@ -19,6 +19,6 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class HowToTip extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\ListItemTrait;
+    use TypeTrait\ThingTrait;
 }

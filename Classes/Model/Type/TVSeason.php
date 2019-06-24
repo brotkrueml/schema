@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TVSeason extends AbstractType
 {
-    use TypeTrait\TVSeasonTrait;
     use TypeTrait\CreativeWorkTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\CreativeWorkSeasonTrait;
+    use TypeTrait\TVSeasonTrait;
+    use TypeTrait\ThingTrait;
 }

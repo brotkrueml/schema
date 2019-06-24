@@ -19,6 +19,6 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class Flight extends AbstractType
 {
     use TypeTrait\FlightTrait;
-    use TypeTrait\TripTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TripTrait;
 }

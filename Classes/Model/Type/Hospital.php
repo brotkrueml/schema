@@ -18,9 +18,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Hospital extends AbstractType
 {
-    use TypeTrait\OrganizationTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\CivicStructureTrait;
-    use TypeTrait\PlaceTrait;
     use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PayAction extends AbstractType
 {
-    use TypeTrait\PayActionTrait;
-    use TypeTrait\TradeActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\PayActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TradeActionTrait;
 }

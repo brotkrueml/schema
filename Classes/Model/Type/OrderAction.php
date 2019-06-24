@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class OrderAction extends AbstractType
 {
-    use TypeTrait\OrderActionTrait;
-    use TypeTrait\TradeActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\OrderActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TradeActionTrait;
 }

@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class HowToSupply extends AbstractType
 {
-    use TypeTrait\HowToSupplyTrait;
     use TypeTrait\HowToItemTrait;
+    use TypeTrait\HowToSupplyTrait;
     use TypeTrait\ListItemTrait;
     use TypeTrait\ThingTrait;
 }

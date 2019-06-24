@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DownloadAction extends AbstractType
 {
-    use TypeTrait\TransferActionTrait;
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TransferActionTrait;
 }

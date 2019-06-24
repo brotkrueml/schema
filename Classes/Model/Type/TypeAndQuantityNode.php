@@ -18,6 +18,6 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TypeAndQuantityNode extends AbstractType
 {
-    use TypeTrait\TypeAndQuantityNodeTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TypeAndQuantityNodeTrait;
 }

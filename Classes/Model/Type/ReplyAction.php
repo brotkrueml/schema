@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReplyAction extends AbstractType
 {
-    use TypeTrait\ReplyActionTrait;
-    use TypeTrait\CommunicateActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\ReplyActionTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ProductModel extends AbstractType
 {
-    use TypeTrait\ProductModelTrait;
     use TypeTrait\ProductTrait;
+    use TypeTrait\ProductModelTrait;
     use TypeTrait\ThingTrait;
 }

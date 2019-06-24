@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class FollowAction extends AbstractType
 {
-    use TypeTrait\FollowActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\FollowActionTrait;
     use TypeTrait\ThingTrait;
 }

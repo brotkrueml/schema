@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ParentAudience extends AbstractType
 {
+    use TypeTrait\AudienceTrait;
     use TypeTrait\ParentAudienceTrait;
     use TypeTrait\PeopleAudienceTrait;
-    use TypeTrait\AudienceTrait;
     use TypeTrait\ThingTrait;
 }

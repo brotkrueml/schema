@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class RadioSeason extends AbstractType
 {
-    use TypeTrait\CreativeWorkSeasonTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\CreativeWorkSeasonTrait;
     use TypeTrait\ThingTrait;
 }

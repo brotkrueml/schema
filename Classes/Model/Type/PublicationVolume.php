@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PublicationVolume extends AbstractType
 {
-    use TypeTrait\PublicationVolumeTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\PublicationVolumeTrait;
     use TypeTrait\ThingTrait;
 }

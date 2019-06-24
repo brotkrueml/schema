@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DonateAction extends AbstractType
 {
-    use TypeTrait\DonateActionTrait;
-    use TypeTrait\TradeActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\DonateActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TradeActionTrait;
 }

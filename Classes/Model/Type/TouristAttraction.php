@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TouristAttraction extends AbstractType
 {
-    use TypeTrait\TouristAttractionTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TouristAttractionTrait;
 }

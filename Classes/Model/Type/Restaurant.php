@@ -20,7 +20,7 @@ class Restaurant extends AbstractType
 {
     use TypeTrait\FoodEstablishmentTrait;
     use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\OrganizationTrait;
 }

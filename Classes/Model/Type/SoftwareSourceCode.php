@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class SoftwareSourceCode extends AbstractType
 {
-    use TypeTrait\SoftwareSourceCodeTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\SoftwareSourceCodeTrait;
     use TypeTrait\ThingTrait;
 }

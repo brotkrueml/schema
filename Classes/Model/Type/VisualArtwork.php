@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class VisualArtwork extends AbstractType
 {
-    use TypeTrait\VisualArtworkTrait;
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\VisualArtworkTrait;
 }

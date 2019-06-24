@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class HowToDirection extends AbstractType
 {
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\HowToDirectionTrait;
     use TypeTrait\ListItemTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\CreativeWorkTrait;
 }

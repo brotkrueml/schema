@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class HowToStep extends AbstractType
 {
-    use TypeTrait\ListItemTrait;
-    use TypeTrait\ThingTrait;
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ItemListTrait;
+    use TypeTrait\ListItemTrait;
+    use TypeTrait\ThingTrait;
 }

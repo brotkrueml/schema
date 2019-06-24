@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class WinAction extends AbstractType
 {
-    use TypeTrait\WinActionTrait;
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WinActionTrait;
 }

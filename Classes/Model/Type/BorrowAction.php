@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class BorrowAction extends AbstractType
 {
-    use TypeTrait\BorrowActionTrait;
-    use TypeTrait\TransferActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\BorrowActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TransferActionTrait;
 }

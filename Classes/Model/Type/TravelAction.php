@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class TravelAction extends AbstractType
 {
-    use TypeTrait\TravelActionTrait;
-    use TypeTrait\MoveActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\MoveActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TravelActionTrait;
 }

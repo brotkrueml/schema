@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class RentAction extends AbstractType
 {
-    use TypeTrait\RentActionTrait;
-    use TypeTrait\TradeActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\RentActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TradeActionTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReserveAction extends AbstractType
 {
-    use TypeTrait\PlanActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\PlanActionTrait;
     use TypeTrait\ThingTrait;
 }

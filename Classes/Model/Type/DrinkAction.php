@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DrinkAction extends AbstractType
 {
-    use TypeTrait\ConsumeActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ConsumeActionTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Game extends AbstractType
 {
-    use TypeTrait\GameTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\GameTrait;
     use TypeTrait\ThingTrait;
 }

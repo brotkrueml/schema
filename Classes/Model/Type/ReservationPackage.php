@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReservationPackage extends AbstractType
 {
-    use TypeTrait\ReservationPackageTrait;
     use TypeTrait\ReservationTrait;
+    use TypeTrait\ReservationPackageTrait;
     use TypeTrait\ThingTrait;
 }

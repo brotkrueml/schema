@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class LeaveAction extends AbstractType
 {
-    use TypeTrait\LeaveActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\LeaveActionTrait;
     use TypeTrait\ThingTrait;
 }

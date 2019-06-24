@@ -18,6 +18,6 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Trip extends AbstractType
 {
-    use TypeTrait\TripTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TripTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class CookAction extends AbstractType
 {
-    use TypeTrait\CookActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\CookActionTrait;
     use TypeTrait\ThingTrait;
 }

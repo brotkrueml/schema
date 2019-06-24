@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class HotelRoom extends AbstractType
 {
-    use TypeTrait\HotelRoomTrait;
     use TypeTrait\AccommodationTrait;
+    use TypeTrait\HotelRoomTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
 }

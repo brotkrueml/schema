@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class WebSite extends AbstractType
 {
-    use TypeTrait\WebSiteTrait;
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WebSiteTrait;
 }

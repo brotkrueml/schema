@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PresentationDigitalDocument extends AbstractType
 {
-    use TypeTrait\DigitalDocumentTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\DigitalDocumentTrait;
     use TypeTrait\ThingTrait;
 }

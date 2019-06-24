@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ChooseAction extends AbstractType
 {
-    use TypeTrait\ChooseActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ChooseActionTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class VoteAction extends AbstractType
 {
-    use TypeTrait\VoteActionTrait;
-    use TypeTrait\ChooseActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ChooseActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\VoteActionTrait;
 }

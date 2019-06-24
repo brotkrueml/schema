@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PlayAction extends AbstractType
 {
-    use TypeTrait\PlayActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\PlayActionTrait;
     use TypeTrait\ThingTrait;
 }

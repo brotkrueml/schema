@@ -18,6 +18,6 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Ticket extends AbstractType
 {
-    use TypeTrait\TicketTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TicketTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class HowTo extends AbstractType
 {
-    use TypeTrait\HowToTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\HowToTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReviewAction extends AbstractType
 {
-    use TypeTrait\ReviewActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ReviewActionTrait;
     use TypeTrait\ThingTrait;
 }

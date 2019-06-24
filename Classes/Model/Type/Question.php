@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Question extends AbstractType
 {
-    use TypeTrait\QuestionTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\QuestionTrait;
     use TypeTrait\ThingTrait;
 }

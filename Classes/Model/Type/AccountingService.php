@@ -20,7 +20,7 @@ class AccountingService extends AbstractType
 {
     use TypeTrait\FinancialServiceTrait;
     use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\OrganizationTrait;
 }

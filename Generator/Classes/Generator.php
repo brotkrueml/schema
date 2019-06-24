@@ -281,7 +281,10 @@ class Generator
             );
         }
 
-        return \array_unique($typeTraits);
+        $typeTraits = \array_unique($typeTraits);
+        \sort($typeTraits);
+
+        return $typeTraits;
     }
 
     protected function shortenAndSanatiseComment(string $comment): string

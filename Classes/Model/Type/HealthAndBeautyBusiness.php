@@ -19,7 +19,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 class HealthAndBeautyBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\OrganizationTrait;
 }

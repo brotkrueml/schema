@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PublicationIssue extends AbstractType
 {
-    use TypeTrait\PublicationIssueTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\PublicationIssueTrait;
     use TypeTrait\ThingTrait;
 }

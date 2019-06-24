@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DataDownload extends AbstractType
 {
-    use TypeTrait\MediaObjectTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MediaObjectTrait;
     use TypeTrait\ThingTrait;
 }

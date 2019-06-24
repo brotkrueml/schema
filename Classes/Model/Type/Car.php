@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Car extends AbstractType
 {
-    use TypeTrait\VehicleTrait;
     use TypeTrait\ProductTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\VehicleTrait;
 }

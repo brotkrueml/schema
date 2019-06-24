@@ -18,9 +18,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class SingleFamilyResidence extends AbstractType
 {
-    use TypeTrait\SingleFamilyResidenceTrait;
-    use TypeTrait\HouseTrait;
     use TypeTrait\AccommodationTrait;
+    use TypeTrait\HouseTrait;
     use TypeTrait\PlaceTrait;
+    use TypeTrait\SingleFamilyResidenceTrait;
     use TypeTrait\ThingTrait;
 }

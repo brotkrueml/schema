@@ -18,6 +18,6 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class WarrantyPromise extends AbstractType
 {
-    use TypeTrait\WarrantyPromiseTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WarrantyPromiseTrait;
 }

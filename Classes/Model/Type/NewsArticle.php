@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class NewsArticle extends AbstractType
 {
-    use TypeTrait\NewsArticleTrait;
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\NewsArticleTrait;
     use TypeTrait\ThingTrait;
 }

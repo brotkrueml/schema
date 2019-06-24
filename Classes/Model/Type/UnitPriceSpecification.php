@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class UnitPriceSpecification extends AbstractType
 {
-    use TypeTrait\UnitPriceSpecificationTrait;
     use TypeTrait\PriceSpecificationTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\UnitPriceSpecificationTrait;
 }

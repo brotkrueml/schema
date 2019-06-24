@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class WebApplication extends AbstractType
 {
-    use TypeTrait\WebApplicationTrait;
-    use TypeTrait\SoftwareApplicationTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\SoftwareApplicationTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WebApplicationTrait;
 }

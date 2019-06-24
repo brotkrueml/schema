@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MobileApplication extends AbstractType
 {
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MobileApplicationTrait;
     use TypeTrait\SoftwareApplicationTrait;
-    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
 }

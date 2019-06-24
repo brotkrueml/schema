@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MusicRelease extends AbstractType
 {
-    use TypeTrait\MusicReleaseTrait;
-    use TypeTrait\MusicPlaylistTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MusicPlaylistTrait;
+    use TypeTrait\MusicReleaseTrait;
     use TypeTrait\ThingTrait;
 }

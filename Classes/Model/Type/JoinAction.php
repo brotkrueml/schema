@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class JoinAction extends AbstractType
 {
-    use TypeTrait\JoinActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\JoinActionTrait;
     use TypeTrait\ThingTrait;
 }

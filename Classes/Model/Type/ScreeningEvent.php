@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ScreeningEvent extends AbstractType
 {
-    use TypeTrait\ScreeningEventTrait;
     use TypeTrait\EventTrait;
+    use TypeTrait\ScreeningEventTrait;
     use TypeTrait\ThingTrait;
 }

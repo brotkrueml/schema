@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class AskAction extends AbstractType
 {
+    use TypeTrait\ActionTrait;
     use TypeTrait\AskActionTrait;
     use TypeTrait\CommunicateActionTrait;
-    use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
 }

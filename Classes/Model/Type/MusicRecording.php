@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MusicRecording extends AbstractType
 {
-    use TypeTrait\MusicRecordingTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\MusicRecordingTrait;
     use TypeTrait\ThingTrait;
 }

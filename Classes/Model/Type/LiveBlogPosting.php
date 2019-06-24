@@ -18,9 +18,9 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class LiveBlogPosting extends AbstractType
 {
-    use TypeTrait\LiveBlogPostingTrait;
-    use TypeTrait\SocialMediaPostingTrait;
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\LiveBlogPostingTrait;
+    use TypeTrait\SocialMediaPostingTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,10 +18,10 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MovieTheater extends AbstractType
 {
-    use TypeTrait\MovieTheaterTrait;
     use TypeTrait\CivicStructureTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\MovieTheaterTrait;
+    use TypeTrait\OrganizationTrait;
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;
-    use TypeTrait\LocalBusinessTrait;
-    use TypeTrait\OrganizationTrait;
 }

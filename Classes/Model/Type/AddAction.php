@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class AddAction extends AbstractType
 {
-    use TypeTrait\UpdateActionTrait;
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\UpdateActionTrait;
 }

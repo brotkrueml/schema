@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Suite extends AbstractType
 {
-    use TypeTrait\SuiteTrait;
     use TypeTrait\AccommodationTrait;
     use TypeTrait\PlaceTrait;
+    use TypeTrait\SuiteTrait;
     use TypeTrait\ThingTrait;
 }

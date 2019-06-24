@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class DiscussionForumPosting extends AbstractType
 {
-    use TypeTrait\SocialMediaPostingTrait;
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\SocialMediaPostingTrait;
     use TypeTrait\ThingTrait;
 }

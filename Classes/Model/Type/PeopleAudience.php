@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class PeopleAudience extends AbstractType
 {
-    use TypeTrait\PeopleAudienceTrait;
     use TypeTrait\AudienceTrait;
+    use TypeTrait\PeopleAudienceTrait;
     use TypeTrait\ThingTrait;
 }

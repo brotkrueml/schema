@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class SendAction extends AbstractType
 {
-    use TypeTrait\SendActionTrait;
-    use TypeTrait\TransferActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\SendActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TransferActionTrait;
 }

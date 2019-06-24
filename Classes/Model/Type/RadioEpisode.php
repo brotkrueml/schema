@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class RadioEpisode extends AbstractType
 {
-    use TypeTrait\EpisodeTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\EpisodeTrait;
     use TypeTrait\ThingTrait;
 }

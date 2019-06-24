@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class GiveAction extends AbstractType
 {
-    use TypeTrait\GiveActionTrait;
-    use TypeTrait\TransferActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\GiveActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TransferActionTrait;
 }

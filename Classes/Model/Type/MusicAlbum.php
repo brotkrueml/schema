@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class MusicAlbum extends AbstractType
 {
+    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MusicAlbumTrait;
     use TypeTrait\MusicPlaylistTrait;
-    use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
 }

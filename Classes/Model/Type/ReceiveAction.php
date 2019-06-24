@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReceiveAction extends AbstractType
 {
-    use TypeTrait\ReceiveActionTrait;
-    use TypeTrait\TransferActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ReceiveActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TransferActionTrait;
 }

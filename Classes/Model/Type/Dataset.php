@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class Dataset extends AbstractType
 {
-    use TypeTrait\DatasetTrait;
     use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\DatasetTrait;
     use TypeTrait\ThingTrait;
 }

@@ -18,8 +18,8 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class ReturnAction extends AbstractType
 {
-    use TypeTrait\ReturnActionTrait;
-    use TypeTrait\TransferActionTrait;
     use TypeTrait\ActionTrait;
+    use TypeTrait\ReturnActionTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\TransferActionTrait;
 }

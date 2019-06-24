@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class WebPageElement extends AbstractType
 {
-    use TypeTrait\WebPageElementTrait;
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;
+    use TypeTrait\WebPageElementTrait;
 }

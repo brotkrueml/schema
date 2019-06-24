@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
  */
 class OnDemandEvent extends AbstractType
 {
-    use TypeTrait\PublicationEventTrait;
     use TypeTrait\EventTrait;
+    use TypeTrait\PublicationEventTrait;
     use TypeTrait\ThingTrait;
 }
