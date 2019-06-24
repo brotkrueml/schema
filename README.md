@@ -57,7 +57,6 @@ Surely you'll have some properties to add, otherwise it makes no sense:
         ->setProperty('givenName', 'John')
         ->setProperty('familyName', 'Smith')
         ->setProperty('gender', 'http://schema.org/Male')
-        ->setProperty('jobTitle', 'Software Developer')
     ;
 
 That was easy ... let's go on and add the company for who the person works:
@@ -90,7 +89,6 @@ automatically into the head section:
         "givenName": "John",
         "familyName": "Smith",
         "gender": "http://schema.org/Male",
-        "jobTitle": "Software Developer",
         "worksFor": {
             "@type": "Corporation",
             "name": "Acme Ltd.",
@@ -110,7 +108,6 @@ Another possible way to insert the structured data is via a Fluid template:
         givenName="John"
         familyName="Smith"
         gender="http://schema.org/Male"
-        jobTitle="Software Developer"
     >
         <schema:type.corporation
             -as="worksFor"
@@ -149,7 +146,6 @@ Now you can connect the corporation to the person:
          givenName="John"
          familyName="Smith"
          gender="http://schema.org/Male"
-         jobTitle="Software Developer"
      >
          <schema:type.corporation
              -as="worksFor"
@@ -175,7 +171,6 @@ The resulting output would be now:
             "givenName": "John",
             "familyName": "Smith",
             "gender": "http://schema.org/Male",
-            "jobTitle": "Software Developer",
             "worksFor": {
                 "@type": "Corporation",
                 "@id": "https://example.org/#corporation"
