@@ -9,23 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * A set of characteristics belonging to people, e.g. who compose an item\'s target audience.
- *
- * schema.org version 3.6
+ * A set of characteristics belonging to people, e.g. who compose an item\&#039;s target audience.
  */
-class PeopleAudienceViewHelper extends AudienceViewHelper
+class PeopleAudienceViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('requiredGender', 'mixed', 'Audiences defined by a person\'s gender.');
-        $this->registerArgument('requiredMaxAge', 'mixed', 'Audiences defined by a person\'s maximum age.');
-        $this->registerArgument('requiredMinAge', 'mixed', 'Audiences defined by a person\'s minimum age.');
-        $this->registerArgument('suggestedGender', 'mixed', 'The gender of the person or audience.');
-        $this->registerArgument('suggestedMaxAge', 'mixed', 'Maximal age recommended for viewing content.');
-        $this->registerArgument('suggestedMinAge', 'mixed', 'Minimal age recommended for viewing content.');
-    }
 }

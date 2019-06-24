@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A hostel - cheap accommodation, often in shared dormitories.
- *
- * schema.org version 3.6
  */
-class HostelViewHelper extends LodgingBusinessViewHelper
+class HostelViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

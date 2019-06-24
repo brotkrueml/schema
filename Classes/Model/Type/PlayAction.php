@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.
- *
- * schema.org version 3.6
  */
-class PlayAction extends Action
+class PlayAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('audience', 'event');
-    }
+    use TypeTrait\PlayActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

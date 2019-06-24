@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Financial services business.
- *
- * schema.org version 3.6
  */
-class FinancialServiceViewHelper extends LocalBusinessViewHelper
+class FinancialServiceViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('feesAndCommissionsSpecification', 'mixed', 'Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.');
-    }
 }

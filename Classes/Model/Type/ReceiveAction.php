@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of physically/electronically taking delivery of an object thathas been transferred from an origin to a destination. Reciprocal of SendAction.
- *
- * schema.org version 3.6
  */
-class ReceiveAction extends TransferAction
+class ReceiveAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('deliveryMethod', 'sender');
-    }
+    use TypeTrait\ReceiveActionTrait;
+    use TypeTrait\TransferActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

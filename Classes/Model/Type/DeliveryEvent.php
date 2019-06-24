@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An event involving the delivery of an item.
- *
- * schema.org version 3.6
  */
-class DeliveryEvent extends Event
+class DeliveryEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('accessCode', 'availableFrom', 'availableThrough', 'hasDeliveryMethod');
-    }
+    use TypeTrait\DeliveryEventTrait;
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

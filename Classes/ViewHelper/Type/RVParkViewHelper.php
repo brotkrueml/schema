@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
- *
- * schema.org version 3.6
+ * A place offering space for &quot;Recreational Vehicles&quot;, Caravans, mobile homes and the like.
  */
-class RVParkViewHelper extends CivicStructureViewHelper
+class RVParkViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

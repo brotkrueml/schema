@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-/**
- * A list of items of any sort&#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
- *
- * schema.org version 3.6
- */
-class ItemList extends Intangible
-{
-    public function __construct()
-    {
-        parent::__construct();
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
 
-        $this->addProperties('itemListElement', 'itemListOrder', 'numberOfItems');
-    }
+/**
+ * A list of items of any sort&amp;#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
+ */
+class ItemList extends AbstractType
+{
+    use TypeTrait\ItemListTrait;
+    use TypeTrait\ThingTrait;
 }

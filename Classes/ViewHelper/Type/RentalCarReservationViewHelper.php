@@ -9,21 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A reservation for a rental car.
- *
- * schema.org version 3.6
  */
-class RentalCarReservationViewHelper extends ReservationViewHelper
+class RentalCarReservationViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('dropoffLocation', 'mixed', 'Where a rental car can be dropped off.');
-        $this->registerArgument('dropoffTime', 'mixed', 'When a rental car can be dropped off.');
-        $this->registerArgument('pickupLocation', 'mixed', 'Where a taxi will pick up a passenger or a rental car can be picked up.');
-        $this->registerArgument('pickupTime', 'mixed', 'When a taxi will pickup a passenger or a rental car can be picked up.');
-    }
 }

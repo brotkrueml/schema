@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A permission for a particular person or group to access a particular file.
- *
- * schema.org version 3.6
  */
-class DigitalDocumentPermission extends Intangible
+class DigitalDocumentPermission extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('grantee', 'permissionType');
-    }
+    use TypeTrait\DigitalDocumentPermissionTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A placeholder for multiple similar products of the same kind.
- *
- * schema.org version 3.6
  */
-class SomeProductsViewHelper extends ProductViewHelper
+class SomeProductsViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('inventoryLevel', 'mixed', 'The current approximate inventory level for the item or items.');
-    }
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of searching for an object.
- *
- * schema.org version 3.6
  */
-class SearchAction extends Action
+class SearchAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('query');
-    }
+    use TypeTrait\SearchActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

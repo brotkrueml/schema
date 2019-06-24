@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An agent joins an event/group with participants/friends at a location.
- *
- * schema.org version 3.6
  */
-class JoinActionViewHelper extends InteractActionViewHelper
+class JoinActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('event', 'mixed', 'Upcoming or past event associated with this place, organization, or action.');
-    }
 }

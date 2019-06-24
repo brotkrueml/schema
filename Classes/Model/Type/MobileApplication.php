@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
- *
- * schema.org version 3.6
  */
-class MobileApplication extends SoftwareApplication
+class MobileApplication extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('carrierRequirements');
-    }
+    use TypeTrait\MobileApplicationTrait;
+    use TypeTrait\SoftwareApplicationTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

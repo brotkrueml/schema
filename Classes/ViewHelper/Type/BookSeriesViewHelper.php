@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A series of books. Included books can be indicated with the hasPart property.
- *
- * schema.org version 3.6
  */
-class BookSeriesViewHelper extends CreativeWorkSeriesViewHelper
+class BookSeriesViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

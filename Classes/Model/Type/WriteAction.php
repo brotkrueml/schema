@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of authoring written creative content.
- *
- * schema.org version 3.6
  */
-class WriteAction extends CreateAction
+class WriteAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('inLanguage');
-    }
+    use TypeTrait\WriteActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

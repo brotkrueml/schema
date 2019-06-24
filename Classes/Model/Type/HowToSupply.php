@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A supply consumed when performing the instructions for how to achieve a result.
- *
- * schema.org version 3.6
  */
-class HowToSupply extends HowToItem
+class HowToSupply extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('estimatedCost');
-    }
+    use TypeTrait\HowToSupplyTrait;
+    use TypeTrait\HowToItemTrait;
+    use TypeTrait\ListItemTrait;
+    use TypeTrait\ThingTrait;
 }

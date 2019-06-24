@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A food service, like breakfast, lunch, or dinner.
- *
- * schema.org version 3.6
  */
-class FoodService extends Service
+class FoodService extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

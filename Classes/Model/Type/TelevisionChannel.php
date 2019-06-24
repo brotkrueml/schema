@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
- *
- * schema.org version 3.6
  */
-class TelevisionChannel extends BroadcastChannel
+class TelevisionChannel extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\BroadcastChannelTrait;
+    use TypeTrait\ThingTrait;
 }

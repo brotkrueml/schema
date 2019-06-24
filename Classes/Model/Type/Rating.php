@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
- *
- * schema.org version 3.6
  */
-class Rating extends Intangible
+class Rating extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('author', 'bestRating', 'ratingValue', 'reviewAspect', 'worstRating');
-    }
+    use TypeTrait\RatingTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Event type: Exhibition event, e.g. at a museum, library, archive, tradeshow, ...
- *
- * schema.org version 3.6
  */
-class ExhibitionEventViewHelper extends EventViewHelper
+class ExhibitionEventViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

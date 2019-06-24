@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
- *
- * schema.org version 3.6
  */
-class Reservoir extends BodyOfWater
+class Reservoir extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

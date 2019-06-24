@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
- *
- * schema.org version 3.6
  */
-class ChooseAction extends AssessAction
+class ChooseAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actionOption');
-    }
+    use TypeTrait\ChooseActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

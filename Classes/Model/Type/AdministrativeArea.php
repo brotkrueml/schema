@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A geographical region, typically under the jurisdiction of a particular government.
- *
- * schema.org version 3.6
  */
-class AdministrativeArea extends Place
+class AdministrativeArea extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

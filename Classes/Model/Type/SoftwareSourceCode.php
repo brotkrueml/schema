@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.
- *
- * schema.org version 3.6
  */
-class SoftwareSourceCode extends CreativeWork
+class SoftwareSourceCode extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('codeRepository', 'codeSampleType', 'programmingLanguage', 'runtimePlatform', 'targetProduct');
-    }
+    use TypeTrait\SoftwareSourceCodeTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,15 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A fast-food restaurant.
- *
- * schema.org version 3.6
  */
-class FastFoodRestaurant extends FoodEstablishment
+class FastFoodRestaurant extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\FoodEstablishmentTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\OrganizationTrait;
 }

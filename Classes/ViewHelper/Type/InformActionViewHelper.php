@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of notifying someone of information pertinent to them, with no expectation of a response.
- *
- * schema.org version 3.6
  */
-class InformActionViewHelper extends CommunicateActionViewHelper
+class InformActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('event', 'mixed', 'Upcoming or past event associated with this place, organization, or action.');
-    }
 }

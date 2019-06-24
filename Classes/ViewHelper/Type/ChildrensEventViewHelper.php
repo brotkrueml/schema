@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * Event type: Children\'s event.
- *
- * schema.org version 3.6
+ * Event type: Children\&#039;s event.
  */
-class ChildrensEventViewHelper extends EventViewHelper
+class ChildrensEventViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via suitableForDiet. The keywords property can also be used to add more detail.
- *
- * schema.org version 3.6
  */
-class Recipe extends HowTo
+class Recipe extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('cookTime', 'cookingMethod', 'nutrition', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions', 'recipeYield', 'suitableForDiet');
-    }
+    use TypeTrait\RecipeTrait;
+    use TypeTrait\HowToTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

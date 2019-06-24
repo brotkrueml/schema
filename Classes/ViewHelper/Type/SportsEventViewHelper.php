@@ -9,20 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Event type: Sports event.
- *
- * schema.org version 3.6
  */
-class SportsEventViewHelper extends EventViewHelper
+class SportsEventViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('awayTeam', 'mixed', 'The away team in a sports event.');
-        $this->registerArgument('competitor', 'mixed', 'A competitor in a sports event.');
-        $this->registerArgument('homeTeam', 'mixed', 'The home team in a sports event.');
-    }
 }

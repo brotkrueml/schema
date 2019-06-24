@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A music recording (track), usually a single song.
- *
- * schema.org version 3.6
  */
-class MusicRecording extends CreativeWork
+class MusicRecording extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('byArtist', 'duration', 'inAlbum', 'inPlaylist', 'isrcCode', 'recordingOf');
-    }
+    use TypeTrait\MusicRecordingTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

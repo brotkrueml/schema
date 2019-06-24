@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A map.
- *
- * schema.org version 3.6
  */
-class Map extends CreativeWork
+class Map extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('mapType');
-    }
+    use TypeTrait\MapTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A set of requirements that a must be fulfilled in order to perform an Action.
- *
- * schema.org version 3.6
  */
-class ActionAccessSpecification extends Intangible
+class ActionAccessSpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('availabilityEnds', 'availabilityStarts', 'category', 'eligibleRegion', 'expectsAcceptanceOf', 'requiresSubscription');
-    }
+    use TypeTrait\ActionAccessSpecificationTrait;
+    use TypeTrait\ThingTrait;
 }

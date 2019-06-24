@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An image file.
- *
- * schema.org version 3.6
  */
-class ImageObject extends MediaObject
+class ImageObject extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('caption', 'exifData', 'representativeOfPage', 'thumbnail');
-    }
+    use TypeTrait\ImageObjectTrait;
+    use TypeTrait\MediaObjectTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

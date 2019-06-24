@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A permission for a particular person or group to access a particular file.
- *
- * schema.org version 3.6
  */
-class DigitalDocumentPermissionViewHelper extends IntangibleViewHelper
+class DigitalDocumentPermissionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('grantee', 'mixed', 'The person, organization, contact point, or audience that has been granted this permission.');
-        $this->registerArgument('permissionType', 'mixed', 'The type of permission granted the person, organization, or audience.');
-    }
 }

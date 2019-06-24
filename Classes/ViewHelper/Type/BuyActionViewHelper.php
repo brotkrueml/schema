@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.
- *
- * schema.org version 3.6
  */
-class BuyActionViewHelper extends TradeActionViewHelper
+class BuyActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('seller', 'mixed', 'An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.');
-    }
 }

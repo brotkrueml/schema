@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * A FAQPage is a WebPage presenting one or more "Frequently asked questions" (see also QAPage).
- *
- * schema.org version 3.6
+ * A FAQPage is a WebPage presenting one or more &quot;Frequently asked questions&quot; (see also QAPage).
  */
-class FAQPageViewHelper extends WebPageViewHelper
+class FAQPageViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

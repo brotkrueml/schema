@@ -10,15 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
- *
- * schema.org version 3.6
  */
-class ItemListOrderType extends Enumeration
+class ItemListOrderType extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ThingTrait;
 }

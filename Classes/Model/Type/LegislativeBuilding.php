@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * A legislative building&#x2014;for example, the state capitol.
- *
- * schema.org version 3.6
+ * A legislative building&amp;#x2014;for example, the state capitol.
  */
-class LegislativeBuilding extends GovernmentBuilding
+class LegislativeBuilding extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\CivicStructureTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
- *
- * schema.org version 3.6
  */
-class VideoGame extends SoftwareApplication
+class VideoGame extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'characterAttribute', 'cheatCode', 'director', 'gameItem', 'gameLocation', 'gamePlatform', 'gameServer', 'gameTip', 'musicBy', 'numberOfPlayers', 'playMode', 'quest', 'trailer');
-    }
+    use TypeTrait\VideoGameTrait;
+    use TypeTrait\SoftwareApplicationTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\GameTrait;
 }

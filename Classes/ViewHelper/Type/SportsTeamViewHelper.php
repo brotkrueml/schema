@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Organization: Sports team.
- *
- * schema.org version 3.6
  */
-class SportsTeamViewHelper extends SportsOrganizationViewHelper
+class SportsTeamViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('athlete', 'mixed', 'A person that acts as performing member of a sports team; a player as opposed to a coach.');
-        $this->registerArgument('coach', 'mixed', 'A person that acts in a coaching role for a sports team.');
-    }
 }

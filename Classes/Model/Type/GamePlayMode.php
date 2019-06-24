@@ -10,15 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
- *
- * schema.org version 3.6
  */
-class GamePlayMode extends Enumeration
+class GamePlayMode extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ThingTrait;
 }

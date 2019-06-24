@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
- *
- * schema.org version 3.6
  */
-class Ticket extends Intangible
+class Ticket extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('dateIssued', 'issuedBy', 'priceCurrency', 'ticketNumber', 'ticketToken', 'ticketedSeat', 'totalPrice', 'underName');
-    }
+    use TypeTrait\TicketTrait;
+    use TypeTrait\ThingTrait;
 }

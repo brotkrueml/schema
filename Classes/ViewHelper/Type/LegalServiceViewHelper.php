@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A LegalService is a business that provides legally-oriented services, advice and representation, e.g. law firms.
- *
- * schema.org version 3.6
  */
-class LegalServiceViewHelper extends LocalBusinessViewHelper
+class LegalServiceViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

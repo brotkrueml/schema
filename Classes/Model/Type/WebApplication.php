@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Web applications.
- *
- * schema.org version 3.6
  */
-class WebApplication extends SoftwareApplication
+class WebApplication extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('browserRequirements');
-    }
+    use TypeTrait\WebApplicationTrait;
+    use TypeTrait\SoftwareApplicationTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

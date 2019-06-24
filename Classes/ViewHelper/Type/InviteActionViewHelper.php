@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of asking someone to attend an event. Reciprocal of RsvpAction.
- *
- * schema.org version 3.6
  */
-class InviteActionViewHelper extends CommunicateActionViewHelper
+class InviteActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('event', 'mixed', 'Upcoming or past event associated with this place, organization, or action.');
-    }
 }

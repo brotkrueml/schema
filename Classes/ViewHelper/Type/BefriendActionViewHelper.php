@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of forming a personal connection with someone (object) mutually/bidirectionally/symmetrically.
- *
- * schema.org version 3.6
  */
-class BefriendActionViewHelper extends InteractActionViewHelper
+class BefriendActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

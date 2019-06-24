@@ -1,24 +1,25 @@
 <?php
 
+use Brotkrueml\Schema\Generator\Configuration\Configuration;
 use Brotkrueml\Schema\Generator\Generator;
-use Brotkrueml\Schema\Generator\File\Writer;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 require __DIR__ . '/../.Build/vendor/autoload.php';
 
-$configurationPath = __DIR__ . '/Configuration/';
+$configuration = new Configuration();
+$configuration->schemaPath = __DIR__ . '/Schema/schema.jsonld';
+$configuration->modelTypeTraitPathTemplate = __DIR__ . '/../Classes/Model/TypeTrait/%sTrait.php';
+$configuration->modelTypePathTemplate = __DIR__ . '/../Classes/Model/Type/%s.php';
+$configuration->viewHelperTypePathTemplate = __DIR__ . '/../Classes/ViewHelper/Type/%sViewHelper.php';
+
+$loader = new FilesystemLoader(__DIR__ . '/Templates');
+$twig = new Environment($loader, [
+    'cache' => __DIR__ . '/../.Build/twig_cache',
+]);
 
 try {
-    (new Generator($configurationPath . 'schema.jsonld'))
-        ->addWriter(new Writer(
-            __DIR__ . '/Templates/Model.php.template',
-            __DIR__ . '/../Classes/Model/Type/'
-        ))
-        ->addWriter(new Writer(
-            __DIR__ . '/Templates/ViewHelper.php.template',
-            __DIR__ . '/../Classes/ViewHelper/Type/',
-            'ViewHelper'
-        ))
-        ->generate();
+    (new Generator($configuration, $twig))->generate();
 } catch (Throwable $e) {
     echo 'Could not generate, reason: ' . $e->getMessage();
 }

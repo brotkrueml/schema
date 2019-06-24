@@ -10,15 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A resort is a place used for relaxation or recreation, attracting visitors for holidays or vacations. Resorts are places, towns or sometimes commercial establishment operated by a single company (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Resort).
- *
- * schema.org version 3.6
  */
-class Resort extends LodgingBusiness
+class Resort extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\LodgingBusinessTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\OrganizationTrait;
 }

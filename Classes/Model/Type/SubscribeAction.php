@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates pushed to.
- *
- * schema.org version 3.6
  */
-class SubscribeAction extends InteractAction
+class SubscribeAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

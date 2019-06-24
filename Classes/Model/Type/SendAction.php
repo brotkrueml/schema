@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of physically/electronically dispatching an object for transfer from an origin to a destination.Related actions:
- *
- * schema.org version 3.6
  */
-class SendAction extends TransferAction
+class SendAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('deliveryMethod', 'recipient');
-    }
+    use TypeTrait\SendActionTrait;
+    use TypeTrait\TransferActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

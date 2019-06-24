@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * A legislative building&#x2014;for example, the state capitol.
- *
- * schema.org version 3.6
+ * A legislative building&amp;#x2014;for example, the state capitol.
  */
-class LegislativeBuildingViewHelper extends GovernmentBuildingViewHelper
+class LegislativeBuildingViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

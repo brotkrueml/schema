@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A series of movies. Included movies can be indicated with the hasPart property.
- *
- * schema.org version 3.6
  */
-class MovieSeries extends CreativeWorkSeries
+class MovieSeries extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'director', 'musicBy', 'productionCompany', 'trailer');
-    }
+    use TypeTrait\MovieSeriesTrait;
+    use TypeTrait\CreativeWorkSeriesTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\CreativeWorkTrait;
 }

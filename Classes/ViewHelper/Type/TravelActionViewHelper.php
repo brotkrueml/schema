@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
- *
- * schema.org version 3.6
  */
-class TravelActionViewHelper extends MoveActionViewHelper
+class TravelActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('distance', 'mixed', 'The distance travelled, e.g. exercising or travelling.');
-    }
 }

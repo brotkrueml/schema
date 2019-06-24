@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review.
- *
- * schema.org version 3.6
  */
-class ReviewAction extends AssessAction
+class ReviewAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('resultReview');
-    }
+    use TypeTrait\ReviewActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

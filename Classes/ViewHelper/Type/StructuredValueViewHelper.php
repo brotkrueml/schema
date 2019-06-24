@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing.
- *
- * schema.org version 3.6
  */
-class StructuredValueViewHelper extends IntangibleViewHelper
+class StructuredValueViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

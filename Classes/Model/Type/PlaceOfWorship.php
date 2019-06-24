@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Place of worship, such as a church, synagogue, or mosque.
- *
- * schema.org version 3.6
  */
-class PlaceOfWorship extends CivicStructure
+class PlaceOfWorship extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\CivicStructureTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

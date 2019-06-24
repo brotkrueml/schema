@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of generating a comment about a subject.
- *
- * schema.org version 3.6
  */
-class CommentAction extends CommunicateAction
+class CommentAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('resultComment');
-    }
+    use TypeTrait\CommentActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

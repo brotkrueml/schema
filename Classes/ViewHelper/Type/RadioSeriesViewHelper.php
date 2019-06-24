@@ -9,26 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
- *
- * schema.org version 3.6
  */
-class RadioSeriesViewHelper extends CreativeWorkSeriesViewHelper
+class RadioSeriesViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('actor', 'mixed', 'An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.');
-        $this->registerArgument('containsSeason', 'mixed', 'A season that is part of the media series.');
-        $this->registerArgument('director', 'mixed', 'A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.');
-        $this->registerArgument('episode', 'mixed', 'An episode of a tv, radio or game media within a series or season.');
-        $this->registerArgument('musicBy', 'mixed', 'The composer of the soundtrack.');
-        $this->registerArgument('numberOfEpisodes', 'mixed', 'The number of episodes in this season or series.');
-        $this->registerArgument('numberOfSeasons', 'mixed', 'The number of seasons in this series.');
-        $this->registerArgument('productionCompany', 'mixed', 'The production company or studio responsible for the item e.g. series, video game, episode etc.');
-        $this->registerArgument('trailer', 'mixed', 'The trailer of a movie or tv/radio series, season, episode, etc.');
-    }
 }

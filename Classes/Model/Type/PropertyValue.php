@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-/**
- * A property-value pair, e.g. representing a feature of a product or place. Use the \'name\' property for the name of the property. If there is an additional human-readable version of the value, put that into the \'description\' property.
- *
- * schema.org version 3.6
- */
-class PropertyValue extends StructuredValue
-{
-    public function __construct()
-    {
-        parent::__construct();
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
 
-        $this->addProperties('maxValue', 'minValue', 'propertyID', 'unitCode', 'unitText', 'value', 'valueReference');
-    }
+/**
+ * A property-value pair, e.g. representing a feature of a product or place. Use the \&#039;name\&#039; property for the name of the property. If there is an additional human-readable version of the value, put that into the \&#039;description\&#039; property.
+ */
+class PropertyValue extends AbstractType
+{
+    use TypeTrait\PropertyValueTrait;
+    use TypeTrait\ThingTrait;
 }

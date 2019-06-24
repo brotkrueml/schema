@@ -10,17 +10,18 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A movie theater.
- *
- * schema.org version 3.6
  */
-class MovieTheater extends CivicStructure
+class MovieTheater extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('screenCount');
-    }
+    use TypeTrait\MovieTheaterTrait;
+    use TypeTrait\CivicStructureTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\OrganizationTrait;
 }

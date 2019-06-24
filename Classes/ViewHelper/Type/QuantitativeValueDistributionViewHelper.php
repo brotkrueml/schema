@@ -9,23 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A statistical distribution of values.
- *
- * schema.org version 3.6
  */
-class QuantitativeValueDistributionViewHelper extends StructuredValueViewHelper
+class QuantitativeValueDistributionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('duration', 'mixed', 'The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format.');
-        $this->registerArgument('median', 'mixed', 'The median value.');
-        $this->registerArgument('percentile10', 'mixed', 'The 10th percentile value.');
-        $this->registerArgument('percentile25', 'mixed', 'The 25th percentile value.');
-        $this->registerArgument('percentile75', 'mixed', 'The 75th percentile value.');
-        $this->registerArgument('percentile90', 'mixed', 'The 90th percentile value.');
-    }
 }

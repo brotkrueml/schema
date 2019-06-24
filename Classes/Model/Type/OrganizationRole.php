@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A subclass of Role used to describe roles within organizations.
- *
- * schema.org version 3.6
  */
-class OrganizationRole extends Role
+class OrganizationRole extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('numberedPosition');
-    }
+    use TypeTrait\OrganizationRoleTrait;
+    use TypeTrait\RoleTrait;
+    use TypeTrait\ThingTrait;
 }

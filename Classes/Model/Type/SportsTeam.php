@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Organization: Sports team.
- *
- * schema.org version 3.6
  */
-class SportsTeam extends SportsOrganization
+class SportsTeam extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('athlete', 'coach');
-    }
+    use TypeTrait\SportsTeamTrait;
+    use TypeTrait\SportsOrganizationTrait;
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

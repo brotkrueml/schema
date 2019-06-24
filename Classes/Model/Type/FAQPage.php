@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * A FAQPage is a WebPage presenting one or more "Frequently asked questions" (see also QAPage).
- *
- * schema.org version 3.6
+ * A FAQPage is a WebPage presenting one or more &quot;Frequently asked questions&quot; (see also QAPage).
  */
-class FAQPage extends WebPage
+class FAQPage extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\WebPageTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

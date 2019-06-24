@@ -10,15 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * A utility class that serves as the umbrella for a number of \'intangible\' things such as quantities, structured values, etc.
- *
- * schema.org version 3.6
+ * A utility class that serves as the umbrella for a number of \&#039;intangible\&#039; things such as quantities, structured values, etc.
  */
-class Intangible extends Thing
+class Intangible extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ThingTrait;
 }

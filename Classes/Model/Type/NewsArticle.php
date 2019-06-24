@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news.
- *
- * schema.org version 3.6
  */
-class NewsArticle extends Article
+class NewsArticle extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('dateline', 'printColumn', 'printEdition', 'printPage', 'printSection');
-    }
+    use TypeTrait\NewsArticleTrait;
+    use TypeTrait\ArticleTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

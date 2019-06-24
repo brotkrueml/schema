@@ -10,17 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Financial services business.
- *
- * schema.org version 3.6
  */
-class FinancialService extends LocalBusiness
+class FinancialService extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('feesAndCommissionsSpecification');
-    }
+    use TypeTrait\FinancialServiceTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\OrganizationTrait;
 }

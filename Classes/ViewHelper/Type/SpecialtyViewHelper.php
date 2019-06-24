@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
- *
- * schema.org version 3.6
  */
-class SpecialtyViewHelper extends EnumerationViewHelper
+class SpecialtyViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

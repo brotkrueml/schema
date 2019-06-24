@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
- *
- * schema.org version 3.6
  */
-class WebSite extends CreativeWork
+class WebSite extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('issn');
-    }
+    use TypeTrait\WebSiteTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

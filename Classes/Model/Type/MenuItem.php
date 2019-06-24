@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A food or drink item listed in a menu or menu section.
- *
- * schema.org version 3.6
  */
-class MenuItem extends Intangible
+class MenuItem extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('menuAddOn', 'nutrition', 'offers', 'suitableForDiet');
-    }
+    use TypeTrait\MenuItemTrait;
+    use TypeTrait\ThingTrait;
 }

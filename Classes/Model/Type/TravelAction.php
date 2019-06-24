@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
- *
- * schema.org version 3.6
  */
-class TravelAction extends MoveAction
+class TravelAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('distance');
-    }
+    use TypeTrait\TravelActionTrait;
+    use TypeTrait\MoveActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

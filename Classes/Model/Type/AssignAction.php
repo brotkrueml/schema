@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of allocating an action/event/task to some destination (someone or something).
- *
- * schema.org version 3.6
  */
-class AssignAction extends AllocateAction
+class AssignAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

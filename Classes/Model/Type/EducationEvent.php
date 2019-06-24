@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Event type: Education event.
- *
- * schema.org version 3.6
  */
-class EducationEvent extends Event
+class EducationEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

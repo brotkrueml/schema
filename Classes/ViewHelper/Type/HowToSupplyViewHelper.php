@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A supply consumed when performing the instructions for how to achieve a result.
- *
- * schema.org version 3.6
  */
-class HowToSupplyViewHelper extends HowToItemViewHelper
+class HowToSupplyViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('estimatedCost', 'mixed', 'The estimated cost of the supply or supplies consumed when performing instructions.');
-    }
 }

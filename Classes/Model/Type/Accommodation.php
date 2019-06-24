@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An accommodation is a place that can accommodate human beings, e.g. a hotel room, a camping pitch, or a meeting room. Many accommodations are for overnight stays, but this is not a mandatory requirement.
- *
- * schema.org version 3.6
  */
-class Accommodation extends Place
+class Accommodation extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('floorSize', 'numberOfRooms', 'permittedUsage', 'petsAllowed');
-    }
+    use TypeTrait\AccommodationTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

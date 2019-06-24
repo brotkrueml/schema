@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A TV episode which can be part of a series or season.
- *
- * schema.org version 3.6
  */
-class TVEpisodeViewHelper extends EpisodeViewHelper
+class TVEpisodeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('countryOfOrigin', 'mixed', 'The country of the principal offices of the production company or individual responsible for the movie or program.');
-        $this->registerArgument('subtitleLanguage', 'mixed', 'Languages in which subtitles/captions are available, in IETF BCP 47 standard format.');
-    }
 }

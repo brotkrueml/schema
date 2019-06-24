@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * The act of forming one\'s opinion, reaction or sentiment.
- *
- * schema.org version 3.6
+ * The act of forming one\&#039;s opinion, reaction or sentiment.
  */
-class AssessActionViewHelper extends ActionViewHelper
+class AssessActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

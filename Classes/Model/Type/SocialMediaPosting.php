@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
- *
- * schema.org version 3.6
  */
-class SocialMediaPosting extends Article
+class SocialMediaPosting extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('sharedContent');
-    }
+    use TypeTrait\SocialMediaPostingTrait;
+    use TypeTrait\ArticleTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

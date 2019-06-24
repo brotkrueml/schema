@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
- *
- * schema.org version 3.6
  */
-class AudienceViewHelper extends IntangibleViewHelper
+class AudienceViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('audienceType', 'mixed', 'The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).');
-        $this->registerArgument('geographicArea', 'mixed', 'The geographic area associated with the audience.');
-    }
 }

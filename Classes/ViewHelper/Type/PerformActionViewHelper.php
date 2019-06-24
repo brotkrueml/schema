@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of participating in performance arts.
- *
- * schema.org version 3.6
  */
-class PerformActionViewHelper extends PlayActionViewHelper
+class PerformActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('entertainmentBusiness', 'mixed', 'A sub property of location. The entertainment business where the action occurred.');
-    }
 }

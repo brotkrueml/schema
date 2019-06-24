@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A performance group, such as a band, an orchestra, or a circus.
- *
- * schema.org version 3.6
  */
-class PerformingGroup extends Organization
+class PerformingGroup extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

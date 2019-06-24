@@ -9,20 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An over the air or online broadcast event.
- *
- * schema.org version 3.6
  */
-class BroadcastEventViewHelper extends PublicationEventViewHelper
+class BroadcastEventViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('broadcastOfEvent', 'mixed', 'The event being broadcast such as a sporting event or awards ceremony.');
-        $this->registerArgument('isLiveBroadcast', 'mixed', 'True is the broadcast is of a live event.');
-        $this->registerArgument('videoFormat', 'mixed', 'The type of screening or video broadcast used (e.g. IMAX, 3D, SD, HD, etc.).');
-    }
 }

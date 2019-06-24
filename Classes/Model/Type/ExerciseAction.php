@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
- *
- * schema.org version 3.6
  */
-class ExerciseAction extends PlayAction
+class ExerciseAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('distance', 'exerciseCourse', 'fromLocation', 'opponent', 'sportsActivityLocation', 'sportsEvent', 'sportsTeam', 'toLocation');
-    }
+    use TypeTrait\ExerciseActionTrait;
+    use TypeTrait\PlayActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

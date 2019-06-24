@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A reservation for a rental car.
- *
- * schema.org version 3.6
  */
-class RentalCarReservation extends Reservation
+class RentalCarReservation extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('dropoffLocation', 'dropoffTime', 'pickupLocation', 'pickupTime');
-    }
+    use TypeTrait\RentalCarReservationTrait;
+    use TypeTrait\ReservationTrait;
+    use TypeTrait\ThingTrait;
 }

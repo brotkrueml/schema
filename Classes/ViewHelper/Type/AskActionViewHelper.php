@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of posing a question / favor to someone.
- *
- * schema.org version 3.6
  */
-class AskActionViewHelper extends CommunicateActionViewHelper
+class AskActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('question', 'mixed', 'A sub property of object. A question.');
-    }
 }

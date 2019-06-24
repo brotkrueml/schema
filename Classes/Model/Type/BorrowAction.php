@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of obtaining an object under an agreement to return it at a later date. Reciprocal of LendAction.
- *
- * schema.org version 3.6
  */
-class BorrowAction extends TransferAction
+class BorrowAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('lender');
-    }
+    use TypeTrait\BorrowActionTrait;
+    use TypeTrait\TransferActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A reservation to dine at a food-related business.
- *
- * schema.org version 3.6
  */
-class FoodEstablishmentReservation extends Reservation
+class FoodEstablishmentReservation extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('endTime', 'partySize', 'startTime');
-    }
+    use TypeTrait\FoodEstablishmentReservationTrait;
+    use TypeTrait\ReservationTrait;
+    use TypeTrait\ThingTrait;
 }

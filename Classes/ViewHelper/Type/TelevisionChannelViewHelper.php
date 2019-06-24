@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
- *
- * schema.org version 3.6
  */
-class TelevisionChannelViewHelper extends BroadcastChannelViewHelper
+class TelevisionChannelViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

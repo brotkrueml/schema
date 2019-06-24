@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
- *
- * schema.org version 3.6
  */
-class Seat extends Intangible
+class Seat extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('seatNumber', 'seatRow', 'seatSection', 'seatingType');
-    }
+    use TypeTrait\SeatTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An item used as either a tool or supply when performing the instructions for how to to achieve a result.
- *
- * schema.org version 3.6
  */
-class HowToItem extends ListItem
+class HowToItem extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('requiredQuantity');
-    }
+    use TypeTrait\HowToItemTrait;
+    use TypeTrait\ListItemTrait;
+    use TypeTrait\ThingTrait;
 }

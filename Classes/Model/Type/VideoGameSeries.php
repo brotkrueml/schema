@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A video game series.
- *
- * schema.org version 3.6
  */
-class VideoGameSeries extends CreativeWorkSeries
+class VideoGameSeries extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'characterAttribute', 'cheatCode', 'containsSeason', 'director', 'episode', 'gameItem', 'gameLocation', 'gamePlatform', 'musicBy', 'numberOfEpisodes', 'numberOfPlayers', 'numberOfSeasons', 'playMode', 'productionCompany', 'quest', 'trailer');
-    }
+    use TypeTrait\VideoGameSeriesTrait;
+    use TypeTrait\CreativeWorkSeriesTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\CreativeWorkTrait;
 }

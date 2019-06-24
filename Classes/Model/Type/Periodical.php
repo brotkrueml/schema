@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A publication in any medium issued in successive parts bearing numerical or chronological designations and intended, such as a magazine, scholarly journal, or newspaper to continue indefinitely.
- *
- * schema.org version 3.6
  */
-class Periodical extends CreativeWorkSeries
+class Periodical extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\CreativeWorkSeriesTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\CreativeWorkTrait;
 }

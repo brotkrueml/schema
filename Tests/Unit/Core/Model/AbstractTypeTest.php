@@ -1,5 +1,5 @@
 <?php
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
@@ -12,6 +12,29 @@ namespace Brotkrueml\Schema\Core\Model;
 
 use PHPUnit\Framework\TestCase;
 
+trait ConcreteTypeTraitA
+{
+    protected $name;
+    protected $url;
+}
+
+trait ConcreteTypeTraitB
+{
+    protected $name;
+    protected $description;
+    protected $image;
+}
+
+/**
+ * @property string name
+ */
+class ConcreteType extends AbstractType
+{
+    use ConcreteTypeTraitA;
+    use ConcreteTypeTraitB;
+}
+
+
 class AbstractTypeTest extends TestCase
 {
     /**
@@ -21,24 +44,7 @@ class AbstractTypeTest extends TestCase
 
     public function setUp(): void
     {
-        $this->concreteType = new class extends AbstractType
-        {
-            public function __construct()
-            {
-                parent::__construct();
-
-                $this->addProperties(
-                    'foo',
-                    'bar',
-                    'baz'
-                );
-            }
-
-            protected function getType(): string
-            {
-                return 'SomeType';
-            }
-        };
+        $this->concreteType = new ConcreteType();
     }
 
     /**
@@ -46,7 +52,7 @@ class AbstractTypeTest extends TestCase
      */
     public function setIdReturnsInstanceOfAbstractClass(): void
     {
-        $actual = $this->concreteType->setId('someTestId');
+        $actual = $this->concreteType->setId('concreteTestId');
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -66,11 +72,11 @@ class AbstractTypeTest extends TestCase
      */
     public function getIdReturnsTheIdCorrectly(): void
     {
-        $this->concreteType->setId('someFooBar');
+        $this->concreteType->setId('concreteTestId');
 
         $actual = $this->concreteType->getId();
 
-        $this->assertSame('someFooBar', $actual);
+        $this->assertSame('concreteTestId', $actual);
     }
 
     /**
@@ -79,7 +85,7 @@ class AbstractTypeTest extends TestCase
     public function hasPropertyReturnsTrueIfPropertyExists(): void
     {
         $this->assertTrue(
-            $this->concreteType->hasProperty('foo')
+            $this->concreteType->hasProperty('name')
         );
     }
 
@@ -89,7 +95,7 @@ class AbstractTypeTest extends TestCase
     public function hasPropertyReturnsFalseIfPropertyDoesNotExists(): void
     {
         $this->assertFalse(
-            $this->concreteType->hasProperty('foobar')
+            $this->concreteType->hasProperty('propertyDoesNotExist')
         );
     }
 
@@ -98,7 +104,7 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertyReturnsInstanceOfAbstractClass(): void
     {
-        $actual = $this->concreteType->setProperty('foo', 'some property value');
+        $actual = $this->concreteType->setProperty('name', 'the name');
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -108,15 +114,16 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
-        $this->concreteType->setProperty('foo', 'someString');
-        $this->concreteType->setProperty('bar', ['some array']);
+        $this->concreteType->setProperty('name', 'some test name');
+        $this->concreteType->setProperty('description', ['some test description as array']);
 
         $anotherConcreteType = new class extends AbstractType
         {
         };
 
-        $this->concreteType->setProperty('baz', $anotherConcreteType);
+        $this->concreteType->setProperty('image', $anotherConcreteType);
 
+        // Only asserted, if no exception above is thrown
         $this->assertTrue(true);
     }
 
@@ -137,7 +144,7 @@ class AbstractTypeTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $this->concreteType->setProperty('foo', new \stdClass());
+        $this->concreteType->setProperty('image', new \stdClass());
     }
 
     /**
@@ -145,7 +152,7 @@ class AbstractTypeTest extends TestCase
      */
     public function getPropertyReturnsNullAfterInstantiationOfClass(): void
     {
-        $actual = $this->concreteType->getProperty('foo');
+        $actual = $this->concreteType->getProperty('name');
 
         $this->assertNull($actual);
     }
@@ -156,10 +163,10 @@ class AbstractTypeTest extends TestCase
     public function getPropertyReturnsCorrectValue(): void
     {
         $actual = $this->concreteType
-            ->setProperty('foo', ['some array value', 'another array value'])
-            ->getProperty('foo');
+            ->setProperty('image', ['some image value', 'another image value'])
+            ->getProperty('image');
 
-        $this->assertSame(['some array value', 'another array value'], $actual);
+        $this->assertSame(['some image value', 'another image value'], $actual);
     }
 
     /**
@@ -178,10 +185,10 @@ class AbstractTypeTest extends TestCase
     public function addPropertyForNotAlreadySetProperty(): void
     {
         $actual = $this->concreteType
-            ->addProperty('foo', 'something')
-            ->getProperty('foo');
+            ->addProperty('name', 'the test name')
+            ->getProperty('name');
 
-        $this->assertSame('something', $actual);
+        $this->assertSame('the test name', $actual);
     }
 
     /**
@@ -190,11 +197,11 @@ class AbstractTypeTest extends TestCase
     public function addPropertyForPropertyWithStringAlreadySet(): void
     {
         $actual = $this->concreteType
-            ->setProperty('foo', 'first element')
-            ->addProperty('foo', 'second element')
-            ->getProperty('foo');
+            ->setProperty('image', 'first image element')
+            ->addProperty('image', 'second image element')
+            ->getProperty('image');
 
-        $this->assertSame(['first element', 'second element'], $actual);
+        $this->assertSame(['first image element', 'second image element'], $actual);
     }
 
     /**
@@ -203,105 +210,117 @@ class AbstractTypeTest extends TestCase
     public function addPropertyForPropertyWithArrayAlreadySet(): void
     {
         $actual = $this->concreteType
-            ->setProperty('foo', ['some array value'])
-            ->addProperty('foo', 'some other value')
-            ->getProperty('foo');
+            ->setProperty('image', ['some image value'])
+            ->addProperty('image', 'other image value')
+            ->getProperty('image');
 
-        $this->assertSame([['some array value'], 'some other value'], $actual);
+        $this->assertSame([['some image value'], 'other image value'], $actual);
     }
 
+    /**
+     * @test
+     */
+    public function getPropertiesReturnsListOfAllProperties(): void
+    {
+        $actual = $this->concreteType->getProperties();
+
+        $this->assertSame(
+            [
+                'description',
+                'image',
+                'name',
+                'url',
+            ],
+            $actual
+        );
+    }
 
     public function dataProviderForToArrayReturnsCorrectResult(): array
     {
         $anotherConcreteType = new class extends AbstractType
         {
-            public function __construct()
-            {
-                parent::__construct();
-
-                $this->addProperties('property1', 'property2');
-            }
+            use ConcreteTypeTraitB;
 
             protected function getType(): string
             {
-                return 'SomeOtherType';
+                return 'AnotherConcreteType';
             }
         };
 
         /** @noinspection PhpUndefinedMethodInspection */
         return [
             'Value is a string' => [
-                'foo',
+                'name',
                 'some string value',
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'SomeType',
-                    'foo' => 'some string value',
+                    '@type' => 'ConcreteType',
+                    'name' => 'some string value',
                 ],
             ],
             'Value is a model' => [
-                'foo',
+                'image',
                 (new $anotherConcreteType())
-                    ->setProperty('property1', 'some value for property 1'),
+                    ->setProperty('name', 'some value for name'),
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'SomeType',
-                    'foo' => [
-                        '@type' => 'SomeOtherType',
-                        'property1' => 'some value for property 1',
+                    '@type' => 'ConcreteType',
+                    'image' => [
+                        '@type' => 'AnotherConcreteType',
+                        'name' => 'some value for name',
                     ],
                 ],
             ],
             'Value is an array of models' => [
-                'foo',
+                'image',
                 [
                     (new $anotherConcreteType())
-                        ->setProperty('property1', 'some value for property 1'),
+                        ->setProperty('name', 'some value for name'),
                     (new $anotherConcreteType())
-                        ->setProperty('property2', 'some value for property 2'),
+                        ->setProperty('description', 'some value for description'),
                 ],
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'SomeType',
-                    'foo' => [
+                    '@type' => 'ConcreteType',
+                    'image' => [
                         [
-                            '@type' => 'SomeOtherType',
-                            'property1' => 'some value for property 1',
+                            '@type' => 'AnotherConcreteType',
+                            'name' => 'some value for name',
                         ],
                         [
-                            '@type' => 'SomeOtherType',
-                            'property2' => 'some value for property 2',
+                            '@type' => 'AnotherConcreteType',
+                            'description' => 'some value for description',
                         ],
                     ],
                 ],
             ],
             'Value is an array of strings' => [
-                'foo',
+                'image',
                 ['the first string', 'the second string'],
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'SomeType',
-                    'foo' => [
+                    '@type' => 'ConcreteType',
+                    'image' => [
                         'the first string',
                         'the second string',
                     ],
                 ],
             ],
             'Value is an array of a string and a model' => [
-                'foo',
+                'image',
                 [
                     'the first string',
                     (new $anotherConcreteType())
-                        ->setProperty('property1', 'some value for property 1'),
+                        ->setProperty('name', 'some value for image'),
                 ],
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'SomeType',
-                    'foo' => [
+                    '@type' => 'ConcreteType',
+                    'image' => [
                         'the first string',
                         [
-                            '@type' => 'SomeOtherType',
-                            'property1' => 'some value for property 1',
+                            '@type' => 'AnotherConcreteType',
+                            'name' => 'some value for image',
                         ],
                     ],
                 ],

@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
- *
- * schema.org version 3.6
  */
-class EmployeeRole extends OrganizationRole
+class EmployeeRole extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('baseSalary', 'salaryCurrency');
-    }
+    use TypeTrait\EmployeeRoleTrait;
+    use TypeTrait\OrganizationRoleTrait;
+    use TypeTrait\RoleTrait;
+    use TypeTrait\ThingTrait;
 }

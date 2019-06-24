@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
- *
- * schema.org version 3.6
  */
-class RestrictedDietViewHelper extends EnumerationViewHelper
+class RestrictedDietViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

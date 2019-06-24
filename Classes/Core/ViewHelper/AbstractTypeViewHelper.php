@@ -17,6 +17,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
 abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 {
     protected const CONTEXT = 'http://schema.org';
+
     protected const ARGUMENT_ID = '-id';
     protected const ARGUMENT_AS = '-as';
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
@@ -43,6 +44,13 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->registerArgument(static::ARGUMENT_ID, 'string', 'IRI to identify the node');
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node');
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
+
+        $modelClassName = '\\Brotkrueml\\Schema\\Model\\Type\\' . $this->getType();
+        /** @var AbstractType $model */
+        $model = new $modelClassName();
+        foreach ($model->getProperties() as $property) {
+            $this->registerArgument($property, 'mixed', 'Property ' . $property);
+        }
     }
 
     public function render()
@@ -124,9 +132,9 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
             return $this->specificType;
         }
 
-        $tokenizedClassName = \explode('\\', static::class);
+        $tokenisedClassName = \explode('\\', static::class);
 
-        return \str_replace('ViewHelper', '', \array_pop($tokenizedClassName));
+        return \str_replace('ViewHelper', '', \end($tokenisedClassName));
     }
 
     protected function assignArgumentsToItem(): void

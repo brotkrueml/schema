@@ -10,15 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of notifying someone that a future event/action is going to happen as expected.
- *
- * schema.org version 3.6
  */
-class ConfirmAction extends InformAction
+class ConfirmAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\InformActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

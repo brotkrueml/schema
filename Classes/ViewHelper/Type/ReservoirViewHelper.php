@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
- *
- * schema.org version 3.6
  */
-class ReservoirViewHelper extends BodyOfWaterViewHelper
+class ReservoirViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

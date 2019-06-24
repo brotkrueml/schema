@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
- *
- * schema.org version 3.6
  */
-class DonateAction extends TradeAction
+class DonateAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('recipient');
-    }
+    use TypeTrait\DonateActionTrait;
+    use TypeTrait\TradeActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.
- *
- * schema.org version 3.6
  */
-class PlayActionViewHelper extends ActionViewHelper
+class PlayActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('audience', 'mixed', 'An intended audience, i.e. a group for whom something was created.');
-        $this->registerArgument('event', 'mixed', 'Upcoming or past event associated with this place, organization, or action.');
-    }
 }

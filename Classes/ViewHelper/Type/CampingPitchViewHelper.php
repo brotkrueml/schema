@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A CampingPitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site, or Campground.
- *
- * schema.org version 3.6
  */
-class CampingPitchViewHelper extends AccommodationViewHelper
+class CampingPitchViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

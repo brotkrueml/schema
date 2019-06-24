@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * Event type: Children\'s event.
- *
- * schema.org version 3.6
+ * Event type: Children\&#039;s event.
  */
-class ChildrensEvent extends Event
+class ChildrensEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

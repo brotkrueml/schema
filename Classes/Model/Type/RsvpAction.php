@@ -10,17 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
- *
- * schema.org version 3.6
  */
-class RsvpAction extends InformAction
+class RsvpAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('additionalNumberOfGuests', 'comment', 'rsvpResponse');
-    }
+    use TypeTrait\RsvpActionTrait;
+    use TypeTrait\InformActionTrait;
+    use TypeTrait\CommunicateActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

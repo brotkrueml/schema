@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
- *
- * schema.org version 3.6
  */
-class EventStatusTypeViewHelper extends EnumerationViewHelper
+class EventStatusTypeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

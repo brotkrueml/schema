@@ -10,15 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing.
- *
- * schema.org version 3.6
  */
-class StructuredValue extends Intangible
+class StructuredValue extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ThingTrait;
 }

@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
- *
- * schema.org version 3.6
  */
-class LikeActionViewHelper extends ReactActionViewHelper
+class LikeActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A structured representation of food or drink items available from a FoodEstablishment.
- *
- * schema.org version 3.6
  */
-class Menu extends CreativeWork
+class Menu extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('hasMenuItem', 'hasMenuSection');
-    }
+    use TypeTrait\MenuTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

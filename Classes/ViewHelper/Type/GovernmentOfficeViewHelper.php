@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * A government office&#x2014;for example, an IRS or DMV office.
- *
- * schema.org version 3.6
+ * A government office&amp;#x2014;for example, an IRS or DMV office.
  */
-class GovernmentOfficeViewHelper extends LocalBusinessViewHelper
+class GovernmentOfficeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

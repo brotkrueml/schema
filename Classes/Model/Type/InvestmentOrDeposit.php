@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
- *
- * schema.org version 3.6
  */
-class InvestmentOrDeposit extends FinancialProduct
+class InvestmentOrDeposit extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('amount');
-    }
+    use TypeTrait\InvestmentOrDepositTrait;
+    use TypeTrait\FinancialProductTrait;
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

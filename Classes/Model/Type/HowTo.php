@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Instructions that explain how to achieve a result by performing a sequence of steps.
- *
- * schema.org version 3.6
  */
-class HowTo extends CreativeWork
+class HowTo extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('estimatedCost', 'performTime', 'prepTime', 'step', 'supply', 'tool', 'totalTime', 'yield');
-    }
+    use TypeTrait\HowToTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

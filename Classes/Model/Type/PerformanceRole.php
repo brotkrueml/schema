@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
- *
- * schema.org version 3.6
  */
-class PerformanceRole extends Role
+class PerformanceRole extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('characterName');
-    }
+    use TypeTrait\PerformanceRoleTrait;
+    use TypeTrait\RoleTrait;
+    use TypeTrait\ThingTrait;
 }

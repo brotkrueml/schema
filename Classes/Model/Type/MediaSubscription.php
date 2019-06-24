@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A subscription which allows a user to access media including audio, video, books, etc.
- *
- * schema.org version 3.6
  */
-class MediaSubscription extends Intangible
+class MediaSubscription extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('authenticator', 'expectsAcceptanceOf');
-    }
+    use TypeTrait\MediaSubscriptionTrait;
+    use TypeTrait\ThingTrait;
 }

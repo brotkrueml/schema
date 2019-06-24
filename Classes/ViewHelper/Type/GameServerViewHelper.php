@@ -9,20 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Server that provides game interaction in a multiplayer game.
- *
- * schema.org version 3.6
  */
-class GameServerViewHelper extends IntangibleViewHelper
+class GameServerViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('game', 'mixed', 'Video game which is played on this server.');
-        $this->registerArgument('playersOnline', 'mixed', 'Number of players on the server.');
-        $this->registerArgument('serverStatus', 'mixed', 'Status of a game server.');
-    }
 }

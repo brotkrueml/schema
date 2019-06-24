@@ -9,24 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A short TV or radio program or a segment/part of a program.
- *
- * schema.org version 3.6
  */
-class ClipViewHelper extends CreativeWorkViewHelper
+class ClipViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('actor', 'mixed', 'An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.');
-        $this->registerArgument('clipNumber', 'mixed', 'Position of the clip within an ordered group of clips.');
-        $this->registerArgument('director', 'mixed', 'A director of e.g. tv, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.');
-        $this->registerArgument('musicBy', 'mixed', 'The composer of the soundtrack.');
-        $this->registerArgument('partOfEpisode', 'mixed', 'The episode to which this clip belongs.');
-        $this->registerArgument('partOfSeason', 'mixed', 'The season to which this episode belongs.');
-        $this->registerArgument('partOfSeries', 'mixed', 'The series to which this episode or season belongs.');
-    }
 }

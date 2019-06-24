@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The average rating based on multiple ratings or reviews.
- *
- * schema.org version 3.6
  */
-class AggregateRating extends Rating
+class AggregateRating extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('itemReviewed', 'ratingCount', 'reviewCount');
-    }
+    use TypeTrait\AggregateRatingTrait;
+    use TypeTrait\RatingTrait;
+    use TypeTrait\ThingTrait;
 }

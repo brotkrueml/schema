@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An audio file.
- *
- * schema.org version 3.6
  */
-class AudioObject extends MediaObject
+class AudioObject extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('caption', 'transcript');
-    }
+    use TypeTrait\AudioObjectTrait;
+    use TypeTrait\MediaObjectTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

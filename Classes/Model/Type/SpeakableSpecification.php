@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A SpeakableSpecification indicates (typically via xpath or cssSelector) sections of a document that are highlighted as particularly speakable. Instances of this type are expected to be used primarily as values of the speakable property.
- *
- * schema.org version 3.6
  */
-class SpeakableSpecification extends Intangible
+class SpeakableSpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('cssSelector', 'xpath');
-    }
+    use TypeTrait\SpeakableSpecificationTrait;
+    use TypeTrait\ThingTrait;
 }

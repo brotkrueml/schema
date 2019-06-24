@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-/**
- * Used to describe membership in a loyalty programs (e.g. "StarAliance"), traveler clubs (e.g. "AAA"), purchase clubs ("Safeway Club"), etc.
- *
- * schema.org version 3.6
- */
-class ProgramMembership extends Intangible
-{
-    public function __construct()
-    {
-        parent::__construct();
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
 
-        $this->addProperties('hostingOrganization', 'member', 'membershipNumber', 'programName');
-    }
+/**
+ * Used to describe membership in a loyalty programs (e.g. &quot;StarAliance&quot;), traveler clubs (e.g. &quot;AAA&quot;), purchase clubs (&quot;Safeway Club&quot;), etc.
+ */
+class ProgramMembership extends AbstractType
+{
+    use TypeTrait\ProgramMembershipTrait;
+    use TypeTrait\ThingTrait;
 }

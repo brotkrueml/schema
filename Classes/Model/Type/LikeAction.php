@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
- *
- * schema.org version 3.6
  */
-class LikeAction extends ReactAction
+class LikeAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

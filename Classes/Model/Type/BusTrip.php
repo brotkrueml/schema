@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A trip on a commercial bus line.
- *
- * schema.org version 3.6
  */
-class BusTrip extends Trip
+class BusTrip extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('arrivalBusStop', 'busName', 'busNumber', 'departureBusStop');
-    }
+    use TypeTrait\BusTripTrait;
+    use TypeTrait\TripTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,15 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * Properties that take Distances as values are of the form \'&lt;Number&gt; &lt;Length unit of measure&gt;\'. E.g., \'7 ft\'.
- *
- * schema.org version 3.6
+ * Properties that take Distances as values are of the form \&#039;&amp;lt;Number&amp;gt; &amp;lt;Length unit of measure&amp;gt;\&#039;. E.g., \&#039;7 ft\&#039;.
  */
-class Distance extends Quantity
+class Distance extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ThingTrait;
 }

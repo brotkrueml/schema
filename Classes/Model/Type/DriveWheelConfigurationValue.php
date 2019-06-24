@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A value indicating which roadwheels will receive torque.
- *
- * schema.org version 3.6
  */
-class DriveWheelConfigurationValue extends QualitativeValue
+class DriveWheelConfigurationValue extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\QualitativeValueTrait;
+    use TypeTrait\ThingTrait;
 }

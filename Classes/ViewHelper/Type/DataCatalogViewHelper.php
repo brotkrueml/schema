@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A collection of datasets.
- *
- * schema.org version 3.6
  */
-class DataCatalogViewHelper extends CreativeWorkViewHelper
+class DataCatalogViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('dataset', 'mixed', 'A dataset contained in this catalog.');
-    }
 }

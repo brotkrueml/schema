@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A brand is a name used by an organization or business person for labeling a product, product group, or similar.
- *
- * schema.org version 3.6
  */
-class Brand extends Intangible
+class Brand extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('aggregateRating', 'logo', 'review', 'slogan');
-    }
+    use TypeTrait\BrandTrait;
+    use TypeTrait\ThingTrait;
 }

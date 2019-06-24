@@ -9,20 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * Represents additional information about a relationship or property. For example a Role can be used to say that a \'member\' role linking some SportsTeam to a player occurred during a particular time period. Or that a Person\'s \'actor\' role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like \'member\' or \'actor\'.
- *
- * schema.org version 3.6
+ * Represents additional information about a relationship or property. For example a Role can be used to say that a \&#039;member\&#039; role linking some SportsTeam to a player occurred during a particular time period. Or that a Person\&#039;s \&#039;actor\&#039; role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like \&#039;member\&#039; or \&#039;actor\&#039;.
  */
-class RoleViewHelper extends IntangibleViewHelper
+class RoleViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('endDate', 'mixed', 'The end date and time of the item (in ISO 8601 date format).');
-        $this->registerArgument('roleName', 'mixed', 'A role played, performed or filled by a person or organization. For example, the team of creators for a comic book might fill the roles named \'inker\', \'penciller\', and \'letterer\'; or an athlete in a SportsTeam might play in the position named \'Quarterback\'.');
-        $this->registerArgument('startDate', 'mixed', 'The start date and time of the item (in ISO 8601 date format).');
-    }
 }

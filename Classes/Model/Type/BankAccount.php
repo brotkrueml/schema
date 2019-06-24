@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A product or service offered by a bank whereby one may deposit, withdraw or transfer money and in some cases be paid interest.
- *
- * schema.org version 3.6
  */
-class BankAccount extends FinancialProduct
+class BankAccount extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\FinancialProductTrait;
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

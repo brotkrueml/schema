@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
- *
- * schema.org version 3.6
  */
-class TipAction extends TradeAction
+class TipAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('recipient');
-    }
+    use TypeTrait\TipActionTrait;
+    use TypeTrait\TradeActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

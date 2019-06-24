@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
- *
- * schema.org version 3.6
  */
-class Audience extends Intangible
+class Audience extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('audienceType', 'geographicArea');
-    }
+    use TypeTrait\AudienceTrait;
+    use TypeTrait\ThingTrait;
 }

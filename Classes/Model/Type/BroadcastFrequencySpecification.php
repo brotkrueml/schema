@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The frequency in MHz and the modulation used for a particular BroadcastService.
- *
- * schema.org version 3.6
  */
-class BroadcastFrequencySpecification extends Intangible
+class BroadcastFrequencySpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('broadcastFrequencyValue');
-    }
+    use TypeTrait\BroadcastFrequencySpecificationTrait;
+    use TypeTrait\ThingTrait;
 }

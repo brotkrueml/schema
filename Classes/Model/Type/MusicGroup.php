@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
- *
- * schema.org version 3.6
  */
-class MusicGroup extends PerformingGroup
+class MusicGroup extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('album', 'genre', 'track');
-    }
+    use TypeTrait\MusicGroupTrait;
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,15 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A LegalService is a business that provides legally-oriented services, advice and representation, e.g. law firms.
- *
- * schema.org version 3.6
  */
-class LegalService extends LocalBusiness
+class LegalService extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\OrganizationTrait;
 }

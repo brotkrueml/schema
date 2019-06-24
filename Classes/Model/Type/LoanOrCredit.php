@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A financial product for the loaning of an amount of money under agreed terms and charges.
- *
- * schema.org version 3.6
  */
-class LoanOrCredit extends FinancialProduct
+class LoanOrCredit extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('amount', 'currency', 'loanTerm', 'requiredCollateral');
-    }
+    use TypeTrait\LoanOrCreditTrait;
+    use TypeTrait\FinancialProductTrait;
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

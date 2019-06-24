@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A point value or interval for product characteristics and other purposes.
- *
- * schema.org version 3.6
  */
-class QuantitativeValue extends StructuredValue
+class QuantitativeValue extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('additionalProperty', 'maxValue', 'minValue', 'unitCode', 'unitText', 'value', 'valueReference');
-    }
+    use TypeTrait\QuantitativeValueTrait;
+    use TypeTrait\ThingTrait;
 }

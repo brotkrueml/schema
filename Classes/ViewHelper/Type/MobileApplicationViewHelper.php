@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
- *
- * schema.org version 3.6
  */
-class MobileApplicationViewHelper extends SoftwareApplicationViewHelper
+class MobileApplicationViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('carrierRequirements', 'mixed', 'Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).');
-    }
 }

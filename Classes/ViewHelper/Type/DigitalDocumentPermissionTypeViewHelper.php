@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A type of permission which can be granted for accessing a digital document.
- *
- * schema.org version 3.6
  */
-class DigitalDocumentPermissionTypeViewHelper extends EnumerationViewHelper
+class DigitalDocumentPermissionTypeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

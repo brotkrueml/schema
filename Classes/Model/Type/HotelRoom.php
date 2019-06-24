@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A hotel room is a single room in a hotel.
- *
- * schema.org version 3.6
  */
-class HotelRoom extends Room
+class HotelRoom extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('bed', 'occupancy');
-    }
+    use TypeTrait\HotelRoomTrait;
+    use TypeTrait\AccommodationTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An over the air or online broadcast event.
- *
- * schema.org version 3.6
  */
-class BroadcastEvent extends PublicationEvent
+class BroadcastEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('broadcastOfEvent', 'isLiveBroadcast', 'videoFormat');
-    }
+    use TypeTrait\BroadcastEventTrait;
+    use TypeTrait\PublicationEventTrait;
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

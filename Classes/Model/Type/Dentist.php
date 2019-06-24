@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A dentist.
- *
- * schema.org version 3.6
  */
-class Dentist extends MedicalOrganization
+class Dentist extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('alumni', 'areaServed', 'award', 'brand', 'contactPoint', 'currenciesAccepted', 'department', 'dissolutionDate', 'duns', 'email', 'employee', 'founder', 'foundingDate', 'foundingLocation', 'funder', 'hasOfferCatalog', 'hasPOS', 'legalName', 'leiCode', 'location', 'makesOffer', 'member', 'memberOf', 'naics', 'numberOfEmployees', 'openingHours', 'owns', 'parentOrganization', 'paymentAccepted', 'priceRange', 'publishingPrinciples', 'seeks', 'sponsor', 'subOrganization', 'taxID', 'vatID');
-    }
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\LocalBusinessTrait;
+    use TypeTrait\PlaceTrait;
 }

@@ -10,17 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A hospital.
- *
- * schema.org version 3.6
  */
-class Hospital extends MedicalOrganization
+class Hospital extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('openingHours');
-    }
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\CivicStructureTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\LocalBusinessTrait;
 }

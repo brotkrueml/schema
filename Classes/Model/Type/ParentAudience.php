@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
- *
- * schema.org version 3.6
  */
-class ParentAudience extends PeopleAudience
+class ParentAudience extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('childMaxAge', 'childMinAge');
-    }
+    use TypeTrait\ParentAudienceTrait;
+    use TypeTrait\PeopleAudienceTrait;
+    use TypeTrait\AudienceTrait;
+    use TypeTrait\ThingTrait;
 }

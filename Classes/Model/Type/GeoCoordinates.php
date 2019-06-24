@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The geographic coordinates of a place or event.
- *
- * schema.org version 3.6
  */
-class GeoCoordinates extends StructuredValue
+class GeoCoordinates extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('address', 'addressCountry', 'elevation', 'latitude', 'longitude', 'postalCode');
-    }
+    use TypeTrait\GeoCoordinatesTrait;
+    use TypeTrait\ThingTrait;
 }

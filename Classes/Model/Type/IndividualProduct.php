@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).
- *
- * schema.org version 3.6
  */
-class IndividualProduct extends Product
+class IndividualProduct extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('serialNumber');
-    }
+    use TypeTrait\IndividualProductTrait;
+    use TypeTrait\ProductTrait;
+    use TypeTrait\ThingTrait;
 }

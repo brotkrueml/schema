@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A group of multiple reservations with common values for all sub-reservations.
- *
- * schema.org version 3.6
  */
-class ReservationPackageViewHelper extends ReservationViewHelper
+class ReservationPackageViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('subReservation', 'mixed', 'The individual reservations included in the package. Typically a repeated property.');
-    }
 }

@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of expressing a preference from a fixed/finite/structured set of choices/options.
- *
- * schema.org version 3.6
  */
-class VoteActionViewHelper extends ChooseActionViewHelper
+class VoteActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('candidate', 'mixed', 'A sub property of object. The candidate subject of this action.');
-    }
 }

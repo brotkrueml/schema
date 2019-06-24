@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A payment method using a credit, debit, store or other card to associate the payment with an account.
- *
- * schema.org version 3.6
  */
-class PaymentCard extends PaymentMethod
+class PaymentCard extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('annualPercentageRate', 'feesAndCommissionsSpecification', 'interestRate');
-    }
+    use TypeTrait\ThingTrait;
+    use TypeTrait\FinancialProductTrait;
+    use TypeTrait\ServiceTrait;
 }

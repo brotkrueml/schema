@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Organization: A business corporation.
- *
- * schema.org version 3.6
  */
-class Corporation extends Organization
+class Corporation extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('tickerSymbol');
-    }
+    use TypeTrait\CorporationTrait;
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

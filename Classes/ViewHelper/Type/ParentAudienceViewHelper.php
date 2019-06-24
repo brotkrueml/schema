@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
- *
- * schema.org version 3.6
  */
-class ParentAudienceViewHelper extends PeopleAudienceViewHelper
+class ParentAudienceViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('childMaxAge', 'mixed', 'Maximal age of the child.');
-        $this->registerArgument('childMinAge', 'mixed', 'Minimal age of the child.');
-    }
 }

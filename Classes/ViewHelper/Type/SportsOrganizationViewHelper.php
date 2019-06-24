@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
- *
- * schema.org version 3.6
  */
-class SportsOrganizationViewHelper extends OrganizationViewHelper
+class SportsOrganizationViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('sport', 'mixed', 'A type of sport (e.g. Baseball).');
-    }
 }

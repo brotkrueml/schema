@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Season dedicated to TV broadcast and associated online delivery.
- *
- * schema.org version 3.6
  */
-class TVSeason extends CreativeWork
+class TVSeason extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'countryOfOrigin', 'director', 'endDate', 'episode', 'numberOfEpisodes', 'partOfSeries', 'productionCompany', 'seasonNumber', 'startDate', 'trailer');
-    }
+    use TypeTrait\TVSeasonTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
+    use TypeTrait\CreativeWorkSeasonTrait;
 }

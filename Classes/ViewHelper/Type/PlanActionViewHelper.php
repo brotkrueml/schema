@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of planning the execution of an event/task/action/reservation/plan to a future date.
- *
- * schema.org version 3.6
  */
-class PlanActionViewHelper extends OrganizeActionViewHelper
+class PlanActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('scheduledTime', 'mixed', 'The time the object is scheduled to.');
-    }
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
- *
- * schema.org version 3.6
  */
-class GeoCircle extends GeoShape
+class GeoCircle extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('geoMidpoint', 'geoRadius');
-    }
+    use TypeTrait\GeoCircleTrait;
+    use TypeTrait\GeoShapeTrait;
+    use TypeTrait\ThingTrait;
 }

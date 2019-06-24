@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The price asked for a given offer by the respective organization or person.
- *
- * schema.org version 3.6
  */
-class UnitPriceSpecification extends PriceSpecification
+class UnitPriceSpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('billingIncrement', 'priceType', 'referenceQuantity', 'unitCode', 'unitText');
-    }
+    use TypeTrait\UnitPriceSpecificationTrait;
+    use TypeTrait\PriceSpecificationTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A river (for example, the broad majestic Shannon).
- *
- * schema.org version 3.6
  */
-class RiverBodyOfWaterViewHelper extends BodyOfWaterViewHelper
+class RiverBodyOfWaterViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

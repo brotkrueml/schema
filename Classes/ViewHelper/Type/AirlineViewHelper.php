@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An organization that provides flights for passengers.
- *
- * schema.org version 3.6
  */
-class AirlineViewHelper extends OrganizationViewHelper
+class AirlineViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('boardingPolicy', 'mixed', 'The type of boarding policy used by the airline (e.g. zone-based or group-based).');
-        $this->registerArgument('iataCode', 'mixed', 'IATA identifier for an airline or airport.');
-    }
 }

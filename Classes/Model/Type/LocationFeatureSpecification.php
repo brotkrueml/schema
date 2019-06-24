@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.
- *
- * schema.org version 3.6
  */
-class LocationFeatureSpecification extends PropertyValue
+class LocationFeatureSpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('hoursAvailable', 'validFrom', 'validThrough');
-    }
+    use TypeTrait\LocationFeatureSpecificationTrait;
+    use TypeTrait\PropertyValueTrait;
+    use TypeTrait\ThingTrait;
 }

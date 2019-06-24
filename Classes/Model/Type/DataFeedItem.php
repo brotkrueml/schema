@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A single item within a larger data feed.
- *
- * schema.org version 3.6
  */
-class DataFeedItem extends Intangible
+class DataFeedItem extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('dateCreated', 'dateDeleted', 'dateModified', 'item');
-    }
+    use TypeTrait\DataFeedItemTrait;
+    use TypeTrait\ThingTrait;
 }

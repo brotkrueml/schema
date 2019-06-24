@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An item used as either a tool or supply when performing the instructions for how to to achieve a result.
- *
- * schema.org version 3.6
  */
-class HowToItemViewHelper extends ListItemViewHelper
+class HowToItemViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('requiredQuantity', 'mixed', 'The required quantity of the item(s).');
-    }
 }

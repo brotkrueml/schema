@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A single feed providing structured information about one or more entities or topics.
- *
- * schema.org version 3.6
  */
-class DataFeedViewHelper extends DatasetViewHelper
+class DataFeedViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('dataFeedElement', 'mixed', 'An item within in a data feed. Data feeds may have many elements.');
-    }
 }

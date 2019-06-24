@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A type of bed. This is used for indicating the bed or beds available in an accommodation.
- *
- * schema.org version 3.6
  */
-class BedType extends QualitativeValue
+class BedType extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\QualitativeValueTrait;
+    use TypeTrait\ThingTrait;
 }

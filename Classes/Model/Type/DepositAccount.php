@@ -10,15 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.
- *
- * schema.org version 3.6
  */
-class DepositAccount extends InvestmentOrDeposit
+class DepositAccount extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\InvestmentOrDepositTrait;
+    use TypeTrait\FinancialProductTrait;
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

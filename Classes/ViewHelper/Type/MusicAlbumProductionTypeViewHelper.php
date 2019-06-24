@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * Classification of the album by it\'s type of content: soundtrack, live album, studio album, etc.
- *
- * schema.org version 3.6
+ * Classification of the album by it\&#039;s type of content: soundtrack, live album, studio album, etc.
  */
-class MusicAlbumProductionTypeViewHelper extends EnumerationViewHelper
+class MusicAlbumProductionTypeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

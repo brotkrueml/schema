@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A media episode (e.g. TV, radio, video game) which can be part of a series or season.
- *
- * schema.org version 3.6
  */
-class Episode extends CreativeWork
+class Episode extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'director', 'episodeNumber', 'musicBy', 'partOfSeason', 'partOfSeries', 'productionCompany', 'trailer');
-    }
+    use TypeTrait\EpisodeTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

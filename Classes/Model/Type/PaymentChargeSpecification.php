@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The costs of settling the payment using a particular payment method.
- *
- * schema.org version 3.6
  */
-class PaymentChargeSpecification extends PriceSpecification
+class PaymentChargeSpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('appliesToDeliveryMethod', 'appliesToPaymentMethod');
-    }
+    use TypeTrait\PaymentChargeSpecificationTrait;
+    use TypeTrait\PriceSpecificationTrait;
+    use TypeTrait\ThingTrait;
 }

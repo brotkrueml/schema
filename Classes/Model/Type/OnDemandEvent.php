@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.
- *
- * schema.org version 3.6
  */
-class OnDemandEvent extends PublicationEvent
+class OnDemandEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\PublicationEventTrait;
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

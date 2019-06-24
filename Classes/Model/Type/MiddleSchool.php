@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A middle school (typically for children aged around 11-14, although this varies somewhat).
- *
- * schema.org version 3.6
  */
-class MiddleSchool extends EducationalOrganization
+class MiddleSchool extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\EducationalOrganizationTrait;
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

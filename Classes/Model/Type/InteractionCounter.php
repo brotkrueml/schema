@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.
- *
- * schema.org version 3.6
  */
-class InteractionCounter extends StructuredValue
+class InteractionCounter extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('interactionService', 'interactionType', 'userInteractionCount');
-    }
+    use TypeTrait\InteractionCounterTrait;
+    use TypeTrait\ThingTrait;
 }

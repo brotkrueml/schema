@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).
- *
- * schema.org version 3.6
  */
-class ClaimReview extends Review
+class ClaimReview extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('claimReviewed');
-    }
+    use TypeTrait\ClaimReviewTrait;
+    use TypeTrait\ReviewTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

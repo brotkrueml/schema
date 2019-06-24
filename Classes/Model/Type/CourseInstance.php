@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An instance of a Course which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
- *
- * schema.org version 3.6
  */
-class CourseInstance extends Event
+class CourseInstance extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('courseMode', 'instructor');
-    }
+    use TypeTrait\CourseInstanceTrait;
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

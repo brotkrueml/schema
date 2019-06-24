@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The price for the delivery of an offer using a particular delivery method.
- *
- * schema.org version 3.6
  */
-class DeliveryChargeSpecification extends PriceSpecification
+class DeliveryChargeSpecification extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('appliesToDeliveryMethod', 'areaServed', 'eligibleRegion', 'ineligibleRegion');
-    }
+    use TypeTrait\DeliveryChargeSpecificationTrait;
+    use TypeTrait\PriceSpecificationTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-/**
- * A predefined value for a product characteristic, e.g. the power cord plug type \'US\' or the garment sizes \'S\', \'M\', \'L\', and \'XL\'.
- *
- * schema.org version 3.6
- */
-class QualitativeValue extends Enumeration
-{
-    public function __construct()
-    {
-        parent::__construct();
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
 
-        $this->addProperties('additionalProperty', 'equal', 'greater', 'greaterOrEqual', 'lesser', 'lesserOrEqual', 'nonEqual', 'valueReference');
-    }
+/**
+ * A predefined value for a product characteristic, e.g. the power cord plug type \&#039;US\&#039; or the garment sizes \&#039;S\&#039;, \&#039;M\&#039;, \&#039;L\&#039;, and \&#039;XL\&#039;.
+ */
+class QualitativeValue extends AbstractType
+{
+    use TypeTrait\QualitativeValueTrait;
+    use TypeTrait\ThingTrait;
 }

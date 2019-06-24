@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-/**
- * A set of characteristics belonging to businesses, e.g. who compose an item\'s target audience.
- *
- * schema.org version 3.6
- */
-class BusinessAudience extends Audience
-{
-    public function __construct()
-    {
-        parent::__construct();
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
 
-        $this->addProperties('numberOfEmployees', 'yearlyRevenue', 'yearsInOperation');
-    }
+/**
+ * A set of characteristics belonging to businesses, e.g. who compose an item\&#039;s target audience.
+ */
+class BusinessAudience extends AbstractType
+{
+    use TypeTrait\BusinessAudienceTrait;
+    use TypeTrait\AudienceTrait;
+    use TypeTrait\ThingTrait;
 }

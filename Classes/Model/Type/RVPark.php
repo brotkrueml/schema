@@ -10,15 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
- *
- * schema.org version 3.6
+ * A place offering space for &quot;Recreational Vehicles&quot;, Caravans, mobile homes and the like.
  */
-class RVPark extends CivicStructure
+class RVPark extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\CivicStructureTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

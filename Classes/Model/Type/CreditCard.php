@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.
- *
- * schema.org version 3.6
  */
-class CreditCard extends LoanOrCredit
+class CreditCard extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('annualPercentageRate', 'feesAndCommissionsSpecification', 'interestRate');
-    }
+    use TypeTrait\LoanOrCreditTrait;
+    use TypeTrait\FinancialProductTrait;
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

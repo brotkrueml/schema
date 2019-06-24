@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * Original definition: "provider of professional services."
- *
- * schema.org version 3.6
+ * Original definition: &quot;provider of professional services.&quot;
  */
-class ProfessionalServiceViewHelper extends LocalBusinessViewHelper
+class ProfessionalServiceViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
- *
- * schema.org version 3.6
  */
-class Vehicle extends Product
+class Vehicle extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('cargoVolume', 'dateVehicleFirstRegistered', 'driveWheelConfiguration', 'fuelConsumption', 'fuelEfficiency', 'fuelType', 'knownVehicleDamages', 'mileageFromOdometer', 'numberOfAirbags', 'numberOfAxles', 'numberOfDoors', 'numberOfForwardGears', 'numberOfPreviousOwners', 'steeringPosition', 'vehicleConfiguration', 'vehicleEngine', 'vehicleIdentificationNumber', 'vehicleInteriorColor', 'vehicleInteriorType', 'vehicleModelDate', 'vehicleSeatingCapacity', 'vehicleTransmission');
-    }
+    use TypeTrait\VehicleTrait;
+    use TypeTrait\ProductTrait;
+    use TypeTrait\ThingTrait;
 }

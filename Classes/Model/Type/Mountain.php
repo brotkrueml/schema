@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A mountain, like Mount Whitney or Mount Everest.
- *
- * schema.org version 3.6
  */
-class Mountain extends Landform
+class Mountain extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

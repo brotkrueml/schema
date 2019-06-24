@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An airport.
- *
- * schema.org version 3.6
  */
-class AirportViewHelper extends CivicStructureViewHelper
+class AirportViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('iataCode', 'mixed', 'IATA identifier for an airline or airport.');
-        $this->registerArgument('icaoCode', 'mixed', 'ICAO identifier for an airport.');
-    }
 }

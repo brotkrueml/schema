@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
- * A dance group&#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
- *
- * schema.org version 3.6
+ * A dance group&amp;#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
  */
-class DanceGroup extends PerformingGroup
+class DanceGroup extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

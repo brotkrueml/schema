@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A movie.
- *
- * schema.org version 3.6
  */
-class Movie extends CreativeWork
+class Movie extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'countryOfOrigin', 'director', 'duration', 'musicBy', 'productionCompany', 'subtitleLanguage', 'trailer');
-    }
+    use TypeTrait\MovieTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -9,20 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The average rating based on multiple ratings or reviews.
- *
- * schema.org version 3.6
  */
-class AggregateRatingViewHelper extends RatingViewHelper
+class AggregateRatingViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('itemReviewed', 'mixed', 'The item that is being reviewed/rated.');
-        $this->registerArgument('ratingCount', 'mixed', 'The count of total number of ratings.');
-        $this->registerArgument('reviewCount', 'mixed', 'The count of total number of reviews.');
-    }
 }

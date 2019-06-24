@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An list item, e.g. a step in a checklist or how-to description.
- *
- * schema.org version 3.6
  */
-class ListItem extends Intangible
+class ListItem extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('item', 'nextItem', 'position', 'previousItem');
-    }
+    use TypeTrait\ListItemTrait;
+    use TypeTrait\ThingTrait;
 }

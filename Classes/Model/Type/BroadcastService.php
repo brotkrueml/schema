@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
- *
- * schema.org version 3.6
  */
-class BroadcastService extends Service
+class BroadcastService extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('broadcastAffiliateOf', 'broadcastDisplayName', 'broadcastFrequency', 'broadcastTimezone', 'broadcaster', 'hasBroadcastChannel', 'parentService', 'videoFormat');
-    }
+    use TypeTrait\BroadcastServiceTrait;
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

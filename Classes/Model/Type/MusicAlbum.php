@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A collection of music tracks.
- *
- * schema.org version 3.6
  */
-class MusicAlbum extends MusicPlaylist
+class MusicAlbum extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('albumProductionType', 'albumRelease', 'albumReleaseType', 'byArtist');
-    }
+    use TypeTrait\MusicAlbumTrait;
+    use TypeTrait\MusicPlaylistTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

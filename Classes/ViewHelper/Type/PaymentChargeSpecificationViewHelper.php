@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The costs of settling the payment using a particular payment method.
- *
- * schema.org version 3.6
  */
-class PaymentChargeSpecificationViewHelper extends PriceSpecificationViewHelper
+class PaymentChargeSpecificationViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('appliesToDeliveryMethod', 'mixed', 'The delivery method(s) to which the delivery charge or payment charge specification applies.');
-        $this->registerArgument('appliesToPaymentMethod', 'mixed', 'The payment method(s) to which the payment charge specification applies.');
-    }
 }

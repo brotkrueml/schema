@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * The act of expressing a preference from a fixed/finite/structured set of choices/options.
- *
- * schema.org version 3.6
  */
-class VoteAction extends ChooseAction
+class VoteAction extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('candidate');
-    }
+    use TypeTrait\VoteActionTrait;
+    use TypeTrait\ChooseActionTrait;
+    use TypeTrait\ActionTrait;
+    use TypeTrait\ThingTrait;
 }

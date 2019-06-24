@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Place of worship, such as a church, synagogue, or mosque.
- *
- * schema.org version 3.6
  */
-class PlaceOfWorshipViewHelper extends CivicStructureViewHelper
+class PlaceOfWorshipViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

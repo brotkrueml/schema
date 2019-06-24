@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An entry point, within some Web-based protocol.
- *
- * schema.org version 3.6
  */
-class EntryPoint extends Intangible
+class EntryPoint extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actionApplication', 'actionPlatform', 'contentType', 'encodingType', 'httpMethod', 'urlTemplate');
-    }
+    use TypeTrait\EntryPointTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
- *
- * schema.org version 3.6
  */
-class SportsOrganization extends Organization
+class SportsOrganization extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('sport');
-    }
+    use TypeTrait\SportsOrganizationTrait;
+    use TypeTrait\OrganizationTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A MusicRelease is a specific release of a music album.
- *
- * schema.org version 3.6
  */
-class MusicRelease extends MusicPlaylist
+class MusicRelease extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('catalogNumber', 'creditedTo', 'duration', 'musicReleaseFormat', 'recordLabel', 'releaseOf');
-    }
+    use TypeTrait\MusicReleaseTrait;
+    use TypeTrait\MusicPlaylistTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,17 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Residence type: Single-family home.
- *
- * schema.org version 3.6
  */
-class SingleFamilyResidence extends House
+class SingleFamilyResidence extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('numberOfRooms', 'occupancy');
-    }
+    use TypeTrait\SingleFamilyResidenceTrait;
+    use TypeTrait\HouseTrait;
+    use TypeTrait\AccommodationTrait;
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

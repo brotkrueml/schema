@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A review of an item - for example, of a restaurant, movie, or store.
- *
- * schema.org version 3.6
  */
-class Review extends CreativeWork
+class Review extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('itemReviewed', 'reviewAspect', 'reviewBody', 'reviewRating');
-    }
+    use TypeTrait\ReviewTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

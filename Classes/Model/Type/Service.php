@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A service provided by an organization, e.g. delivery service, print services, etc.
- *
- * schema.org version 3.6
  */
-class Service extends Intangible
+class Service extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('aggregateRating', 'areaServed', 'audience', 'availableChannel', 'award', 'brand', 'broker', 'category', 'hasOfferCatalog', 'hoursAvailable', 'isRelatedTo', 'isSimilarTo', 'logo', 'offers', 'provider', 'providerMobility', 'review', 'serviceOutput', 'serviceType', 'slogan');
-    }
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

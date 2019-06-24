@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
- * A sub-grouping of food or drink items in a menu. E.g. courses (such as \'Dinner\', \'Breakfast\', etc.), specific type of dishes (such as \'Meat\', \'Vegan\', \'Drinks\', etc.), or some other classification made by the menu provider.
- *
- * schema.org version 3.6
+ * A sub-grouping of food or drink items in a menu. E.g. courses (such as \&#039;Dinner\&#039;, \&#039;Breakfast\&#039;, etc.), specific type of dishes (such as \&#039;Meat\&#039;, \&#039;Vegan\&#039;, \&#039;Drinks\&#039;, etc.), or some other classification made by the menu provider.
  */
-class MenuSectionViewHelper extends CreativeWorkViewHelper
+class MenuSectionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('hasMenuItem', 'mixed', 'A food or drink item contained in a menu or menu section.');
-        $this->registerArgument('hasMenuSection', 'mixed', 'A subgrouping of the menu (by dishes, course, serving time period, etc.).');
-    }
 }

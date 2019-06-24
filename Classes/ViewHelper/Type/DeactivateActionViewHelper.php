@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
- *
- * schema.org version 3.6
  */
-class DeactivateActionViewHelper extends ControlActionViewHelper
+class DeactivateActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

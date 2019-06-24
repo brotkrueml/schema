@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A video file.
- *
- * schema.org version 3.6
  */
-class VideoObject extends MediaObject
+class VideoObject extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'caption', 'director', 'musicBy', 'thumbnail', 'transcript', 'videoFrameSize', 'videoQuality');
-    }
+    use TypeTrait\VideoObjectTrait;
+    use TypeTrait\MediaObjectTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

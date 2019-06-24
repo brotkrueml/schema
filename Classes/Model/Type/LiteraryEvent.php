@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * Event type: Literary event.
- *
- * schema.org version 3.6
  */
-class LiteraryEvent extends Event
+class LiteraryEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

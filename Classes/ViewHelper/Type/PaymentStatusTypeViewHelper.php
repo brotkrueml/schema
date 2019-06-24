@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
- *
- * schema.org version 3.6
  */
-class PaymentStatusTypeViewHelper extends EnumerationViewHelper
+class PaymentStatusTypeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

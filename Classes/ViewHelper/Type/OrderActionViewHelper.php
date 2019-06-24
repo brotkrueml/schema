@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An agent orders an object/product/service to be delivered/sent.
- *
- * schema.org version 3.6
  */
-class OrderActionViewHelper extends TradeActionViewHelper
+class OrderActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('deliveryMethod', 'mixed', 'A sub property of instrument. The method of delivery.');
-    }
 }

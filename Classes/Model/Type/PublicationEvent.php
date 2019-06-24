@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
- *
- * schema.org version 3.6
  */
-class PublicationEvent extends Event
+class PublicationEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('publishedOn');
-    }
+    use TypeTrait\PublicationEventTrait;
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

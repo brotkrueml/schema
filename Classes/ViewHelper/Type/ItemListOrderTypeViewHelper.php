@@ -9,16 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
- *
- * schema.org version 3.6
  */
-class ItemListOrderTypeViewHelper extends EnumerationViewHelper
+class ItemListOrderTypeViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-    }
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A screening of a movie or other video.
- *
- * schema.org version 3.6
  */
-class ScreeningEvent extends Event
+class ScreeningEvent extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('subtitleLanguage', 'videoFormat', 'workPresented');
-    }
+    use TypeTrait\ScreeningEventTrait;
+    use TypeTrait\EventTrait;
+    use TypeTrait\ThingTrait;
 }

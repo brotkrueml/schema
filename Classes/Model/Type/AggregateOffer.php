@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
- *
- * schema.org version 3.6
  */
-class AggregateOffer extends Offer
+class AggregateOffer extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('highPrice', 'lowPrice', 'offerCount', 'offers');
-    }
+    use TypeTrait\AggregateOfferTrait;
+    use TypeTrait\OfferTrait;
+    use TypeTrait\ThingTrait;
 }

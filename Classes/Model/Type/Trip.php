@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A trip or journey. An itinerary of visits to one or more places.
- *
- * schema.org version 3.6
  */
-class Trip extends Intangible
+class Trip extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('arrivalTime', 'departureTime', 'offers', 'provider');
-    }
+    use TypeTrait\TripTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -1,3 +1,4 @@
+/bin/ export-ignore
 /Classes/Generator/ export-ignore
 /Tests/ export-ignore
 /.editorconfig export-ignore

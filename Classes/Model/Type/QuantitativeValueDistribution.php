@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A statistical distribution of values.
- *
- * schema.org version 3.6
  */
-class QuantitativeValueDistribution extends StructuredValue
+class QuantitativeValueDistribution extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('duration', 'median', 'percentile10', 'percentile25', 'percentile75', 'percentile90');
-    }
+    use TypeTrait\QuantitativeValueDistributionTrait;
+    use TypeTrait\ThingTrait;
 }

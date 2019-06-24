@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An agent tracks an object for updates.
- *
- * schema.org version 3.6
  */
-class TrackActionViewHelper extends FindActionViewHelper
+class TrackActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('deliveryMethod', 'mixed', 'A sub property of instrument. The method of delivery.');
-    }
 }

@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-/**
- * A sub-grouping of food or drink items in a menu. E.g. courses (such as \'Dinner\', \'Breakfast\', etc.), specific type of dishes (such as \'Meat\', \'Vegan\', \'Drinks\', etc.), or some other classification made by the menu provider.
- *
- * schema.org version 3.6
- */
-class MenuSection extends CreativeWork
-{
-    public function __construct()
-    {
-        parent::__construct();
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
 
-        $this->addProperties('hasMenuItem', 'hasMenuSection');
-    }
+/**
+ * A sub-grouping of food or drink items in a menu. E.g. courses (such as \&#039;Dinner\&#039;, \&#039;Breakfast\&#039;, etc.), specific type of dishes (such as \&#039;Meat\&#039;, \&#039;Vegan\&#039;, \&#039;Drinks\&#039;, etc.), or some other classification made by the menu provider.
+ */
+class MenuSection extends AbstractType
+{
+    use TypeTrait\MenuSectionTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

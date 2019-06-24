@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
- *
- * schema.org version 3.6
  */
-class TechArticle extends Article
+class TechArticle extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('dependencies', 'proficiencyLevel');
-    }
+    use TypeTrait\TechArticleTrait;
+    use TypeTrait\ArticleTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

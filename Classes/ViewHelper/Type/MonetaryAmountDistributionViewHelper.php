@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * A statistical distribution of monetary amounts.
- *
- * schema.org version 3.6
  */
-class MonetaryAmountDistributionViewHelper extends QuantitativeValueDistributionViewHelper
+class MonetaryAmountDistributionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('currency', 'mixed', 'The currency in which the monetary amount is expressed.');
-    }
 }

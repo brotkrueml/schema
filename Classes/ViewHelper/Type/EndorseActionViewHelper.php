@@ -9,18 +9,11 @@ namespace Brotkrueml\Schema\ViewHelper\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\ViewHelper\AbstractTypeViewHelper;
 
 /**
  * An agent approves/certifies/likes/supports/sanction an object.
- *
- * schema.org version 3.6
  */
-class EndorseActionViewHelper extends ReactActionViewHelper
+class EndorseActionViewHelper extends AbstractTypeViewHelper
 {
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-
-        $this->registerArgument('endorsee', 'mixed', 'A sub property of participant. The person/organization being supported.');
-    }
 }

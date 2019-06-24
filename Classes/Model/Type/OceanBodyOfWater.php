@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An ocean (for example, the Pacific).
- *
- * schema.org version 3.6
  */
-class OceanBodyOfWater extends BodyOfWater
+class OceanBodyOfWater extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\PlaceTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,16 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A TV episode which can be part of a series or season.
- *
- * schema.org version 3.6
  */
-class TVEpisode extends Episode
+class TVEpisode extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('countryOfOrigin', 'subtitleLanguage');
-    }
+    use TypeTrait\TVEpisodeTrait;
+    use TypeTrait\EpisodeTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

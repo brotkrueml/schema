@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# This script generates the model and view helper classes out of the schema definition
+#
+
+echo "Removing old classes ..."
+rm ../Classes/Model/TypeTrait/*.php
+rm ../Classes/Model/Type/*.php
+rm ../Classes/ViewHelper/Type/*.php
+echo
+
+echo "Generating classes ..."
+php ../Generator/generate.php
+echo
+
+echo "Formatting model classes ..."
+php-cs-fixer fix ../Classes/Model/TypeTrait/
+php-cs-fixer fix ../Classes/Model/Type/
+echo
+
+echo "Formatting view helper classes ..."
+php-cs-fixer fix ../Classes/ViewHelper/Type/
+echo

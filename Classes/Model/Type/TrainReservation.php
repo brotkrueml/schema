@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A reservation for train travel.
- *
- * schema.org version 3.6
  */
-class TrainReservation extends Reservation
+class TrainReservation extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ReservationTrait;
+    use TypeTrait\ThingTrait;
 }

@@ -10,17 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A person (alive, dead, undead, or fictional).
- *
- * schema.org version 3.6
  */
-class Person extends Thing
+class Person extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('additionalName', 'address', 'affiliation', 'alumniOf', 'award', 'birthDate', 'birthPlace', 'brand', 'children', 'colleague', 'contactPoint', 'deathDate', 'deathPlace', 'duns', 'email', 'familyName', 'faxNumber', 'follows', 'funder', 'gender', 'givenName', 'globalLocationNumber', 'hasOccupation', 'hasOfferCatalog', 'hasPOS', 'height', 'homeLocation', 'honorificPrefix', 'honorificSuffix', 'isicV4', 'jobTitle', 'knows', 'makesOffer', 'memberOf', 'naics', 'nationality', 'netWorth', 'owns', 'parent', 'performerIn', 'publishingPrinciples', 'relatedTo', 'seeks', 'sibling', 'sponsor', 'spouse', 'taxID', 'telephone', 'vatID', 'weight', 'workLocation', 'worksFor');
-    }
+    use TypeTrait\PersonTrait;
+    use TypeTrait\ThingTrait;
 }

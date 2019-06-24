@@ -10,15 +10,14 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A service which provides access to media programming like TV or radio. Access may be via cable or satellite.
- *
- * schema.org version 3.6
  */
-class CableOrSatelliteService extends Service
+class CableOrSatelliteService extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    use TypeTrait\ServiceTrait;
+    use TypeTrait\ThingTrait;
 }

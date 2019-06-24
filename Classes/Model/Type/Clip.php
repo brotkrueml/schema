@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * A short TV or radio program or a segment/part of a program.
- *
- * schema.org version 3.6
  */
-class Clip extends CreativeWork
+class Clip extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('actor', 'clipNumber', 'director', 'musicBy', 'partOfEpisode', 'partOfSeason', 'partOfSeries');
-    }
+    use TypeTrait\ClipTrait;
+    use TypeTrait\CreativeWorkTrait;
+    use TypeTrait\ThingTrait;
 }

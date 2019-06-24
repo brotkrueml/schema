@@ -10,17 +10,15 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\TypeTrait;
+
 /**
  * An EducationalAudience.
- *
- * schema.org version 3.6
  */
-class EducationalAudience extends Audience
+class EducationalAudience extends AbstractType
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addProperties('educationalRole');
-    }
+    use TypeTrait\EducationalAudienceTrait;
+    use TypeTrait\AudienceTrait;
+    use TypeTrait\ThingTrait;
 }
