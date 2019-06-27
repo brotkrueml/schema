@@ -15,4 +15,5 @@ class Configuration
     public $modelTypeTraitPathTemplate = '';
     public $modelTypePathTemplate = '';
     public $viewHelperTypePathTemplate = '';
+    public $webPageTypeProviderTemplate = '';
 }

@@ -11,6 +11,7 @@ namespace Brotkrueml\Schema\Core\ViewHelper;
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Utility\Utility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
@@ -132,9 +133,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
             return $this->specificType;
         }
 
-        $tokenisedClassName = \explode('\\', static::class);
-
-        return \str_replace('ViewHelper', '', \end($tokenisedClassName));
+        return \str_replace('ViewHelper', '', Utility::getClassNameWithoutNamespace(static::class));
     }
 
     protected function assignArgumentsToItem(): void

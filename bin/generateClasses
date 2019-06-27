@@ -3,7 +3,7 @@
 # This script generates the model and view helper classes out of the schema definition
 #
 
-echo "Removing old classes ..."
+echo "Removing old type and view helper classes ..."
 rm ../Classes/Model/TypeTrait/*.php
 rm ../Classes/Model/Type/*.php
 rm ../Classes/ViewHelper/Type/*.php
@@ -14,10 +14,14 @@ php ../Generator/generate.php
 echo
 
 echo "Formatting model classes ..."
-php-cs-fixer fix ../Classes/Model/TypeTrait/
-php-cs-fixer fix ../Classes/Model/Type/
+php-cs-fixer fix ../Classes/Model/TypeTrait/ --config ../.php_cs
+php-cs-fixer fix ../Classes/Model/Type/ --config ../.php_cs
 echo
 
 echo "Formatting view helper classes ..."
-php-cs-fixer fix ../Classes/ViewHelper/Type/
+php-cs-fixer fix ../Classes/ViewHelper/Type/ --config ../.php_cs
+echo
+
+echo "Formatting provider class ..."
+php-cs-fixer fix ../Classes/Provider/WebPageTypeProvider.php --config ../.php_cs
 echo

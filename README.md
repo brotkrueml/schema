@@ -2,6 +2,7 @@
 
 [![TYPO3](https://img.shields.io/badge/TYPO3-9%20LTS-orange.svg)](https://typo3.org/)
 [![Build Status](https://travis-ci.org/brotkrueml/schema.svg?branch=master)](https://travis-ci.org/brotkrueml/schema)
+[![Latest Stable Version](https://poser.pugx.org/brotkrueml/schema/v/stable)](https://packagist.org/packages/brotkrueml/schema)
 
 ## Requirements
 
@@ -18,7 +19,7 @@ The structured data is inserted on a web page in [JSON-LD](https://json-ld.org/)
 and can be checked with Google's [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool).
 
 Just a small desclaimer: Only accepted terms are available, [pending types and 
-properties](https://pending.schema.org/) are not available. But if they are integrated
+properties](https://pending.schema.org/) are not available yet. But if they are integrated
 into the core vocabulary, they are available within the next update.
 
 ## Installation
@@ -32,6 +33,15 @@ The recommended way to install this extension is by using Composer. In your Comp
 ### Installation As An Extension From The TYPO3 Extension Repository (TER)
 
 (to be described)
+
+## Configuration
+
+Currently there is one extension configuration setting available:
+
+```basic.automaticWebPageSchemaGeneration```: If this option is activated (the default) the [WebPage](https://schema.org/WebPage)
+type schema is automatically inserted into the page if the web page type is not set manually via the API or the view helper.
+The value of the page field "Specific type of web page" is used as type. The type properties ```name``` (from page title),
+```description``` (from page description) and ```expires``` (only if page endtime is set) are defined.
 
 ## Usage
 
@@ -97,6 +107,24 @@ automatically into the head section:
             "sameAs": "https://twitter.com/example"
          }
     }
+
+#### WebPage
+
+The type [WebPage](https://schema.org/WebPage) and its descendants (like [AboutPage](https://schema.org/AboutPage)
+or [ImageGallery](https://schema.org/ImageGallery)) are a little bit special because they can only
+appear once on a web page. You can define it with the API:
+
+    $webPage = (new \Brotkrueml\Schema\Model\Type\WebPage())
+        ->setProperty('name', 'The title of the web page')
+        ->setProperty('description', 'The description of the web page')
+        ->setProperty('primaryImageOfPage', 'https://example.org/image.png')
+    ;
+    
+    $schemaManager->setWebPage($webPage);
+
+You can set the web page multiple times, the last one wins. If no web page is defined (and the
+according configuration setting is activated), a default web page type is created which sets the
+name (from the page title) and the description (from the page description).
 
 ### Using The View Helpers
  
@@ -195,3 +223,36 @@ feature:
 The dash as a suffix in the view helper argument signals that the argument is not an official schema.org property (-as, -specificType)
 or has a special meaning (-id transforms to @id). So there should be no collisions with future properties of the schema.org
 vocabulary.
+
+#### WebPage
+
+It is possible to set the WebPage type or one of it descendants with a view helper, e.g. in a Fluid layout:
+
+    <schema:type.webPage
+        name="The title of the web page"
+        description="The description of the web page"
+        primaryImageOfPage="https://example.org/image.png"
+    />
+
+or in a News single template (together with the property mainEntity):
+
+    <schema:type.itemPage
+        name="The title of the item page"
+        description="The description of the item page"
+    >
+        <schema:type.article
+            -as="mainEntity"
+            -id="http://example.org/#news-42"
+            headline="The headline of the news item"
+            image="http://example.org/image.png"
+            datePublished="2019-06-25"
+        >
+            <schema:type.person
+                -as="author"
+                -id="http://example.org/#john-doe"
+                name="John Doe"
+            />
+        </schema:type.article>
+    </schema:type.itemPage>
+
+As you can see in this example, you can embed type in type in type (and so on).

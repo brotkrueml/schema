@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
@@ -9,7 +9,6 @@ namespace Brotkrueml\Schema\Core\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-
 use PHPUnit\Framework\TestCase;
 
 trait ConcreteTypeTraitA
@@ -33,7 +32,6 @@ class ConcreteType extends AbstractType
     use ConcreteTypeTraitA;
     use ConcreteTypeTraitB;
 }
-
 
 class AbstractTypeTest extends TestCase
 {
@@ -117,8 +115,7 @@ class AbstractTypeTest extends TestCase
         $this->concreteType->setProperty('name', 'some test name');
         $this->concreteType->setProperty('description', ['some test description as array']);
 
-        $anotherConcreteType = new class extends AbstractType
-        {
+        $anotherConcreteType = new class extends AbstractType {
         };
 
         $this->concreteType->setProperty('image', $anotherConcreteType);
@@ -237,8 +234,7 @@ class AbstractTypeTest extends TestCase
 
     public function dataProviderForToArrayReturnsCorrectResult(): array
     {
-        $anotherConcreteType = new class extends AbstractType
-        {
+        $anotherConcreteType = new class extends AbstractType {
             use ConcreteTypeTraitB;
 
             protected function getType(): string

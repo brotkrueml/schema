@@ -20,6 +20,7 @@ use Twig\Environment;
 class Generator
 {
     protected const ROOT_TYPE_ID = 'http://schema.org/Thing';
+    protected const WEBPAGE_TYPE_ID = 'http://schema.org/WebPage';
 
     protected const ATTRIBUTE_SUBTYPE_OF = 'rdfs:subClassOf';
     protected const ATTRIBUTE_COMMENT = 'rdfs:comment';
@@ -80,6 +81,7 @@ class Generator
         $this->buildGraph();
         $this->attachPropertiesToTypes();
         $this->createTypes();
+        $this->createWebPageTypeItemProvider();
     }
 
     protected function evaluateSchema(): void
@@ -313,5 +315,35 @@ class Generator
         \sort($propertyLabels);
 
         return $propertyLabels;
+    }
+
+    protected function createWebPageTypeItemProvider(): void
+    {
+        $types = $this->getWebPageTypeChildren($this->types[static::WEBPAGE_TYPE_ID]);
+        \sort($types);
+
+        $providerClass = $this->twig->render(
+            'WebPageTypeProvider.php.twig',
+            [
+                'types' => $types,
+            ]
+        );
+
+        \file_put_contents(
+            $this->configuration->webPageTypeProviderTemplate,
+            $providerClass
+        );
+    }
+
+    protected function getWebPageTypeChildren(Vertex $type): array
+    {
+        $types = [$type->getAttribute(static::ATTRIBUTE_LABEL)];
+
+        /** @var Directed $edge */
+        foreach ($type->getEdgesOut() as $edge) {
+            $types = \array_merge($types, $this->getWebPageTypeChildren($edge->getVertexEnd()));
+        }
+
+        return $types;
     }
 }

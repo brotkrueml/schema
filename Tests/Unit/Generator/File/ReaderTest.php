@@ -3,7 +3,8 @@
 namespace Brotkrueml\Schema\Tests\Unit\Generator\File;
 
 use Brotkrueml\Schema\Generator\File\Reader;
-use org\bovigo\vfs\{vfsStream, vfsStreamDirectory};
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\TestCase;
 
 class ReaderTest extends TestCase

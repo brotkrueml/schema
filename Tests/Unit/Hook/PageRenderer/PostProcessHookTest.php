@@ -1,5 +1,5 @@
 <?php
-declare (strict_types=1);
+declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hook\PageRenderer;
 
@@ -9,7 +9,6 @@ namespace Brotkrueml\Schema\Tests\Unit\Hook\PageRenderer;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-
 use Brotkrueml\Schema\Hook\PageRenderer\PostProcessHook;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\Thing;

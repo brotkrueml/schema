@@ -1,5 +1,5 @@
 <?php
-declare (strict_types=1);
+declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
@@ -9,9 +9,9 @@ namespace Brotkrueml\Schema\Tests\Unit\Manager;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\Thing;
+use Brotkrueml\Schema\Model\Type\WebPage;
 use PHPUnit\Framework\TestCase;
 
 class SchemaManagerTest extends Testcase
@@ -75,5 +75,109 @@ class SchemaManagerTest extends Testcase
             ->renderJsonLd();
 
         $this->assertSame('', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function getWebPageReturnsNullIfNotPreviouslySet(): void
+    {
+        $actual = $this->schemaManager->getWebPage();
+
+        $this->assertNull($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setWebPageReturnsInstanceOfItself(): void
+    {
+        $model = new WebPage();
+
+        $actual = $this->schemaManager->setWebPage($model);
+
+        $this->assertInstanceOf(SchemaManager::class, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function getAndSetWebPageWorkingCorrectly(): void
+    {
+        $webPage = new WebPage();
+        $webPage->setProperty('name', 'some web page name');
+
+        $actual = $this->schemaManager
+            ->setWebPage($webPage)
+            ->getWebPage();
+
+        $this->assertSame($webPage, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function hasWebPageReturnsFalseWhenNoModelIsAssigned(): void
+    {
+        $actual = $this->schemaManager->hasWebPage();
+
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function hasWebPageReturnsTrueWhenModelIsAssigned(): void
+    {
+        $webPage = new WebPage();
+        $webPage->setProperty('name', 'some web page name');
+
+        $actual = $this->schemaManager
+            ->setWebPage($webPage)
+            ->hasWebPage();
+
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function renderJsonLdWithSetWebPageReturnsCorrectOutput(): void
+    {
+        $webPage = new WebPage();
+        $webPage->setProperty('name', 'some web page name');
+
+        $this->schemaManager->setWebPage($webPage);
+
+        $actual = $this->schemaManager->renderJsonLd();
+
+        $this->assertEquals(
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","name":"some web page name"}</script>',
+            $actual
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setWebPageWithWrongModelThrowsException(): void
+    {
+        $this->expectException(\DomainException::class);
+
+        $thing = new Thing();
+        $this->schemaManager->setWebPage($thing);
+    }
+
+    /**
+     * @test
+     */
+    public function setAddTypeWithWebPageTypeSetsCorrectWebPageProperty(): void
+    {
+        $webPage = new WebPage();
+        $this->schemaManager->addType($webPage);
+
+        $actual = $this->schemaManager->getWebPage();
+
+        $this->assertSame($webPage, $actual);
     }
 }

@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
+use Brotkrueml\Schema\Utility\Utility;
+
 /**
  * This file is part of the "schema" extension for TYPO3 CMS.
  *
@@ -166,9 +168,7 @@ abstract class AbstractType
      */
     protected function getType(): string
     {
-        $tokenisedClassName = \explode('\\', static::class);
-
-        return \end($tokenisedClassName);
+        return Utility::getClassNameWithoutNamespace(static::class);
     }
 
     /**

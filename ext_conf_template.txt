@@ -1,0 +1,2 @@
+# cat=Basic; type=boolean; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.automaticWebPageSchemaGeneration
+automaticWebPageSchemaGeneration = 1

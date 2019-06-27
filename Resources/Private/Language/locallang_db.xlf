@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-06-25T17:28:33Z">
+		<body>
+			<trans-unit id="pages.palette.structuredData">
+				<source><![CDATA[Structured Data]]></source>
+			</trans-unit>
+			<trans-unit id="pages.tx_schema_webpagetype">
+				<source><![CDATA[Specific type of web page]]></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
