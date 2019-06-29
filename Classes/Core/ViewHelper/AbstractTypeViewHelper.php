@@ -10,6 +10,7 @@ namespace Brotkrueml\Schema\Core\ViewHelper;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Utility\Utility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -28,14 +29,12 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected $specificType;
     protected $parentPropertyName;
 
-    /** @var \SplStack */
-    protected static $stack;
+    /** @var TypeStack */
+    protected $stack;
 
-    public function initialize()
+    public function __construct()
     {
-        if (!static::$stack) {
-            static::$stack = new \SplStack();
-        }
+        $this->stack = GeneralUtility::makeInstance(TypeStack::class);
     }
 
     public function initializeArguments()
@@ -61,21 +60,21 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
         $this->assignArgumentsToItem();
 
-        static::$stack->push($this->item);
+        $this->stack->push($this->item);
 
         $this->renderChildren();
 
         /** @var AbstractType $recent */
-        $recent = static::$stack->pop();
+        $recent = $this->stack->pop();
 
         if ($this->parentPropertyName) {
             /** @var AbstractType $parent */
-            $parent = static::$stack->pop();
+            $parent = $this->stack->pop();
             $parent->addProperty($this->parentPropertyName, $recent);
-            static::$stack->push($parent);
+            $this->stack->push($parent);
         }
 
-        if (static::$stack->isEmpty()) {
+        if ($this->stack->isEmpty()) {
             /** @var SchemaManager $schemaManager */
             $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
             $schemaManager->addType($recent);
@@ -109,7 +108,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     protected function checkAsAttribute(): void
     {
-        if (!static::$stack->isEmpty()) {
+        if (!$this->stack->isEmpty()) {
             $parentPropertyName = (string)($this->arguments[static::ARGUMENT_AS] ?? '');
 
             if (empty($parentPropertyName)) {

@@ -76,6 +76,7 @@ That was easy ... let's go on and add the company for who the person works:
         ->setProperty('image', 'https:/example.org/logo.png')
         ->setProperty('url', 'https://example.org/')
         ->setProperty('sameAs', 'https://twitter.com/example')
+        ->addProperty('sameAs', 'https://facebook.com/example')
     ;
 
 We have to connect the two types together:
@@ -104,7 +105,7 @@ automatically into the head section:
             "name": "Acme Ltd.",
             "image": "https://example.org/logo.png",
             "url": "https://example.org",
-            "sameAs": "https://twitter.com/example"
+            "sameAs": ["https://twitter.com/example", "https://facebook.com/example"]
          }
     }
 
@@ -140,14 +141,18 @@ Another possible way to insert the structured data is via a Fluid template:
         <schema:type.corporation
             -as="worksFor"
             name="Acme Ltd."
-            image="https:/example.org/logo.png"
-            url="https://example.org/"
-            sameAs="https://twitter.com/example"
-        />
-    </schema:person>
+            image="https://example.org/logo.png"
+            url="https://example.org/">
+                <schema:property -as="sameAs" value="https://twitter.com/example"/>
+                <schema:property -as="sameAs" value="https://facebook.com/example"/>
+        </schema:type.corporation>
+    </schema:type.person>
 
 The "-as" property is a special property for the child where you can set the property for
 the parent type.
+
+Please recognise the usage of the ```<schema:property/>``` view helper. You can use this
+when assigning more than one string value to a property.
 
 #### Connecting Types Via -id Argument
 
@@ -252,7 +257,13 @@ or in a News single template (together with the property mainEntity):
                 -id="http://example.org/#john-doe"
                 name="John Doe"
             />
+            <schema:type.person
+                -as="author"
+                -id="http://example.org/#jan-novak"
+                name="Jan Novak"
+            />
         </schema:type.article>
     </schema:type.itemPage>
 
-As you can see in this example, you can embed type in type in type (and so on).
+As you can see in this example, you can embed type in type in type (and so on) and also assign the same property (author)
+multiple times with different values.

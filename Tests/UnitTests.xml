@@ -9,8 +9,8 @@
             <directory>../Classes/</directory>
             <directory>../Generator/Classes/</directory>
             <exclude>
-                <directory>../Classes/Model/</directory>
-                <directory>../Classes/ViewHelper/</directory>
+                <directory>../Classes/Model/Type/</directory>
+                <directory>../Classes/ViewHelper/Type/</directory>
             </exclude>
         </whitelist>
     </filter>
