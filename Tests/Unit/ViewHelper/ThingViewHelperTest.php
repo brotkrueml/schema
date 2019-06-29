@@ -10,271 +10,191 @@ namespace Brotkrueml\Schema\Tests\Unit\ViewHelper;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Model\Type\Person;
-use Brotkrueml\Schema\Model\Type\Thing;
-use Brotkrueml\Schema\ViewHelper\Type\ThingViewHelper;
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamDirectory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\View\TemplateView;
 
-class ThingViewHelperTest extends ViewHelperBaseTestcase
+class ThingViewHelperTest extends UnitTestCase
 {
-    /**
-     * @var ThingViewHelper
-     */
-    protected $viewHelper;
+    protected const VIEWHELPER_NAMESPACE = '{namespace schema=Brotkrueml\Schema\ViewHelper}';
+
+    /** @var vfsStreamDirectory */
+    protected $root;
+
+    /** @var TemplateView */
+    protected $view;
+
+    /** @var SchemaManager */
+    protected $schemaManager;
+
+    protected $resetSingletonInstances = true;
 
     public function setUp(): void
     {
-        parent::setUp();
-
-        $this->viewHelper = new ThingViewHelper();
-        $this->injectDependenciesIntoViewHelper($this->viewHelper);
+        $this->root = vfsStream::setup('test-dir');
+        $this->view = new TemplateView();
+        $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
     }
 
     /**
-     * @test
+     * Data provider for testing the view helpers in Fluid templates
+     *
+     * @return array
      */
-    public function renderReturnsNull(): void
+    public function fluidTemplatesProvider(): array
     {
-        $this->viewHelper->setRenderChildrenClosure(
-            function () {
-                return '';
-            }
-        );
+        return [
+            'No schema view helper used' => [
+                '',
+                '',
+            ],
 
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            []
-        );
+            'Simple type with id' => [
+                '<schema:type.thing
+                    -id="thingyId"
+                    name="thingy name"
+                    description="thingy description"
+                />',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"}</script>',
+            ],
 
-        $actualResult = $this->viewHelper->initializeArgumentsAndRender();
+            'Multiple types' => [
+                '<schema:type.thing
+                    -id="thingyId"
+                    name="thingy name"
+                    description="thingy description"
+                />
+                <schema:type.person
+                    -id="personId"
+                    name="person name"
+                    worksFor="someone"
+                />
+                <schema:type.action
+                    name="action name"
+                    url="http://example.org/"
+                />',
+                '<script type="application/ld+json">[{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"},{"@context":"http://schema.org","@type":"Person","@id":"personId","name":"person name","worksFor":"someone"},{"@context":"http://schema.org","@type":"Action","name":"action name","url":"http://example.org/"}]</script>',
+            ],
 
-        $this->assertNull($actualResult);
+            'A given specific type is recognized' => [
+                '<schema:type.organization
+                    name="a corporation"
+                    -specificType="Corporation"
+                />',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Corporation","name":"a corporation"}</script>',
+            ],
 
-        $this->resetSingletonInstances = true;
+            'On top level type -as is ignored' => [
+                '<schema:type.thing
+                    -as="shouldBeIgnored"
+                    name="as is ignored"
+                />',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"as is ignored"}</script>',
+            ],
+
+            'Type with one child' => [
+                '<schema:type.thing
+                    -id="parentThing"
+                    name="parent name"
+                    url="http://example.org/">
+                    <schema:type.person
+                        -as="subjectOf"
+                        -id="childThing"
+                        name="child name"
+                        url="https://example.org/child"
+                    />
+                </schema:type.thing>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
+            ],
+
+            'Type with multiple childs' => [
+                '<schema:type.organization
+                    name="Acme Ltd."
+                    url="https://www.example.org/"
+                    logo="https://www.example.org/logo.png"
+                >
+                    <schema:type.contactPoint
+                        -as="contactPoint"
+                        telephone="+49 30 123456789"
+                        contactType="sales"
+                        areaServed="DE"
+                    />
+                    <schema:type.contactPoint
+                        -as="contactPoint"
+                        telephone="+48 22 123456789"
+                        contactType="sales"
+                        areaServed="PL"
+                    />
+                    <schema:type.contactPoint
+                        -as="contactPoint"
+                        telephone="+90 212 123456789"
+                        contactType="sales"
+                        areaServed="TR"
+                    />
+                </schema:type.organization>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","contactPoint":[{"@type":"ContactPoint","areaServed":"DE","contactType":"sales","telephone":"+49 30 123456789"},{"@type":"ContactPoint","areaServed":"PL","contactType":"sales","telephone":"+48 22 123456789"},{"@type":"ContactPoint","areaServed":"TR","contactType":"sales","telephone":"+90 212 123456789"}],"logo":"https://www.example.org/logo.png","name":"Acme Ltd.","url":"https://www.example.org/"}</script>',
+            ],
+        ];
     }
 
     /**
      * @test
+     * @dataProvider fluidTemplatesProvider
+     *
+     * @param string $template The Fluid template
+     * @param string $expected The expected output
      */
-    public function renderBuildsSchemaCorrectly()
+    public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, string $expected): void
     {
-        $this->viewHelper->setRenderChildrenClosure(
-            function () {
-                return '';
-            }
-        );
+        $this->renderTemplate($template);
 
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            [
-                '-id' => 'https://example.org/#test-id',
-                'name' => 'test name',
-            ]
-        );
+        $actual = $this->schemaManager->renderJsonLd();
 
-        $this->viewHelper->initializeArgumentsAndRender();
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-
-        $actual = $schemaManager->getTypes();
-
-        $this->assertInstanceOf(Thing::class, $actual[0]);
-
-        $this->assertSame('https://example.org/#test-id', $actual[0]->getId());
-        $this->assertSame('test name', $actual[0]->getProperty('name'));
-
-        $this->resetSingletonInstances = true;
+        $this->assertSame($expected, $actual);
     }
 
-    /**
-     * @test
-     */
-    public function renderWithSpecificTypeBuildsSchemaCorrectly()
+    protected function renderTemplate(string $template): void
     {
-        $this->viewHelper->setRenderChildrenClosure(
-            function () {
-                return '';
-            }
-        );
+        \file_put_contents(vfsStream::url('test-dir') . '/template.html', self::VIEWHELPER_NAMESPACE . $template);
 
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            [
-                '-specificType' => 'Person',
-            ]
-        );
+        $this->view->getTemplatePaths()->setTemplatePathAndFilename(vfsStream::url('test-dir') . '/template.html');
+        $this->view->render();
+    }
 
-        $this->viewHelper->initializeArgumentsAndRender();
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-
-        $actual = $schemaManager->getTypes();
-
-        $this->assertInstanceOf(Person::class, $actual[0]);
-
-        $this->resetSingletonInstances = true;
+    /**
+     * Data provider for some cases where exceptions are thrown when using the view helpers incorrectly
+     *
+     * @return array
+     */
+    public function fluidTemplatesProviderForExceptions(): array
+    {
+        return [
+            'Invalid specific type' => [
+                '<schema:type.thing -specificType="TypeDoesNotExist"/>',
+                1561829970,
+            ],
+            'Missing -as attribute' => [
+                '<schema:type.thing><schema:type.creativeWork/></schema:type.thing>',
+                1561829951,
+            ],
+        ];
     }
 
     /**
      * @test
+     * @dataProvider fluidTemplatesProviderForExceptions
+     *
+     * @param string $template The Fluid template
+     * @param int $expectedExceptionCode The expected exception code
      */
-    public function renderWithNotExistingSpecificTypeThrowsException()
+    public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(string $template, int $expectedExceptionCode): void
     {
         $this->expectException(ViewHelper\Exception::class);
-        $this->expectExceptionMessage('The given specific type "TypeNotExisting" does not exist in the schema.org vocabulary, perhaps it is misspelled?');
+        $this->expectExceptionCode($expectedExceptionCode);
 
-        $this->viewHelper->setRenderChildrenClosure(
-            function () {
-                return '';
-            }
-        );
-
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            [
-                '-specificType' => 'TypeNotExisting',
-            ]
-        );
-
-        $this->viewHelper->initializeArgumentsAndRender();
-    }
-
-    /**
-     * @test
-     */
-    public function renderIgnoresAsOnTopLevelSchema()
-    {
-        $this->viewHelper->setRenderChildrenClosure(
-            function () {
-                return '';
-            }
-        );
-
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            [
-                '-as' => 'propertyNameWhichIsNotShown',
-                'name' => 'some name',
-            ]
-        );
-
-        $this->viewHelper->initializeArgumentsAndRender();
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-
-        $actual = $schemaManager->getTypes();
-
-        $this->assertFalse($actual[0]->hasProperty('as'));
-
-        $this->resetSingletonInstances = true;
-    }
-
-    /**
-     * @test
-     */
-    public function renderChildWithAlreadyExistingAsOnTheParentPreservesTheContent()
-    {
-        $childViewHelper = new ThingViewHelper();
-        $this->injectDependenciesIntoViewHelper($childViewHelper);
-
-        $this->setArgumentsUnderTest(
-            $childViewHelper,
-            [
-                '-as' => 'subjectOf',
-                '-id' => 'https://example.org/#child-id',
-                'name' => 'child name',
-                'url' => 'https://example.org/child/',
-            ]
-        );
-
-        $this->viewHelper->setRenderChildrenClosure(
-            function () use ($childViewHelper) {
-                $childViewHelper->setRenderChildrenClosure(
-                    function () {
-                    }
-                );
-
-                $childViewHelper->initializeArgumentsAndRender();
-            }
-        );
-
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            [
-                '-id' => 'https://example.org/#parent-id',
-                'name' => 'test name',
-                'url' => 'https://example.org/',
-            ]
-        );
-
-        $this->viewHelper->initializeArgumentsAndRender();
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-
-        $actual = $schemaManager->getTypes();
-
-        $expected = (new Thing())
-            ->setId('https://example.org/#parent-id')
-            ->setProperty('name', 'test name')
-            ->setProperty('url', 'https://example.org/')
-            ->setProperty(
-                'subjectOf',
-                (new Thing())
-                ->setId('https://example.org/#child-id')
-                ->setProperty('name', 'child name')
-                ->setProperty('url', 'https://example.org/child/')
-            );
-
-        $this->assertCount(1, $actual);
-        $this->assertEquals($expected, $actual[0]);
-
-        $this->resetSingletonInstances = true;
-    }
-
-    /**
-     * @test
-     */
-    public function renderChildWithoutRaisesException()
-    {
-        $childViewHelper = new ThingViewHelper();
-        $this->injectDependenciesIntoViewHelper($childViewHelper);
-
-        $this->setArgumentsUnderTest(
-            $childViewHelper,
-            [
-                '-id' => 'https://example.org/#child-id',
-                'name' => 'child name',
-                'url' => 'https://example.org/child/',
-            ]
-        );
-
-        $this->viewHelper->setRenderChildrenClosure(
-            function () use ($childViewHelper) {
-                $childViewHelper->setRenderChildrenClosure(
-                    function () {
-                    }
-                );
-
-                $childViewHelper->initializeArgumentsAndRender();
-            }
-        );
-
-        $this->setArgumentsUnderTest(
-            $this->viewHelper,
-            [
-                '-id' => 'https://example.org/#test-id',
-                'name' => 'test name',
-                'url' => 'https://example.org/',
-            ]
-        );
-
-        $this->expectException(ViewHelper\Exception::class);
-        $this->expectExceptionMessage('The child view helper of schema type "Thing" must have an "-as" attribute for embedding into the parent type');
-
-        $this->viewHelper->initializeArgumentsAndRender();
-
-        $this->resetSingletonInstances = true;
+        $this->renderTemplate($template);
     }
 }

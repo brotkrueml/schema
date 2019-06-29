@@ -95,9 +95,10 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         if (!\class_exists($className)) {
             throw new ViewHelper\Exception(
                 \sprintf(
-                    'The given specific type "%s" does not exist in the schema.org vocabulary, perhaps it is misspelled?',
+                    'The given specific type "%s" does not exist in the schema.org vocabulary, perhaps it is misspelled? Remember, the type must start with a capital letter.',
                     $specificType
-                )
+                ),
+                1561829970
             );
         }
 
@@ -117,7 +118,8 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
                         'The child view helper of schema type "%s" must have an "%s" attribute for embedding into the parent type',
                         $this->getType(),
                         static::ARGUMENT_AS
-                    )
+                    ),
+                    1561829951
                 );
             }
 

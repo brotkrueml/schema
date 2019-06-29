@@ -120,7 +120,7 @@ class AbstractTypeTest extends TestCase
 
         $this->concreteType->setProperty('image', $anotherConcreteType);
 
-        // Only asserted, if no exception above is thrown
+        // Assertion is valid, when no exception above is thrown
         $this->assertTrue(true);
     }
 
@@ -130,6 +130,7 @@ class AbstractTypeTest extends TestCase
     public function setPropertyThrowsDomainExceptionIfPropertyNameNotValid(): void
     {
         $this->expectException(\DomainException::class);
+        $this->expectExceptionCode(1561829996);
 
         $this->concreteType->setProperty('invalidProperty', 'some value');
     }
@@ -140,6 +141,7 @@ class AbstractTypeTest extends TestCase
     public function setPropertyThrowsInvalidArgumentExceptionIfPropertyNotValid(): void
     {
         $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionCode(1561830012);
 
         $this->concreteType->setProperty('image', new \stdClass());
     }
@@ -172,6 +174,7 @@ class AbstractTypeTest extends TestCase
     public function getPropertyThrowsDomainExceptionIfPropertyNameDoesNotExist(): void
     {
         $this->expectException(\DomainException::class);
+        $this->expectExceptionCode(1561829996);
 
         $this->concreteType->getProperty('invalidPropertyName');
     }
@@ -211,7 +214,7 @@ class AbstractTypeTest extends TestCase
             ->addProperty('image', 'other image value')
             ->getProperty('image');
 
-        $this->assertSame([['some image value'], 'other image value'], $actual);
+        $this->assertSame(['some image value', 'other image value'], $actual);
     }
 
     /**

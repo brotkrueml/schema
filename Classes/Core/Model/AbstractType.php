@@ -64,7 +64,8 @@ abstract class AbstractType
     {
         if (!\property_exists($this, $property)) {
             throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType())
+                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType()),
+                1561829996
             );
         }
 
@@ -100,7 +101,8 @@ abstract class AbstractType
     {
         if (!\property_exists($this, $property)) {
             throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType())
+                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType()),
+                1561829996
             );
         }
 
@@ -109,7 +111,8 @@ abstract class AbstractType
                 \sprintf(
                     'Given value for property "%s" has not a valid data type. Valid types are: string, array, instanceof AbstractType',
                     $property
-                )
+                ),
+                1561830012
             );
         }
     }
@@ -127,6 +130,16 @@ abstract class AbstractType
 
         if (\is_null($this->$property)) {
             $this->$property = $value;
+
+            return $this;
+        }
+
+        if (\is_array($this->$property)) {
+            if (\is_string($value) || $value instanceof AbstractType) {
+                $value = [$value];
+            }
+
+            $this->$property = \array_merge($this->$property, $value);
 
             return $this;
         }
@@ -174,10 +187,10 @@ abstract class AbstractType
     /**
      * Generate an array representation of the type
      *
-     * @param bool $isRoot Is the root type?
+     * @param bool $isRootType Is the root type?
      * @return array
      */
-    public function toArray(bool $isRoot = true): array
+    public function toArray(bool $isRootType = true): array
     {
         $result = [];
 
@@ -185,25 +198,22 @@ abstract class AbstractType
             $result['@id'] = $this->_id;
         }
 
-        foreach (\get_object_vars($this) as $property => $value) {
-            if (\substr($property, 0, 1) === '_') {
+        foreach ($this->getProperties() as $property) {
+            if (empty($this->$property)) {
                 continue;
             }
 
-            if (empty($value)) {
-                continue;
-            }
-
-            if ($value instanceof AbstractType) {
-                $result[$property] = $value->toArray(false);
+            if ($this->$property instanceof AbstractType) {
+                $result[$property] = $this->$property->toArray(false);
 
                 continue;
             }
 
-            if (\is_array($value)) {
+            if (\is_array($this->$property)) {
                 $result[$property] = [];
 
-                foreach ($value as $singleValue) {
+                /** @var AbstractType|string $singleValue */
+                foreach ($this->$property as $singleValue) {
                     if (\is_string($singleValue)) {
                         $result[$property][] = $singleValue;
                     } else {
@@ -214,7 +224,7 @@ abstract class AbstractType
                 continue;
             }
 
-            $result[$property] = $value;
+            $result[$property] = $this->$property;
         }
 
         if (empty($result)) {
@@ -223,7 +233,7 @@ abstract class AbstractType
 
         $header = [];
 
-        if ($isRoot) {
+        if ($isRootType) {
             $header['@context'] = static::CONTEXT;
         }
 
