@@ -13,6 +13,18 @@ use Brotkrueml\Schema\Core\TypeStack;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
+/**
+ * ViewHelper for adding a property with a string value to a
+ * schema type. It can only be used as a child view helper for a
+ * <schema:type.thing> or equivalent.
+ *
+ * Both arguments are mandatory.
+ *
+ * = Examples =
+ * <code title="Using the view helper">
+ * <schema:property -as="sameAs" value="https://twitter.com/example">
+ * </code>
+ */
 class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 {
     protected const ARGUMENT_AS = '-as';

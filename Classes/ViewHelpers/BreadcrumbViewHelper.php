@@ -19,6 +19,41 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
+/**
+ * ViewHelper for building the breadcrumb structure and assigning it
+ * to the SchemaManager
+ *
+ * The result of the MenuProcessor (special = breadcrumb) can be
+ * given to the view helper:
+ *
+ * <code title="Configuring the MenuProcessor in TypoScript">
+ * page.10 = FLUIDTEMPLATE
+ * page.10 {
+ *   // ... Your other configuration
+ *
+ *   dataProcessing {
+ *     10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+ *     10 {
+ *       special = rootline
+ *       as = breadcrumb
+ *     }
+ *   }
+ * }
+ * </code>
+ *
+ * As default the first entry (which is mostly the start page)
+ * is stripped from the structured data because it is not necessary.
+ * But you can include it setting the attribute renderFirstItem="1".
+ *
+ * = Examples =
+ * <code title="Render structured data without the start page">
+ * <schema:breadcrumbMarkup breadcrumb="{breadcrumb}">
+ * </code>
+ *
+ * <code title="Render structured data with all items given">
+ * <schema:breadcrumbMarkup breadcrumb="{breadcrumb}" renderFirstItem="1">
+ * </code>
+ */
 class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 {
     protected const ARGUMENT_BREADCRUMB = 'breadcrumb';
