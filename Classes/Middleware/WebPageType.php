@@ -67,7 +67,7 @@ class WebPageType implements MiddlewareInterface
                 $webPage->setProperty('expires', \date('c', $this->controller->page['endtime']));
             }
 
-            $this->schemaManager->setWebPage($webPage);
+            $this->schemaManager->addType($webPage);
         }
 
         return $handler->handle($request);

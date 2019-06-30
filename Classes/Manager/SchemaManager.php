@@ -10,6 +10,7 @@ namespace Brotkrueml\Schema\Manager;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Provider\WebPageTypeProvider;
 use Brotkrueml\Schema\Utility\Utility;
@@ -27,6 +28,9 @@ class SchemaManager implements SingletonInterface
     /** @var WebPage|null */
     protected $webPage = null;
 
+    /** @var BreadcrumbList[] */
+    protected $breadcrumbList = [];
+
     public function __construct()
     {
         $this->validWebPageTypes = WebPageTypeProvider::getTypes();
@@ -35,16 +39,38 @@ class SchemaManager implements SingletonInterface
     /**
      * Add a type
      *
-     * @param AbstractType $type
+     * @param AbstractType $type The model type
      * @return SchemaManager
      */
     public function addType(AbstractType $type): self
     {
         if ($this->isWebPageType($type)) {
+            $breadcrumb = $type->getProperty('breadcrumb');
+            $type->clearProperty('breadcrumb');
+
+            if ($breadcrumb instanceof BreadcrumbList) {
+                $this->addBreadcrumbList($breadcrumb);
+            } elseif (\is_array($breadcrumb)) {
+                foreach ($breadcrumb as $item) {
+                    if ($item instanceof BreadcrumbList) {
+                        $this->addBreadcrumbList($item);
+                    }
+                }
+            }
+
             $this->setWebPage($type);
-        } else {
-            $this->types[] = $type;
+
+            return $this;
         }
+
+        if ($this->isBreadCrumbList($type)) {
+            /** @var BreadcrumbList $type */
+            $this->addBreadcrumbList($type);
+
+            return $this;
+        }
+
+        $this->types[] = $type;
 
         return $this;
     }
@@ -56,40 +82,23 @@ class SchemaManager implements SingletonInterface
         return \in_array($typeName, $this->validWebPageTypes);
     }
 
-    /**
-     * Set the model of a web page
-     * Only one web page is possible!
-     *
-     * @param AbstractType $webPage
-     * @return SchemaManager
-     */
-    public function setWebPage(AbstractType $webPage): self
+    protected function setWebPage(AbstractType $webPage): void
     {
-        if (!$this->isWebPageType($webPage)) {
-            throw new \DomainException(\sprintf(
-                'Type %s is not a valid web page type (possible types: %s)',
-                Utility::getClassNameWithoutNamespace(\get_class($webPage)),
-                \implode(', ', $this->validWebPageTypes)
-            ));
-        }
-
         $this->webPage = $webPage;
-
-        return $this;
     }
 
-    /**
-     * Get the model of a web page
-     *
-     * @return AbstractType|null
-     */
-    public function getWebPage(): ?AbstractType
+    protected function isBreadCrumbList(AbstractType $type): bool
     {
-        return $this->webPage;
+        return $type instanceof BreadcrumbList;
+    }
+
+    protected function addBreadcrumbList(BreadcrumbList $breadcrumbList): void
+    {
+        $this->breadcrumbList[] = $breadcrumbList;
     }
 
     /**
-     * Is a model of a web page set?
+     * A WebPage or its descendants is available
      *
      * @return bool
      */
@@ -108,7 +117,19 @@ class SchemaManager implements SingletonInterface
         $result = [];
 
         if ($this->webPage instanceof AbstractType) {
+            if (count($this->breadcrumbList)) {
+                $this->webPage->clearProperty('breadcrumb');
+
+                foreach ($this->breadcrumbList as $breadcrumb) {
+                    $this->webPage->addProperty('breadcrumb', $breadcrumb);
+                }
+            }
+
             $result[] = $this->webPage->toArray();
+        } elseif (count($this->breadcrumbList)) {
+            foreach ($this->breadcrumbList as $breadcrumb) {
+                $result[] = $breadcrumb->toArray();
+            }
         }
 
         foreach ($this->types as $type) {
@@ -133,18 +154,5 @@ class SchemaManager implements SingletonInterface
             static::TEMPLATE_SCRIPT_TAG,
             \json_encode($result, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
         );
-    }
-
-    /**
-     * Get all assigned types
-     *
-     * Only for testing purposes, don't rely on it
-     *
-     * @return AbstractType[]
-     * @internal
-     */
-    public function getTypes(): array
-    {
-        return $this->types;
     }
 }

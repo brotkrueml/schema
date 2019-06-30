@@ -83,6 +83,10 @@ abstract class AbstractType
     {
         $this->checkProperty($property, $value);
 
+        if (\is_int($value)) {
+            $value = (string)$value;
+        }
+
         $this->$property = $value;
 
         return $this;
@@ -106,11 +110,12 @@ abstract class AbstractType
             );
         }
 
-        if (!\is_string($value) && !\is_array($value) && !$value instanceof AbstractType) {
+        if (!(\is_string($value) || \is_int($value) || \is_array($value) || $value instanceof AbstractType)) {
             throw new \InvalidArgumentException(
                 \sprintf(
-                    'Given value for property "%s" has not a valid data type. Valid types are: string, array, instanceof AbstractType',
-                    $property
+                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: string, int, array, instanceof AbstractType',
+                    $property,
+                    \is_object($value) ? \get_class($value) : \gettype($value)
                 ),
                 1561830012
             );
@@ -148,6 +153,20 @@ abstract class AbstractType
             $this->$property,
             $value,
         ];
+
+        return $this;
+    }
+
+    /**
+     * Clear a property (set it to null)
+     *
+     * @param string $property The property name
+     *
+     * @return AbstractType
+     */
+    public function clearProperty(string $property): self
+    {
+        $this->$property = null;
 
         return $this;
     }
@@ -199,7 +218,7 @@ abstract class AbstractType
         }
 
         foreach ($this->getProperties() as $property) {
-            if (empty($this->$property)) {
+            if (\is_null($this->$property)) {
                 continue;
             }
 

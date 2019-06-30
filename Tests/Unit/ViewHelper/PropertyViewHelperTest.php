@@ -96,6 +96,7 @@ class PropertyViewHelperTest extends ViewHelperTestCase
      * @dataProvider fluidTemplatesProviderForExceptions
      *
      * @param string $template The Fluid template
+     * @param string $exceptionClass The exception class
      * @param int $expectedExceptionCode The expected exception code
      */
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(string $template, string $exceptionClass, int $expectedExceptionCode): void

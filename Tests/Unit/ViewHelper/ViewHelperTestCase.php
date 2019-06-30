@@ -37,11 +37,16 @@ class ViewHelperTestCase extends UnitTestCase
         $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
     }
 
-    protected function renderTemplate(string $template): void
+    protected function renderTemplate(string $template, array $variables = []): void
     {
         \file_put_contents(vfsStream::url('test-dir') . '/template.html', self::VIEWHELPER_NAMESPACE . $template);
 
         $this->view->getTemplatePaths()->setTemplatePathAndFilename(vfsStream::url('test-dir') . '/template.html');
+
+        if (!empty($variables)) {
+            $this->view->assignMultiple($variables);
+        }
+
         $this->view->render();
     }
 }

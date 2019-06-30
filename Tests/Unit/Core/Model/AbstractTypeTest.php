@@ -220,6 +220,23 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
+    public function clearPropertySetsValueToNull(): void
+    {
+        $resultOfClear = $this->concreteType
+            ->setProperty('image', 'some image value')
+            ->clearProperty('image');
+
+        $this->assertInstanceOf(AbstractType::class, $resultOfClear);
+
+        $resultOfGet = $this->concreteType
+            ->getProperty('image');
+
+        $this->assertNull($resultOfGet);
+    }
+
+    /**
+     * @test
+     */
     public function getPropertiesReturnsListOfAllProperties(): void
     {
         $actual = $this->concreteType->getProperties();
@@ -255,6 +272,33 @@ class AbstractTypeTest extends TestCase
                     '@context' => 'http://schema.org',
                     '@type' => 'ConcreteType',
                     'name' => 'some string value',
+                ],
+            ],
+            'Value is an number as string' => [
+                'name',
+                '1',
+                [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'ConcreteType',
+                    'name' => '1',
+                ],
+            ],
+            'Value is an number as integer' => [
+                'name',
+                1,
+                [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'ConcreteType',
+                    'name' => '1',
+                ],
+            ],
+            'Value is the number 0 as integer' => [
+                'name',
+                0,
+                [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'ConcreteType',
+                    'name' => '0',
                 ],
             ],
             'Value is a model' => [

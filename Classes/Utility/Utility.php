@@ -22,4 +22,21 @@ class Utility
 
         return \end($classNameParts);
     }
+
+    /**
+     * Get the class name with namespace for a given type
+     *
+     * @param string $type Type
+     * @return string|null
+     */
+    public static function getNamespacedClassNameForType(string $type): ?string
+    {
+        $className = 'Brotkrueml\\Schema\\Model\\Type\\' . $type;
+
+        if (!\class_exists($className)) {
+            return null;
+        }
+
+        return $className;
+    }
 }

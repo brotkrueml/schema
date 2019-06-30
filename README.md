@@ -121,7 +121,7 @@ appear once on a web page. You can define it with the API:
         ->setProperty('primaryImageOfPage', 'https://example.org/image.png')
     ;
     
-    $schemaManager->setWebPage($webPage);
+    $schemaManager->addType($webPage);
 
 You can set the web page multiple times, the last one wins. If no web page is defined (and the
 according configuration setting is activated), a default web page type is created which sets the
@@ -267,3 +267,172 @@ or in a News single template (together with the property mainEntity):
 
 As you can see in this example, you can embed type in type in type (and so on) and also assign the same property (author)
 multiple times with different values.
+
+#### Breadcrumb
+
+A breadcrumb is an essential part of a web page. It gives an user an idea where on the web site he is.
+He can also navigate to previous pages. But for search engines a breadcrumb is also essential to understand
+the structure of a web site. Last but not least, the breadcrumb is shown in the search result snippet if
+structured markup for the breadcrumb is available.
+
+There can also be more than one breadcrumb on a page, Google gives an example in his guidelines for a
+[breadcrumb](https://developers.google.com/search/docs/data-types/breadcrumb).
+
+You can generate a breadcrumb with the available view helpers of this extension:
+
+    <schema:type.breadcrumbList>
+        <schema:type.listItem -as="itemListElement" name="Page 1" item="https://example.org/page-1/" position="1"/>
+        <schema:type.listItem -as="itemListElement" name="Page 2" item="https://example.org/page-1/page-2/" position="2"/>
+        <schema:type.listItem -as="itemListElement" name="Page 3" item="https://example.org/page-1/page-2/page-3/" position="3"/>
+    </schema:type.breadcrumbList>
+
+Or a more complex example which respects the web page type:
+
+    <schema:type.breadcrumbList>
+        <schema:type.listItem -as="itemListElement" name="Page 1" position="1">
+            <schema:type.webPage -as="item" -id="https://example.org/page-1/"/>
+        </schema:type.listItem>
+        <schema:type.listItem -as="itemListElement" name="Page 2" position="2">
+            <schema:type.collectionPage -as="item" -id="https://example.org/page-1/page-2/"/>
+        </schema:type.listItem>
+        <schema:type.listItem -as="itemListElement" name="Page 3" position="3">
+            <schema:type.itemPage -as="item" -id="https://example.org/page-1/page-2/page-3/"/>
+        </schema:type.listItem>
+    </schema:type.breadcrumbList>
+
+It is also possible to use it in combination with a WebPage:
+
+    <schema:type.itemPage>
+        <schema:type.organization -as="publisher" name="Acme Ltd."/>
+        <schema:type.breadcrumbList -as="breadcrumb">
+            <schema:type.listItem -as="itemListElement" name="Page 1" position="1">
+                <schema:type.webPage -as="item" -id="https://example.org/page-1/"/>
+            </schema:type.listItem>
+            <schema:type.listItem -as="itemListElement" name="Page 2" position="2">
+                <schema:type.collectionPage -as="item" -id="https://example.org/page-1/page-2/"/>
+            </schema:type.listItem>
+            <schema:type.listItem -as="itemListElement" name="Page 3" position="3">
+                <schema:type.itemPage -as="item" -id="https://example.org/page-1/page-2/page-3/"/>
+            </schema:type.listItem>
+        </schema:type.breadcrumbList>
+    </schema:type.itemPage>
+
+Most of the time you don't have the according attributes available in the same Fluid template.
+Imagine you want to set the breadcrumb in one template or partial and the website in another template
+(e.g. in a news detail template). You can set the WebPage type and the breadcrumb independently:
+
+    <schema:type.itemPage>
+        <schema:type.organization -as="publisher" name="Acme Ltd."/>
+    </schema:type.itemPage>
+
+    <schema:type.breadcrumbList>
+        <schema:type.listItem -as="itemListElement" name="Page 1" position="1">
+            <schema:type.webPage -as="item" -id="https://example.org/page-1/"/>
+        </schema:type.listItem>
+        <schema:type.listItem -as="itemListElement" name="Page 2" position="2">
+            <schema:type.collectionPage -as="item" -id="https://example.org/page-1/page-2/"/>
+        </schema:type.listItem>
+        <schema:type.listItem -as="itemListElement" name="Page 3" position="3">
+            <schema:type.itemPage -as="item" -id="https://example.org/page-1/page-2/page-3/"/>
+        </schema:type.listItem>
+    </schema:type.breadcrumbList>
+
+The extension is smart enough to combine them on request. The result is the same for both cases:
+
+    {
+        "@context": "http://schema.org",
+        "@type": "ItemPage",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type":"WebPage",
+                        "@id": "https://example.org/page-1/"
+                    },
+                    "name": "Page 1",
+                    "position": "1"
+                },
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type": "CollectionPage",
+                        "@id": "https://example.org/page-1/page-2/"
+                    },
+                    "name": "Page 2",
+                    "position": "2"
+                },
+                {
+                    "@type": "ListItem",
+                    "item": {
+                        "@type": "ItemPage",
+                        "@id": "https://example.org/page-1/page-2/page-3/"
+                    },
+                    "name": "Page 3",
+                    "position": "3"
+                }
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Acme Ltd."
+        }
+    } 
+
+If you set the breadcrumb independently of the WebPage, this breadcrumb will be merged with a
+breadcrumb defined in the WebPage type. Please keep in mind that according to the Google Structured
+Data Testing Tool, only the type BreadcrumbList is allowed for the breadcrumb - either the schema.org
+allows strings. Other types than the BreadcrumbList are ignored!
+
+But you don't have to build the breadcrumb markup on your own. TYPO3 has a nice feature called MenuProcessor.
+
+    page = PAGE
+    page.10 = FLUIDTEMPLATE
+    page.10 {
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
+                special = rootline
+                as = breadcrumb
+            }
+        }
+    }
+
+The output of this MenuProcessor can be now used in a Fluid template to populate the breadcrumb automatically
+with the breadcrumb view helper:
+
+    <schema:breadcrumb breadcrumb="{breadcrumb}"/>
+
+As default the first item (mostly the home page) is stripped of, because it is not needed. But if you
+care about it, you can render also the first item:
+
+    <schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>
+
+You can also build your own breadcrumb array to use in the view helper: It should have the following structure:
+
+    $breadcrumb = [
+        [
+            'title' => 'Home page',
+            'link' => '/',
+            'data' => [
+                'tx_schema_webpagetype' => 'WebPage',
+            ],
+        ],
+        [
+            'title' => 'Videos',
+            'link' => '/videos/',
+            'data' => [
+                'tx_schema_webpagetype' => 'VideoGallery',
+            ],
+        ],
+        [
+            'title' => 'Unicorns in TYPO3 country',
+            'link' => '/videos/unicorns-in-typo3-country/',
+            'data' => [
+                'tx_schema_webpagetype' => 'ItemPage',
+            ],
+        ],
+    ];
+
+```data.tx_schema_webpagetype``` can be omitted and defaults to WebPage.

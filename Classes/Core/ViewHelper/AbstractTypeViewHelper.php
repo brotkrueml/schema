@@ -45,7 +45,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node');
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
 
-        $modelClassName = '\\Brotkrueml\\Schema\\Model\\Type\\' . $this->getType();
+        $modelClassName = Utility::getNamespacedClassNameForType($this->getType());
         /** @var AbstractType $model */
         $model = new $modelClassName();
         foreach ($model->getProperties() as $property) {
@@ -139,7 +139,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     protected function assignArgumentsToItem(): void
     {
-        $modelClassName = '\\Brotkrueml\\Schema\\Model\\Type\\' . $this->getType();
+        $modelClassName = Utility::getNamespacedClassNameForType($this->getType());
 
         /** @var AbstractType $model */
         $model = new $modelClassName();
