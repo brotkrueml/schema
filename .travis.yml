@@ -25,4 +25,4 @@ before_script:
 
 script:
   - find . -name \*.php  ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} > /dev/null \;
-  - .Build/bin/phpunit -c Tests/UnitTests.xml --coverage-text --coverage-clover .Build/logs/clover.xml
+  - .Build/bin/phpunit -c Tests/phpunit.xml.dist --coverage-text --coverage-clover .Build/logs/clover.xml

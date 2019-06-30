@@ -82,6 +82,29 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
+    public function hasWebPageReturnsFalseWhenNoWebPageIsSet(): void
+    {
+        $actual = $this->schemaManager->hasWebPage();
+
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function hasWebPageReturnstrueeWhenWebPageIsSet(): void
+    {
+        $webPage = new WebPage();
+        $this->schemaManager->addType($webPage);
+
+        $actual = $this->schemaManager->hasWebPage();
+
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @test
+     */
     public function addedWebPageIsAvailableAndRendersCorrectly(): void
     {
         $webPage = (new WebPage())->setProperty('name', 'Some web page');

@@ -20,7 +20,8 @@
         "typo3/cms-core": "^9.5"
     },
     "require-dev": {
-        "clue/graph": "^0.9.0",
+        "clue/graph": "^0.9",
+        "infection/infection": "^0.13",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^8.1",
         "twig/twig": "^2.0",

@@ -1,0 +1,24 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "Classes"
+        ],
+        "excludes": [
+            "Hook\/TableConfiguration",
+            "Model\/Type",
+            "Model\/TypeTrait",
+            "Provider",
+            "ViewHelpers\/Type"
+        ]
+    },
+    "phpUnit": {
+        "configDir": "Tests"
+    },
+    "logs": {
+        "text": ".Build\/logs\/infection.log"
+    },
+    "mutators": {
+        "@default": true
+    }
+}
