@@ -10,7 +10,7 @@
             <directory>../Generator/Classes/</directory>
             <exclude>
                 <directory>../Classes/Model/Type/</directory>
-                <directory>../Classes/ViewHelper/Type/</directory>
+                <directory>../Classes/ViewHelpers/Type/</directory>
             </exclude>
         </whitelist>
     </filter>

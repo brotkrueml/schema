@@ -9,7 +9,6 @@ namespace Brotkrueml\Schema\Model\Type;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Model\TypeTrait;
 

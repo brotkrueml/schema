@@ -11,12 +11,12 @@ $configuration = new Configuration();
 $configuration->schemaPath = __DIR__ . '/Schema/schema.jsonld';
 $configuration->modelTypeTraitPathTemplate = __DIR__ . '/../Classes/Model/TypeTrait/%sTrait.php';
 $configuration->modelTypePathTemplate = __DIR__ . '/../Classes/Model/Type/%s.php';
-$configuration->viewHelperTypePathTemplate = __DIR__ . '/../Classes/ViewHelper/Type/%sViewHelper.php';
+$configuration->viewHelperTypePathTemplate = __DIR__ . '/../Classes/ViewHelpers/Type/%sViewHelper.php';
 $configuration->webPageTypeProviderTemplate = __DIR__ . '/../Classes/Provider/WebPageTypeProvider.php';
 
 $loader = new FilesystemLoader(__DIR__ . '/Templates');
 $twig = new Environment($loader, [
-    'cache' => __DIR__ . '/../.Build/twig_cache',
+    'cache' => false,
 ]);
 
 try {
