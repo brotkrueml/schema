@@ -28,7 +28,6 @@
         "typo3/testing-framework": "^4.13"
     },
     "replace": {
-        "schema": "self.version",
         "typo3-ter/schema": "self.version"
     },
     "autoload": {
