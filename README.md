@@ -2,6 +2,8 @@
 
 [![TYPO3](https://img.shields.io/badge/TYPO3-9%20LTS-orange.svg)](https://typo3.org/)
 [![Build Status](https://travis-ci.org/brotkrueml/schema.svg?branch=master)](https://travis-ci.org/brotkrueml/schema)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=brotkrueml_schema&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=brotkrueml_schema)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=brotkrueml_schema&metric=coverage)](https://sonarcloud.io/dashboard?id=brotkrueml_schema)
 [![Latest Stable Version](https://poser.pugx.org/brotkrueml/schema/v/stable)](https://packagist.org/packages/brotkrueml/schema)
 
 ## Requirements
