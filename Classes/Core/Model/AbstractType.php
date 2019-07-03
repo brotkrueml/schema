@@ -215,6 +215,7 @@ abstract class AbstractType
      *
      * @param bool $isRootType Is the root type?
      * @return array
+     * @internal
      */
     public function toArray(bool $isRootType = true): array
     {

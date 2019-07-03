@@ -15,6 +15,7 @@ class Utility
      *
      * @param string $className Class name with namespace
      * @return string
+     * @internal
      */
     public static function getClassNameWithoutNamespace(string $className): string
     {
@@ -28,6 +29,7 @@ class Utility
      *
      * @param string $type Type
      * @return string|null
+     * @internal
      */
     public static function getNamespacedClassNameForType(string $type): ?string
     {
