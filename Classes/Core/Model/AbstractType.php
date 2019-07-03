@@ -46,48 +46,48 @@ abstract class AbstractType
     /**
      * Check, if a property exists
      *
-     * @param string $property The property name
+     * @param string $propertyName The property name
      * @return bool
      */
-    public function hasProperty(string $property): bool
+    public function hasProperty(string $propertyName): bool
     {
-        return \property_exists($this, $property);
+        return \property_exists($this, $propertyName);
     }
 
     /**
      * Get the value of a property
      *
-     * @param string $property The property name
+     * @param string $propertyName The property name
      * @return string|array|AbstractType
      */
-    public function getProperty(string $property)
+    public function getProperty(string $propertyName)
     {
-        if (!\property_exists($this, $property)) {
+        if (!\property_exists($this, $propertyName)) {
             throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType()),
+                sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
                 1561829996
             );
         }
 
-        return $this->$property;
+        return $this->$propertyName;
     }
 
     /**
      * Set the value of a property
      *
-     * @param string $property The property name
-     * @param string|array|AbstractType $value The value of the property
+     * @param string $propertyName The property name
+     * @param string|array|AbstractType $propertyValue The value of the property
      * @return AbstractType
      */
-    public function setProperty(string $property, $value): self
+    public function setProperty(string $propertyName, $propertyValue): self
     {
-        $this->checkProperty($property, $value);
+        $this->checkProperty($propertyName, $propertyValue);
 
-        if (\is_int($value)) {
-            $value = (string)$value;
+        if (\is_int($propertyValue)) {
+            $propertyValue = (string)$propertyValue;
         }
 
-        $this->$property = $value;
+        $this->$propertyName = $propertyValue;
 
         return $this;
     }
@@ -95,27 +95,27 @@ abstract class AbstractType
     /**
      * Check, if property name and value are valid
      *
-     * @param string $property The property name
-     * @param string|array|AbstractType $value The property value
+     * @param string $propertyName The property name
+     * @param string|array|AbstractType $propertyValue The property value
      *
      * @throws \DomainException
      * @throws \InvalidArgumentException
      */
-    protected function checkProperty(string $property, $value): void
+    protected function checkProperty(string $propertyName, $propertyValue): void
     {
-        if (!\property_exists($this, $property)) {
+        if (!\property_exists($this, $propertyName)) {
             throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType()),
+                sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
                 1561829996
             );
         }
 
-        if (!(\is_string($value) || \is_int($value) || \is_array($value) || $value instanceof AbstractType)) {
+        if (!(\is_string($propertyValue) || \is_int($propertyValue) || \is_array($propertyValue) || $propertyValue instanceof AbstractType)) {
             throw new \InvalidArgumentException(
                 \sprintf(
                     'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: string, int, array, instanceof AbstractType',
-                    $property,
-                    \is_object($value) ? \get_class($value) : \gettype($value)
+                    $propertyName,
+                    \is_object($propertyValue) ? \get_class($propertyValue) : \gettype($propertyValue)
                 ),
                 1561830012
             );
@@ -125,34 +125,53 @@ abstract class AbstractType
     /**
      * Adds a value to a property
      *
-     * @param string $property The property name
-     * @param string|array|AbstractType $value The property value
+     * @param string $propertyName The property name
+     * @param string|array|AbstractType $propertyValue The property value
      * @return AbstractType
      */
-    public function addProperty(string $property, $value): self
+    public function addProperty(string $propertyName, $propertyValue): self
     {
-        $this->checkProperty($property, $value);
+        $this->checkProperty($propertyName, $propertyValue);
 
-        if (\is_null($this->$property)) {
-            $this->$property = $value;
+        if (\is_null($this->$propertyName)) {
+            $this->$propertyName = $propertyValue;
 
             return $this;
         }
 
-        if (\is_array($this->$property)) {
-            if (\is_string($value) || $value instanceof AbstractType) {
-                $value = [$value];
+        if (\is_array($this->$propertyName)) {
+            if (\is_string($propertyValue) || $propertyValue instanceof AbstractType) {
+                $propertyValue = [$propertyValue];
             }
 
-            $this->$property = \array_merge($this->$property, $value);
+            $this->$propertyName = \array_merge($this->$propertyName, $propertyValue);
 
             return $this;
         }
 
-        $this->$property = [
-            $this->$property,
-            $value,
+        $this->$propertyName = [
+            $this->$propertyName,
+            $propertyValue,
         ];
+
+        return $this;
+    }
+
+    /**
+     * Set multiple properties at once
+     *
+     * The method expects the properties in the following format:
+     * key = property name
+     * value = property value
+     *
+     * @param array $properties
+     * @return AbstractType
+     */
+    public function setProperties(array $properties): self
+    {
+        foreach ($properties as $propertyName => $propertyValue) {
+            $this->setProperty($propertyName, $propertyValue);
+        }
 
         return $this;
     }
@@ -160,20 +179,20 @@ abstract class AbstractType
     /**
      * Clear a property (set it to null)
      *
-     * @param string $property The property name
+     * @param string $propertyName The property name
      *
      * @return AbstractType
      */
-    public function clearProperty(string $property): self
+    public function clearProperty(string $propertyName): self
     {
-        if (!\property_exists($this, $property)) {
+        if (!\property_exists($this, $propertyName)) {
             throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType()),
+                sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
                 1562177708
             );
         }
 
-        $this->$property = null;
+        $this->$propertyName = null;
 
         return $this;
     }

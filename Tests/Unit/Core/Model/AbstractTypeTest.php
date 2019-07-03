@@ -220,6 +220,40 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
+    public function setPropertiesReturnsReferenceToItself(): void
+    {
+        $actual = $this->concreteType->setProperties([]);
+
+        $this->assertInstanceOf(AbstractType::class, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setPropertiesSetsThePropertiesCorrectly(): void
+    {
+        $this->concreteType->setProperties([
+            'name' => 'some name',
+            'description' => 'some description',
+            'image' => ['some image value', 'other image value'],
+        ]);
+
+        $actualName = $this->concreteType->getProperty('name');
+
+        $this->assertSame('some name', $actualName);
+
+        $actualDescription = $this->concreteType->getProperty('description');
+
+        $this->assertSame('some description', $actualDescription);
+
+        $actualImage = $this->concreteType->getProperty('image');
+
+        $this->assertSame(['some image value', 'other image value'], $actualImage);
+    }
+
+    /**
+     * @test
+     */
     public function clearPropertySetsValueToNull(): void
     {
         $resultOfClear = $this->concreteType
