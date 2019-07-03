@@ -201,6 +201,20 @@ abstract class AbstractType
     }
 
     /**
+     * Check if all properties are not set with a value
+     *
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        $propertiesNotEmpty = \array_filter($this->getProperties(), function ($property) {
+            return !empty($this->$property);
+        });
+
+        return empty($propertiesNotEmpty);
+    }
+
+    /**
      * Get the type
      *
      * @return string

@@ -245,7 +245,6 @@ class AbstractTypeTest extends TestCase
         $this->concreteType->clearProperty('invalidPropertyName');
     }
 
-
     /**
      * @test
      */
@@ -262,6 +261,42 @@ class AbstractTypeTest extends TestCase
             ],
             $actual
         );
+    }
+
+    /**
+     * @test
+     */
+    public function isEmptyReturnsTrueOnNewlyCreatedModel(): void
+    {
+        $actual = $this->concreteType->isEmpty();
+
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function isEmptyReturnsFalseIfOnePropertyHasStringValue(): void
+    {
+        $this->concreteType->setProperty('name', 'some name');
+
+        $actual = $this->concreteType->isEmpty();
+
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function isEmptyReturnsTrueWithPropertiesSetToEmptyValues(): void
+    {
+        $this->concreteType
+            ->setProperty('name', '')
+            ->setProperty('description', []);
+
+        $actual = $this->concreteType->isEmpty();
+
+        $this->assertTrue($actual);
     }
 
     public function dataProviderForToArrayReturnsCorrectResult(): array
