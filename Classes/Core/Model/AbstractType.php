@@ -166,6 +166,13 @@ abstract class AbstractType
      */
     public function clearProperty(string $property): self
     {
+        if (!\property_exists($this, $property)) {
+            throw new \DomainException(
+                sprintf('Property "%s" is unknown for type "%s"', $property, $this->getType()),
+                1562177708
+            );
+        }
+
         $this->$property = null;
 
         return $this;
