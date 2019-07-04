@@ -53,7 +53,7 @@ class WebPageTypeTest extends TestCase
      *
      * @covers \Brotkrueml\Schema\Middleware\WebPageType::process
      */
-    public function automaticWebPageGenerationIsDeactivates()
+    public function automaticWebPageGenerationIsDeactivated()
     {
         /** @var MockObject|ExtensionConfiguration $configurationMock */
         $configurationMock = $this->getMockBuilder(ExtensionConfiguration::class)
@@ -129,8 +129,6 @@ class WebPageTypeTest extends TestCase
                     'endtime' => 0,
                 ],
                 (new WebPage())
-                    ->setProperty('name', 'A test title')
-                    ->setProperty('description', 'A test description')
             ],
             'Type is set, so this type is used' => [
                 [
@@ -140,8 +138,6 @@ class WebPageTypeTest extends TestCase
                     'endtime' => 0,
                 ],
                 (new ItemPage())
-                    ->setProperty('name', 'An item title')
-                    ->setProperty('description', 'An item description')
             ],
             'Endtime is defined, expires is set' => [
                 [
@@ -150,10 +146,7 @@ class WebPageTypeTest extends TestCase
                     'description' => 'An item description',
                     'endtime' => 1561672753,
                 ],
-                (new WebPage())
-                    ->setProperty('name', 'An item title')
-                    ->setProperty('description', 'An item description')
-                    ->setProperty('expires', '2019-06-27T21:59:13+00:00')
+                (new WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00')
             ],
         ];
     }

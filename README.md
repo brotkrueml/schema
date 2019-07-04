@@ -125,9 +125,10 @@ appear once on a web page. You can define it with the API:
     
     $schemaManager->addType($webPage);
 
-You can set the web page multiple times, the last one wins. If no web page is defined (and the
-according configuration setting is activated), a default web page type is created which sets the
-name (from the page title) and the description (from the page description).
+You can set the web page multiple times, the last call wins. If no web page is defined (and the
+according configuration setting is activated), a default web page type is created which sets
+the type. If an expiration date is defined in the page properties, this will also be available
+in the output as expires property.
 
 ### Using The View Helpers
  

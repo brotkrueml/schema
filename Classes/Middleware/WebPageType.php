@@ -11,6 +11,7 @@ namespace Brotkrueml\Schema\Middleware;
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Utility\Utility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -52,16 +53,10 @@ class WebPageType implements MiddlewareInterface
 
         $type = $this->controller->page['tx_schema_webpagetype'] ?: 'WebPage';
 
-        $webPageClass = 'Brotkrueml\\Schema\\Model\\Type\\' . $type;
-
-        if (\class_exists($webPageClass)) {
+        $webPageClass = Utility::getNamespacedClassNameForType($type);
+        if ($webPageClass) {
             /** @var AbstractType $webPage */
             $webPage = GeneralUtility::makeInstance($webPageClass);
-            $webPage->setProperty('name', $this->controller->page['title']);
-
-            if ($this->controller->page['description']) {
-                $webPage->setProperty('description', $this->controller->page['description']);
-            }
 
             if ($this->controller->page['endtime']) {
                 $webPage->setProperty('expires', \date('c', $this->controller->page['endtime']));
