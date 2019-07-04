@@ -22,6 +22,8 @@ trait ConcreteTypeTraitB
     protected $name;
     protected $description;
     protected $image;
+    protected $alternateName;
+    protected $identifier;
 }
 
 /**
@@ -112,8 +114,10 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
-        $this->concreteType->setProperty('name', 'some test name');
-        $this->concreteType->setProperty('description', ['some test description as array']);
+        $this->concreteType->setProperty('name', 'Pi');
+        $this->concreteType->setProperty('description', ['The answert for everything']);
+        $this->concreteType->setProperty('identifier', 42);
+        $this->concreteType->setProperty('alternateName', 3.141592653);
 
         $anotherConcreteType = new class extends AbstractType {
         };
@@ -220,6 +224,25 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
+    public function addPropertyAcceptsValidDataTypesAsValue(): void
+    {
+        $this->concreteType->setProperty('name', 'Pi');
+        $this->concreteType->setProperty('description', ['The answert for everything']);
+        $this->concreteType->addProperty('identifier', 42);
+        $this->concreteType->addProperty('alternateName', 3.141592653);
+
+        $anotherConcreteType = new class extends AbstractType {
+        };
+
+        $this->concreteType->addProperty('image', $anotherConcreteType);
+
+        // Assertion is valid, when no exception above is thrown
+        $this->assertTrue(true);
+    }
+
+    /**
+     * @test
+     */
     public function setPropertiesReturnsReferenceToItself(): void
     {
         $actual = $this->concreteType->setProperties([]);
@@ -288,7 +311,9 @@ class AbstractTypeTest extends TestCase
 
         $this->assertSame(
             [
+                'alternateName',
                 'description',
+                'identifier',
                 'image',
                 'name',
                 'url',

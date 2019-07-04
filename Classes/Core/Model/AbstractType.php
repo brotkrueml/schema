@@ -81,6 +81,7 @@ abstract class AbstractType
      */
     public function setProperty(string $propertyName, $propertyValue): self
     {
+        $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
 
         if (\is_int($propertyValue)) {
@@ -90,6 +91,17 @@ abstract class AbstractType
         $this->$propertyName = $propertyValue;
 
         return $this;
+    }
+
+    /**
+     * If the value is a numeric one, stringify it
+     *
+     * @param mixed $value
+     * @return string|AbstractType
+     */
+    protected function stringifyNumericValue($value)
+    {
+        return \is_numeric($value) ? (string)$value : $value;
     }
 
     /**
@@ -110,7 +122,7 @@ abstract class AbstractType
             );
         }
 
-        if (!(\is_string($propertyValue) || \is_int($propertyValue) || \is_array($propertyValue) || $propertyValue instanceof AbstractType)) {
+        if (!(\is_string($propertyValue) || \is_array($propertyValue) || $propertyValue instanceof AbstractType)) {
             throw new \InvalidArgumentException(
                 \sprintf(
                     'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: string, int, array, instanceof AbstractType',
@@ -131,6 +143,7 @@ abstract class AbstractType
      */
     public function addProperty(string $propertyName, $propertyValue): self
     {
+        $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
 
         if (\is_null($this->$propertyName)) {
