@@ -26,33 +26,33 @@ If no value is selected, "WebPage" is assumed.
 Available web page types
 ========================
 
-.. container:: webpage-types
+.. _webpage-types-list:
 
-   ================== ==================================================================================
-   Type               Description
-   ================== ==================================================================================
-   WebPage            This is the most generic type for a web page
-   ------------------ ----------------------------------------------------------------------------------
-   AboutPage          Page about the site, the organization, the person behind the site, etc.
-   ------------------ ----------------------------------------------------------------------------------
-   CheckoutPage       Checkout page in a web shop
-   ------------------ ----------------------------------------------------------------------------------
-   CollectionPage     Page about multiple things, like a paginated page listing blog posts, a product
-                      category, etc.
-   ------------------ ----------------------------------------------------------------------------------
-   ContactPage        Page with contact information
-   ------------------ ----------------------------------------------------------------------------------
-   FAQPage            Page with frequently asked questions
-   ------------------ ----------------------------------------------------------------------------------
-   ImageGallery       Page with an image gallery as the most important content
-   ------------------ ----------------------------------------------------------------------------------
-   ItemPage           Page about a single item, e.g. a blog posting, a photograph, a product
-   ------------------ ----------------------------------------------------------------------------------
-   ProfilePage        Page for user profiles
-   ------------------ ----------------------------------------------------------------------------------
-   QAPage             A page with a question and one or more answers to this question
-   ------------------ ----------------------------------------------------------------------------------
-   SearchResultsPage  Page for the result pages of the search function
-   ------------------ ----------------------------------------------------------------------------------
-   VideoGallery       Page with an video gallery
-   ================== ==================================================================================
+================== ==================================================================================
+Type               Description
+================== ==================================================================================
+WebPage            This is the most generic type for a web page
+------------------ ----------------------------------------------------------------------------------
+AboutPage          Page about the site, the organization, the person behind the site, etc.
+------------------ ----------------------------------------------------------------------------------
+CheckoutPage       Checkout page in a web shop
+------------------ ----------------------------------------------------------------------------------
+CollectionPage     Page about multiple things, like a paginated page listing blog posts, a product
+                   category, etc.
+------------------ ----------------------------------------------------------------------------------
+ContactPage        Page with contact information
+------------------ ----------------------------------------------------------------------------------
+FAQPage            Page with frequently asked questions
+------------------ ----------------------------------------------------------------------------------
+ImageGallery       Page with an image gallery as the most important content
+------------------ ----------------------------------------------------------------------------------
+ItemPage           Page about a single item, e.g. a blog posting, a photograph, a product
+------------------ ----------------------------------------------------------------------------------
+ProfilePage        Page for user profiles
+------------------ ----------------------------------------------------------------------------------
+QAPage             A page with a question and one or more answers to this question
+------------------ ----------------------------------------------------------------------------------
+SearchResultsPage  Page for the result pages of the search function
+------------------ ----------------------------------------------------------------------------------
+VideoGallery       Page with an video gallery
+================== ==================================================================================

@@ -15,6 +15,8 @@ button. Open the "schema" configuration:
 .. image:: ../Images/Configuration/ExtensionConfiguration.png
 
 
+.. _configuration-automaticWebPageSchemaGeneration:
+
 basic.automaticWebPageSchemaGeneration
 --------------------------------------
 
