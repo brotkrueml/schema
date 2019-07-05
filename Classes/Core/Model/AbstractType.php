@@ -62,14 +62,19 @@ abstract class AbstractType
      */
     public function getProperty(string $propertyName)
     {
+        $this->checkPropertyExists($propertyName);
+
+        return $this->$propertyName;
+    }
+
+    protected function checkPropertyExists(string $propertyName): void
+    {
         if (!\property_exists($this, $propertyName)) {
             throw new \DomainException(
                 sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
                 1561829996
             );
         }
-
-        return $this->$propertyName;
     }
 
     /**
@@ -115,12 +120,7 @@ abstract class AbstractType
      */
     protected function checkProperty(string $propertyName, $propertyValue): void
     {
-        if (!\property_exists($this, $propertyName)) {
-            throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
-                1561829996
-            );
-        }
+        $this->checkPropertyExists($propertyName);
 
         if (!(\is_string($propertyValue) || \is_array($propertyValue) || $propertyValue instanceof AbstractType)) {
             throw new \InvalidArgumentException(
@@ -198,12 +198,7 @@ abstract class AbstractType
      */
     public function clearProperty(string $propertyName): self
     {
-        if (!\property_exists($this, $propertyName)) {
-            throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
-                1562177708
-            );
-        }
+        $this->checkPropertyExists($propertyName);
 
         $this->$propertyName = null;
 

@@ -83,25 +83,25 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     protected function checkSpecificTypeAttribute(): void
     {
-        $specificType = (string)($this->arguments[static::ARGUMENT_SPECIFIC_TYPE] ?? '');
+        $specificTypeFromArguments = (string)($this->arguments[static::ARGUMENT_SPECIFIC_TYPE] ?? '');
 
-        if (empty($specificType)) {
+        if (empty($specificTypeFromArguments)) {
             return;
         }
 
-        $className = '\\Brotkrueml\\Schema\\ViewHelpers\\Type\\' . $specificType . 'ViewHelper';
+        $className = '\\Brotkrueml\\Schema\\ViewHelpers\\Type\\' . $specificTypeFromArguments . 'ViewHelper';
 
         if (!\class_exists($className)) {
             throw new ViewHelper\Exception(
                 \sprintf(
                     'The given specific type "%s" does not exist in the schema.org vocabulary, perhaps it is misspelled? Remember, the type must start with a capital letter.',
-                    $specificType
+                    $specificTypeFromArguments
                 ),
                 1561829970
             );
         }
 
-        $this->specificType = $specificType;
+        $this->specificType = $specificTypeFromArguments;
 
         unset($this->arguments[static::ARGUMENT_SPECIFIC_TYPE]);
     }
@@ -109,9 +109,9 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected function checkAsAttribute(): void
     {
         if (!$this->stack->isEmpty()) {
-            $parentPropertyName = (string)($this->arguments[static::ARGUMENT_AS] ?? '');
+            $parentPropertyNameFromArgument = (string)($this->arguments[static::ARGUMENT_AS] ?? '');
 
-            if (empty($parentPropertyName)) {
+            if (empty($parentPropertyNameFromArgument)) {
                 throw new ViewHelper\Exception(
                     \sprintf(
                         'The child view helper of schema type "%s" must have an "%s" attribute for embedding into the parent type',
@@ -122,7 +122,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
                 );
             }
 
-            $this->parentPropertyName = $parentPropertyName;
+            $this->parentPropertyName = $parentPropertyNameFromArgument;
         }
 
         unset($this->arguments[static::ARGUMENT_AS]);

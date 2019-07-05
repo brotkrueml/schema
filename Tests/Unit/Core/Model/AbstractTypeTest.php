@@ -297,7 +297,7 @@ class AbstractTypeTest extends TestCase
     public function clearPropertyThrowsDomainExceptionIfPropertyNameDoesNotExist(): void
     {
         $this->expectException(\DomainException::class);
-        $this->expectExceptionCode(1562177708);
+        $this->expectExceptionCode(1561829996);
 
         $this->concreteType->clearProperty('invalidPropertyName');
     }

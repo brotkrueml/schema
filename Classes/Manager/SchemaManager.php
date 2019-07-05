@@ -20,6 +20,8 @@ class SchemaManager implements SingletonInterface
 {
     protected const TEMPLATE_SCRIPT_TAG = '<script type="application/ld+json">%s</script>';
 
+    protected const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
+
     protected $validWebPageTypes;
 
     /** @var AbstractType[] */
@@ -45,8 +47,8 @@ class SchemaManager implements SingletonInterface
     public function addType(AbstractType $type): self
     {
         if ($this->isWebPageType($type)) {
-            $breadcrumb = $type->getProperty('breadcrumb');
-            $type->clearProperty('breadcrumb');
+            $breadcrumb = $type->getProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
+            $type->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
 
             if ($breadcrumb instanceof BreadcrumbList) {
                 $this->addBreadcrumbList($breadcrumb);
@@ -118,10 +120,10 @@ class SchemaManager implements SingletonInterface
 
         if ($this->webPage instanceof AbstractType) {
             if (count($this->breadcrumbList)) {
-                $this->webPage->clearProperty('breadcrumb');
+                $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
 
                 foreach ($this->breadcrumbList as $breadcrumb) {
-                    $this->webPage->addProperty('breadcrumb', $breadcrumb);
+                    $this->webPage->addProperty(static::WEBPAGE_PROPERTY_BREADCRUMB, $breadcrumb);
                 }
             }
 
