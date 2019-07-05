@@ -89,10 +89,6 @@ abstract class AbstractType
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
 
-        if (\is_int($propertyValue)) {
-            $propertyValue = (string)$propertyValue;
-        }
-
         $this->$propertyName = $propertyValue;
 
         return $this;
