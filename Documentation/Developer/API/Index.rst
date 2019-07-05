@@ -38,7 +38,7 @@ Surely you'll have some properties to add:
       ->setId('http://example.org/#person-42')
       ->setProperty('givenName', 'John')
       ->setProperty('familyName', 'Smith')
-      ->setProperty('gender', 'Male');
+      ->setProperty('gender', 'http://schema.org/Male');
    ;
 
 That was easy ... let's go on and add the company the person works for:
@@ -79,7 +79,7 @@ That's it ... if you call the according page the structured data is embedded aut
       "@id": "http://example.org/#person-42",
       "givenName": "John",
       "familyName": "Smith",
-      "gender": "Male",
+      "gender": "http://schema.org/Male",
       "worksFor": {
          "@type": "Corporation",
          "name": "Acme Ltd.",

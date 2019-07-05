@@ -33,7 +33,7 @@ structured markup:
       -id="http://example.org/#person-42"
       givenName="John"
       familyName="Smith"
-      gender="Male"
+      gender="http://schema.org/Male"
    >
       <schema:type.corporation
          -as="worksFor"
