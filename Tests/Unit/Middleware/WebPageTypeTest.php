@@ -32,20 +32,37 @@ class WebPageTypeTest extends TestCase
     /** @var MockObject|RequestHandlerInterface */
     private $handlerMock;
 
-    public function setUp(): void
+    /**
+     * @test
+     *
+     * @covers \Brotkrueml\Schema\Middleware\WebPageType::__construct
+     */
+    public function constructWorksCorrectlyWithNoParametersGiven(): void
     {
-        $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
+        $GLOBALS['TSFE'] = 'fake controller';
 
-        $this->requestMock = $this->createMock(ServerRequestInterface::class);
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $reflector = new \ReflectionClass(WebPageType::class);
 
-        $this->handlerMock = $this->getMockBuilder(RequestHandlerInterface::class)
-            ->setMethods(['handle'])
-            ->getMock();
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $controller = $reflector->getProperty('controller');
+        $controller->setAccessible(true);
 
-        $this->handlerMock
-            ->expects($this->once())
-            ->method('handle')
-            ->with($this->requestMock);
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $schemaManager = $reflector->getProperty('schemaManager');
+        $schemaManager->setAccessible(true);
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $configuration = $reflector->getProperty('configuration');
+        $configuration->setAccessible(true);
+
+        $webPageType = new WebPageType();
+
+        $this->assertSame('fake controller', $controller->getValue($webPageType));
+        $this->assertInstanceOf(SchemaManager::class, $schemaManager->getValue($webPageType));
+        $this->assertInstanceOf(ExtensionConfiguration::class, $configuration->getValue($webPageType));
+
+        unset($GLOBALS['TSFE']);
     }
 
     /**
@@ -55,6 +72,8 @@ class WebPageTypeTest extends TestCase
      */
     public function automaticWebPageGenerationIsDeactivated()
     {
+        $this->setUpGeneralMocks();
+
         /** @var MockObject|ExtensionConfiguration $configurationMock */
         $configurationMock = $this->getMockBuilder(ExtensionConfiguration::class)
             ->setMethods(['get'])
@@ -79,6 +98,22 @@ class WebPageTypeTest extends TestCase
             ->process($this->requestMock, $this->handlerMock);
     }
 
+    protected function setUpGeneralMocks(): void
+    {
+        $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
+
+        $this->requestMock = $this->createMock(ServerRequestInterface::class);
+
+        $this->handlerMock = $this->getMockBuilder(RequestHandlerInterface::class)
+            ->setMethods(['handle'])
+            ->getMock();
+
+        $this->handlerMock
+            ->expects($this->once())
+            ->method('handle')
+            ->with($this->requestMock);
+    }
+
     /**
      * @test
      *
@@ -86,6 +121,8 @@ class WebPageTypeTest extends TestCase
      */
     public function withAssignedWebPageModelRequestIsDirectlyPassedOverToNextMiddleware(): void
     {
+        $this->setUpGeneralMocks();
+
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
             ->setMethods(['hasWebPage'])
@@ -164,6 +201,8 @@ class WebPageTypeTest extends TestCase
         array $pageProperties,
         AbstractType $webPage
     ): void {
+        $this->setUpGeneralMocks();
+
         $this->controllerMock->page = $pageProperties;
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
@@ -192,6 +231,8 @@ class WebPageTypeTest extends TestCase
      */
     public function whenTypeDoesNotExistNoWebPageIsSet(): void
     {
+        $this->setUpGeneralMocks();
+
         $this->controllerMock->page = [
             'tx_schema_webpagetype' => 'TypeDoesNotExist',
         ];

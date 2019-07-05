@@ -31,6 +31,13 @@ class WebPageType implements MiddlewareInterface
     /** @var ExtensionConfiguration */
     private $configuration;
 
+    /**
+     * The parameters are only used for easing the testing!
+     *
+     * @param TypoScriptFrontendController|null $controller
+     * @param SchemaManager|null $schemaManager
+     * @param ExtensionConfiguration|null $configuration
+     */
     public function __construct(TypoScriptFrontendController $controller = null, SchemaManager $schemaManager = null, ExtensionConfiguration $configuration = null)
     {
         $this->controller = $controller ?: $GLOBALS['TSFE'];
