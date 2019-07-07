@@ -7,7 +7,6 @@
     <filter>
         <whitelist>
             <directory>../Classes/</directory>
-            <directory>../Generator/Classes/</directory>
             <exclude>
                 <directory>../Classes/Model/Type/</directory>
                 <directory>../Classes/ViewHelpers/Type/</directory>

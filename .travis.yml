@@ -14,6 +14,12 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+addons:
+  sonarcloud:
+    organization: "brotkrueml-github"
+    token:
+      secure: "UKA4xctLnEF8XXzAxl0KYk7AZyUHIOVFId2fMmcX7dUQQE0iOLqEUVBivFi7ZA3X5afT+mr6gOEl0hTxsk8RwGpuBvfetPWO6zs1YwW4dzarzyTCGdTjsmkyeSpa0MlLrCc4fM/Z9RbIVEaALS1P+p65jlGdP63YyH0lNs8BN3brJ/gvPTdt2xxXL03CVdplQkcbd5Z15VHggMXhEuDNfFT9c6kzZ/fsCoxPXOP4vkGgplne3Z//oZ5bi7ntdPBZYdAkR/4vTHIGhmauJcUTobcW3E7o6CgsaDpJ2glu/WVtMFOEtJIv/7aG6/jVnK/D0bzHaKoRRmGJBU4WrH5FX1DKBgBxSvnfqThomMDdrbrsZGq8/+mY2r8IGcFjb5efQBECktTEYp5vVFokt03lCbNwTi4mJY7SKT/1MnM+U835QabTL5LZCvgPgfSflLsQ3pwIyDnF2717+bI69+gnZkW+UTtgV9wOnqkm5FLolsFK8Eg+82YmUoIzX/u4ajOrQxtuFrekC2ihBj/RIs4XivAd7ulNpkceuYIgVNy90OUmSYZy8awG4w8Iu+nw5B+vZZ7zWfh+EfP4s5ModdfkpUR2NSJgl5gxwFqdL2ucsbdrDbTq3mPA7vJOLYT7QnSFePymnHgBebIqrGZvE57RQ1BrkbARL8+3vanzD3mi2T8="
+
 before_install:
   - composer self-update
   - composer --version
@@ -25,5 +31,6 @@ before_script:
 
 script:
   - find . -name \*.php  ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} > /dev/null \;
-  - .Build/bin/phpunit -c Tests/phpunit.xml.dist --coverage-text --coverage-clover .Build/logs/clover.xml
+  - .Build/bin/phpunit -c Tests/phpunit.xml.dist --log-junit .Build/logs/phpunit.xml --coverage-text --coverage-clover .Build/logs/clover.xml
   - .Build/bin/infection --min-msi=95 --min-covered-msi=95
+  - sonar-scanner
