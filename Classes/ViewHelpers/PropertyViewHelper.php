@@ -46,7 +46,7 @@ class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 
         if ($stack->isEmpty()) {
             throw new ViewHelper\Exception(
-                'The property view can only be used as a child of a type view helper',
+                'The property view helper can only be used as a child of a type view helper',
                 1561838013
             );
         }
