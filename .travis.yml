@@ -1,4 +1,5 @@
 language: php
+dist: bionic
 
 matrix:
   fast_finish: true
@@ -27,7 +28,7 @@ before_install:
 before_script:
   - composer require typo3/cms-core=$TYPO3_VERSION
   - git checkout composer.json
-  - export TYPO3_PATH_WEB=$PWD/Build/web
+  - export TYPO3_PATH_WEB=$PWD/.Build/web
 
 script:
   - find . -name \*.php  ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} > /dev/null \;
