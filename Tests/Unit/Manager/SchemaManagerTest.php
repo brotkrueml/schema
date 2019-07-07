@@ -237,4 +237,83 @@ class SchemaManagerTest extends Testcase
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"BreadcrumbList breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
     }
+
+    /**
+     * @test
+     */
+    public function setMainEntityOfWebPageReturnsInstanceOfSchemaManager(): void
+    {
+        $actual = $this->schemaManager->setMainEntityOfWebPage(new Thing());
+
+        $this->assertInstanceOf(SchemaManager::class, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setMainEntityOfWebPageWithWebPageAvailable(): void
+    {
+        $webPage = new WebPage();
+        $this->schemaManager->addType($webPage);
+
+        $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
+        $this->schemaManager->setMainEntityOfWebPage($mainEntity);
+
+        $actual = $this->schemaManager->renderJsonLd();
+
+        $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity"}}</script>', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setMainEntityOfWebPageWithoutWebPageAvailable(): void
+    {
+        $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
+        $this->schemaManager->setMainEntityOfWebPage($mainEntity);
+
+        $actual = $this->schemaManager->renderJsonLd();
+
+        $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity"}</script>', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setMainEntityOfWebPageTwiceWithWebPageAvailable(): void
+    {
+        $webPage = new WebPage();
+        $this->schemaManager->addType($webPage);
+
+        $mainEntity1 = (new Thing())->setProperty('name', 'A thing, set as main entity #1');
+        $this->schemaManager->setMainEntityOfWebPage($mainEntity1);
+
+        $mainEntity2 = (new Thing())->setProperty('name', 'A thing, set as main entity #2');
+        $this->schemaManager->setMainEntityOfWebPage($mainEntity2);
+
+        $actual = $this->schemaManager->renderJsonLd();
+
+        $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity #2"}},{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity #1"}]</script>', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setWebPageAndMainEntityOfWebPageAfterThatPreservesFirstType(): void
+    {
+        $webPage = (new WebPage())
+            ->setProperty(
+                'mainEntity',
+                (new Thing())
+                    ->setProperty('name', 'A thing, set as main entity directly in WebPage')
+            );
+        $this->schemaManager->addType($webPage);
+
+        $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
+        $this->schemaManager->setMainEntityOfWebPage($newMainEntity);
+
+        $actual = $this->schemaManager->renderJsonLd();
+
+        $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as new main entity"}},{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity directly in WebPage"}]</script>', $actual);
+    }
 }

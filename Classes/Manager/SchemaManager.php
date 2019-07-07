@@ -21,6 +21,7 @@ class SchemaManager implements SingletonInterface
     protected const TEMPLATE_SCRIPT_TAG = '<script type="application/ld+json">%s</script>';
 
     protected const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
+    protected const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
     protected $validWebPageTypes;
 
@@ -32,6 +33,9 @@ class SchemaManager implements SingletonInterface
 
     /** @var BreadcrumbList[] */
     protected $breadcrumbList = [];
+
+    /** @var AbstractType|null */
+    protected $mainEntityOfWebPage = null;
 
     public function __construct()
     {
@@ -47,19 +51,6 @@ class SchemaManager implements SingletonInterface
     public function addType(AbstractType $type): self
     {
         if ($this->isWebPageType($type)) {
-            $breadcrumb = $type->getProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
-            $type->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
-
-            if ($breadcrumb instanceof BreadcrumbList) {
-                $this->addBreadcrumbList($breadcrumb);
-            } elseif (\is_array($breadcrumb)) {
-                foreach ($breadcrumb as $item) {
-                    if ($item instanceof BreadcrumbList) {
-                        $this->addBreadcrumbList($item);
-                    }
-                }
-            }
-
             $this->setWebPage($type);
 
             return $this;
@@ -86,6 +77,26 @@ class SchemaManager implements SingletonInterface
 
     protected function setWebPage(AbstractType $webPage): void
     {
+        $breadcrumb = $webPage->getProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
+        $webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
+
+        if ($breadcrumb instanceof BreadcrumbList) {
+            $this->addBreadcrumbList($breadcrumb);
+        } elseif (\is_array($breadcrumb)) {
+            foreach ($breadcrumb as $item) {
+                if ($item instanceof BreadcrumbList) {
+                    $this->addBreadcrumbList($item);
+                }
+            }
+        }
+
+        $mainEntity = $webPage->getProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
+        $webPage->clearProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
+
+        if ($mainEntity instanceof AbstractType) {
+            $this->setMainEntityOfWebPage($mainEntity);
+        }
+
         $this->webPage = $webPage;
     }
 
@@ -110,6 +121,23 @@ class SchemaManager implements SingletonInterface
     }
 
     /**
+     * Set the main entity of the WebPage
+     *
+     * @param AbstractType $mainEntity
+     * @return SchemaManager
+     */
+    public function setMainEntityOfWebPage(AbstractType $mainEntity): self
+    {
+        if ($this->mainEntityOfWebPage) {
+            $this->addType($this->mainEntityOfWebPage);
+        }
+
+        $this->mainEntityOfWebPage = $mainEntity;
+
+        return $this;
+    }
+
+    /**
      * Render the JSON-LD from the assigned types
      *
      * @return string
@@ -127,10 +155,20 @@ class SchemaManager implements SingletonInterface
                 }
             }
 
+            if ($this->mainEntityOfWebPage) {
+                $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage);
+            }
+
             $result[] = $this->webPage->toArray();
-        } elseif (count($this->breadcrumbList)) {
-            foreach ($this->breadcrumbList as $breadcrumb) {
-                $result[] = $breadcrumb->toArray();
+        } else {
+            if (count($this->breadcrumbList)) {
+                foreach ($this->breadcrumbList as $breadcrumb) {
+                    $result[] = $breadcrumb->toArray();
+                }
+            }
+
+            if ($this->mainEntityOfWebPage) {
+                $result[] = $this->mainEntityOfWebPage->toArray();
             }
         }
 

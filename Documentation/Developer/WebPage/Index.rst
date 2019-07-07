@@ -40,7 +40,14 @@ Using the API
 -------------
 
 As you saw in a previous chapter you can use the :ref:`API <api>` to define the schema for a page. The ``WebPage`` type
-is no exception to that. Let's define a page with a product as primary content:
+is no exception to that. Define a ``WebPage`` type for a page via the API:
+
+.. code-block:: php
+
+   $itemPage = new \Brotkrueml\Schema\Model\Type\ItemPage()
+   $this->schemaManager->addType($itemPage);
+
+That's it. But you can add one or more properties to it - let's define a page with a product as primary content:
 
 .. code-block:: php
 
@@ -87,6 +94,10 @@ The example is rendered as JSON-LD:
    }
 
 If you define a web page on your own, this overrules the page property setting of the specific type of web page.
+
+.. TIP::
+   You don't have to define a web page type, if you only want to set the main entity of the page. You can also set the
+   main entity independently of the web page. Have a look at the chapter :ref:`Main entity <main-entity-of-web-page>`.
 
 
 Using the view helpers

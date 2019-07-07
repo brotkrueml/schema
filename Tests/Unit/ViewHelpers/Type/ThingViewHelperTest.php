@@ -112,6 +112,39 @@ class ThingViewHelperTest extends ViewHelperTestCase
                 </schema:type.organization>',
                 '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","contactPoint":[{"@type":"ContactPoint","areaServed":"DE","contactType":"sales","telephone":"+49 30 123456789"},{"@type":"ContactPoint","areaServed":"PL","contactType":"sales","telephone":"+48 22 123456789"},{"@type":"ContactPoint","areaServed":"TR","contactType":"sales","telephone":"+90 212 123456789"}],"logo":"https://www.example.org/logo.png","name":"Acme Ltd.","url":"https://www.example.org/"}</script>',
             ],
+
+            'Type with -isMainEntityOfWebPage set to true without a WebPage' => [
+                '<schema:type.thing
+                    -id="parentThing"
+                    -isMainEntityOfWebPage="1"
+                    name="parent name"
+                    url="http://example.org/">
+                    <schema:type.person
+                        -as="subjectOf"
+                        -id="childThing"
+                        name="child name"
+                        url="https://example.org/child"
+                    />
+                </schema:type.thing>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
+            ],
+
+            'Type with -isMainEntityOfWebPage set to true with a WebPage' => [
+                '<schema:type.webPage/>
+                <schema:type.thing
+                    -id="parentThing"
+                    -isMainEntityOfWebPage="1"
+                    name="parent name"
+                    url="http://example.org/">
+                    <schema:type.person
+                        -as="subjectOf"
+                        -id="childThing"
+                        name="child name"
+                        url="https://example.org/child"
+                    />
+                </schema:type.thing>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}</script>',
+            ],
         ];
     }
 
@@ -146,6 +179,10 @@ class ThingViewHelperTest extends ViewHelperTestCase
             'Missing -as attribute' => [
                 '<schema:type.thing><schema:type.creativeWork/></schema:type.thing>',
                 1561829951,
+            ],
+            'With -isMainEntityOfWebPage attribute assigned to child' => [
+                '<schema:type.thing><schema:type.creativeWork -as="name" -isMainEntityOfWebPage="1"/></schema:type.thing>',
+                1562517051,
             ],
         ];
     }

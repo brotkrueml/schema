@@ -20,14 +20,17 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 {
     protected const CONTEXT = 'http://schema.org';
 
-    protected const ARGUMENT_ID = '-id';
     protected const ARGUMENT_AS = '-as';
+    protected const ARGUMENT_ID = '-id';
+    protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
 
     protected $item = [];
 
-    protected $specificType;
-    protected $parentPropertyName;
+    protected $isMainEntityOfWebPage = false;
+    protected $specificType = '';
+
+    protected $parentPropertyName = '';
 
     /** @var TypeStack */
     protected $stack;
@@ -41,8 +44,9 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     {
         parent::initializeArguments();
 
-        $this->registerArgument(static::ARGUMENT_ID, 'string', 'IRI to identify the node');
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node');
+        $this->registerArgument(static::ARGUMENT_ID, 'string', 'IRI to identify the node');
+        $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'bool', 'Set to true, if the type is the primary content of the web page', false, false);
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
 
         $modelClassName = Utility::getNamespacedClassNameForType($this->getType());
@@ -57,6 +61,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     {
         $this->checkSpecificTypeAttribute();
         $this->checkAsAttribute();
+        $this->checkIsMainEntityOfWebPage();
 
         $this->assignArgumentsToItem();
 
@@ -77,7 +82,12 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         if ($this->stack->isEmpty()) {
             /** @var SchemaManager $schemaManager */
             $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-            $schemaManager->addType($recent);
+
+            if ($this->isMainEntityOfWebPage) {
+                $schemaManager->setMainEntityOfWebPage($recent);
+            } else {
+                $schemaManager->addType($recent);
+            }
         }
     }
 
@@ -126,6 +136,24 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
 
         unset($this->arguments[static::ARGUMENT_AS]);
+    }
+
+    protected function checkIsMainEntityOfWebPage(): void
+    {
+        $this->isMainEntityOfWebPage = (bool)($this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? false);
+
+        if ($this->isMainEntityOfWebPage && !$this->stack->isEmpty()) {
+            throw new ViewHelper\Exception(
+                \sprintf(
+                    'The argument "%s" must not be used in the child type "%s", only the main type is allowed',
+                    static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
+                    $this->getType()
+                ),
+                1562517051
+            );
+        }
+
+        unset($this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE]);
     }
 
     protected function getType(): string

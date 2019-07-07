@@ -124,7 +124,8 @@ and reference it on another page (e.g. ``Person``):
       "worksFor": {
          "@type": "Corporation",
          "@id": "http://example.org/#organization-1",
-         "name": "Acme Ltd.",
+         "name": "Acme Ltd."
+      }
    }
 
 .. tip::
@@ -170,6 +171,40 @@ or if view helper to choose the correct type. For this scenario you can benefit 
 
    When using the ``-specificType`` attribute you can only set the properties of the original type view helper, no
    additional ones from the specific type.
+
+
+-isMainEntityOfWebPage
+~~~~~~~~~~~~~~~~~~~~~~
+
+This argument defines the type as the :ref:`main entity <main-entity-of-web-page>` of a :ref:`web page <web-page-type>`:
+
+.. code-block:: html
+   :emphasize-lines: 3
+
+   <schema:type.person
+      -id="http://example.org/#person-42"
+      -isMainEntityOfWebPage="1"
+      givenName="John"
+      familyName="Smith"
+      gender="http://schema.org/Male"
+   />
+
+which results in the output:
+
+.. code-block:: json
+   :emphasize-lines: 3-4,9
+
+   {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "mainEntity": {
+         "@type": "Person",
+         "@id": "http://example.org/#person-42",
+         "givenName": "John",
+         "familyName": "Smith",
+         "gender": "http://schema.org/Male"
+      }
+   }
 
 
 Property View Helper

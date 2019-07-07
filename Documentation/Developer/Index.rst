@@ -21,13 +21,16 @@ into your website via a Fluid template.
 Special attention should be paid to the following points:
 
 * A web page can be characterised by different schema.org types as outlined in
-  :ref:`this chapter <page-properties-webpage-type>`. The web page type is set automatically if the corresponding
-  :ref:`configuration option <configuration-automaticWebPageSchemaGeneration>` is set. But you can always set manually
-  the desired type and properties - and you should in some cases (e.g. defining the main entity of the page).
+  :ref:`this chapter <page-properties-webpage-type>`. The ``WebPage`` type is set automatically if the corresponding
+  :ref:`configuration option <configuration-automaticWebPageSchemaGeneration>` is set. But it can always overriden manually
+  with the desired type and properties.
   The chapter ":ref:`The WebPage type <web-page-type>`" is dedicated to this topic.
-* A breadcrumb does not only help the user to find the location on the website. It is also helpful for search engines
-  to understand the structure of your website. Google honors the website operator for making the
-  :ref:`breadcrumb schema markup <breadcrumb>` available on a page displaying it in the search result snippet.
+* A breadcrumb does not only help the user to recognise the location of a particular page on the website. It is also
+  helpful for search engines to understand the structure of your website. Google honors the website operator for making the
+  :ref:`breadcrumb schema markup <breadcrumb>` available on a page with displaying it in the search result snippet.
+* The :ref:`main entity <main-entity-of-web-page>` of a web page indicates the primary entity. It can be set separately
+  from a ``WebPage``.
+
 
 Introduction
 ============
