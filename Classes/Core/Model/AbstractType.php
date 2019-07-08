@@ -291,10 +291,6 @@ abstract class AbstractType
             $result[$property] = $this->$property;
         }
 
-        if (empty($result)) {
-            return [];
-        }
-
         $header = [];
 
         if ($isRootType) {

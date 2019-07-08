@@ -496,10 +496,10 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
-    public function toArrayReturnsEmptyArrayIfNoContentIsAvailable(): void
+    public function toArrayReturnsCorrectResultWhenNoPropertiesAreSet(): void
     {
         $actual = $this->concreteType->toArray();
 
-        $this->assertSame([], $actual);
+        $this->assertSame(['@context' => 'http://schema.org', '@type' => 'ConcreteType'], $actual);
     }
 }

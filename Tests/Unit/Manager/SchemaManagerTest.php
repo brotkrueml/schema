@@ -70,18 +70,6 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function renderJsonLdWithOneEmptyTypeAddedReturnsEmptyString(): void
-    {
-        $actual = $this->schemaManager
-            ->addType((new Thing()))
-            ->renderJsonLd();
-
-        $this->assertSame('', $actual);
-    }
-
-    /**
-     * @test
-     */
     public function hasWebPageReturnsFalseWhenNoWebPageIsSet(): void
     {
         $actual = $this->schemaManager->hasWebPage();

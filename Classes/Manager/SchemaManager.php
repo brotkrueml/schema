@@ -173,13 +173,7 @@ class SchemaManager implements SingletonInterface
         }
 
         foreach ($this->types as $type) {
-            $array = $type->toArray();
-
-            if (empty($array)) {
-                continue;
-            }
-
-            $result[] = $array;
+            $result[] = $type->toArray();
         }
 
         if (empty($result)) {
