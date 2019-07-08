@@ -30,6 +30,9 @@
     "replace": {
         "typo3-ter/schema": "self.version"
     },
+    "conflict": {
+        "brotkrueml/sdbreadcrumb": "*"
+    },
     "autoload": {
         "psr-4": {
             "Brotkrueml\\Schema\\": "Classes/"
