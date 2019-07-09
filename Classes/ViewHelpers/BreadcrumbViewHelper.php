@@ -99,7 +99,7 @@ class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $breadcrumbList = (new BreadcrumbList());
         for ($i = 0; $i < count($arguments[static::ARGUMENT_BREADCRUMB]); $i++) {
             $itemTypeClass = WebPage::class;
-            if (isset($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']) && isset($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'])) {
+            if (\is_array($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']) && isset($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'])) {
                 $givenItemTypeClass = Utility::getNamespacedClassNameForType($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype']);
                 $itemTypeClass = $givenItemTypeClass ?: $itemTypeClass;
             }
