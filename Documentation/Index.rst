@@ -41,7 +41,7 @@ by Google: `Understand how structured data works <https://developers.google.com/
    It is maintained as part of this third party extension.
 
    If you find an error or something is missing, please:
-   `Report a Problem <https://github.com/TYPO3-Documentation/TYPO3CMS-Example-ExtensionManual/issues/new>`__
+   `Report a Problem <https://github.com/brotkrueml/schema/issues/new>`__
 
 **Extension Manual**
 
