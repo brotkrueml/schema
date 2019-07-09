@@ -27,6 +27,8 @@ class Utility
     /**
      * Get the class name with namespace for a given type
      *
+     * Returns null, if the class does not exist
+     *
      * @param string $type Type
      * @return string|null
      * @internal
