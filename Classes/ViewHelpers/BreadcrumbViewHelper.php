@@ -98,26 +98,34 @@ class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 
         $breadcrumbList = (new BreadcrumbList());
         for ($i = 0; $i < count($arguments[static::ARGUMENT_BREADCRUMB]); $i++) {
-            $itemTypeClass = WebPage::class;
-            if (\is_array($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']) && isset($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'])) {
+            $webPageTypeClass = WebPage::class;
+            if (static::hasWebPageType($arguments[static::ARGUMENT_BREADCRUMB][$i])) {
                 $givenItemTypeClass = Utility::getNamespacedClassNameForType($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype']);
-                $itemTypeClass = $givenItemTypeClass ?: $itemTypeClass;
+                $webPageTypeClass = $givenItemTypeClass ?: $webPageTypeClass;
             }
 
             /** @var AbstractType $itemType */
-            $itemType = new $itemTypeClass();
+            $itemType = new $webPageTypeClass();
             $itemType->setId($siteUrl . ltrim($arguments[static::ARGUMENT_BREADCRUMB][$i]['link'], '/'));
 
-            $item = (new ListItem())
-                ->setProperty('position', $i + 1)
-                ->setProperty('name', $arguments[static::ARGUMENT_BREADCRUMB][$i]['title'])
-                ->setProperty('item', $itemType);
+            $item = (new ListItem())->setProperties([
+                'position' => $i + 1,
+                'name' => $arguments[static::ARGUMENT_BREADCRUMB][$i]['title'],
+                'item' => $itemType,
+            ]);
 
             $breadcrumbList->addProperty('itemListElement', $item);
         }
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType($breadcrumbList);
+    }
+
+    protected static function hasWebPageType(array $breadcrumbItem): bool
+    {
+        return isset($breadcrumbItem['data'])
+            && \is_array($breadcrumbItem['data'])
+            && isset($breadcrumbItem['data']['tx_schema_webpagetype']);
     }
 
     protected static function checkBreadcrumbStructure($breadcrumb)

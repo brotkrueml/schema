@@ -98,6 +98,26 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                 ],
                 '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}</script>',
             ],
+            'Breadcrumb with multiple pages and a class given as data item (which can happen when you add a virtual category page with a domain model to it)' => [
+                '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+                [
+                    'breadcrumb' => [
+                        [
+                            'title' => 'A web page',
+                            'link' => '/',
+                            'data' => [
+                                'tx_schema_webpagetype' => 'WebPage',
+                            ],
+                        ],
+                        [
+                            'title' => 'Unicorns in TYPO3 land',
+                            'link' => '/videos/unicorns-in-typo3-land/',
+                            'data' => new \stdClass(),
+                        ],
+                    ],
+                ],
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}</script>',
+            ],
         ];
     }
 
