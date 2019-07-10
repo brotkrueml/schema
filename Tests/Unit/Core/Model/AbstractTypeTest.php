@@ -380,7 +380,7 @@ class AbstractTypeTest extends TestCase
                     'name' => 'some string value',
                 ],
             ],
-            'Value is an number as string' => [
+            'Value is a number as string' => [
                 'name',
                 '1',
                 [
@@ -389,7 +389,7 @@ class AbstractTypeTest extends TestCase
                     'name' => '1',
                 ],
             ],
-            'Value is an number as integer' => [
+            'Value is a number as integer' => [
                 'name',
                 1,
                 [
@@ -472,6 +472,14 @@ class AbstractTypeTest extends TestCase
                             'name' => 'some value for image',
                         ],
                     ],
+                ],
+            ],
+            'value is null' => [
+                'image',
+                null,
+                [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'ConcreteType',
                 ],
             ],
         ];

@@ -109,7 +109,7 @@ abstract class AbstractType
      * Check, if property name and value are valid
      *
      * @param string $propertyName The property name
-     * @param string|array|AbstractType $propertyValue The property value
+     * @param mixed The property value
      *
      * @throws \DomainException
      * @throws \InvalidArgumentException
@@ -118,16 +118,30 @@ abstract class AbstractType
     {
         $this->checkPropertyExists($propertyName);
 
-        if (!(\is_string($propertyValue) || \is_array($propertyValue) || $propertyValue instanceof AbstractType)) {
+        if (!$this->isValidDataTypeForPropertyValue($propertyValue)) {
             throw new \InvalidArgumentException(
                 \sprintf(
-                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: string, int, array, instanceof AbstractType',
+                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, instanceof AbstractType',
                     $propertyName,
                     \is_object($propertyValue) ? \get_class($propertyValue) : \gettype($propertyValue)
                 ),
                 1561830012
             );
         }
+    }
+
+    /**
+     * Returns true, if data type of property value is allowed
+     *
+     * @param mixed $propertyValue
+     * @return bool
+     */
+    protected function isValidDataTypeForPropertyValue($propertyValue): bool
+    {
+        return \is_null($propertyValue)
+            || \is_string($propertyValue)
+            || \is_array($propertyValue)
+            || $propertyValue instanceof AbstractType;
     }
 
     /**
