@@ -117,6 +117,7 @@ class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
             $breadcrumbList->addProperty('itemListElement', $item);
         }
 
+        /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType($breadcrumbList);
     }

@@ -109,7 +109,7 @@ abstract class AbstractType
      * Check, if property name and value are valid
      *
      * @param string $propertyName The property name
-     * @param mixed The property value
+     * @param mixed $propertyValue The property value
      *
      * @throws \DomainException
      * @throws \InvalidArgumentException
@@ -138,7 +138,7 @@ abstract class AbstractType
      */
     protected function isValidDataTypeForPropertyValue($propertyValue): bool
     {
-        return \is_null($propertyValue)
+        return $propertyValue === null
             || \is_string($propertyValue)
             || \is_array($propertyValue)
             || $propertyValue instanceof AbstractType;
@@ -156,7 +156,7 @@ abstract class AbstractType
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
 
-        if (\is_null($this->$propertyName)) {
+        if ($this->$propertyName === null) {
             $this->$propertyName = $propertyValue;
 
             return $this;

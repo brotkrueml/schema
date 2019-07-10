@@ -20,8 +20,9 @@ class Utility
     public static function getClassNameWithoutNamespace(string $className): string
     {
         $classNameParts = \explode('\\', $className);
+        $classNameWithoutNamespace = \end($classNameParts);
 
-        return \end($classNameParts);
+        return $classNameWithoutNamespace === false ? '' : $classNameWithoutNamespace;
     }
 
     /**

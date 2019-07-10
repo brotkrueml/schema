@@ -23,6 +23,7 @@
         "clue/graph": "^0.9",
         "infection/infection": "^0.13",
         "mikey179/vfsstream": "^1.6",
+        "phpstan/phpstan": "^0.11",
         "phpunit/phpunit": "^8.1",
         "twig/twig": "^2.0",
         "typo3/testing-framework": "^4.13"

@@ -42,6 +42,7 @@ class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     {
         $this->checkAttributes();
 
+        /** @var TypeStack $stack */
         $stack = GeneralUtility::makeInstance(TypeStack::class);
 
         if ($stack->isEmpty()) {
