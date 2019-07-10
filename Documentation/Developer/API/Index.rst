@@ -1,4 +1,4 @@
-.. include:: ../Includes.txt
+.. include:: ../../Includes.txt
 
 
 .. _api:
@@ -21,16 +21,16 @@ Starting with an Example
 ========================
 
 Let's start with a simple example. Imagine you describe a `person <https://schema.org/Person>`__ on a plugin's detail
-page which you want to enrich with structured markup. First you have to create the schema model:
+page that you want to enrich with structured markup. First you have to create the schema model:
 
 .. code-block:: php
 
    $person = new \Brotkrueml\Schema\Model\Type\Person();
 
-As you see, the schema type Person maps to the model person. You can use every accepted type of the
+As you see, the schema type ``Person`` maps to the model ``Person``. You can use every accepted type of the
 `schema.org vocabulary <https://schema.org/docs/full.html>`__.
 
-Surely you'll have some properties to add:
+Surely you will need to add some properties:
 
 .. code-block:: php
 
@@ -41,7 +41,7 @@ Surely you'll have some properties to add:
       ->setProperty('gender', 'http://schema.org/Male');
    ;
 
-That was easy ... let's go on and add the company the person works for:
+That was easy ... let's go on and define the company the person works for:
 
 .. code-block:: php
 
@@ -69,7 +69,7 @@ The defined models are ready to embed on the web page. The schema manager does t
    $schemaManager->addType($person);
 
 
-That's it ... if you call the according page the structured data is embedded automatically into the head section:
+That's it ... if you call the according page the structured markup is embedded automatically into the head section:
 
 .. code-block:: json
 
@@ -98,13 +98,13 @@ The type models expose several methods:
 ->setId(string $id)
 -------------------
 
-The method set the unique id of the model. With the id you can cross-reference between models without repeating the whole
-properties. This is also true between web pages and even between web sites.
+The method sets the unique ID of the model. With the ID, you can cross-reference types on the same page or between
+different pages (and even between different web sites) without repeating all the properties.
 
 It's common to use an
-``IRI <https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier>``__ like in the above example. Please keep
-in mind that the id should be consistent between changes of the properties, e.g. if a person marries and the name is changed.
-He's still the same person, so the IRI should be the same.
+``IRI <https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier>``__ as ID like in the above example. Please
+keep in mind that the ID should be consistent between changes of the properties, e.g. if a person marries and the name
+is changed. The person is still the same, so the IRI should be.
 
 The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you call it in a browser.
 
@@ -132,18 +132,19 @@ A previously set id or null (if not set).
 ->setProperty(string $propertyName, $propertyValue)
 ---------------------------------------------------
 
-You call this method to set a property and override a previously one.
+You call this method to set a property or override a previously one.
 
 Parameters:
 ~~~~~~~~~~~
 ============================================ ===========================================================================
 Parameter                                    Description
 ============================================ ===========================================================================
-string $propertyName                         The property name to set. If the property does not exist in the model, an exception
-                                             is thrown.
+string $propertyName                         The property name to set. If the property does not exist in the model, an
+                                             exception is thrown.
 -------------------------------------------- ---------------------------------------------------------------------------
-string | array | AbstractType $propertyValue The value of the property to set. This can be a string, another model or an array
-                                             of strings or models
+string | array | AbstractType $propertyValue The value of the property to set. This can be a string, another model or an
+                                             array of strings or models. Also null is possible to clear the property
+                                             value.
 ============================================ ===========================================================================
 
 Return value:
@@ -154,11 +155,11 @@ Returns a reference to the model itself.
 ->addProperty(string $propertyName, $propertyValue)
 ---------------------------------------------------
 
-Call this method if you want to add a value to an existing one. In the above example you'll see that ``addProperty``
+Call this method if you want to add a value to an existing one. In the example above, you can see that ``addProperty``
 is used to add a second value to the ``sameAs`` property.
 
-Calling the ``addProperty`` method on a property which has no value assigned it has the same affect if you call
-``setProperty``. So you can use it safely, e.g. in a loop to set some values to a property.
+Calling the ``addProperty`` method on a property that has no value assigned has the same effect as calling
+``setProperty``. So you can safely use it, e.g. in a loop, to set some values on a property.
 
 
 Parameters:
@@ -166,11 +167,12 @@ Parameters:
 ============================================ ===========================================================================
 Parameter                                    Description
 ============================================ ===========================================================================
-string $propertyName                         The property name to set. If the property does not exist in the model, an exception
-                                             is thrown.
+string $propertyName                         The property name to set. If the property does not exist in the model, an
+                                             exception is thrown.
 -------------------------------------------- ---------------------------------------------------------------------------
-string | array | AbstractType $propertyValue The value of the property to set. This can be a string, another model or an array
-                                             of strings or models
+string | array | AbstractType $propertyValue The value of the property to set. This can be a string, another model or an
+                                             array of strings or models. Also null is possible to clear the property
+                                             value.
 ============================================ ===========================================================================
 
 Return value:
@@ -207,31 +209,31 @@ Parameters:
 ==================================== ===================================================================================
 Parameter                            Description
 ==================================== ===================================================================================
-string $propertyName                 The property name to set. If the property does not exist in the model, an exception
-                                     is thrown.
+string $propertyName                 The property name to get the value from. If the property name does not exist in the
+                                     model, an exception is thrown.
 ==================================== ===================================================================================
 
 Return value:
 ~~~~~~~~~~~~~
-The value of the property (string, model, array of strings, array of models.
+The value of the property (string, model, array of strings, array of models, null).
 
 
 ->hasProperty(string $propertyName)
 -----------------------------------
 
-Check, if the property exists on a specific model.
+Check whether the property name exists in a particular model.
 
 Parameters:
 ~~~~~~~~~~~
 ==================================== ===================================================================================
 Parameter                            Description
 ==================================== ===================================================================================
-string $propertyName                 The property name to set.
+string $propertyName                 The property name to check.
 ==================================== ===================================================================================
 
 Return value:
 ~~~~~~~~~~~~~
-``true`` if the property exists and ``false`` else.
+``true``, if the property exists and ``false``, otherwise.
 
 
 ->clearProperty(string $propertyName)
@@ -253,8 +255,8 @@ Return value:
 Returns a reference to the model itself.
 
 
-->getProperties()
------------------
+->getPropertyNames()
+--------------------
 
 Return value:
 ~~~~~~~~~~~~~

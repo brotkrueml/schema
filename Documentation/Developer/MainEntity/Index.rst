@@ -1,4 +1,4 @@
-.. include:: ../Includes.txt
+.. include:: ../../Includes.txt
 
 
 .. _main-entity-of-web-page:
@@ -17,6 +17,7 @@ A ``WebPage`` type has a property ``mainEntity``, which indicates the primary co
 type is allowed - although some types doesn't make sense (e.g. a breadcrumb cannot be the primary content).
 
 .. NOTE::
+
    There can be only one main entity at a time. If more than one main entity is set, the last one added has priority.
    The ones set before are rendered as root types.
 
@@ -46,7 +47,7 @@ as the primary content:
 
    $schemaManager->setMainEntityOfWebPage($product);
 
-The above example is then rendered as JSON-LD. We assume, that the ``WebPage`` type is set to ``ItemPage`` - either in
+The above example is rendered as JSON-LD. Let's assume the ``WebPage`` type is set to ``ItemPage`` - either in
 the page properties or via the API or a view helper.
 
 .. code-block:: json
@@ -69,6 +70,7 @@ the page properties or via the API or a view helper.
    }
 
 .. NOTE::
+
    If the ``WebPage`` type is not defined, because in the extension configuration the
    :ref:`according setting <configuration-automaticWebPageSchemaGeneration>` is disabled, then the main entity is
    rendered as a root type.
@@ -80,6 +82,7 @@ Using the view helpers
 You can define the main entity also in a view helper:
 
 .. code-block:: html
+   :emphasize-lines: 3
 
    <schema:type.product
       -as="mainEntity"
@@ -102,5 +105,3 @@ Remarks:
 
 * You can set the view helper argument ``-isMainEntityOfWebPage`` only in the main type view helper, not in a child
   type view helper.
-* If the argument ``-isMainEntityOfWebPage`` is used in more the one view helper, the last definition is the winner
-  and will be shown as main entity. The others are rendered as root types.

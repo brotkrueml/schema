@@ -24,4 +24,4 @@ and the latest stable release will be installed.
 
 But you can also install the extension from the TYPO3 Extension Repository (TER).
 
-The Extension Configuration offers some basic configuration which is explained in the :ref:`Configuration <Configuration>` chapter.
+The extension configuration offers some basic configuration which is explained in the :ref:`Configuration <Configuration>` chapter.

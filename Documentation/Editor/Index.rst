@@ -9,19 +9,19 @@ For Editors
 
 Target group: **Editors**
 
-As an editor you have the possibility to adjust the type of every single web page for the schema markup. The default value
-is the most generic one: "WebPage".
+As an editor you have the possibility to adjust the type of every single web page for the schema markup. The default
+value is the most generic one: *WebPage*.
 
-You'll find the field in the page properties under the "SEO" (with installed seo system extension) or under the "Metadata"
-tab:
+You'll find the field in the page properties under the *SEO* tab (with installed seo system extension) or under the
+*Metadata* tab (if the seo system extension is not installed):
 
 .. figure:: ../Images/Editor/SpecificTypeOfWebPage.png
    :alt: Field in the page properties
 
-   Field "Specific type of web page" in the page properties
+   Field *Specific type of web page* in the page properties
 
 
-If no value is selected, "WebPage" is assumed.
+If no value is selected, *WebPage* is assumed.
 
 Available web page types
 ========================
@@ -44,7 +44,7 @@ ContactPage        Page with contact information
 ------------------ ----------------------------------------------------------------------------------
 FAQPage            Page with frequently asked questions
 ------------------ ----------------------------------------------------------------------------------
-ImageGallery       Page with an image gallery as the most important content
+ImageGallery       Page with an image gallery as the most valuable content
 ------------------ ----------------------------------------------------------------------------------
 ItemPage           Page about a single item, e.g. a blog posting, a photograph, a product
 ------------------ ----------------------------------------------------------------------------------
@@ -54,5 +54,5 @@ QAPage             A page with a question and one or more answers to this questi
 ------------------ ----------------------------------------------------------------------------------
 SearchResultsPage  Page for the result pages of the search function
 ------------------ ----------------------------------------------------------------------------------
-VideoGallery       Page with an video gallery
+VideoGallery       Page with a video gallery
 ================== ==================================================================================

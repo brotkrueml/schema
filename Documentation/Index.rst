@@ -61,9 +61,7 @@ by Google: `Understand how structured data works <https://developers.google.com/
 
 
 .. toctree::
-   :maxdepth: 3
    :hidden:
-
 
    Introduction/Index
    Installation/Index
