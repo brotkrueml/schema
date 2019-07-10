@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
@@ -292,11 +292,10 @@ abstract class AbstractType
 
                 /** @var AbstractType|string $singleValue */
                 foreach ($this->$property as $singleValue) {
-                    if (\is_string($singleValue)) {
-                        $result[$property][] = $singleValue;
-                    } else {
-                        $result[$property][] = $singleValue->toArray(false);
-                    }
+                    $result[$property][] =
+                        \is_string($singleValue)
+                            ? $singleValue
+                            : $singleValue->toArray(false);
                 }
 
                 continue;

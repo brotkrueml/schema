@@ -147,24 +147,11 @@ class SchemaManager implements SingletonInterface
         $result = [];
 
         if ($this->webPage instanceof AbstractType) {
-            if (count($this->breadcrumbList)) {
-                $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
-
-                foreach ($this->breadcrumbList as $breadcrumb) {
-                    $this->webPage->addProperty(static::WEBPAGE_PROPERTY_BREADCRUMB, $breadcrumb);
-                }
-            }
-
-            if ($this->mainEntityOfWebPage) {
-                $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage);
-            }
-
+            $this->preparePropertiesForWebPage();
             $result[] = $this->webPage->toArray();
         } else {
-            if (count($this->breadcrumbList)) {
-                foreach ($this->breadcrumbList as $breadcrumb) {
-                    $result[] = $breadcrumb->toArray();
-                }
+            foreach ($this->breadcrumbList as $breadcrumb) {
+                $result[] = $breadcrumb->toArray();
             }
 
             if ($this->mainEntityOfWebPage) {
@@ -188,5 +175,20 @@ class SchemaManager implements SingletonInterface
             static::TEMPLATE_SCRIPT_TAG,
             \json_encode($result, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
         );
+    }
+
+    protected function preparePropertiesForWebPage(): void
+    {
+        if (\count($this->breadcrumbList)) {
+            $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
+
+            foreach ($this->breadcrumbList as $breadcrumb) {
+                $this->webPage->addProperty(static::WEBPAGE_PROPERTY_BREADCRUMB, $breadcrumb);
+            }
+        }
+
+        if ($this->mainEntityOfWebPage) {
+            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage);
+        }
     }
 }
