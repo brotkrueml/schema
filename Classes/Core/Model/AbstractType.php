@@ -16,12 +16,21 @@ abstract class AbstractType
     protected const CONTEXT = 'http://schema.org';
 
     /**
+     * The ID of the type (mapped to @id in result)
+     *
      * @var string|null
      */
     protected $_id = null;
 
     /**
-     * Get the id (special property @id)
+     * The fully rendered type with all children as array
+     *
+     * @var array
+     */
+    protected $__resultArray = [];
+
+    /**
+     * Get the id
      *
      * @return string|null
      */
@@ -31,7 +40,7 @@ abstract class AbstractType
     }
 
     /**
-     * Set the id (special property @id)
+     * Set the id
      *
      * @param string $id The id
      * @return AbstractType
@@ -270,29 +279,41 @@ abstract class AbstractType
      */
     public function toArray(bool $isRootType = true): array
     {
-        $result = [];
+        $this->__resultArray = [];
 
+        $this->addIdToResultArray();
+        $this->addPropertiesToResultArray();
+        $this->addContextAndTypeToResultArray($isRootType);
+
+        return $this->__resultArray;
+    }
+
+    protected function addIdToResultArray(): void
+    {
         if ($this->_id) {
-            $result['@id'] = $this->_id;
+            $this->__resultArray['@id'] = $this->_id;
         }
+    }
 
+    protected function addPropertiesToResultArray(): void
+    {
         foreach ($this->getPropertyNames() as $property) {
             if ($this->$property === null || $this->$property === '') {
                 continue;
             }
 
             if ($this->$property instanceof AbstractType) {
-                $result[$property] = $this->$property->toArray(false);
+                $this->__resultArray[$property] = $this->$property->toArray(false);
 
                 continue;
             }
 
             if (\is_array($this->$property)) {
-                $result[$property] = [];
+                $this->__resultArray[$property] = [];
 
                 /** @var AbstractType|string $singleValue */
                 foreach ($this->$property as $singleValue) {
-                    $result[$property][] =
+                    $this->__resultArray[$property][] =
                         \is_string($singleValue)
                             ? $singleValue
                             : $singleValue->toArray(false);
@@ -301,17 +322,20 @@ abstract class AbstractType
                 continue;
             }
 
-            $result[$property] = $this->$property;
+            $this->__resultArray[$property] = $this->$property;
         }
+    }
 
-        $header = [];
+    protected function addContextAndTypeToResultArray(bool $isRootType): void
+    {
+        $contextAndType = [];
 
         if ($isRootType) {
-            $header['@context'] = static::CONTEXT;
+            $contextAndType['@context'] = static::CONTEXT;
         }
 
-        $header['@type'] = $this->getType();
+        $contextAndType['@type'] = $this->getType();
 
-        return \array_merge($header, $result);
+        $this->__resultArray = \array_merge($contextAndType, $this->__resultArray);
     }
 }
