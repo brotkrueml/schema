@@ -52,7 +52,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         $modelClassName = Utility::getNamespacedClassNameForType($this->getType());
         /** @var AbstractType $model */
         $model = new $modelClassName();
-        foreach ($model->getProperties() as $property) {
+        foreach ($model->getPropertyNames() as $property) {
             $this->registerArgument($property, 'mixed', 'Property ' . $property);
         }
     }

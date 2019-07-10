@@ -216,11 +216,11 @@ abstract class AbstractType
     }
 
     /**
-     * Get the available properties
+     * Get the available properties names
      *
      * @return array
      */
-    public function getProperties(): array
+    public function getPropertyNames(): array
     {
         $properties = \array_keys(
             \array_filter(
@@ -244,7 +244,7 @@ abstract class AbstractType
      */
     public function isEmpty(): bool
     {
-        $propertiesNotEmpty = \array_filter($this->getProperties(), function ($property) {
+        $propertiesNotEmpty = \array_filter($this->getPropertyNames(), function ($property) {
             return !empty($this->$property);
         });
 
@@ -276,7 +276,7 @@ abstract class AbstractType
             $result['@id'] = $this->_id;
         }
 
-        foreach ($this->getProperties() as $property) {
+        foreach ($this->getPropertyNames() as $property) {
             if ($this->$property === null || $this->$property === '') {
                 continue;
             }

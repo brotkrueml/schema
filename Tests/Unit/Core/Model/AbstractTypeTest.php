@@ -307,7 +307,7 @@ class AbstractTypeTest extends TestCase
      */
     public function getPropertiesReturnsListOfAllProperties(): void
     {
-        $actual = $this->concreteType->getProperties();
+        $actual = $this->concreteType->getPropertyNames();
 
         $this->assertSame(
             [
