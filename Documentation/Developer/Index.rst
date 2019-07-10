@@ -21,7 +21,7 @@ into your website via a Fluid template.
 Attention should be paid to the following points:
 
 * A web page can be characterised by different schema.org types as outlined in
-  :ref:`this chapter <page-properties-webpage-type>`. The ``WebPage`` type is set automatically if the corresponding
+  :ref:`this chapter <for-editors>`. The ``WebPage`` type is set automatically if the corresponding
   :ref:`configuration option <configuration-automaticWebPageSchemaGeneration>` is set. But it can always overridden
   manually with the desired type and properties.
   The chapter ":ref:`The WebPage type <web-page-type>`" is dedicated to this topic.

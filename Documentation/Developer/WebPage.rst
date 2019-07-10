@@ -14,7 +14,7 @@ Introduction
 ============
 
 There are several web page types available to characterise the content of a web page. A list of the types can be found
-in the section ":ref:`Available Web Page Types <_webpage-types-list>`".
+in the section ":ref:`Available Web Page Types <webpage-types-list>`".
 
 The ``WebPage`` type and its descendants (like [AboutPage](https://schema.org/AboutPage)
 or [ImageGallery](https://schema.org/ImageGallery)) can only appear once on a web page - as opposed to the other types.

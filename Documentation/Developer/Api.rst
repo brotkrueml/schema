@@ -101,10 +101,9 @@ The type models expose several methods:
 The method sets the unique ID of the model. With the ID, you can cross-reference types on the same page or between
 different pages (and even between different web sites) without repeating all the properties.
 
-It's common to use an
-``IRI <https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier>``__ as ID like in the above example. Please
-keep in mind that the ID should be consistent between changes of the properties, e.g. if a person marries and the name
-is changed. The person is still the same, so the IRI should be.
+It is common to use an `IRI <https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier>`__ as ID like in the
+above example. Please keep in mind that the ID should be consistent between changes of the properties, e.g. if a person
+marries and the name is changed. The person is still the same, so the IRI should be.
 
 The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you call it in a browser.
 
