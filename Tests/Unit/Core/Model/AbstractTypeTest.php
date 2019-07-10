@@ -482,6 +482,14 @@ class AbstractTypeTest extends TestCase
                     '@type' => 'ConcreteType',
                 ],
             ],
+            'value is an empty string' => [
+                'image',
+                '',
+                [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'ConcreteType',
+                ],
+            ],
         ];
     }
 

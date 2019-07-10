@@ -277,7 +277,7 @@ abstract class AbstractType
         }
 
         foreach ($this->getProperties() as $property) {
-            if (\is_null($this->$property)) {
+            if ($this->$property === null || $this->$property === '') {
                 continue;
             }
 
