@@ -7,7 +7,7 @@
 Developer Corner
 ================
 
-Target group: **Developers**
+Target group: **Developers**, **Integrators**
 
 The structured data can be generated in two ways:
 
@@ -94,3 +94,16 @@ The chapter :ref:`Using the View Helpers <view-helpers>` explains the usage of t
 .. NOTE::
 
    The view helpers were generated from the schema.org definition and will be updated as the standard evolves.
+
+
+In-Depth
+========
+
+.. toctree::
+   :maxdepth: 1
+
+   Api
+   ViewHelpers
+   WebPage
+   Breadcrumb
+   MainEntity

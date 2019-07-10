@@ -1,4 +1,4 @@
-.. include:: ../../Includes.txt
+.. include:: ../Includes.txt
 
 
 .. _main-entity-of-web-page:
