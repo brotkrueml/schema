@@ -237,3 +237,32 @@ Breadcrumb View Helper
 ======================
 
 This view helper is described in-depth in the chapter :ref:`The Breadcrumb Markup <breadcrumb>`.
+
+
+Using the XML Schema (XSD) in your Template
+===========================================
+
+It is possible to assist your code editor on suggesting the tag name and the possible attributes:
+
+.. figure:: ../Images/Developer/XsdSchemaSuggestion.png
+   :alt: Auto completion in PhpStorm with configured XSD schema
+
+   Auto completion in PhpStorm with configured XSD schema
+
+Just add the ``schema`` namespace to the root element of your Fluid template:
+
+.. code-block:: html
+   :emphasize-lines: 3-4
+
+   <html
+       xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+       xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
+       schema:schemaLocation="https://brot.krue.ml/schemas/schema-1.0.0.xsd"
+       data-namespace-typo3-fluid="true"
+   >
+
+The relevant parts are the namespace declaration (``xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"``)
+and the ``schema:schemaLocation`` attribute which points to the recent XSD definition.
+
+You can also import the XSD file into your favorite IDE after downloading it from the following URL:
+`https://brot.krue.ml/schemas/schema-1.0.0.xsd <https://brot.krue.ml/schemas/schema-1.0.0.xsd>`__.
