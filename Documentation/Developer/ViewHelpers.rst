@@ -236,7 +236,7 @@ The ``value`` argument sets the value of the property, as you guessed already.
 Breadcrumb View Helper
 ======================
 
-This view helper is described in-depth in the chapter :ref:`The Breadcrumb Markup <breadcrumb>`.
+This view helper is described in-depth in the chapter :ref:`The Breadcrumb Markup <breadcrumb-view-helper>`.
 
 
 Using the XML Schema (XSD) in your Template

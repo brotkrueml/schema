@@ -133,6 +133,8 @@ It is also possible to use it in combination with one of the ``WebPage`` types:
    </schema:type.itemPage>
 
 
+.. _breadcrumb-view-helper:
+
 <schema:breadcrumb> view helper
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -158,7 +160,7 @@ But mostly you will have the breadcrumb structure in a Fluid variable created by
    }
 
 Wouldn't it be cool to use this variable as input for the schema markup without iterating over the structure? So, let's
-use a special view helper for that:
+use the breadcrumb view helper for that:
 
 .. code-block:: html
 
