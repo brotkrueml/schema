@@ -13,11 +13,14 @@ Structured data with the schema extension
 :Language:
    en
 
-:Authors:
+:Author:
    Chris Müller
 
 :Email:
-   typo3@krue.ml
+   typo3 (at) krue (dot) ml
+
+:Twitter:
+   `@brotkrueml <https://twitter.com/brotkrueml>`__
 
 :License:
    This extension documentation is published under the
