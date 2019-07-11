@@ -47,9 +47,9 @@ You''ll find the extension also in the TYPO3 Extension Repository (link to be in
 
 ## Documentation
 
-The documentation (link tbd., in the meantime have a look into the Documentation folder)
-is extensive and covers the installation, configuration, usage by an
-editor and describes the usage of the API and the view helpers.
+The [documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/)
+is comprehensive and covers the installation and configuration, and describes 
+the usage of the API and the view helpers.
 
 ## Release Management
 
