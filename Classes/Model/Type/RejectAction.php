@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of rejecting to/adopting an object.
  */
-class RejectAction extends AbstractType
+final class RejectAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

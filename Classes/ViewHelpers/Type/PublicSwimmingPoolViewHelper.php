@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A public swimming pool.
  */
-class PublicSwimmingPoolViewHelper extends AbstractTypeViewHelper
+final class PublicSwimmingPoolViewHelper extends AbstractTypeViewHelper
 {
 }

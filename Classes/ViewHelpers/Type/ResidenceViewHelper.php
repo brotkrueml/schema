@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The place where a person lives.
  */
-class ResidenceViewHelper extends AbstractTypeViewHelper
+final class ResidenceViewHelper extends AbstractTypeViewHelper
 {
 }

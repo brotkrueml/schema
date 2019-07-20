@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A structured value providing information about the opening hours of a place or a certain service inside a place.
  */
-class OpeningHoursSpecificationViewHelper extends AbstractTypeViewHelper
+final class OpeningHoursSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

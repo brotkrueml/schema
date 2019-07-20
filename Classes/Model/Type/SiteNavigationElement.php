@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A navigation element of the page.
  */
-class SiteNavigationElement extends AbstractType
+final class SiteNavigationElement extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

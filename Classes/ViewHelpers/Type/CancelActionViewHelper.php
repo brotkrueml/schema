@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of asserting that a future event/action is no longer going to happen.
  */
-class CancelActionViewHelper extends AbstractTypeViewHelper
+final class CancelActionViewHelper extends AbstractTypeViewHelper
 {
 }

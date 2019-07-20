@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An event involving the delivery of an item.
  */
-class DeliveryEvent extends AbstractType
+final class DeliveryEvent extends AbstractType
 {
     use TypeTrait\DeliveryEventTrait;
     use TypeTrait\EventTrait;

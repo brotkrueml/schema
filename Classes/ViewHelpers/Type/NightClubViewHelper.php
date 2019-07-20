@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A nightclub or discotheque.
  */
-class NightClubViewHelper extends AbstractTypeViewHelper
+final class NightClubViewHelper extends AbstractTypeViewHelper
 {
 }

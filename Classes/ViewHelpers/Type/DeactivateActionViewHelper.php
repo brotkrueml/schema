@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
  */
-class DeactivateActionViewHelper extends AbstractTypeViewHelper
+final class DeactivateActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web page type: Video gallery page.
  */
-class VideoGalleryViewHelper extends AbstractTypeViewHelper
+final class VideoGalleryViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of consuming audio content.
  */
-class ListenAction extends AbstractType
+final class ListenAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ConsumeActionTrait;

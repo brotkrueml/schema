@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The header section of the page.
  */
-class WPHeader extends AbstractType
+final class WPHeader extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

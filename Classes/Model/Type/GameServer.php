@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Server that provides game interaction in a multiplayer game.
  */
-class GameServer extends AbstractType
+final class GameServer extends AbstractType
 {
     use TypeTrait\GameServerTrait;
     use TypeTrait\ThingTrait;

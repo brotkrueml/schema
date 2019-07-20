@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A ski resort.
  */
-class SkiResortViewHelper extends AbstractTypeViewHelper
+final class SkiResortViewHelper extends AbstractTypeViewHelper
 {
 }

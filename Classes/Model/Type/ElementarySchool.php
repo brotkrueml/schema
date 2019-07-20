@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An elementary school.
  */
-class ElementarySchool extends AbstractType
+final class ElementarySchool extends AbstractType
 {
     use TypeTrait\EducationalOrganizationTrait;
     use TypeTrait\OrganizationTrait;

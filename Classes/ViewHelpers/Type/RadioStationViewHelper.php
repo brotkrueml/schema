@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A radio station.
  */
-class RadioStationViewHelper extends AbstractTypeViewHelper
+final class RadioStationViewHelper extends AbstractTypeViewHelper
 {
 }

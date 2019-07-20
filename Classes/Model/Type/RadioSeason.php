@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Season dedicated to radio broadcast and associated online delivery.
  */
-class RadioSeason extends AbstractType
+final class RadioSeason extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeasonTrait;

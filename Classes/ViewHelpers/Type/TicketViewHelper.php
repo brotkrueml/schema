@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
  */
-class TicketViewHelper extends AbstractTypeViewHelper
+final class TicketViewHelper extends AbstractTypeViewHelper
 {
 }

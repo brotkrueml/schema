@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A crematorium.
  */
-class CrematoriumViewHelper extends AbstractTypeViewHelper
+final class CrematoriumViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A value indicating which roadwheels will receive torque.
  */
-class DriveWheelConfigurationValue extends AbstractType
+final class DriveWheelConfigurationValue extends AbstractType
 {
     use TypeTrait\QualitativeValueTrait;
     use TypeTrait\ThingTrait;

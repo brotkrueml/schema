@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
  */
-class TipAction extends AbstractType
+final class TipAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

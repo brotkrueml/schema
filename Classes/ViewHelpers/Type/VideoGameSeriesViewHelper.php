@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A video game series.
  */
-class VideoGameSeriesViewHelper extends AbstractTypeViewHelper
+final class VideoGameSeriesViewHelper extends AbstractTypeViewHelper
 {
 }

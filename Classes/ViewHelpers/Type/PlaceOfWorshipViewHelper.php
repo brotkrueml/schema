@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Place of worship, such as a church, synagogue, or mosque.
  */
-class PlaceOfWorshipViewHelper extends AbstractTypeViewHelper
+final class PlaceOfWorshipViewHelper extends AbstractTypeViewHelper
 {
 }

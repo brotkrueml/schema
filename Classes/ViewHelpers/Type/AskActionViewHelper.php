@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of posing a question / favor to someone.
  */
-class AskActionViewHelper extends AbstractTypeViewHelper
+final class AskActionViewHelper extends AbstractTypeViewHelper
 {
 }

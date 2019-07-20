@@ -54,10 +54,10 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
  * <schema:breadcrumbMarkup breadcrumb="{breadcrumb}" renderFirstItem="1">
  * </code>
  */
-class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
+final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 {
-    protected const ARGUMENT_BREADCRUMB = 'breadcrumb';
-    protected const ARGUMENT_RENDER_FIRST_ITEM = 'renderFirstItem';
+    private const ARGUMENT_BREADCRUMB = 'breadcrumb';
+    private const ARGUMENT_RENDER_FIRST_ITEM = 'renderFirstItem';
 
     public function initializeArguments()
     {
@@ -122,14 +122,14 @@ class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $schemaManager->addType($breadcrumbList);
     }
 
-    protected static function hasWebPageType(array $breadcrumbItem): bool
+    private static function hasWebPageType(array $breadcrumbItem): bool
     {
         return isset($breadcrumbItem['data'])
             && \is_array($breadcrumbItem['data'])
             && isset($breadcrumbItem['data']['tx_schema_webpagetype']);
     }
 
-    protected static function checkBreadcrumbStructure($breadcrumb)
+    private static function checkBreadcrumbStructure($breadcrumb)
     {
         foreach ($breadcrumb as $item) {
             if (!isset($item['title'])) {

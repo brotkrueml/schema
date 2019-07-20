@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A hostel - cheap accommodation, often in shared dormitories.
  */
-class Hostel extends AbstractType
+final class Hostel extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\LodgingBusinessTrait;

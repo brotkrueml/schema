@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of inserting at the end if an ordered collection.
  */
-class AppendAction extends AbstractType
+final class AppendAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\InsertActionTrait;

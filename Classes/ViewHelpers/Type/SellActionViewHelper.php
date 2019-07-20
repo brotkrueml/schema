@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of taking money from a buyer in exchange for goods or services rendered. An agent sells an object, product, or service to a buyer for a price. Reciprocal of BuyAction.
  */
-class SellActionViewHelper extends AbstractTypeViewHelper
+final class SellActionViewHelper extends AbstractTypeViewHelper
 {
 }

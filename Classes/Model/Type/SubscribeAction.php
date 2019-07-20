@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates pushed to.
  */
-class SubscribeAction extends AbstractType
+final class SubscribeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of swallowing solid objects.
  */
-class EatActionViewHelper extends AbstractTypeViewHelper
+final class EatActionViewHelper extends AbstractTypeViewHelper
 {
 }

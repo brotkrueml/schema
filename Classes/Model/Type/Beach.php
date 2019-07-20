@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Beach.
  */
-class Beach extends AbstractType
+final class Beach extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

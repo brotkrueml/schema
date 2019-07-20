@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A golf course.
  */
-class GolfCourseViewHelper extends AbstractTypeViewHelper
+final class GolfCourseViewHelper extends AbstractTypeViewHelper
 {
 }

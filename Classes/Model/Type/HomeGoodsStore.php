@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A home goods store.
  */
-class HomeGoodsStore extends AbstractType
+final class HomeGoodsStore extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

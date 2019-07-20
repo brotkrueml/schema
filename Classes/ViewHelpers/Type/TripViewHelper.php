@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A trip or journey. An itinerary of visits to one or more places.
  */
-class TripViewHelper extends AbstractTypeViewHelper
+final class TripViewHelper extends AbstractTypeViewHelper
 {
 }

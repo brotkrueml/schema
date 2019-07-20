@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A navigation element of the page.
  */
-class SiteNavigationElementViewHelper extends AbstractTypeViewHelper
+final class SiteNavigationElementViewHelper extends AbstractTypeViewHelper
 {
 }

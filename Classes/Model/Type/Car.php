@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.
  */
-class Car extends AbstractType
+final class Car extends AbstractType
 {
     use TypeTrait\ProductTrait;
     use TypeTrait\ThingTrait;

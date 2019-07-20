@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A lodging business, such as a motel, hotel, or inn.
  */
-class LodgingBusiness extends AbstractType
+final class LodgingBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\LodgingBusinessTrait;

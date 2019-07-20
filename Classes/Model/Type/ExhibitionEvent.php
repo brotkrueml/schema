@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Exhibition event, e.g. at a museum, library, archive, tradeshow, ...
  */
-class ExhibitionEvent extends AbstractType
+final class ExhibitionEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

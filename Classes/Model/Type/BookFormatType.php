@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The publication format of the book.
  */
-class BookFormatType extends AbstractType
+final class BookFormatType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

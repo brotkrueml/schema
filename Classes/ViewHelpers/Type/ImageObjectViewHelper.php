@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An image file.
  */
-class ImageObjectViewHelper extends AbstractTypeViewHelper
+final class ImageObjectViewHelper extends AbstractTypeViewHelper
 {
 }

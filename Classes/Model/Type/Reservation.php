@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Describes a reservation for travel, dining or an event. Some reservations require tickets.
  */
-class Reservation extends AbstractType
+final class Reservation extends AbstractType
 {
     use TypeTrait\ReservationTrait;
     use TypeTrait\ThingTrait;

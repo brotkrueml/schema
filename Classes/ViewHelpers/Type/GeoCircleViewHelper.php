@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
  */
-class GeoCircleViewHelper extends AbstractTypeViewHelper
+final class GeoCircleViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
  */
-class LocalBusiness extends AbstractType
+final class LocalBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

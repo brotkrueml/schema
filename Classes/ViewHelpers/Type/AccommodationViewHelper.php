@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An accommodation is a place that can accommodate human beings, e.g. a hotel room, a camping pitch, or a meeting room. Many accommodations are for overnight stays, but this is not a mandatory requirement.
  */
-class AccommodationViewHelper extends AbstractTypeViewHelper
+final class AccommodationViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A nightclub or discotheque.
  */
-class NightClub extends AbstractType
+final class NightClub extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

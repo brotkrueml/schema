@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
  */
-class ResumeActionViewHelper extends AbstractTypeViewHelper
+final class ResumeActionViewHelper extends AbstractTypeViewHelper
 {
 }

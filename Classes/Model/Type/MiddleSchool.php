@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A middle school (typically for children aged around 11-14, although this varies somewhat).
  */
-class MiddleSchool extends AbstractType
+final class MiddleSchool extends AbstractType
 {
     use TypeTrait\EducationalOrganizationTrait;
     use TypeTrait\OrganizationTrait;

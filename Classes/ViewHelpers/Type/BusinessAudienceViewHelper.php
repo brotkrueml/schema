@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A set of characteristics belonging to businesses, e.g. who compose an item\&#039;s target audience.
  */
-class BusinessAudienceViewHelper extends AbstractTypeViewHelper
+final class BusinessAudienceViewHelper extends AbstractTypeViewHelper
 {
 }

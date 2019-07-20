@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An event venue.
  */
-class EventVenue extends AbstractType
+final class EventVenue extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of swallowing liquids.
  */
-class DrinkAction extends AbstractType
+final class DrinkAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ConsumeActionTrait;

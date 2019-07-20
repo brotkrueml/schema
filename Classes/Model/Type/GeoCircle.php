@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
  */
-class GeoCircle extends AbstractType
+final class GeoCircle extends AbstractType
 {
     use TypeTrait\GeoCircleTrait;
     use TypeTrait\GeoShapeTrait;

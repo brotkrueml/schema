@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A bridge.
  */
-class BridgeViewHelper extends AbstractTypeViewHelper
+final class BridgeViewHelper extends AbstractTypeViewHelper
 {
 }

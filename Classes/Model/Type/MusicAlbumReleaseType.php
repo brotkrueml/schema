@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The kind of release which this album is: single, EP or album.
  */
-class MusicAlbumReleaseType extends AbstractType
+final class MusicAlbumReleaseType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

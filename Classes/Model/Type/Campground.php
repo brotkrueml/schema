@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A camping site, campsite, or Campground is a place used for overnight stay in the outdoors, typically containing individual CampingPitch locations.
  */
-class Campground extends AbstractType
+final class Campground extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\LocalBusinessTrait;

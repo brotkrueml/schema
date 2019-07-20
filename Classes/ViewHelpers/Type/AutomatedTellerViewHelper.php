@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * ATM/cash machine.
  */
-class AutomatedTellerViewHelper extends AbstractTypeViewHelper
+final class AutomatedTellerViewHelper extends AbstractTypeViewHelper
 {
 }

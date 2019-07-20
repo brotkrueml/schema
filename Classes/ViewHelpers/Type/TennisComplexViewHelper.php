@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A tennis complex.
  */
-class TennisComplexViewHelper extends AbstractTypeViewHelper
+final class TennisComplexViewHelper extends AbstractTypeViewHelper
 {
 }

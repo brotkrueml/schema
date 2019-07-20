@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A defence establishment, such as an army or navy base.
  */
-class DefenceEstablishment extends AbstractType
+final class DefenceEstablishment extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

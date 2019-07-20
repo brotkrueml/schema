@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A governmental organization or agency.
  */
-class GovernmentOrganization extends AbstractType
+final class GovernmentOrganization extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\ThingTrait;

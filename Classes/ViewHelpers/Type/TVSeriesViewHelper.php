@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * CreativeWorkSeries dedicated to TV broadcast and associated online delivery.
  */
-class TVSeriesViewHelper extends AbstractTypeViewHelper
+final class TVSeriesViewHelper extends AbstractTypeViewHelper
 {
 }

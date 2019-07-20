@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web applications.
  */
-class WebApplicationViewHelper extends AbstractTypeViewHelper
+final class WebApplicationViewHelper extends AbstractTypeViewHelper
 {
 }

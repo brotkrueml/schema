@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Enumerated options related to a ContactPoint.
  */
-class ContactPointOptionViewHelper extends AbstractTypeViewHelper
+final class ContactPointOptionViewHelper extends AbstractTypeViewHelper
 {
 }

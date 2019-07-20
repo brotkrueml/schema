@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
  */
-class TravelActionViewHelper extends AbstractTypeViewHelper
+final class TravelActionViewHelper extends AbstractTypeViewHelper
 {
 }

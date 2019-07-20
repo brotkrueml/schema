@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The price for the delivery of an offer using a particular delivery method.
  */
-class DeliveryChargeSpecification extends AbstractType
+final class DeliveryChargeSpecification extends AbstractType
 {
     use TypeTrait\DeliveryChargeSpecificationTrait;
     use TypeTrait\PriceSpecificationTrait;

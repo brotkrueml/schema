@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A movie.
  */
-class Movie extends AbstractType
+final class Movie extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MovieTrait;

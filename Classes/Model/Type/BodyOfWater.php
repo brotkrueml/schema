@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A body of water, such as a sea, ocean, or lake.
  */
-class BodyOfWater extends AbstractType
+final class BodyOfWater extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

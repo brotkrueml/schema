@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of capturing still images of objects using a camera.
  */
-class PhotographAction extends AbstractType
+final class PhotographAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

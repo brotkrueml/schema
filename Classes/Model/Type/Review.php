@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A review of an item - for example, of a restaurant, movie, or store.
  */
-class Review extends AbstractType
+final class Review extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ReviewTrait;

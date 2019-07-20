@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A country.
  */
-class CountryViewHelper extends AbstractTypeViewHelper
+final class CountryViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A reservation for an event like a concert, sporting event, or lecture.
  */
-class EventReservationViewHelper extends AbstractTypeViewHelper
+final class EventReservationViewHelper extends AbstractTypeViewHelper
 {
 }

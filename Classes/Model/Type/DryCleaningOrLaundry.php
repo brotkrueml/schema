@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A dry-cleaning business.
  */
-class DryCleaningOrLaundry extends AbstractType
+final class DryCleaningOrLaundry extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of responding instinctively and emotionally to an object, expressing a sentiment.
  */
-class ReactActionViewHelper extends AbstractTypeViewHelper
+final class ReactActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
  */
-class EventStatusType extends AbstractType
+final class EventStatusType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A Property value specification.
  */
-class PropertyValueSpecificationViewHelper extends AbstractTypeViewHelper
+final class PropertyValueSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

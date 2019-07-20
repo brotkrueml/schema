@@ -12,7 +12,7 @@ namespace Brotkrueml\Schema\Hook\TableConfiguration;
 use TYPO3\CMS\Core\Database\TableConfigurationPostProcessingHookInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-class Pages implements TableConfigurationPostProcessingHookInterface
+final class Pages implements TableConfigurationPostProcessingHookInterface
 {
     public function processData(): void
     {

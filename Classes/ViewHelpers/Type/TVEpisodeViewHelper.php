@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A TV episode which can be part of a series or season.
  */
-class TVEpisodeViewHelper extends AbstractTypeViewHelper
+final class TVEpisodeViewHelper extends AbstractTypeViewHelper
 {
 }

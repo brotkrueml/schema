@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A country.
  */
-class Country extends AbstractType
+final class Country extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

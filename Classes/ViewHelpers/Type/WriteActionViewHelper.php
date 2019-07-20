@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of authoring written creative content.
  */
-class WriteActionViewHelper extends AbstractTypeViewHelper
+final class WriteActionViewHelper extends AbstractTypeViewHelper
 {
 }

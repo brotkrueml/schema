@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A list of items of any sort&amp;#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
  */
-class ItemListViewHelper extends AbstractTypeViewHelper
+final class ItemListViewHelper extends AbstractTypeViewHelper
 {
 }

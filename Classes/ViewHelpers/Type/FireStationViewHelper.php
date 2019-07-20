@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A fire station. With firemen.
  */
-class FireStationViewHelper extends AbstractTypeViewHelper
+final class FireStationViewHelper extends AbstractTypeViewHelper
 {
 }

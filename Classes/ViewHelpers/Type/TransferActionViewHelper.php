@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
  */
-class TransferActionViewHelper extends AbstractTypeViewHelper
+final class TransferActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A series of movies. Included movies can be indicated with the hasPart property.
  */
-class MovieSeries extends AbstractType
+final class MovieSeries extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeriesTrait;

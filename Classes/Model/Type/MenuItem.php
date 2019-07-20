@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A food or drink item listed in a menu or menu section.
  */
-class MenuItem extends AbstractType
+final class MenuItem extends AbstractType
 {
     use TypeTrait\MenuItemTrait;
     use TypeTrait\ThingTrait;

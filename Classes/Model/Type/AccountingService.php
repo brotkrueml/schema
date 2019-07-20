@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Accountancy business.
  */
-class AccountingService extends AbstractType
+final class AccountingService extends AbstractType
 {
     use TypeTrait\FinancialServiceTrait;
     use TypeTrait\LocalBusinessTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
  */
-class OrderItem extends AbstractType
+final class OrderItem extends AbstractType
 {
     use TypeTrait\OrderItemTrait;
     use TypeTrait\ThingTrait;

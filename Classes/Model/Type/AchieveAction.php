@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of accomplishing something via previous efforts. It is an instantaneous action rather than an ongoing process.
  */
-class AchieveAction extends AbstractType
+final class AchieveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

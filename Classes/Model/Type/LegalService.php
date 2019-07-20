@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A LegalService is a business that provides legally-oriented services, advice and representation, e.g. law firms.
  */
-class LegalService extends AbstractType
+final class LegalService extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

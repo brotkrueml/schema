@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An OfferCatalog is an ItemList that contains related Offers and/or further OfferCatalogs that are offeredBy the same provider.
  */
-class OfferCatalogViewHelper extends AbstractTypeViewHelper
+final class OfferCatalogViewHelper extends AbstractTypeViewHelper
 {
 }

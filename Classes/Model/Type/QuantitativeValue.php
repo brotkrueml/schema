@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A point value or interval for product characteristics and other purposes.
  */
-class QuantitativeValue extends AbstractType
+final class QuantitativeValue extends AbstractType
 {
     use TypeTrait\QuantitativeValueTrait;
     use TypeTrait\ThingTrait;

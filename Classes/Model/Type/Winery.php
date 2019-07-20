@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A winery.
  */
-class Winery extends AbstractType
+final class Winery extends AbstractType
 {
     use TypeTrait\FoodEstablishmentTrait;
     use TypeTrait\LocalBusinessTrait;

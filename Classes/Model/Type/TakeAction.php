@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of gaining ownership of an object from an origin. Reciprocal of GiveAction.
  */
-class TakeAction extends AbstractType
+final class TakeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

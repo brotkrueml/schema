@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent pays a price to a participant.
  */
-class PayAction extends AbstractType
+final class PayAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PayActionTrait;

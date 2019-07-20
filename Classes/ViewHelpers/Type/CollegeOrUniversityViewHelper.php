@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A college, university, or other third-level educational institution.
  */
-class CollegeOrUniversityViewHelper extends AbstractTypeViewHelper
+final class CollegeOrUniversityViewHelper extends AbstractTypeViewHelper
 {
 }

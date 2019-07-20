@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of producing a painting, typically with paint and canvas as instruments.
  */
-class PaintAction extends AbstractType
+final class PaintAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A tool used (but not consumed) when performing instructions for how to achieve a result.
  */
-class HowToTool extends AbstractType
+final class HowToTool extends AbstractType
 {
     use TypeTrait\HowToItemTrait;
     use TypeTrait\ListItemTrait;

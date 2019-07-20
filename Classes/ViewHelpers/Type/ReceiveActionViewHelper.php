@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of physically/electronically taking delivery of an object thathas been transferred from an origin to a destination. Reciprocal of SendAction.
  */
-class ReceiveActionViewHelper extends AbstractTypeViewHelper
+final class ReceiveActionViewHelper extends AbstractTypeViewHelper
 {
 }

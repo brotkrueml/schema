@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A church.
  */
-class Church extends AbstractType
+final class Church extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

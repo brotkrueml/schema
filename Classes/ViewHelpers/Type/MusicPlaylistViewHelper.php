@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A collection of music tracks in playlist form.
  */
-class MusicPlaylistViewHelper extends AbstractTypeViewHelper
+final class MusicPlaylistViewHelper extends AbstractTypeViewHelper
 {
 }

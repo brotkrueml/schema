@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A datasheet or vendor specification of a product (in the sense of a prototypical description).
  */
-class ProductModelViewHelper extends AbstractTypeViewHelper
+final class ProductModelViewHelper extends AbstractTypeViewHelper
 {
 }

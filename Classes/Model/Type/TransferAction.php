@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
  */
-class TransferAction extends AbstractType
+final class TransferAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

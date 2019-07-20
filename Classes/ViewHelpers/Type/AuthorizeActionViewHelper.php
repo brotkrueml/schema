@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of granting permission to an object.
  */
-class AuthorizeActionViewHelper extends AbstractTypeViewHelper
+final class AuthorizeActionViewHelper extends AbstractTypeViewHelper
 {
 }

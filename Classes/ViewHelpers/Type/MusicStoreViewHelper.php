@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A music store.
  */
-class MusicStoreViewHelper extends AbstractTypeViewHelper
+final class MusicStoreViewHelper extends AbstractTypeViewHelper
 {
 }

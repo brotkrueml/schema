@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of generating a comment about a subject.
  */
-class CommentActionViewHelper extends AbstractTypeViewHelper
+final class CommentActionViewHelper extends AbstractTypeViewHelper
 {
 }

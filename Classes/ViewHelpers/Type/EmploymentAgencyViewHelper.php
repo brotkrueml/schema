@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An employment agency.
  */
-class EmploymentAgencyViewHelper extends AbstractTypeViewHelper
+final class EmploymentAgencyViewHelper extends AbstractTypeViewHelper
 {
 }

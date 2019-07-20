@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A Service to transfer funds from a person or organization to a beneficiary person or organization.
  */
-class PaymentService extends AbstractType
+final class PaymentService extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\ServiceTrait;

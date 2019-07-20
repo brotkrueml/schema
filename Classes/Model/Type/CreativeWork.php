@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The most generic kind of creative work, including books, movies, photographs, software programs, etc.
  */
-class CreativeWork extends AbstractType
+final class CreativeWork extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

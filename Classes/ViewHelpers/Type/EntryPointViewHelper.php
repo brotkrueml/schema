@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An entry point, within some Web-based protocol.
  */
-class EntryPointViewHelper extends AbstractTypeViewHelper
+final class EntryPointViewHelper extends AbstractTypeViewHelper
 {
 }

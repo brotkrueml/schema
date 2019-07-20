@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of installing an application.
  */
-class InstallAction extends AbstractType
+final class InstallAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ConsumeActionTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A radio channel that uses AM.
  */
-class AMRadioChannel extends AbstractType
+final class AMRadioChannel extends AbstractType
 {
     use TypeTrait\BroadcastChannelTrait;
     use TypeTrait\ThingTrait;

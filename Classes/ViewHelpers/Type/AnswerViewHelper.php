@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An answer offered to a question; perhaps correct, perhaps opinionated or wrong.
  */
-class AnswerViewHelper extends AbstractTypeViewHelper
+final class AnswerViewHelper extends AbstractTypeViewHelper
 {
 }

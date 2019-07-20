@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
  */
-class WebSite extends AbstractType
+final class WebSite extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

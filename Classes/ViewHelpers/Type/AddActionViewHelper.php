@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of editing by adding an object to a collection.
  */
-class AddActionViewHelper extends AbstractTypeViewHelper
+final class AddActionViewHelper extends AbstractTypeViewHelper
 {
 }

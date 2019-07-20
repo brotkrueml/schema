@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Food event.
  */
-class FoodEvent extends AbstractType
+final class FoodEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

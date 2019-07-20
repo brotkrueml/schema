@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
  */
-class Seat extends AbstractType
+final class Seat extends AbstractType
 {
     use TypeTrait\SeatTrait;
     use TypeTrait\ThingTrait;

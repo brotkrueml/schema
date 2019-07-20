@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A river (for example, the broad majestic Shannon).
  */
-class RiverBodyOfWater extends AbstractType
+final class RiverBodyOfWater extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

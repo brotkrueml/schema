@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of physically/electronically dispatching an object for transfer from an origin to a destination.Related actions:
  */
-class SendAction extends AbstractType
+final class SendAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\SendActionTrait;

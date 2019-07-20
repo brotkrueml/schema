@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A DeliveryMethod in which an item is made available via locker.
  */
-class LockerDelivery extends AbstractType
+final class LockerDelivery extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

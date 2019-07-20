@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A placeholder for multiple similar products of the same kind.
  */
-class SomeProductsViewHelper extends AbstractTypeViewHelper
+final class SomeProductsViewHelper extends AbstractTypeViewHelper
 {
 }

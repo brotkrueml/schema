@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A spreadsheet file.
  */
-class SpreadsheetDigitalDocument extends AbstractType
+final class SpreadsheetDigitalDocument extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DigitalDocumentTrait;

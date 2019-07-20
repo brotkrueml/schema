@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A permit issued by a government agency.
  */
-class GovernmentPermitViewHelper extends AbstractTypeViewHelper
+final class GovernmentPermitViewHelper extends AbstractTypeViewHelper
 {
 }

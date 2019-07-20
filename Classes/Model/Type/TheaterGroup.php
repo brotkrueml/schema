@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
  */
-class TheaterGroup extends AbstractType
+final class TheaterGroup extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\ThingTrait;

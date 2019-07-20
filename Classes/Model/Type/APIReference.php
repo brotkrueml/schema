@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Reference documentation for application programming interfaces (APIs).
  */
-class APIReference extends AbstractType
+final class APIReference extends AbstractType
 {
     use TypeTrait\APIReferenceTrait;
     use TypeTrait\ArticleTrait;

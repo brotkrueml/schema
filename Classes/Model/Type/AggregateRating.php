@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The average rating based on multiple ratings or reviews.
  */
-class AggregateRating extends AbstractType
+final class AggregateRating extends AbstractType
 {
     use TypeTrait\AggregateRatingTrait;
     use TypeTrait\RatingTrait;

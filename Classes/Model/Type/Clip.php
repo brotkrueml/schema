@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A short TV or radio program or a segment/part of a program.
  */
-class Clip extends AbstractType
+final class Clip extends AbstractType
 {
     use TypeTrait\ClipTrait;
     use TypeTrait\CreativeWorkTrait;

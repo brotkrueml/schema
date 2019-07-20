@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Comedy event.
  */
-class ComedyEvent extends AbstractType
+final class ComedyEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A room is a distinguishable space within a structure, usually separated from other spaces by interior walls. (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Room).
  */
-class RoomViewHelper extends AbstractTypeViewHelper
+final class RoomViewHelper extends AbstractTypeViewHelper
 {
 }

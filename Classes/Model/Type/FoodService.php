@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A food service, like breakfast, lunch, or dinner.
  */
-class FoodService extends AbstractType
+final class FoodService extends AbstractType
 {
     use TypeTrait\ServiceTrait;
     use TypeTrait\ThingTrait;

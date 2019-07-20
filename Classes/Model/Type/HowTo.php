@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Instructions that explain how to achieve a result by performing a sequence of steps.
  */
-class HowTo extends AbstractType
+final class HowTo extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\HowToTrait;

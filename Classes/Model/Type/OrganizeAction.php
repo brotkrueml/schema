@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of manipulating/administering/supervising/controlling one or more objects.
  */
-class OrganizeAction extends AbstractType
+final class OrganizeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

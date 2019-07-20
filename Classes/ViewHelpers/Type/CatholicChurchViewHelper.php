@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A Catholic church.
  */
-class CatholicChurchViewHelper extends AbstractTypeViewHelper
+final class CatholicChurchViewHelper extends AbstractTypeViewHelper
 {
 }

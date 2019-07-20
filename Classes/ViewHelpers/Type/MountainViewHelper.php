@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A mountain, like Mount Whitney or Mount Everest.
  */
-class MountainViewHelper extends AbstractTypeViewHelper
+final class MountainViewHelper extends AbstractTypeViewHelper
 {
 }

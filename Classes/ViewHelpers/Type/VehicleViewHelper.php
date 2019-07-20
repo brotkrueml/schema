@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
  */
-class VehicleViewHelper extends AbstractTypeViewHelper
+final class VehicleViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Entities that have a somewhat fixed, physical extension.
  */
-class PlaceViewHelper extends AbstractTypeViewHelper
+final class PlaceViewHelper extends AbstractTypeViewHelper
 {
 }

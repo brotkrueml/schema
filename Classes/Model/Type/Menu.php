@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A structured representation of food or drink items available from a FoodEstablishment.
  */
-class Menu extends AbstractType
+final class Menu extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MenuTrait;

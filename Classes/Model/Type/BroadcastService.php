@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
  */
-class BroadcastService extends AbstractType
+final class BroadcastService extends AbstractType
 {
     use TypeTrait\BroadcastServiceTrait;
     use TypeTrait\ServiceTrait;

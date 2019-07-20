@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.
  */
-class BuyAction extends AbstractType
+final class BuyAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\BuyActionTrait;

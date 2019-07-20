@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A person (alive, dead, undead, or fictional).
  */
-class Person extends AbstractType
+final class Person extends AbstractType
 {
     use TypeTrait\PersonTrait;
     use TypeTrait\ThingTrait;

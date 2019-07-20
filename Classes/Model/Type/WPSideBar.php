@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A sidebar section of the page.
  */
-class WPSideBar extends AbstractType
+final class WPSideBar extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

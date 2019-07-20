@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A FAQPage is a WebPage presenting one or more &quot;Frequently asked questions&quot; (see also QAPage).
  */
-class FAQPage extends AbstractType
+final class FAQPage extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

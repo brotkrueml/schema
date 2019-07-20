@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A single feed providing structured information about one or more entities or topics.
  */
-class DataFeedViewHelper extends AbstractTypeViewHelper
+final class DataFeedViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
  */
-class LiveBlogPostingViewHelper extends AbstractTypeViewHelper
+final class LiveBlogPostingViewHelper extends AbstractTypeViewHelper
 {
 }

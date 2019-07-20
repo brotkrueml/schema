@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A police station.
  */
-class PoliceStation extends AbstractType
+final class PoliceStation extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\LocalBusinessTrait;

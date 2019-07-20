@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A body of structured information describing some topic(s) of interest.
  */
-class DatasetViewHelper extends AbstractTypeViewHelper
+final class DatasetViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A sea (for example, the Caspian sea).
  */
-class SeaBodyOfWaterViewHelper extends AbstractTypeViewHelper
+final class SeaBodyOfWaterViewHelper extends AbstractTypeViewHelper
 {
 }

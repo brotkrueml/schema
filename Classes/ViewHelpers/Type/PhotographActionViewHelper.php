@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of capturing still images of objects using a camera.
  */
-class PhotographActionViewHelper extends AbstractTypeViewHelper
+final class PhotographActionViewHelper extends AbstractTypeViewHelper
 {
 }

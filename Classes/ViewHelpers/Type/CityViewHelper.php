@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A city or town.
  */
-class CityViewHelper extends AbstractTypeViewHelper
+final class CityViewHelper extends AbstractTypeViewHelper
 {
 }

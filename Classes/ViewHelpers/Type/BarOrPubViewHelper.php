@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A bar or pub.
  */
-class BarOrPubViewHelper extends AbstractTypeViewHelper
+final class BarOrPubViewHelper extends AbstractTypeViewHelper
 {
 }

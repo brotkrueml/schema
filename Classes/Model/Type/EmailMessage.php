@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An email message.
  */
-class EmailMessage extends AbstractType
+final class EmailMessage extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MessageTrait;

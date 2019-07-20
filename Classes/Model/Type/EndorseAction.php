@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent approves/certifies/likes/supports/sanction an object.
  */
-class EndorseAction extends AbstractType
+final class EndorseAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\EndorseActionTrait;

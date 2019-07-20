@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A meeting room, conference room, or conference hall is a room provided for singular events such as business conferences and meetings (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Conference_hall).
  */
-class MeetingRoomViewHelper extends AbstractTypeViewHelper
+final class MeetingRoomViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A sub-grouping of steps in the instructions for how to achieve a result (e.g. steps for making a pie crust within a pie recipe).
  */
-class HowToSection extends AbstractType
+final class HowToSection extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ItemListTrait;

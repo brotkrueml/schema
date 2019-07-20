@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via suitableForDiet. The keywords property can also be used to add more detail.
  */
-class Recipe extends AbstractType
+final class Recipe extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\HowToTrait;

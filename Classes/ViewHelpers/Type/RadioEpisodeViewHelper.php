@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A radio episode which can be part of a series or season.
  */
-class RadioEpisodeViewHelper extends AbstractTypeViewHelper
+final class RadioEpisodeViewHelper extends AbstractTypeViewHelper
 {
 }

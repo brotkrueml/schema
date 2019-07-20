@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A graveyard.
  */
-class CemeteryViewHelper extends AbstractTypeViewHelper
+final class CemeteryViewHelper extends AbstractTypeViewHelper
 {
 }

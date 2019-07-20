@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.
  */
-class EngineSpecificationViewHelper extends AbstractTypeViewHelper
+final class EngineSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

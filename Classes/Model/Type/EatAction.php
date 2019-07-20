@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of swallowing solid objects.
  */
-class EatAction extends AbstractType
+final class EatAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ConsumeActionTrait;

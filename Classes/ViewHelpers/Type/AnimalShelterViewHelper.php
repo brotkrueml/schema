@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Animal shelter.
  */
-class AnimalShelterViewHelper extends AbstractTypeViewHelper
+final class AnimalShelterViewHelper extends AbstractTypeViewHelper
 {
 }

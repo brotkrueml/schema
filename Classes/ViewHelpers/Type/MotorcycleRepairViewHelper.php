@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A motorcycle repair shop.
  */
-class MotorcycleRepairViewHelper extends AbstractTypeViewHelper
+final class MotorcycleRepairViewHelper extends AbstractTypeViewHelper
 {
 }

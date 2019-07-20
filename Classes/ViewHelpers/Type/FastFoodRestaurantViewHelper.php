@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A fast-food restaurant.
  */
-class FastFoodRestaurantViewHelper extends AbstractTypeViewHelper
+final class FastFoodRestaurantViewHelper extends AbstractTypeViewHelper
 {
 }

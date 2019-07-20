@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of rejecting to/adopting an object.
  */
-class RejectActionViewHelper extends AbstractTypeViewHelper
+final class RejectActionViewHelper extends AbstractTypeViewHelper
 {
 }

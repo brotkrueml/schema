@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An adult entertainment establishment.
  */
-class AdultEntertainmentViewHelper extends AbstractTypeViewHelper
+final class AdultEntertainmentViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of consuming dynamic/moving visual content.
  */
-class WatchActionViewHelper extends AbstractTypeViewHelper
+final class WatchActionViewHelper extends AbstractTypeViewHelper
 {
 }

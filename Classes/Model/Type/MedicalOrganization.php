@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A medical organization (physical or not), such as hospital, institution or clinic.
  */
-class MedicalOrganization extends AbstractType
+final class MedicalOrganization extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\ThingTrait;

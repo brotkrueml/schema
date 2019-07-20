@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A set of requirements that a must be fulfilled in order to perform an Action.
  */
-class ActionAccessSpecification extends AbstractType
+final class ActionAccessSpecification extends AbstractType
 {
     use TypeTrait\ActionAccessSpecificationTrait;
     use TypeTrait\ThingTrait;

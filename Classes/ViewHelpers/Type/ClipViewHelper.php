@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A short TV or radio program or a segment/part of a program.
  */
-class ClipViewHelper extends AbstractTypeViewHelper
+final class ClipViewHelper extends AbstractTypeViewHelper
 {
 }

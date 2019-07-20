@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
  */
-class GamePlayModeViewHelper extends AbstractTypeViewHelper
+final class GamePlayModeViewHelper extends AbstractTypeViewHelper
 {
 }

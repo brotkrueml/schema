@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A statistical distribution of monetary amounts.
  */
-class MonetaryAmountDistribution extends AbstractType
+final class MonetaryAmountDistribution extends AbstractType
 {
     use TypeTrait\MonetaryAmountDistributionTrait;
     use TypeTrait\QuantitativeValueDistributionTrait;

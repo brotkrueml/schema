@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Theater performance.
  */
-class TheaterEvent extends AbstractType
+final class TheaterEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

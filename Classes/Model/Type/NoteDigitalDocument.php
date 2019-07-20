@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A file containing a note, primarily for the author.
  */
-class NoteDigitalDocument extends AbstractType
+final class NoteDigitalDocument extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DigitalDocumentTrait;

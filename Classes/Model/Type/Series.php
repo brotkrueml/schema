@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A Series in schema.org is a group of related items, typically but not necessarily of the same kind. See also CreativeWorkSeries, EventSeries.
  */
-class Series extends AbstractType
+final class Series extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

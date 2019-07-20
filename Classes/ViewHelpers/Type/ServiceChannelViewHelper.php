@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
  */
-class ServiceChannelViewHelper extends AbstractTypeViewHelper
+final class ServiceChannelViewHelper extends AbstractTypeViewHelper
 {
 }

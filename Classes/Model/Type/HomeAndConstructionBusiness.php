@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A construction business.
  */
-class HomeAndConstructionBusiness extends AbstractType
+final class HomeAndConstructionBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

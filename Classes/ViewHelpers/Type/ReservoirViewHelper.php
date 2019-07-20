@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
  */
-class ReservoirViewHelper extends AbstractTypeViewHelper
+final class ReservoirViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A collection of music tracks in playlist form.
  */
-class MusicPlaylist extends AbstractType
+final class MusicPlaylist extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MusicPlaylistTrait;

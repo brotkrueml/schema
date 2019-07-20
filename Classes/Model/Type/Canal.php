@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A canal, like the Panama Canal.
  */
-class Canal extends AbstractType
+final class Canal extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

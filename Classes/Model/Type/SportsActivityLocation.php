@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A sports location, such as a playing field.
  */
-class SportsActivityLocation extends AbstractType
+final class SportsActivityLocation extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

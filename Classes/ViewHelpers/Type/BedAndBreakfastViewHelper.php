@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Bed and breakfast.
  */
-class BedAndBreakfastViewHelper extends AbstractTypeViewHelper
+final class BedAndBreakfastViewHelper extends AbstractTypeViewHelper
 {
 }

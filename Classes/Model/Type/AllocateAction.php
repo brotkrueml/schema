@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of organizing tasks/objects/events by associating resources to it.
  */
-class AllocateAction extends AbstractType
+final class AllocateAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

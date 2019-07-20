@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A list of possible conditions for the item.
  */
-class OfferItemConditionViewHelper extends AbstractTypeViewHelper
+final class OfferItemConditionViewHelper extends AbstractTypeViewHelper
 {
 }

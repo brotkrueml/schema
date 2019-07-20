@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An organization that provides flights for passengers.
  */
-class AirlineViewHelper extends AbstractTypeViewHelper
+final class AirlineViewHelper extends AbstractTypeViewHelper
 {
 }

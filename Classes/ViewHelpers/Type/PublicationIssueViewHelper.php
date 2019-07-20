@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A part of a successively published publication such as a periodical or publication volume, often numbered, usually containing a grouping of works such as articles.
  */
-class PublicationIssueViewHelper extends AbstractTypeViewHelper
+final class PublicationIssueViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of editing a recipient by replacing an old object with a new object.
  */
-class ReplaceAction extends AbstractType
+final class ReplaceAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ReplaceActionTrait;

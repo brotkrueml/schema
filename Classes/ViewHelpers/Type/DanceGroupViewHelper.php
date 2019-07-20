@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A dance group&amp;#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
  */
-class DanceGroupViewHelper extends AbstractTypeViewHelper
+final class DanceGroupViewHelper extends AbstractTypeViewHelper
 {
 }

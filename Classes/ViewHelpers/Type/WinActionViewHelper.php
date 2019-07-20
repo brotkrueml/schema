@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of achieving victory in a competitive activity.
  */
-class WinActionViewHelper extends AbstractTypeViewHelper
+final class WinActionViewHelper extends AbstractTypeViewHelper
 {
 }

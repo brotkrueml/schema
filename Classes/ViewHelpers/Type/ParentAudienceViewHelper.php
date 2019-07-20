@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
  */
-class ParentAudienceViewHelper extends AbstractTypeViewHelper
+final class ParentAudienceViewHelper extends AbstractTypeViewHelper
 {
 }

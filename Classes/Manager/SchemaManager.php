@@ -16,26 +16,26 @@ use Brotkrueml\Schema\Provider\WebPageTypeProvider;
 use Brotkrueml\Schema\Utility\Utility;
 use TYPO3\CMS\Core\SingletonInterface;
 
-class SchemaManager implements SingletonInterface
+final class SchemaManager implements SingletonInterface
 {
-    protected const TEMPLATE_SCRIPT_TAG = '<script type="application/ld+json">%s</script>';
+    private const TEMPLATE_SCRIPT_TAG = '<script type="application/ld+json">%s</script>';
 
-    protected const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
-    protected const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
+    private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
+    private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
-    protected $validWebPageTypes;
+    private $validWebPageTypes;
 
     /** @var AbstractType[] */
-    protected $types = [];
+    private $types = [];
 
     /** @var WebPage|null */
-    protected $webPage = null;
+    private $webPage = null;
 
     /** @var BreadcrumbList[] */
-    protected $breadcrumbList = [];
+    private $breadcrumbList = [];
 
     /** @var AbstractType|null */
-    protected $mainEntityOfWebPage = null;
+    private $mainEntityOfWebPage = null;
 
     public function __construct()
     {
@@ -68,14 +68,14 @@ class SchemaManager implements SingletonInterface
         return $this;
     }
 
-    protected function isWebPageType(AbstractType $type): bool
+    private function isWebPageType(AbstractType $type): bool
     {
         $typeName = Utility::getClassNameWithoutNamespace(\get_class($type));
 
         return \in_array($typeName, $this->validWebPageTypes);
     }
 
-    protected function setWebPage(AbstractType $webPage): void
+    private function setWebPage(AbstractType $webPage): void
     {
         $breadcrumb = $webPage->getProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
         $webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
@@ -100,12 +100,12 @@ class SchemaManager implements SingletonInterface
         $this->webPage = $webPage;
     }
 
-    protected function isBreadCrumbList(AbstractType $type): bool
+    private function isBreadCrumbList(AbstractType $type): bool
     {
         return $type instanceof BreadcrumbList;
     }
 
-    protected function addBreadcrumbList(BreadcrumbList $breadcrumbList): void
+    private function addBreadcrumbList(BreadcrumbList $breadcrumbList): void
     {
         $this->breadcrumbList[] = $breadcrumbList;
     }
@@ -177,7 +177,7 @@ class SchemaManager implements SingletonInterface
         );
     }
 
-    protected function preparePropertiesForWebPage(): void
+    private function preparePropertiesForWebPage(): void
     {
         if (\count($this->breadcrumbList)) {
             $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of interacting with another person or organization.
  */
-class InteractActionViewHelper extends AbstractTypeViewHelper
+final class InteractActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
  */
-class ParcelDeliveryViewHelper extends AbstractTypeViewHelper
+final class ParcelDeliveryViewHelper extends AbstractTypeViewHelper
 {
 }

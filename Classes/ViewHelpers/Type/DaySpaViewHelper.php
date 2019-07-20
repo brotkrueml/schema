@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A day spa.
  */
-class DaySpaViewHelper extends AbstractTypeViewHelper
+final class DaySpaViewHelper extends AbstractTypeViewHelper
 {
 }

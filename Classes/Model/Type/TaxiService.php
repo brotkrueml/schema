@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A service for a vehicle for hire with a driver for local travel. Fares are usually calculated based on distance traveled.
  */
-class TaxiService extends AbstractType
+final class TaxiService extends AbstractType
 {
     use TypeTrait\ServiceTrait;
     use TypeTrait\ThingTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Professional service: Attorney.
  */
-class AttorneyViewHelper extends AbstractTypeViewHelper
+final class AttorneyViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A bus stop.
  */
-class BusStopViewHelper extends AbstractTypeViewHelper
+final class BusStopViewHelper extends AbstractTypeViewHelper
 {
 }

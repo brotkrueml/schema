@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A private parcel service as the delivery mode available for a certain offer.
  */
-class ParcelServiceViewHelper extends AbstractTypeViewHelper
+final class ParcelServiceViewHelper extends AbstractTypeViewHelper
 {
 }

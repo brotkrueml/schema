@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
  */
-class AudienceViewHelper extends AbstractTypeViewHelper
+final class AudienceViewHelper extends AbstractTypeViewHelper
 {
 }

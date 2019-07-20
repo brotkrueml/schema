@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A middle school (typically for children aged around 11-14, although this varies somewhat).
  */
-class MiddleSchoolViewHelper extends AbstractTypeViewHelper
+final class MiddleSchoolViewHelper extends AbstractTypeViewHelper
 {
 }

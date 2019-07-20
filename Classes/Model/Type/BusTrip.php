@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A trip on a commercial bus line.
  */
-class BusTrip extends AbstractType
+final class BusTrip extends AbstractType
 {
     use TypeTrait\BusTripTrait;
     use TypeTrait\ThingTrait;

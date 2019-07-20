@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A permit issued by a government agency.
  */
-class GovernmentPermit extends AbstractType
+final class GovernmentPermit extends AbstractType
 {
     use TypeTrait\PermitTrait;
     use TypeTrait\ThingTrait;

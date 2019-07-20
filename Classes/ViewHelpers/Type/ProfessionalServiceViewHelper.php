@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Original definition: &quot;provider of professional services.&quot;
  */
-class ProfessionalServiceViewHelper extends AbstractTypeViewHelper
+final class ProfessionalServiceViewHelper extends AbstractTypeViewHelper
 {
 }

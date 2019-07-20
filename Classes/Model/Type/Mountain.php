@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A mountain, like Mount Whitney or Mount Everest.
  */
-class Mountain extends AbstractType
+final class Mountain extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

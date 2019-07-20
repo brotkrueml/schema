@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of an agent relocating to a place.
  */
-class MoveActionViewHelper extends AbstractTypeViewHelper
+final class MoveActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An electronic file or document.
  */
-class DigitalDocument extends AbstractType
+final class DigitalDocument extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DigitalDocumentTrait;

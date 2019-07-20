@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An image file.
  */
-class ImageObject extends AbstractType
+final class ImageObject extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ImageObjectTrait;

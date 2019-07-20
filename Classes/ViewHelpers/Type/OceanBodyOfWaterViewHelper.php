@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An ocean (for example, the Pacific).
  */
-class OceanBodyOfWaterViewHelper extends AbstractTypeViewHelper
+final class OceanBodyOfWaterViewHelper extends AbstractTypeViewHelper
 {
 }

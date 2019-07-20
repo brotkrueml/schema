@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A Service to transfer funds from a person or organization to a beneficiary person or organization.
  */
-class PaymentServiceViewHelper extends AbstractTypeViewHelper
+final class PaymentServiceViewHelper extends AbstractTypeViewHelper
 {
 }

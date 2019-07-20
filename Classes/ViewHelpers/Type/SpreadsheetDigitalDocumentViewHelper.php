@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A spreadsheet file.
  */
-class SpreadsheetDigitalDocumentViewHelper extends AbstractTypeViewHelper
+final class SpreadsheetDigitalDocumentViewHelper extends AbstractTypeViewHelper
 {
 }

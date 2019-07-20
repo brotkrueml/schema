@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of reaching a draw in a competitive activity.
  */
-class TieActionViewHelper extends AbstractTypeViewHelper
+final class TieActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A hair salon.
  */
-class HairSalonViewHelper extends AbstractTypeViewHelper
+final class HairSalonViewHelper extends AbstractTypeViewHelper
 {
 }

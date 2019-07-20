@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting.
  */
-class GameViewHelper extends AbstractTypeViewHelper
+final class GameViewHelper extends AbstractTypeViewHelper
 {
 }

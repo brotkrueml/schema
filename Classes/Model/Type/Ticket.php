@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
  */
-class Ticket extends AbstractType
+final class Ticket extends AbstractType
 {
     use TypeTrait\ThingTrait;
     use TypeTrait\TicketTrait;

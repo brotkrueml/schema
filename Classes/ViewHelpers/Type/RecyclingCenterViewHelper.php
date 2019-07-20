@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A recycling center.
  */
-class RecyclingCenterViewHelper extends AbstractTypeViewHelper
+final class RecyclingCenterViewHelper extends AbstractTypeViewHelper
 {
 }

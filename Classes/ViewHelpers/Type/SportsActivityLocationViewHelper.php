@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A sports location, such as a playing field.
  */
-class SportsActivityLocationViewHelper extends AbstractTypeViewHelper
+final class SportsActivityLocationViewHelper extends AbstractTypeViewHelper
 {
 }

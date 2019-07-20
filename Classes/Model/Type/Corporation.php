@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Organization: A business corporation.
  */
-class Corporation extends AbstractType
+final class Corporation extends AbstractType
 {
     use TypeTrait\CorporationTrait;
     use TypeTrait\OrganizationTrait;

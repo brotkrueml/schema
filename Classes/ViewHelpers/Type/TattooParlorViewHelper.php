@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A tattoo parlor.
  */
-class TattooParlorViewHelper extends AbstractTypeViewHelper
+final class TattooParlorViewHelper extends AbstractTypeViewHelper
 {
 }

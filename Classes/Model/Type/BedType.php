@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A type of bed. This is used for indicating the bed or beds available in an accommodation.
  */
-class BedType extends AbstractType
+final class BedType extends AbstractType
 {
     use TypeTrait\QualitativeValueTrait;
     use TypeTrait\ThingTrait;

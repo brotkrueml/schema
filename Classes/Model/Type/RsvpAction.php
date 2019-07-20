@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
  */
-class RsvpAction extends AbstractType
+final class RsvpAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommunicateActionTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An emergency service, such as a fire station or ER.
  */
-class EmergencyService extends AbstractType
+final class EmergencyService extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

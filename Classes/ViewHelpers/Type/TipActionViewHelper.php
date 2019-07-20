@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
  */
-class TipActionViewHelper extends AbstractTypeViewHelper
+final class TipActionViewHelper extends AbstractTypeViewHelper
 {
 }

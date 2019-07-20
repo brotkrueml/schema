@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A government building.
  */
-class GovernmentBuildingViewHelper extends AbstractTypeViewHelper
+final class GovernmentBuildingViewHelper extends AbstractTypeViewHelper
 {
 }

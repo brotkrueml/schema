@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
  */
-class EmployeeRoleViewHelper extends AbstractTypeViewHelper
+final class EmployeeRoleViewHelper extends AbstractTypeViewHelper
 {
 }

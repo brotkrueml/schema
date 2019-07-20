@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A store that sells materials useful or necessary for various hobbies.
  */
-class HobbyShop extends AbstractType
+final class HobbyShop extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

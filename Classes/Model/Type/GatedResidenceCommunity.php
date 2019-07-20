@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Residence type: Gated community.
  */
-class GatedResidenceCommunity extends AbstractType
+final class GatedResidenceCommunity extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

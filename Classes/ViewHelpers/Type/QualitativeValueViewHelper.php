@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A predefined value for a product characteristic, e.g. the power cord plug type \&#039;US\&#039; or the garment sizes \&#039;S\&#039;, \&#039;M\&#039;, \&#039;L\&#039;, and \&#039;XL\&#039;.
  */
-class QualitativeValueViewHelper extends AbstractTypeViewHelper
+final class QualitativeValueViewHelper extends AbstractTypeViewHelper
 {
 }

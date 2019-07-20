@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A music recording (track), usually a single song.
  */
-class MusicRecordingViewHelper extends AbstractTypeViewHelper
+final class MusicRecordingViewHelper extends AbstractTypeViewHelper
 {
 }

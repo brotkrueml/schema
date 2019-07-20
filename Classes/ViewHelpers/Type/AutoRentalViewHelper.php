@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A car rental business.
  */
-class AutoRentalViewHelper extends AbstractTypeViewHelper
+final class AutoRentalViewHelper extends AbstractTypeViewHelper
 {
 }

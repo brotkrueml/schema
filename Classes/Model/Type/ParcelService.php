@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A private parcel service as the delivery mode available for a certain offer.
  */
-class ParcelService extends AbstractType
+final class ParcelService extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

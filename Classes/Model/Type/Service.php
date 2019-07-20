@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A service provided by an organization, e.g. delivery service, print services, etc.
  */
-class Service extends AbstractType
+final class Service extends AbstractType
 {
     use TypeTrait\ServiceTrait;
     use TypeTrait\ThingTrait;

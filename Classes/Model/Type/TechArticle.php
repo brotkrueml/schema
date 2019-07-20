@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
  */
-class TechArticle extends AbstractType
+final class TechArticle extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

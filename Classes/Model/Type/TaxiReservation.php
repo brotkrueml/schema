@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A reservation for a taxi.
  */
-class TaxiReservation extends AbstractType
+final class TaxiReservation extends AbstractType
 {
     use TypeTrait\ReservationTrait;
     use TypeTrait\TaxiReservationTrait;

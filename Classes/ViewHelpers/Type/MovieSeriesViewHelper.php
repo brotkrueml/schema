@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A series of movies. Included movies can be indicated with the hasPart property.
  */
-class MovieSeriesViewHelper extends AbstractTypeViewHelper
+final class MovieSeriesViewHelper extends AbstractTypeViewHelper
 {
 }

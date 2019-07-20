@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of organizing tasks/objects/events by associating resources to it.
  */
-class AllocateActionViewHelper extends AbstractTypeViewHelper
+final class AllocateActionViewHelper extends AbstractTypeViewHelper
 {
 }

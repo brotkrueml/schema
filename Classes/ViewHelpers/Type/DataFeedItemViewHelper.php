@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A single item within a larger data feed.
  */
-class DataFeedItemViewHelper extends AbstractTypeViewHelper
+final class DataFeedItemViewHelper extends AbstractTypeViewHelper
 {
 }

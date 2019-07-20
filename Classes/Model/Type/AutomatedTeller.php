@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * ATM/cash machine.
  */
-class AutomatedTeller extends AbstractType
+final class AutomatedTeller extends AbstractType
 {
     use TypeTrait\FinancialServiceTrait;
     use TypeTrait\LocalBusinessTrait;

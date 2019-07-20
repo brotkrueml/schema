@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of granting permission to an object.
  */
-class AuthorizeAction extends AbstractType
+final class AuthorizeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\AuthorizeActionTrait;

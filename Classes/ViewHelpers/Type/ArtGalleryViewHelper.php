@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An art gallery.
  */
-class ArtGalleryViewHelper extends AbstractTypeViewHelper
+final class ArtGalleryViewHelper extends AbstractTypeViewHelper
 {
 }

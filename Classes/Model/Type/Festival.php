@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Festival.
  */
-class Festival extends AbstractType
+final class Festival extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

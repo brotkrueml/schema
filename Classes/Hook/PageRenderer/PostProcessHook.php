@@ -13,7 +13,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class PostProcessHook
+final class PostProcessHook
 {
     /**
      * @param array $params

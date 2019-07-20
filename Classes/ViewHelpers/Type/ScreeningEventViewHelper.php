@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A screening of a movie or other video.
  */
-class ScreeningEventViewHelper extends AbstractTypeViewHelper
+final class ScreeningEventViewHelper extends AbstractTypeViewHelper
 {
 }

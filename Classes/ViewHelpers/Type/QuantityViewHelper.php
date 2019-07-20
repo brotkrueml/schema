@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like \&#039;3 Kg\&#039; or \&#039;4 milligrams\&#039;.
  */
-class QuantityViewHelper extends AbstractTypeViewHelper
+final class QuantityViewHelper extends AbstractTypeViewHelper
 {
 }

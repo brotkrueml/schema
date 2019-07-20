@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of ingesting information/resources/food.
  */
-class ConsumeAction extends AbstractType
+final class ConsumeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ConsumeActionTrait;

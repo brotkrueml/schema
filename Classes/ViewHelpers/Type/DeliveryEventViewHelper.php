@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An event involving the delivery of an item.
  */
-class DeliveryEventViewHelper extends AbstractTypeViewHelper
+final class DeliveryEventViewHelper extends AbstractTypeViewHelper
 {
 }

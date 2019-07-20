@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
  */
-class EventStatusTypeViewHelper extends AbstractTypeViewHelper
+final class EventStatusTypeViewHelper extends AbstractTypeViewHelper
 {
 }

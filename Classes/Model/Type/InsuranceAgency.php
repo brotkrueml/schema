@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An Insurance agency.
  */
-class InsuranceAgency extends AbstractType
+final class InsuranceAgency extends AbstractType
 {
     use TypeTrait\FinancialServiceTrait;
     use TypeTrait\LocalBusinessTrait;

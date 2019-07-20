@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A tourist information center.
  */
-class TouristInformationCenterViewHelper extends AbstractTypeViewHelper
+final class TouristInformationCenterViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A television station.
  */
-class TelevisionStationViewHelper extends AbstractTypeViewHelper
+final class TelevisionStationViewHelper extends AbstractTypeViewHelper
 {
 }

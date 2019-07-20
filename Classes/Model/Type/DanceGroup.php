@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A dance group&amp;#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
  */
-class DanceGroup extends AbstractType
+final class DanceGroup extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\ThingTrait;

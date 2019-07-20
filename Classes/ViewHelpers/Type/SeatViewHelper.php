@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
  */
-class SeatViewHelper extends AbstractTypeViewHelper
+final class SeatViewHelper extends AbstractTypeViewHelper
 {
 }

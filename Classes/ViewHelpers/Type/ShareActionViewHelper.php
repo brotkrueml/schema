@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of distributing content to people for their amusement or edification.
  */
-class ShareActionViewHelper extends AbstractTypeViewHelper
+final class ShareActionViewHelper extends AbstractTypeViewHelper
 {
 }

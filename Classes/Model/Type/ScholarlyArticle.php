@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A scholarly article.
  */
-class ScholarlyArticle extends AbstractType
+final class ScholarlyArticle extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

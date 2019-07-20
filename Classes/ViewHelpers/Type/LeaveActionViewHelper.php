@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent leaves an event / group with participants/friends at a location.
  */
-class LeaveActionViewHelper extends AbstractTypeViewHelper
+final class LeaveActionViewHelper extends AbstractTypeViewHelper
 {
 }

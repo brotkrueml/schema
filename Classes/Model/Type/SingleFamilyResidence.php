@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Residence type: Single-family home.
  */
-class SingleFamilyResidence extends AbstractType
+final class SingleFamilyResidence extends AbstractType
 {
     use TypeTrait\AccommodationTrait;
     use TypeTrait\HouseTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An apartment (in American English) or flat (in British English) is a self-contained housing unit (a type of residential real estate) that occupies only part of a building (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Apartment).
  */
-class ApartmentViewHelper extends AbstractTypeViewHelper
+final class ApartmentViewHelper extends AbstractTypeViewHelper
 {
 }

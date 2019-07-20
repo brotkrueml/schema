@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
  */
-class MobileApplicationViewHelper extends AbstractTypeViewHelper
+final class MobileApplicationViewHelper extends AbstractTypeViewHelper
 {
 }

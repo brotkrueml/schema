@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
  */
-class MusicGroupViewHelper extends AbstractTypeViewHelper
+final class MusicGroupViewHelper extends AbstractTypeViewHelper
 {
 }

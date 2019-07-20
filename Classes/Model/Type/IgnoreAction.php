@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of intentionally disregarding the object. An agent ignores an object.
  */
-class IgnoreAction extends AbstractType
+final class IgnoreAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
  */
-class MusicReleaseFormatType extends AbstractType
+final class MusicReleaseFormatType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

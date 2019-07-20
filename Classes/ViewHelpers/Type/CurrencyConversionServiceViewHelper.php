@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A service to convert funds from one currency to another currency.
  */
-class CurrencyConversionServiceViewHelper extends AbstractTypeViewHelper
+final class CurrencyConversionServiceViewHelper extends AbstractTypeViewHelper
 {
 }

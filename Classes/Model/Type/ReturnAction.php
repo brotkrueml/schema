@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).
  */
-class ReturnAction extends AbstractType
+final class ReturnAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ReturnActionTrait;

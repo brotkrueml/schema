@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A shop that will buy, or lend money against the security of, personal possessions.
  */
-class PawnShopViewHelper extends AbstractTypeViewHelper
+final class PawnShopViewHelper extends AbstractTypeViewHelper
 {
 }

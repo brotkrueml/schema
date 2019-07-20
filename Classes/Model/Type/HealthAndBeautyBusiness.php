@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Health and beauty.
  */
-class HealthAndBeautyBusiness extends AbstractType
+final class HealthAndBeautyBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

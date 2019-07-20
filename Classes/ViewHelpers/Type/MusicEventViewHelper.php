@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Music event.
  */
-class MusicEventViewHelper extends AbstractTypeViewHelper
+final class MusicEventViewHelper extends AbstractTypeViewHelper
 {
 }

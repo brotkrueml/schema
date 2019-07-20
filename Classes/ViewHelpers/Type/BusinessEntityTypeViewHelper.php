@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A business entity type is a conceptual entity representing the legal form, the size, the main line of business, the position in the value chain, or any combination thereof, of an organization or business person.
  */
-class BusinessEntityTypeViewHelper extends AbstractTypeViewHelper
+final class BusinessEntityTypeViewHelper extends AbstractTypeViewHelper
 {
 }

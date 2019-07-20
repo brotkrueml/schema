@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A type of permission which can be granted for accessing a digital document.
  */
-class DigitalDocumentPermissionTypeViewHelper extends AbstractTypeViewHelper
+final class DigitalDocumentPermissionTypeViewHelper extends AbstractTypeViewHelper
 {
 }

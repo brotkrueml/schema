@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An event venue.
  */
-class EventVenueViewHelper extends AbstractTypeViewHelper
+final class EventVenueViewHelper extends AbstractTypeViewHelper
 {
 }

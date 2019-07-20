@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A permit issued by an organization, e.g. a parking pass.
  */
-class PermitViewHelper extends AbstractTypeViewHelper
+final class PermitViewHelper extends AbstractTypeViewHelper
 {
 }

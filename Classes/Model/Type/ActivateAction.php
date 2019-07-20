@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of starting or activating a device or application (e.g. starting a timer or turning on a flashlight).
  */
-class ActivateAction extends AbstractType
+final class ActivateAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

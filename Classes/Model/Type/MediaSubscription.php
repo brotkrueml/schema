@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A subscription which allows a user to access media including audio, video, books, etc.
  */
-class MediaSubscription extends AbstractType
+final class MediaSubscription extends AbstractType
 {
     use TypeTrait\MediaSubscriptionTrait;
     use TypeTrait\ThingTrait;

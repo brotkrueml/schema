@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of transferring ownership of an object to a destination. Reciprocal of TakeAction.
  */
-class GiveAction extends AbstractType
+final class GiveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\GiveActionTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of forming a personal connection with someone (object) mutually/bidirectionally/symmetrically.
  */
-class BefriendAction extends AbstractType
+final class BefriendAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

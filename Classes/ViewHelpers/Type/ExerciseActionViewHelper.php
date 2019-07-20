@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
  */
-class ExerciseActionViewHelper extends AbstractTypeViewHelper
+final class ExerciseActionViewHelper extends AbstractTypeViewHelper
 {
 }

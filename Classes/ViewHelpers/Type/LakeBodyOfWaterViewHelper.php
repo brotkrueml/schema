@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A lake (for example, Lake Pontrachain).
  */
-class LakeBodyOfWaterViewHelper extends AbstractTypeViewHelper
+final class LakeBodyOfWaterViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An audio file.
  */
-class AudioObject extends AbstractType
+final class AudioObject extends AbstractType
 {
     use TypeTrait\AudioObjectTrait;
     use TypeTrait\CreativeWorkTrait;

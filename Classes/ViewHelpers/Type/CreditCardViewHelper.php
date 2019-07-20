@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.
  */
-class CreditCardViewHelper extends AbstractTypeViewHelper
+final class CreditCardViewHelper extends AbstractTypeViewHelper
 {
 }

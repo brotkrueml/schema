@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A point value or interval for product characteristics and other purposes.
  */
-class QuantitativeValueViewHelper extends AbstractTypeViewHelper
+final class QuantitativeValueViewHelper extends AbstractTypeViewHelper
 {
 }

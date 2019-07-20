@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
  */
-class PerformanceRoleViewHelper extends AbstractTypeViewHelper
+final class PerformanceRoleViewHelper extends AbstractTypeViewHelper
 {
 }

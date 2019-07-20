@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent orders an object/product/service to be delivered/sent.
  */
-class OrderAction extends AbstractType
+final class OrderAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\OrderActionTrait;

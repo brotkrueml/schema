@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
  */
-class ResumeAction extends AbstractType
+final class ResumeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

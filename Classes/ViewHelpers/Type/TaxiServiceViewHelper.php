@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A service for a vehicle for hire with a driver for local travel. Fares are usually calculated based on distance traveled.
  */
-class TaxiServiceViewHelper extends AbstractTypeViewHelper
+final class TaxiServiceViewHelper extends AbstractTypeViewHelper
 {
 }

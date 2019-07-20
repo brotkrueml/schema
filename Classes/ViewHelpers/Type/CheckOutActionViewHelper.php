@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of an agent communicating (service provider, social media, etc) their departure of a previously reserved service (e.g. flight check in) or place (e.g. hotel).
  */
-class CheckOutActionViewHelper extends AbstractTypeViewHelper
+final class CheckOutActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The publication format of the book.
  */
-class BookFormatTypeViewHelper extends AbstractTypeViewHelper
+final class BookFormatTypeViewHelper extends AbstractTypeViewHelper
 {
 }

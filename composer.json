@@ -21,6 +21,7 @@
     },
     "require-dev": {
         "clue/graph": "^0.9",
+        "dg/bypass-finals": "^1.1",
         "infection/infection": "^0.13",
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "^0.11",

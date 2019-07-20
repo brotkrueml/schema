@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Status of a game server.
  */
-class GameServerStatusViewHelper extends AbstractTypeViewHelper
+final class GameServerStatusViewHelper extends AbstractTypeViewHelper
 {
 }

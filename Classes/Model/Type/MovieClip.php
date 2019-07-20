@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A short segment/part of a movie.
  */
-class MovieClip extends AbstractType
+final class MovieClip extends AbstractType
 {
     use TypeTrait\ClipTrait;
     use TypeTrait\CreativeWorkTrait;

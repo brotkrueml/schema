@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A work of art that is primarily visual in character.
  */
-class VisualArtwork extends AbstractType
+final class VisualArtwork extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

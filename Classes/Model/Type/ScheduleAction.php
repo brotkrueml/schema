@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Scheduling future actions, events, or tasks.
  */
-class ScheduleAction extends AbstractType
+final class ScheduleAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PlanActionTrait;

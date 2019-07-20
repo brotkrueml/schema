@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of registering to be a user of a service, product or web page.
  */
-class RegisterActionViewHelper extends AbstractTypeViewHelper
+final class RegisterActionViewHelper extends AbstractTypeViewHelper
 {
 }

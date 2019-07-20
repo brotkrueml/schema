@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
  */
-class Vehicle extends AbstractType
+final class Vehicle extends AbstractType
 {
     use TypeTrait\ProductTrait;
     use TypeTrait\ThingTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A file containing slides or used for a presentation.
  */
-class PresentationDigitalDocument extends AbstractType
+final class PresentationDigitalDocument extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DigitalDocumentTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A single item within a larger data feed.
  */
-class DataFeedItem extends AbstractType
+final class DataFeedItem extends AbstractType
 {
     use TypeTrait\DataFeedItemTrait;
     use TypeTrait\ThingTrait;

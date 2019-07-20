@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Sales event.
  */
-class SaleEvent extends AbstractType
+final class SaleEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

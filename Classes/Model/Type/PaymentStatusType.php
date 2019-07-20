@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
  */
-class PaymentStatusType extends AbstractType
+final class PaymentStatusType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

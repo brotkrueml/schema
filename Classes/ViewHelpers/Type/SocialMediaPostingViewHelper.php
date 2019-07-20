@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
  */
-class SocialMediaPostingViewHelper extends AbstractTypeViewHelper
+final class SocialMediaPostingViewHelper extends AbstractTypeViewHelper
 {
 }

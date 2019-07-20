@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A profession, may involve prolonged training and/or a formal qualification.
  */
-class Occupation extends AbstractType
+final class Occupation extends AbstractType
 {
     use TypeTrait\OccupationTrait;
     use TypeTrait\ThingTrait;

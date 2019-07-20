@@ -16,7 +16,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * {{ comment }}
  */
-class {{ className }} extends AbstractType
+final class {{ className }} extends AbstractType
 {
     {% for trait in traits %}
         use TypeTrait\{{ trait }}Trait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A profession, may involve prolonged training and/or a formal qualification.
  */
-class OccupationViewHelper extends AbstractTypeViewHelper
+final class OccupationViewHelper extends AbstractTypeViewHelper
 {
 }

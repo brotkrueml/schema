@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of marrying a person.
  */
-class MarryActionViewHelper extends AbstractTypeViewHelper
+final class MarryActionViewHelper extends AbstractTypeViewHelper
 {
 }

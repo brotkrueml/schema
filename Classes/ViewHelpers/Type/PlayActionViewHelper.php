@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.
  */
-class PlayActionViewHelper extends AbstractTypeViewHelper
+final class PlayActionViewHelper extends AbstractTypeViewHelper
 {
 }

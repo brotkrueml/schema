@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A lodging business, such as a motel, hotel, or inn.
  */
-class LodgingBusinessViewHelper extends AbstractTypeViewHelper
+final class LodgingBusinessViewHelper extends AbstractTypeViewHelper
 {
 }

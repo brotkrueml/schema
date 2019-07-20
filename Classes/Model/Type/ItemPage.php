@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A page devoted to a single item, such as a particular product or hotel.
  */
-class ItemPage extends AbstractType
+final class ItemPage extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

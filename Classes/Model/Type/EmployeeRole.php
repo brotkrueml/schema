@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
  */
-class EmployeeRole extends AbstractType
+final class EmployeeRole extends AbstractType
 {
     use TypeTrait\EmployeeRoleTrait;
     use TypeTrait\OrganizationRoleTrait;

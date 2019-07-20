@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Beach.
  */
-class BeachViewHelper extends AbstractTypeViewHelper
+final class BeachViewHelper extends AbstractTypeViewHelper
 {
 }

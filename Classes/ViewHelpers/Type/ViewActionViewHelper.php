@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of consuming static visual content.
  */
-class ViewActionViewHelper extends AbstractTypeViewHelper
+final class ViewActionViewHelper extends AbstractTypeViewHelper
 {
 }

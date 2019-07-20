@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A list of possible product availability options.
  */
-class ItemAvailability extends AbstractType
+final class ItemAvailability extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

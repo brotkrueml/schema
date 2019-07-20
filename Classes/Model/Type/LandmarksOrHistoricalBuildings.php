@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An historical landmark or building.
  */
-class LandmarksOrHistoricalBuildings extends AbstractType
+final class LandmarksOrHistoricalBuildings extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

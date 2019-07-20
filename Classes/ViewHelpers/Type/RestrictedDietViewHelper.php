@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
  */
-class RestrictedDietViewHelper extends AbstractTypeViewHelper
+final class RestrictedDietViewHelper extends AbstractTypeViewHelper
 {
 }

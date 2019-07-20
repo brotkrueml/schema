@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A media season e.g. tv, radio, video game etc.
  */
-class CreativeWorkSeasonViewHelper extends AbstractTypeViewHelper
+final class CreativeWorkSeasonViewHelper extends AbstractTypeViewHelper
 {
 }

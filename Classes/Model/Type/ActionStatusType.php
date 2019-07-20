@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The status of an Action.
  */
-class ActionStatusType extends AbstractType
+final class ActionStatusType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Used to describe membership in a loyalty programs (e.g. &quot;StarAliance&quot;), traveler clubs (e.g. &quot;AAA&quot;), purchase clubs (&quot;Safeway Club&quot;), etc.
  */
-class ProgramMembershipViewHelper extends AbstractTypeViewHelper
+final class ProgramMembershipViewHelper extends AbstractTypeViewHelper
 {
 }

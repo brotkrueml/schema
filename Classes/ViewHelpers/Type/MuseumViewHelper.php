@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A museum.
  */
-class MuseumViewHelper extends AbstractTypeViewHelper
+final class MuseumViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent inspects, determines, investigates, inquires, or examines an object\&#039;s accuracy, quality, condition, or state.
  */
-class CheckActionViewHelper extends AbstractTypeViewHelper
+final class CheckActionViewHelper extends AbstractTypeViewHelper
 {
 }

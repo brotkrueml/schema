@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Server that provides game interaction in a multiplayer game.
  */
-class GameServerViewHelper extends AbstractTypeViewHelper
+final class GameServerViewHelper extends AbstractTypeViewHelper
 {
 }

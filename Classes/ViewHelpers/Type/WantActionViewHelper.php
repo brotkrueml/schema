@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of expressing a desire about the object. An agent wants an object.
  */
-class WantActionViewHelper extends AbstractTypeViewHelper
+final class WantActionViewHelper extends AbstractTypeViewHelper
 {
 }

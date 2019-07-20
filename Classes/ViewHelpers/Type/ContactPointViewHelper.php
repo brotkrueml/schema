@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A contact point&amp;#x2014;for example, a Customer Complaints department.
  */
-class ContactPointViewHelper extends AbstractTypeViewHelper
+final class ContactPointViewHelper extends AbstractTypeViewHelper
 {
 }

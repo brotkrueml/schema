@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The mailing address.
  */
-class PostalAddressViewHelper extends AbstractTypeViewHelper
+final class PostalAddressViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of deliberately creating/producing/generating/building a result out of the agent.
  */
-class CreateAction extends AbstractType
+final class CreateAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

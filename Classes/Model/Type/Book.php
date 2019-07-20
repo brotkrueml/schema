@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A book.
  */
-class Book extends AbstractType
+final class Book extends AbstractType
 {
     use TypeTrait\BookTrait;
     use TypeTrait\CreativeWorkTrait;

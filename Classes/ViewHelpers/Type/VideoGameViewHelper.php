@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
  */
-class VideoGameViewHelper extends AbstractTypeViewHelper
+final class VideoGameViewHelper extends AbstractTypeViewHelper
 {
 }

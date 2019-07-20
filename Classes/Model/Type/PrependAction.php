@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of inserting at the beginning if an ordered collection.
  */
-class PrependAction extends AbstractType
+final class PrependAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\InsertActionTrait;

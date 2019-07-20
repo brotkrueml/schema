@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An intangible item that describes an alignment between a learning resource and a node in an educational framework.
  */
-class AlignmentObject extends AbstractType
+final class AlignmentObject extends AbstractType
 {
     use TypeTrait\AlignmentObjectTrait;
     use TypeTrait\ThingTrait;

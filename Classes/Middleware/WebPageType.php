@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class WebPageType implements MiddlewareInterface
+final class WebPageType implements MiddlewareInterface
 {
     /** @var TypoScriptFrontendController */
     private $controller;

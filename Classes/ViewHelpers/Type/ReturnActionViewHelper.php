@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).
  */
-class ReturnActionViewHelper extends AbstractTypeViewHelper
+final class ReturnActionViewHelper extends AbstractTypeViewHelper
 {
 }

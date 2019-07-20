@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A set of requirements that a must be fulfilled in order to perform an Action.
  */
-class ActionAccessSpecificationViewHelper extends AbstractTypeViewHelper
+final class ActionAccessSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

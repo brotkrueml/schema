@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of notifying someone of information pertinent to them, with no expectation of a response.
  */
-class InformActionViewHelper extends AbstractTypeViewHelper
+final class InformActionViewHelper extends AbstractTypeViewHelper
 {
 }

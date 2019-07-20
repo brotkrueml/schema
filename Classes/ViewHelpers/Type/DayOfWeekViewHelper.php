@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The day of the week, e.g. used to specify to which day the opening hours of an OpeningHoursSpecification refer.
  */
-class DayOfWeekViewHelper extends AbstractTypeViewHelper
+final class DayOfWeekViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A state or province of a country.
  */
-class StateViewHelper extends AbstractTypeViewHelper
+final class StateViewHelper extends AbstractTypeViewHelper
 {
 }

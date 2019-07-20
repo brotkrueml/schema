@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
  */
-class GovernmentServiceViewHelper extends AbstractTypeViewHelper
+final class GovernmentServiceViewHelper extends AbstractTypeViewHelper
 {
 }

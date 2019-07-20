@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
  */
-class Specialty extends AbstractType
+final class Specialty extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

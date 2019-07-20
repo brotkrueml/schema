@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A radio episode which can be part of a series or season.
  */
-class RadioEpisode extends AbstractType
+final class RadioEpisode extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\EpisodeTrait;

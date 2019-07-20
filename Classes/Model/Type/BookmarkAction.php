@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent bookmarks/flags/labels/tags/marks an object.
  */
-class BookmarkAction extends AbstractType
+final class BookmarkAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

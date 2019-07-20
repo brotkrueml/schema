@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A scholarly article.
  */
-class ScholarlyArticleViewHelper extends AbstractTypeViewHelper
+final class ScholarlyArticleViewHelper extends AbstractTypeViewHelper
 {
 }

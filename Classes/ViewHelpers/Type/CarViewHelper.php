@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.
  */
-class CarViewHelper extends AbstractTypeViewHelper
+final class CarViewHelper extends AbstractTypeViewHelper
 {
 }

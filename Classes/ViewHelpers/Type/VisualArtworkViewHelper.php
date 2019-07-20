@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A work of art that is primarily visual in character.
  */
-class VisualArtworkViewHelper extends AbstractTypeViewHelper
+final class VisualArtworkViewHelper extends AbstractTypeViewHelper
 {
 }

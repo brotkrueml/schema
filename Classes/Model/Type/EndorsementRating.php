@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An EndorsementRating is a rating that expresses some level of endorsement, for example inclusion in a &quot;critic\&#039;s pick&quot; blog, a
  */
-class EndorsementRating extends AbstractType
+final class EndorsementRating extends AbstractType
 {
     use TypeTrait\RatingTrait;
     use TypeTrait\ThingTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A table on a Web page.
  */
-class TableViewHelper extends AbstractTypeViewHelper
+final class TableViewHelper extends AbstractTypeViewHelper
 {
 }

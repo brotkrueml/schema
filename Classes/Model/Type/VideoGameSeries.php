@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A video game series.
  */
-class VideoGameSeries extends AbstractType
+final class VideoGameSeries extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeriesTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The frequency in MHz and the modulation used for a particular BroadcastService.
  */
-class BroadcastFrequencySpecification extends AbstractType
+final class BroadcastFrequencySpecification extends AbstractType
 {
     use TypeTrait\BroadcastFrequencySpecificationTrait;
     use TypeTrait\ThingTrait;

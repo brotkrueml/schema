@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news.
  */
-class NewsArticleViewHelper extends AbstractTypeViewHelper
+final class NewsArticleViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A public structure, such as a town hall or concert hall.
  */
-class CivicStructure extends AbstractType
+final class CivicStructure extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

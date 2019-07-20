@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A theater or other performing art center.
  */
-class PerformingArtsTheater extends AbstractType
+final class PerformingArtsTheater extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An EndorsementRating is a rating that expresses some level of endorsement, for example inclusion in a &quot;critic\&#039;s pick&quot; blog, a
  */
-class EndorsementRatingViewHelper extends AbstractTypeViewHelper
+final class EndorsementRatingViewHelper extends AbstractTypeViewHelper
 {
 }

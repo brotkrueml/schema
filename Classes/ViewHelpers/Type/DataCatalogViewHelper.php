@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A collection of datasets.
  */
-class DataCatalogViewHelper extends AbstractTypeViewHelper
+final class DataCatalogViewHelper extends AbstractTypeViewHelper
 {
 }

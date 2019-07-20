@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates pushed to.
  */
-class SubscribeActionViewHelper extends AbstractTypeViewHelper
+final class SubscribeActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of notifying someone that a future event/action is going to happen as expected.
  */
-class ConfirmAction extends AbstractType
+final class ConfirmAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommunicateActionTrait;

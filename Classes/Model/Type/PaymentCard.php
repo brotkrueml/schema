@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A payment method using a credit, debit, store or other card to associate the payment with an account.
  */
-class PaymentCard extends AbstractType
+final class PaymentCard extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\ServiceTrait;

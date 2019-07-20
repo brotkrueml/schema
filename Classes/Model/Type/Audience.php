@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
  */
-class Audience extends AbstractType
+final class Audience extends AbstractType
 {
     use TypeTrait\AudienceTrait;
     use TypeTrait\ThingTrait;

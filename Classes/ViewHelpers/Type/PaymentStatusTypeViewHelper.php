@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
  */
-class PaymentStatusTypeViewHelper extends AbstractTypeViewHelper
+final class PaymentStatusTypeViewHelper extends AbstractTypeViewHelper
 {
 }

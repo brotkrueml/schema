@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A canal, like the Panama Canal.
  */
-class CanalViewHelper extends AbstractTypeViewHelper
+final class CanalViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
  */
-class InvestmentOrDeposit extends AbstractType
+final class InvestmentOrDeposit extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\InvestmentOrDepositTrait;

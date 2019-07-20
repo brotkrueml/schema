@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A posting to a discussion forum.
  */
-class DiscussionForumPostingViewHelper extends AbstractTypeViewHelper
+final class DiscussionForumPostingViewHelper extends AbstractTypeViewHelper
 {
 }

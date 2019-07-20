@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A collection of music tracks.
  */
-class MusicAlbum extends AbstractType
+final class MusicAlbum extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MusicAlbumTrait;

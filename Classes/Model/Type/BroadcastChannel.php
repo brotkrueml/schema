@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A unique instance of a BroadcastService on a CableOrSatelliteService lineup.
  */
-class BroadcastChannel extends AbstractType
+final class BroadcastChannel extends AbstractType
 {
     use TypeTrait\BroadcastChannelTrait;
     use TypeTrait\ThingTrait;

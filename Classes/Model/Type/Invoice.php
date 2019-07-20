@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A statement of the money due for goods or services; a bill.
  */
-class Invoice extends AbstractType
+final class Invoice extends AbstractType
 {
     use TypeTrait\InvoiceTrait;
     use TypeTrait\ThingTrait;

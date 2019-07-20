@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of planning the execution of an event/task/action/reservation/plan to a future date.
  */
-class PlanAction extends AbstractType
+final class PlanAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PlanActionTrait;

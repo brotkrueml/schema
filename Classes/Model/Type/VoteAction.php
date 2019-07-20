@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of expressing a preference from a fixed/finite/structured set of choices/options.
  */
-class VoteAction extends AbstractType
+final class VoteAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ChooseActionTrait;

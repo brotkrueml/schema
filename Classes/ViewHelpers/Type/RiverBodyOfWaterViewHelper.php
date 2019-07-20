@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A river (for example, the broad majestic Shannon).
  */
-class RiverBodyOfWaterViewHelper extends AbstractTypeViewHelper
+final class RiverBodyOfWaterViewHelper extends AbstractTypeViewHelper
 {
 }

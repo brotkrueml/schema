@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A house painting service.
  */
-class HousePainterViewHelper extends AbstractTypeViewHelper
+final class HousePainterViewHelper extends AbstractTypeViewHelper
 {
 }

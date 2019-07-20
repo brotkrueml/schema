@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A hotel room is a single room in a hotel.
  */
-class HotelRoom extends AbstractType
+final class HotelRoom extends AbstractType
 {
     use TypeTrait\AccommodationTrait;
     use TypeTrait\HotelRoomTrait;

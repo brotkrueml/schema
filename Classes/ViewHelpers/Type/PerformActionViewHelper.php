@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of participating in performance arts.
  */
-class PerformActionViewHelper extends AbstractTypeViewHelper
+final class PerformActionViewHelper extends AbstractTypeViewHelper
 {
 }

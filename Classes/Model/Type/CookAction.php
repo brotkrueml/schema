@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of producing/preparing food.
  */
-class CookAction extends AbstractType
+final class CookAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CookActionTrait;

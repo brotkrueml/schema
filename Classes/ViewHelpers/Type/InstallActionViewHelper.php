@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of installing an application.
  */
-class InstallActionViewHelper extends AbstractTypeViewHelper
+final class InstallActionViewHelper extends AbstractTypeViewHelper
 {
 }

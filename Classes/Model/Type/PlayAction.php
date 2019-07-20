@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.
  */
-class PlayAction extends AbstractType
+final class PlayAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PlayActionTrait;

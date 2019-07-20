@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A food service, like breakfast, lunch, or dinner.
  */
-class FoodServiceViewHelper extends AbstractTypeViewHelper
+final class FoodServiceViewHelper extends AbstractTypeViewHelper
 {
 }

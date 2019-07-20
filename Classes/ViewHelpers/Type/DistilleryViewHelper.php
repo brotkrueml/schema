@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A distillery.
  */
-class DistilleryViewHelper extends AbstractTypeViewHelper
+final class DistilleryViewHelper extends AbstractTypeViewHelper
 {
 }

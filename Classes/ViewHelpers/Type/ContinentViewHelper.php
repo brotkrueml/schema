@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * One of the continents (for example, Europe or Africa).
  */
-class ContinentViewHelper extends AbstractTypeViewHelper
+final class ContinentViewHelper extends AbstractTypeViewHelper
 {
 }

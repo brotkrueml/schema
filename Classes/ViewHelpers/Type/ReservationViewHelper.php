@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Describes a reservation for travel, dining or an event. Some reservations require tickets.
  */
-class ReservationViewHelper extends AbstractTypeViewHelper
+final class ReservationViewHelper extends AbstractTypeViewHelper
 {
 }

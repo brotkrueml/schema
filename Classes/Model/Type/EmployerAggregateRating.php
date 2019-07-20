@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An aggregate rating of an Organization related to its role as an employer.
  */
-class EmployerAggregateRating extends AbstractType
+final class EmployerAggregateRating extends AbstractType
 {
     use TypeTrait\AggregateRatingTrait;
     use TypeTrait\RatingTrait;

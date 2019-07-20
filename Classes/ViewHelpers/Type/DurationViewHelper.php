@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Quantity: Duration (use ISO 8601 duration format).
  */
-class DurationViewHelper extends AbstractTypeViewHelper
+final class DurationViewHelper extends AbstractTypeViewHelper
 {
 }

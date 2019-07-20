@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A single message from a sender to one or more organizations or people.
  */
-class MessageViewHelper extends AbstractTypeViewHelper
+final class MessageViewHelper extends AbstractTypeViewHelper
 {
 }

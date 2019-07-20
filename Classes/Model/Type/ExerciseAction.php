@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
  */
-class ExerciseAction extends AbstractType
+final class ExerciseAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ExerciseActionTrait;

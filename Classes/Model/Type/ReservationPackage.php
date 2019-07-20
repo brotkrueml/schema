@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A group of multiple reservations with common values for all sub-reservations.
  */
-class ReservationPackage extends AbstractType
+final class ReservationPackage extends AbstractType
 {
     use TypeTrait\ReservationTrait;
     use TypeTrait\ReservationPackageTrait;

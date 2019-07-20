@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of registering to an organization/service without the guarantee to receive it.
  */
-class ApplyActionViewHelper extends AbstractTypeViewHelper
+final class ApplyActionViewHelper extends AbstractTypeViewHelper
 {
 }

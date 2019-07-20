@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A governmental organization or agency.
  */
-class GovernmentOrganizationViewHelper extends AbstractTypeViewHelper
+final class GovernmentOrganizationViewHelper extends AbstractTypeViewHelper
 {
 }

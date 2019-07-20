@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The geographic coordinates of a place or event.
  */
-class GeoCoordinates extends AbstractType
+final class GeoCoordinates extends AbstractType
 {
     use TypeTrait\GeoCoordinatesTrait;
     use TypeTrait\ThingTrait;

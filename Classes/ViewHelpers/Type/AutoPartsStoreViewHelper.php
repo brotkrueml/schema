@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An auto parts store.
  */
-class AutoPartsStoreViewHelper extends AbstractTypeViewHelper
+final class AutoPartsStoreViewHelper extends AbstractTypeViewHelper
 {
 }

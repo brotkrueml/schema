@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
  */
-class GamePlayMode extends AbstractType
+final class GamePlayMode extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

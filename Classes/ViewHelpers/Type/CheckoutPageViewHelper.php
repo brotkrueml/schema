@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web page type: Checkout page.
  */
-class CheckoutPageViewHelper extends AbstractTypeViewHelper
+final class CheckoutPageViewHelper extends AbstractTypeViewHelper
 {
 }

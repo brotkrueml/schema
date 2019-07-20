@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A waterfall, like Niagara.
  */
-class WaterfallViewHelper extends AbstractTypeViewHelper
+final class WaterfallViewHelper extends AbstractTypeViewHelper
 {
 }

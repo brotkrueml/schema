@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A group of multiple reservations with common values for all sub-reservations.
  */
-class ReservationPackageViewHelper extends AbstractTypeViewHelper
+final class ReservationPackageViewHelper extends AbstractTypeViewHelper
 {
 }

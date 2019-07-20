@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Aquarium.
  */
-class AquariumViewHelper extends AbstractTypeViewHelper
+final class AquariumViewHelper extends AbstractTypeViewHelper
 {
 }

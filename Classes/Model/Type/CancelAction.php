@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of asserting that a future event/action is no longer going to happen.
  */
-class CancelAction extends AbstractType
+final class CancelAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PlanActionTrait;

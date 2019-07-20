@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An embassy.
  */
-class EmbassyViewHelper extends AbstractTypeViewHelper
+final class EmbassyViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -8,7 +8,6 @@ namespace Brotkrueml\Schema\Tests\Unit\Provider;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-
 use Brotkrueml\Schema\Provider\WebPageTypeProvider;
 use PHPUnit\Framework\TestCase;
 

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A reservation for lodging at a hotel, motel, inn, etc.
  */
-class LodgingReservation extends AbstractType
+final class LodgingReservation extends AbstractType
 {
     use TypeTrait\LodgingReservationTrait;
     use TypeTrait\ReservationTrait;

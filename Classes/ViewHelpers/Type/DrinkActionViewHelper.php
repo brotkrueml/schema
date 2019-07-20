@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of swallowing liquids.
  */
-class DrinkActionViewHelper extends AbstractTypeViewHelper
+final class DrinkActionViewHelper extends AbstractTypeViewHelper
 {
 }

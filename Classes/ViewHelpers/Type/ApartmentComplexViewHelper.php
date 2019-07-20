@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Residence type: Apartment complex.
  */
-class ApartmentComplexViewHelper extends AbstractTypeViewHelper
+final class ApartmentComplexViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of responding instinctively and emotionally to an object, expressing a sentiment.
  */
-class ReactAction extends AbstractType
+final class ReactAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

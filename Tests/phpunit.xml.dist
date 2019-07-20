@@ -1,4 +1,4 @@
-<phpunit>
+<phpunit bootstrap="../.Build/vendor/autoload.php">
     <testsuites>
         <testsuite name="Unit tests">
             <directory>Unit/</directory>
@@ -13,4 +13,7 @@
             </exclude>
         </whitelist>
     </filter>
+    <extensions>
+        <extension class="Brotkrueml\Schema\Tests\Hooks\BypassFinalHook"/>
+    </extensions>
 </phpunit>

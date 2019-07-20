@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An electronic file or document.
  */
-class DigitalDocumentViewHelper extends AbstractTypeViewHelper
+final class DigitalDocumentViewHelper extends AbstractTypeViewHelper
 {
 }

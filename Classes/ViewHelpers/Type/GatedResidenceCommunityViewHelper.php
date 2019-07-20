@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Residence type: Gated community.
  */
-class GatedResidenceCommunityViewHelper extends AbstractTypeViewHelper
+final class GatedResidenceCommunityViewHelper extends AbstractTypeViewHelper
 {
 }

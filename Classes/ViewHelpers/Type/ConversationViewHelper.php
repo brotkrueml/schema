@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * One or more messages between organizations or people on a particular topic. Individual messages can be linked to the conversation with isPartOf or hasPart properties.
  */
-class ConversationViewHelper extends AbstractTypeViewHelper
+final class ConversationViewHelper extends AbstractTypeViewHelper
 {
 }

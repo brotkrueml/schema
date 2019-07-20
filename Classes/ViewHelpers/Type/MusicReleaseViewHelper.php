@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A MusicRelease is a specific release of a music album.
  */
-class MusicReleaseViewHelper extends AbstractTypeViewHelper
+final class MusicReleaseViewHelper extends AbstractTypeViewHelper
 {
 }

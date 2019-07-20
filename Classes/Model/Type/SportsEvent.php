@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Event type: Sports event.
  */
-class SportsEvent extends AbstractType
+final class SportsEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\SportsEventTrait;

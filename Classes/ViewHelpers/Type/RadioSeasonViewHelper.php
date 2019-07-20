@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Season dedicated to radio broadcast and associated online delivery.
  */
-class RadioSeasonViewHelper extends AbstractTypeViewHelper
+final class RadioSeasonViewHelper extends AbstractTypeViewHelper
 {
 }

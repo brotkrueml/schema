@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of asking someone to attend an event. Reciprocal of RsvpAction.
  */
-class InviteAction extends AbstractType
+final class InviteAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommunicateActionTrait;

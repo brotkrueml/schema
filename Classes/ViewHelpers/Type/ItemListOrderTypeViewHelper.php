@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
  */
-class ItemListOrderTypeViewHelper extends AbstractTypeViewHelper
+final class ItemListOrderTypeViewHelper extends AbstractTypeViewHelper
 {
 }

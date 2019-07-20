@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
  */
-class TheaterGroupViewHelper extends AbstractTypeViewHelper
+final class TheaterGroupViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The price asked for a given offer by the respective organization or person.
  */
-class UnitPriceSpecificationViewHelper extends AbstractTypeViewHelper
+final class UnitPriceSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

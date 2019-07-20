@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The kind of release which this album is: single, EP or album.
  */
-class MusicAlbumReleaseTypeViewHelper extends AbstractTypeViewHelper
+final class MusicAlbumReleaseTypeViewHelper extends AbstractTypeViewHelper
 {
 }

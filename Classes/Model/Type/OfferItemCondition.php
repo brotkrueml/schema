@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A list of possible conditions for the item.
  */
-class OfferItemCondition extends AbstractType
+final class OfferItemCondition extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

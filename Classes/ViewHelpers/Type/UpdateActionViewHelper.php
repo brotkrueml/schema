@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of managing by changing/editing the state of the object.
  */
-class UpdateActionViewHelper extends AbstractTypeViewHelper
+final class UpdateActionViewHelper extends AbstractTypeViewHelper
 {
 }

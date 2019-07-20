@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property. For example, an agent rents a property from a landlord in exchange for a periodic payment.
  */
-class RentAction extends AbstractType
+final class RentAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\RentActionTrait;

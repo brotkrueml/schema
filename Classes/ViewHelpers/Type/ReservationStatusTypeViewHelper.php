@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Enumerated status values for Reservation.
  */
-class ReservationStatusTypeViewHelper extends AbstractTypeViewHelper
+final class ReservationStatusTypeViewHelper extends AbstractTypeViewHelper
 {
 }

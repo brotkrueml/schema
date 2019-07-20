@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A CampingPitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site, or Campground.
  */
-class CampingPitchViewHelper extends AbstractTypeViewHelper
+final class CampingPitchViewHelper extends AbstractTypeViewHelper
 {
 }

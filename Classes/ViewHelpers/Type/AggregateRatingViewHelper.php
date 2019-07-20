@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The average rating based on multiple ratings or reviews.
  */
-class AggregateRatingViewHelper extends AbstractTypeViewHelper
+final class AggregateRatingViewHelper extends AbstractTypeViewHelper
 {
 }

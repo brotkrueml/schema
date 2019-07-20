@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A type of boarding policy used by an airline.
  */
-class BoardingPolicyTypeViewHelper extends AbstractTypeViewHelper
+final class BoardingPolicyTypeViewHelper extends AbstractTypeViewHelper
 {
 }

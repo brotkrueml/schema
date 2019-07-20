@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Business event.
  */
-class BusinessEventViewHelper extends AbstractTypeViewHelper
+final class BusinessEventViewHelper extends AbstractTypeViewHelper
 {
 }

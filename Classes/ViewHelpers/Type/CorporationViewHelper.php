@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Organization: A business corporation.
  */
-class CorporationViewHelper extends AbstractTypeViewHelper
+final class CorporationViewHelper extends AbstractTypeViewHelper
 {
 }

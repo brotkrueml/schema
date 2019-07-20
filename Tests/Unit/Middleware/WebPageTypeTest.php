@@ -193,13 +193,12 @@ class WebPageTypeTest extends TestCase
      * @dataProvider pagePropertiesProvider
      *
      * @param array $pageProperties
-     * @param AbstractType $webPage
-     *
-     * @covers       \Brotkrueml\Schema\Middleware\WebPageType::process
+     * @param AbstractType $expectedWebPage
+     * @covers \Brotkrueml\Schema\Middleware\WebPageType::process
      */
     public function withNotAlreadyAssignedWebPageModelPropertiesFromTsfeAreSet(
         array $pageProperties,
-        AbstractType $webPage
+        AbstractType $expectedWebPage
     ): void {
         $this->setUpGeneralMocks();
 
@@ -207,21 +206,21 @@ class WebPageTypeTest extends TestCase
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
-            ->setMethods(['hasWebPage', 'setWebPage'])
+            ->setMethods(['addType'])
             ->getMock();
 
         $schemaManagerMock
             ->expects($this->once())
-            ->method('hasWebPage')
-            ->willReturn(false);
+            ->method('addType')
+            ->with($expectedWebPage);
 
-        $schemaManagerMock
-            ->expects($this->once())
-            ->method('setWebPage')
-            ->with($webPage);
+        $webPageType = new WebPageType(
+            $this->controllerMock,
+            $schemaManagerMock,
+            $this->getExtensionConfigurationMockWithGetReturnTrue()
+        );
 
-        (new WebPageType($this->controllerMock, $schemaManagerMock, $this->getExtensionConfigurationMockWithGetReturnTrue()))
-            ->process($this->requestMock, $this->handlerMock);
+        $webPageType->process($this->requestMock, $this->handlerMock);
     }
 
     /**
@@ -239,19 +238,18 @@ class WebPageTypeTest extends TestCase
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
-            ->setMethods(['hasWebPage', 'setWebPage'])
+            ->setMethods(['addType'])
             ->getMock();
 
         $schemaManagerMock
-            ->expects($this->once())
-            ->method('hasWebPage')
-            ->willReturn(false);
-
-        $schemaManagerMock
             ->expects($this->never())
-            ->method('setWebPage');
+            ->method('addType');
 
-        (new WebPageType($this->controllerMock, $schemaManagerMock, $this->getExtensionConfigurationMockWithGetReturnTrue()))
+        (new WebPageType(
+            $this->controllerMock,
+            $schemaManagerMock,
+            $this->getExtensionConfigurationMockWithGetReturnTrue()
+        ))
             ->process($this->requestMock, $this->handlerMock);
     }
 }

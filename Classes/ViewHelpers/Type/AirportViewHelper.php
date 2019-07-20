@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An airport.
  */
-class AirportViewHelper extends AbstractTypeViewHelper
+final class AirportViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A software application.
  */
-class SoftwareApplication extends AbstractType
+final class SoftwareApplication extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\SoftwareApplicationTrait;

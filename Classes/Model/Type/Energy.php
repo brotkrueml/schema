@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Properties that take Energy as values are of the form \&#039;&amp;lt;Number&amp;gt; &amp;lt;Energy unit of measure&amp;gt;\&#039;.
  */
-class Energy extends AbstractType
+final class Energy extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

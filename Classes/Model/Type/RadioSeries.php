@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
  */
-class RadioSeries extends AbstractType
+final class RadioSeries extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeriesTrait;

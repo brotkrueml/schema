@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
  */
-class DonateAction extends AbstractType
+final class DonateAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\DonateActionTrait;

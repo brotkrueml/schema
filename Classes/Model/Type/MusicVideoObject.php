@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A music video file.
  */
-class MusicVideoObject extends AbstractType
+final class MusicVideoObject extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MediaObjectTrait;

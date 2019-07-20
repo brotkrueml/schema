@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A playground.
  */
-class PlaygroundViewHelper extends AbstractTypeViewHelper
+final class PlaygroundViewHelper extends AbstractTypeViewHelper
 {
 }

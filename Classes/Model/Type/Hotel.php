@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A hotel is an establishment that provides lodging paid on a short-term basis (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Hotel).
  */
-class Hotel extends AbstractType
+final class Hotel extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\LodgingBusinessTrait;

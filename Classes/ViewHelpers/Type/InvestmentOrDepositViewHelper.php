@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
  */
-class InvestmentOrDepositViewHelper extends AbstractTypeViewHelper
+final class InvestmentOrDepositViewHelper extends AbstractTypeViewHelper
 {
 }

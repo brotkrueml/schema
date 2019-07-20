@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of starting or activating a device or application (e.g. starting a timer or turning on a flashlight).
  */
-class ActivateActionViewHelper extends AbstractTypeViewHelper
+final class ActivateActionViewHelper extends AbstractTypeViewHelper
 {
 }

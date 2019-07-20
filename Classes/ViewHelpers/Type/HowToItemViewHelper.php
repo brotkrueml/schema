@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An item used as either a tool or supply when performing the instructions for how to to achieve a result.
  */
-class HowToItemViewHelper extends AbstractTypeViewHelper
+final class HowToItemViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A book.
  */
-class BookViewHelper extends AbstractTypeViewHelper
+final class BookViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Festival.
  */
-class FestivalViewHelper extends AbstractTypeViewHelper
+final class FestivalViewHelper extends AbstractTypeViewHelper
 {
 }

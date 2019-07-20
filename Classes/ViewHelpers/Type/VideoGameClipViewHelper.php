@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A short segment/part of a video game.
  */
-class VideoGameClipViewHelper extends AbstractTypeViewHelper
+final class VideoGameClipViewHelper extends AbstractTypeViewHelper
 {
 }

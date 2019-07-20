@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An intangible item that describes an alignment between a learning resource and a node in an educational framework.
  */
-class AlignmentObjectViewHelper extends AbstractTypeViewHelper
+final class AlignmentObjectViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -1,9 +1,7 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Core\Model;
-
-use Brotkrueml\Schema\Utility\Utility;
 
 /**
  * This file is part of the "schema" extension for TYPO3 CMS.
@@ -11,6 +9,8 @@ use Brotkrueml\Schema\Utility\Utility;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Utility\Utility;
+
 abstract class AbstractType
 {
     protected const CONTEXT = 'http://schema.org';

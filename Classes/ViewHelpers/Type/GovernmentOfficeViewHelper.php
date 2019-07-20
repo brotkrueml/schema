@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A government office&amp;#x2014;for example, an IRS or DMV office.
  */
-class GovernmentOfficeViewHelper extends AbstractTypeViewHelper
+final class GovernmentOfficeViewHelper extends AbstractTypeViewHelper
 {
 }

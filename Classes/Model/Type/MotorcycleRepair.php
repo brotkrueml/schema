@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A motorcycle repair shop.
  */
-class MotorcycleRepair extends AbstractType
+final class MotorcycleRepair extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

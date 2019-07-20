@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of intentionally disregarding the object. An agent ignores an object.
  */
-class IgnoreActionViewHelper extends AbstractTypeViewHelper
+final class IgnoreActionViewHelper extends AbstractTypeViewHelper
 {
 }

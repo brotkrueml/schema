@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A brand is a name used by an organization or business person for labeling a product, product group, or similar.
  */
-class BrandViewHelper extends AbstractTypeViewHelper
+final class BrandViewHelper extends AbstractTypeViewHelper
 {
 }

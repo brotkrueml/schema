@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
  */
-class TechArticleViewHelper extends AbstractTypeViewHelper
+final class TechArticleViewHelper extends AbstractTypeViewHelper
 {
 }

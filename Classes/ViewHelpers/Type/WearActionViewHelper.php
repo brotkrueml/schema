@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of dressing oneself in clothing.
  */
-class WearActionViewHelper extends AbstractTypeViewHelper
+final class WearActionViewHelper extends AbstractTypeViewHelper
 {
 }

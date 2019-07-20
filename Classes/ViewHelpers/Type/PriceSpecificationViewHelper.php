@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A structured value representing a price or price range. Typically, only the subclasses of this type are used for markup. It is recommended to use MonetaryAmount to describe independent amounts of money such as a salary, credit card limits, etc.
  */
-class PriceSpecificationViewHelper extends AbstractTypeViewHelper
+final class PriceSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

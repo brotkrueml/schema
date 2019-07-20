@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
  */
-class Article extends AbstractType
+final class Article extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

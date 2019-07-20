@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An internet cafe.
  */
-class InternetCafeViewHelper extends AbstractTypeViewHelper
+final class InternetCafeViewHelper extends AbstractTypeViewHelper
 {
 }

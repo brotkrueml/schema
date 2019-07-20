@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.
  */
-class PublicationVolumeViewHelper extends AbstractTypeViewHelper
+final class PublicationVolumeViewHelper extends AbstractTypeViewHelper
 {
 }

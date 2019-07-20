@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of forming one\&#039;s opinion, reaction or sentiment.
  */
-class AssessActionViewHelper extends AbstractTypeViewHelper
+final class AssessActionViewHelper extends AbstractTypeViewHelper
 {
 }

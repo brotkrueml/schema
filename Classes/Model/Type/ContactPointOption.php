@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Enumerated options related to a ContactPoint.
  */
-class ContactPointOption extends AbstractType
+final class ContactPointOption extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

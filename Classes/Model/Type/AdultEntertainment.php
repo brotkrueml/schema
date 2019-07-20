@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An adult entertainment establishment.
  */
-class AdultEntertainment extends AbstractType
+final class AdultEntertainment extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A reservation for an event like a concert, sporting event, or lecture.
  */
-class EventReservation extends AbstractType
+final class EventReservation extends AbstractType
 {
     use TypeTrait\ReservationTrait;
     use TypeTrait\ThingTrait;

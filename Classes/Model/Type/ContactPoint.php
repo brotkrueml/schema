@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A contact point&amp;#x2014;for example, a Customer Complaints department.
  */
-class ContactPoint extends AbstractType
+final class ContactPoint extends AbstractType
 {
     use TypeTrait\ContactPointTrait;
     use TypeTrait\ThingTrait;

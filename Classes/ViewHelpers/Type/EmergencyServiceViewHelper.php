@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An emergency service, such as a fire station or ER.
  */
-class EmergencyServiceViewHelper extends AbstractTypeViewHelper
+final class EmergencyServiceViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Enumerated status values for Reservation.
  */
-class ReservationStatusType extends AbstractType
+final class ReservationStatusType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

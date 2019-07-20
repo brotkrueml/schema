@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via suitableForDiet. The keywords property can also be used to add more detail.
  */
-class RecipeViewHelper extends AbstractTypeViewHelper
+final class RecipeViewHelper extends AbstractTypeViewHelper
 {
 }

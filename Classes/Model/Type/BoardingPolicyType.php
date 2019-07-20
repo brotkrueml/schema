@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A type of boarding policy used by an airline.
  */
-class BoardingPolicyType extends AbstractType
+final class BoardingPolicyType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

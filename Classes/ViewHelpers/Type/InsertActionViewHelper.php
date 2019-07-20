@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of adding at a specific location in an ordered collection.
  */
-class InsertActionViewHelper extends AbstractTypeViewHelper
+final class InsertActionViewHelper extends AbstractTypeViewHelper
 {
 }

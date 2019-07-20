@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The most generic kind of creative work, including books, movies, photographs, software programs, etc.
  */
-class CreativeWorkViewHelper extends AbstractTypeViewHelper
+final class CreativeWorkViewHelper extends AbstractTypeViewHelper
 {
 }

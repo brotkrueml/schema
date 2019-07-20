@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A self-storage facility.
  */
-class SelfStorageViewHelper extends AbstractTypeViewHelper
+final class SelfStorageViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent joins an event/group with participants/friends at a location.
  */
-class JoinAction extends AbstractType
+final class JoinAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\JoinActionTrait;

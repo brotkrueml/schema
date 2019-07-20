@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A trip on a commercial bus line.
  */
-class BusTripViewHelper extends AbstractTypeViewHelper
+final class BusTripViewHelper extends AbstractTypeViewHelper
 {
 }

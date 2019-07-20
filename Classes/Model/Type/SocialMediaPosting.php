@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
  */
-class SocialMediaPosting extends AbstractType
+final class SocialMediaPosting extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

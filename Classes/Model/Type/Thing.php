@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The most generic type of item.
  */
-class Thing extends AbstractType
+final class Thing extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

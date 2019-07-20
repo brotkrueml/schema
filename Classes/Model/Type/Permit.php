@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A permit issued by an organization, e.g. a parking pass.
  */
-class Permit extends AbstractType
+final class Permit extends AbstractType
 {
     use TypeTrait\PermitTrait;
     use TypeTrait\ThingTrait;

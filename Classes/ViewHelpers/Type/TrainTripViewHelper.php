@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A trip on a commercial train line.
  */
-class TrainTripViewHelper extends AbstractTypeViewHelper
+final class TrainTripViewHelper extends AbstractTypeViewHelper
 {
 }

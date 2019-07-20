@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Reference documentation for application programming interfaces (APIs).
  */
-class APIReferenceViewHelper extends AbstractTypeViewHelper
+final class APIReferenceViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of arriving at a place. An agent arrives at a destination from a fromLocation, optionally with participants.
  */
-class ArriveAction extends AbstractType
+final class ArriveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\MoveActionTrait;

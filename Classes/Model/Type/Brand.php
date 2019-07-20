@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A brand is a name used by an organization or business person for labeling a product, product group, or similar.
  */
-class Brand extends AbstractType
+final class Brand extends AbstractType
 {
     use TypeTrait\BrandTrait;
     use TypeTrait\ThingTrait;

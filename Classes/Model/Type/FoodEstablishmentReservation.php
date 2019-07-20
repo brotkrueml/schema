@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A reservation to dine at a food-related business.
  */
-class FoodEstablishmentReservation extends AbstractType
+final class FoodEstablishmentReservation extends AbstractType
 {
     use TypeTrait\FoodEstablishmentReservationTrait;
     use TypeTrait\ReservationTrait;

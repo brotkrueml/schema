@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A fire station. With firemen.
  */
-class FireStation extends AbstractType
+final class FireStation extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\LocalBusinessTrait;

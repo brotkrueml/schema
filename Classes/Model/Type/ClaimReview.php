@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).
  */
-class ClaimReview extends AbstractType
+final class ClaimReview extends AbstractType
 {
     use TypeTrait\ClaimReviewTrait;
     use TypeTrait\CreativeWorkTrait;

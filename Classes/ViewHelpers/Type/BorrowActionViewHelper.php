@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of obtaining an object under an agreement to return it at a later date. Reciprocal of LendAction.
  */
-class BorrowActionViewHelper extends AbstractTypeViewHelper
+final class BorrowActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of allocating an action/event/task to some destination (someone or something).
  */
-class AssignActionViewHelper extends AbstractTypeViewHelper
+final class AssignActionViewHelper extends AbstractTypeViewHelper
 {
 }

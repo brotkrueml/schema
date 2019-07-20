@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A business that provide Heating, Ventilation and Air Conditioning services.
  */
-class HVACBusinessViewHelper extends AbstractTypeViewHelper
+final class HVACBusinessViewHelper extends AbstractTypeViewHelper
 {
 }

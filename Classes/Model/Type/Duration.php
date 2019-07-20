@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Quantity: Duration (use ISO 8601 duration format).
  */
-class Duration extends AbstractType
+final class Duration extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

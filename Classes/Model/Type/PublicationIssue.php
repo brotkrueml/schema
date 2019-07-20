@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A part of a successively published publication such as a periodical or publication volume, often numbered, usually containing a grouping of works such as articles.
  */
-class PublicationIssue extends AbstractType
+final class PublicationIssue extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\PublicationIssueTrait;

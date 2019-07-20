@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A pharmacy or drugstore.
  */
-class PharmacyViewHelper extends AbstractTypeViewHelper
+final class PharmacyViewHelper extends AbstractTypeViewHelper
 {
 }

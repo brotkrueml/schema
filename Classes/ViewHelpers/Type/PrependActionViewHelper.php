@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of inserting at the beginning if an ordered collection.
  */
-class PrependActionViewHelper extends AbstractTypeViewHelper
+final class PrependActionViewHelper extends AbstractTypeViewHelper
 {
 }

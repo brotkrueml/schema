@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A person (alive, dead, undead, or fictional).
  */
-class PersonViewHelper extends AbstractTypeViewHelper
+final class PersonViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The costs of settling the payment using a particular payment method.
  */
-class PaymentChargeSpecification extends AbstractType
+final class PaymentChargeSpecification extends AbstractType
 {
     use TypeTrait\PaymentChargeSpecificationTrait;
     use TypeTrait\PriceSpecificationTrait;

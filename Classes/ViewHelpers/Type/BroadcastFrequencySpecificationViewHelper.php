@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The frequency in MHz and the modulation used for a particular BroadcastService.
  */
-class BroadcastFrequencySpecificationViewHelper extends AbstractTypeViewHelper
+final class BroadcastFrequencySpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

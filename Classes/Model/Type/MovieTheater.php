@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A movie theater.
  */
-class MovieTheater extends AbstractType
+final class MovieTheater extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\LocalBusinessTrait;

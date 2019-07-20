@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Car repair, sales, or parts.
  */
-class AutomotiveBusiness extends AbstractType
+final class AutomotiveBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

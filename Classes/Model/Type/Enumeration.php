@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Lists or enumerations—for example, a list of cuisines or music genres, etc.
  */
-class Enumeration extends AbstractType
+final class Enumeration extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

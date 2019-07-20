@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.
  */
-class CommunicateAction extends AbstractType
+final class CommunicateAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommunicateActionTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An historical landmark or building.
  */
-class LandmarksOrHistoricalBuildingsViewHelper extends AbstractTypeViewHelper
+final class LandmarksOrHistoricalBuildingsViewHelper extends AbstractTypeViewHelper
 {
 }

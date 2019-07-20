@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent approves/certifies/likes/supports/sanction an object.
  */
-class EndorseActionViewHelper extends AbstractTypeViewHelper
+final class EndorseActionViewHelper extends AbstractTypeViewHelper
 {
 }

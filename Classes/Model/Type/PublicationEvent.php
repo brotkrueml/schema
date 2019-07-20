@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
  */
-class PublicationEvent extends AbstractType
+final class PublicationEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\PublicationEventTrait;

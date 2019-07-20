@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Enumerated status values for Order.
  */
-class OrderStatusViewHelper extends AbstractTypeViewHelper
+final class OrderStatusViewHelper extends AbstractTypeViewHelper
 {
 }

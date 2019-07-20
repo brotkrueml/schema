@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A hotel room is a single room in a hotel.
  */
-class HotelRoomViewHelper extends AbstractTypeViewHelper
+final class HotelRoomViewHelper extends AbstractTypeViewHelper
 {
 }

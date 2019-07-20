@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A blog post.
  */
-class BlogPosting extends AbstractType
+final class BlogPosting extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A screening of a movie or other video.
  */
-class ScreeningEvent extends AbstractType
+final class ScreeningEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ScreeningEventTrait;

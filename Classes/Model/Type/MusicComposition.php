@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A musical composition.
  */
-class MusicComposition extends AbstractType
+final class MusicComposition extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MusicCompositionTrait;

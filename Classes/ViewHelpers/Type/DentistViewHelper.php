@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A dentist.
  */
-class DentistViewHelper extends AbstractTypeViewHelper
+final class DentistViewHelper extends AbstractTypeViewHelper
 {
 }

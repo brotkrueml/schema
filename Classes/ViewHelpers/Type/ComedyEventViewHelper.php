@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Comedy event.
  */
-class ComedyEventViewHelper extends AbstractTypeViewHelper
+final class ComedyEventViewHelper extends AbstractTypeViewHelper
 {
 }

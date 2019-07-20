@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of editing a recipient by replacing an old object with a new object.
  */
-class ReplaceActionViewHelper extends AbstractTypeViewHelper
+final class ReplaceActionViewHelper extends AbstractTypeViewHelper
 {
 }

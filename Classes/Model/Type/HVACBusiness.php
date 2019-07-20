@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A business that provide Heating, Ventilation and Air Conditioning services.
  */
-class HVACBusiness extends AbstractType
+final class HVACBusiness extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

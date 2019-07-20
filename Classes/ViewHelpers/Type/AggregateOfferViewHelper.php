@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
  */
-class AggregateOfferViewHelper extends AbstractTypeViewHelper
+final class AggregateOfferViewHelper extends AbstractTypeViewHelper
 {
 }

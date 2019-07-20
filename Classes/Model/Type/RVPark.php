@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A place offering space for &quot;Recreational Vehicles&quot;, Caravans, mobile homes and the like.
  */
-class RVPark extends AbstractType
+final class RVPark extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

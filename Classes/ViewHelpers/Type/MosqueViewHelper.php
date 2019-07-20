@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A mosque.
  */
-class MosqueViewHelper extends AbstractTypeViewHelper
+final class MosqueViewHelper extends AbstractTypeViewHelper
 {
 }

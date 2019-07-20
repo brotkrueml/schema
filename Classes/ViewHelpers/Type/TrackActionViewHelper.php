@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent tracks an object for updates.
  */
-class TrackActionViewHelper extends AbstractTypeViewHelper
+final class TrackActionViewHelper extends AbstractTypeViewHelper
 {
 }

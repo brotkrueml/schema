@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A dataset in downloadable form.
  */
-class DataDownloadViewHelper extends AbstractTypeViewHelper
+final class DataDownloadViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of forming one\&#039;s opinion, reaction or sentiment.
  */
-class AssessAction extends AbstractType
+final class AssessAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

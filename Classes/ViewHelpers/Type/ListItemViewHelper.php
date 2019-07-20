@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An list item, e.g. a step in a checklist or how-to description.
  */
-class ListItemViewHelper extends AbstractTypeViewHelper
+final class ListItemViewHelper extends AbstractTypeViewHelper
 {
 }

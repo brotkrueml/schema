@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of editing a recipient by removing one of its objects.
  */
-class DeleteAction extends AbstractType
+final class DeleteAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A shop that will buy, or lend money against the security of, personal possessions.
  */
-class PawnShop extends AbstractType
+final class PawnShop extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

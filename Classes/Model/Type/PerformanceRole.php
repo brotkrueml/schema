@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
  */
-class PerformanceRole extends AbstractType
+final class PerformanceRole extends AbstractType
 {
     use TypeTrait\PerformanceRoleTrait;
     use TypeTrait\RoleTrait;

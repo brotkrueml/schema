@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Original definition: &quot;provider of professional services.&quot;
  */
-class ProfessionalService extends AbstractType
+final class ProfessionalService extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An electrician.
  */
-class ElectricianViewHelper extends AbstractTypeViewHelper
+final class ElectricianViewHelper extends AbstractTypeViewHelper
 {
 }

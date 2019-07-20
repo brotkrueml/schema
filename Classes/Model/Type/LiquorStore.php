@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
  */
-class LiquorStore extends AbstractType
+final class LiquorStore extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A body of water, such as a sea, ocean, or lake.
  */
-class BodyOfWaterViewHelper extends AbstractTypeViewHelper
+final class BodyOfWaterViewHelper extends AbstractTypeViewHelper
 {
 }

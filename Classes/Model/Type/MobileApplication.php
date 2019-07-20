@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
  */
-class MobileApplication extends AbstractType
+final class MobileApplication extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MobileApplicationTrait;

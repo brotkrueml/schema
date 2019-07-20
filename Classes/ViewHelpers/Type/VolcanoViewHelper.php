@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A volcano, like Fuji san.
  */
-class VolcanoViewHelper extends AbstractTypeViewHelper
+final class VolcanoViewHelper extends AbstractTypeViewHelper
 {
 }

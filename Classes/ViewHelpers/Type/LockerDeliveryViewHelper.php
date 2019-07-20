@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A DeliveryMethod in which an item is made available via locker.
  */
-class LockerDeliveryViewHelper extends AbstractTypeViewHelper
+final class LockerDeliveryViewHelper extends AbstractTypeViewHelper
 {
 }

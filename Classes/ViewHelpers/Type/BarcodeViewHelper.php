@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An image of a visual machine-readable code such as a barcode or QR code.
  */
-class BarcodeViewHelper extends AbstractTypeViewHelper
+final class BarcodeViewHelper extends AbstractTypeViewHelper
 {
 }

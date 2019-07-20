@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of expressing a preference from a fixed/finite/structured set of choices/options.
  */
-class VoteActionViewHelper extends AbstractTypeViewHelper
+final class VoteActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Car repair business.
  */
-class AutoRepairViewHelper extends AbstractTypeViewHelper
+final class AutoRepairViewHelper extends AbstractTypeViewHelper
 {
 }

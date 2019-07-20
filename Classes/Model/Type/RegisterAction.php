@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of registering to be a user of a service, product or web page.
  */
-class RegisterAction extends AbstractType
+final class RegisterAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of downloading an object.
  */
-class DownloadActionViewHelper extends AbstractTypeViewHelper
+final class DownloadActionViewHelper extends AbstractTypeViewHelper
 {
 }

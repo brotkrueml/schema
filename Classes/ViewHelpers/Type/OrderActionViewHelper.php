@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent orders an object/product/service to be delivered/sent.
  */
-class OrderActionViewHelper extends AbstractTypeViewHelper
+final class OrderActionViewHelper extends AbstractTypeViewHelper
 {
 }

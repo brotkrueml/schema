@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A posting to a discussion forum.
  */
-class DiscussionForumPosting extends AbstractType
+final class DiscussionForumPosting extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

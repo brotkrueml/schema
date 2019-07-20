@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A hospital.
  */
-class Hospital extends AbstractType
+final class Hospital extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\LocalBusinessTrait;

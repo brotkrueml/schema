@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of being defeated in a competitive activity.
  */
-class LoseAction extends AbstractType
+final class LoseAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\LoseActionTrait;

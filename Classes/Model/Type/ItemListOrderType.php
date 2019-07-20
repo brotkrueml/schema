@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
  */
-class ItemListOrderType extends AbstractType
+final class ItemListOrderType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

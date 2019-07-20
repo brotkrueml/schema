@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Health and beauty.
  */
-class HealthAndBeautyBusinessViewHelper extends AbstractTypeViewHelper
+final class HealthAndBeautyBusinessViewHelper extends AbstractTypeViewHelper
 {
 }

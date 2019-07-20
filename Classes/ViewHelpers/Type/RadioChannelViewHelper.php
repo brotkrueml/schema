@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
  */
-class RadioChannelViewHelper extends AbstractTypeViewHelper
+final class RadioChannelViewHelper extends AbstractTypeViewHelper
 {
 }

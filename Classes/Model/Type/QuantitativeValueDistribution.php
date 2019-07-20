@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A statistical distribution of values.
  */
-class QuantitativeValueDistribution extends AbstractType
+final class QuantitativeValueDistribution extends AbstractType
 {
     use TypeTrait\QuantitativeValueDistributionTrait;
     use TypeTrait\ThingTrait;

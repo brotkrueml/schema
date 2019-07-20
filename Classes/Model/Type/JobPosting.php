@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A listing that describes a job opening in a certain organization.
  */
-class JobPosting extends AbstractType
+final class JobPosting extends AbstractType
 {
     use TypeTrait\JobPostingTrait;
     use TypeTrait\ThingTrait;

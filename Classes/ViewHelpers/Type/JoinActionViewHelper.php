@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent joins an event/group with participants/friends at a location.
  */
-class JoinActionViewHelper extends AbstractTypeViewHelper
+final class JoinActionViewHelper extends AbstractTypeViewHelper
 {
 }

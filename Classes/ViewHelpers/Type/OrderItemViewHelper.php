@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
  */
-class OrderItemViewHelper extends AbstractTypeViewHelper
+final class OrderItemViewHelper extends AbstractTypeViewHelper
 {
 }

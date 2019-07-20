@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
  */
-class ParcelDelivery extends AbstractType
+final class ParcelDelivery extends AbstractType
 {
     use TypeTrait\ParcelDeliveryTrait;
     use TypeTrait\ThingTrait;

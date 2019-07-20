@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A subscription which allows a user to access media including audio, video, books, etc.
  */
-class MediaSubscriptionViewHelper extends AbstractTypeViewHelper
+final class MediaSubscriptionViewHelper extends AbstractTypeViewHelper
 {
 }

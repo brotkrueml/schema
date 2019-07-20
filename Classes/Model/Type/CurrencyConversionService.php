@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A service to convert funds from one currency to another currency.
  */
-class CurrencyConversionService extends AbstractType
+final class CurrencyConversionService extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\ServiceTrait;

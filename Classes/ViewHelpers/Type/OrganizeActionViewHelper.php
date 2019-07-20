@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of manipulating/administering/supervising/controlling one or more objects.
  */
-class OrganizeActionViewHelper extends AbstractTypeViewHelper
+final class OrganizeActionViewHelper extends AbstractTypeViewHelper
 {
 }

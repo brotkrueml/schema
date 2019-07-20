@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A value indicating a steering position.
  */
-class SteeringPositionValueViewHelper extends AbstractTypeViewHelper
+final class SteeringPositionValueViewHelper extends AbstractTypeViewHelper
 {
 }

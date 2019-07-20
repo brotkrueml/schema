@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A type of permission which can be granted for accessing a digital document.
  */
-class DigitalDocumentPermissionType extends AbstractType
+final class DigitalDocumentPermissionType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

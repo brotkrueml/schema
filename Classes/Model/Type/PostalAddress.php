@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The mailing address.
  */
-class PostalAddress extends AbstractType
+final class PostalAddress extends AbstractType
 {
     use TypeTrait\ContactPointTrait;
     use TypeTrait\PostalAddressTrait;

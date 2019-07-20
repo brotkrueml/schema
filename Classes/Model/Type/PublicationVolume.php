@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.
  */
-class PublicationVolume extends AbstractType
+final class PublicationVolume extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\PublicationVolumeTrait;

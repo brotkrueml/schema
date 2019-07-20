@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A moving company.
  */
-class MovingCompanyViewHelper extends AbstractTypeViewHelper
+final class MovingCompanyViewHelper extends AbstractTypeViewHelper
 {
 }

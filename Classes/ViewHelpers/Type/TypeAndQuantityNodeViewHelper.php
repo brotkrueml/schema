@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
  */
-class TypeAndQuantityNodeViewHelper extends AbstractTypeViewHelper
+final class TypeAndQuantityNodeViewHelper extends AbstractTypeViewHelper
 {
 }

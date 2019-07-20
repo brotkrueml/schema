@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
  */
-class LikeAction extends AbstractType
+final class LikeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

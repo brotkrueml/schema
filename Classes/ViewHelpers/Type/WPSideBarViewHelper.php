@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A sidebar section of the page.
  */
-class WPSideBarViewHelper extends AbstractTypeViewHelper
+final class WPSideBarViewHelper extends AbstractTypeViewHelper
 {
 }

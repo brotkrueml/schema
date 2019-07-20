@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A FAQPage is a WebPage presenting one or more &quot;Frequently asked questions&quot; (see also QAPage).
  */
-class FAQPageViewHelper extends AbstractTypeViewHelper
+final class FAQPageViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A single message from a sender to one or more organizations or people.
  */
-class Message extends AbstractType
+final class Message extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MessageTrait;

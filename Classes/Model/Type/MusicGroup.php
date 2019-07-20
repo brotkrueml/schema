@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
  */
-class MusicGroup extends AbstractType
+final class MusicGroup extends AbstractType
 {
     use TypeTrait\MusicGroupTrait;
     use TypeTrait\OrganizationTrait;

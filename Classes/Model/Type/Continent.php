@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * One of the continents (for example, Europe or Africa).
  */
-class Continent extends AbstractType
+final class Continent extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

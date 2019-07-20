@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A public swimming pool.
  */
-class PublicSwimmingPool extends AbstractType
+final class PublicSwimmingPool extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

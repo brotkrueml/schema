@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Nutritional information about the recipe.
  */
-class NutritionInformationViewHelper extends AbstractTypeViewHelper
+final class NutritionInformationViewHelper extends AbstractTypeViewHelper
 {
 }

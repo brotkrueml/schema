@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of editing a recipient by removing one of its objects.
  */
-class DeleteActionViewHelper extends AbstractTypeViewHelper
+final class DeleteActionViewHelper extends AbstractTypeViewHelper
 {
 }

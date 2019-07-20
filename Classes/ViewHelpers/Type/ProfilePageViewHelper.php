@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web page type: Profile page.
  */
-class ProfilePageViewHelper extends AbstractTypeViewHelper
+final class ProfilePageViewHelper extends AbstractTypeViewHelper
 {
 }

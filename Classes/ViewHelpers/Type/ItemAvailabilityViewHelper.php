@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A list of possible product availability options.
  */
-class ItemAvailabilityViewHelper extends AbstractTypeViewHelper
+final class ItemAvailabilityViewHelper extends AbstractTypeViewHelper
 {
 }

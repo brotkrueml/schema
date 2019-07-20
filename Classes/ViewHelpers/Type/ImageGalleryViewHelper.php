@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web page type: Image gallery page.
  */
-class ImageGalleryViewHelper extends AbstractTypeViewHelper
+final class ImageGalleryViewHelper extends AbstractTypeViewHelper
 {
 }

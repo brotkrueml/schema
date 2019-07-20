@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A short radio program or a segment/part of a radio program.
  */
-class RadioClipViewHelper extends AbstractTypeViewHelper
+final class RadioClipViewHelper extends AbstractTypeViewHelper
 {
 }

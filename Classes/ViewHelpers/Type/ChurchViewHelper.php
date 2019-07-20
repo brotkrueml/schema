@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A church.
  */
-class ChurchViewHelper extends AbstractTypeViewHelper
+final class ChurchViewHelper extends AbstractTypeViewHelper
 {
 }

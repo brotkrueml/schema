@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of consuming written content.
  */
-class ReadActionViewHelper extends AbstractTypeViewHelper
+final class ReadActionViewHelper extends AbstractTypeViewHelper
 {
 }

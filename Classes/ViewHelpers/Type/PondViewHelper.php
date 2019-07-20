@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A pond.
  */
-class PondViewHelper extends AbstractTypeViewHelper
+final class PondViewHelper extends AbstractTypeViewHelper
 {
 }

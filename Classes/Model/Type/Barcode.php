@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An image of a visual machine-readable code such as a barcode or QR code.
  */
-class Barcode extends AbstractType
+final class Barcode extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ImageObjectTrait;

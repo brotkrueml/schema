@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An accommodation is a place that can accommodate human beings, e.g. a hotel room, a camping pitch, or a meeting room. Many accommodations are for overnight stays, but this is not a mandatory requirement.
  */
-class Accommodation extends AbstractType
+final class Accommodation extends AbstractType
 {
     use TypeTrait\AccommodationTrait;
     use TypeTrait\PlaceTrait;

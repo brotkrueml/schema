@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).
  */
-class IndividualProductViewHelper extends AbstractTypeViewHelper
+final class IndividualProductViewHelper extends AbstractTypeViewHelper
 {
 }

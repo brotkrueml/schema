@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
  */
-class SuspendAction extends AbstractType
+final class SuspendAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

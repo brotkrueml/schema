@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A set of characteristics belonging to people, e.g. who compose an item\&#039;s target audience.
  */
-class PeopleAudience extends AbstractType
+final class PeopleAudience extends AbstractType
 {
     use TypeTrait\AudienceTrait;
     use TypeTrait\PeopleAudienceTrait;

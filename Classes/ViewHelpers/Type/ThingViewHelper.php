@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The most generic type of item.
  */
-class ThingViewHelper extends AbstractTypeViewHelper
+final class ThingViewHelper extends AbstractTypeViewHelper
 {
 }

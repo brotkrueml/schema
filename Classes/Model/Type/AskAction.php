@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of posing a question / favor to someone.
  */
-class AskAction extends AbstractType
+final class AskAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\AskActionTrait;

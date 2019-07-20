@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Properties that take Mass as values are of the form \&#039;&amp;lt;Number&amp;gt; &amp;lt;Mass unit of measure&amp;gt;\&#039;. E.g., \&#039;7 kg\&#039;.
  */
-class MassViewHelper extends AbstractTypeViewHelper
+final class MassViewHelper extends AbstractTypeViewHelper
 {
 }

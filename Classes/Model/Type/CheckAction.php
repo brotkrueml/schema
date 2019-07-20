@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent inspects, determines, investigates, inquires, or examines an object\&#039;s accuracy, quality, condition, or state.
  */
-class CheckAction extends AbstractType
+final class CheckAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

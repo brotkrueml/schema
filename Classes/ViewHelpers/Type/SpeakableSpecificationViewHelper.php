@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A SpeakableSpecification indicates (typically via xpath or cssSelector) sections of a document that are highlighted as particularly speakable. Instances of this type are expected to be used primarily as values of the speakable property.
  */
-class SpeakableSpecificationViewHelper extends AbstractTypeViewHelper
+final class SpeakableSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

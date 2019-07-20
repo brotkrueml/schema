@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A financial product for the loaning of an amount of money under agreed terms and charges.
  */
-class LoanOrCreditViewHelper extends AbstractTypeViewHelper
+final class LoanOrCreditViewHelper extends AbstractTypeViewHelper
 {
 }

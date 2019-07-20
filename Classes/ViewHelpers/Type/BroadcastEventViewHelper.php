@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An over the air or online broadcast event.
  */
-class BroadcastEventViewHelper extends AbstractTypeViewHelper
+final class BroadcastEventViewHelper extends AbstractTypeViewHelper
 {
 }

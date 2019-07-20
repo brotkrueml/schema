@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.
  */
-class PaymentMethod extends AbstractType
+final class PaymentMethod extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

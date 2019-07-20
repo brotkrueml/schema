@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A zoo.
  */
-class ZooViewHelper extends AbstractTypeViewHelper
+final class ZooViewHelper extends AbstractTypeViewHelper
 {
 }

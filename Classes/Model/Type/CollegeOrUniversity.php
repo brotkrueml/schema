@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A college, university, or other third-level educational institution.
  */
-class CollegeOrUniversity extends AbstractType
+final class CollegeOrUniversity extends AbstractType
 {
     use TypeTrait\EducationalOrganizationTrait;
     use TypeTrait\OrganizationTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Bank or credit union.
  */
-class BankOrCreditUnionViewHelper extends AbstractTypeViewHelper
+final class BankOrCreditUnionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.
  */
-class Question extends AbstractType
+final class Question extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\QuestionTrait;

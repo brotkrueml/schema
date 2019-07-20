@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of producing/preparing food.
  */
-class CookActionViewHelper extends AbstractTypeViewHelper
+final class CookActionViewHelper extends AbstractTypeViewHelper
 {
 }

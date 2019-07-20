@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A direction indicating a single action to do in the instructions for how to achieve a result.
  */
-class HowToDirection extends AbstractType
+final class HowToDirection extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\HowToDirectionTrait;

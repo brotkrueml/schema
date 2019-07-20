@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A TV episode which can be part of a series or season.
  */
-class TVEpisode extends AbstractType
+final class TVEpisode extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\EpisodeTrait;

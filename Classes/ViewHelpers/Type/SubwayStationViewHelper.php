@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A subway station.
  */
-class SubwayStationViewHelper extends AbstractTypeViewHelper
+final class SubwayStationViewHelper extends AbstractTypeViewHelper
 {
 }

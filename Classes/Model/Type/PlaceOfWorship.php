@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Place of worship, such as a church, synagogue, or mosque.
  */
-class PlaceOfWorship extends AbstractType
+final class PlaceOfWorship extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).
  */
-class IndividualProduct extends AbstractType
+final class IndividualProduct extends AbstractType
 {
     use TypeTrait\IndividualProductTrait;
     use TypeTrait\ProductTrait;

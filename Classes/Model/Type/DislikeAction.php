@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of expressing a negative sentiment about the object. An agent dislikes an object (a proposition, topic or theme) with participants.
  */
-class DislikeAction extends AbstractType
+final class DislikeAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

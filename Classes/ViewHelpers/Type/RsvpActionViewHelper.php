@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
  */
-class RsvpActionViewHelper extends AbstractTypeViewHelper
+final class RsvpActionViewHelper extends AbstractTypeViewHelper
 {
 }

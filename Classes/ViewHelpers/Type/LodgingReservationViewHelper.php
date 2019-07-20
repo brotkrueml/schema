@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A reservation for lodging at a hotel, motel, inn, etc.
  */
-class LodgingReservationViewHelper extends AbstractTypeViewHelper
+final class LodgingReservationViewHelper extends AbstractTypeViewHelper
 {
 }

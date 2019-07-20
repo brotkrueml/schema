@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: A social dance.
  */
-class DanceEventViewHelper extends AbstractTypeViewHelper
+final class DanceEventViewHelper extends AbstractTypeViewHelper
 {
 }

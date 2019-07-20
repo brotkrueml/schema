@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of allocating an action/event/task to some destination (someone or something).
  */
-class AssignAction extends AbstractType
+final class AssignAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

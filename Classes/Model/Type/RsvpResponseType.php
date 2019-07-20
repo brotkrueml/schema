@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * RsvpResponseType is an enumeration type whose instances represent responding to an RSVP request.
  */
-class RsvpResponseType extends AbstractType
+final class RsvpResponseType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

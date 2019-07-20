@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A preschool.
  */
-class Preschool extends AbstractType
+final class Preschool extends AbstractType
 {
     use TypeTrait\EducationalOrganizationTrait;
     use TypeTrait\OrganizationTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.
  */
-class LocationFeatureSpecificationViewHelper extends AbstractTypeViewHelper
+final class LocationFeatureSpecificationViewHelper extends AbstractTypeViewHelper
 {
 }

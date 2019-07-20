@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A park.
  */
-class ParkViewHelper extends AbstractTypeViewHelper
+final class ParkViewHelper extends AbstractTypeViewHelper
 {
 }

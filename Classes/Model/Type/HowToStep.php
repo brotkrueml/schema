@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A step in the instructions for how to achieve a result. It is an ordered list with HowToDirection and/or HowToTip items.
  */
-class HowToStep extends AbstractType
+final class HowToStep extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ItemListTrait;

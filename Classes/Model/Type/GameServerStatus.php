@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Status of a game server.
  */
-class GameServerStatus extends AbstractType
+final class GameServerStatus extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

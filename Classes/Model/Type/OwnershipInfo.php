@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A structured value providing information about when a certain organization or person owned a certain product.
  */
-class OwnershipInfo extends AbstractType
+final class OwnershipInfo extends AbstractType
 {
     use TypeTrait\OwnershipInfoTrait;
     use TypeTrait\ThingTrait;

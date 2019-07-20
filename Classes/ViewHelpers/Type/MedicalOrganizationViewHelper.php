@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A medical organization (physical or not), such as hospital, institution or clinic.
  */
-class MedicalOrganizationViewHelper extends AbstractTypeViewHelper
+final class MedicalOrganizationViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An organization such as a school, NGO, corporation, club, etc.
  */
-class OrganizationViewHelper extends AbstractTypeViewHelper
+final class OrganizationViewHelper extends AbstractTypeViewHelper
 {
 }

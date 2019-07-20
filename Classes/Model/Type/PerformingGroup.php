@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A performance group, such as a band, an orchestra, or a circus.
  */
-class PerformingGroup extends AbstractType
+final class PerformingGroup extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\ThingTrait;

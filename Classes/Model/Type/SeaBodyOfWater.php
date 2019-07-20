@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A sea (for example, the Caspian sea).
  */
-class SeaBodyOfWater extends AbstractType
+final class SeaBodyOfWater extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

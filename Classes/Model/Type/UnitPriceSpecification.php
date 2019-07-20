@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The price asked for a given offer by the respective organization or person.
  */
-class UnitPriceSpecification extends AbstractType
+final class UnitPriceSpecification extends AbstractType
 {
     use TypeTrait\PriceSpecificationTrait;
     use TypeTrait\ThingTrait;

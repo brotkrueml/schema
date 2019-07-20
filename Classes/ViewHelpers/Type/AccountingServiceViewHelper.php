@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Accountancy business.
  */
-class AccountingServiceViewHelper extends AbstractTypeViewHelper
+final class AccountingServiceViewHelper extends AbstractTypeViewHelper
 {
 }

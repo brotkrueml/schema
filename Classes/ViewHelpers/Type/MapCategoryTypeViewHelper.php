@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An enumeration of several kinds of Map.
  */
-class MapCategoryTypeViewHelper extends AbstractTypeViewHelper
+final class MapCategoryTypeViewHelper extends AbstractTypeViewHelper
 {
 }

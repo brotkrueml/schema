@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An answer offered to a question; perhaps correct, perhaps opinionated or wrong.
  */
-class Answer extends AbstractType
+final class Answer extends AbstractType
 {
     use TypeTrait\CommentTrait;
     use TypeTrait\CreativeWorkTrait;

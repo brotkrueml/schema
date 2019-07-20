@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A review of an item - for example, of a restaurant, movie, or store.
  */
-class ReviewViewHelper extends AbstractTypeViewHelper
+final class ReviewViewHelper extends AbstractTypeViewHelper
 {
 }

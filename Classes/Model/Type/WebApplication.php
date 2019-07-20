@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Web applications.
  */
-class WebApplication extends AbstractType
+final class WebApplication extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\SoftwareApplicationTrait;

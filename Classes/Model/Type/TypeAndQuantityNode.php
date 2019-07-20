@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
  */
-class TypeAndQuantityNode extends AbstractType
+final class TypeAndQuantityNode extends AbstractType
 {
     use TypeTrait\ThingTrait;
     use TypeTrait\TypeAndQuantityNodeTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A financial product for the loaning of an amount of money under agreed terms and charges.
  */
-class LoanOrCredit extends AbstractType
+final class LoanOrCredit extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\LoanOrCreditTrait;

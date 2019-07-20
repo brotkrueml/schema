@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An email message.
  */
-class EmailMessageViewHelper extends AbstractTypeViewHelper
+final class EmailMessageViewHelper extends AbstractTypeViewHelper
 {
 }

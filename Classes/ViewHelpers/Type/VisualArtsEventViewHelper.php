@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Visual arts event.
  */
-class VisualArtsEventViewHelper extends AbstractTypeViewHelper
+final class VisualArtsEventViewHelper extends AbstractTypeViewHelper
 {
 }

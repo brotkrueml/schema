@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A theater or other performing art center.
  */
-class PerformingArtsTheaterViewHelper extends AbstractTypeViewHelper
+final class PerformingArtsTheaterViewHelper extends AbstractTypeViewHelper
 {
 }

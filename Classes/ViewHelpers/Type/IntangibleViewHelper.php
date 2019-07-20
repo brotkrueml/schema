@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A utility class that serves as the umbrella for a number of \&#039;intangible\&#039; things such as quantities, structured values, etc.
  */
-class IntangibleViewHelper extends AbstractTypeViewHelper
+final class IntangibleViewHelper extends AbstractTypeViewHelper
 {
 }

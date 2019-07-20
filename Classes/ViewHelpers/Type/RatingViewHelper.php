@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
  */
-class RatingViewHelper extends AbstractTypeViewHelper
+final class RatingViewHelper extends AbstractTypeViewHelper
 {
 }

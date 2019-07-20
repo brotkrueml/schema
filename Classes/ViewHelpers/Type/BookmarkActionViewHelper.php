@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent bookmarks/flags/labels/tags/marks an object.
  */
-class BookmarkActionViewHelper extends AbstractTypeViewHelper
+final class BookmarkActionViewHelper extends AbstractTypeViewHelper
 {
 }

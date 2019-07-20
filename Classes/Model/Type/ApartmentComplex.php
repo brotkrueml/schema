@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Residence type: Apartment complex.
  */
-class ApartmentComplex extends AbstractType
+final class ApartmentComplex extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

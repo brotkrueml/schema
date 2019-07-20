@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of  departing from a place. An agent departs from an fromLocation for a destination, optionally with participants.
  */
-class DepartAction extends AbstractType
+final class DepartAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\MoveActionTrait;

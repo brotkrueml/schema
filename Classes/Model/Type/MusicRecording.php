@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A music recording (track), usually a single song.
  */
-class MusicRecording extends AbstractType
+final class MusicRecording extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MusicRecordingTrait;

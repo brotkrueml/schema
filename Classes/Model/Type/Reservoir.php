@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
  */
-class Reservoir extends AbstractType
+final class Reservoir extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

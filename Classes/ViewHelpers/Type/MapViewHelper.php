@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A map.
  */
-class MapViewHelper extends AbstractTypeViewHelper
+final class MapViewHelper extends AbstractTypeViewHelper
 {
 }

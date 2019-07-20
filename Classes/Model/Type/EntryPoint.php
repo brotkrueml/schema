@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An entry point, within some Web-based protocol.
  */
-class EntryPoint extends AbstractType
+final class EntryPoint extends AbstractType
 {
     use TypeTrait\EntryPointTrait;
     use TypeTrait\ThingTrait;

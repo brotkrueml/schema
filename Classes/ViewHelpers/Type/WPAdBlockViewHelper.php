@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An advertising section of the page.
  */
-class WPAdBlockViewHelper extends AbstractTypeViewHelper
+final class WPAdBlockViewHelper extends AbstractTypeViewHelper
 {
 }

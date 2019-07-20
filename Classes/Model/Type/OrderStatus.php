@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Enumerated status values for Order.
  */
-class OrderStatus extends AbstractType
+final class OrderStatus extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

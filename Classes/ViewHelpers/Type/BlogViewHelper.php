@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A blog.
  */
-class BlogViewHelper extends AbstractTypeViewHelper
+final class BlogViewHelper extends AbstractTypeViewHelper
 {
 }

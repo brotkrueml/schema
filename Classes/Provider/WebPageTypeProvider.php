@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Provider;
 
@@ -9,7 +9,7 @@ namespace Brotkrueml\Schema\Provider;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-class WebPageTypeProvider
+final class WebPageTypeProvider
 {
     public static function getTypesForTcaSelect(): array
     {

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.
  */
-class OnDemandEvent extends AbstractType
+final class OnDemandEvent extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\PublicationEventTrait;

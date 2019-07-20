@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A short segment/part of a video game.
  */
-class VideoGameClip extends AbstractType
+final class VideoGameClip extends AbstractType
 {
     use TypeTrait\ClipTrait;
     use TypeTrait\CreativeWorkTrait;

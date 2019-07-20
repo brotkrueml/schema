@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A series of books. Included books can be indicated with the hasPart property.
  */
-class BookSeries extends AbstractType
+final class BookSeries extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeriesTrait;

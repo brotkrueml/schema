@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent leaves an event / group with participants/friends at a location.
  */
-class LeaveAction extends AbstractType
+final class LeaveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\LeaveActionTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A geographical region, typically under the jurisdiction of a particular government.
  */
-class AdministrativeArea extends AbstractType
+final class AdministrativeArea extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

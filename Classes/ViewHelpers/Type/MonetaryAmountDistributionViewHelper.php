@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A statistical distribution of monetary amounts.
  */
-class MonetaryAmountDistributionViewHelper extends AbstractTypeViewHelper
+final class MonetaryAmountDistributionViewHelper extends AbstractTypeViewHelper
 {
 }

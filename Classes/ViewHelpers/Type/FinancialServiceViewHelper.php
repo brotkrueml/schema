@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Financial services business.
  */
-class FinancialServiceViewHelper extends AbstractTypeViewHelper
+final class FinancialServiceViewHelper extends AbstractTypeViewHelper
 {
 }

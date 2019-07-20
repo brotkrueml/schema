@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A supply consumed when performing the instructions for how to achieve a result.
  */
-class HowToSupply extends AbstractType
+final class HowToSupply extends AbstractType
 {
     use TypeTrait\HowToItemTrait;
     use TypeTrait\HowToSupplyTrait;

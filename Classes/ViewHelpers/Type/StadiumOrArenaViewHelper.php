@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A stadium.
  */
-class StadiumOrArenaViewHelper extends AbstractTypeViewHelper
+final class StadiumOrArenaViewHelper extends AbstractTypeViewHelper
 {
 }

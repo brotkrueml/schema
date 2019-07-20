@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the offers property. Repeated events may be structured as separate Event objects.
  */
-class Event extends AbstractType
+final class Event extends AbstractType
 {
     use TypeTrait\EventTrait;
     use TypeTrait\ThingTrait;

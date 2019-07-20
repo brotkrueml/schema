@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
  */
-class SpecialtyViewHelper extends AbstractTypeViewHelper
+final class SpecialtyViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The status of an Action.
  */
-class ActionStatusTypeViewHelper extends AbstractTypeViewHelper
+final class ActionStatusTypeViewHelper extends AbstractTypeViewHelper
 {
 }

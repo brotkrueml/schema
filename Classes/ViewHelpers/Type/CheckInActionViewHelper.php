@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of an agent communicating (service provider, social media, etc) their arrival by registering/confirming for a previously reserved service (e.g. flight check in) or at a place (e.g. hotel), possibly resulting in a result (boarding pass, etc).
  */
-class CheckInActionViewHelper extends AbstractTypeViewHelper
+final class CheckInActionViewHelper extends AbstractTypeViewHelper
 {
 }

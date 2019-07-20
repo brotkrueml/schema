@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An agent quotes/estimates/appraises an object/product/service with a price at a location/store.
  */
-class QuoteAction extends AbstractType
+final class QuoteAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

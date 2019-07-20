@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Reserving a concrete object.
  */
-class ReserveActionViewHelper extends AbstractTypeViewHelper
+final class ReserveActionViewHelper extends AbstractTypeViewHelper
 {
 }

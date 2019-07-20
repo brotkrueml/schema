@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A parking lot or other parking facility.
  */
-class ParkingFacility extends AbstractType
+final class ParkingFacility extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

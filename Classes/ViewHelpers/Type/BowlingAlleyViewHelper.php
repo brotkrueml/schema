@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A bowling alley.
  */
-class BowlingAlleyViewHelper extends AbstractTypeViewHelper
+final class BowlingAlleyViewHelper extends AbstractTypeViewHelper
 {
 }

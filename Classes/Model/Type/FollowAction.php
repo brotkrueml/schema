@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates polled from.
  */
-class FollowAction extends AbstractType
+final class FollowAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\FollowActionTrait;

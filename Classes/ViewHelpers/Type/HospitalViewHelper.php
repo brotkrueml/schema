@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A hospital.
  */
-class HospitalViewHelper extends AbstractTypeViewHelper
+final class HospitalViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
  */
-class GovernmentService extends AbstractType
+final class GovernmentService extends AbstractType
 {
     use TypeTrait\GovernmentServiceTrait;
     use TypeTrait\ServiceTrait;

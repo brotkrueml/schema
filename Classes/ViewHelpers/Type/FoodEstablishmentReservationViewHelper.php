@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A reservation to dine at a food-related business.
  */
-class FoodEstablishmentReservationViewHelper extends AbstractTypeViewHelper
+final class FoodEstablishmentReservationViewHelper extends AbstractTypeViewHelper
 {
 }

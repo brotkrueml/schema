@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A value indicating a steering position.
  */
-class SteeringPositionValue extends AbstractType
+final class SteeringPositionValue extends AbstractType
 {
     use TypeTrait\QualitativeValueTrait;
     use TypeTrait\ThingTrait;

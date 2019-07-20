@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A listing that describes a job opening in a certain organization.
  */
-class JobPostingViewHelper extends AbstractTypeViewHelper
+final class JobPostingViewHelper extends AbstractTypeViewHelper
 {
 }

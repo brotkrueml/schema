@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
  */
-class RestrictedDiet extends AbstractType
+final class RestrictedDiet extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

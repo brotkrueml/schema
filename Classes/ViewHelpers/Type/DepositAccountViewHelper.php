@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.
  */
-class DepositAccountViewHelper extends AbstractTypeViewHelper
+final class DepositAccountViewHelper extends AbstractTypeViewHelper
 {
 }

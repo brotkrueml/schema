@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
  */
-class BroadcastServiceViewHelper extends AbstractTypeViewHelper
+final class BroadcastServiceViewHelper extends AbstractTypeViewHelper
 {
 }

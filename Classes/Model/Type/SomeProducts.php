@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A placeholder for multiple similar products of the same kind.
  */
-class SomeProducts extends AbstractType
+final class SomeProducts extends AbstractType
 {
     use TypeTrait\ProductTrait;
     use TypeTrait\SomeProductsTrait;

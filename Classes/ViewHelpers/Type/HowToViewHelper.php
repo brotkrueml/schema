@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Instructions that explain how to achieve a result by performing a sequence of steps.
  */
-class HowToViewHelper extends AbstractTypeViewHelper
+final class HowToViewHelper extends AbstractTypeViewHelper
 {
 }

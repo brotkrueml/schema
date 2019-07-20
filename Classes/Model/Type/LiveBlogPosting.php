@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
  */
-class LiveBlogPosting extends AbstractType
+final class LiveBlogPosting extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

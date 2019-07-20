@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A short segment/part of a movie.
  */
-class MovieClipViewHelper extends AbstractTypeViewHelper
+final class MovieClipViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Properties that take Mass as values are of the form \&#039;&amp;lt;Number&amp;gt; &amp;lt;Mass unit of measure&amp;gt;\&#039;. E.g., \&#039;7 kg\&#039;.
  */
-class Mass extends AbstractType
+final class Mass extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of gaining ownership of an object from an origin. Reciprocal of GiveAction.
  */
-class TakeActionViewHelper extends AbstractTypeViewHelper
+final class TakeActionViewHelper extends AbstractTypeViewHelper
 {
 }

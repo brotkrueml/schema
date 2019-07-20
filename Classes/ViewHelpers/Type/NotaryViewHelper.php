@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A notary.
  */
-class NotaryViewHelper extends AbstractTypeViewHelper
+final class NotaryViewHelper extends AbstractTypeViewHelper
 {
 }

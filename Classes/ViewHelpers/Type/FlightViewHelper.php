@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An airline flight.
  */
-class FlightViewHelper extends AbstractTypeViewHelper
+final class FlightViewHelper extends AbstractTypeViewHelper
 {
 }

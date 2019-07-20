@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A service provided by an organization, e.g. delivery service, print services, etc.
  */
-class ServiceViewHelper extends AbstractTypeViewHelper
+final class ServiceViewHelper extends AbstractTypeViewHelper
 {
 }

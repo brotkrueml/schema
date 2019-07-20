@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A general contractor.
  */
-class GeneralContractorViewHelper extends AbstractTypeViewHelper
+final class GeneralContractorViewHelper extends AbstractTypeViewHelper
 {
 }

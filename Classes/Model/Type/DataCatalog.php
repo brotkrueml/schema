@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A collection of datasets.
  */
-class DataCatalog extends AbstractType
+final class DataCatalog extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DataCatalogTrait;

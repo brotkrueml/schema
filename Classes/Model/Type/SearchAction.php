@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of searching for an object.
  */
-class SearchAction extends AbstractType
+final class SearchAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\SearchActionTrait;

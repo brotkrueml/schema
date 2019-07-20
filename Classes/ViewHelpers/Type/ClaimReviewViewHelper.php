@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).
  */
-class ClaimReviewViewHelper extends AbstractTypeViewHelper
+final class ClaimReviewViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A store that sells materials useful or necessary for various hobbies.
  */
-class HobbyShopViewHelper extends AbstractTypeViewHelper
+final class HobbyShopViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A structured value providing information about the opening hours of a place or a certain service inside a place.
  */
-class OpeningHoursSpecification extends AbstractType
+final class OpeningHoursSpecification extends AbstractType
 {
     use TypeTrait\OpeningHoursSpecificationTrait;
     use TypeTrait\ThingTrait;

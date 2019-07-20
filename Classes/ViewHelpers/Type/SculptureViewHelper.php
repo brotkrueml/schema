@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A piece of sculpture.
  */
-class SculptureViewHelper extends AbstractTypeViewHelper
+final class SculptureViewHelper extends AbstractTypeViewHelper
 {
 }

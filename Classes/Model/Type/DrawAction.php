@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
  */
-class DrawAction extends AbstractType
+final class DrawAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

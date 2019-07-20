@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Scheduling future actions, events, or tasks.
  */
-class ScheduleActionViewHelper extends AbstractTypeViewHelper
+final class ScheduleActionViewHelper extends AbstractTypeViewHelper
 {
 }

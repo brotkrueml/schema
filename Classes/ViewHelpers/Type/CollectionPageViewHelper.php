@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web page type: Collection page.
  */
-class CollectionPageViewHelper extends AbstractTypeViewHelper
+final class CollectionPageViewHelper extends AbstractTypeViewHelper
 {
 }

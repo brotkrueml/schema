@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Nutritional information about the recipe.
  */
-class NutritionInformation extends AbstractType
+final class NutritionInformation extends AbstractType
 {
     use TypeTrait\NutritionInformationTrait;
     use TypeTrait\ThingTrait;

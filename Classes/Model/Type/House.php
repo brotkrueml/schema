@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A house is a building or structure that has the ability to be occupied for habitation by humans or other creatures (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/House).
  */
-class House extends AbstractType
+final class House extends AbstractType
 {
     use TypeTrait\AccommodationTrait;
     use TypeTrait\HouseTrait;

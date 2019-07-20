@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A statement of the money due for goods or services; a bill.
  */
-class InvoiceViewHelper extends AbstractTypeViewHelper
+final class InvoiceViewHelper extends AbstractTypeViewHelper
 {
 }

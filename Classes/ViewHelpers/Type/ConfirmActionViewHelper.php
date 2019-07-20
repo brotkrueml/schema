@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of notifying someone that a future event/action is going to happen as expected.
  */
-class ConfirmActionViewHelper extends AbstractTypeViewHelper
+final class ConfirmActionViewHelper extends AbstractTypeViewHelper
 {
 }

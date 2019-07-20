@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A plumbing service.
  */
-class PlumberViewHelper extends AbstractTypeViewHelper
+final class PlumberViewHelper extends AbstractTypeViewHelper
 {
 }

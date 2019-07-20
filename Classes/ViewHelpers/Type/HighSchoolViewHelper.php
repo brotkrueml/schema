@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A high school.
  */
-class HighSchoolViewHelper extends AbstractTypeViewHelper
+final class HighSchoolViewHelper extends AbstractTypeViewHelper
 {
 }

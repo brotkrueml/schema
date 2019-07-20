@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Children\&#039;s event.
  */
-class ChildrensEventViewHelper extends AbstractTypeViewHelper
+final class ChildrensEventViewHelper extends AbstractTypeViewHelper
 {
 }

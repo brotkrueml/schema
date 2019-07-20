@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
  */
-class ChooseActionViewHelper extends AbstractTypeViewHelper
+final class ChooseActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The footer section of the page.
  */
-class WPFooterViewHelper extends AbstractTypeViewHelper
+final class WPFooterViewHelper extends AbstractTypeViewHelper
 {
 }

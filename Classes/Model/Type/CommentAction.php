@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of generating a comment about a subject.
  */
-class CommentAction extends AbstractType
+final class CommentAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommentActionTrait;

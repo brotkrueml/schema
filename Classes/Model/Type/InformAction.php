@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of notifying someone of information pertinent to them, with no expectation of a response.
  */
-class InformAction extends AbstractType
+final class InformAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommunicateActionTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A media episode (e.g. TV, radio, video game) which can be part of a series or season.
  */
-class Episode extends AbstractType
+final class Episode extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\EpisodeTrait;

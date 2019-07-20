@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A dry-cleaning business.
  */
-class DryCleaningOrLaundryViewHelper extends AbstractTypeViewHelper
+final class DryCleaningOrLaundryViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A casino.
  */
-class CasinoViewHelper extends AbstractTypeViewHelper
+final class CasinoViewHelper extends AbstractTypeViewHelper
 {
 }

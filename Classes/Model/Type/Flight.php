@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An airline flight.
  */
-class Flight extends AbstractType
+final class Flight extends AbstractType
 {
     use TypeTrait\FlightTrait;
     use TypeTrait\ThingTrait;

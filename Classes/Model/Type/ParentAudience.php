@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
  */
-class ParentAudience extends AbstractType
+final class ParentAudience extends AbstractType
 {
     use TypeTrait\AudienceTrait;
     use TypeTrait\ParentAudienceTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A file composed primarily of text.
  */
-class TextDigitalDocumentViewHelper extends AbstractTypeViewHelper
+final class TextDigitalDocumentViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A geographical region, typically under the jurisdiction of a particular government.
  */
-class AdministrativeAreaViewHelper extends AbstractTypeViewHelper
+final class AdministrativeAreaViewHelper extends AbstractTypeViewHelper
 {
 }

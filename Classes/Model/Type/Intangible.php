@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A utility class that serves as the umbrella for a number of \&#039;intangible\&#039; things such as quantities, structured values, etc.
  */
-class Intangible extends AbstractType
+final class Intangible extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

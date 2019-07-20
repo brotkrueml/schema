@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A store that sells mobile phones and related accessories.
  */
-class MobilePhoneStore extends AbstractType
+final class MobilePhoneStore extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

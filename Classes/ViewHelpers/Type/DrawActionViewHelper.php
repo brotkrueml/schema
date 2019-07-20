@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
  */
-class DrawActionViewHelper extends AbstractTypeViewHelper
+final class DrawActionViewHelper extends AbstractTypeViewHelper
 {
 }

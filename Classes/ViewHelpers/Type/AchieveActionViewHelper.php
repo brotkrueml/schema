@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of accomplishing something via previous efforts. It is an instantaneous action rather than an ongoing process.
  */
-class AchieveActionViewHelper extends AbstractTypeViewHelper
+final class AchieveActionViewHelper extends AbstractTypeViewHelper
 {
 }

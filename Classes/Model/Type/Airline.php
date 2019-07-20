@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An organization that provides flights for passengers.
  */
-class Airline extends AbstractType
+final class Airline extends AbstractType
 {
     use TypeTrait\AirlineTrait;
     use TypeTrait\OrganizationTrait;

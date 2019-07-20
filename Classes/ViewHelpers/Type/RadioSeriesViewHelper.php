@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
  */
-class RadioSeriesViewHelper extends AbstractTypeViewHelper
+final class RadioSeriesViewHelper extends AbstractTypeViewHelper
 {
 }

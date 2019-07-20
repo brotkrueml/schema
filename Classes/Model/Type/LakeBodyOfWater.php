@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A lake (for example, Lake Pontrachain).
  */
-class LakeBodyOfWater extends AbstractType
+final class LakeBodyOfWater extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

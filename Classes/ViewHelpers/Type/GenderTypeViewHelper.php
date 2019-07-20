@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An enumeration of genders.
  */
-class GenderTypeViewHelper extends AbstractTypeViewHelper
+final class GenderTypeViewHelper extends AbstractTypeViewHelper
 {
 }

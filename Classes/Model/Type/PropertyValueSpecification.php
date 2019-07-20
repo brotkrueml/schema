@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A Property value specification.
  */
-class PropertyValueSpecification extends AbstractType
+final class PropertyValueSpecification extends AbstractType
 {
     use TypeTrait\PropertyValueSpecificationTrait;
     use TypeTrait\ThingTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.
  */
-class CreditCard extends AbstractType
+final class CreditCard extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\LoanOrCreditTrait;

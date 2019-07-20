@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Bank or credit union.
  */
-class BankOrCreditUnion extends AbstractType
+final class BankOrCreditUnion extends AbstractType
 {
     use TypeTrait\FinancialServiceTrait;
     use TypeTrait\LocalBusinessTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of un-registering from a service.
  */
-class UnRegisterActionViewHelper extends AbstractTypeViewHelper
+final class UnRegisterActionViewHelper extends AbstractTypeViewHelper
 {
 }

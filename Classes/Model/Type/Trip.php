@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A trip or journey. An itinerary of visits to one or more places.
  */
-class Trip extends AbstractType
+final class Trip extends AbstractType
 {
     use TypeTrait\ThingTrait;
     use TypeTrait\TripTrait;

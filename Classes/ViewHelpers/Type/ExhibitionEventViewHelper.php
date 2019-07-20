@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Exhibition event, e.g. at a museum, library, archive, tradeshow, ...
  */
-class ExhibitionEventViewHelper extends AbstractTypeViewHelper
+final class ExhibitionEventViewHelper extends AbstractTypeViewHelper
 {
 }

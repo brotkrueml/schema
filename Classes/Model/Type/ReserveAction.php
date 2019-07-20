@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Reserving a concrete object.
  */
-class ReserveAction extends AbstractType
+final class ReserveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PlanActionTrait;

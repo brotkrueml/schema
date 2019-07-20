@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A resort is a place used for relaxation or recreation, attracting visitors for holidays or vacations. Resorts are places, towns or sometimes commercial establishment operated by a single company (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Resort).
  */
-class Resort extends AbstractType
+final class Resort extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\LodgingBusinessTrait;

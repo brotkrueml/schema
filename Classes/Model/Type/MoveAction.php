@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of an agent relocating to a place.
  */
-class MoveAction extends AbstractType
+final class MoveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\MoveActionTrait;

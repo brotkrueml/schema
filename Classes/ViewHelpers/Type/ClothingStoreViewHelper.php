@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A clothing store.
  */
-class ClothingStoreViewHelper extends AbstractTypeViewHelper
+final class ClothingStoreViewHelper extends AbstractTypeViewHelper
 {
 }

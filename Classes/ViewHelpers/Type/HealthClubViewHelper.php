@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A health club.
  */
-class HealthClubViewHelper extends AbstractTypeViewHelper
+final class HealthClubViewHelper extends AbstractTypeViewHelper
 {
 }

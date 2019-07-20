@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A structured representation of food or drink items available from a FoodEstablishment.
  */
-class MenuViewHelper extends AbstractTypeViewHelper
+final class MenuViewHelper extends AbstractTypeViewHelper
 {
 }

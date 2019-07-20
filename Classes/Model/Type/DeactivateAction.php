@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
  */
-class DeactivateAction extends AbstractType
+final class DeactivateAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

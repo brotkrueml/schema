@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of inserting at the end if an ordered collection.
  */
-class AppendActionViewHelper extends AbstractTypeViewHelper
+final class AppendActionViewHelper extends AbstractTypeViewHelper
 {
 }

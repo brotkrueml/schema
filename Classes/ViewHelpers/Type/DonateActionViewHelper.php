@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
  */
-class DonateActionViewHelper extends AbstractTypeViewHelper
+final class DonateActionViewHelper extends AbstractTypeViewHelper
 {
 }

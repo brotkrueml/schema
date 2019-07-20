@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Event type: Sports event.
  */
-class SportsEventViewHelper extends AbstractTypeViewHelper
+final class SportsEventViewHelper extends AbstractTypeViewHelper
 {
 }

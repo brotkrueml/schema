@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A series of books. Included books can be indicated with the hasPart property.
  */
-class BookSeriesViewHelper extends AbstractTypeViewHelper
+final class BookSeriesViewHelper extends AbstractTypeViewHelper
 {
 }

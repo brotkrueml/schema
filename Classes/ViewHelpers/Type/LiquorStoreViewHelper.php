@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
  */
-class LiquorStoreViewHelper extends AbstractTypeViewHelper
+final class LiquorStoreViewHelper extends AbstractTypeViewHelper
 {
 }

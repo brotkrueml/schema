@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Organization: Sports team.
  */
-class SportsTeam extends AbstractType
+final class SportsTeam extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\SportsOrganizationTrait;

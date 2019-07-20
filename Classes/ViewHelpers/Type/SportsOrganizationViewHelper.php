@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
  */
-class SportsOrganizationViewHelper extends AbstractTypeViewHelper
+final class SportsOrganizationViewHelper extends AbstractTypeViewHelper
 {
 }

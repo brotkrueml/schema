@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent controls a device or application.
  */
-class ControlActionViewHelper extends AbstractTypeViewHelper
+final class ControlActionViewHelper extends AbstractTypeViewHelper
 {
 }

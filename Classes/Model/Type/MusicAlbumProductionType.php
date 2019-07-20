@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Classification of the album by it\&#039;s type of content: soundtrack, live album, studio album, etc.
  */
-class MusicAlbumProductionType extends AbstractType
+final class MusicAlbumProductionType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

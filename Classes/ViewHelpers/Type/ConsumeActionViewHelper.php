@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of ingesting information/resources/food.
  */
-class ConsumeActionViewHelper extends AbstractTypeViewHelper
+final class ConsumeActionViewHelper extends AbstractTypeViewHelper
 {
 }

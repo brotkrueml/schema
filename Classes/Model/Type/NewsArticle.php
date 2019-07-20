@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news.
  */
-class NewsArticle extends AbstractType
+final class NewsArticle extends AbstractType
 {
     use TypeTrait\ArticleTrait;
     use TypeTrait\CreativeWorkTrait;

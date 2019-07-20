@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A datasheet or vendor specification of a product (in the sense of a prototypical description).
  */
-class ProductModel extends AbstractType
+final class ProductModel extends AbstractType
 {
     use TypeTrait\ProductTrait;
     use TypeTrait\ProductModelTrait;

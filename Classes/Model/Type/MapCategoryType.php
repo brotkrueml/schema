@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An enumeration of several kinds of Map.
  */
-class MapCategoryType extends AbstractType
+final class MapCategoryType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

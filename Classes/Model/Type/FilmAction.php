@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of capturing sound and moving images on film, video, or digitally.
  */
-class FilmAction extends AbstractType
+final class FilmAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

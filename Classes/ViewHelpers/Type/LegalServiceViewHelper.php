@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A LegalService is a business that provides legally-oriented services, advice and representation, e.g. law firms.
  */
-class LegalServiceViewHelper extends AbstractTypeViewHelper
+final class LegalServiceViewHelper extends AbstractTypeViewHelper
 {
 }

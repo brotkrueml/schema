@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of deliberately creating/producing/generating/building a result out of the agent.
  */
-class CreateActionViewHelper extends AbstractTypeViewHelper
+final class CreateActionViewHelper extends AbstractTypeViewHelper
 {
 }

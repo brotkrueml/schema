@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of physically/electronically dispatching an object for transfer from an origin to a destination.Related actions:
  */
-class SendActionViewHelper extends AbstractTypeViewHelper
+final class SendActionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of producing a painting, typically with paint and canvas as instruments.
  */
-class PaintActionViewHelper extends AbstractTypeViewHelper
+final class PaintActionViewHelper extends AbstractTypeViewHelper
 {
 }

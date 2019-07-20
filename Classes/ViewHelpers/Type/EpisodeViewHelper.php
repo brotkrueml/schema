@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A media episode (e.g. TV, radio, video game) which can be part of a series or season.
  */
-class EpisodeViewHelper extends AbstractTypeViewHelper
+final class EpisodeViewHelper extends AbstractTypeViewHelper
 {
 }

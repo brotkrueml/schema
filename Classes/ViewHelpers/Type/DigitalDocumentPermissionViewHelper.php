@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A permission for a particular person or group to access a particular file.
  */
-class DigitalDocumentPermissionViewHelper extends AbstractTypeViewHelper
+final class DigitalDocumentPermissionViewHelper extends AbstractTypeViewHelper
 {
 }

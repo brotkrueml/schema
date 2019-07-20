@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The geographic coordinates of a place or event.
  */
-class GeoCoordinatesViewHelper extends AbstractTypeViewHelper
+final class GeoCoordinatesViewHelper extends AbstractTypeViewHelper
 {
 }

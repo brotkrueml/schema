@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An over the air or online broadcast event.
  */
-class BroadcastEvent extends AbstractType
+final class BroadcastEvent extends AbstractType
 {
     use TypeTrait\BroadcastEventTrait;
     use TypeTrait\EventTrait;

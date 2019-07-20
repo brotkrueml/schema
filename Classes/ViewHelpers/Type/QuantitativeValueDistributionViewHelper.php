@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A statistical distribution of values.
  */
-class QuantitativeValueDistributionViewHelper extends AbstractTypeViewHelper
+final class QuantitativeValueDistributionViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A doctor\&#039;s office.
  */
-class PhysicianViewHelper extends AbstractTypeViewHelper
+final class PhysicianViewHelper extends AbstractTypeViewHelper
 {
 }

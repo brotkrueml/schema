@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
  */
-class TelevisionChannelViewHelper extends AbstractTypeViewHelper
+final class TelevisionChannelViewHelper extends AbstractTypeViewHelper
 {
 }

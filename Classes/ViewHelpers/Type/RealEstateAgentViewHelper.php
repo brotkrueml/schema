@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A real-estate agent.
  */
-class RealEstateAgentViewHelper extends AbstractTypeViewHelper
+final class RealEstateAgentViewHelper extends AbstractTypeViewHelper
 {
 }

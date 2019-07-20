@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A parking lot or other parking facility.
  */
-class ParkingFacilityViewHelper extends AbstractTypeViewHelper
+final class ParkingFacilityViewHelper extends AbstractTypeViewHelper
 {
 }

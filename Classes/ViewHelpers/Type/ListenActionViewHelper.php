@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of consuming audio content.
  */
-class ListenActionViewHelper extends AbstractTypeViewHelper
+final class ListenActionViewHelper extends AbstractTypeViewHelper
 {
 }

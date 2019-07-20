@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of physically/electronically taking delivery of an object thathas been transferred from an origin to a destination. Reciprocal of SendAction.
  */
-class ReceiveAction extends AbstractType
+final class ReceiveAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ReceiveActionTrait;

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of expressing a consistency of opinion with the object. An agent agrees to/about an object (a proposition, topic or theme) with participants.
  */
-class AgreeActionViewHelper extends AbstractTypeViewHelper
+final class AgreeActionViewHelper extends AbstractTypeViewHelper
 {
 }

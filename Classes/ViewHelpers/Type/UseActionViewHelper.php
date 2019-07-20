@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of applying an object to its intended purpose.
  */
-class UseActionViewHelper extends AbstractTypeViewHelper
+final class UseActionViewHelper extends AbstractTypeViewHelper
 {
 }

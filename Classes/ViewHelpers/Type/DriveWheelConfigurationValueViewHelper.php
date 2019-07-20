@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A value indicating which roadwheels will receive torque.
  */
-class DriveWheelConfigurationValueViewHelper extends AbstractTypeViewHelper
+final class DriveWheelConfigurationValueViewHelper extends AbstractTypeViewHelper
 {
 }

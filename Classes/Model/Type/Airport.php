@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An airport.
  */
-class Airport extends AbstractType
+final class Airport extends AbstractType
 {
     use TypeTrait\AirportTrait;
     use TypeTrait\CivicStructureTrait;

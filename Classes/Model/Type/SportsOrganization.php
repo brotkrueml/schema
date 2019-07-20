@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
  */
-class SportsOrganization extends AbstractType
+final class SportsOrganization extends AbstractType
 {
     use TypeTrait\OrganizationTrait;
     use TypeTrait\SportsOrganizationTrait;

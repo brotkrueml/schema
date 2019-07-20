@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A performance group, such as a band, an orchestra, or a circus.
  */
-class PerformingGroupViewHelper extends AbstractTypeViewHelper
+final class PerformingGroupViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A hostel - cheap accommodation, often in shared dormitories.
  */
-class HostelViewHelper extends AbstractTypeViewHelper
+final class HostelViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Organization: Non-governmental Organization.
  */
-class NGOViewHelper extends AbstractTypeViewHelper
+final class NGOViewHelper extends AbstractTypeViewHelper
 {
 }

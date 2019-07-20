@@ -10,6 +10,6 @@ use TYPO3\CMS\Core\SingletonInterface;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-class TypeStack extends \SplStack implements SingletonInterface
+final class TypeStack extends \SplStack implements SingletonInterface
 {
 }

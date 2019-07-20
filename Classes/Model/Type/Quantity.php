@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like \&#039;3 Kg\&#039; or \&#039;4 milligrams\&#039;.
  */
-class Quantity extends AbstractType
+final class Quantity extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

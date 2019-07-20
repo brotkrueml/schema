@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The header section of the page.
  */
-class WPHeaderViewHelper extends AbstractTypeViewHelper
+final class WPHeaderViewHelper extends AbstractTypeViewHelper
 {
 }

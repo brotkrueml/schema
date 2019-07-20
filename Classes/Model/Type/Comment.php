@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A comment on an item - for example, a comment on a blog post. The comment\&#039;s content is expressed via the text property, and its topic via about, properties shared with all CreativeWorks.
  */
-class Comment extends AbstractType
+final class Comment extends AbstractType
 {
     use TypeTrait\CommentTrait;
     use TypeTrait\CreativeWorkTrait;

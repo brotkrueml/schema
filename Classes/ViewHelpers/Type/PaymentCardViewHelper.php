@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A payment method using a credit, debit, store or other card to associate the payment with an account.
  */
-class PaymentCardViewHelper extends AbstractTypeViewHelper
+final class PaymentCardViewHelper extends AbstractTypeViewHelper
 {
 }

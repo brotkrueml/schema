@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An EducationalAudience.
  */
-class EducationalAudienceViewHelper extends AbstractTypeViewHelper
+final class EducationalAudienceViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A file containing a note, primarily for the author.
  */
-class NoteDigitalDocumentViewHelper extends AbstractTypeViewHelper
+final class NoteDigitalDocumentViewHelper extends AbstractTypeViewHelper
 {
 }

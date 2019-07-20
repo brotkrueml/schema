@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An enumeration of genders.
  */
-class GenderType extends AbstractType
+final class GenderType extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

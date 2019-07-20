@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A page devoted to a single item, such as a particular product or hotel.
  */
-class ItemPageViewHelper extends AbstractTypeViewHelper
+final class ItemPageViewHelper extends AbstractTypeViewHelper
 {
 }

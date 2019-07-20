@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of responding to a question/message asked/sent by the object. Related to AskAction
  */
-class ReplyAction extends AbstractType
+final class ReplyAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\CommunicateActionTrait;

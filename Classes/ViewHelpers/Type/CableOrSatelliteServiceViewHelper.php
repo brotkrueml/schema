@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A service which provides access to media programming like TV or radio. Access may be via cable or satellite.
  */
-class CableOrSatelliteServiceViewHelper extends AbstractTypeViewHelper
+final class CableOrSatelliteServiceViewHelper extends AbstractTypeViewHelper
 {
 }

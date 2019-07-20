@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A hotel is an establishment that provides lodging paid on a short-term basis (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Hotel).
  */
-class HotelViewHelper extends AbstractTypeViewHelper
+final class HotelViewHelper extends AbstractTypeViewHelper
 {
 }

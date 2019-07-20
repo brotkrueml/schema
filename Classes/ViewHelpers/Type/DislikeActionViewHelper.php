@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of expressing a negative sentiment about the object. An agent dislikes an object (a proposition, topic or theme) with participants.
  */
-class DislikeActionViewHelper extends AbstractTypeViewHelper
+final class DislikeActionViewHelper extends AbstractTypeViewHelper
 {
 }

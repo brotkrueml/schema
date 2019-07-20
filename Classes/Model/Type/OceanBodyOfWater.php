@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An ocean (for example, the Pacific).
  */
-class OceanBodyOfWater extends AbstractType
+final class OceanBodyOfWater extends AbstractType
 {
     use TypeTrait\PlaceTrait;
     use TypeTrait\ThingTrait;

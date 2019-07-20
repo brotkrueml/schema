@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A publication in any medium issued in successive parts bearing numerical or chronological designations and intended, such as a magazine, scholarly journal, or newspaper to continue indefinitely.
  */
-class PeriodicalViewHelper extends AbstractTypeViewHelper
+final class PeriodicalViewHelper extends AbstractTypeViewHelper
 {
 }

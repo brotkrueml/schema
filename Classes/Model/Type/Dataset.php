@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A body of structured information describing some topic(s) of interest.
  */
-class Dataset extends AbstractType
+final class Dataset extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DatasetTrait;

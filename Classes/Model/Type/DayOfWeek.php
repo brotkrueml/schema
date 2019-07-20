@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The day of the week, e.g. used to specify to which day the opening hours of an OpeningHoursSpecification refer.
  */
-class DayOfWeek extends AbstractType
+final class DayOfWeek extends AbstractType
 {
     use TypeTrait\ThingTrait;
 }

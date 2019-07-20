@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of asking someone to attend an event. Reciprocal of RsvpAction.
  */
-class InviteActionViewHelper extends AbstractTypeViewHelper
+final class InviteActionViewHelper extends AbstractTypeViewHelper
 {
 }

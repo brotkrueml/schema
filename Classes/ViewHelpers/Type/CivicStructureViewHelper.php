@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A public structure, such as a town hall or concert hall.
  */
-class CivicStructureViewHelper extends AbstractTypeViewHelper
+final class CivicStructureViewHelper extends AbstractTypeViewHelper
 {
 }

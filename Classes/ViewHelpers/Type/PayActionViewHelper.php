@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent pays a price to a participant.
  */
-class PayActionViewHelper extends AbstractTypeViewHelper
+final class PayActionViewHelper extends AbstractTypeViewHelper
 {
 }

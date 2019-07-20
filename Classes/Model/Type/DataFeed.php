@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A single feed providing structured information about one or more entities or topics.
  */
-class DataFeed extends AbstractType
+final class DataFeed extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\DataFeedTrait;

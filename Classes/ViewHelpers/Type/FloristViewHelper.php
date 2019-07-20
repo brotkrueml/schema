@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A florist.
  */
-class FloristViewHelper extends AbstractTypeViewHelper
+final class FloristViewHelper extends AbstractTypeViewHelper
 {
 }

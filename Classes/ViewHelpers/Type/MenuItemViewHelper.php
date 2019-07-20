@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A food or drink item listed in a menu or menu section.
  */
-class MenuItemViewHelper extends AbstractTypeViewHelper
+final class MenuItemViewHelper extends AbstractTypeViewHelper
 {
 }

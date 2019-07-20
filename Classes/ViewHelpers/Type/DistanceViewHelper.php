@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Properties that take Distances as values are of the form \&#039;&amp;lt;Number&amp;gt; &amp;lt;Length unit of measure&amp;gt;\&#039;. E.g., \&#039;7 ft\&#039;.
  */
-class DistanceViewHelper extends AbstractTypeViewHelper
+final class DistanceViewHelper extends AbstractTypeViewHelper
 {
 }

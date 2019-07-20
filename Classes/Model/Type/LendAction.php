@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of providing an object under an agreement that it will be returned at a later date. Reciprocal of BorrowAction.
  */
-class LendAction extends AbstractType
+final class LendAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\LendActionTrait;

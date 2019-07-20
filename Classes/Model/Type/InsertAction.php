@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of adding at a specific location in an ordered collection.
  */
-class InsertAction extends AbstractType
+final class InsertAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\InsertActionTrait;

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.
  */
-class EngineSpecification extends AbstractType
+final class EngineSpecification extends AbstractType
 {
     use TypeTrait\EngineSpecificationTrait;
     use TypeTrait\ThingTrait;

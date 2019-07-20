@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An agent quotes/estimates/appraises an object/product/service with a price at a location/store.
  */
-class QuoteActionViewHelper extends AbstractTypeViewHelper
+final class QuoteActionViewHelper extends AbstractTypeViewHelper
 {
 }

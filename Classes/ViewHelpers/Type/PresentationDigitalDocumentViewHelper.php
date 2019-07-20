@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A file containing slides or used for a presentation.
  */
-class PresentationDigitalDocumentViewHelper extends AbstractTypeViewHelper
+final class PresentationDigitalDocumentViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.
  */
-class DepositAccount extends AbstractType
+final class DepositAccount extends AbstractType
 {
     use TypeTrait\FinancialProductTrait;
     use TypeTrait\InvestmentOrDepositTrait;

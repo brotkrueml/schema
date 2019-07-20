@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A media season e.g. tv, radio, video game etc.
  */
-class CreativeWorkSeason extends AbstractType
+final class CreativeWorkSeason extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\CreativeWorkSeasonTrait;

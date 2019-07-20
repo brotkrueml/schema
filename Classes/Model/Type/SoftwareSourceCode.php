@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.
  */
-class SoftwareSourceCode extends AbstractType
+final class SoftwareSourceCode extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\SoftwareSourceCodeTrait;

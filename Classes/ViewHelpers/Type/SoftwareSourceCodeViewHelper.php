@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.
  */
-class SoftwareSourceCodeViewHelper extends AbstractTypeViewHelper
+final class SoftwareSourceCodeViewHelper extends AbstractTypeViewHelper
 {
 }

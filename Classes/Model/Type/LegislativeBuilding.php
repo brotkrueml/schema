@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A legislative building&amp;#x2014;for example, the state capitol.
  */
-class LegislativeBuilding extends AbstractType
+final class LegislativeBuilding extends AbstractType
 {
     use TypeTrait\CivicStructureTrait;
     use TypeTrait\PlaceTrait;

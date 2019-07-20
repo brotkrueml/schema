@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Season dedicated to TV broadcast and associated online delivery.
  */
-class TVSeasonViewHelper extends AbstractTypeViewHelper
+final class TVSeasonViewHelper extends AbstractTypeViewHelper
 {
 }

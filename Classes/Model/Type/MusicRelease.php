@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A MusicRelease is a specific release of a music album.
  */
-class MusicRelease extends AbstractType
+final class MusicRelease extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MusicPlaylistTrait;

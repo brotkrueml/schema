@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Web page type: Search results page.
  */
-class SearchResultsPageViewHelper extends AbstractTypeViewHelper
+final class SearchResultsPageViewHelper extends AbstractTypeViewHelper
 {
 }

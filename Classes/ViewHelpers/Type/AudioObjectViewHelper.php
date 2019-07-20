@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An audio file.
  */
-class AudioObjectViewHelper extends AbstractTypeViewHelper
+final class AudioObjectViewHelper extends AbstractTypeViewHelper
 {
 }

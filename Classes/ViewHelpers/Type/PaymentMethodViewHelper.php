@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.
  */
-class PaymentMethodViewHelper extends AbstractTypeViewHelper
+final class PaymentMethodViewHelper extends AbstractTypeViewHelper
 {
 }

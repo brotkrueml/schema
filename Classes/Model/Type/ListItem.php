@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * An list item, e.g. a step in a checklist or how-to description.
  */
-class ListItem extends AbstractType
+final class ListItem extends AbstractType
 {
     use TypeTrait\ListItemTrait;
     use TypeTrait\ThingTrait;

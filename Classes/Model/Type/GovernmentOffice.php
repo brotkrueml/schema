@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A government office&amp;#x2014;for example, an IRS or DMV office.
  */
-class GovernmentOffice extends AbstractType
+final class GovernmentOffice extends AbstractType
 {
     use TypeTrait\LocalBusinessTrait;
     use TypeTrait\OrganizationTrait;

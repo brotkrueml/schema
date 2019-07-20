@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * A defence establishment, such as an army or navy base.
  */
-class DefenceEstablishmentViewHelper extends AbstractTypeViewHelper
+final class DefenceEstablishmentViewHelper extends AbstractTypeViewHelper
 {
 }

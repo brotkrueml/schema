@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A service which provides access to media programming like TV or radio. Access may be via cable or satellite.
  */
-class CableOrSatelliteService extends AbstractType
+final class CableOrSatelliteService extends AbstractType
 {
     use TypeTrait\ServiceTrait;
     use TypeTrait\ThingTrait;

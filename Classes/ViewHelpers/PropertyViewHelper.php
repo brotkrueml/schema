@@ -25,10 +25,10 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
  * <schema:property -as="sameAs" value="https://twitter.com/example">
  * </code>
  */
-class PropertyViewHelper extends ViewHelper\AbstractViewHelper
+final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 {
-    protected const ARGUMENT_AS = '-as';
-    protected const ARGUMENT_VALUE = 'value';
+    private const ARGUMENT_AS = '-as';
+    private const ARGUMENT_VALUE = 'value';
 
     public function initializeArguments()
     {
@@ -57,7 +57,7 @@ class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         $stack->push($type);
     }
 
-    protected function checkAttributes(): void
+    private function checkAttributes(): void
     {
         $emptyMessage = 'The argument "%s" cannot be empty';
 

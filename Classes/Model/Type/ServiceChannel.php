@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
  */
-class ServiceChannel extends AbstractType
+final class ServiceChannel extends AbstractType
 {
     use TypeTrait\ServiceChannelTrait;
     use TypeTrait\ThingTrait;

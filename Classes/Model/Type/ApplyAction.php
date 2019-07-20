@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of registering to an organization/service without the guarantee to receive it.
  */
-class ApplyAction extends AbstractType
+final class ApplyAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\ThingTrait;

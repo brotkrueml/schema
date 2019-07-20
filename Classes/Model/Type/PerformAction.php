@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of participating in performance arts.
  */
-class PerformAction extends AbstractType
+final class PerformAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\PerformActionTrait;

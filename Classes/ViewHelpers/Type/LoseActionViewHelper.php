@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of being defeated in a competitive activity.
  */
-class LoseActionViewHelper extends AbstractTypeViewHelper
+final class LoseActionViewHelper extends AbstractTypeViewHelper
 {
 }

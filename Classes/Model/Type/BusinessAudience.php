@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A set of characteristics belonging to businesses, e.g. who compose an item\&#039;s target audience.
  */
-class BusinessAudience extends AbstractType
+final class BusinessAudience extends AbstractType
 {
     use TypeTrait\AudienceTrait;
     use TypeTrait\BusinessAudienceTrait;

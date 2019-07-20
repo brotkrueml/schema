@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * A map.
  */
-class Map extends AbstractType
+final class Map extends AbstractType
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\MapTrait;

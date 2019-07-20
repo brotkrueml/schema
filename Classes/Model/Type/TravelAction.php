@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Model\TypeTrait;
 /**
  * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
  */
-class TravelAction extends AbstractType
+final class TravelAction extends AbstractType
 {
     use TypeTrait\ActionTrait;
     use TypeTrait\MoveActionTrait;

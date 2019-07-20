@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * Lists or enumerations—for example, a list of cuisines or music genres, etc.
  */
-class EnumerationViewHelper extends AbstractTypeViewHelper
+final class EnumerationViewHelper extends AbstractTypeViewHelper
 {
 }

@@ -14,6 +14,6 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * The act of searching for an object.
  */
-class SearchActionViewHelper extends AbstractTypeViewHelper
+final class SearchActionViewHelper extends AbstractTypeViewHelper
 {
 }
