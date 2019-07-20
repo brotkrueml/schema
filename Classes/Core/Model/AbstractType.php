@@ -13,21 +13,21 @@ use Brotkrueml\Schema\Utility\Utility;
 
 abstract class AbstractType
 {
-    protected const CONTEXT = 'http://schema.org';
+    private const CONTEXT = 'http://schema.org';
 
     /**
      * The ID of the type (mapped to @id in result)
      *
      * @var string|null
      */
-    protected $_id = null;
+    private $_id = null;
 
     /**
      * The fully rendered type with all children as array
      *
      * @var array
      */
-    protected $__resultArray = [];
+    private $__resultArray = [];
 
     /**
      * Get the id
@@ -76,7 +76,7 @@ abstract class AbstractType
         return $this->$propertyName;
     }
 
-    protected function checkPropertyExists(string $propertyName): void
+    private function checkPropertyExists(string $propertyName): void
     {
         if (!\property_exists($this, $propertyName)) {
             throw new \DomainException(
@@ -109,7 +109,7 @@ abstract class AbstractType
      * @param mixed $value
      * @return string|AbstractType
      */
-    protected function stringifyNumericValue($value)
+    private function stringifyNumericValue($value)
     {
         return \is_numeric($value) ? (string)$value : $value;
     }
@@ -123,7 +123,7 @@ abstract class AbstractType
      * @throws \DomainException
      * @throws \InvalidArgumentException
      */
-    protected function checkProperty(string $propertyName, $propertyValue): void
+    private function checkProperty(string $propertyName, $propertyValue): void
     {
         $this->checkPropertyExists($propertyName);
 
@@ -145,7 +145,7 @@ abstract class AbstractType
      * @param mixed $propertyValue
      * @return bool
      */
-    protected function isValidDataTypeForPropertyValue($propertyValue): bool
+    private function isValidDataTypeForPropertyValue($propertyValue): bool
     {
         return $propertyValue === null
             || \is_string($propertyValue)
@@ -261,7 +261,7 @@ abstract class AbstractType
     }
 
     /**
-     * Get the type
+     * Get the type (must be protected for tests)
      *
      * @return string
      */
@@ -288,14 +288,14 @@ abstract class AbstractType
         return $this->__resultArray;
     }
 
-    protected function addIdToResultArray(): void
+    private function addIdToResultArray(): void
     {
         if ($this->_id) {
             $this->__resultArray['@id'] = $this->_id;
         }
     }
 
-    protected function addPropertiesToResultArray(): void
+    private function addPropertiesToResultArray(): void
     {
         foreach ($this->getPropertyNames() as $property) {
             if ($this->$property === null || $this->$property === '') {
@@ -326,12 +326,12 @@ abstract class AbstractType
         }
     }
 
-    protected function addContextAndTypeToResultArray(bool $isRootType): void
+    private function addContextAndTypeToResultArray(bool $isRootType): void
     {
         $contextAndType = [];
 
         if ($isRootType) {
-            $contextAndType['@context'] = static::CONTEXT;
+            $contextAndType['@context'] = self::CONTEXT;
         }
 
         $contextAndType['@type'] = $this->getType();
