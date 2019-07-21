@@ -14,10 +14,15 @@ use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\CollectionPage;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
-use PHPUnit\Framework\TestCase;
+use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-class SchemaManagerTest extends Testcase
+class SchemaManagerTest extends UnitTestCase
 {
+    use LogManagerMockTrait;
+
+    protected $resetSingletonInstances = true;
+
     /**
      * @var SchemaManager
      */
@@ -25,6 +30,7 @@ class SchemaManagerTest extends Testcase
 
     public function setUp(): void
     {
+        $this->initialiseLogManagerMock();
         $this->schemaManager = new SchemaManager();
     }
 

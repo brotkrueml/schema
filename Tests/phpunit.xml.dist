@@ -1,5 +1,11 @@
-<phpunit>
-    <testsuites>
+<phpunit
+     convertErrorsToExceptions="true"
+     convertNoticesToExceptions="true"
+     convertWarningsToExceptions="true"
+     stopOnFailure="false"
+     bootstrap="UnitTestsBootstrap.php"
+>
+<testsuites>
         <testsuite name="Unit tests">
             <directory>Unit/</directory>
         </testsuite>

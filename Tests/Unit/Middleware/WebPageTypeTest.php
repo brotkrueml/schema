@@ -14,23 +14,33 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Middleware\WebPageType;
 use Brotkrueml\Schema\Model\Type\ItemPage;
 use Brotkrueml\Schema\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-class WebPageTypeTest extends TestCase
+class WebPageTypeTest extends UnitTestCase
 {
+    use LogManagerMockTrait;
+
+    protected $resetSingletonInstances = true;
+
     /** @var MockObject|TypoScriptFrontendController */
-    private $controllerMock;
+    protected $controllerMock;
 
     /** @var MockObject|ServerRequestInterface */
-    private $requestMock;
+    protected $requestMock;
 
     /** @var MockObject|RequestHandlerInterface */
-    private $handlerMock;
+    protected $handlerMock;
+
+    public function setUp(): void
+    {
+        $this->initialiseLogManagerMock();
+    }
 
     /**
      * @test
@@ -133,7 +143,11 @@ class WebPageTypeTest extends TestCase
             ->method('hasWebPage')
             ->willReturn(true);
 
-        (new WebPageType($this->controllerMock, $schemaManagerMock, $this->getExtensionConfigurationMockWithGetReturnTrue()))
+        (new WebPageType(
+            $this->controllerMock,
+            $schemaManagerMock,
+            $this->getExtensionConfigurationMockWithGetReturnTrue()
+        ))
             ->process($this->requestMock, $this->handlerMock);
     }
 
@@ -157,6 +171,8 @@ class WebPageTypeTest extends TestCase
 
     public function pagePropertiesProvider(): array
     {
+        $this->initialiseLogManagerMock();
+
         return [
             'Type is empty, so WebPage is used' => [
                 [

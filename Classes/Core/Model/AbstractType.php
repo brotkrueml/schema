@@ -9,7 +9,12 @@ namespace Brotkrueml\Schema\Core\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Signal\PropertyRegistration;
 use Brotkrueml\Schema\Utility\Utility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 
 abstract class AbstractType
 {
@@ -28,6 +33,30 @@ abstract class AbstractType
      * @var array
      */
     private $__resultArray = [];
+
+    /**
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
+     */
+    public function __construct()
+    {
+        $propertyRegistration = new PropertyRegistration();
+
+        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
+        $signalSlotDispatcher->dispatch(
+            self::class,
+            'registerAdditionalPropertiesForTypes',
+            [$propertyRegistration]
+        );
+
+        $additionalProperties = $propertyRegistration->getPropertiesForType(
+            Utility::getClassNameWithoutNamespace(static::class)
+        );
+
+        foreach ($additionalProperties as $property) {
+            $this->$property = null;
+        }
+    }
 
     /**
      * Get the id

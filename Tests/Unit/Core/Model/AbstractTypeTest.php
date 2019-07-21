@@ -9,7 +9,11 @@ namespace Brotkrueml\Schema\Core\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-use PHPUnit\Framework\TestCase;
+use Brotkrueml\Schema\Signal\PropertyRegistration;
+use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 trait ConcreteTypeTraitA
 {
@@ -26,17 +30,18 @@ trait ConcreteTypeTraitB
     protected $identifier;
 }
 
-/**
- * @property string name
- */
 class ConcreteType extends AbstractType
 {
     use ConcreteTypeTraitA;
     use ConcreteTypeTraitB;
 }
 
-class AbstractTypeTest extends TestCase
+class AbstractTypeTest extends UnitTestCase
 {
+    use LogManagerMockTrait;
+
+    protected $resetSingletonInstances = true;
+
     /**
      * @var AbstractType
      */
@@ -44,6 +49,7 @@ class AbstractTypeTest extends TestCase
 
     public function setUp(): void
     {
+        $this->initialiseLogManagerMock();
         $this->concreteType = new ConcreteType();
     }
 
@@ -360,6 +366,8 @@ class AbstractTypeTest extends TestCase
 
     public function dataProviderForToArrayReturnsCorrectResult(): array
     {
+        $this->initialiseLogManagerMock();
+
         $anotherConcreteType = new class extends AbstractType {
             use ConcreteTypeTraitB;
 
@@ -517,5 +525,40 @@ class AbstractTypeTest extends TestCase
         $actual = $this->concreteType->toArray();
 
         $this->assertSame(['@context' => 'http://schema.org', '@type' => 'ConcreteType'], $actual);
+    }
+
+    /**
+     * @test
+     *
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct
+     */
+    public function signalSlotForRegisterAdditionalPropertiesForTypes(): void
+    {
+        $slot = new class {
+            public function addAdditionalProperties(PropertyRegistration $propertyRegistration): void
+            {
+                $propertyRegistration->addPropertyForType('ConcreteType', 'additionalProperty');
+            }
+        };
+
+        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
+        $signalSlotDispatcher->connect(
+            AbstractType::class,
+            'registerAdditionalPropertiesForTypes',
+            $slot,
+            'addAdditionalProperties'
+        );
+
+        $concreteType = new ConcreteType();
+        $concreteType->setProperty('additionalProperty', 'some value for the additional property');
+
+        $this->assertTrue($concreteType->hasProperty('additionalProperty'));
+        $this->assertContains('additionalProperty', $concreteType->getPropertyNames());
+        $this->assertSame('some value for the additional property', $concreteType->getProperty('additionalProperty'));
+
+        $anotherConcreteType = new class extends AbstractType {
+        };
+
+        $this->assertFalse($anotherConcreteType->hasProperty('additionalProperty'));
     }
 }

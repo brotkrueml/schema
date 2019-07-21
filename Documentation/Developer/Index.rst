@@ -107,3 +107,4 @@ In-Depth
    WebPage
    Breadcrumb
    MainEntity
+   ExtendSchema
