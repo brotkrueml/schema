@@ -20,6 +20,10 @@ by Google: `Understand how structured data works <https://developers.google.com/
 The defined structured data is embedded on a web page in `JSON-LD <https://json-ld.org/>`__ markup and can be checked with
 Google's `Structured Data Testing Tool <https://search.google.com/structured-data/testing-tool>`__.
 
+There are also browser extensions available which ease the testing of the markup, e.g.
+`Structured Data Testing Tool <https://chrome.google.com/webstore/detail/structured-data-testing-t/kfdjeigpgagildmolfanniafmplnplpl>`__
+for Chrome.
+
 Current limitations
 ===================
 
