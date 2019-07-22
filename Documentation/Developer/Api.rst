@@ -12,8 +12,8 @@ Target group: **Developers**
 With the extension's API you can define the structured markup with PHP. For example, create a class which gets an
 Extbase model as input and defines the markup. Then instantiate the class in an action of your controller.
 
-Each type model class in the PHP namespace ``Brotkrueml\Schema\Model\Type`` inherits from the abstract class
-``Brotkrueml\Schema\Core\Model\AbstractType`` which defines methods to set and get the properties of a model.
+Each type model class in the PHP namespace :php:`Brotkrueml\Schema\Model\Type` inherits from the abstract class
+:php:`Brotkrueml\Schema\Core\Model\AbstractType` which defines methods to set and get the properties of a model.
 
 There are currently over 600 models available.
 
@@ -27,7 +27,7 @@ page that you want to enrich with structured markup. First you have to create th
 
    $person = new \Brotkrueml\Schema\Model\Type\Person();
 
-As you see, the schema type ``Person`` maps to the model ``Person``. You can use every accepted type of the
+As you see, the schema type ``Person`` maps to the model :php:`Person`. You can use every accepted type of the
 `schema.org vocabulary <https://schema.org/docs/full.html>`__.
 
 Surely you will need to add some properties:
@@ -95,8 +95,8 @@ The Model In-Depth
 
 The type models expose several methods:
 
-->setId(string $id)
--------------------
+:php:`->setId(string $id)`
+--------------------------
 
 The method sets the unique ID of the model. With the ID, you can cross-reference types on the same page or between
 different pages (and even between different web sites) without repeating all the properties.
@@ -120,16 +120,16 @@ Return value:
 Returns a reference to itself.
 
 
-->getId()
----------
+:php:`->getId()`
+----------------
 
 Return value:
 ~~~~~~~~~~~~~
 A previously set id or null (if not set).
 
 
-->setProperty(string $propertyName, $propertyValue)
----------------------------------------------------
+:php:`->setProperty(string $propertyName, $propertyValue)`
+----------------------------------------------------------
 
 You call this method to set a property or override a previously one.
 
@@ -151,14 +151,14 @@ Return value:
 Returns a reference to the model itself.
 
 
-->addProperty(string $propertyName, $propertyValue)
----------------------------------------------------
+:php:`->addProperty(string $propertyName, $propertyValue)`
+----------------------------------------------------------
 
-Call this method if you want to add a value to an existing one. In the example above, you can see that ``addProperty``
-is used to add a second value to the ``sameAs`` property.
+Call this method if you want to add a value to an existing one. In the example above, you can see that :php:`addProperty()`
+is used to add a second value to the :php:`sameAs` property.
 
-Calling the ``addProperty`` method on a property that has no value assigned has the same effect as calling
-``setProperty``. So you can safely use it, e.g. in a loop, to set some values on a property.
+Calling the :php:`addProperty()` method on a property that has no value assigned has the same effect as calling
+:php:`setProperty()`. So you can safely use it, e.g. in a loop, to set some values on a property.
 
 
 Parameters:
@@ -179,8 +179,8 @@ Return value:
 Returns a reference to the model itself.
 
 
-->setProperties(array $properties)
-----------------------------------
+:php:`->setProperties(array $properties)`
+-----------------------------------------
 
 Set multiple properties at once.
 
@@ -198,8 +198,8 @@ Return value:
 Returns a reference to the model itself.
 
 
-->getProperty(string $propertyName)
------------------------------------
+:php:`->getProperty(string $propertyName)`
+------------------------------------------
 
 Get the value of a property.
 
@@ -217,8 +217,8 @@ Return value:
 The value of the property (string, model, array of strings, array of models, null).
 
 
-->hasProperty(string $propertyName)
------------------------------------
+:php:`->hasProperty(string $propertyName)`
+------------------------------------------
 
 Check whether the property name exists in a particular model.
 
@@ -232,11 +232,11 @@ string $propertyName                 The property name to check.
 
 Return value:
 ~~~~~~~~~~~~~
-``true``, if the property exists and ``false``, otherwise.
+:php:`true`, if the property exists and :php:`false`, otherwise.
 
 
-->clearProperty(string $propertyName)
--------------------------------------
+:php:`->clearProperty(string $propertyName)`
+--------------------------------------------
 
 Resets the value of the property (set it to ``null``).
 
@@ -254,19 +254,19 @@ Return value:
 Returns a reference to the model itself.
 
 
-->getPropertyNames()
---------------------
+:php:`->getPropertyNames()`
+---------------------------
 
 Return value:
 ~~~~~~~~~~~~~
 Return all property names of the model in an array.
 
 
-->isEmpty()
------------
+:php:`->isEmpty()`
+------------------
 
 Checks, whether all properties of the models are empty.
 
 Return value:
 ~~~~~~~~~~~~~
-``true`` if all properties have an empty value, ``false`` otherwise.
+:php:`true` if all properties have an empty value, :php:`false` otherwise.

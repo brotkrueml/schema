@@ -214,7 +214,7 @@ You can build your own breadcrumb array and assign it to the template. It should
       ],
    ];
 
-If the key ``tx_schema_webpagetype`` is omitted it defaults to WebPage.
+If the key :php:`tx_schema_webpagetype` is omitted it defaults to ``WebPage``.
 
 Remarks
 -------

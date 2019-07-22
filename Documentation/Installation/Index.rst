@@ -22,6 +22,6 @@ The recommended way to install this extension is by using Composer. In your Comp
 
 and the latest stable release will be installed.
 
-But you can also install the extension from the TYPO3 Extension Repository (TER).
+But you can also install the extension from the `TYPO3 Extension Repository (TER) <https://extensions.typo3.org/extension/schema/>`__.
 
 The extension configuration offers some basic configuration which is explained in the :ref:`Configuration <Configuration>` chapter.

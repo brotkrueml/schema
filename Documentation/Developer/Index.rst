@@ -52,8 +52,8 @@ You can retrieve the information about a type or property from the URL *https://
 Models
 ------
 
-This extension provides model classes for each type under the PHP namespace ``\Brotkrueml\Schema\Model\Type``. For example,
-the type ``Thing`` is mapped to the model ``\Brotkrueml\Schema\Model\Type\Thing``, which knows about the according schema.org
+This extension provides model classes for each type under the PHP namespace :php:`\Brotkrueml\Schema\Model\Type`. For example,
+the type ``Thing`` is mapped to the model :php:`\Brotkrueml\Schema\Model\Type\Thing`, which knows about the according schema.org
 properties. A property value can be set with an according method.
 
 .. code-block:: php

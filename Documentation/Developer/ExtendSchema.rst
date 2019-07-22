@@ -25,7 +25,7 @@ Sometimes it is necessary to use a pending property in a specific type. For exam
 Example
 ~~~~~~~
 
-To fulfill the signal, you have to create a slot in your custom extension. Add the configuration in your ``ext_localconf.php`` file:
+To fulfill the signal, you have to create a slot in your custom extension. Add the configuration in your :file:`ext_localconf.php` file:
 
 .. code-block:: php
 
