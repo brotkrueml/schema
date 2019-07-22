@@ -1,8 +1,7 @@
 {
     "name": "brotkrueml/schema",
     "type": "typo3-cms-extension",
-    "description": "schema.org structured data for your website",
-    "homepage": "https://brot.krue.ml/",
+    "description": "API and view helpers for schema.org markup",
     "license": [
         "GPL-2.0-or-later"
     ],
