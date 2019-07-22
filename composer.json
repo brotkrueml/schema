@@ -6,6 +6,12 @@
     "license": [
         "GPL-2.0-or-later"
     ],
+    "authors": [
+        {
+            "name": "Chris Müller",
+            "role": "Developer"
+        }
+    ],
     "keywords": [
         "TYPO3 CMS",
         "TYPO3 extension",
