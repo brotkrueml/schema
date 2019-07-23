@@ -42,7 +42,7 @@ The recommended way to install this extension is by using Composer. In your Comp
 
 ### Installation As An Extension From The TYPO3 Extension Repository (TER)
 
-You''ll find the extension also in the TYPO3 Extension Repository (link to be included).
+You''ll find the extension also in the [TYPO3 Extension Repository](https://extensions.typo3.org/extension/schema/) .
 
 
 ## Documentation
