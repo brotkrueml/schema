@@ -23,9 +23,9 @@ There can also be more than one breadcrumb on a page, Google gives an example in
 
 
 Using the API
--------------
+=============
 
-You can define a breadcrumb with the API as you already know it. For example, you have defined a breadcrumb somewhere:
+You can define a breadcrumb with the :ref:`API <api>` as you may already know it. For example, you have defined a breadcrumb somewhere:
 
 .. code-block:: php
 
@@ -91,14 +91,14 @@ This results in the following schema markup:
       }
    }
 
-As you can see, the breadcrumb is wrapped in a ``WebPage`` automatically.
+As you can see, the breadcrumb is embedded in a ``WebPage`` automatically.
 
 
 Using the view helpers
-----------------------
+======================
 
-<schema:type.breadcrumbList> view helper
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+View helper :html:`<schema:type.breadcrumbList>`
+------------------------------------------------
 
 The schema markup can also be achieved by a view helper in a Fluid template:
 
@@ -135,8 +135,8 @@ It is also possible to use it in combination with one of the ``WebPage`` types:
 
 .. _breadcrumb-view-helper:
 
-<schema:breadcrumb> view helper
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+View helper :html:`<schema:breadcrumb>`
+---------------------------------------
 
 But mostly you will have the breadcrumb structure in a Fluid variable created by a MenuProcessor in TypoScript:
 
@@ -173,7 +173,7 @@ breadcrumb for your users.
 
 Normally the home page is part of the generated breadcrumb, but this is not necessary for the schema markup -
 so the home page is omitted. But if you really want to have it in the markup (or you have a breadcrumb
-generated on your own without the home page), you can use the attribute ``renderFirstItem`` and set it to ``1``:
+generated on your own without the home page), you can use the attribute :html:`renderFirstItem` and set it to :html:`1`:
 
 .. code-block:: html
 

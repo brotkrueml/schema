@@ -9,7 +9,7 @@ Using the View Helpers
 
 Target group: **Developers**
 
-With the help of ``<schema:type>`` view helpers you can define schema markup in Fluid templates. This can be helpful
+With the help of :html:`<schema:type>` view helpers you can define schema markup in Fluid templates. This can be helpful
 if you can't use the :ref:`API <api>`, e.g. in third-party extensions.
 
 Each type in the schema.org vocabulary is mapped into an according view helper. The properties of a type are available
@@ -45,8 +45,8 @@ structured markup:
       </schema:type.corporation>
    </schema:type.person>
 
-Every type view helper starts with ``<schema:type.xxx>`` where ``xxx`` ist the lower camel case variant of the schema.org
-type name.
+Every type view helper starts with :html:`<schema:type.xxx>` where :html:xxx` ist the lower camel case variant of the
+schema.org type name.
 
 The according properties (like ``givenName`` and ``familyName``) are attributes. You can find a list of all available
 properties for a specific type on the schema.org page, e.g. for the `Person <http://schema.org/Person>`__.
@@ -54,7 +54,7 @@ properties for a specific type on the schema.org page, e.g. for the `Person <htt
 In the example, there are two attributes that begin with a -. They are a explained in detail in the chapter
 :ref:`Special Attributes <view-helpers-special-attributes>`.
 
-Please also recognise the <schema:property> view helper. With this view helper you can pass more than one string value
+Please also recognise the :html:`<schema:property>` view helper. With this view helper you can pass more than one string value
 to the according type.
 
 
@@ -217,20 +217,20 @@ helpers as follows:
    </schema:type.corporation>
 
 
-The ``<schema:property>`` view helper accepts two argument, both are required.
+The :html:`<schema:property>` view helper accepts two argument, both are required.
 
 
 -as
 ---
 
-You know already the ``-as`` attribute from the type view helpers. Its purpose is the same, it references the property
-in the parent ``<schema:type>`` view helper.
+You know already the :html:`-as` attribute from the type view helpers. Its purpose is the same, it references the property
+in the parent :html:`<schema:type>` view helper.
 
 
 value
 -----
 
-The ``value`` argument sets the value of the property, as you guessed already.
+The :html:`value` argument sets the value of the property, as you guessed already.
 
 
 Breadcrumb View Helper
@@ -249,7 +249,7 @@ It is possible to assist your code editor on suggesting the tag name and the pos
 
    Auto completion in PhpStorm with configured XSD schema
 
-Just add the ``schema`` namespace to the root element of your Fluid template:
+Just add the :html:`schema` namespace to the root element of your Fluid template:
 
 .. code-block:: html
    :emphasize-lines: 3-4
@@ -261,8 +261,8 @@ Just add the ``schema`` namespace to the root element of your Fluid template:
        data-namespace-typo3-fluid="true"
    >
 
-The relevant parts are the namespace declaration (``xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"``)
-and the ``schema:schemaLocation`` attribute which points to the recent XSD definition.
+The relevant parts are the namespace declaration (:html:`xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"`)
+and the :html:`schema:schemaLocation` attribute which points to the recent XSD definition.
 
 You can also import the XSD file into your favorite IDE after downloading it from the following URL:
 `https://brot.krue.ml/schemas/schema-1.0.0.xsd <https://brot.krue.ml/schemas/schema-1.0.0.xsd>`__.
