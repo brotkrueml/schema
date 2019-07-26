@@ -12,9 +12,10 @@ namespace Brotkrueml\Schema\Tests\Unit\Middleware;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Middleware\WebPageType;
-use Brotkrueml\Schema\Model\Type\ItemPage;
-use Brotkrueml\Schema\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
+use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -25,6 +26,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class WebPageTypeTest extends UnitTestCase
 {
     use LogManagerMockTrait;
+    use TypeFixtureNamespace;
 
     protected $resetSingletonInstances = true;
 
@@ -37,9 +39,21 @@ class WebPageTypeTest extends UnitTestCase
     /** @var MockObject|RequestHandlerInterface */
     protected $handlerMock;
 
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+        static::setTypeNamespaceToFixtureNamespace();
+    }
+
     public function setUp(): void
     {
         $this->initialiseLogManagerMock();
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        static::restoreOriginalTypeNamespace();
+        parent::tearDownAfterClass();
     }
 
     /**

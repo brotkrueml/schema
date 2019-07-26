@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Utility;
 
@@ -10,6 +11,8 @@ namespace Brotkrueml\Schema\Utility;
  */
 final class Utility
 {
+    private static $typeNamespace = 'Brotkrueml\\Schema\\Model\\Type';
+
     /**
      * Get the class name without the namespace
      *
@@ -36,12 +39,28 @@ final class Utility
      */
     public static function getNamespacedClassNameForType(string $type): ?string
     {
-        $className = 'Brotkrueml\\Schema\\Model\\Type\\' . $type;
+        $className = static::$typeNamespace . '\\' . $type;
 
         if (!\class_exists($className)) {
             return null;
         }
 
         return $className;
+    }
+
+    /**
+     * Only for testing purposes!
+     *
+     * @param string $namespace
+     * @return string
+     *
+     * @internal
+     */
+    public static function setNamespaceForTypes(string $namespace): string
+    {
+        $originalNamespace = static::$typeNamespace;
+        static::$typeNamespace = $namespace;
+
+        return $originalNamespace;
     }
 }

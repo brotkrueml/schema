@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
@@ -8,12 +9,27 @@ namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 class BreadcrumbViewHelperTest extends ViewHelperTestCase
 {
+    use TypeFixtureNamespace;
+
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+        static::setTypeNamespaceToFixtureNamespace();
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        static::restoreOriginalTypeNamespace();
+        parent::tearDownAfterClass();
+    }
+
     /**
      * Data provider for testing the property view helper in Fluid templates
      *
@@ -131,6 +147,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
      */
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, array $variables, string $expected): void
     {
+        /** @noinspection PhpInternalEntityUsedInspection */
         GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
 
         $this->renderTemplate($template, $variables);

@@ -8,7 +8,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Utility;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-use Brotkrueml\Schema\Model\Type\CreativeWork;
+use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Utility\Utility;
 use PHPUnit\Framework\TestCase;
 
@@ -39,9 +39,9 @@ class UtilityTest extends TestCase
      */
     public function getNamespacedClassNameForType(): void
     {
-        $actual = Utility::getNamespacedClassNameForType('CreativeWork');
+        $actual = Utility::getNamespacedClassNameForType('Thing');
 
-        $this->assertSame(CreativeWork::class, $actual);
+        $this->assertSame(Thing::class, $actual);
     }
 
     /**
@@ -52,5 +52,17 @@ class UtilityTest extends TestCase
         $actual = Utility::getNamespacedClassNameForType('DoesNotExist');
 
         $this->assertNull($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setNamespaceForTypesReturnsOriginalNamespace(): void
+    {
+        $originalNamespace = Utility::setNamespaceForTypes('\\Some\\Namespace');
+
+        $this->assertSame('Brotkrueml\\Schema\\Model\\Type', $originalNamespace);
+
+        Utility::setNamespaceForTypes($originalNamespace);
     }
 }
