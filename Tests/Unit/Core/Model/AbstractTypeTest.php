@@ -10,31 +10,11 @@ namespace Brotkrueml\Schema\Core\Model;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Signal\PropertyRegistration;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
-
-trait ConcreteTypeTraitA
-{
-    protected $name;
-    protected $url;
-}
-
-trait ConcreteTypeTraitB
-{
-    protected $name;
-    protected $description;
-    protected $image;
-    protected $alternateName;
-    protected $identifier;
-}
-
-class ConcreteType extends AbstractType
-{
-    use ConcreteTypeTraitA;
-    use ConcreteTypeTraitB;
-}
 
 class AbstractTypeTest extends UnitTestCase
 {
@@ -45,12 +25,12 @@ class AbstractTypeTest extends UnitTestCase
     /**
      * @var AbstractType
      */
-    protected $concreteType;
+    protected $fixtureType;
 
     public function setUp(): void
     {
         $this->initialiseLogManagerMock();
-        $this->concreteType = new ConcreteType();
+        $this->fixtureType = new FixtureThing();
     }
 
     /**
@@ -58,7 +38,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function setIdReturnsInstanceOfAbstractClass(): void
     {
-        $actual = $this->concreteType->setId('concreteTestId');
+        $actual = $this->fixtureType->setId('concreteTestId');
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -68,7 +48,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function getIdReturnsNullAfterInstantiationOfClass(): void
     {
-        $actual = $this->concreteType->getId();
+        $actual = $this->fixtureType->getId();
 
         $this->assertNull($actual);
     }
@@ -78,9 +58,9 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function getIdReturnsTheIdCorrectly(): void
     {
-        $this->concreteType->setId('concreteTestId');
+        $this->fixtureType->setId('concreteTestId');
 
-        $actual = $this->concreteType->getId();
+        $actual = $this->fixtureType->getId();
 
         $this->assertSame('concreteTestId', $actual);
     }
@@ -91,7 +71,7 @@ class AbstractTypeTest extends UnitTestCase
     public function hasPropertyReturnsTrueIfPropertyExists(): void
     {
         $this->assertTrue(
-            $this->concreteType->hasProperty('name')
+            $this->fixtureType->hasProperty('name')
         );
     }
 
@@ -101,7 +81,7 @@ class AbstractTypeTest extends UnitTestCase
     public function hasPropertyReturnsFalseIfPropertyDoesNotExists(): void
     {
         $this->assertFalse(
-            $this->concreteType->hasProperty('propertyDoesNotExist')
+            $this->fixtureType->hasProperty('propertyDoesNotExist')
         );
     }
 
@@ -110,7 +90,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function setPropertyReturnsInstanceOfAbstractClass(): void
     {
-        $actual = $this->concreteType->setProperty('name', 'the name');
+        $actual = $this->fixtureType->setProperty('name', 'the name');
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -120,15 +100,15 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
-        $this->concreteType->setProperty('name', 'Pi');
-        $this->concreteType->setProperty('description', ['The answert for everything']);
-        $this->concreteType->setProperty('identifier', 42);
-        $this->concreteType->setProperty('alternateName', 3.141592653);
+        $this->fixtureType->setProperty('name', 'Pi');
+        $this->fixtureType->setProperty('description', ['The answert for everything']);
+        $this->fixtureType->setProperty('identifier', 42);
+        $this->fixtureType->setProperty('alternateName', 3.141592653);
 
-        $anotherConcreteType = new class extends AbstractType {
+        $anotherType = new class extends AbstractType {
         };
 
-        $this->concreteType->setProperty('image', $anotherConcreteType);
+        $this->fixtureType->setProperty('image', $anotherType);
 
         // Assertion is valid, when no exception above is thrown
         $this->assertTrue(true);
@@ -142,7 +122,7 @@ class AbstractTypeTest extends UnitTestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1561829996);
 
-        $this->concreteType->setProperty('invalidProperty', 'some value');
+        $this->fixtureType->setProperty('invalidProperty', 'some value');
     }
 
     /**
@@ -153,7 +133,7 @@ class AbstractTypeTest extends UnitTestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionCode(1561830012);
 
-        $this->concreteType->setProperty('image', new \stdClass());
+        $this->fixtureType->setProperty('image', new \stdClass());
     }
 
     /**
@@ -161,7 +141,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function getPropertyReturnsNullAfterInstantiationOfClass(): void
     {
-        $actual = $this->concreteType->getProperty('name');
+        $actual = $this->fixtureType->getProperty('name');
 
         $this->assertNull($actual);
     }
@@ -171,7 +151,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function getPropertyReturnsCorrectValue(): void
     {
-        $actual = $this->concreteType
+        $actual = $this->fixtureType
             ->setProperty('image', ['some image value', 'another image value'])
             ->getProperty('image');
 
@@ -186,7 +166,7 @@ class AbstractTypeTest extends UnitTestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1561829996);
 
-        $this->concreteType->getProperty('invalidPropertyName');
+        $this->fixtureType->getProperty('invalidPropertyName');
     }
 
     /**
@@ -194,7 +174,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function addPropertyForNotAlreadySetProperty(): void
     {
-        $actual = $this->concreteType
+        $actual = $this->fixtureType
             ->addProperty('name', 'the test name')
             ->getProperty('name');
 
@@ -206,7 +186,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function addPropertyForPropertyWithStringAlreadySet(): void
     {
-        $actual = $this->concreteType
+        $actual = $this->fixtureType
             ->setProperty('image', 'first image element')
             ->addProperty('image', 'second image element')
             ->getProperty('image');
@@ -219,7 +199,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function addPropertyForPropertyWithArrayAlreadySet(): void
     {
-        $actual = $this->concreteType
+        $actual = $this->fixtureType
             ->setProperty('image', ['some image value'])
             ->addProperty('image', 'other image value')
             ->getProperty('image');
@@ -232,15 +212,15 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function addPropertyAcceptsValidDataTypesAsValue(): void
     {
-        $this->concreteType->setProperty('name', 'Pi');
-        $this->concreteType->setProperty('description', ['The answert for everything']);
-        $this->concreteType->addProperty('identifier', 42);
-        $this->concreteType->addProperty('alternateName', 3.141592653);
+        $this->fixtureType->setProperty('name', 'Pi');
+        $this->fixtureType->setProperty('description', ['The answert for everything']);
+        $this->fixtureType->addProperty('identifier', 42);
+        $this->fixtureType->addProperty('alternateName', 3.141592653);
 
-        $anotherConcreteType = new class extends AbstractType {
+        $anotherType = new class extends AbstractType {
         };
 
-        $this->concreteType->addProperty('image', $anotherConcreteType);
+        $this->fixtureType->addProperty('image', $anotherType);
 
         // Assertion is valid, when no exception above is thrown
         $this->assertTrue(true);
@@ -251,7 +231,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function setPropertiesReturnsReferenceToItself(): void
     {
-        $actual = $this->concreteType->setProperties([]);
+        $actual = $this->fixtureType->setProperties([]);
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -261,21 +241,21 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function setPropertiesSetsThePropertiesCorrectly(): void
     {
-        $this->concreteType->setProperties([
+        $this->fixtureType->setProperties([
             'name' => 'some name',
             'description' => 'some description',
             'image' => ['some image value', 'other image value'],
         ]);
 
-        $actualName = $this->concreteType->getProperty('name');
+        $actualName = $this->fixtureType->getProperty('name');
 
         $this->assertSame('some name', $actualName);
 
-        $actualDescription = $this->concreteType->getProperty('description');
+        $actualDescription = $this->fixtureType->getProperty('description');
 
         $this->assertSame('some description', $actualDescription);
 
-        $actualImage = $this->concreteType->getProperty('image');
+        $actualImage = $this->fixtureType->getProperty('image');
 
         $this->assertSame(['some image value', 'other image value'], $actualImage);
     }
@@ -285,13 +265,13 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function clearPropertySetsValueToNull(): void
     {
-        $resultOfClear = $this->concreteType
+        $resultOfClear = $this->fixtureType
             ->setProperty('image', 'some image value')
             ->clearProperty('image');
 
         $this->assertInstanceOf(AbstractType::class, $resultOfClear);
 
-        $resultOfGet = $this->concreteType
+        $resultOfGet = $this->fixtureType
             ->getProperty('image');
 
         $this->assertNull($resultOfGet);
@@ -305,7 +285,7 @@ class AbstractTypeTest extends UnitTestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1561829996);
 
-        $this->concreteType->clearProperty('invalidPropertyName');
+        $this->fixtureType->clearProperty('invalidPropertyName');
     }
 
     /**
@@ -313,7 +293,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function getPropertiesReturnsListOfAllProperties(): void
     {
-        $actual = $this->concreteType->getPropertyNames();
+        $actual = $this->fixtureType->getPropertyNames();
 
         $this->assertSame(
             [
@@ -333,7 +313,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function isEmptyReturnsTrueOnNewlyCreatedModel(): void
     {
-        $actual = $this->concreteType->isEmpty();
+        $actual = $this->fixtureType->isEmpty();
 
         $this->assertTrue($actual);
     }
@@ -343,9 +323,9 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function isEmptyReturnsFalseIfOnePropertyHasStringValue(): void
     {
-        $this->concreteType->setProperty('name', 'some name');
+        $this->fixtureType->setProperty('name', 'some name');
 
-        $actual = $this->concreteType->isEmpty();
+        $actual = $this->fixtureType->isEmpty();
 
         $this->assertFalse($actual);
     }
@@ -355,11 +335,11 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function isEmptyReturnsTrueWithPropertiesSetToEmptyValues(): void
     {
-        $this->concreteType
+        $this->fixtureType
             ->setProperty('name', '')
             ->setProperty('description', []);
 
-        $actual = $this->concreteType->isEmpty();
+        $actual = $this->fixtureType->isEmpty();
 
         $this->assertTrue($actual);
     }
@@ -368,12 +348,14 @@ class AbstractTypeTest extends UnitTestCase
     {
         $this->initialiseLogManagerMock();
 
-        $anotherConcreteType = new class extends AbstractType {
-            use ConcreteTypeTraitB;
+        $anotherType = new class extends AbstractType {
+            protected $name;
+            protected $description;
+            protected $image;
 
             protected function getType(): string
             {
-                return 'AnotherConcreteType';
+                return 'AnotherType';
             }
         };
 
@@ -384,7 +366,7 @@ class AbstractTypeTest extends UnitTestCase
                 'some string value',
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'name' => 'some string value',
                 ],
             ],
@@ -393,7 +375,7 @@ class AbstractTypeTest extends UnitTestCase
                 '1',
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'name' => '1',
                 ],
             ],
@@ -402,7 +384,7 @@ class AbstractTypeTest extends UnitTestCase
                 1,
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'name' => '1',
                 ],
             ],
@@ -411,19 +393,19 @@ class AbstractTypeTest extends UnitTestCase
                 0,
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'name' => '0',
                 ],
             ],
             'Value is a model' => [
                 'image',
-                (new $anotherConcreteType())
+                (new $anotherType())
                     ->setProperty('name', 'some value for name'),
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'image' => [
-                        '@type' => 'AnotherConcreteType',
+                        '@type' => 'AnotherType',
                         'name' => 'some value for name',
                     ],
                 ],
@@ -431,21 +413,21 @@ class AbstractTypeTest extends UnitTestCase
             'Value is an array of models' => [
                 'image',
                 [
-                    (new $anotherConcreteType())
+                    (new $anotherType())
                         ->setProperty('name', 'some value for name'),
-                    (new $anotherConcreteType())
+                    (new $anotherType())
                         ->setProperty('description', 'some value for description'),
                 ],
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'image' => [
                         [
-                            '@type' => 'AnotherConcreteType',
+                            '@type' => 'AnotherType',
                             'name' => 'some value for name',
                         ],
                         [
-                            '@type' => 'AnotherConcreteType',
+                            '@type' => 'AnotherType',
                             'description' => 'some value for description',
                         ],
                     ],
@@ -456,7 +438,7 @@ class AbstractTypeTest extends UnitTestCase
                 ['the first string', 'the second string'],
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'image' => [
                         'the first string',
                         'the second string',
@@ -467,16 +449,16 @@ class AbstractTypeTest extends UnitTestCase
                 'image',
                 [
                     'the first string',
-                    (new $anotherConcreteType())
+                    (new $anotherType())
                         ->setProperty('name', 'some value for image'),
                 ],
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                     'image' => [
                         'the first string',
                         [
-                            '@type' => 'AnotherConcreteType',
+                            '@type' => 'AnotherType',
                             'name' => 'some value for image',
                         ],
                     ],
@@ -487,7 +469,7 @@ class AbstractTypeTest extends UnitTestCase
                 null,
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                 ],
             ],
             'value is an empty string' => [
@@ -495,7 +477,7 @@ class AbstractTypeTest extends UnitTestCase
                 '',
                 [
                     '@context' => 'http://schema.org',
-                    '@type' => 'ConcreteType',
+                    '@type' => 'FixtureThing',
                 ],
             ],
         ];
@@ -510,7 +492,7 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function toArrayReturnsCorrectResult(string $key, $value, array $expected): void
     {
-        $actual = $this->concreteType
+        $actual = $this->fixtureType
             ->setProperty($key, $value)
             ->toArray();
 
@@ -522,9 +504,9 @@ class AbstractTypeTest extends UnitTestCase
      */
     public function toArrayReturnsCorrectResultWhenNoPropertiesAreSet(): void
     {
-        $actual = $this->concreteType->toArray();
+        $actual = $this->fixtureType->toArray();
 
-        $this->assertSame(['@context' => 'http://schema.org', '@type' => 'ConcreteType'], $actual);
+        $this->assertSame(['@context' => 'http://schema.org', '@type' => 'FixtureThing'], $actual);
     }
 
     /**
@@ -535,9 +517,10 @@ class AbstractTypeTest extends UnitTestCase
     public function signalSlotForRegisterAdditionalPropertiesForTypes(): void
     {
         $slot = new class {
+            /** @noinspection PhpUnused */
             public function addAdditionalProperties(PropertyRegistration $propertyRegistration): void
             {
-                $propertyRegistration->addPropertyForType('ConcreteType', 'additionalProperty');
+                $propertyRegistration->addPropertyForType('FixtureThing', 'additionalProperty');
             }
         };
 
@@ -549,16 +532,16 @@ class AbstractTypeTest extends UnitTestCase
             'addAdditionalProperties'
         );
 
-        $concreteType = new ConcreteType();
-        $concreteType->setProperty('additionalProperty', 'some value for the additional property');
+        $type = new FixtureThing();
+        $type->setProperty('additionalProperty', 'some value for the additional property');
 
-        $this->assertTrue($concreteType->hasProperty('additionalProperty'));
-        $this->assertContains('additionalProperty', $concreteType->getPropertyNames());
-        $this->assertSame('some value for the additional property', $concreteType->getProperty('additionalProperty'));
+        $this->assertTrue($type->hasProperty('additionalProperty'));
+        $this->assertContains('additionalProperty', $type->getPropertyNames());
+        $this->assertSame('some value for the additional property', $type->getProperty('additionalProperty'));
 
-        $anotherConcreteType = new class extends AbstractType {
+        $anotherType = new class extends AbstractType {
         };
 
-        $this->assertFalse($anotherConcreteType->hasProperty('additionalProperty'));
+        $this->assertFalse($anotherType->hasProperty('additionalProperty'));
     }
 }
