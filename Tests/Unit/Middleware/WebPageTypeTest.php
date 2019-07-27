@@ -14,7 +14,6 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Middleware\WebPageType;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
-use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
@@ -25,7 +24,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class WebPageTypeTest extends UnitTestCase
 {
-    use LogManagerMockTrait;
     use TypeFixtureNamespace;
 
     protected $resetSingletonInstances = true;
@@ -43,11 +41,6 @@ class WebPageTypeTest extends UnitTestCase
     {
         parent::setUpBeforeClass();
         static::setTypeNamespaceToFixtureNamespace();
-    }
-
-    public function setUp(): void
-    {
-        $this->initialiseLogManagerMock();
     }
 
     public static function tearDownAfterClass(): void
@@ -185,8 +178,6 @@ class WebPageTypeTest extends UnitTestCase
 
     public function pagePropertiesProvider(): array
     {
-        $this->initialiseLogManagerMock();
-
         return [
             'Type is empty, so WebPage is used' => [
                 [

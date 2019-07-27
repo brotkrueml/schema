@@ -12,21 +12,16 @@ namespace Brotkrueml\Schema\Tests\Unit\Hook\PageRenderer;
 use Brotkrueml\Schema\Hook\PageRenderer\PostProcessHook;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\Thing;
-use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * @runTestsInSeparateProcesses
  */
-class PostProcessHookTest extends UnitTestCase
+class PostProcessHookTest extends TestCase
 {
-    use LogManagerMockTrait;
-
-    protected $resetSingletonInstances = true;
-
     /**
      * @var PostProcessHook
      */
@@ -39,8 +34,6 @@ class PostProcessHookTest extends UnitTestCase
 
     public function setUp(): void
     {
-        $this->initialiseLogManagerMock();
-
         $this->postProcessHook = new PostProcessHook();
 
         /** @noinspection PhpUnhandledExceptionInspection */

@@ -9,7 +9,6 @@ namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -18,8 +17,6 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 
 class ViewHelperTestCase extends UnitTestCase
 {
-    use LogManagerMockTrait;
-
     protected const VIEWHELPER_NAMESPACE = '{namespace schema=Brotkrueml\Schema\ViewHelpers}';
 
     protected $resetSingletonInstances = true;
@@ -35,8 +32,6 @@ class ViewHelperTestCase extends UnitTestCase
 
     public function setUp(): void
     {
-        $this->initialiseLogManagerMock();
-
         $this->root = vfsStream::setup('test-dir');
         $this->view = new TemplateView();
         $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);

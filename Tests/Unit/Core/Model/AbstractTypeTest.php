@@ -9,19 +9,11 @@ namespace Brotkrueml\Schema\Core\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
-use Brotkrueml\Schema\Signal\PropertyRegistration;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
-use Brotkrueml\Schema\Tests\Unit\Helper\LogManagerMockTrait;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use PHPUnit\Framework\TestCase;
 
-class AbstractTypeTest extends UnitTestCase
+class AbstractTypeTest extends TestCase
 {
-    use LogManagerMockTrait;
-
-    protected $resetSingletonInstances = true;
-
     /**
      * @var AbstractType
      */
@@ -29,7 +21,6 @@ class AbstractTypeTest extends UnitTestCase
 
     public function setUp(): void
     {
-        $this->initialiseLogManagerMock();
         $this->fixtureType = new FixtureThing();
     }
 
@@ -346,12 +337,9 @@ class AbstractTypeTest extends UnitTestCase
 
     public function dataProviderForToArrayReturnsCorrectResult(): array
     {
-        $this->initialiseLogManagerMock();
-
         $anotherType = new class extends AbstractType {
             protected $name;
             protected $description;
-            protected $image;
 
             protected function getType(): string
             {
@@ -507,41 +495,5 @@ class AbstractTypeTest extends UnitTestCase
         $actual = $this->fixtureType->toArray();
 
         $this->assertSame(['@context' => 'http://schema.org', '@type' => 'FixtureThing'], $actual);
-    }
-
-    /**
-     * @test
-     *
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct
-     */
-    public function signalSlotForRegisterAdditionalPropertiesForTypes(): void
-    {
-        $slot = new class {
-            /** @noinspection PhpUnused */
-            public function addAdditionalProperties(PropertyRegistration $propertyRegistration): void
-            {
-                $propertyRegistration->addPropertyForType('FixtureThing', 'additionalProperty');
-            }
-        };
-
-        $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-        $signalSlotDispatcher->connect(
-            AbstractType::class,
-            'registerAdditionalPropertiesForTypes',
-            $slot,
-            'addAdditionalProperties'
-        );
-
-        $type = new FixtureThing();
-        $type->setProperty('additionalProperty', 'some value for the additional property');
-
-        $this->assertTrue($type->hasProperty('additionalProperty'));
-        $this->assertContains('additionalProperty', $type->getPropertyNames());
-        $this->assertSame('some value for the additional property', $type->getProperty('additionalProperty'));
-
-        $anotherType = new class extends AbstractType {
-        };
-
-        $this->assertFalse($anotherType->hasProperty('additionalProperty'));
     }
 }
