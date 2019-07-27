@@ -260,12 +260,7 @@ abstract class AbstractType
         return empty($propertiesNotEmpty);
     }
 
-    /**
-     * Get the type (must be protected for tests)
-     *
-     * @return string
-     */
-    protected function getType(): string
+    private function getType(): string
     {
         return Utility::getClassNameWithoutNamespace(static::class);
     }

@@ -9,6 +9,7 @@ namespace Brotkrueml\Schema\Core\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use PHPUnit\Framework\TestCase;
 
@@ -337,16 +338,6 @@ class AbstractTypeTest extends TestCase
 
     public function dataProviderForToArrayReturnsCorrectResult(): array
     {
-        $anotherType = new class extends AbstractType {
-            protected $name;
-            protected $description;
-
-            protected function getType(): string
-            {
-                return 'AnotherType';
-            }
-        };
-
         /** @noinspection PhpUndefinedMethodInspection */
         return [
             'Value is a string' => [
@@ -387,13 +378,13 @@ class AbstractTypeTest extends TestCase
             ],
             'Value is a model' => [
                 'image',
-                (new $anotherType())
+                (new FixtureImage())
                     ->setProperty('name', 'some value for name'),
                 [
                     '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'image' => [
-                        '@type' => 'AnotherType',
+                        '@type' => 'FixtureImage',
                         'name' => 'some value for name',
                     ],
                 ],
@@ -401,9 +392,9 @@ class AbstractTypeTest extends TestCase
             'Value is an array of models' => [
                 'image',
                 [
-                    (new $anotherType())
+                    (new FixtureImage())
                         ->setProperty('name', 'some value for name'),
-                    (new $anotherType())
+                    (new FixtureImage())
                         ->setProperty('description', 'some value for description'),
                 ],
                 [
@@ -411,11 +402,11 @@ class AbstractTypeTest extends TestCase
                     '@type' => 'FixtureThing',
                     'image' => [
                         [
-                            '@type' => 'AnotherType',
+                            '@type' => 'FixtureImage',
                             'name' => 'some value for name',
                         ],
                         [
-                            '@type' => 'AnotherType',
+                            '@type' => 'FixtureImage',
                             'description' => 'some value for description',
                         ],
                     ],
@@ -437,7 +428,7 @@ class AbstractTypeTest extends TestCase
                 'image',
                 [
                     'the first string',
-                    (new $anotherType())
+                    (new FixtureImage())
                         ->setProperty('name', 'some value for image'),
                 ],
                 [
@@ -446,7 +437,7 @@ class AbstractTypeTest extends TestCase
                     'image' => [
                         'the first string',
                         [
-                            '@type' => 'AnotherType',
+                            '@type' => 'FixtureImage',
                             'name' => 'some value for image',
                         ],
                     ],
