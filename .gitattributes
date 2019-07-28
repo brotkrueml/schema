@@ -1,5 +1,5 @@
 /bin/ export-ignore
-/Classes/Generator/ export-ignore
+/Generator/ export-ignore
 /Tests/ export-ignore
 /.editorconfig export-ignore
 /.gitattributes export-ignore
