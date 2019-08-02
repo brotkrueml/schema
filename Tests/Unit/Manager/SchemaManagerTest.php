@@ -21,11 +21,11 @@ class SchemaManagerTest extends Testcase
     /**
      * @var SchemaManager
      */
-    protected $schemaManager;
+    protected $subject;
 
     public function setUp(): void
     {
-        $this->schemaManager = new SchemaManager();
+        $this->subject = new SchemaManager();
     }
 
     /**
@@ -33,7 +33,7 @@ class SchemaManagerTest extends Testcase
      */
     public function renderJsonLdWithNoTypeAddedReturnsEmptyString(): void
     {
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('', $actual);
     }
@@ -43,7 +43,7 @@ class SchemaManagerTest extends Testcase
      */
     public function renderJsonLdWithOneTypeAddedReturnsCorrectJson(): void
     {
-        $actual = $this->schemaManager
+        $actual = $this->subject
             ->addType((new Thing())->setProperty('name', 'Some test thing'))
             ->renderJsonLd();
 
@@ -57,7 +57,7 @@ class SchemaManagerTest extends Testcase
      */
     public function renderJsonLdWithTwoTypesAddedReturnsCorrectJsonArray(): void
     {
-        $actual = $this->schemaManager
+        $actual = $this->subject
             ->addType((new Thing())->setProperty('name', 'Some test thing'))
             ->addType((new Thing())->setId('someId')->setProperty('name', 'Some other thing'))
             ->renderJsonLd();
@@ -72,7 +72,7 @@ class SchemaManagerTest extends Testcase
      */
     public function hasWebPageReturnsFalseWhenNoWebPageIsSet(): void
     {
-        $actual = $this->schemaManager->hasWebPage();
+        $actual = $this->subject->hasWebPage();
 
         $this->assertFalse($actual);
     }
@@ -83,9 +83,9 @@ class SchemaManagerTest extends Testcase
     public function hasWebPageReturnstrueeWhenWebPageIsSet(): void
     {
         $webPage = new WebPage();
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
-        $actual = $this->schemaManager->hasWebPage();
+        $actual = $this->subject->hasWebPage();
 
         $this->assertTrue($actual);
     }
@@ -96,9 +96,9 @@ class SchemaManagerTest extends Testcase
     public function addedWebPageIsAvailableAndRendersCorrectly(): void
     {
         $webPage = (new WebPage())->setProperty('name', 'Some web page');
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","name":"Some web page"}</script>', $actual);
     }
@@ -109,12 +109,12 @@ class SchemaManagerTest extends Testcase
     public function onlyOneWebPageIsUsedWhenAddingMoreThanOne(): void
     {
         $webPage = (new WebPage())->setProperty('name', 'Some web page');
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $collectionPage = (new CollectionPage())->setProperty('name', 'Some collection page');
-        $this->schemaManager->addType($collectionPage);
+        $this->subject->addType($collectionPage);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"CollectionPage","name":"Some collection page"}</script>', $actual);
     }
@@ -125,16 +125,16 @@ class SchemaManagerTest extends Testcase
     public function addBreadcrumbListRendersCorrectly(): void
     {
         $breadcrumbList1 = (new BreadcrumbList())->setProperty('name', 'some breadcrumb list');
-        $this->schemaManager->addType($breadcrumbList1);
+        $this->subject->addType($breadcrumbList1);
 
-        $actual1 = $this->schemaManager->renderJsonLd();
+        $actual1 = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","name":"some breadcrumb list"}</script>', $actual1);
 
         $breadcrumbList2 = (new BreadcrumbList())->setProperty('name', 'another breadcrumb list');
-        $this->schemaManager->addType($breadcrumbList2);
+        $this->subject->addType($breadcrumbList2);
 
-        $actual2 = $this->schemaManager->renderJsonLd();
+        $actual2 = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"BreadcrumbList","name":"some breadcrumb list"},{"@context":"http://schema.org","@type":"BreadcrumbList","name":"another breadcrumb list"}]</script>', $actual2);
     }
@@ -145,15 +145,15 @@ class SchemaManagerTest extends Testcase
     public function addBreadcrumbListIndependentFromWebPageIncludesBreadcrumbIntoWebPageMarkup(): void
     {
         $webPage = (new WebPage())->setProperty('name', 'Some web page');
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $breadcrumbList1 = (new BreadcrumbList())->setProperty('name', 'some breadcrumb list');
-        $this->schemaManager->addType($breadcrumbList1);
+        $this->subject->addType($breadcrumbList1);
 
         $breadcrumbList2 = (new BreadcrumbList())->setProperty('name', 'another breadcrumb list');
-        $this->schemaManager->addType($breadcrumbList2);
+        $this->subject->addType($breadcrumbList2);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"some breadcrumb list"},{"@type":"BreadcrumbList","name":"another breadcrumb list"}],"name":"Some web page"}</script>', $actual);
     }
@@ -168,12 +168,12 @@ class SchemaManagerTest extends Testcase
             'breadcrumb',
             (new BreadcrumbList())->setProperty('name', 'Breadcrumb in WebPage')
         );
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $breadcrumbList = (new BreadcrumbList())->setProperty('name', 'Independent breadcrumb');
-        $this->schemaManager->addType($breadcrumbList);
+        $this->subject->addType($breadcrumbList);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"Breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
     }
@@ -192,12 +192,12 @@ class SchemaManagerTest extends Testcase
             'breadcrumb',
             (new BreadcrumbList())->setProperty('name', 'Another breadcrumb in WebPage')
         );
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $breadcrumbList = (new BreadcrumbList())->setProperty('name', 'Independent breadcrumb');
-        $this->schemaManager->addType($breadcrumbList);
+        $this->subject->addType($breadcrumbList);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"One breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Another breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
     }
@@ -216,12 +216,12 @@ class SchemaManagerTest extends Testcase
             'breadcrumb',
             (new Thing())->setProperty('name', 'Thingy breadcrumb in WebPage')
         );
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $breadcrumbList = (new BreadcrumbList())->setProperty('name', 'Independent breadcrumb');
-        $this->schemaManager->addType($breadcrumbList);
+        $this->subject->addType($breadcrumbList);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"BreadcrumbList breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
     }
@@ -231,7 +231,7 @@ class SchemaManagerTest extends Testcase
      */
     public function setMainEntityOfWebPageReturnsInstanceOfSchemaManager(): void
     {
-        $actual = $this->schemaManager->setMainEntityOfWebPage(new Thing());
+        $actual = $this->subject->setMainEntityOfWebPage(new Thing());
 
         $this->assertInstanceOf(SchemaManager::class, $actual);
     }
@@ -242,12 +242,12 @@ class SchemaManagerTest extends Testcase
     public function setMainEntityOfWebPageWithWebPageAvailable(): void
     {
         $webPage = new WebPage();
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
-        $this->schemaManager->setMainEntityOfWebPage($mainEntity);
+        $this->subject->setMainEntityOfWebPage($mainEntity);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity"}}</script>', $actual);
     }
@@ -258,9 +258,9 @@ class SchemaManagerTest extends Testcase
     public function setMainEntityOfWebPageWithoutWebPageAvailable(): void
     {
         $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
-        $this->schemaManager->setMainEntityOfWebPage($mainEntity);
+        $this->subject->setMainEntityOfWebPage($mainEntity);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity"}</script>', $actual);
     }
@@ -271,15 +271,15 @@ class SchemaManagerTest extends Testcase
     public function setMainEntityOfWebPageTwiceWithWebPageAvailable(): void
     {
         $webPage = new WebPage();
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $mainEntity1 = (new Thing())->setProperty('name', 'A thing, set as main entity #1');
-        $this->schemaManager->setMainEntityOfWebPage($mainEntity1);
+        $this->subject->setMainEntityOfWebPage($mainEntity1);
 
         $mainEntity2 = (new Thing())->setProperty('name', 'A thing, set as main entity #2');
-        $this->schemaManager->setMainEntityOfWebPage($mainEntity2);
+        $this->subject->setMainEntityOfWebPage($mainEntity2);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity #2"}},{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity #1"}]</script>', $actual);
     }
@@ -295,12 +295,12 @@ class SchemaManagerTest extends Testcase
                 (new Thing())
                     ->setProperty('name', 'A thing, set as main entity directly in WebPage')
             );
-        $this->schemaManager->addType($webPage);
+        $this->subject->addType($webPage);
 
         $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
-        $this->schemaManager->setMainEntityOfWebPage($newMainEntity);
+        $this->subject->setMainEntityOfWebPage($newMainEntity);
 
-        $actual = $this->schemaManager->renderJsonLd();
+        $actual = $this->subject->renderJsonLd();
 
         $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as new main entity"}},{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity directly in WebPage"}]</script>', $actual);
     }

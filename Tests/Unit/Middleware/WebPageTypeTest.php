@@ -73,11 +73,11 @@ class WebPageTypeTest extends UnitTestCase
         $configuration = $reflector->getProperty('configuration');
         $configuration->setAccessible(true);
 
-        $webPageType = new WebPageType();
+        $subject = new WebPageType();
 
-        $this->assertSame('fake controller', $controller->getValue($webPageType));
-        $this->assertInstanceOf(SchemaManager::class, $schemaManager->getValue($webPageType));
-        $this->assertInstanceOf(ExtensionConfiguration::class, $configuration->getValue($webPageType));
+        $this->assertSame('fake controller', $controller->getValue($subject));
+        $this->assertInstanceOf(SchemaManager::class, $schemaManager->getValue($subject));
+        $this->assertInstanceOf(ExtensionConfiguration::class, $configuration->getValue($subject));
 
         unset($GLOBALS['TSFE']);
     }
@@ -92,10 +92,7 @@ class WebPageTypeTest extends UnitTestCase
         $this->setUpGeneralMocks();
 
         /** @var MockObject|ExtensionConfiguration $configurationMock */
-        $configurationMock = $this->getMockBuilder(ExtensionConfiguration::class)
-            ->setMethods(['get'])
-            ->getMock();
-
+        $configurationMock = $this->createMock(ExtensionConfiguration::class);
         $configurationMock
             ->expects($this->once())
             ->method('get')
@@ -103,10 +100,7 @@ class WebPageTypeTest extends UnitTestCase
             ->willReturn(false);
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
-        $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
-            ->setMethods(['hasWebPage'])
-            ->getMock();
-
+        $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects($this->never())
             ->method('hasWebPage');
@@ -121,10 +115,7 @@ class WebPageTypeTest extends UnitTestCase
 
         $this->requestMock = $this->createMock(ServerRequestInterface::class);
 
-        $this->handlerMock = $this->getMockBuilder(RequestHandlerInterface::class)
-            ->setMethods(['handle'])
-            ->getMock();
-
+        $this->handlerMock = $this->createMock(RequestHandlerInterface::class);
         $this->handlerMock
             ->expects($this->once())
             ->method('handle')
@@ -141,10 +132,7 @@ class WebPageTypeTest extends UnitTestCase
         $this->setUpGeneralMocks();
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
-        $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
-            ->setMethods(['hasWebPage'])
-            ->getMock();
-
+        $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects($this->once())
             ->method('hasWebPage')
@@ -163,10 +151,7 @@ class WebPageTypeTest extends UnitTestCase
      */
     private function getExtensionConfigurationMockWithGetReturnTrue()
     {
-        $configurationMock = $this->getMockBuilder(ExtensionConfiguration::class)
-            ->setMethods(['get'])
-            ->getMock();
-
+        $configurationMock = $this->createMock(ExtensionConfiguration::class);
         $configurationMock
             ->expects($this->once())
             ->method('get')
@@ -226,22 +211,19 @@ class WebPageTypeTest extends UnitTestCase
         $this->controllerMock->page = $pageProperties;
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
-        $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
-            ->setMethods(['addType'])
-            ->getMock();
-
+        $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects($this->once())
             ->method('addType')
             ->with($expectedWebPage);
 
-        $webPageType = new WebPageType(
+        $subject = new WebPageType(
             $this->controllerMock,
             $schemaManagerMock,
             $this->getExtensionConfigurationMockWithGetReturnTrue()
         );
 
-        $webPageType->process($this->requestMock, $this->handlerMock);
+        $subject->process($this->requestMock, $this->handlerMock);
     }
 
     /**
@@ -258,10 +240,7 @@ class WebPageTypeTest extends UnitTestCase
         ];
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
-        $schemaManagerMock = $this->getMockBuilder(SchemaManager::class)
-            ->setMethods(['addType'])
-            ->getMock();
-
+        $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects($this->never())
             ->method('addType');

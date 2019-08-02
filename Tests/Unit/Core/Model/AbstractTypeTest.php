@@ -18,11 +18,11 @@ class AbstractTypeTest extends TestCase
     /**
      * @var AbstractType
      */
-    protected $fixtureType;
+    protected $subject;
 
     public function setUp(): void
     {
-        $this->fixtureType = new FixtureThing();
+        $this->subject = new FixtureThing();
     }
 
     /**
@@ -30,7 +30,7 @@ class AbstractTypeTest extends TestCase
      */
     public function setIdReturnsInstanceOfAbstractClass(): void
     {
-        $actual = $this->fixtureType->setId('concreteTestId');
+        $actual = $this->subject->setId('concreteTestId');
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -40,7 +40,7 @@ class AbstractTypeTest extends TestCase
      */
     public function getIdReturnsNullAfterInstantiationOfClass(): void
     {
-        $actual = $this->fixtureType->getId();
+        $actual = $this->subject->getId();
 
         $this->assertNull($actual);
     }
@@ -50,9 +50,9 @@ class AbstractTypeTest extends TestCase
      */
     public function getIdReturnsTheIdCorrectly(): void
     {
-        $this->fixtureType->setId('concreteTestId');
+        $this->subject->setId('concreteTestId');
 
-        $actual = $this->fixtureType->getId();
+        $actual = $this->subject->getId();
 
         $this->assertSame('concreteTestId', $actual);
     }
@@ -63,7 +63,7 @@ class AbstractTypeTest extends TestCase
     public function hasPropertyReturnsTrueIfPropertyExists(): void
     {
         $this->assertTrue(
-            $this->fixtureType->hasProperty('name')
+            $this->subject->hasProperty('name')
         );
     }
 
@@ -73,7 +73,7 @@ class AbstractTypeTest extends TestCase
     public function hasPropertyReturnsFalseIfPropertyDoesNotExists(): void
     {
         $this->assertFalse(
-            $this->fixtureType->hasProperty('propertyDoesNotExist')
+            $this->subject->hasProperty('propertyDoesNotExist')
         );
     }
 
@@ -82,7 +82,7 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertyReturnsInstanceOfAbstractClass(): void
     {
-        $actual = $this->fixtureType->setProperty('name', 'the name');
+        $actual = $this->subject->setProperty('name', 'the name');
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -92,15 +92,15 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
-        $this->fixtureType->setProperty('name', 'Pi');
-        $this->fixtureType->setProperty('description', ['The answert for everything']);
-        $this->fixtureType->setProperty('identifier', 42);
-        $this->fixtureType->setProperty('alternateName', 3.141592653);
+        $this->subject->setProperty('name', 'Pi');
+        $this->subject->setProperty('description', ['The answert for everything']);
+        $this->subject->setProperty('identifier', 42);
+        $this->subject->setProperty('alternateName', 3.141592653);
 
         $anotherType = new class extends AbstractType {
         };
 
-        $this->fixtureType->setProperty('image', $anotherType);
+        $this->subject->setProperty('image', $anotherType);
 
         // Assertion is valid, when no exception above is thrown
         $this->assertTrue(true);
@@ -114,7 +114,7 @@ class AbstractTypeTest extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1561829996);
 
-        $this->fixtureType->setProperty('invalidProperty', 'some value');
+        $this->subject->setProperty('invalidProperty', 'some value');
     }
 
     /**
@@ -125,7 +125,7 @@ class AbstractTypeTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionCode(1561830012);
 
-        $this->fixtureType->setProperty('image', new \stdClass());
+        $this->subject->setProperty('image', new \stdClass());
     }
 
     /**
@@ -133,7 +133,7 @@ class AbstractTypeTest extends TestCase
      */
     public function getPropertyReturnsNullAfterInstantiationOfClass(): void
     {
-        $actual = $this->fixtureType->getProperty('name');
+        $actual = $this->subject->getProperty('name');
 
         $this->assertNull($actual);
     }
@@ -143,7 +143,7 @@ class AbstractTypeTest extends TestCase
      */
     public function getPropertyReturnsCorrectValue(): void
     {
-        $actual = $this->fixtureType
+        $actual = $this->subject
             ->setProperty('image', ['some image value', 'another image value'])
             ->getProperty('image');
 
@@ -158,7 +158,7 @@ class AbstractTypeTest extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1561829996);
 
-        $this->fixtureType->getProperty('invalidPropertyName');
+        $this->subject->getProperty('invalidPropertyName');
     }
 
     /**
@@ -166,7 +166,7 @@ class AbstractTypeTest extends TestCase
      */
     public function addPropertyForNotAlreadySetProperty(): void
     {
-        $actual = $this->fixtureType
+        $actual = $this->subject
             ->addProperty('name', 'the test name')
             ->getProperty('name');
 
@@ -178,7 +178,7 @@ class AbstractTypeTest extends TestCase
      */
     public function addPropertyForPropertyWithStringAlreadySet(): void
     {
-        $actual = $this->fixtureType
+        $actual = $this->subject
             ->setProperty('image', 'first image element')
             ->addProperty('image', 'second image element')
             ->getProperty('image');
@@ -191,7 +191,7 @@ class AbstractTypeTest extends TestCase
      */
     public function addPropertyForPropertyWithArrayAlreadySet(): void
     {
-        $actual = $this->fixtureType
+        $actual = $this->subject
             ->setProperty('image', ['some image value'])
             ->addProperty('image', 'other image value')
             ->getProperty('image');
@@ -204,15 +204,15 @@ class AbstractTypeTest extends TestCase
      */
     public function addPropertyAcceptsValidDataTypesAsValue(): void
     {
-        $this->fixtureType->setProperty('name', 'Pi');
-        $this->fixtureType->setProperty('description', ['The answert for everything']);
-        $this->fixtureType->addProperty('identifier', 42);
-        $this->fixtureType->addProperty('alternateName', 3.141592653);
+        $this->subject->setProperty('name', 'Pi');
+        $this->subject->setProperty('description', ['The answert for everything']);
+        $this->subject->addProperty('identifier', 42);
+        $this->subject->addProperty('alternateName', 3.141592653);
 
         $anotherType = new class extends AbstractType {
         };
 
-        $this->fixtureType->addProperty('image', $anotherType);
+        $this->subject->addProperty('image', $anotherType);
 
         // Assertion is valid, when no exception above is thrown
         $this->assertTrue(true);
@@ -223,7 +223,7 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertiesReturnsReferenceToItself(): void
     {
-        $actual = $this->fixtureType->setProperties([]);
+        $actual = $this->subject->setProperties([]);
 
         $this->assertInstanceOf(AbstractType::class, $actual);
     }
@@ -233,21 +233,21 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertiesSetsThePropertiesCorrectly(): void
     {
-        $this->fixtureType->setProperties([
+        $this->subject->setProperties([
             'name' => 'some name',
             'description' => 'some description',
             'image' => ['some image value', 'other image value'],
         ]);
 
-        $actualName = $this->fixtureType->getProperty('name');
+        $actualName = $this->subject->getProperty('name');
 
         $this->assertSame('some name', $actualName);
 
-        $actualDescription = $this->fixtureType->getProperty('description');
+        $actualDescription = $this->subject->getProperty('description');
 
         $this->assertSame('some description', $actualDescription);
 
-        $actualImage = $this->fixtureType->getProperty('image');
+        $actualImage = $this->subject->getProperty('image');
 
         $this->assertSame(['some image value', 'other image value'], $actualImage);
     }
@@ -257,13 +257,13 @@ class AbstractTypeTest extends TestCase
      */
     public function clearPropertySetsValueToNull(): void
     {
-        $resultOfClear = $this->fixtureType
+        $resultOfClear = $this->subject
             ->setProperty('image', 'some image value')
             ->clearProperty('image');
 
         $this->assertInstanceOf(AbstractType::class, $resultOfClear);
 
-        $resultOfGet = $this->fixtureType
+        $resultOfGet = $this->subject
             ->getProperty('image');
 
         $this->assertNull($resultOfGet);
@@ -277,7 +277,7 @@ class AbstractTypeTest extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1561829996);
 
-        $this->fixtureType->clearProperty('invalidPropertyName');
+        $this->subject->clearProperty('invalidPropertyName');
     }
 
     /**
@@ -285,7 +285,7 @@ class AbstractTypeTest extends TestCase
      */
     public function getPropertiesReturnsListOfAllProperties(): void
     {
-        $actual = $this->fixtureType->getPropertyNames();
+        $actual = $this->subject->getPropertyNames();
 
         $this->assertSame(
             [
@@ -305,7 +305,7 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsTrueOnNewlyCreatedModel(): void
     {
-        $actual = $this->fixtureType->isEmpty();
+        $actual = $this->subject->isEmpty();
 
         $this->assertTrue($actual);
     }
@@ -315,9 +315,9 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsFalseIfOnePropertyHasStringValue(): void
     {
-        $this->fixtureType->setProperty('name', 'some name');
+        $this->subject->setProperty('name', 'some name');
 
-        $actual = $this->fixtureType->isEmpty();
+        $actual = $this->subject->isEmpty();
 
         $this->assertFalse($actual);
     }
@@ -327,11 +327,11 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsTrueWithPropertiesSetToEmptyValues(): void
     {
-        $this->fixtureType
+        $this->subject
             ->setProperty('name', '')
             ->setProperty('description', []);
 
-        $actual = $this->fixtureType->isEmpty();
+        $actual = $this->subject->isEmpty();
 
         $this->assertTrue($actual);
     }
@@ -471,7 +471,7 @@ class AbstractTypeTest extends TestCase
      */
     public function toArrayReturnsCorrectResult(string $key, $value, array $expected): void
     {
-        $actual = $this->fixtureType
+        $actual = $this->subject
             ->setProperty($key, $value)
             ->toArray();
 
@@ -483,7 +483,7 @@ class AbstractTypeTest extends TestCase
      */
     public function toArrayReturnsCorrectResultWhenNoPropertiesAreSet(): void
     {
-        $actual = $this->fixtureType->toArray();
+        $actual = $this->subject->toArray();
 
         $this->assertSame(['@context' => 'http://schema.org', '@type' => 'FixtureThing'], $actual);
     }

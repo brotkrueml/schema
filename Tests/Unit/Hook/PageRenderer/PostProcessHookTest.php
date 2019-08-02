@@ -25,7 +25,7 @@ class PostProcessHookTest extends TestCase
     /**
      * @var PostProcessHook
      */
-    protected $postProcessHook;
+    protected $subject;
 
     /**
      * @var MockObject|PageRenderer
@@ -34,13 +34,8 @@ class PostProcessHookTest extends TestCase
 
     public function setUp(): void
     {
-        $this->postProcessHook = new PostProcessHook();
-
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $this->pageRendererMock = $this->getMockBuilder(PageRenderer::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['addHeaderData'])
-            ->getMock();
+        $this->subject = new PostProcessHook();
+        $this->pageRendererMock = $this->createMock(PageRenderer::class);
     }
 
     /**
@@ -56,7 +51,7 @@ class PostProcessHookTest extends TestCase
 
         $params = [];
 
-        $this->postProcessHook->execute($params, $this->pageRendererMock);
+        $this->subject->execute($params, $this->pageRendererMock);
     }
 
     /**
@@ -74,7 +69,7 @@ class PostProcessHookTest extends TestCase
             ->method('addHeaderData')
             ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
 
-        $this->postProcessHook->execute($params, $this->pageRendererMock);
+        $this->subject->execute($params, $this->pageRendererMock);
     }
 
     /**
@@ -93,6 +88,6 @@ class PostProcessHookTest extends TestCase
 
         $params = [];
 
-        $this->postProcessHook->execute($params, $this->pageRendererMock);
+        $this->subject->execute($params, $this->pageRendererMock);
     }
 }
