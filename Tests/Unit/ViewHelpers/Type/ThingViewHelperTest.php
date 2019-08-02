@@ -51,7 +51,7 @@ class ThingViewHelperTest extends ViewHelperTestCase
                     name="action name"
                     url="http://example.org/"
                 />',
-                '<script type="application/ld+json">[{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"},{"@context":"http://schema.org","@type":"Person","@id":"personId","name":"person name","worksFor":"someone"},{"@context":"http://schema.org","@type":"Action","name":"action name","url":"http://example.org/"}]</script>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"},{"@type":"Person","@id":"personId","name":"person name","worksFor":"someone"},{"@type":"Action","name":"action name","url":"http://example.org/"}]}</script>',
             ],
 
             'A given specific type is recognized' => [

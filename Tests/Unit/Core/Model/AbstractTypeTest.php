@@ -344,7 +344,6 @@ class AbstractTypeTest extends TestCase
                 'name',
                 'some string value',
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'name' => 'some string value',
                 ],
@@ -353,7 +352,6 @@ class AbstractTypeTest extends TestCase
                 'name',
                 '1',
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'name' => '1',
                 ],
@@ -362,7 +360,6 @@ class AbstractTypeTest extends TestCase
                 'name',
                 1,
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'name' => '1',
                 ],
@@ -371,7 +368,6 @@ class AbstractTypeTest extends TestCase
                 'name',
                 0,
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'name' => '0',
                 ],
@@ -381,7 +377,6 @@ class AbstractTypeTest extends TestCase
                 (new FixtureImage())
                     ->setProperty('name', 'some value for name'),
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'image' => [
                         '@type' => 'FixtureImage',
@@ -398,7 +393,6 @@ class AbstractTypeTest extends TestCase
                         ->setProperty('description', 'some value for description'),
                 ],
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'image' => [
                         [
@@ -416,7 +410,6 @@ class AbstractTypeTest extends TestCase
                 'image',
                 ['the first string', 'the second string'],
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'image' => [
                         'the first string',
@@ -432,7 +425,6 @@ class AbstractTypeTest extends TestCase
                         ->setProperty('name', 'some value for image'),
                 ],
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                     'image' => [
                         'the first string',
@@ -447,7 +439,6 @@ class AbstractTypeTest extends TestCase
                 'image',
                 null,
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                 ],
             ],
@@ -455,7 +446,6 @@ class AbstractTypeTest extends TestCase
                 'image',
                 '',
                 [
-                    '@context' => 'http://schema.org',
                     '@type' => 'FixtureThing',
                 ],
             ],
@@ -485,6 +475,6 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->toArray();
 
-        $this->assertSame(['@context' => 'http://schema.org', '@type' => 'FixtureThing'], $actual);
+        $this->assertSame(['@type' => 'FixtureThing'], $actual);
     }
 }

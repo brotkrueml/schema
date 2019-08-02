@@ -18,7 +18,9 @@ use TYPO3\CMS\Core\SingletonInterface;
 
 final class SchemaManager implements SingletonInterface
 {
-    private const TEMPLATE_SCRIPT_TAG = '<script type="application/ld+json">%s</script>';
+    private const TAG_TEMPLATE = '<script type="application/ld+json">%s</script>';
+
+    private const CONTEXT = 'http://schema.org';
 
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
@@ -169,10 +171,14 @@ final class SchemaManager implements SingletonInterface
 
         if (\count($result) === 1) {
             $result = $result[0];
+        } else {
+            $result = ['@graph' => $result];
         }
 
+        $result = \array_merge(['@context' => static::CONTEXT], $result);
+
         return \sprintf(
-            static::TEMPLATE_SCRIPT_TAG,
+            static::TAG_TEMPLATE,
             \json_encode($result, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
         );
     }

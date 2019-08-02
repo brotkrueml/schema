@@ -62,7 +62,7 @@ class SchemaManagerTest extends Testcase
             ->addType((new Thing())->setId('someId')->setProperty('name', 'Some other thing'))
             ->renderJsonLd();
 
-        $expected = '<script type="application/ld+json">[{"@context":"http://schema.org","@type":"Thing","name":"Some test thing"},{"@context":"http://schema.org","@type":"Thing","@id":"someId","name":"Some other thing"}]</script>';
+        $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","name":"Some test thing"},{"@type":"Thing","@id":"someId","name":"Some other thing"}]}</script>';
 
         $this->assertSame($expected, $actual);
     }
@@ -136,7 +136,7 @@ class SchemaManagerTest extends Testcase
 
         $actual2 = $this->subject->renderJsonLd();
 
-        $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"BreadcrumbList","name":"some breadcrumb list"},{"@context":"http://schema.org","@type":"BreadcrumbList","name":"another breadcrumb list"}]</script>', $actual2);
+        $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"BreadcrumbList","name":"some breadcrumb list"},{"@type":"BreadcrumbList","name":"another breadcrumb list"}]}</script>', $actual2);
     }
 
     /**
@@ -281,7 +281,7 @@ class SchemaManagerTest extends Testcase
 
         $actual = $this->subject->renderJsonLd();
 
-        $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity #2"}},{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity #1"}]</script>', $actual);
+        $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity #2"}},{"@type":"Thing","name":"A thing, set as main entity #1"}]}</script>', $actual);
     }
 
     /**
@@ -302,6 +302,6 @@ class SchemaManagerTest extends Testcase
 
         $actual = $this->subject->renderJsonLd();
 
-        $this->assertSame('<script type="application/ld+json">[{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as new main entity"}},{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity directly in WebPage"}]</script>', $actual);
+        $this->assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as new main entity"}},{"@type":"Thing","name":"A thing, set as main entity directly in WebPage"}]}</script>', $actual);
     }
 }

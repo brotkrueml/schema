@@ -13,8 +13,6 @@ use Brotkrueml\Schema\Utility\Utility;
 
 abstract class AbstractType
 {
-    private const CONTEXT = 'http://schema.org';
-
     /**
      * The ID of the type (mapped to @id in result)
      *
@@ -268,19 +266,23 @@ abstract class AbstractType
     /**
      * Generate an array representation of the type
      *
-     * @param bool $isRootType Is the root type?
      * @return array
      * @internal
      */
-    public function toArray(bool $isRootType = true): array
+    public function toArray(): array
     {
         $this->__resultArray = [];
 
+        $this->addTypeToResultArray();
         $this->addIdToResultArray();
         $this->addPropertiesToResultArray();
-        $this->addContextAndTypeToResultArray($isRootType);
 
         return $this->__resultArray;
+    }
+
+    private function addTypeToResultArray(): void
+    {
+        $this->__resultArray['@type'] = $this->getType();
     }
 
     private function addIdToResultArray(): void
@@ -298,7 +300,7 @@ abstract class AbstractType
             }
 
             if ($this->$property instanceof AbstractType) {
-                $this->__resultArray[$property] = $this->$property->toArray(false);
+                $this->__resultArray[$property] = $this->$property->toArray();
 
                 continue;
             }
@@ -311,7 +313,7 @@ abstract class AbstractType
                     $this->__resultArray[$property][] =
                         \is_string($singleValue)
                             ? $singleValue
-                            : $singleValue->toArray(false);
+                            : $singleValue->toArray();
                 }
 
                 continue;
@@ -319,18 +321,5 @@ abstract class AbstractType
 
             $this->__resultArray[$property] = $this->$property;
         }
-    }
-
-    private function addContextAndTypeToResultArray(bool $isRootType): void
-    {
-        $contextAndType = [];
-
-        if ($isRootType) {
-            $contextAndType['@context'] = self::CONTEXT;
-        }
-
-        $contextAndType['@type'] = $this->getType();
-
-        $this->__resultArray = \array_merge($contextAndType, $this->__resultArray);
     }
 }
