@@ -1,8 +1,5 @@
 <?php
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
-
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 call_user_func(function () {
     $fields = [
         'tx_schema_webpagetype' => [
@@ -21,9 +18,13 @@ call_user_func(function () {
         ],
     ];
 
-    ExtensionManagementUtility::addTCAcolumns('pages', $fields);
+    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('seo')) {
+        $fields['tx_schema_webpagetype']['displayCond'] = 'FIELD:no_index:=:0';
+    }
 
-    ExtensionManagementUtility::addFieldsToPalette(
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $fields);
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
         'pages',
         'tx_schema_structureddata',
         'tx_schema_webpagetype'

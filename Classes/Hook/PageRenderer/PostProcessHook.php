@@ -11,17 +11,26 @@ namespace Brotkrueml\Schema\Hook\PageRenderer;
  */
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class PostProcessHook
 {
-    /**
-     * @param array $params
-     * @param PageRenderer $pageRenderer
-     */
+    private $controller;
+
+    public function __construct(?TypoScriptFrontendController $controller = null)
+    {
+        $this->controller = $controller ?? $GLOBALS['TSFE'];
+    }
+
     public function execute(/** @noinspection PhpUnusedParameterInspection */ ?array &$params, PageRenderer &$pageRenderer): void
     {
         if (TYPO3_MODE !== 'FE') {
+            return;
+        }
+
+        if (!$this->isPageIndexed()) {
             return;
         }
 
@@ -32,5 +41,14 @@ final class PostProcessHook
         if ($result) {
             $pageRenderer->addHeaderData($result);
         }
+    }
+
+    private function isPageIndexed(): bool
+    {
+        if (!ExtensionManagementUtility::isLoaded('seo')) {
+            return true;
+        }
+
+        return $this->controller->page['no_index'] === 0;
     }
 }

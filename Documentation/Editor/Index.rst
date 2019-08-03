@@ -23,6 +23,12 @@ You'll find the field in the page properties under the *SEO* tab (with installed
 
 If no value is selected, *WebPage* is assumed.
 
+.. NOTE::
+
+   If the seo system extension is installed and the checkbox ``no_index`` is activated, the field is not shown. This
+   makes no sense on pages which are ignored by search engines.
+
+
 Available web page types
 ========================
 
