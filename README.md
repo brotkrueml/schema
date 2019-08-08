@@ -51,6 +51,8 @@ The [documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/)
 is comprehensive and covers the installation and configuration, and describes 
 the usage of the API and the view helpers.
 
+There is also a [change log](https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md).
+
 ## Release Management
 
 Schema uses semantic versioning which basically means for you, that

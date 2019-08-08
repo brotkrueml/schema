@@ -24,6 +24,8 @@ There are also browser extensions available which ease the testing of the markup
 `Structured Data Testing Tool <https://chrome.google.com/webstore/detail/structured-data-testing-t/kfdjeigpgagildmolfanniafmplnplpl>`__
 for Chrome.
 
+For the differences between the versions have a look at the `change log <https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md>`__.
+
 Current limitations
 ===================
 
