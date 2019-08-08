@@ -10,10 +10,9 @@ namespace Brotkrueml\Schema\Manager;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\WebPage;
-use Brotkrueml\Schema\Provider\WebPageTypeProvider;
-use Brotkrueml\Schema\Utility\Utility;
 use TYPO3\CMS\Core\SingletonInterface;
 
 final class SchemaManager implements SingletonInterface
@@ -24,8 +23,6 @@ final class SchemaManager implements SingletonInterface
 
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
-
-    private $validWebPageTypes;
 
     /** @var AbstractType[] */
     private $types = [];
@@ -38,11 +35,6 @@ final class SchemaManager implements SingletonInterface
 
     /** @var AbstractType|null */
     private $mainEntityOfWebPage = null;
-
-    public function __construct()
-    {
-        $this->validWebPageTypes = WebPageTypeProvider::getTypes();
-    }
 
     /**
      * Add a type
@@ -72,9 +64,7 @@ final class SchemaManager implements SingletonInterface
 
     private function isWebPageType(AbstractType $type): bool
     {
-        $typeName = Utility::getClassNameWithoutNamespace(\get_class($type));
-
-        return \in_array($typeName, $this->validWebPageTypes);
+        return $type instanceof WebPageTypeInterface;
     }
 
     private function setWebPage(AbstractType $webPage): void
@@ -119,7 +109,7 @@ final class SchemaManager implements SingletonInterface
      */
     public function hasWebPage(): bool
     {
-        return $this->webPage instanceof AbstractType;
+        return $this->webPage !== null;
     }
 
     /**

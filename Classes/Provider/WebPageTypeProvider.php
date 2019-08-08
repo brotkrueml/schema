@@ -29,22 +29,4 @@ final class WebPageTypeProvider
             ['WebPage', 'WebPage'],
         ];
     }
-
-    public static function getTypes(): array
-    {
-        return [
-            'AboutPage',
-            'CheckoutPage',
-            'CollectionPage',
-            'ContactPage',
-            'FAQPage',
-            'ImageGallery',
-            'ItemPage',
-            'ProfilePage',
-            'QAPage',
-            'SearchResultsPage',
-            'VideoGallery',
-            'WebPage',
-        ];
-    }
 }

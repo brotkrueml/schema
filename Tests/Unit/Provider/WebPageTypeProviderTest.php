@@ -8,25 +8,40 @@ namespace Brotkrueml\Schema\Tests\Unit\Provider;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Provider\WebPageTypeProvider;
+use Brotkrueml\Schema\Utility\Utility;
 use PHPUnit\Framework\TestCase;
 
 class WebPageTypeProviderTest extends TestCase
 {
-    protected $webPageTypes = [
-        'AboutPage',
-        'CheckoutPage',
-        'CollectionPage',
-        'ContactPage',
-        'FAQPage',
-        'ImageGallery',
-        'ItemPage',
-        'ProfilePage',
-        'QAPage',
-        'SearchResultsPage',
-        'VideoGallery',
-        'WebPage',
-    ];
+    public function dataProvider(): array
+    {
+        $webPageTypes = [
+            'AboutPage',
+            'CheckoutPage',
+            'CollectionPage',
+            'ContactPage',
+            'FAQPage',
+            'ImageGallery',
+            'ItemPage',
+            'ProfilePage',
+            'QAPage',
+            'SearchResultsPage',
+            'VideoGallery',
+            'WebPage',
+        ];
+
+        $result = [];
+
+        foreach ($webPageTypes as $type) {
+            $key = sprintf('Type "%s"', $type);
+
+            $result[$key] = [$type];
+        }
+
+        return $result;
+    }
 
     /**
      * We have to assure that no WebPage type is removed by the generator
@@ -34,13 +49,16 @@ class WebPageTypeProviderTest extends TestCase
      * by the user in the page field!
      *
      * @test
-     * @covers \Brotkrueml\Schema\Provider\WebPageTypeProvider::getTypes
+     * @dataProvider dataProvider
+     *
+     * @param string $type
      */
-    public function getTypesReturnsAllCurrentWebTypes(): void
+    public function givenWebPageTypeIsAnInstanceOfWebPageTypeInterface(string $type): void
     {
-        $actual = WebPageTypeProvider::getTypes();
+        $className = Utility::getNamespacedClassNameForType($type);
+        $class = new $className();
 
-        $this->assertSame($this->webPageTypes, $actual);
+        $this->assertInstanceOf(WebPageTypeInterface::class, $class);
     }
 
     /**
@@ -48,17 +66,24 @@ class WebPageTypeProviderTest extends TestCase
      * and has also the empty option available!
      *
      * @test
-     * @covers \Brotkrueml\Schema\Provider\WebPageTypeProvider::getTypesForTcaSelect
+     * @dataProvider dataProvider
+     *
+     * @param string $type
      */
-    public function getTypesForTcaSelectReturnsCorrectStructure(): void
+    public function givenTypeIsInTcaSelect(string $type): void
     {
-        $expected = [['', '']];
-        foreach ($this->webPageTypes as $webPageType) {
-            $expected[] = [$webPageType, $webPageType];
-        }
-
         $actual = WebPageTypeProvider::getTypesForTcaSelect();
 
-        $this->assertSame($expected, $actual);
+        $this->assertContains([$type, $type], $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function getTypesForTcaSelectHasEmptyOption(): void
+    {
+        $actual = WebPageTypeProvider::getTypesForTcaSelect();
+
+        $this->assertContains(['', ''], $actual);
     }
 }

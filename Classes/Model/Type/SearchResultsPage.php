@@ -10,12 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Web page type: Search results page.
  */
-final class SearchResultsPage extends AbstractType
+final class SearchResultsPage extends AbstractType implements WebPageTypeInterface
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

@@ -11,12 +11,18 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
+{% if isWebPageType %}
+    use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
+{% endif %}
 use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * {{ comment }}
  */
 final class {{ className }} extends AbstractType
+{% if isWebPageType %}
+    implements WebPageTypeInterface
+{% endif %}
 {
     {% for trait in traits %}
         use TypeTrait\{{ trait }}Trait;

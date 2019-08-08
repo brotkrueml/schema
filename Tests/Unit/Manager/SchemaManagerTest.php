@@ -80,7 +80,7 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function hasWebPageReturnstrueeWhenWebPageIsSet(): void
+    public function hasWebPageReturnsTrueWhenWebPageIsSet(): void
     {
         $webPage = new WebPage();
         $this->subject->addType($webPage);

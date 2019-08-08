@@ -53,6 +53,8 @@ class Generator
     /** @var Vertex[] */
     protected $types = [];
 
+    protected $webPageTypes = [];
+
     protected $properties = [];
 
     protected $availableTypeTraits = [];
@@ -80,6 +82,7 @@ class Generator
         $this->evaluateSchema();
         $this->buildGraph();
         $this->attachPropertiesToTypes();
+        $this->identifyWebPageTypes();
         $this->createTypes();
         $this->createWebPageTypeItemProvider();
     }
@@ -225,6 +228,7 @@ class Generator
                 'comment' => $comment,
                 'className' => $label,
                 'traits' => $typeTraits,
+                'isWebPageType' => \in_array($label, $this->webPageTypes),
             ]
         );
 
@@ -319,13 +323,10 @@ class Generator
 
     protected function createWebPageTypeItemProvider(): void
     {
-        $types = $this->getWebPageTypeChildren($this->types[static::WEBPAGE_TYPE_ID]);
-        \sort($types);
-
         $providerClass = $this->twig->render(
             'WebPageTypeProvider.php.twig',
             [
-                'types' => $types,
+                'types' => $this->webPageTypes,
             ]
         );
 
@@ -333,6 +334,12 @@ class Generator
             $this->configuration->webPageTypeProviderTemplate,
             $providerClass
         );
+    }
+
+    protected function identifyWebPageTypes(): void
+    {
+        $this->webPageTypes = $this->getWebPageTypeChildren($this->types[static::WEBPAGE_TYPE_ID]);
+        \sort($this->webPageTypes);
     }
 
     protected function getWebPageTypeChildren(Vertex $type): array

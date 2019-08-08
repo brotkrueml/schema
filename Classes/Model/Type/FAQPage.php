@@ -10,12 +10,13 @@ namespace Brotkrueml\Schema\Model\Type;
  * LICENSE.txt file that was distributed with this source code.
  */
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A FAQPage is a WebPage presenting one or more &quot;Frequently asked questions&quot; (see also QAPage).
  */
-final class FAQPage extends AbstractType
+final class FAQPage extends AbstractType implements WebPageTypeInterface
 {
     use TypeTrait\CreativeWorkTrait;
     use TypeTrait\ThingTrait;

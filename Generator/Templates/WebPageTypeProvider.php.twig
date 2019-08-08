@@ -21,13 +21,4 @@ final class WebPageTypeProvider
             {% endfor %}
         ];
     }
-
-    public static function getTypes(): array
-    {
-        return [
-            {% for type in types %}
-                '{{ type }}',
-            {% endfor %}
-        ];
-    }
 }
