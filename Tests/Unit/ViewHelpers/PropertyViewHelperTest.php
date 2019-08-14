@@ -2,12 +2,6 @@
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
-/**
- * This file is part of the "schema" extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- */
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
