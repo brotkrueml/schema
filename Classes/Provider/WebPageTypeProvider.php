@@ -23,6 +23,6 @@ final class WebPageTypeProvider
             $type = [$type, $type];
         });
 
-        return $types;
+        return \array_merge([['', '']], $types);
     }
 }
