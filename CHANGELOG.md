@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased]
 
+### Added
+- API for retrieving lists of types (#19)
+
 ## [1.2.0] - 2019-09-03
 
 ### Added

@@ -10,24 +10,19 @@ namespace Brotkrueml\Schema\Provider;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+/**
+ * @internal
+ */
 final class WebPageTypeProvider
 {
     public static function getTypesForTcaSelect(): array
     {
-        return [
-            ['', ''],
-            ['AboutPage', 'AboutPage'],
-            ['CheckoutPage', 'CheckoutPage'],
-            ['CollectionPage', 'CollectionPage'],
-            ['ContactPage', 'ContactPage'],
-            ['FAQPage', 'FAQPage'],
-            ['ImageGallery', 'ImageGallery'],
-            ['ItemPage', 'ItemPage'],
-            ['ProfilePage', 'ProfilePage'],
-            ['QAPage', 'QAPage'],
-            ['SearchResultsPage', 'SearchResultsPage'],
-            ['VideoGallery', 'VideoGallery'],
-            ['WebPage', 'WebPage'],
-        ];
+        $types = (new TypesProvider())->getWebPageTypes();
+
+        \array_walk($types, function (&$type) {
+            $type = [$type, $type];
+        });
+
+        return $types;
     }
 }

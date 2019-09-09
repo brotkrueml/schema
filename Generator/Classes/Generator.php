@@ -20,7 +20,8 @@ use Twig\Environment;
 class Generator
 {
     protected const ROOT_TYPE_ID = 'http://schema.org/Thing';
-    protected const WEBPAGE_TYPE_ID = 'http://schema.org/WebPage';
+    protected const ROOT_WEBPAGE_TYPE_ID = 'http://schema.org/WebPage';
+    protected const ROOT_WEBPAGEELEMENT_TYPE_ID = 'http://schema.org/WebPageElement';
 
     protected const ATTRIBUTE_SUBTYPE_OF = 'rdfs:subClassOf';
     protected const ATTRIBUTE_COMMENT = 'rdfs:comment';
@@ -84,7 +85,6 @@ class Generator
         $this->attachPropertiesToTypes();
         $this->identifyWebPageTypes();
         $this->createTypes();
-        $this->createWebPageTypeItemProvider();
     }
 
     protected function evaluateSchema(): void
@@ -182,6 +182,7 @@ class Generator
     {
         $this->createTypeTrait($this->types[static::ROOT_TYPE_ID]);
         $this->createType($this->types[static::ROOT_TYPE_ID]);
+        $this->createListOfAvailableTypes($this->types[static::ROOT_TYPE_ID]);
     }
 
     protected function createTypeTrait(Vertex $type): void
@@ -321,24 +322,9 @@ class Generator
         return $propertyLabels;
     }
 
-    protected function createWebPageTypeItemProvider(): void
-    {
-        $providerClass = $this->twig->render(
-            'WebPageTypeProvider.php.twig',
-            [
-                'types' => $this->webPageTypes,
-            ]
-        );
-
-        \file_put_contents(
-            $this->configuration->webPageTypeProviderTemplate,
-            $providerClass
-        );
-    }
-
     protected function identifyWebPageTypes(): void
     {
-        $this->webPageTypes = $this->getWebPageTypeChildren($this->types[static::WEBPAGE_TYPE_ID]);
+        $this->webPageTypes = $this->getWebPageTypeChildren($this->types[static::ROOT_WEBPAGE_TYPE_ID]);
         \sort($this->webPageTypes);
     }
 
@@ -349,6 +335,55 @@ class Generator
         /** @var Directed $edge */
         foreach ($type->getEdgesOut() as $edge) {
             $types = \array_merge($types, $this->getWebPageTypeChildren($edge->getVertexEnd()));
+        }
+
+        return $types;
+    }
+
+    protected function createListOfAvailableTypes(Vertex $rootType): void
+    {
+        $types = $this->collectAvailableTypes($rootType);
+
+        $types = \array_unique($types);
+        \sort($types);
+
+        $providerClass = $this->twig->render(
+            'TypesProvider.php.twig',
+            [
+                'types' => $types,
+                'webPageTypes' => $this->webPageTypes,
+                'webPageElementTypes' => $this->identifyWebPageElementTypes(),
+            ]
+        );
+
+        \file_put_contents($this->configuration->typesProviderTemplate, $providerClass);
+    }
+
+    protected function collectAvailableTypes(Vertex $type): array
+    {
+        $types = [$type->getAttribute(static::ATTRIBUTE_LABEL)];
+        foreach ($type->getEdgesOut() as $edge) {
+            $types = array_merge($types, $this->collectAvailableTypes($edge->getVertexEnd()));
+        }
+
+        return $types;
+    }
+
+    protected function identifyWebPageElementTypes(): array
+    {
+        $types = $this->getWebPageElementTypeChildren($this->types[static::ROOT_WEBPAGEELEMENT_TYPE_ID]);
+        \sort($types);
+
+        return $types;
+    }
+
+    protected function getWebPageElementTypeChildren(Vertex $type): array
+    {
+        $types = [$type->getAttribute(static::ATTRIBUTE_LABEL)];
+
+        /** @var Directed $edge */
+        foreach ($type->getEdgesOut() as $edge) {
+            $types = \array_merge($types, $this->getWebPageElementTypeChildren($edge->getVertexEnd()));
         }
 
         return $types;

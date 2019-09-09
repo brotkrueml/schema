@@ -270,3 +270,44 @@ Checks, whether all properties of the models are empty.
 Return value:
 ~~~~~~~~~~~~~
 :php:`true` if all properties have an empty value, :php:`false` otherwise.
+
+
+Other Useful APIs
+=================
+
+List of types
+-------------
+
+If you need a list of available types or a subset of them, you can call methods on the :php:`Brotkrueml\Schema\Provider\TypesProvider` class.
+
+:php:`->getTypes()`
+~~~~~~~~~~~~~~~~~~~
+
+All available type names are returned as an array, sorted alphabetically.
+
+.. code-block:: php
+
+   $types = (new \Brotkrueml\Schema\Provider\TypesProvider())->getTypes();
+
+
+:php:`->getWebPageTypes()`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `WebPage <https://schema.org/WebPage>`__ type and its descendants are returned as an array, sorted alphabetically.
+
+:php:`->getWebPageElementTypes()`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `WebPageElement <https://schema.org/WebPageElement>`__ type and its descendants are returned as an array, sorted alphabetically.
+
+:php:`->getContentTypes()`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The types useful for an editor are returned as an array, sorted alphabetically.
+
+The following types are filtered out:
+
+ - BreadcrumbList
+ - WebPage and descendants
+ - WebPageElement and descendants
+ - WebSite
