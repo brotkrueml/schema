@@ -15,10 +15,10 @@ value is the most generic one: *WebPage*.
 You'll find the field in the page properties under the *SEO* tab (with installed seo system extension) or under the
 *Metadata* tab (if the seo system extension is not installed):
 
-.. figure:: ../Images/Editor/SpecificTypeOfWebPage.png
+.. figure:: ../Images/Editor/TypeOfWebPage.png
    :alt: Field in the page properties
 
-   Field *Specific type of web page* in the page properties
+   Field *Type of web page* in the page properties
 
 
 If no value is selected, *WebPage* is assumed.
