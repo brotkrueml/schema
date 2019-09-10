@@ -107,48 +107,38 @@ marries and the name is changed. The person is still the same, so the IRI should
 
 The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you call it in a browser.
 
-Parameters:
-~~~~~~~~~~~
-============ ====================
-Parameter    Description
-============ ====================
-string $id   The unique id to set
-============ ====================
+:aspect:`Parameter`
 
-Return value:
-~~~~~~~~~~~~~
-Returns a reference to itself.
+   * :php:`string $id`: The unique id to set.
+
+:aspect:`Return value`
+
+   Reference to itself.
 
 
 :php:`->getId()`
 ----------------
 
-Return value:
-~~~~~~~~~~~~~
-A previously set id or null (if not set).
+:aspect:`Return value`
+
+   A previously set id or null (if not set).
 
 
 :php:`->setProperty(string $propertyName, $propertyValue)`
 ----------------------------------------------------------
 
-You call this method to set a property or override a previously one.
+Call this method to set a property or overwrite a previously one.
 
-Parameters:
-~~~~~~~~~~~
-============================================ ===========================================================================
-Parameter                                    Description
-============================================ ===========================================================================
-string $propertyName                         The property name to set. If the property does not exist in the model, an
-                                             exception is thrown.
--------------------------------------------- ---------------------------------------------------------------------------
-string | array | AbstractType $propertyValue The value of the property to set. This can be a string, another model or an
-                                             array of strings or models. Also null is possible to clear the property
-                                             value.
-============================================ ===========================================================================
+:aspect:`Parameters`
 
-Return value:
-~~~~~~~~~~~~~
-Returns a reference to the model itself.
+   * :php:`string $propertyName`: The property name to set. If the property does not exist in the model, an
+     exception is thrown.
+   * :php:`string|array|AbstractType|null $propertyValue`: The value of the property to set. This can be a string, another
+     model or an array of strings or models. Also null is possible to clear the property value.
+
+:aspect:`Return value`
+
+   Reference to the model itself.
 
 
 :php:`->addProperty(string $propertyName, $propertyValue)`
@@ -160,23 +150,15 @@ is used to add a second value to the :php:`sameAs` property.
 Calling the :php:`addProperty()` method on a property that has no value assigned has the same effect as calling
 :php:`setProperty()`. So you can safely use it, e.g. in a loop, to set some values on a property.
 
+:aspect:`Parameters`
 
-Parameters:
-~~~~~~~~~~~
-============================================ ===========================================================================
-Parameter                                    Description
-============================================ ===========================================================================
-string $propertyName                         The property name to set. If the property does not exist in the model, an
-                                             exception is thrown.
--------------------------------------------- ---------------------------------------------------------------------------
-string | array | AbstractType $propertyValue The value of the property to set. This can be a string, another model or an
-                                             array of strings or models. Also null is possible to clear the property
-                                             value.
-============================================ ===========================================================================
+   * :php:`string $propertyName`: The property name to set. If the property does not exist in the model, an exception is thrown.
+   * :php:`string|array|AbstractType|null $propertyValue`: The value of the property to set. This can be a string, another
+     model or an array of strings or models. Also null is possible to clear the property value.
 
-Return value:
-~~~~~~~~~~~~~
-Returns a reference to the model itself.
+:aspect:`Return value`
+
+   Reference to the model itself.
 
 
 :php:`->setProperties(array $properties)`
@@ -184,18 +166,14 @@ Returns a reference to the model itself.
 
 Set multiple properties at once.
 
-Parameters:
-~~~~~~~~~~~
-==================== ===================================================================================================
-Parameter            Description
-==================== ===================================================================================================
-array $properties    The properties to set. The key of the array is the property name, the value is the property value.
-                     Allowed as values are the same as with the method ->setProperty().
-==================== ===================================================================================================
+:aspect:`Parameter`
 
-Return value:
-~~~~~~~~~~~~~
-Returns a reference to the model itself.
+   * :php:`array $properties`: The properties to set. The key of the array is the property name, the value is the
+     property value. Allowed as values are the same as with the method :php:`->setProperty()`.
+
+:aspect:`Return value`
+
+   Reference to the model itself.
 
 
 :php:`->getProperty(string $propertyName)`
@@ -203,18 +181,14 @@ Returns a reference to the model itself.
 
 Get the value of a property.
 
-Parameters:
-~~~~~~~~~~~
-==================================== ===================================================================================
-Parameter                            Description
-==================================== ===================================================================================
-string $propertyName                 The property name to get the value from. If the property name does not exist in the
-                                     model, an exception is thrown.
-==================================== ===================================================================================
+:aspect:`Parameter`
 
-Return value:
-~~~~~~~~~~~~~
-The value of the property (string, model, array of strings, array of models, null).
+   * :php:`string $propertyName`: The property name to get the value from. If the property name does not exist in the
+     model, an exception is thrown.
+
+:aspect:`Return value`
+
+   The value of the property (string, model, array of strings, array of models, null).
 
 
 :php:`->hasProperty(string $propertyName)`
@@ -222,44 +196,38 @@ The value of the property (string, model, array of strings, array of models, nul
 
 Check whether the property name exists in a particular model.
 
-Parameters:
-~~~~~~~~~~~
-==================================== ===================================================================================
-Parameter                            Description
-==================================== ===================================================================================
-string $propertyName                 The property name to check.
-==================================== ===================================================================================
+:aspect:`Parameter`
 
-Return value:
-~~~~~~~~~~~~~
-:php:`true`, if the property exists and :php:`false`, otherwise.
+   * :php:`string $propertyName`: The property name to check.
+
+:aspect:`Return value`
+
+   :php:`true`, if the property exists and :php:`false`, otherwise.
 
 
 :php:`->clearProperty(string $propertyName)`
 --------------------------------------------
 
-Resets the value of the property (set it to ``null``).
+Resets the value of the property (set it to :php:`null`).
 
-Parameters:
-~~~~~~~~~~~
-==================================== ===================================================================================
-Parameter                            Description
-==================================== ===================================================================================
-string $propertyName                 The property name to set. If the property does not exist in the model, an exception
-                                     is thrown.
-==================================== ===================================================================================
+:aspect:`Parameter`
 
-Return value:
-~~~~~~~~~~~~~
-Returns a reference to the model itself.
+   * :php:`string $propertyName`: The property name to set. If the property does not exist in the model, an exception
+     is thrown.
+
+:aspect:`Return value`
+
+   Reference to the model itself.
 
 
 :php:`->getPropertyNames()`
 ---------------------------
 
-Return value:
-~~~~~~~~~~~~~
-Return all property names of the model in an array.
+Get the names of all properties of the model.
+
+:aspect:`Return value`
+
+   Array of all property names of the model.
 
 
 :php:`->isEmpty()`
@@ -267,9 +235,9 @@ Return all property names of the model in an array.
 
 Checks, whether all properties of the models are empty.
 
-Return value:
-~~~~~~~~~~~~~
-:php:`true` if all properties have an empty value, :php:`false` otherwise.
+:aspect:`Return value`
+
+   :php:`true` if all properties have an empty value, :php:`false` otherwise.
 
 
 Other Useful APIs
@@ -278,27 +246,44 @@ Other Useful APIs
 List of types
 -------------
 
-If you need a list of available types or a subset of them, you can call methods on the :php:`Brotkrueml\Schema\Provider\TypesProvider` class.
+If you need a list of the available types or a subset of them, you can call methods on the
+:php:`Brotkrueml\Schema\Provider\TypesProvider` class.
 
 :php:`->getTypes()`
 ~~~~~~~~~~~~~~~~~~~
 
-All available type names are returned as an array, sorted alphabetically.
+Get all available type names.
 
-.. code-block:: php
+:aspect:`Return value`
 
-   $types = (new \Brotkrueml\Schema\Provider\TypesProvider())->getTypes();
+   Array, sorted alphabetically by type name.
+
+:aspect:`Example`
+
+   .. code-block:: php
+
+      $types = (new \Brotkrueml\Schema\Provider\TypesProvider())->getTypes();
 
 
 :php:`->getWebPageTypes()`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `WebPage <https://schema.org/WebPage>`__ type and its descendants are returned as an array, sorted alphabetically.
+Get the `WebPage <https://schema.org/WebPage>`__ type and its descendants.
+
+:aspect:`Return value`
+
+   Array, sorted alphabetically by type name.
+
 
 :php:`->getWebPageElementTypes()`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `WebPageElement <https://schema.org/WebPageElement>`__ type and its descendants are returned as an array, sorted alphabetically.
+Get the `WebPageElement <https://schema.org/WebPageElement>`__ type and its descendants.
+
+:aspect:`Return value`
+
+   Array, sorted alphabetically by type name.
+
 
 :php:`->getContentTypes()`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -307,7 +292,11 @@ The types useful for an editor are returned as an array, sorted alphabetically.
 
 The following types are filtered out:
 
- - BreadcrumbList
- - WebPage and descendants
- - WebPageElement and descendants
- - WebSite
+ - ``BreadcrumbList``
+ - ``WebPage`` and descendants
+ - ``WebPageElement`` and descendants
+ - ``WebSite``
+
+:aspect:`Return value`
+
+   Array, sorted alphabetically by type name.
