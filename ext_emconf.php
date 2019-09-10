@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Embedding schema.org vocabulary',
-    'description' => 'schema.org structured data for your website',
+    'description' => 'API and view helpers for schema.org markup',
     'category' => 'fe',
     'state' => 'stable',
     'createDirs' => '',
