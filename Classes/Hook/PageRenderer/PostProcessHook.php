@@ -11,6 +11,7 @@ namespace Brotkrueml\Schema\Hook\PageRenderer;
  */
 
 use Brotkrueml\Schema\Manager\SchemaManager;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -19,10 +20,12 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 final class PostProcessHook
 {
     private $controller;
+    private $configuration;
 
-    public function __construct(?TypoScriptFrontendController $controller = null)
+    public function __construct(?TypoScriptFrontendController $controller = null, ?ExtensionConfiguration $configuration = null)
     {
         $this->controller = $controller ?? $GLOBALS['TSFE'];
+        $this->configuration = $configuration ?: GeneralUtility::makeInstance(ExtensionConfiguration::class);
     }
 
     public function execute(/** @noinspection PhpUnusedParameterInspection */ ?array &$params, PageRenderer &$pageRenderer): void
@@ -39,7 +42,16 @@ final class PostProcessHook
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $result = $schemaManager->renderJsonLd();
 
-        if ($result) {
+        if (!$result) {
+            return;
+        }
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $shouldEmbedMarkupInBodySection = $this->configuration->get('schema', 'embedMarkupInBodySection');
+
+        if ($shouldEmbedMarkupInBodySection) {
+            $pageRenderer->addFooterData($result);
+        } else {
             $pageRenderer->addHeaderData($result);
         }
     }

@@ -8,6 +8,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -29,12 +30,19 @@ class PostProcessHookTest extends TestCase
      */
     protected $pageRendererMock;
 
+    /**
+     * @var MockObject|ExtensionConfiguration
+     */
+    protected $configurationMock;
+
     public function setUp(): void
     {
-        $typoScriptFrontendControllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $typoScriptFrontendControllerMock->page = ['no_index' => 0];
+        $controllerMock = $this->createMock(TypoScriptFrontendController::class);
+        $controllerMock->page = ['no_index' => 0];
 
-        $this->subject = new PostProcessHook($typoScriptFrontendControllerMock);
+        $this->configurationMock = $this->createMock(ExtensionConfiguration::class);
+
+        $this->subject = new PostProcessHook($controllerMock, $this->configurationMock);
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
     }
@@ -42,7 +50,7 @@ class PostProcessHookTest extends TestCase
     /**
      * @test
      */
-    public function executeWithoutSchemaDoesNotCallAddHeaderData(): void
+    public function executeWithoutSchemaDoesNotEmbedMarkup(): void
     {
         \define('TYPO3_MODE', 'FE');
 
@@ -52,6 +60,10 @@ class PostProcessHookTest extends TestCase
             ->expects($this->never())
             ->method('addHeaderData');
 
+        $this->pageRendererMock
+            ->expects($this->never())
+            ->method('addFooterData');
+
         $params = [];
 
         $this->subject->execute($params, $this->pageRendererMock);
@@ -60,7 +72,7 @@ class PostProcessHookTest extends TestCase
     /**
      * @test
      */
-    public function executeWithSchemaCallsAddHeaderDataOnce(): void
+    public function executeWithSchemaCallsAddHeaderDataOnceIfEmbeddedIntoHead(): void
     {
         \define('TYPO3_MODE', 'FE');
 
@@ -69,9 +81,41 @@ class PostProcessHookTest extends TestCase
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
+        $this->configurationMock
+            ->expects($this->once())
+            ->method('get')
+            ->with('schema', 'embedMarkupInBodySection')
+            ->willReturn(false);
+
         $this->pageRendererMock
             ->expects($this->once())
             ->method('addHeaderData')
+            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
+
+        $this->subject->execute($params, $this->pageRendererMock);
+    }
+
+    /**
+     * @test
+     */
+    public function executeWithSchemaCallsAddFooterDataOnceIfEmbeddedIntoBody(): void
+    {
+        \define('TYPO3_MODE', 'FE');
+
+        $this->setSeoExtensionInstallationState(true);
+
+        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
+        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+
+        $this->configurationMock
+            ->expects($this->once())
+            ->method('get')
+            ->with('schema', 'embedMarkupInBodySection')
+            ->willReturn(true);
+
+        $this->pageRendererMock
+            ->expects($this->once())
+            ->method('addFooterData')
             ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
 
         $this->subject->execute($params, $this->pageRendererMock);
@@ -105,10 +149,16 @@ class PostProcessHookTest extends TestCase
 
         $this->setSeoExtensionInstallationState(false);
 
-        $typoScriptFrontendControllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $typoScriptFrontendControllerMock->page = ['no_index' => 1];
+        $controllerMock = $this->createMock(TypoScriptFrontendController::class);
+        $controllerMock->page = ['no_index' => 1];
 
-        $subject = new PostProcessHook($typoScriptFrontendControllerMock);
+        $this->configurationMock
+            ->expects($this->once())
+            ->method('get')
+            ->with('schema', 'embedMarkupInBodySection')
+            ->willReturn(false);
+
+        $subject = new PostProcessHook($controllerMock, $this->configurationMock);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));

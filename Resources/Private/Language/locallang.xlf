@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-08-29T20:27:32Z">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-09-12T18:32:21Z">
 		<body>
 			<trans-unit id="config.automaticWebPageSchemaGeneration">
 				<source><![CDATA[Automatic embedding of the WebPage schema into the page]]></source>
+			</trans-unit>
+			<trans-unit id="config.embedMarkupInBodySection">
+				<source><![CDATA[Embed markup in the body section]]></source>
 			</trans-unit>
 		</body>
 	</file>
