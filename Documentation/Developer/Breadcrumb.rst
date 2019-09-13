@@ -22,6 +22,8 @@ There can also be more than one breadcrumb on a page, Google gives an example in
 `breadcrumb <https://developers.google.com/search/docs/data-types/breadcrumb>`__.
 
 
+.. _breadcrumb-api:
+
 Using the API
 =============
 
@@ -93,6 +95,8 @@ This results in the following schema markup:
 
 As you can see, the breadcrumb is embedded in a ``WebPage`` automatically.
 
+
+.. _breadcrumb-viewhelpers:
 
 Using the view helpers
 ======================

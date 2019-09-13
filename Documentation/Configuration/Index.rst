@@ -32,6 +32,23 @@ and defaults to :ref:`WebPage <web-page-type>`.
    enabled
 
 
+.. _configuration-automaticBreadcrumbSchemaGeneration:
+
+basic.automaticBreadcrumbSchemaGeneration
+-----------------------------------------
+
+If this option is enabled, the breadcrumb is automatically generated from the rootline of the current page.
+
+:aspect:`Default value`
+
+   disabled
+
+.. NOTE::
+
+   Since multiple breadcrumbs are allowed for a page, this option adds a breadcrumb to the possibly already existing ones
+   (e.g. defined via the :ref:`API <breadcrumb-api>` or the :ref:`view helpers <breadcrumb-viewhelpers>`).
+
+
 .. _configuration-embedMarkupInBodySection:
 
 basic.embedMarkupInBodySection
