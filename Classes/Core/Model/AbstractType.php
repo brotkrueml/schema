@@ -19,7 +19,7 @@ abstract class AbstractType
      *
      * @var string|null
      */
-    private $_id = null;
+    private $_id;
 
     /**
      * The fully rendered type with all children as array

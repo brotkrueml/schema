@@ -29,13 +29,13 @@ final class SchemaManager implements SingletonInterface
     private $types = [];
 
     /** @var WebPage|null */
-    private $webPage = null;
+    private $webPage;
 
     /** @var BreadcrumbList[] */
     private $breadcrumbList = [];
 
     /** @var AbstractType|null */
-    private $mainEntityOfWebPage = null;
+    private $mainEntityOfWebPage;
 
     /**
      * Add a type
