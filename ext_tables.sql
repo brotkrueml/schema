@@ -1,3 +1,3 @@
 CREATE TABLE pages (
-    tx_schema_webpagetype varchar(30) DEFAULT '' NOT NULL,
+	tx_schema_webpagetype varchar(30) DEFAULT '' NOT NULL
 );
