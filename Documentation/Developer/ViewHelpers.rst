@@ -18,8 +18,8 @@ as view helper arguments. As you will see in the example, you can also nest view
 There are currently over 600 view helpers available.
 
 
-Starting with an Example
-========================
+Starting with Examples
+======================
 
 Let's start with a simple example. It's the same markup about John Smith as in the API reference, so you can compare
 the differences.
@@ -56,6 +56,21 @@ In the example, there are two attributes that begin with a -. They are a explain
 
 Please also recognise the :html:`<schema:property>` view helper. With this view helper you can pass more than one string value
 to the according type.
+
+You can also use the default Fluid view helpers:
+
+.. code-block:: html
+
+      <schema:type.blogPosting
+         -isMainEntityOfWebPage="1"
+         headline="{data.title}"
+         description="{data.description}"
+         datePublished="{f:format.date(format:'Y-m-d', date: data.publishDate)}"
+      >
+         <f:if condition="{data.lastUpdated}">
+             <schema:property -as="dateModified" value="{f:format.date(format:'Y-m-d', date: data.lastUpdated)}"/>
+         </f:if>
+      </schema:type.blogPosting>
 
 
 .. _view-helpers-special-attributes:
