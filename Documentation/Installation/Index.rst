@@ -12,7 +12,7 @@ Target group: **Administrators**
 
 .. note::
 
-   The extension is available for TYPO3 9 LTS and TYPO3 10.0.
+   The extension is available for TYPO3 9 LTS and TYPO3 v10.
 
 The recommended way to install this extension is by using Composer. In your Composer-based TYPO3 project root, just type
 
