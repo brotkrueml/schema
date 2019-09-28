@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased]
 
+## [1.3.0] - 2019-09-28
+
 ### Added
 - Configuration option for automatic embedding of a breadcrumb in pages (#20)
 - Choice where to place markup: head or body section (#21)
@@ -102,7 +104,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/brotkrueml/schema/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/brotkrueml/schema/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/brotkrueml/schema/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/brotkrueml/schema/compare/v0.9.0...v1.0.0
