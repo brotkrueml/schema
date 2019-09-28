@@ -2,9 +2,7 @@
     "name": "brotkrueml/schema",
     "type": "typo3-cms-extension",
     "description": "API and view helpers for schema.org markup",
-    "license": [
-        "GPL-2.0-or-later"
-    ],
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Chris Müller",
@@ -22,7 +20,7 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
-        "typo3/cms-core": "^9.5 || 10.0.*"
+        "typo3/cms-core": "^9.5 || ^10.0"
     },
     "require-dev": {
         "clue/graph": "^0.9",
@@ -52,7 +50,7 @@
         }
     },
     "config": {
-        "sort-packages" : true,
+        "sort-packages": true,
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin"
     },
@@ -61,7 +59,7 @@
             "dev-master": "1.3.x-dev"
         },
         "typo3/cms": {
-            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "app-dir": ".Build",
             "web-dir": ".Build/web"
         }
     }

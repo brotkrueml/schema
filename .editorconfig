@@ -49,3 +49,7 @@ indent_size = 2
 # .htaccess
 [{_.htaccess,.htaccess}]
 indent_style = tab
+
+# composer.json
+[composer.json]
+indent_style = space
