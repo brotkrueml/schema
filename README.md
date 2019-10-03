@@ -9,5 +9,5 @@ The extension supports TYPO3 9 LTS and TYPO3 v10.
 
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/) |
 [Translation](https://translation.typo3.org/projects/TYPO3.ext.schema/) |
-[Changelog](https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md) |
 [Extension in TER](https://extensions.typo3.org/extension/schema/) |
