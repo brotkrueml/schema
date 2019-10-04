@@ -36,9 +36,13 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     /** @var TypeStack */
     protected $stack;
 
-    public function __construct()
+    /** @var SchemaManager */
+    protected $schemaManager;
+
+    public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
-        $this->stack = GeneralUtility::makeInstance(TypeStack::class);
+        $this->stack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
+        $this->schemaManager = $schemaManager ?: GeneralUtility::makeInstance(SchemaManager::class);
     }
 
     public function initializeArguments()
@@ -81,13 +85,10 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
 
         if ($this->stack->isEmpty()) {
-            /** @var SchemaManager $schemaManager */
-            $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-
             if ($this->isMainEntityOfWebPage) {
-                $schemaManager->setMainEntityOfWebPage($recent);
+                $this->schemaManager->setMainEntityOfWebPage($recent);
             } else {
-                $schemaManager->addType($recent);
+                $this->schemaManager->addType($recent);
             }
         }
     }

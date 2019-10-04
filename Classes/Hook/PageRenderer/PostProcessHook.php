@@ -21,14 +21,19 @@ final class PostProcessHook
 {
     private $controller;
     private $configuration;
+    private $schemaManager;
 
-    public function __construct(?TypoScriptFrontendController $controller = null, ?ExtensionConfiguration $configuration = null)
-    {
-        $this->controller = $controller ?? $GLOBALS['TSFE'];
+    public function __construct(
+        TypoScriptFrontendController $controller = null,
+        ExtensionConfiguration $configuration = null,
+        SchemaManager $schemaManager = null
+    ) {
+        $this->controller = $controller ?: $GLOBALS['TSFE'];
         $this->configuration = $configuration ?: GeneralUtility::makeInstance(ExtensionConfiguration::class);
+        $this->schemaManager = $schemaManager ?: GeneralUtility::makeInstance(SchemaManager::class);
     }
 
-    public function execute(/** @noinspection PhpUnusedParameterInspection */ ?array &$params, PageRenderer &$pageRenderer): void
+    public function execute(?array &$params, PageRenderer &$pageRenderer): void
     {
         if (TYPO3_MODE !== 'FE') {
             return;
@@ -38,9 +43,7 @@ final class PostProcessHook
             return;
         }
 
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $result = $schemaManager->renderJsonLd();
+        $result = $this->schemaManager->renderJsonLd();
 
         if (!$result) {
             return;

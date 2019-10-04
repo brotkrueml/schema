@@ -31,6 +31,14 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     private const ARGUMENT_AS = '-as';
     private const ARGUMENT_VALUE = 'value';
 
+    /** @var TypeStack */
+    private $typeStack;
+
+    public function __construct(TypeStack $typeStack = null)
+    {
+        $this->typeStack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
+    }
+
     public function initializeArguments()
     {
         parent::initializeArguments();
@@ -43,19 +51,16 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     {
         $this->checkAttributes();
 
-        /** @var TypeStack $stack */
-        $stack = GeneralUtility::makeInstance(TypeStack::class);
-
-        if ($stack->isEmpty()) {
+        if ($this->typeStack->isEmpty()) {
             throw new ViewHelper\Exception(
                 'The property view helper can only be used as a child of a type view helper',
                 1561838013
             );
         }
 
-        $type = $stack->pop();
+        $type = $this->typeStack->pop();
         $type->addProperty($this->arguments[static::ARGUMENT_AS], $this->arguments[static::ARGUMENT_VALUE]);
-        $stack->push($type);
+        $this->typeStack->push($type);
     }
 
     private function checkAttributes(): void

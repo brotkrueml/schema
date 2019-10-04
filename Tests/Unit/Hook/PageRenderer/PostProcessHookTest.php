@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hook\PageRenderer;
 
@@ -42,7 +42,11 @@ class PostProcessHookTest extends TestCase
 
         $this->configurationMock = $this->createMock(ExtensionConfiguration::class);
 
-        $this->subject = new PostProcessHook($controllerMock, $this->configurationMock);
+        $this->subject = new PostProcessHook(
+            $controllerMock,
+            $this->configurationMock,
+            GeneralUtility::makeInstance(SchemaManager::class)
+        );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
     }
