@@ -54,7 +54,12 @@ class BreadcrumbListTest extends UnitTestCase
             ->expects($this->never())
             ->method('addType');
 
-        (new BreadcrumbList($this->controllerMock, $schemaManagerMock, $configurationMock, $this->contentObjectRendererMock))
+        (new BreadcrumbList(
+            $this->controllerMock,
+            $schemaManagerMock,
+            $configurationMock,
+            $this->contentObjectRendererMock
+        ))
             ->process($this->requestMock, $this->handlerMock);
     }
 
@@ -112,109 +117,110 @@ class BreadcrumbListTest extends UnitTestCase
         return $configurationMock;
     }
 
-    public function rootLineProvider(): array
+    public function rootLineProvider(): iterable
     {
-        return [
-            'Rootline with web page type set' => [
-                [
-                    2 => [
-                        'uid' => 2,
-                        'title' => 'A page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '0',
-                        'tx_schema_webpagetype' => 'ItemPage',
-                    ],
-                    1 => [
-                        'uid' => 1,
-                        'title' => 'Site root page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '1',
-                        'tx_schema_webpagetype' => '',
-                    ],
+        yield 'Rootline with web page type set' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => 'ItemPage',
                 ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
-            ],
-            'Rootline with nav_title set' => [
-                [
-                    2 => [
-                        'uid' => 2,
-                        'title' => 'A page',
-                        'nav_title' => 'A nav title page',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '0',
-                        'tx_schema_webpagetype' => '',
-                    ],
-                    1 => [
-                        'uid' => 1,
-                        'title' => 'Site root page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '1',
-                        'tx_schema_webpagetype' => '',
-                    ],
+                1 => [
+                    'uid' => 1,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
                 ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}</script>',
             ],
-            'Rootline with nav_hide set' => [
-                [
-                    3 => [
-                        'uid' => 3,
-                        'title' => 'A page',
-                        'nav_title' => '',
-                        'nav_hide' => '1',
-                        'is_siteroot' => '0',
-                        'tx_schema_webpagetype' => '',
-                    ],
-                    2 => [
-                        'uid' => 2,
-                        'title' => 'A page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '0',
-                        'tx_schema_webpagetype' => '',
-                    ],
-                    1 => [
-                        'uid' => 1,
-                        'title' => 'Site root page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '1',
-                        'tx_schema_webpagetype' => '',
-                    ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+        ];
+
+        yield 'Rootline with nav_title set' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'title' => 'A page',
+                    'nav_title' => 'A nav title page',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
                 ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
-            ],
-            'Rootline with siteroot not on first level' => [
-                [
-                    2 => [
-                        'uid' => 2,
-                        'title' => 'A page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '0',
-                        'tx_schema_webpagetype' => '',
-                    ],
-                    1 => [
-                        'uid' => 1,
-                        'title' => 'Site root page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '1',
-                        'tx_schema_webpagetype' => '',
-                    ],
-                    0 => [
-                        'uid' => 42,
-                        'title' => 'some other page',
-                        'nav_title' => '',
-                        'nav_hide' => '0',
-                        'is_siteroot' => '0',
-                        'tx_schema_webpagetype' => '',
-                    ],
+                1 => [
+                    'uid' => 1,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
                 ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
             ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}</script>',
+        ];
+
+        yield 'Rootline with nav_hide set' => [
+            [
+                3 => [
+                    'uid' => 3,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '1',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                2 => [
+                    'uid' => 2,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+        ];
+
+        yield 'Rootline with siteroot not on first level' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+                0 => [
+                    'uid' => 42,
+                    'title' => 'some other page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
         ];
     }
 

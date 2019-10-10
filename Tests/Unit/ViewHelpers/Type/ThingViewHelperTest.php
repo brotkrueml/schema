@@ -13,25 +13,24 @@ class ThingViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProvider(): array
+    public function fluidTemplatesProvider(): iterable
     {
-        return [
-            'No schema view helper used' => [
-                '',
-                '',
-            ],
+        yield 'No schema view helper used' => [
+            '',
+            '',
+        ];
 
-            'Simple type with id' => [
-                '<schema:type.thing
+        yield 'Simple type with id' => [
+            '<schema:type.thing
                     -id="thingyId"
                     name="thingy name"
                     description="thingy description"
                 />',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"}</script>',
+        ];
 
-            'Multiple types' => [
-                '<schema:type.thing
+        yield 'Multiple types' => [
+            '<schema:type.thing
                     -id="thingyId"
                     name="thingy name"
                     description="thingy description"
@@ -45,27 +44,27 @@ class ThingViewHelperTest extends ViewHelperTestCase
                     name="action name"
                     url="http://example.org/"
                 />',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"},{"@type":"Person","@id":"personId","name":"person name","worksFor":"someone"},{"@type":"Action","name":"action name","url":"http://example.org/"}]}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"},{"@type":"Person","@id":"personId","name":"person name","worksFor":"someone"},{"@type":"Action","name":"action name","url":"http://example.org/"}]}</script>',
+        ];
 
-            'A given specific type is recognized' => [
-                '<schema:type.organization
+        yield 'A given specific type is recognized' => [
+            '<schema:type.organization
                     name="a corporation"
                     -specificType="Corporation"
                 />',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Corporation","name":"a corporation"}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Corporation","name":"a corporation"}</script>',
+        ];
 
-            'On top level type -as is ignored' => [
-                '<schema:type.thing
+        yield 'On top level type -as is ignored' => [
+            '<schema:type.thing
                     -as="shouldBeIgnored"
                     name="as is ignored"
                 />',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"as is ignored"}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"as is ignored"}</script>',
+        ];
 
-            'Type with one child' => [
-                '<schema:type.thing
+        yield 'Type with one child' => [
+            '<schema:type.thing
                     -id="parentThing"
                     name="parent name"
                     url="http://example.org/">
@@ -76,11 +75,11 @@ class ThingViewHelperTest extends ViewHelperTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
+        ];
 
-            'Type with multiple childs' => [
-                '<schema:type.organization
+        yield 'Type with multiple childs' => [
+            '<schema:type.organization
                     name="Acme Ltd."
                     url="https://www.example.org/"
                     logo="https://www.example.org/logo.png"
@@ -104,11 +103,11 @@ class ThingViewHelperTest extends ViewHelperTestCase
                         areaServed="TR"
                     />
                 </schema:type.organization>',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","contactPoint":[{"@type":"ContactPoint","areaServed":"DE","contactType":"sales","telephone":"+49 30 123456789"},{"@type":"ContactPoint","areaServed":"PL","contactType":"sales","telephone":"+48 22 123456789"},{"@type":"ContactPoint","areaServed":"TR","contactType":"sales","telephone":"+90 212 123456789"}],"logo":"https://www.example.org/logo.png","name":"Acme Ltd.","url":"https://www.example.org/"}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","contactPoint":[{"@type":"ContactPoint","areaServed":"DE","contactType":"sales","telephone":"+49 30 123456789"},{"@type":"ContactPoint","areaServed":"PL","contactType":"sales","telephone":"+48 22 123456789"},{"@type":"ContactPoint","areaServed":"TR","contactType":"sales","telephone":"+90 212 123456789"}],"logo":"https://www.example.org/logo.png","name":"Acme Ltd.","url":"https://www.example.org/"}</script>',
+        ];
 
-            'Type with -isMainEntityOfWebPage set to true without a WebPage' => [
-                '<schema:type.thing
+        yield 'Type with -isMainEntityOfWebPage set to true without a WebPage' => [
+            '<schema:type.thing
                     -id="parentThing"
                     -isMainEntityOfWebPage="1"
                     name="parent name"
@@ -120,11 +119,11 @@ class ThingViewHelperTest extends ViewHelperTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
+        ];
 
-            'Type with -isMainEntityOfWebPage set to true with a WebPage' => [
-                '<schema:type.webPage/>
+        yield 'Type with -isMainEntityOfWebPage set to true with a WebPage' => [
+            '<schema:type.webPage/>
                 <schema:type.thing
                     -id="parentThing"
                     -isMainEntityOfWebPage="1"
@@ -137,8 +136,7 @@ class ThingViewHelperTest extends ViewHelperTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}</script>',
         ];
     }
 
@@ -163,21 +161,21 @@ class ThingViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProviderForExceptions(): array
+    public function fluidTemplatesProviderForExceptions(): iterable
     {
-        return [
-            'Invalid specific type' => [
-                '<schema:type.thing -specificType="TypeDoesNotExist"/>',
-                1561829970,
-            ],
-            'Missing -as attribute' => [
-                '<schema:type.thing><schema:type.creativeWork/></schema:type.thing>',
-                1561829951,
-            ],
-            'With -isMainEntityOfWebPage attribute assigned to child' => [
-                '<schema:type.thing><schema:type.creativeWork -as="name" -isMainEntityOfWebPage="1"/></schema:type.thing>',
-                1562517051,
-            ],
+        yield 'Invalid specific type' => [
+            '<schema:type.thing -specificType="TypeDoesNotExist"/>',
+            1561829970,
+        ];
+
+        yield 'Missing -as attribute' => [
+            '<schema:type.thing><schema:type.creativeWork/></schema:type.thing>',
+            1561829951,
+        ];
+
+        yield 'With -isMainEntityOfWebPage attribute assigned to child' => [
+            '<schema:type.thing><schema:type.creativeWork -as="name" -isMainEntityOfWebPage="1"/></schema:type.thing>',
+            1562517051,
         ];
     }
 

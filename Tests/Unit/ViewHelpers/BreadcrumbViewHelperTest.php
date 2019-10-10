@@ -29,105 +29,107 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProvider(): array
+    public function fluidTemplatesProvider(): iterable
     {
-        return [
-            'Breadcrumb is empty' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
-                [
-                    'breadcrumb' => [],
-                ],
-                '',
+        yield 'Breadcrumb is empty' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+            [
+                'breadcrumb' => [],
             ],
-            'Breadcrumb with one page' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'title' => 'Some page',
-                            'link' => '/',
+            '',
+        ];
+
+        yield 'Breadcrumb with one page' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Some page',
+                        'link' => '/',
+                    ],
+                ],
+            ],
+            '',
+        ];
+        yield 'Breadcrumb with one page and render first item' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Some page',
+                        'link' => '/',
+                    ],
+                ],
+            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/"},"name":"Some page","position":"1"}}</script>',
+        ];
+
+        yield 'Breadcrumb with two pages and minimum fields' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Some page',
+                        'link' => '/',
+                    ],
+                    [
+                        'title' => 'Some sub page',
+                        'link' => '/sub-page/',
+                    ],
+                ],
+            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/sub-page/"},"name":"Some sub page","position":"1"}}</script>',
+        ];
+
+        yield 'Breadcrumb with multiple pages and webpage types given' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'A web page',
+                        'link' => '/',
+                        'data' => [
+                            'tx_schema_webpagetype' => 'WebPage',
+                        ],
+                    ],
+                    [
+                        'title' => 'Video overview',
+                        'link' => '/videos/',
+                        'data' => [
+                            'tx_schema_webpagetype' => 'VideoGallery',
+                        ],
+                    ],
+                    [
+                        'title' => 'Unicorns in TYPO3 land',
+                        'link' => '/videos/unicorns-in-typo3-land/',
+                        'data' => [
+                            'tx_schema_webpagetype' => 'ItemPage',
                         ],
                     ],
                 ],
-                '',
             ],
-            'Breadcrumb with one page and render first item' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'title' => 'Some page',
-                            'link' => '/',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}</script>',
+        ];
+
+        yield 'Breadcrumb with multiple pages and a class given as data item (which can happen when you add a virtual category page with a domain model to it)' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'A web page',
+                        'link' => '/',
+                        'data' => [
+                            'tx_schema_webpagetype' => 'WebPage',
                         ],
                     ],
-                ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/"},"name":"Some page","position":"1"}}</script>',
-            ],
-            'Breadcrumb with two pages and minimum fields' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'title' => 'Some page',
-                            'link' => '/',
-                        ],
-                        [
-                            'title' => 'Some sub page',
-                            'link' => '/sub-page/',
-                        ],
+                    [
+                        'title' => 'Unicorns in TYPO3 land',
+                        'link' => '/videos/unicorns-in-typo3-land/',
+                        'data' => new \stdClass(),
                     ],
                 ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/sub-page/"},"name":"Some sub page","position":"1"}}</script>',
             ],
-            'Breadcrumb with multiple pages and webpage types given' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'title' => 'A web page',
-                            'link' => '/',
-                            'data' => [
-                                'tx_schema_webpagetype' => 'WebPage',
-                            ],
-                        ],
-                        [
-                            'title' => 'Video overview',
-                            'link' => '/videos/',
-                            'data' => [
-                                'tx_schema_webpagetype' => 'VideoGallery',
-                            ],
-                        ],
-                        [
-                            'title' => 'Unicorns in TYPO3 land',
-                            'link' => '/videos/unicorns-in-typo3-land/',
-                            'data' => [
-                                'tx_schema_webpagetype' => 'ItemPage',
-                            ],
-                        ],
-                    ],
-                ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}</script>',
-            ],
-            'Breadcrumb with multiple pages and a class given as data item (which can happen when you add a virtual category page with a domain model to it)' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'title' => 'A web page',
-                            'link' => '/',
-                            'data' => [
-                                'tx_schema_webpagetype' => 'WebPage',
-                            ],
-                        ],
-                        [
-                            'title' => 'Unicorns in TYPO3 land',
-                            'link' => '/videos/unicorns-in-typo3-land/',
-                            'data' => new \stdClass(),
-                        ],
-                    ],
-                ],
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}</script>',
         ];
     }
 
@@ -156,39 +158,39 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProviderForExceptions(): array
+    public function fluidTemplatesProviderForExceptions(): iterable
     {
-        return [
-            'Missing breadcrumb attribute' => [
-                '<schema:breadcrumb/>',
-                [],
-                Parser\Exception::class,
-                1237823699,
-            ],
-            'Missing title attribute' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'link' => '/',
-                        ]
-                    ],
+        yield 'Missing breadcrumb attribute' => [
+            '<schema:breadcrumb/>',
+            [],
+            Parser\Exception::class,
+            1237823699,
+        ];
+
+        yield 'Missing title attribute' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'link' => '/',
+                    ]
                 ],
-                ViewHelper\Exception::class,
-                1561890280,
             ],
-            'Missing link attribute' => [
-                '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
-                [
-                    'breadcrumb' => [
-                        [
-                            'title' => 'Some title',
-                        ]
-                    ],
+            ViewHelper\Exception::class,
+            1561890280,
+        ];
+
+        yield 'Missing link attribute' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Some title',
+                    ]
                 ],
-                ViewHelper\Exception::class,
-                1561890281,
             ],
+            ViewHelper\Exception::class,
+            1561890281,
         ];
     }
 

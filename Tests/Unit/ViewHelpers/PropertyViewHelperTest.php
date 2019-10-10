@@ -12,24 +12,23 @@ class PropertyViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProvider(): array
+    public function fluidTemplatesProvider(): iterable
     {
-        return [
-            'Property with one value' => [
-                '<schema:type.thing>
+        yield 'Property with one value' => [
+            '<schema:type.thing>
                     <schema:property -as="image" value="http://example.org/image.png"/>
                 </schema:type.thing>',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","image":"http://example.org/image.png"}</script>',
-            ],
-            'Property with multiple values' => [
-                '<schema:type.thing>
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","image":"http://example.org/image.png"}</script>',
+        ];
+
+        yield 'Property with multiple values' => [
+            '<schema:type.thing>
                     <schema:property -as="image" value="http://example.org/image1.png"/>
                     <schema:property -as="image" value="http://example.org/image2.png"/>
                     <schema:property -as="image" value="http://example.org/image3.png"/>
                     <schema:property -as="image" value="http://example.org/image4.png"/>
                 </schema:type.thing>',
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}</script>',
-            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}</script>',
         ];
     }
 
@@ -54,34 +53,36 @@ class PropertyViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProviderForExceptions(): array
+    public function fluidTemplatesProviderForExceptions(): iterable
     {
-        return [
-            'View helper is not a child of a type' => [
-                '<schema:property -as="someProperty" value="some value"/>',
-                ViewHelper\Exception::class,
-                1561838013,
-            ],
-            'Missing -as attribute' => [
-                '<schema:type.thing><schema:property value="some value"/></schema:type.thing>',
-                Parser\Exception::class,
-                1237823699,
-            ],
-            'Missing value attribute' => [
-                '<schema:type.thing><schema:property -as="someProperty" /></schema:type.thing>',
-                Parser\Exception::class,
-                1237823699,
-            ],
-            'Empty -as attribute' => [
-                '<schema:type.thing><schema:property -as="" value="some value"/></schema:type.thing>',
-                ViewHelper\Exception::class,
-                1561838834,
-            ],
-            'Empty value attribute' => [
-                '<schema:type.thing><schema:property -as="name" value=""/></schema:type.thing>',
-                ViewHelper\Exception::class,
-                1561838999,
-            ],
+        yield 'View helper is not a child of a type' => [
+            '<schema:property -as="someProperty" value="some value"/>',
+            ViewHelper\Exception::class,
+            1561838013,
+        ];
+
+        yield 'Missing -as attribute' => [
+            '<schema:type.thing><schema:property value="some value"/></schema:type.thing>',
+            Parser\Exception::class,
+            1237823699,
+        ];
+
+        yield 'Missing value attribute' => [
+            '<schema:type.thing><schema:property -as="someProperty" /></schema:type.thing>',
+            Parser\Exception::class,
+            1237823699,
+        ];
+
+        yield 'Empty -as attribute' => [
+            '<schema:type.thing><schema:property -as="" value="some value"/></schema:type.thing>',
+            ViewHelper\Exception::class,
+            1561838834,
+        ];
+
+        yield 'Empty value attribute' => [
+            '<schema:type.thing><schema:property -as="name" value=""/></schema:type.thing>',
+            ViewHelper\Exception::class,
+            1561838999,
         ];
     }
 
@@ -93,8 +94,11 @@ class PropertyViewHelperTest extends ViewHelperTestCase
      * @param string $exceptionClass The exception class
      * @param int $expectedExceptionCode The expected exception code
      */
-    public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(string $template, string $exceptionClass, int $expectedExceptionCode): void
-    {
+    public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
+        string $template,
+        string $exceptionClass,
+        int $expectedExceptionCode
+    ): void {
         $this->expectException($exceptionClass);
         $this->expectExceptionCode($expectedExceptionCode);
 

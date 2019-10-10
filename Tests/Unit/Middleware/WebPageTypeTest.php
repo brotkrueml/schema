@@ -155,36 +155,36 @@ class WebPageTypeTest extends UnitTestCase
         return $configurationMock;
     }
 
-    public function pagePropertiesProvider(): array
+    public function pagePropertiesProvider(): iterable
     {
-        return [
-            'Type is empty, so WebPage is used' => [
-                [
-                    'tx_schema_webpagetype' => '',
-                    'title' => 'A test title',
-                    'description' => 'A test description',
-                    'endtime' => 0,
-                ],
-                (new WebPage())
+        yield 'Type is empty, so WebPage is used' => [
+            [
+                'tx_schema_webpagetype' => '',
+                'title' => 'A test title',
+                'description' => 'A test description',
+                'endtime' => 0,
             ],
-            'Type is set, so this type is used' => [
-                [
-                    'tx_schema_webpagetype' => 'ItemPage',
-                    'title' => 'An item title',
-                    'description' => 'An item description',
-                    'endtime' => 0,
-                ],
-                (new ItemPage())
+            (new WebPage())
+        ];
+
+        yield 'Type is set, so this type is used' => [
+            [
+                'tx_schema_webpagetype' => 'ItemPage',
+                'title' => 'An item title',
+                'description' => 'An item description',
+                'endtime' => 0,
             ],
-            'Endtime is defined, expires is set' => [
-                [
-                    'tx_schema_webpagetype' => 'WebPage',
-                    'title' => 'An item title',
-                    'description' => 'An item description',
-                    'endtime' => 1561672753,
-                ],
-                (new WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00')
+            (new ItemPage())
+        ];
+
+        yield 'Endtime is defined, expires is set' => [
+            [
+                'tx_schema_webpagetype' => 'WebPage',
+                'title' => 'An item title',
+                'description' => 'An item description',
+                'endtime' => 1561672753,
             ],
+            (new WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00')
         ];
     }
 
@@ -194,7 +194,7 @@ class WebPageTypeTest extends UnitTestCase
      *
      * @param array $pageProperties
      * @param AbstractType $expectedWebPage
-     * @covers \Brotkrueml\Schema\Middleware\WebPageType::process
+     * @covers       \Brotkrueml\Schema\Middleware\WebPageType::process
      */
     public function withNotAlreadyAssignedWebPageModelPropertiesFromTsfeAreSet(
         array $pageProperties,

@@ -330,118 +330,124 @@ class AbstractTypeTest extends TestCase
         $this->assertTrue($actual);
     }
 
-    public function dataProviderForToArrayReturnsCorrectResult(): array
+    public function dataProviderForToArrayReturnsCorrectResult(): iterable
     {
-        /** @noinspection PhpUndefinedMethodInspection */
-        return [
-            'Value is a string' => [
-                'name',
-                'some string value',
-                [
-                    '@type' => 'FixtureThing',
-                    'name' => 'some string value',
+        yield 'Value is a string' => [
+            'name',
+            'some string value',
+            [
+                '@type' => 'FixtureThing',
+                'name' => 'some string value',
+            ],
+        ];
+
+        yield 'Value is a number as string' => [
+        'name',
+        '1',
+        [
+            '@type' => 'FixtureThing',
+            'name' => '1',
+        ],
+    ];
+
+        yield 'Value is a number as integer' => [
+            'name',
+            1,
+            [
+                '@type' => 'FixtureThing',
+                'name' => '1',
+            ],
+        ];
+
+        yield 'Value is the number 0 as integer' => [
+            'name',
+            0,
+            [
+                '@type' => 'FixtureThing',
+                'name' => '0',
+            ],
+        ];
+
+        yield 'Value is a model' => [
+            'image',
+            (new FixtureImage())
+                ->setProperty('name', 'some value for name'),
+            [
+                '@type' => 'FixtureThing',
+                'image' => [
+                    '@type' => 'FixtureImage',
+                    'name' => 'some value for name',
                 ],
             ],
-            'Value is a number as string' => [
-                'name',
-                '1',
-                [
-                    '@type' => 'FixtureThing',
-                    'name' => '1',
-                ],
-            ],
-            'Value is a number as integer' => [
-                'name',
-                1,
-                [
-                    '@type' => 'FixtureThing',
-                    'name' => '1',
-                ],
-            ],
-            'Value is the number 0 as integer' => [
-                'name',
-                0,
-                [
-                    '@type' => 'FixtureThing',
-                    'name' => '0',
-                ],
-            ],
-            'Value is a model' => [
-                'image',
+        ];
+
+        yield 'Value is an array of models' => [
+            'image',
+            [
                 (new FixtureImage())
                     ->setProperty('name', 'some value for name'),
-                [
-                    '@type' => 'FixtureThing',
-                    'image' => [
+                (new FixtureImage())
+                    ->setProperty('description', 'some value for description'),
+            ],
+            [
+                '@type' => 'FixtureThing',
+                'image' => [
+                    [
                         '@type' => 'FixtureImage',
                         'name' => 'some value for name',
                     ],
-                ],
-            ],
-            'Value is an array of models' => [
-                'image',
-                [
-                    (new FixtureImage())
-                        ->setProperty('name', 'some value for name'),
-                    (new FixtureImage())
-                        ->setProperty('description', 'some value for description'),
-                ],
-                [
-                    '@type' => 'FixtureThing',
-                    'image' => [
-                        [
-                            '@type' => 'FixtureImage',
-                            'name' => 'some value for name',
-                        ],
-                        [
-                            '@type' => 'FixtureImage',
-                            'description' => 'some value for description',
-                        ],
+                    [
+                        '@type' => 'FixtureImage',
+                        'description' => 'some value for description',
                     ],
                 ],
             ],
-            'Value is an array of strings' => [
-                'image',
-                ['the first string', 'the second string'],
-                [
-                    '@type' => 'FixtureThing',
-                    'image' => [
-                        'the first string',
-                        'the second string',
-                    ],
-                ],
-            ],
-            'Value is an array of a string and a model' => [
-                'image',
-                [
+        ];
+
+        yield 'Value is an array of strings' => [
+            'image',
+            ['the first string', 'the second string'],
+            [
+                '@type' => 'FixtureThing',
+                'image' => [
                     'the first string',
-                    (new FixtureImage())
-                        ->setProperty('name', 'some value for image'),
+                    'the second string',
                 ],
-                [
-                    '@type' => 'FixtureThing',
-                    'image' => [
-                        'the first string',
-                        [
-                            '@type' => 'FixtureImage',
-                            'name' => 'some value for image',
-                        ],
+            ],
+        ];
+
+        yield 'Value is an array of a string and a model' => [
+            'image',
+            [
+                'the first string',
+                (new FixtureImage())
+                    ->setProperty('name', 'some value for image'),
+            ],
+            [
+                '@type' => 'FixtureThing',
+                'image' => [
+                    'the first string',
+                    [
+                        '@type' => 'FixtureImage',
+                        'name' => 'some value for image',
                     ],
                 ],
             ],
-            'value is null' => [
-                'image',
-                null,
-                [
-                    '@type' => 'FixtureThing',
-                ],
+        ];
+
+        yield 'value is null' => [
+            'image',
+            null,
+            [
+                '@type' => 'FixtureThing',
             ],
-            'value is an empty string' => [
-                'image',
-                '',
-                [
-                    '@type' => 'FixtureThing',
-                ],
+        ];
+
+        yield 'value is an empty string' => [
+            'image',
+            '',
+            [
+                '@type' => 'FixtureThing',
             ],
         ];
     }

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class WebPageTypeProviderTest extends TestCase
 {
-    public function dataProvider(): array
+    public function dataProvider(): iterable
     {
         $webPageTypes = [
             'AboutPage',
@@ -26,15 +26,11 @@ class WebPageTypeProviderTest extends TestCase
             'WebPage',
         ];
 
-        $result = [];
-
         foreach ($webPageTypes as $type) {
             $key = sprintf('Type "%s"', $type);
 
-            $result[$key] = [$type];
+            yield $key => [$type];
         }
-
-        return $result;
     }
 
     /**
