@@ -1,5 +1,6 @@
 .. include:: ../Includes.txt
 
+.. index:: WebPage page property
 
 .. _for-editors:
 
@@ -28,6 +29,7 @@ If no value is selected, *WebPage* is assumed.
    If the seo system extension is installed and the checkbox ``no_index`` is activated, the field is not shown. This
    makes no sense on pages which are ignored by search engines.
 
+.. index:: WebPage types
 
 Available web page types
 ========================

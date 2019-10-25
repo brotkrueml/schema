@@ -1,5 +1,6 @@
 .. include:: ../Includes.txt
 
+.. index:: API
 
 .. _api:
 
@@ -89,6 +90,10 @@ That's it ... if you call the according page the structured markup is embedded a
       }
    }
 
+.. index::
+   single: Model API
+   seealso: Model API; API
+   seealso: Model API; Model
 
 The Model In-Depth
 ==================
@@ -242,6 +247,10 @@ Checks, whether all properties of the models are empty.
 
 Other Useful APIs
 =================
+
+.. index::
+   single: Type list
+   seealso: Type list; API
 
 List of types
 -------------

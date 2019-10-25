@@ -1,5 +1,6 @@
 .. include:: ../Includes.txt
 
+.. index:: Breadcrumb
 
 .. _breadcrumb:
 
@@ -21,6 +22,7 @@ structured markup for the breadcrumb is available.
 There can also be more than one breadcrumb on a page, Google gives an example in his guidelines for a
 `breadcrumb <https://developers.google.com/search/docs/data-types/breadcrumb>`__.
 
+.. index:: Breadcrumb via API
 
 .. _breadcrumb-api:
 
@@ -95,11 +97,14 @@ This results in the following schema markup:
 
 As you can see, the breadcrumb is embedded in a ``WebPage`` automatically.
 
+.. index:: Breadcrumb via view helpers
 
 .. _breadcrumb-viewhelpers:
 
 Using the view helpers
 ======================
+
+.. index:: breadcrumbList view helper
 
 View helper :html:`<schema:type.breadcrumbList>`
 ------------------------------------------------
@@ -136,6 +141,8 @@ It is also possible to use it in combination with one of the ``WebPage`` types:
       </schema:type.breadcrumbList>
    </schema:type.itemPage>
 
+
+.. index:: breadcrumb view helper
 
 .. _breadcrumb-view-helper:
 

@@ -1,5 +1,8 @@
 .. include:: ../Includes.txt
 
+.. index::
+   single: Main entity of web page
+   seealso: Main entity of web page; WebPage
 
 .. _main-entity-of-web-page:
 

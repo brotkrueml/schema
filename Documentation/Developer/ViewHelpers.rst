@@ -1,5 +1,6 @@
 .. include:: ../Includes.txt
 
+.. index:: View helpers
 
 .. _view-helpers:
 
@@ -200,6 +201,7 @@ which results in the output:
       }
    }
 
+.. index:: property view helper
 
 Property View Helper
 ====================
@@ -253,6 +255,8 @@ Breadcrumb View Helper
 
 This view helper is described in-depth in the chapter :ref:`The Breadcrumb Markup <breadcrumb-view-helper>`.
 
+
+.. index:: XSD
 
 Using the XML Schema (XSD) in your Template
 ===========================================

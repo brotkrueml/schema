@@ -1,5 +1,6 @@
 .. include:: ../Includes.txt
 
+.. index:: Configuration
 
 .. _configuration:
 
@@ -17,6 +18,7 @@ To configure the extension, go to *Admin Tools* > *Settings* > *Extension Config
 
    Options in the extension configuration
 
+.. index:: WebPage automatic embedding
 
 .. _configuration-automaticWebPageSchemaGeneration:
 
@@ -31,6 +33,8 @@ and defaults to :ref:`WebPage <web-page-type>`.
 
    enabled
 
+.. index::
+   single: Breadcrumb automatic embedding
 
 .. _configuration-automaticBreadcrumbSchemaGeneration:
 
@@ -48,6 +52,8 @@ If this option is enabled, the breadcrumb is automatically generated from the ro
    Since multiple breadcrumbs are allowed for a page, this option adds a breadcrumb to the possibly already existing ones
    (e.g. defined via the :ref:`API <breadcrumb-api>` or the :ref:`view helpers <breadcrumb-viewhelpers>`).
 
+
+.. index:: Markup in body section
 
 .. _configuration-embedMarkupInBodySection:
 

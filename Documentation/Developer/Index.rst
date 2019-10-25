@@ -54,6 +54,7 @@ type of ``Thing`` and inherits the properties of ``Thing`` and defines many more
 You can retrieve the information about a type or property from the URL *https://schema.org/* followed by the term name.
 (e.g. *https://schema.org/Person*) or the name of the property (e.g. *https://schema.org/givenName*).
 
+.. index:: Model
 
 Models
 ------

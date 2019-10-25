@@ -1,5 +1,6 @@
 .. include:: ../Includes.txt
 
+.. index:: WebPage
 
 .. _web-page-type:
 
@@ -29,6 +30,8 @@ But you have various options to set the web page type on your own. This can be t
 
 But now let's get our hands on the code.
 
+
+.. index:: WebPage via API
 
 Using the API
 -------------
@@ -94,6 +97,8 @@ If you define a web page on your own, this overrules the page field value of the
    You don't have to define a web page type, if you only want to set the main entity of the page. You can also set the
    main entity independently of the web page. Have a look at the chapter :ref:`Main entity <main-entity-of-web-page>`.
 
+
+.. index:: WebPage via view helper
 
 Using the view helpers
 ----------------------

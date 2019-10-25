@@ -1,6 +1,7 @@
 .. include:: ../Includes.txt
 
 
+.. index:: Installation
 
 .. _installation:
 

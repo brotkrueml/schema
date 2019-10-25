@@ -72,5 +72,6 @@ by Google: `Understand how structured data works <https://developers.google.com/
    Editor/Index
    Developer/Index
    KnownProblems/Index
+   genindex
    Sitemap
 
