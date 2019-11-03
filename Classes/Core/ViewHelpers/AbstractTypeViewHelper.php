@@ -96,6 +96,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected function checkSpecificTypeAttribute(): void
     {
         $specificTypeFromArguments = (string)($this->arguments[static::ARGUMENT_SPECIFIC_TYPE] ?? '');
+        unset($this->arguments[static::ARGUMENT_SPECIFIC_TYPE]);
 
         if (empty($specificTypeFromArguments)) {
             return;
@@ -114,8 +115,6 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
 
         $this->specificType = $specificTypeFromArguments;
-
-        unset($this->arguments[static::ARGUMENT_SPECIFIC_TYPE]);
     }
 
     protected function checkAsAttribute(): void
@@ -181,10 +180,6 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         unset($this->arguments[static::ARGUMENT_ID]);
 
         foreach ($this->arguments as $name => $value) {
-            if (empty($value)) {
-                continue;
-            }
-
             $model->setProperty($name, $value);
         }
 

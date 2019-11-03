@@ -368,6 +368,15 @@ class AbstractTypeTest extends TestCase
             ],
         ];
 
+        yield 'Value is the number 0.10 as float' => [
+            'name',
+            0.10,
+            [
+                '@type' => 'FixtureThing',
+                'name' => '0.1',
+            ],
+        ];
+
         yield 'Value is a model' => [
             'image',
             (new FixtureImage())

@@ -138,6 +138,22 @@ class ThingViewHelperTest extends ViewHelperTestCase
                 </schema:type.thing>',
             '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}</script>',
         ];
+
+        yield 'Property value of 0.00 is rendered' => [
+            '<schema:type.offer
+                price="0.00"
+                priceCurrency="EUR"
+             />',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Offer","price":"0","priceCurrency":"EUR"}</script>',
+        ];
+
+        yield 'Property value of 0.01 is rendered' => [
+            '<schema:type.offer
+                price="0.01"
+                priceCurrency="EUR"
+             />',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Offer","price":"0.01","priceCurrency":"EUR"}</script>',
+        ];
     }
 
     /**
