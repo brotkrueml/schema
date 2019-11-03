@@ -132,7 +132,8 @@ and reference it on the same or another page (e.g. ``Person``):
 .. tip::
 
    You can also cross-reference the types between different websites. The @id
-   is globally unique, so a best practise is to use an IRI for it. It is also
+   is globally unique, so a best practise is to use an
+   :abbr:`IRI (Internationalised Resource Identifier)` for it. It is also
    good practise to add the name to it.
 
 
