@@ -14,61 +14,77 @@ The structured data can be generated in two ways:
 * using the :ref:`API <api>`
 * with :ref:`view helpers <view-helpers>` in Fluid templates
 
-Each type in the `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ corresponds to a **PHP model** that
-provides the possible properties. There is also a **view helper** for each type that makes it easy to integrate the data
-into your website via a Fluid template.
+Each type in the
+`schema.org vocabulary <https://schema.org/docs/schemas.html>`__ corresponds to
+a **PHP model** that provides the possible properties. There is also a
+**view helper** for each type that makes it easy to integrate the data into your
+website via a Fluid template.
 
 Attention should be paid to the following points:
 
 * A web page can be characterised by different schema.org types as outlined in
-  :ref:`this chapter <for-editors>`. The ``WebPage`` type is set automatically if the corresponding
-  :ref:`configuration option <configuration-automaticWebPageSchemaGeneration>` is set. But it can always overridden
-  manually with the desired type and properties.
-  The chapter ":ref:`The WebPage type <web-page-type>`" is dedicated to this topic.
-* A breadcrumb does not only help the user to recognise the location of a particular page on the website. It is also
-  helpful for search engines to understand the structure of your website. Google honors the website operator for using the
-  :ref:`breadcrumb schema markup <breadcrumb>` on a page: It will be shown in the search result snippet.
-* The :ref:`main entity <main-entity-of-web-page>` of a web page indicates the primary entity. It can be set separately
-  from a ``WebPage``.
+  :ref:`this chapter <for-editors>`. The ``WebPage`` type is set automatically
+  if the corresponding
+  :ref:`configuration option <configuration-automaticWebPageSchemaGeneration>`
+  is set. But it can always overridden manually with the desired type and
+  properties. The chapter ":ref:`The WebPage type <web-page-type>`" is dedicated
+  to this topic.
+* A breadcrumb does not only help the user to recognise the location of a
+  particular page on the website. It is also helpful for search engines to
+  understand the structure of your website. Google honors the website operator
+  for using the :ref:`breadcrumb schema markup <breadcrumb>` on a page: It will
+  be shown in the search result snippet.
+* The :ref:`main entity <main-entity-of-web-page>` of a web page indicates the
+  primary entity. It can be set separately from a ``WebPage``.
 
 .. NOTE::
 
-   Please keep in mind: If the seo system extension is installed and the checkbox ``no_index`` on a page is activated,
-   no schema markup is shown at all on that page. This makes no sense as the page is ignored by search engines and so
-   the markup is also ignored.
+   Please keep in mind: If the seo system extension is installed and the
+   checkbox :guilabel:`no_index` on a page is activated, no schema markup is
+   shown at all on that page. This makes no sense as the page is ignored by
+   search engines and so the markup is also ignored.
 
 
 Introduction
 ============
 
-The `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ consists of many **types**, like ``Person``,
-``Organization``, ``Product``, and so on. They are written with an upper letter at the beginning of the term.
+The `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ consists of
+many **types**, like ``Person``, ``Organization``, ``Product``, and so on. They
+are written with an upper letter at the beginning of the term.
 
-Each type has several **properties** which characterise the specific type, like ``givenName`` or ``lastName`` for a
-``Person``. The properties start with a lower letter at the beginning in the vocabulary.
+Each type has several **properties** which characterise the specific type, like
+``givenName`` or ``lastName`` for a ``Person``. The properties start with a
+lower letter at the beginning in the vocabulary.
 
-The most generic type is ``Thing``. Each other type inherits the properties from one or more other types, e.g:
-``Corporation`` is a specific type for ``Organization`` and defines a new property. ``Organization`` itself is a specific
-type of ``Thing`` and inherits the properties of ``Thing`` and defines many more properties characterising this type.
+The most generic type is ``Thing``. Each other type inherits the properties
+from one or more other types, e.g: ``Corporation`` is a specific type for
+``Organization`` and defines a new property. ``Organization`` itself is a
+specific type of ``Thing`` and inherits the properties of ``Thing`` and defines
+many more properties characterising this type.
 
-You can retrieve the information about a type or property from the URL *https://schema.org/* followed by the term name.
-(e.g. *https://schema.org/Person*) or the name of the property (e.g. *https://schema.org/givenName*).
+You can retrieve the information about a type or property from the URL
+*https://schema.org/* followed by the term name. (e.g.
+*https://schema.org/Person*) or the name of the property
+(e.g. *https://schema.org/givenName*).
 
 .. index:: Model
 
 Models
 ------
 
-This extension provides model classes for each type under the PHP namespace :php:`\Brotkrueml\Schema\Model\Type`. For example,
-the type ``Thing`` is mapped to the model :php:`\Brotkrueml\Schema\Model\Type\Thing`, which knows about the according schema.org
-properties. A property value can be set with an according method.
+This extension provides model classes for each type under the PHP namespace
+:php:`\Brotkrueml\Schema\Model\Type`. For example, the type ``Thing`` is mapped
+to the model :php:`\Brotkrueml\Schema\Model\Type\Thing`, which knows about the
+according schema.org properties. A property value can be set with an according
+method.
 
 .. code-block:: php
 
    $thing = new \Brotkrueml\Schema\Model\Type\Thing();
    $thing->setProperty('name', 'A thing');
 
-The schema manager connects the type models to the page and is responsible for generating the markup on the web page.
+The schema manager connects the type models to the page and is responsible for
+generating the markup on the web page.
 
 .. code-block:: php
 
@@ -77,18 +93,21 @@ The schema manager connects the type models to the page and is responsible for g
    );
    $schemaManager->addType($thing);
 
-The chapter :ref:`Using the API <api>` describes in-depth how to use the models and the schema manager.
+The chapter :ref:`Using the API <api>` describes in-depth how to use the models
+and the schema manager.
 
 .. NOTE::
 
-   The models were generated from the schema.org definition and will be updated as the standard evolves.
+   The models were generated from the schema.org definition and will be updated
+   as the standard evolves.
 
 
 View Helpers
 ------------
 
-For usage in Fluid templates, each type is mapped to a view helper in the ``schema:type`` namespace. You assign the
-type properties as view helper arguments, e.g.:
+For usage in Fluid templates, each type is mapped to a view helper in the
+``schema:type`` namespace. You assign the type properties as view helper
+arguments, e.g.:
 
 .. code-block:: html
 
@@ -96,11 +115,13 @@ type properties as view helper arguments, e.g.:
 
 The view helpers can be nested into each other.
 
-The chapter :ref:`Using the View Helpers <view-helpers>` explains the usage of the view helpers in detail.
+The chapter :ref:`Using the View Helpers <view-helpers>` explains the usage of
+the view helpers in detail.
 
 .. NOTE::
 
-   The view helpers were generated from the schema.org definition and will be updated as the standard evolves.
+   The view helpers were generated from the schema.org definition and will be
+   updated as the standard evolves.
 
 
 In-Depth

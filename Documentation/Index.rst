@@ -19,6 +19,9 @@ Structured data with the schema extension
 :Email:
    typo3 (at) krue (dot) ml
 
+:Slack:
+   chris on `typo3.slack.com <https://typo3.slack.com>`__
+
 :Twitter:
    `@brotkrueml <https://twitter.com/brotkrueml>`__
 

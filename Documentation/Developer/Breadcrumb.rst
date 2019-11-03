@@ -14,12 +14,14 @@ Target group: **Developers**
 Introduction
 ============
 
-A breadcrumb is an essential part of a web page. It gives the user an idea of where he is on the web site.
-He can also navigate to parent pages. But for search engines a breadcrumb is also essential to understand
-the structure of a web site. Last but not least, the breadcrumb is shown in the search result snippet if
-structured markup for the breadcrumb is available.
+A breadcrumb is an essential part of a web page. It gives the user an idea of
+where he is on the web site. He can also navigate to parent pages. But for
+search engines a breadcrumb is also essential to understand the structure of a
+web site. Last but not least, the breadcrumb is shown in the search result
+snippet if structured markup for the breadcrumb is available.
 
-There can also be more than one breadcrumb on a page, Google gives an example in his guidelines for a
+There can also be more than one breadcrumb on a page, Google gives an example in
+his guidelines for a
 `breadcrumb <https://developers.google.com/search/docs/data-types/breadcrumb>`__.
 
 .. index:: Breadcrumb via API
@@ -29,7 +31,8 @@ There can also be more than one breadcrumb on a page, Google gives an example in
 Using the API
 =============
 
-You can define a breadcrumb with the :ref:`API <api>` as you may already know it. For example, you have defined a breadcrumb somewhere:
+You can define a breadcrumb with the :ref:`API <api>` as you may already know
+it. For example, you have defined a breadcrumb somewhere:
 
 .. code-block:: php
 
@@ -149,7 +152,8 @@ It is also possible to use it in combination with one of the ``WebPage`` types:
 View helper :html:`<schema:breadcrumb>`
 ---------------------------------------
 
-But mostly you will have the breadcrumb structure in a Fluid variable created by a MenuProcessor in TypoScript:
+But mostly you will have the breadcrumb structure in a Fluid variable created by
+a MenuProcessor in TypoScript:
 
 .. code-block:: typoscript
 
@@ -170,8 +174,8 @@ But mostly you will have the breadcrumb structure in a Fluid variable created by
       }
    }
 
-Wouldn't it be cool to use this variable as input for the schema markup without iterating over the structure? So, let's
-use the breadcrumb view helper for that:
+Wouldn't it be cool to use this variable as input for the schema markup without
+iterating over the structure? So, let's use the breadcrumb view helper for that:
 
 .. code-block:: html
 
@@ -179,18 +183,21 @@ use the breadcrumb view helper for that:
 
 That's it.
 
-The best place to use this view helper is in the template where you generate your visual representation of the
-breadcrumb for your users.
+The best place to use this view helper is in the template where you generate
+your visual representation of the breadcrumb for your users.
 
-Normally the home page is part of the generated breadcrumb, but this is not necessary for the schema markup -
-so the home page is omitted. But if you really want to have it in the markup (or you have a breadcrumb
-generated on your own without the home page), you can use the attribute :html:`renderFirstItem` and set it to :html:`1`:
+Normally the home page is part of the generated breadcrumb, but this is not
+necessary for the schema markup - so the home page is omitted. But if you really
+want to have it in the markup (or you have a breadcrumb generated on your own
+without the home page), you can use the attribute :html:`renderFirstItem` and
+set it to :html:`1`:
 
 .. code-block:: html
 
    <schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>
 
-You can build your own breadcrumb array and assign it to the template. It should have the following structure:
+You can build your own breadcrumb array and assign it to the template. It should
+have the following structure:
 
 .. code-block:: php
 
@@ -231,9 +238,11 @@ Remarks
 -------
 
 * The home page should not be included into the markup.
-* Please keep in mind that according to the Google Structured Data Testing Tool, only the type ``BreadcrumbList`` is
-  allowed for the breadcrumb property - either the schema.org definition allows strings. Other types than the
+* Please keep in mind that according to the Google Structured Data Testing Tool,
+  only the type ``BreadcrumbList`` is allowed for the breadcrumb property -
+  either the schema.org definition allows strings. Other types than the
   BreadcrumbList are ignored by the schema manager.
-* It is intended that the breadcrumb is not automatically rendered out of the page structure of your TYPO3 installation,
-  because it is possible to extend the breadcrumb with own MenuProcessors like in the
+* It is intended that the breadcrumb is not automatically rendered out of the
+  page structure of your TYPO3 installation, because it is possible to extend
+  the breadcrumb with own MenuProcessors like in the
   `news extension <https://docs.typo3.org/typo3cms/extensions/news/7.2.0/Misc/Changelog/7-2-0.html#custom-menu-processor>`__.

@@ -10,11 +10,13 @@ For Editors
 
 Target group: **Editors**
 
-As an editor you have the possibility to adjust the type of every single web page for the schema markup. The default
-value is the most generic one: *WebPage*.
+As an editor you have the possibility to adjust the type of every single web
+page for the schema markup. The default value is the most generic one:
+*WebPage*.
 
-You'll find the field in the page properties under the *SEO* tab (with installed seo system extension) or under the
-*Metadata* tab (if the seo system extension is not installed):
+You'll find the field in the page properties under the :guilabel:`SEO` tab
+(with installed seo system extension) or under the :guilabel:`Metadata` tab (if
+the seo system extension is not installed):
 
 .. figure:: ../Images/Editor/TypeOfWebPage.png
    :alt: Field in the page properties
@@ -26,8 +28,9 @@ If no value is selected, *WebPage* is assumed.
 
 .. NOTE::
 
-   If the seo system extension is installed and the checkbox ``no_index`` is activated, the field is not shown. This
-   makes no sense on pages which are ignored by search engines.
+   If the seo system extension is installed and the checkbox
+   :guilabel:`no_index` is activated, the field is not shown. This makes no
+   sense on pages which are ignored by search engines.
 
 .. index:: WebPage types
 

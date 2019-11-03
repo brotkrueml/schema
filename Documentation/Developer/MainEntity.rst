@@ -16,20 +16,22 @@ Target group: **Developers**
 Introduction
 ============
 
-A ``WebPage`` type has a property ``mainEntity``, which indicates the primary content of a page. Every
-type is allowed - although some types doesn't make sense (e.g. a breadcrumb cannot be the primary content).
+A ``WebPage`` type has a property ``mainEntity``, which indicates the primary
+content of a page. Every type is allowed - although some types doesn't make
+sense (e.g. a breadcrumb cannot be the primary content).
 
 .. NOTE::
 
-   There can be only one main entity at a time. If more than one main entity is set, the last one added has priority.
-   The ones set before are rendered as root types.
+   There can be only one main entity at a time. If more than one main entity is
+   set, the last one added has priority. The ones set before are rendered as
+   root types.
 
 
 Using the API
 -------------
 
-The main entity of a web page can be defined with the API. Let's start with an example, which sets a product
-as the primary content:
+The main entity of a web page can be defined with the API. Let's start with an
+example, which sets a product as the primary content:
 
 .. code-block:: php
 
@@ -50,8 +52,9 @@ as the primary content:
 
    $schemaManager->setMainEntityOfWebPage($product);
 
-The above example is rendered as JSON-LD. Let's assume the ``WebPage`` type is set to ``ItemPage`` - either in
-the page properties or via the API or a view helper.
+The above example is rendered as JSON-LD. Let's assume the ``WebPage`` type is
+set to ``ItemPage`` - either in the page properties or via the API or a view
+helper.
 
 .. code-block:: json
 
@@ -74,9 +77,10 @@ the page properties or via the API or a view helper.
 
 .. NOTE::
 
-   If the ``WebPage`` type is not defined, because in the extension configuration the
-   :ref:`according setting <configuration-automaticWebPageSchemaGeneration>` is disabled, then the main entity is
-   rendered as a root type.
+   If the ``WebPage`` type is not defined, because in the extension
+   configuration the
+   :ref:`according setting <configuration-automaticWebPageSchemaGeneration>` is
+   disabled, then the main entity is rendered as a root type.
 
 
 Using the view helpers
@@ -106,5 +110,5 @@ You can define the main entity also in a view helper:
 Remark
 ~~~~~~
 
-You can set the view helper argument ``-isMainEntityOfWebPage`` only in the main type view helper, not in a child
-type view helper.
+You can set the view helper argument ``-isMainEntityOfWebPage`` only in the main
+type view helper, not in a child type view helper.
