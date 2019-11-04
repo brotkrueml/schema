@@ -23,9 +23,10 @@ The ``WebPage`` type and its descendants (like
 `ImageGallery <https://schema.org/ImageGallery>`__) can only appear once on a
 web page - as opposed to the other types.
 
-This extension defines a new page field :guilabel:`Specific type of web page
-<for-editors>` for the page properties. Choose the appropriate type for the page
-and the schema markup is added automatically to the page (if the corresponding
+This extension defines a :ref:`new field <for-editors>`
+:guilabel:`Type of web page` in the page properties. Choose the appropriate type
+for the page and the schema markup is added automatically to the page (if the
+corresponding
 :ref:`configuration setting <configuration-automaticWebPageSchemaGeneration>` is
 activated). If the configuration option is set and the according page has an
 expiration date set, the according property ``expires`` will be set in the
