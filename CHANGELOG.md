@@ -1,7 +1,18 @@
 # Changelog
-All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.3.1] - 2019-11-04
+
+### Changed
+- Use Dependency Injection for TYPO3 v10 with fallback for v9
+
+### Fixed
+- Type value of 0.00 is not rendered when used in view helper (#23)
 
 ## [1.3.0] - 2019-09-28
 
@@ -104,7 +115,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/brotkrueml/schema/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/brotkrueml/schema/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/brotkrueml/schema/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/brotkrueml/schema/compare/v1.0.0...v1.1.0
