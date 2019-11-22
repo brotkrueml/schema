@@ -33,10 +33,10 @@ expiration date set, the according property ``expires`` will be set in the
 markup.
 
 But you have various options to set the web page type on your own. This can be
-the case, if you want to define the ``mainEntity`` property for a blog article
-or a product.
+the case, if you want to define the :ref:`mainEntity <main-entity-of-web-page>`
+property for a blog article or a product.
 
-But now let's get our hands on the code.
+But now let's get ahold of the code.
 
 
 .. index:: WebPage via API

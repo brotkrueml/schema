@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Multiple items in mainEntity of a WebPage (#25)
+
 ## [1.3.1] - 2019-11-04
 
 ### Changed

@@ -22,16 +22,17 @@ sense (e.g. a breadcrumb cannot be the primary content).
 
 .. NOTE::
 
-   There can be only one main entity at a time. If more than one main entity is
-   set, the last one added has priority. The ones set before are rendered as
-   root types.
+   Technically, there can be more than one main entity at a time. For example,
+   if you have a ``FAQPage`` you will usually assign
+   `more than one question <https://developers.google.com/search/docs/data-types/faqpage>`__
+   as ``mainEntity``.
 
 
 Using the API
 -------------
 
 The main entity of a web page can be defined with the API. Let's start with an
-example, which sets a product as the primary content:
+example that specifies a product as the primary content:
 
 .. code-block:: php
 
@@ -77,10 +78,10 @@ helper.
 
 .. NOTE::
 
-   If the ``WebPage`` type is not defined, because in the extension
-   configuration the
-   :ref:`according setting <configuration-automaticWebPageSchemaGeneration>` is
-   disabled, then the main entity is rendered as a root type.
+   If the ``WebPage`` type is not defined because the
+   :ref:`appropriate setting<configuration-automaticWebPageSchemaGeneration>`
+   is disabled in the extension configuration, the main entity is rendered as
+   a root type.
 
 
 Using the view helpers

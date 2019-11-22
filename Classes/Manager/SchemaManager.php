@@ -34,8 +34,8 @@ final class SchemaManager implements SingletonInterface
     /** @var BreadcrumbList[] */
     private $breadcrumbList = [];
 
-    /** @var AbstractType|null */
-    private $mainEntityOfWebPage;
+    /** @var AbstractType[] */
+    private $mainEntityOfWebPage = [];
 
     /**
      * Add a type
@@ -121,11 +121,7 @@ final class SchemaManager implements SingletonInterface
      */
     public function setMainEntityOfWebPage(AbstractType $mainEntity): self
     {
-        if ($this->mainEntityOfWebPage) {
-            $this->addType($this->mainEntityOfWebPage);
-        }
-
-        $this->mainEntityOfWebPage = $mainEntity;
+        $this->mainEntityOfWebPage[] = $mainEntity;
 
         return $this;
     }
@@ -147,8 +143,8 @@ final class SchemaManager implements SingletonInterface
                 $result[] = $breadcrumb->toArray();
             }
 
-            if ($this->mainEntityOfWebPage) {
-                $result[] = $this->mainEntityOfWebPage->toArray();
+            foreach ($this->mainEntityOfWebPage as $mainEntity) {
+                $result[] = $mainEntity->toArray();
             }
         }
 
@@ -184,7 +180,10 @@ final class SchemaManager implements SingletonInterface
             }
         }
 
-        if ($this->mainEntityOfWebPage) {
+        $numberOfMainEntities = \count($this->mainEntityOfWebPage);
+        if ($numberOfMainEntities === 1) {
+            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage[0]);
+        } elseif ($numberOfMainEntities > 1) {
             $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage);
         }
     }

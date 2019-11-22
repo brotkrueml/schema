@@ -275,7 +275,7 @@ class SchemaManagerTest extends Testcase
 
         $actual = $this->subject->renderJsonLd();
 
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity #2"}},{"@type":"Thing","name":"A thing, set as main entity #1"}]}</script>', $actual);
+        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity #1"},{"@type":"Thing","name":"A thing, set as main entity #2"}]}</script>', $actual);
     }
 
     /**
@@ -296,6 +296,6 @@ class SchemaManagerTest extends Testcase
 
         $actual = $this->subject->renderJsonLd();
 
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as new main entity"}},{"@type":"Thing","name":"A thing, set as main entity directly in WebPage"}]}</script>', $actual);
+        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
     }
 }

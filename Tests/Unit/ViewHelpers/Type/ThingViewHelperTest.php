@@ -108,35 +108,50 @@ class ThingViewHelperTest extends ViewHelperTestCase
 
         yield 'Type with -isMainEntityOfWebPage set to true without a WebPage' => [
             '<schema:type.thing
-                    -id="parentThing"
-                    -isMainEntityOfWebPage="1"
-                    name="parent name"
-                    url="http://example.org/">
-                    <schema:type.person
-                        -as="subjectOf"
-                        -id="childThing"
-                        name="child name"
-                        url="https://example.org/child"
-                    />
+                -id="parentThing"
+                -isMainEntityOfWebPage="1"
+                name="parent name"
+                url="http://example.org/">
+                <schema:type.person
+                    -as="subjectOf"
+                    -id="childThing"
+                    name="child name"
+                    url="https://example.org/child"
+                />
                 </schema:type.thing>',
             '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}</script>',
         ];
 
         yield 'Type with -isMainEntityOfWebPage set to true with a WebPage' => [
             '<schema:type.webPage/>
-                <schema:type.thing
-                    -id="parentThing"
-                    -isMainEntityOfWebPage="1"
-                    name="parent name"
-                    url="http://example.org/">
-                    <schema:type.person
-                        -as="subjectOf"
-                        -id="childThing"
-                        name="child name"
-                        url="https://example.org/child"
-                    />
-                </schema:type.thing>',
+            <schema:type.thing
+                -id="parentThing"
+                -isMainEntityOfWebPage="1"
+                name="parent name"
+                url="http://example.org/">
+                <schema:type.person
+                    -as="subjectOf"
+                    -id="childThing"
+                    name="child name"
+                    url="https://example.org/child"
+                />
+            </schema:type.thing>',
             '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}</script>',
+        ];
+
+        yield 'More than on type with -isMainEntityOfWebPage set to true with a WebPage' => [
+            '<schema:type.webPage/>
+                <schema:type.thing
+                    -id="parentThing#1"
+                    -isMainEntityOfWebPage="1"
+                    name="parent name #1"
+                />
+                <schema:type.thing
+                    -id="parentThing#2"
+                    -isMainEntityOfWebPage="1"
+                    name="parent name #2"
+                 />',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","@id":"parentThing#1","name":"parent name #1"},{"@type":"Thing","@id":"parentThing#2","name":"parent name #2"}]}</script>',
         ];
 
         yield 'Property value of 0.00 is rendered' => [
