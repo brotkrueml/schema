@@ -24,7 +24,7 @@ class ViewHelperTestCase extends UnitTestCase
     /** @var SchemaManager */
     protected $schemaManager;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->root = vfsStream::setup('test-dir');
         $this->view = new TemplateView();

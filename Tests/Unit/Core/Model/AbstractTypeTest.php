@@ -14,7 +14,7 @@ class AbstractTypeTest extends TestCase
      */
     protected $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new FixtureThing();
     }
@@ -26,7 +26,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->setId('concreteTestId');
 
-        $this->assertInstanceOf(AbstractType::class, $actual);
+        self::assertInstanceOf(AbstractType::class, $actual);
     }
 
     /**
@@ -36,7 +36,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->getId();
 
-        $this->assertNull($actual);
+        self::assertNull($actual);
     }
 
     /**
@@ -48,7 +48,7 @@ class AbstractTypeTest extends TestCase
 
         $actual = $this->subject->getId();
 
-        $this->assertSame('concreteTestId', $actual);
+        self::assertSame('concreteTestId', $actual);
     }
 
     /**
@@ -56,7 +56,7 @@ class AbstractTypeTest extends TestCase
      */
     public function hasPropertyReturnsTrueIfPropertyExists(): void
     {
-        $this->assertTrue(
+        self::assertTrue(
             $this->subject->hasProperty('name')
         );
     }
@@ -66,7 +66,7 @@ class AbstractTypeTest extends TestCase
      */
     public function hasPropertyReturnsFalseIfPropertyDoesNotExists(): void
     {
-        $this->assertFalse(
+        self::assertFalse(
             $this->subject->hasProperty('propertyDoesNotExist')
         );
     }
@@ -78,7 +78,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->setProperty('name', 'the name');
 
-        $this->assertInstanceOf(AbstractType::class, $actual);
+        self::assertInstanceOf(AbstractType::class, $actual);
     }
 
     /**
@@ -97,7 +97,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('image', $anotherType);
 
         // Assertion is valid, when no exception above is thrown
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     /**
@@ -129,7 +129,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->getProperty('name');
 
-        $this->assertNull($actual);
+        self::assertNull($actual);
     }
 
     /**
@@ -141,7 +141,7 @@ class AbstractTypeTest extends TestCase
             ->setProperty('image', ['some image value', 'another image value'])
             ->getProperty('image');
 
-        $this->assertSame(['some image value', 'another image value'], $actual);
+        self::assertSame(['some image value', 'another image value'], $actual);
     }
 
     /**
@@ -164,7 +164,7 @@ class AbstractTypeTest extends TestCase
             ->addProperty('name', 'the test name')
             ->getProperty('name');
 
-        $this->assertSame('the test name', $actual);
+        self::assertSame('the test name', $actual);
     }
 
     /**
@@ -177,7 +177,7 @@ class AbstractTypeTest extends TestCase
             ->addProperty('image', 'second image element')
             ->getProperty('image');
 
-        $this->assertSame(['first image element', 'second image element'], $actual);
+        self::assertSame(['first image element', 'second image element'], $actual);
     }
 
     /**
@@ -190,7 +190,7 @@ class AbstractTypeTest extends TestCase
             ->addProperty('image', 'other image value')
             ->getProperty('image');
 
-        $this->assertSame(['some image value', 'other image value'], $actual);
+        self::assertSame(['some image value', 'other image value'], $actual);
     }
 
     /**
@@ -209,7 +209,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->addProperty('image', $anotherType);
 
         // Assertion is valid, when no exception above is thrown
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     /**
@@ -219,7 +219,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->setProperties([]);
 
-        $this->assertInstanceOf(AbstractType::class, $actual);
+        self::assertInstanceOf(AbstractType::class, $actual);
     }
 
     /**
@@ -235,15 +235,15 @@ class AbstractTypeTest extends TestCase
 
         $actualName = $this->subject->getProperty('name');
 
-        $this->assertSame('some name', $actualName);
+        self::assertSame('some name', $actualName);
 
         $actualDescription = $this->subject->getProperty('description');
 
-        $this->assertSame('some description', $actualDescription);
+        self::assertSame('some description', $actualDescription);
 
         $actualImage = $this->subject->getProperty('image');
 
-        $this->assertSame(['some image value', 'other image value'], $actualImage);
+        self::assertSame(['some image value', 'other image value'], $actualImage);
     }
 
     /**
@@ -255,12 +255,12 @@ class AbstractTypeTest extends TestCase
             ->setProperty('image', 'some image value')
             ->clearProperty('image');
 
-        $this->assertInstanceOf(AbstractType::class, $resultOfClear);
+        self::assertInstanceOf(AbstractType::class, $resultOfClear);
 
         $resultOfGet = $this->subject
             ->getProperty('image');
 
-        $this->assertNull($resultOfGet);
+        self::assertNull($resultOfGet);
     }
 
     /**
@@ -281,7 +281,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->getPropertyNames();
 
-        $this->assertSame(
+        self::assertSame(
             [
                 'alternateName',
                 'description',
@@ -301,7 +301,7 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->isEmpty();
 
-        $this->assertTrue($actual);
+        self::assertTrue($actual);
     }
 
     /**
@@ -313,7 +313,7 @@ class AbstractTypeTest extends TestCase
 
         $actual = $this->subject->isEmpty();
 
-        $this->assertFalse($actual);
+        self::assertFalse($actual);
     }
 
     /**
@@ -327,7 +327,7 @@ class AbstractTypeTest extends TestCase
 
         $actual = $this->subject->isEmpty();
 
-        $this->assertTrue($actual);
+        self::assertTrue($actual);
     }
 
     public function dataProviderForToArrayReturnsCorrectResult(): iterable
@@ -474,7 +474,7 @@ class AbstractTypeTest extends TestCase
             ->setProperty($key, $value)
             ->toArray();
 
-        $this->assertSame($expected, $actual);
+        self::assertSame($expected, $actual);
     }
 
     /**
@@ -484,6 +484,6 @@ class AbstractTypeTest extends TestCase
     {
         $actual = $this->subject->toArray();
 
-        $this->assertSame(['@type' => 'FixtureThing'], $actual);
+        self::assertSame(['@type' => 'FixtureThing'], $actual);
     }
 }

@@ -150,7 +150,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
 
         $actual = $this->schemaManager->renderJsonLd();
 
-        $this->assertSame($expected, $actual);
+        self::assertSame($expected, $actual);
     }
 
     /**

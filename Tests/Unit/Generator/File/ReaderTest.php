@@ -14,7 +14,7 @@ class ReaderTest extends TestCase
      */
     protected $root;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->root = vfsStream::setup('test-dir');
     }
@@ -29,7 +29,7 @@ class ReaderTest extends TestCase
         $reader = new Reader(vfsStream::url('test-dir') . '/read-test.txt');
         $actual = $reader->read();
 
-        $this->assertSame('read test content', $actual);
+        self::assertSame('read test content', $actual);
     }
 
     /**

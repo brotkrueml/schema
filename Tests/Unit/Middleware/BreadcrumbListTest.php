@@ -43,7 +43,7 @@ class BreadcrumbListTest extends UnitTestCase
         /** @var MockObject|ExtensionConfiguration $configurationMock */
         $configurationMock = $this->createMock(ExtensionConfiguration::class);
         $configurationMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('get')
             ->with('schema', 'automaticBreadcrumbSchemaGeneration')
             ->willReturn(false);
@@ -51,7 +51,7 @@ class BreadcrumbListTest extends UnitTestCase
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('addType');
 
         (new BreadcrumbList(
@@ -73,7 +73,7 @@ class BreadcrumbListTest extends UnitTestCase
 
         $this->handlerMock = $this->createMock(RequestHandlerInterface::class);
         $this->handlerMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('handle')
             ->with($this->requestMock);
     }
@@ -90,7 +90,7 @@ class BreadcrumbListTest extends UnitTestCase
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('addType');
 
         (new BreadcrumbList(
@@ -109,7 +109,7 @@ class BreadcrumbListTest extends UnitTestCase
     {
         $configurationMock = $this->createMock(ExtensionConfiguration::class);
         $configurationMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('get')
             ->with('schema', 'automaticBreadcrumbSchemaGeneration')
             ->willReturn(true);
@@ -242,7 +242,7 @@ class BreadcrumbListTest extends UnitTestCase
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
 
         $this->contentObjectRendererMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('typoLink_URL')
             ->with([
                 'parameter' => '2',
@@ -259,6 +259,6 @@ class BreadcrumbListTest extends UnitTestCase
 
         $subject->process($this->requestMock, $this->handlerMock);
 
-        $this->assertSame($expected, $schemaManager->renderJsonLd());
+        self::assertSame($expected, $schemaManager->renderJsonLd());
     }
 }

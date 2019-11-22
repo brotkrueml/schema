@@ -35,7 +35,7 @@ class PostProcessHookTest extends TestCase
      */
     protected $configurationMock;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $controllerMock->page = ['no_index' => 0];
@@ -61,11 +61,11 @@ class PostProcessHookTest extends TestCase
         $this->setSeoExtensionInstallationState(true);
 
         $this->pageRendererMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('addHeaderData');
 
         $this->pageRendererMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('addFooterData');
 
         $params = [];
@@ -86,13 +86,13 @@ class PostProcessHookTest extends TestCase
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
         $this->configurationMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('get')
             ->with('schema', 'embedMarkupInBodySection')
             ->willReturn(false);
 
         $this->pageRendererMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('addHeaderData')
             ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
 
@@ -112,13 +112,13 @@ class PostProcessHookTest extends TestCase
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
         $this->configurationMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('get')
             ->with('schema', 'embedMarkupInBodySection')
             ->willReturn(true);
 
         $this->pageRendererMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('addFooterData')
             ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
 
@@ -136,7 +136,7 @@ class PostProcessHookTest extends TestCase
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
         $this->pageRendererMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('addHeaderData');
 
         $params = [];
@@ -157,7 +157,7 @@ class PostProcessHookTest extends TestCase
         $controllerMock->page = ['no_index' => 1];
 
         $this->configurationMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('get')
             ->with('schema', 'embedMarkupInBodySection')
             ->willReturn(false);
@@ -168,7 +168,7 @@ class PostProcessHookTest extends TestCase
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
         $this->pageRendererMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('addHeaderData')
             ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
 
@@ -193,7 +193,7 @@ class PostProcessHookTest extends TestCase
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
         $this->pageRendererMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('addHeaderData');
 
         $subject->execute($params, $this->pageRendererMock);
@@ -204,7 +204,7 @@ class PostProcessHookTest extends TestCase
         /** @var MockObject|PackageManager $packageManagerMock */
         $packageManagerMock = $this->createMock(PackageManager::class);
         $packageManagerMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('isPackageActive')
             ->with('seo')
             ->willReturn($state);

@@ -48,7 +48,7 @@ class WebPageTypeProviderTest extends TestCase
         $className = Utility::getNamespacedClassNameForType($type);
         $class = new $className();
 
-        $this->assertInstanceOf(WebPageTypeInterface::class, $class);
+        self::assertInstanceOf(WebPageTypeInterface::class, $class);
     }
 
     /**
@@ -64,7 +64,7 @@ class WebPageTypeProviderTest extends TestCase
     {
         $actual = WebPageTypeProvider::getTypesForTcaSelect();
 
-        $this->assertContains([$type, $type], $actual);
+        self::assertContains([$type, $type], $actual);
     }
 
     /**
@@ -74,6 +74,6 @@ class WebPageTypeProviderTest extends TestCase
     {
         $actual = WebPageTypeProvider::getTypesForTcaSelect();
 
-        $this->assertContains(['', ''], $actual);
+        self::assertContains(['', ''], $actual);
     }
 }

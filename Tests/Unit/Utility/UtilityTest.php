@@ -15,7 +15,7 @@ class UtilityTest extends TestCase
     {
         $actual = Utility::getClassNameWithoutNamespace('\\This\\Is\\The\\Namespace\\ClassName');
 
-        $this->assertSame('ClassName', $actual);
+        self::assertSame('ClassName', $actual);
     }
 
     /**
@@ -25,7 +25,7 @@ class UtilityTest extends TestCase
     {
         $actual = Utility::getClassNameWithoutNamespace('ClassName');
 
-        $this->assertSame('ClassName', $actual);
+        self::assertSame('ClassName', $actual);
     }
 
     /**
@@ -35,7 +35,7 @@ class UtilityTest extends TestCase
     {
         $actual = Utility::getNamespacedClassNameForType('Thing');
 
-        $this->assertSame(Thing::class, $actual);
+        self::assertSame(Thing::class, $actual);
     }
 
     /**
@@ -45,7 +45,7 @@ class UtilityTest extends TestCase
     {
         $actual = Utility::getNamespacedClassNameForType('DoesNotExist');
 
-        $this->assertNull($actual);
+        self::assertNull($actual);
     }
 
     /**
@@ -55,7 +55,7 @@ class UtilityTest extends TestCase
     {
         $originalNamespace = Utility::setNamespaceForTypes('\\Some\\Namespace');
 
-        $this->assertSame('Brotkrueml\\Schema\\Model\\Type', $originalNamespace);
+        self::assertSame('Brotkrueml\\Schema\\Model\\Type', $originalNamespace);
 
         Utility::setNamespaceForTypes($originalNamespace);
     }
