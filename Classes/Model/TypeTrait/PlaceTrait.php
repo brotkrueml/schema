@@ -36,7 +36,9 @@ trait PlaceTrait
     protected $hasMap;
     protected $isAccessibleForFree;
     protected $isicV4;
+    protected $latitude;
     protected $logo;
+    protected $longitude;
     protected $maximumAttendeeCapacity;
     protected $openingHoursSpecification;
     protected $photo;
