@@ -29,7 +29,7 @@
         "mikey179/vfsstream": "^1.6",
         "phpstan/phpstan": "^0.11",
         "phpunit/phpunit": "^8.1",
-        "twig/twig": "^2.0",
+        "twig/twig": "^3.0",
         "typo3/testing-framework": "^4.13 || ^5.0"
     },
     "replace": {
