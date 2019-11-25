@@ -89,6 +89,10 @@ final class SchemaManager implements SingletonInterface
         if ($mainEntity instanceof AbstractType) {
             $this->setMainEntityOfWebPage($mainEntity);
         }
+        if(\is_array($mainEntity) && \count($mainEntity) > 0)
+		{
+			$this->setMainEntityArrayOfWebPage($mainEntity);
+		}
 
         $this->webPage = $webPage;
     }
@@ -125,6 +129,21 @@ final class SchemaManager implements SingletonInterface
 
         return $this;
     }
+
+	/**
+	 * Set a collection of items to main entity
+	 *
+	 * @param array $mainEntityArray
+	 * @return SchemaManager
+	 */
+    public function setMainEntityArrayOfWebPage(array $mainEntityArray): self
+	{
+		foreach ($mainEntityArray as $_ => $mainEntityItem)
+		{
+			$this->setMainEntityOfWebPage($mainEntityItem);
+		}
+		return $this;
+	}
 
     /**
      * Render the JSON-LD from the assigned types
