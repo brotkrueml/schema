@@ -8,6 +8,7 @@ use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\CollectionPage;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SchemaManagerTest extends Testcase
@@ -223,9 +224,9 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function setMainEntityOfWebPageReturnsInstanceOfSchemaManager(): void
+    public function addMainEntityOfWebPageReturnsInstanceOfSchemaManager(): void
     {
-        $actual = $this->subject->setMainEntityOfWebPage(new Thing());
+        $actual = $this->subject->addMainEntityOfWebPage(new Thing());
 
         self::assertInstanceOf(SchemaManager::class, $actual);
     }
@@ -233,13 +234,13 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function setMainEntityOfWebPageWithWebPageAvailable(): void
+    public function addMainEntityOfWebPageWithWebPageAvailable(): void
     {
         $webPage = new WebPage();
         $this->subject->addType($webPage);
 
         $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
-        $this->subject->setMainEntityOfWebPage($mainEntity);
+        $this->subject->addMainEntityOfWebPage($mainEntity);
 
         $actual = $this->subject->renderJsonLd();
 
@@ -249,10 +250,10 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function setMainEntityOfWebPageWithoutWebPageAvailable(): void
+    public function addMainEntityOfWebPageWithoutWebPageAvailable(): void
     {
         $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
-        $this->subject->setMainEntityOfWebPage($mainEntity);
+        $this->subject->addMainEntityOfWebPage($mainEntity);
 
         $actual = $this->subject->renderJsonLd();
 
@@ -262,16 +263,16 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function setMainEntityOfWebPageTwiceWithWebPageAvailable(): void
+    public function addMainEntityOfWebPageTwiceWithWebPageAvailable(): void
     {
         $webPage = new WebPage();
         $this->subject->addType($webPage);
 
         $mainEntity1 = (new Thing())->setProperty('name', 'A thing, set as main entity #1');
-        $this->subject->setMainEntityOfWebPage($mainEntity1);
+        $this->subject->addMainEntityOfWebPage($mainEntity1);
 
         $mainEntity2 = (new Thing())->setProperty('name', 'A thing, set as main entity #2');
-        $this->subject->setMainEntityOfWebPage($mainEntity2);
+        $this->subject->addMainEntityOfWebPage($mainEntity2);
 
         $actual = $this->subject->renderJsonLd();
 
@@ -281,7 +282,7 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function setWebPageAndMainEntityOfWebPageAfterThatPreservesFirstType(): void
+    public function addWebPageAndMainEntityOfWebPageAfterThatPreservesFirstType(): void
     {
         $webPage = (new WebPage())
             ->setProperty(
@@ -292,10 +293,84 @@ class SchemaManagerTest extends Testcase
         $this->subject->addType($webPage);
 
         $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
-        $this->subject->setMainEntityOfWebPage($newMainEntity);
+        $this->subject->addMainEntityOfWebPage($newMainEntity);
 
         $actual = $this->subject->renderJsonLd();
 
         self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function addWebPageAndMultipleMainEntityOfWebPage(): void
+    {
+        $webPage = (new WebPage())
+            ->addProperty(
+                'mainEntity',
+                (new Thing())
+                    ->setProperty('name', 'A thing, set as main entity directly in WebPage #1')
+            )
+            ->addProperty(
+                'mainEntity',
+                (new Thing())
+                    ->setProperty('name', 'A thing, set as main entity directly in WebPage #2')
+            );
+
+        $this->subject->addType($webPage);
+
+        $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
+        $this->subject->addMainEntityOfWebPage($newMainEntity);
+
+        $actual = $this->subject->renderJsonLd();
+
+        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #1"},{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #2"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function addWebPageAndMultipleMainEntityOfWebPageAsArray(): void
+    {
+        $webPage = (new WebPage())
+            ->setProperty(
+                'mainEntity',
+                [
+                    (new Thing())
+                        ->setProperty('name', 'A thing, set as main entity directly in WebPage #1'),
+                    (new Thing())
+                        ->setProperty('name', 'A thing, set as main entity directly in WebPage #2'),
+                ]
+            );
+
+        $this->subject->addType($webPage);
+
+        $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
+        $this->subject->addMainEntityOfWebPage($newMainEntity);
+
+        $actual = $this->subject->renderJsonLd();
+
+        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #1"},{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #2"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setMainEntityOfWebPageCallsAddMainEntityOfWebPage(): void
+    {
+        /** @var MockObject|SchemaManager $subject */
+        $subject = $this->getMockBuilder(SchemaManager::class)
+            ->onlyMethods(['addMainEntityOfWebPage'])
+            ->getMock();
+
+        $mainEntity = (new Thing())->setProperty('name', 'Some main entity');
+
+        $subject
+            ->expects(self::once())
+            ->method('addMainEntityOfWebPage')
+            ->with($mainEntity)
+            ->willReturn($subject);
+
+        $subject->setMainEntityOfWebPage($mainEntity);
     }
 }

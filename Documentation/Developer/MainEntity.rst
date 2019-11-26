@@ -51,7 +51,7 @@ example that specifies a product as the primary content:
       ])
    ;
 
-   $schemaManager->setMainEntityOfWebPage($product);
+   $schemaManager->addMainEntityOfWebPage($product);
 
 The above example is rendered as JSON-LD. Let's assume the ``WebPage`` type is
 set to ``ItemPage`` - either in the page properties or via the API or a view

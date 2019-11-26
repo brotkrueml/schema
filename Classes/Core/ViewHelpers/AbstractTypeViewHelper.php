@@ -86,7 +86,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
         if ($this->stack->isEmpty()) {
             if ($this->isMainEntityOfWebPage) {
-                $this->schemaManager->setMainEntityOfWebPage($recent);
+                $this->schemaManager->addMainEntityOfWebPage($recent);
             } else {
                 $this->schemaManager->addType($recent);
             }

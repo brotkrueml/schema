@@ -87,7 +87,13 @@ final class SchemaManager implements SingletonInterface
         $webPage->clearProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
 
         if ($mainEntity instanceof AbstractType) {
-            $this->setMainEntityOfWebPage($mainEntity);
+            $this->addMainEntityOfWebPage($mainEntity);
+        } elseif (\is_array($mainEntity)) {
+            foreach ($mainEntity as $item) {
+                if ($item instanceof AbstractType) {
+                    $this->addMainEntityOfWebPage($item);
+                }
+            }
         }
 
         $this->webPage = $webPage;
@@ -114,12 +120,30 @@ final class SchemaManager implements SingletonInterface
     }
 
     /**
-     * Set the main entity of the WebPage
+     * Add a main entity of the WebPage
+     *
+     * @param AbstractType $mainEntity
+     * @return SchemaManager
+     *
+     * @deprecated since version 1.4.1, will be removed in 2.0.0
+     */
+    public function setMainEntityOfWebPage(AbstractType $mainEntity): self
+    {
+        @\trigger_error(
+            'Using SchemaManager->setMainEntityOfWebPage() is deprecated and will be removed in version 2.0. Please use SchemaManager->addMainEntityOfWebPage() instead.',
+            \E_USER_DEPRECATED
+        );
+
+        return $this->addMainEntityOfWebPage($mainEntity);
+    }
+
+    /**
+     * Add a main entity of the WebPage
      *
      * @param AbstractType $mainEntity
      * @return SchemaManager
      */
-    public function setMainEntityOfWebPage(AbstractType $mainEntity): self
+    public function addMainEntityOfWebPage(AbstractType $mainEntity): self
     {
         $this->mainEntityOfWebPage[] = $mainEntity;
 
@@ -166,7 +190,7 @@ final class SchemaManager implements SingletonInterface
 
         return \sprintf(
             static::TAG_TEMPLATE,
-            \json_encode($result, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+            \json_encode($result, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE)
         );
     }
 
