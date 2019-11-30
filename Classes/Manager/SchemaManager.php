@@ -125,12 +125,12 @@ final class SchemaManager implements SingletonInterface
      * @param AbstractType $mainEntity
      * @return SchemaManager
      *
-     * @deprecated since version 1.4.1, will be removed in 2.0.0
+     * @deprecated since version 1.4.1, will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.
      */
     public function setMainEntityOfWebPage(AbstractType $mainEntity): self
     {
         @\trigger_error(
-            'Using SchemaManager->setMainEntityOfWebPage() is deprecated and will be removed in version 2.0. Please use SchemaManager->addMainEntityOfWebPage() instead.',
+            'Using SchemaManager->setMainEntityOfWebPage() is deprecated since version 1.4.1 and will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.',
             \E_USER_DEPRECATED
         );
 
