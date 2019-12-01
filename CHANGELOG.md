@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2019-12-01
+
 ### Fixed
 - Handle multiple items in mainEntity as array defined in WebPage correctly (#25)
 
@@ -16,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Multiple items in mainEntity of a WebPage (#25)
-- Update schema definition to version 5.0
+- Update schema definition to version 5.0 (#3)
 
 ## [1.3.1] - 2019-11-04
 
@@ -36,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2019-09-03
 
 ### Added
-- Don't embed schema markup when page should not be indexed by search engines (#18) 
+- Don't embed schema markup when page should not be indexed by search engines (#18)
 - Use @graph when multiple types on root level (#17)
 
 ### Changed
@@ -55,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 First stable release
 
 ### Added
-- Hint in documentation to XSD schema of view helpers 
+- Hint in documentation to XSD schema of view helpers
 
 ## [0.9.0] - 2019-07-10
 
@@ -127,7 +129,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/brotkrueml/schema/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/brotkrueml/schema/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/brotkrueml/schema/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/brotkrueml/schema/compare/v1.2.0...v1.3.0
