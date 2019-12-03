@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+      - .php_cs
+      - CHANGELOG.md
+      - Documentation*
+      - README.md
+  pull_request:
+    paths-ignore:
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+      - .php_cs
+      - CHANGELOG.md
+      - Documentation*
+      - README.md
+
+jobs:
+  build:
+    name: Build PHP/TYPO3
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['7.2', '7.3', '7.4']
+        typo3-versions: ['^9', '^10']
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extension-csv: mbstring
+      - name: Install composer dependencies
+        run: |
+          composer --version
+          composer require typo3/cms-core=${{ matrix.typo3-versions }}
+          git checkout composer.json
+      - name: Run PHP linter
+        run: |
+          find . -name \*.php  ! -path "./.Build/*" -exec php -l {} \;
+      - name: Run unit tests
+        run: |
+          .Build/bin/phpunit -c Tests/phpunit.xml.dist
+  sonar-cloud:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v1
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: 7.2
+      - name: Install composer dependencies
+        run: |
+          composer --version && composer install
+      - name: Run unit tests
+        run: |
+          .Build/bin/phpunit -c Tests/phpunit.xml.dist --log-junit .Build/logs/phpunit.xml --coverage-text --coverage-clover .Build/logs/clover.xml
+      - name: SonarCloud scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
