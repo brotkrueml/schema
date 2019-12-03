@@ -19,8 +19,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 {
-    protected const CONTEXT = 'http://schema.org';
-
     protected const ARGUMENT_AS = '-as';
     protected const ARGUMENT_ID = '-id';
     protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
