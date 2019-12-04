@@ -1,5 +1,6 @@
 /Generator/ export-ignore
 /Tests/ export-ignore
+/.coveralls.yml export-ignore
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.github export-ignore
