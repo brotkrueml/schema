@@ -4,6 +4,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=brotkrueml_schema&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=brotkrueml_schema)
 [![Coverage Status](https://coveralls.io/repos/github/brotkrueml/schema/badge.svg?branch=master)](https://coveralls.io/github/brotkrueml/schema?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/brotkrueml/schema/v/stable)](https://packagist.org/packages/brotkrueml/schema)
+[![Total Downloads](https://poser.pugx.org/brotkrueml/schema/downloads.svg)](https://packagist.org/packages/brotkrueml/schema)
 
 The extension supports TYPO3 9 LTS and TYPO3 v10.
 
