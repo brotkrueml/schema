@@ -6,3 +6,12 @@ services:
 
   Brotkrueml\Schema\:
     resource: '../Classes/*'
+
+  cache.pages:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['pages']
+
+  Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
+    arguments:
+      $cache: '@cache.pages'

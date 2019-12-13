@@ -9,6 +9,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
@@ -41,17 +42,42 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     protected $controllerMock;
 
+    /**
+     * @var MockObject|FrontendInterface
+     */
+    private $cacheMock;
+
+    public static function setUpBeforeClass(): void
+    {
+        if (!\defined('TYPO3_version')) {
+            $_EXTKEY = 'core';
+            include __DIR__ . '/../../../../.Build/web/typo3/sysext/' . $_EXTKEY . '/ext_emconf.php';
+            \define('TYPO3_version', \array_pop($EM_CONF)['version']);
+        }
+    }
+
     protected function setUp(): void
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $this->controllerMock->page = ['no_index' => 0];
+        $this->controllerMock->newHash = 'somehash';
+        $this->controllerMock->page = ['no_index' => 0, 'uid' => 42];
 
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
+
+        $this->cacheMock = $this->createMock(FrontendInterface::class);
+        $this->cacheMock
+            ->expects(self::any())
+            ->method('get')
+            ->willReturn(null);
+        $this->cacheMock
+            ->expects(self::any())
+            ->method('set');
 
         $this->subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            GeneralUtility::makeInstance(SchemaManager::class)
+            GeneralUtility::makeInstance(SchemaManager::class),
+            $this->cacheMock
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
@@ -141,7 +167,8 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            GeneralUtility::makeInstance(SchemaManager::class)
+            $schemaManager,
+            $this->cacheMock
         );
 
         $params = [];
@@ -179,7 +206,8 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            GeneralUtility::makeInstance(SchemaManager::class)
+            GeneralUtility::makeInstance(SchemaManager::class),
+            $this->cacheMock
         );
 
         $params = [];
@@ -197,6 +225,7 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->setSeoExtensionInstallationState(false);
 
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
+        $controllerMock->page = ['uid' => 42];
 
         $this->extensionConfigurationMock
             ->expects(self::once())
@@ -204,7 +233,12 @@ class SchemaMarkupInjectionTest extends TestCase
             ->with('schema')
             ->willReturn(['embedMarkupInBodySection' => '0']);
 
-        $subject = new SchemaMarkupInjection($controllerMock, $this->extensionConfigurationMock);
+        $subject = new SchemaMarkupInjection(
+            $controllerMock,
+            $this->extensionConfigurationMock,
+            null,
+            $this->cacheMock
+        );
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -231,7 +265,12 @@ class SchemaMarkupInjectionTest extends TestCase
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $controllerMock->page = ['no_index' => 1];
 
-        $subject = new SchemaMarkupInjection($controllerMock, $this->extensionConfigurationMock);
+        $subject = new SchemaMarkupInjection(
+            $controllerMock,
+            $this->extensionConfigurationMock,
+            null,
+            $this->cacheMock
+        );
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -275,5 +314,76 @@ class SchemaMarkupInjectionTest extends TestCase
             ->willReturn($state);
 
         ExtensionManagementUtility::setPackageManager($packageManagerMock);
+    }
+
+    /**
+     * @test
+     */
+    public function whenCacheIDefinedItIsUsedToGetMarkup(): void
+    {
+        \define('TYPO3_MODE', 'FE');
+
+        $this->setSeoExtensionInstallationState(true);
+
+        $cacheMock = $this->createMock(FrontendInterface::class);
+        $cacheMock
+            ->expects(self::once())
+            ->method('get')
+            ->willReturn('some-cached-markup');
+
+        $this->pageRendererMock
+            ->expects(self::once())
+            ->method('addHeaderData')
+            ->with('some-cached-markup');
+
+        $subject = new SchemaMarkupInjection(
+            $this->controllerMock,
+            $this->extensionConfigurationMock,
+            null,
+            $cacheMock
+        );
+
+        $params = [];
+        $subject->addAspect($this->getDummyAspectMock());
+        $subject->execute($params, $this->pageRendererMock);
+    }
+
+    /**
+     * @test
+     */
+    public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
+    {
+        \define('TYPO3_MODE', 'FE');
+
+        $this->setSeoExtensionInstallationState(true);
+
+        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
+        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+
+        $cacheMock = $this->createMock(FrontendInterface::class);
+        $cacheMock
+            ->expects(self::once())
+            ->method('get')
+            ->willReturn(false);
+        $cacheMock
+            ->expects(self::once())
+            ->method('set')
+            ->with(
+                self::anything(),
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>',
+                self::anything(),
+                self::anything()
+            );
+
+        $subject = new SchemaMarkupInjection(
+            $this->controllerMock,
+            $this->extensionConfigurationMock,
+            $schemaManager,
+            $cacheMock
+        );
+
+        $params = [];
+        $subject->addAspect($this->getDummyAspectMock());
+        $subject->execute($params, $this->pageRendererMock);
     }
 }

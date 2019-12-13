@@ -14,10 +14,14 @@ use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Aspect\WebPageAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
@@ -33,16 +37,36 @@ final class SchemaMarkupInjection
 
     private $aspects = [];
 
+    /** @var FrontendInterface */
+    private $cache;
+
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
-        SchemaManager $schemaManager = null
+        SchemaManager $schemaManager = null,
+        FrontendInterface $cache = null
     ) {
         $this->controller = $controller ?? $GLOBALS['TSFE'];
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
 
         $extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->configuration = $extensionConfiguration->get('schema');
+
+        $this->cache = $cache ?? $this->getCache();
+    }
+
+    private function getCache(): FrontendInterface
+    {
+        $identifier = 'pages';
+        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 10000000) {
+            $identifier = 'cache_' . $identifier;
+        }
+
+        try {
+            return GeneralUtility::makeInstance(CacheManager::class)->getCache($identifier);
+        } catch (NoSuchCacheException $e) {
+            return null;
+        }
     }
 
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
@@ -55,11 +79,26 @@ final class SchemaMarkupInjection
             return;
         }
 
-        foreach ($this->getAspects() as $aspect) {
-            $aspect->execute($this->schemaManager);
+        $result = $this->getMarkupFromCache();
+        if ($result === null) {
+            foreach ($this->getAspects() as $aspect) {
+                $aspect->execute($this->schemaManager);
+            }
+
+            if ($result = $this->schemaManager->renderJsonLd()) {
+                $this->storeMarkupInCache($result);
+            }
         }
 
-        $this->injectMarkupIntoPage($pageRenderer);
+        if (!$result) {
+            return;
+        }
+
+        if ($this->configuration['embedMarkupInBodySection'] ?? false) {
+            $pageRenderer->addFooterData($result);
+        } else {
+            $pageRenderer->addHeaderData($result);
+        }
     }
 
     private function isPageIndexed(): bool
@@ -71,19 +110,32 @@ final class SchemaMarkupInjection
         return $this->controller->page['no_index'] === 0;
     }
 
-    private function injectMarkupIntoPage(PageRenderer $pageRenderer): void
+    private function getMarkupFromCache(): ?string
     {
-        $result = $this->schemaManager->renderJsonLd();
+        if ($this->cache instanceof FrontendInterface && $markup = $this->cache->get($this->getCacheIdentifier())) {
+            return $markup;
+        }
 
-        if (!$result) {
+        return null;
+    }
+
+    private function getCacheIdentifier(): string
+    {
+        return $this->controller->newHash . '-tx-schema';
+    }
+
+    private function storeMarkupInCache(string $markup): void
+    {
+        if (!$this->cache instanceof FrontendInterface) {
             return;
         }
 
-        if ($this->configuration['embedMarkupInBodySection'] ?? false) {
-            $pageRenderer->addFooterData($result);
-        } else {
-            $pageRenderer->addHeaderData($result);
-        }
+        $this->cache->set(
+            $this->getCacheIdentifier(),
+            $markup,
+            ['pageId_' . $this->controller->page['uid']],
+            $this->controller->get_cache_timeout()
+        );
     }
 
     private function getAspects(): array
