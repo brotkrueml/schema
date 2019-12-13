@@ -59,6 +59,10 @@ final class BreadcrumbListAspect implements AspectInterface
                 continue;
             }
 
+            if ($page['doktype'] >= 199) {
+                continue;
+            }
+
             $rootLine[] = $page;
         }
 

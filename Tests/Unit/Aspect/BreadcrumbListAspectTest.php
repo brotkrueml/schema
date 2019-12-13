@@ -13,6 +13,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class BreadcrumbListAspectTest extends UnitTestCase
@@ -112,6 +113,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             [
                 2 => [
                     'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -120,6 +122,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
                 1 => [
                     'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -134,6 +137,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             [
                 2 => [
                     'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
                     'nav_title' => 'A nav title page',
                     'nav_hide' => '0',
@@ -142,6 +146,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
                 1 => [
                     'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -156,6 +161,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             [
                 3 => [
                     'uid' => 3,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
                     'nav_title' => '',
                     'nav_hide' => '1',
@@ -164,6 +170,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
                 2 => [
                     'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -172,6 +179,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
                 1 => [
                     'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -186,6 +194,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             [
                 2 => [
                     'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -194,6 +203,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
                 1 => [
                     'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -202,6 +212,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
                 0 => [
                     'uid' => 42,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'some other page',
                     'nav_title' => '',
                     'nav_hide' => '0',
@@ -210,6 +221,72 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 ],
             ],
             '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+        ];
+
+        yield 'Folder in rootline should not be rendered' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_SYSFOLDER,
+                    'title' => 'A folder',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                0 => [
+                    'uid' => 42,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+        ];
+
+        yield 'Menu separator in rootline should not be rendered, but doktype 198' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'doktype' => 198,
+                    'title' => 'A page with doktype 198',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_SPACER,
+                    'title' => 'A menu separator',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                0 => [
+                    'uid' => 42,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page with doktype 198","position":"1"}}</script>',
         ];
     }
 

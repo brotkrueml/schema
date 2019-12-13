@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Don't show special doktypes in BreadcrumbList (#28)
+
 ## [1.4.1] - 2019-12-01
 
 ### Fixed
