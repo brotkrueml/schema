@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Hook\TableConfiguration;
+namespace Brotkrueml\Schema\Hooks\TableConfiguration;
 
 /*
  * This file is part of the "schema" extension for TYPO3 CMS.

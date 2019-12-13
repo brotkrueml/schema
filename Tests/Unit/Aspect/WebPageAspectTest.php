@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Tests\Unit\Middleware;
+namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
+use Brotkrueml\Schema\Aspect\WebPageAspect;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Middleware\WebPageType;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
@@ -16,7 +16,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-class WebPageTypeTest extends UnitTestCase
+class WebPageAspectTest extends UnitTestCase
 {
     use TypeFixtureNamespace;
 
@@ -46,31 +46,25 @@ class WebPageTypeTest extends UnitTestCase
     /**
      * @test
      *
-     * @covers \Brotkrueml\Schema\Middleware\WebPageType::__construct
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::__construct
      */
-    public function constructWorksCorrectlyWithNoParametersGiven(): void
+    public function constructWorksCorrectlyWithNoParametersAreGiven(): void
     {
         $GLOBALS['TSFE'] = 'fake controller';
 
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $reflector = new \ReflectionClass(WebPageType::class);
+        $reflector = new \ReflectionClass(WebPageAspect::class);
 
         /** @noinspection PhpUnhandledExceptionInspection */
         $controller = $reflector->getProperty('controller');
         $controller->setAccessible(true);
 
         /** @noinspection PhpUnhandledExceptionInspection */
-        $schemaManager = $reflector->getProperty('schemaManager');
-        $schemaManager->setAccessible(true);
-
-        /** @noinspection PhpUnhandledExceptionInspection */
         $configuration = $reflector->getProperty('configuration');
         $configuration->setAccessible(true);
 
-        $subject = new WebPageType();
+        $subject = new WebPageAspect();
 
         self::assertSame('fake controller', $controller->getValue($subject));
-        self::assertInstanceOf(SchemaManager::class, $schemaManager->getValue($subject));
         self::assertInstanceOf(ExtensionConfiguration::class, $configuration->getValue($subject));
 
         unset($GLOBALS['TSFE']);
@@ -79,9 +73,9 @@ class WebPageTypeTest extends UnitTestCase
     /**
      * @test
      *
-     * @covers \Brotkrueml\Schema\Middleware\WebPageType::process
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
      */
-    public function automaticWebPageGenerationIsDeactivated()
+    public function whenAutomaticWebPageGenerationIsDeactivatedNoTypeIsAdded()
     {
         $this->setUpGeneralMocks();
 
@@ -99,27 +93,19 @@ class WebPageTypeTest extends UnitTestCase
             ->expects(self::never())
             ->method('hasWebPage');
 
-        (new WebPageType($this->controllerMock, $schemaManagerMock, $configurationMock))
-            ->process($this->requestMock, $this->handlerMock);
+        (new WebPageAspect($this->controllerMock, $configurationMock))
+            ->execute($schemaManagerMock);
     }
 
     protected function setUpGeneralMocks(): void
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
-
-        $this->requestMock = $this->createMock(ServerRequestInterface::class);
-
-        $this->handlerMock = $this->createMock(RequestHandlerInterface::class);
-        $this->handlerMock
-            ->expects(self::once())
-            ->method('handle')
-            ->with($this->requestMock);
     }
 
     /**
      * @test
      *
-     * @covers \Brotkrueml\Schema\Middleware\WebPageType::process
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
      */
     public function withAssignedWebPageModelRequestIsDirectlyPassedOverToNextMiddleware(): void
     {
@@ -132,18 +118,17 @@ class WebPageTypeTest extends UnitTestCase
             ->method('hasWebPage')
             ->willReturn(true);
 
-        (new WebPageType(
+        (new WebPageAspect(
             $this->controllerMock,
-            $schemaManagerMock,
-            $this->getExtensionConfigurationMockWithGetReturnTrue()
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         ))
-            ->process($this->requestMock, $this->handlerMock);
+            ->execute($schemaManagerMock);
     }
 
     /**
      * @return MockObject|ExtensionConfiguration
      */
-    private function getExtensionConfigurationMockWithGetReturnTrue()
+    private function getExtensionConfigurationMockWithGetReturnsTrue()
     {
         $configurationMock = $this->createMock(ExtensionConfiguration::class);
         $configurationMock
@@ -194,7 +179,7 @@ class WebPageTypeTest extends UnitTestCase
      *
      * @param array $pageProperties
      * @param AbstractType $expectedWebPage
-     * @covers       \Brotkrueml\Schema\Middleware\WebPageType::process
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
      */
     public function withNotAlreadyAssignedWebPageModelPropertiesFromTsfeAreSet(
         array $pageProperties,
@@ -211,21 +196,20 @@ class WebPageTypeTest extends UnitTestCase
             ->method('addType')
             ->with($expectedWebPage);
 
-        $subject = new WebPageType(
+        $subject = new WebPageAspect(
             $this->controllerMock,
-            $schemaManagerMock,
-            $this->getExtensionConfigurationMockWithGetReturnTrue()
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         );
 
-        $subject->process($this->requestMock, $this->handlerMock);
+        $subject->execute($schemaManagerMock);
     }
 
     /**
      * @test
      *
-     * @covers \Brotkrueml\Schema\Middleware\WebPageType::process
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
      */
-    public function whenTypeDoesNotExistNoWebPageIsSet(): void
+    public function whenTypeDoesNotExistsNoWebPageIsSet(): void
     {
         $this->setUpGeneralMocks();
 
@@ -239,11 +223,10 @@ class WebPageTypeTest extends UnitTestCase
             ->expects(self::never())
             ->method('addType');
 
-        (new WebPageType(
+        (new WebPageAspect(
             $this->controllerMock,
-            $schemaManagerMock,
-            $this->getExtensionConfigurationMockWithGetReturnTrue()
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         ))
-            ->process($this->requestMock, $this->handlerMock);
+            ->execute($schemaManagerMock);
     }
 }

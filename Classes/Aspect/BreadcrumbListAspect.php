@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Middleware;
+namespace Brotkrueml\Schema\Aspect;
 
 /*
  * This file is part of the "schema" extension for TYPO3 CMS.
@@ -14,22 +14,15 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Utility\Utility;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-final class BreadcrumbList implements MiddlewareInterface
+final class BreadcrumbListAspect implements AspectInterface
 {
     /** @var TypoScriptFrontendController */
     private $controller;
-
-    /** @var SchemaManager */
-    private $schemaManager;
 
     /** @var ExtensionConfiguration */
     private $configuration;
@@ -39,45 +32,44 @@ final class BreadcrumbList implements MiddlewareInterface
 
     public function __construct(
         TypoScriptFrontendController $controller = null,
-        SchemaManager $schemaManager = null,
         ExtensionConfiguration $configuration = null,
         ContentObjectRenderer $contentObjectRenderer = null
     ) {
         $this->controller = $controller ?: $GLOBALS['TSFE'];
-        $this->schemaManager = $schemaManager ?: GeneralUtility::makeInstance(SchemaManager::class);
         $this->configuration = $configuration ?: GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->contentObjectRenderer = $contentObjectRenderer ?: GeneralUtility::makeInstance(ContentObjectRenderer::class);
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function execute(SchemaManager $schemaManager): void
     {
         /** @noinspection PhpUnhandledExceptionInspection */
         $shouldEmbedBreadcrumbMarkup = (bool)$this->configuration->get('schema', 'automaticBreadcrumbSchemaGeneration');
 
-        if ($shouldEmbedBreadcrumbMarkup) {
-            $rootLine = [];
-            foreach ($this->controller->rootLine as $page) {
-                if ($page['is_siteroot']) {
-                    break;
-                }
-
-                if ($page['nav_hide']) {
-                    continue;
-                }
-
-                $rootLine[] = $page;
-            }
-
-            if (!empty($rootLine)) {
-                \sort($rootLine);
-                $this->buildBreadCrumbList($rootLine);
-            }
+        if (!$shouldEmbedBreadcrumbMarkup) {
+            return;
         }
 
-        return $handler->handle($request);
+        $rootLine = [];
+        foreach ($this->controller->rootLine as $page) {
+            if ($page['is_siteroot']) {
+                break;
+            }
+
+            if ($page['nav_hide']) {
+                continue;
+            }
+
+            $rootLine[] = $page;
+        }
+
+        if (!empty($rootLine)) {
+            \sort($rootLine);
+            $breadcrumbList = $this->buildBreadCrumbList($rootLine);
+            $schemaManager->addType($breadcrumbList);
+        }
     }
 
-    private function buildBreadCrumbList(array $rootLine): void
+    private function buildBreadCrumbList(array $rootLine): Type\BreadcrumbList
     {
         $breadcrumbList = (new Type\BreadcrumbList());
         foreach ($rootLine as $index => $page) {
@@ -103,6 +95,6 @@ final class BreadcrumbList implements MiddlewareInterface
             $breadcrumbList->addProperty('itemListElement', $item);
         }
 
-        $this->schemaManager->addType($breadcrumbList);
+        return $breadcrumbList;
     }
 }

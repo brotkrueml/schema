@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Tests\Unit\Middleware;
+namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
+use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Middleware\BreadcrumbList;
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,7 +15,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-class BreadcrumbListTest extends UnitTestCase
+class BreadcrumbListAspectTest extends UnitTestCase
 {
     use TypeFixtureNamespace;
 
@@ -54,28 +54,18 @@ class BreadcrumbListTest extends UnitTestCase
             ->expects(self::never())
             ->method('addType');
 
-        (new BreadcrumbList(
+        (new BreadcrumbListAspect(
             $this->controllerMock,
-            $schemaManagerMock,
             $configurationMock,
             $this->contentObjectRendererMock
         ))
-            ->process($this->requestMock, $this->handlerMock);
+            ->execute($schemaManagerMock);
     }
 
     protected function setUpGeneralMocks(): void
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
-
         $this->contentObjectRendererMock = $this->createMock(ContentObjectRenderer::class);
-
-        $this->requestMock = $this->createMock(ServerRequestInterface::class);
-
-        $this->handlerMock = $this->createMock(RequestHandlerInterface::class);
-        $this->handlerMock
-            ->expects(self::once())
-            ->method('handle')
-            ->with($this->requestMock);
     }
 
     /**
@@ -93,19 +83,18 @@ class BreadcrumbListTest extends UnitTestCase
             ->expects(self::never())
             ->method('addType');
 
-        (new BreadcrumbList(
+        (new BreadcrumbListAspect(
             $this->controllerMock,
-            $schemaManagerMock,
-            $this->getExtensionConfigurationMockWithGetReturnTrue(),
+            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
             $this->contentObjectRendererMock
         ))
-            ->process($this->requestMock, $this->handlerMock);
+            ->execute($schemaManagerMock);
     }
 
     /**
      * @return MockObject|ExtensionConfiguration
      */
-    private function getExtensionConfigurationMockWithGetReturnTrue()
+    private function getExtensionConfigurationMockWithGetReturnsTrue()
     {
         $configurationMock = $this->createMock(ExtensionConfiguration::class);
         $configurationMock
@@ -250,14 +239,13 @@ class BreadcrumbListTest extends UnitTestCase
             ])
             ->willReturn('https://example.org/the-page/');
 
-        $subject = new BreadcrumbList(
+        $subject = new BreadcrumbListAspect(
             $this->controllerMock,
-            $schemaManager,
-            $this->getExtensionConfigurationMockWithGetReturnTrue(),
+            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
             $this->contentObjectRendererMock
         );
 
-        $subject->process($this->requestMock, $this->handlerMock);
+        $subject->execute($schemaManager);
 
         self::assertSame($expected, $schemaManager->renderJsonLd());
     }
