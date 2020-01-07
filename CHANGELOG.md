@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Add Signal/PSR-14 event to decide about embedding of markup (#29)
+
 ## [1.4.2] - 2019-12-13
 
 ### Changed

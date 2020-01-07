@@ -135,3 +135,4 @@ In-Depth
    WebPage
    Breadcrumb
    MainEntity
+   Events

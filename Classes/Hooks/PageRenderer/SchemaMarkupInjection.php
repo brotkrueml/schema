@@ -13,15 +13,19 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
 use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Aspect\WebPageAspect;
+use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
@@ -75,7 +79,7 @@ final class SchemaMarkupInjection
             return;
         }
 
-        if (!$this->isPageIndexed()) {
+        if (!$this->shouldEmbedMarkup()) {
             return;
         }
 
@@ -101,13 +105,26 @@ final class SchemaMarkupInjection
         }
     }
 
-    private function isPageIndexed(): bool
+    private function shouldEmbedMarkup(): bool
     {
-        if (!ExtensionManagementUtility::isLoaded('seo')) {
-            return true;
+        $embedMarkup = true;
+
+        if (ExtensionManagementUtility::isLoaded('seo')) {
+            $embedMarkup = $this->controller->page['no_index'] === 0;
         }
 
-        return $this->controller->page['no_index'] === 0;
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $event = new ShouldEmbedMarkupEvent($this->controller->page, $embedMarkup);
+
+        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch) >= 10000000) {
+            $eventDispatcher = $objectManager->get(EventDispatcher::class);
+            $event = $eventDispatcher->dispatch($event);
+        }
+
+        $signalSlotDispatcher = $objectManager->get(Dispatcher::class);
+        $signalSlotDispatcher->dispatch(__CLASS__, 'shouldEmbedMarkup', [$event]);
+
+        return $event->getEmbedMarkup();
     }
 
     private function getMarkupFromCache(): ?string

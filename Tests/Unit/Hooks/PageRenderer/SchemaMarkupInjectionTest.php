@@ -15,6 +15,8 @@ use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -46,6 +48,16 @@ class SchemaMarkupInjectionTest extends TestCase
      * @var MockObject|FrontendInterface
      */
     private $cacheMock;
+
+    /**
+     * @var MockObject|ObjectManager
+     */
+    private $objectManagerMock;
+
+    /**
+     * @var MockObject|Dispatcher
+     */
+    private $signalSlotDispatcherMock;
 
     public static function setUpBeforeClass(): void
     {
@@ -81,6 +93,17 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
+
+        $this->signalSlotDispatcherMock = $this->createMock(Dispatcher::class);
+
+        $this->objectManagerMock = $this->createMock(ObjectManager::class);
+        $this->objectManagerMock
+            ->expects(self::any())
+            ->method('get')
+            ->with(Dispatcher::class)
+            ->willReturn($this->signalSlotDispatcherMock);
+
+        GeneralUtility::setSingletonInstance(ObjectManager::class, $this->objectManagerMock);
     }
 
     /**
@@ -88,8 +111,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeInBackendModeDoesNothing()
     {
-        \define('TYPO3_MODE', 'BE');
-
+        $this->defineConstants('9.5', 'BE');
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
@@ -110,8 +132,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithoutDefinedMarkupAndNoAspectsDoesNotEmbedAnything()
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->pageRendererMock
             ->expects(self::never())
             ->method('addHeaderData');
@@ -142,8 +163,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(true);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
@@ -181,8 +201,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(true);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
@@ -220,8 +239,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function seoExtensionIsNotInstalledAddsHeaderData(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(false);
 
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
@@ -258,8 +276,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function seoExtensionIsInstalledAndNoIndexIsSetNoHeaderDataIsEmbedded(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(true);
 
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
@@ -289,8 +306,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function givenAspectIsCalled(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(true);
 
         $aspectMock = $this->createMock(AspectInterface::class);
@@ -321,8 +337,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIDefinedItIsUsedToGetMarkup(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(true);
 
         $cacheMock = $this->createMock(FrontendInterface::class);
@@ -353,8 +368,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
     {
-        \define('TYPO3_MODE', 'FE');
-
+        $this->defineConstants('9.5', 'FE');
         $this->setSeoExtensionInstallationState(true);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
@@ -385,5 +399,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $params = [];
         $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
+    }
+
+    private function defineConstants(string $version, string $mode): void
+    {
+        \define('TYPO3_branch', $version);
+        \define('TYPO3_MODE', $mode);
     }
 }
