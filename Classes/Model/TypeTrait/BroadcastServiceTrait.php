@@ -18,6 +18,7 @@ trait BroadcastServiceTrait
     protected $broadcastTimezone;
     protected $broadcaster;
     protected $hasBroadcastChannel;
+    protected $inLanguage;
     protected $parentService;
     protected $videoFormat;
 }

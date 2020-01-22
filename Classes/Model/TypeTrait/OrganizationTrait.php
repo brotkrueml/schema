@@ -33,6 +33,7 @@ trait OrganizationTrait
     protected $globalLocationNumber;
     protected $hasOfferCatalog;
     protected $hasPOS;
+    protected $interactionStatistic;
     protected $isicV4;
     protected $legalName;
     protected $leiCode;

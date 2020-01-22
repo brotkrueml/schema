@@ -59,6 +59,9 @@ ImageGallery       Page with an image gallery as the most valuable content
 ------------------ ----------------------------------------------------------------------------------
 ItemPage           Page about a single item, e.g. a blog posting, a photograph, a product
 ------------------ ----------------------------------------------------------------------------------
+MediaGallery       A mixed-media page that can contains media such as images, videos, and other
+                   multimedia
+------------------ ----------------------------------------------------------------------------------
 ProfilePage        Page for user profiles
 ------------------ ----------------------------------------------------------------------------------
 QAPage             A page with a question and one or more answers to this question

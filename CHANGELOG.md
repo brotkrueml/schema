@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add Signal/PSR-14 event to decide about embedding of markup (#29)
+- Update schema definition to version 6.0 (#3)
 
 ## [1.4.2] - 2019-12-13
 

@@ -41,6 +41,7 @@ trait PersonTrait
     protected $homeLocation;
     protected $honorificPrefix;
     protected $honorificSuffix;
+    protected $interactionStatistic;
     protected $isicV4;
     protected $jobTitle;
     protected $knows;
