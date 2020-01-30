@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.1] - 2020-01-30
+
 ### Fixed
 
 - Remove doubled base URL in id of list item in BreadcrumbViewHelper (#31)
@@ -148,7 +150,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/brotkrueml/schema/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/brotkrueml/schema/compare/v1.4.2...v1.5.0
 [1.4.2]: https://github.com/brotkrueml/schema/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/brotkrueml/schema/compare/v1.4.0...v1.4.1
