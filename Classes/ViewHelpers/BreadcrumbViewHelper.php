@@ -105,9 +105,14 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
                 $webPageTypeClass = $givenItemTypeClass ?: $webPageTypeClass;
             }
 
+            $id = $arguments[static::ARGUMENT_BREADCRUMB][$i]['link'];
+            if (\strpos($id, $siteUrl) === false) {
+                $id = $siteUrl . \ltrim($id, '/');
+            }
+
             /** @var AbstractType $itemType */
             $itemType = new $webPageTypeClass();
-            $itemType->setId($siteUrl . ltrim($arguments[static::ARGUMENT_BREADCRUMB][$i]['link'], '/'));
+            $itemType->setId($id);
 
             $item = (new ListItem())->setProperties([
                 'position' => $i + 1,

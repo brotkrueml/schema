@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Remove doubled base URL in id of list item in BreadcrumbViewHelper (#31)
+
 ## [1.5.0] - 2020-01-22
 
 ### Added
