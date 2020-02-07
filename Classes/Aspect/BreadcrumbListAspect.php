@@ -67,7 +67,7 @@ final class BreadcrumbListAspect implements AspectInterface
         }
 
         if (!empty($rootLine)) {
-            \sort($rootLine);
+            $rootLine = array_reverse($rootLine);
             $breadcrumbList = $this->buildBreadCrumbList($rootLine);
             $schemaManager->addType($breadcrumbList);
         }
