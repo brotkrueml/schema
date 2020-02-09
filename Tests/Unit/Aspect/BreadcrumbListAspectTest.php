@@ -336,7 +336,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             ->expects(self::at(0))
             ->method('typoLink_URL')
             ->with([
-                'parameter' => '1',
+                'parameter' => '2',
                 'forceAbsoluteUrl' => true,
             ])
             ->willReturn('https://example.org/level-1/');
@@ -345,14 +345,50 @@ class BreadcrumbListAspectTest extends UnitTestCase
             ->expects(self::at(1))
             ->method('typoLink_URL')
             ->with([
-                'parameter' => '123',
+                'parameter' => '33',
                 'forceAbsoluteUrl' => true,
             ])
             ->willReturn('https://example.org/level-2/');
 
+        $this->contentObjectRendererMock
+            ->expects(self::at(2))
+            ->method('typoLink_URL')
+            ->with([
+                'parameter' => '22',
+                'forceAbsoluteUrl' => true,
+            ])
+            ->willReturn('https://example.org/level-3/');
+
+        $this->contentObjectRendererMock
+            ->expects(self::at(3))
+            ->method('typoLink_URL')
+            ->with([
+                'parameter' => '111',
+                'forceAbsoluteUrl' => true,
+            ])
+            ->willReturn('https://example.org/level-4/');
+
         $this->controllerMock->rootLine =             [
             [
-                'uid' => 123,
+                'uid' => 111,
+                'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                'title' => 'Level 4',
+                'nav_title' => '',
+                'nav_hide' => '0',
+                'is_siteroot' => '0',
+                'tx_schema_webpagetype' => '',
+            ],
+            [
+                'uid' => 22,
+                'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                'title' => 'Level 3',
+                'nav_title' => '',
+                'nav_hide' => '0',
+                'is_siteroot' => '0',
+                'tx_schema_webpagetype' => '',
+            ],
+            [
+                'uid' => 33,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,
                 'title' => 'Level 2',
                 'nav_title' => '',
@@ -361,7 +397,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 'tx_schema_webpagetype' => '',
             ],
             [
-                'uid' => 1,
+                'uid' => 2,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,
                 'title' => 'Level 1',
                 'nav_title' => '',
@@ -370,7 +406,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                 'tx_schema_webpagetype' => '',
             ],
             [
-                'uid' => 42,
+                'uid' => 1,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,
                 'title' => 'Site root page',
                 'nav_title' => '',
@@ -390,6 +426,6 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
         $subject->execute($schemaManager);
 
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"}]}</script>', $schemaManager->renderJsonLd());
+        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}</script>', $schemaManager->renderJsonLd());
     }
 }
