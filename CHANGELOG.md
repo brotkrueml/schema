@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Correct sorting of rootline during automatic breadcrumb generation (#32)
+
 ## [1.5.1] - 2020-01-30
 
 ### Fixed
