@@ -40,7 +40,7 @@ Current limitations
 For now, only accepted terms are available, the usage of
 `pending types and properties <https://pending.schema.org/>`__ is not possible.
 But if they are integrated into the core vocabulary, they are available within
-the next update.
+the next update. Also extensions, like bib or health, are not included.
 
 
 .. _release-management:
