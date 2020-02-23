@@ -11,13 +11,30 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The geographic coordinates of a place or event.
  */
 final class GeoCoordinates extends AbstractType
 {
-    use TypeTrait\GeoCoordinatesTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'address' => null,
+        'addressCountry' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'elevation' => null,
+        'identifier' => null,
+        'image' => null,
+        'latitude' => null,
+        'longitude' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'postalCode' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

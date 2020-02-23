@@ -11,15 +11,60 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An over the air or online broadcast event.
  */
 final class BroadcastEvent extends AbstractType
 {
-    use TypeTrait\BroadcastEventTrait;
-    use TypeTrait\EventTrait;
-    use TypeTrait\PublicationEventTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'about' => null,
+        'actor' => null,
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'attendee' => null,
+        'audience' => null,
+        'broadcastOfEvent' => null,
+        'composer' => null,
+        'contributor' => null,
+        'description' => null,
+        'director' => null,
+        'disambiguatingDescription' => null,
+        'doorTime' => null,
+        'duration' => null,
+        'endDate' => null,
+        'eventStatus' => null,
+        'funder' => null,
+        'identifier' => null,
+        'image' => null,
+        'inLanguage' => null,
+        'isAccessibleForFree' => null,
+        'isLiveBroadcast' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'maximumAttendeeCapacity' => null,
+        'name' => null,
+        'offers' => null,
+        'organizer' => null,
+        'performer' => null,
+        'potentialAction' => null,
+        'previousStartDate' => null,
+        'publishedOn' => null,
+        'recordedIn' => null,
+        'remainingAttendeeCapacity' => null,
+        'review' => null,
+        'sameAs' => null,
+        'sponsor' => null,
+        'startDate' => null,
+        'subEvent' => null,
+        'subjectOf' => null,
+        'superEvent' => null,
+        'translator' => null,
+        'typicalAgeRange' => null,
+        'url' => null,
+        'videoFormat' => null,
+        'workFeatured' => null,
+        'workPerformed' => null,
+    ];
 }

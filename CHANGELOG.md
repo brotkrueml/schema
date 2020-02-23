@@ -6,16 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Adapt properties management in type models
+
 ## [1.5.2] - 2020-02-09
 
 ### Fixed
-
 - Correct sorting of rootline during automatic breadcrumb generation (#32)
 
 ## [1.5.1] - 2020-01-30
 
 ### Fixed
-
 - Remove doubled base URL in id of list item in BreadcrumbViewHelper (#31)
 
 ## [1.5.0] - 2020-01-22

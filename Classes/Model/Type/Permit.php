@@ -11,13 +11,31 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A permit issued by an organization, e.g. a parking pass.
  */
 final class Permit extends AbstractType
 {
-    use TypeTrait\PermitTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'issuedBy' => null,
+        'issuedThrough' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'permitAudience' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'validFor' => null,
+        'validFrom' => null,
+        'validIn' => null,
+        'validUntil' => null,
+    ];
 }

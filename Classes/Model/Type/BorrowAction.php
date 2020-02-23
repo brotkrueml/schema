@@ -11,15 +11,38 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of obtaining an object under an agreement to return it at a later date. Reciprocal of LendAction.
  */
 final class BorrowAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\BorrowActionTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TransferActionTrait;
+    protected $properties = [
+        'actionStatus' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endTime' => null,
+        'error' => null,
+        'fromLocation' => null,
+        'identifier' => null,
+        'image' => null,
+        'instrument' => null,
+        'lender' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'result' => null,
+        'sameAs' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'toLocation' => null,
+        'url' => null,
+    ];
 }

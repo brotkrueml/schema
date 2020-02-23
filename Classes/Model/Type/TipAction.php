@@ -11,15 +11,39 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
  */
 final class TipAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TipActionTrait;
-    use TypeTrait\TradeActionTrait;
+    protected $properties = [
+        'actionStatus' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endTime' => null,
+        'error' => null,
+        'identifier' => null,
+        'image' => null,
+        'instrument' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'price' => null,
+        'priceCurrency' => null,
+        'priceSpecification' => null,
+        'recipient' => null,
+        'result' => null,
+        'sameAs' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'url' => null,
+    ];
 }

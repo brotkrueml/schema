@@ -11,13 +11,26 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A subscription which allows a user to access media including audio, video, books, etc.
  */
 final class MediaSubscription extends AbstractType
 {
-    use TypeTrait\MediaSubscriptionTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'authenticator' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'expectsAcceptanceOf' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

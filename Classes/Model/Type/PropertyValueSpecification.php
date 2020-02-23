@@ -11,13 +11,35 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A Property value specification.
  */
 final class PropertyValueSpecification extends AbstractType
 {
-    use TypeTrait\PropertyValueSpecificationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'defaultValue' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxValue' => null,
+        'minValue' => null,
+        'multipleValues' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'readonlyValue' => null,
+        'sameAs' => null,
+        'stepValue' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'valueMaxLength' => null,
+        'valueMinLength' => null,
+        'valueName' => null,
+        'valuePattern' => null,
+        'valueRequired' => null,
+    ];
 }

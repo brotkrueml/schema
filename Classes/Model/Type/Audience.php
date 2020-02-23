@@ -11,13 +11,26 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
  */
 final class Audience extends AbstractType
 {
-    use TypeTrait\AudienceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'audienceType' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'geographicArea' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

@@ -11,14 +11,45 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
  */
 final class GovernmentService extends AbstractType
 {
-    use TypeTrait\GovernmentServiceTrait;
-    use TypeTrait\ServiceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'areaServed' => null,
+        'audience' => null,
+        'availableChannel' => null,
+        'award' => null,
+        'brand' => null,
+        'broker' => null,
+        'category' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'hasOfferCatalog' => null,
+        'hoursAvailable' => null,
+        'identifier' => null,
+        'image' => null,
+        'isRelatedTo' => null,
+        'isSimilarTo' => null,
+        'logo' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'offers' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'providerMobility' => null,
+        'review' => null,
+        'sameAs' => null,
+        'serviceOperator' => null,
+        'serviceOutput' => null,
+        'serviceType' => null,
+        'slogan' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

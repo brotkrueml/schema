@@ -11,14 +11,38 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of an agent communicating (service provider, social media, etc) their arrival by registering/confirming for a previously reserved service (e.g. flight check in) or at a place (e.g. hotel), possibly resulting in a result (boarding pass, etc).
  */
 final class CheckInAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\CommunicateActionTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'about' => null,
+        'actionStatus' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endTime' => null,
+        'error' => null,
+        'identifier' => null,
+        'image' => null,
+        'inLanguage' => null,
+        'instrument' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'recipient' => null,
+        'result' => null,
+        'sameAs' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'url' => null,
+    ];
 }

@@ -11,15 +11,39 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of taking money from a buyer in exchange for goods or services rendered. An agent sells an object, product, or service to a buyer for a price. Reciprocal of BuyAction.
  */
 final class SellAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\SellActionTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TradeActionTrait;
+    protected $properties = [
+        'actionStatus' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'buyer' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endTime' => null,
+        'error' => null,
+        'identifier' => null,
+        'image' => null,
+        'instrument' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'price' => null,
+        'priceCurrency' => null,
+        'priceSpecification' => null,
+        'result' => null,
+        'sameAs' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'url' => null,
+    ];
 }

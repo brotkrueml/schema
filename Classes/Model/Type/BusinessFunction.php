@@ -11,12 +11,24 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The business function specifies the type of activity or access (i.e., the bundle of rights) offered by the organization or business person through the offer. Typical are sell, rental or lease, maintenance or repair, manufacture / produce, recycle / dispose, engineering / construction, or installation. Proprietary specifications of access rights are also instances of this class.
  */
 final class BusinessFunction extends AbstractType
 {
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

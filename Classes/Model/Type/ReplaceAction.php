@@ -11,15 +11,38 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of editing a recipient by replacing an old object with a new object.
  */
 final class ReplaceAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\ReplaceActionTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\UpdateActionTrait;
+    protected $properties = [
+        'actionStatus' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endTime' => null,
+        'error' => null,
+        'identifier' => null,
+        'image' => null,
+        'instrument' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'replacee' => null,
+        'replacer' => null,
+        'result' => null,
+        'sameAs' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'targetCollection' => null,
+        'url' => null,
+    ];
 }

@@ -11,12 +11,24 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
  */
 final class GamePlayMode extends AbstractType
 {
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

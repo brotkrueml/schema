@@ -11,14 +11,34 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
  */
 final class GeoCircle extends AbstractType
 {
-    use TypeTrait\GeoCircleTrait;
-    use TypeTrait\GeoShapeTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'address' => null,
+        'addressCountry' => null,
+        'alternateName' => null,
+        'box' => null,
+        'circle' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'elevation' => null,
+        'geoMidpoint' => null,
+        'geoRadius' => null,
+        'identifier' => null,
+        'image' => null,
+        'line' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'polygon' => null,
+        'postalCode' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

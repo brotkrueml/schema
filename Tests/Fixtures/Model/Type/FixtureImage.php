@@ -7,7 +7,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 class FixtureImage extends AbstractType
 {
-    protected $name;
-    protected $description;
-    protected $image;
+    protected $properties = [
+        'name' => null,
+        'description' => null,
+        'image' => null,
+    ];
 }

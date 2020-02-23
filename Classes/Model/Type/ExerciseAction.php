@@ -11,15 +11,45 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
  */
 final class ExerciseAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\ExerciseActionTrait;
-    use TypeTrait\PlayActionTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'actionStatus' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'audience' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'distance' => null,
+        'endTime' => null,
+        'error' => null,
+        'event' => null,
+        'exerciseCourse' => null,
+        'fromLocation' => null,
+        'identifier' => null,
+        'image' => null,
+        'instrument' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'opponent' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'result' => null,
+        'sameAs' => null,
+        'sportsActivityLocation' => null,
+        'sportsEvent' => null,
+        'sportsTeam' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'toLocation' => null,
+        'url' => null,
+    ];
 }

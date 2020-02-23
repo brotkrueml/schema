@@ -11,13 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A structured value providing information about when a certain organization or person owned a certain product.
  */
 final class OwnershipInfo extends AbstractType
 {
-    use TypeTrait\OwnershipInfoTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'acquiredFrom' => null,
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'ownedFrom' => null,
+        'ownedThrough' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'typeOfGood' => null,
+        'url' => null,
+    ];
 }

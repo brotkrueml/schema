@@ -11,13 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
  */
 final class Seat extends AbstractType
 {
-    use TypeTrait\SeatTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'seatNumber' => null,
+        'seatRow' => null,
+        'seatSection' => null,
+        'seatingType' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

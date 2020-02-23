@@ -11,13 +11,30 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An entry point, within some Web-based protocol.
  */
 final class EntryPoint extends AbstractType
 {
-    use TypeTrait\EntryPointTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'actionApplication' => null,
+        'actionPlatform' => null,
+        'additionalType' => null,
+        'alternateName' => null,
+        'contentType' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'encodingType' => null,
+        'httpMethod' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'urlTemplate' => null,
+    ];
 }

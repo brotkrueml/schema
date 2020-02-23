@@ -11,13 +11,29 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An intangible item that describes an alignment between a learning resource and a node in an educational framework.
  */
 final class AlignmentObject extends AbstractType
 {
-    use TypeTrait\AlignmentObjectTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alignmentType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'educationalFramework' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'targetDescription' => null,
+        'targetName' => null,
+        'targetUrl' => null,
+        'url' => null,
+    ];
 }

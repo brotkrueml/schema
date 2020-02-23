@@ -5,22 +5,14 @@ namespace Brotkrueml\Schema\Tests\Fixtures\Model\Type;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
-trait FixtureThingTraitA
-{
-    protected $name;
-    protected $url;
-}
-
-trait FixtureThingTraitB
-{
-    protected $description;
-    protected $image;
-    protected $alternateName;
-    protected $identifier;
-}
-
 class FixtureThing extends AbstractType
 {
-    use FixtureThingTraitA;
-    use FixtureThingTraitB;
+    protected $properties = [
+        'alternateName' => null,
+        'identifier' => null,
+        'description' => null,
+        'image' => null,
+        'name' => null,
+        'url' => null,
+    ];
 }

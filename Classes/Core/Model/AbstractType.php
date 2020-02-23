@@ -19,7 +19,15 @@ abstract class AbstractType
      *
      * @var string|null
      */
-    private $_id;
+    private $id;
+
+    /**
+     * The properties of a specific type: <propertyName> => <propertyValue>
+     * These are defined in the type model class
+     *
+     * @var array
+     */
+    protected $properties = [];
 
     /**
      * The fully rendered type with all children as array
@@ -35,7 +43,7 @@ abstract class AbstractType
      */
     public function getId(): ?string
     {
-        return $this->_id;
+        return $this->id;
     }
 
     /**
@@ -46,7 +54,7 @@ abstract class AbstractType
      */
     public function setId(string $id): self
     {
-        $this->_id = $id;
+        $this->id = $id;
 
         return $this;
     }
@@ -59,7 +67,13 @@ abstract class AbstractType
      */
     public function hasProperty(string $propertyName): bool
     {
-        return \property_exists($this, $propertyName);
+        try {
+            $this->checkPropertyExists($propertyName);
+        } catch (\DomainException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -72,12 +86,12 @@ abstract class AbstractType
     {
         $this->checkPropertyExists($propertyName);
 
-        return $this->$propertyName;
+        return $this->properties[$propertyName];
     }
 
     private function checkPropertyExists(string $propertyName): void
     {
-        if (!\property_exists($this, $propertyName)) {
+        if (!\array_key_exists($propertyName, $this->properties)) {
             throw new \DomainException(
                 sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
                 1561829996
@@ -97,7 +111,7 @@ abstract class AbstractType
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
 
-        $this->$propertyName = $propertyValue;
+        $this->properties[$propertyName] = $propertyValue;
 
         return $this;
     }
@@ -164,24 +178,24 @@ abstract class AbstractType
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
 
-        if ($this->$propertyName === null) {
-            $this->$propertyName = $propertyValue;
+        if ($this->properties[$propertyName] === null) {
+            $this->properties[$propertyName] = $propertyValue;
 
             return $this;
         }
 
-        if (\is_array($this->$propertyName)) {
+        if (\is_array($this->properties[$propertyName])) {
             if (\is_string($propertyValue) || $propertyValue instanceof AbstractType) {
                 $propertyValue = [$propertyValue];
             }
 
-            $this->$propertyName = \array_merge($this->$propertyName, $propertyValue);
+            $this->properties[$propertyName] = \array_merge($this->properties[$propertyName], $propertyValue);
 
             return $this;
         }
 
-        $this->$propertyName = [
-            $this->$propertyName,
+        $this->properties[$propertyName] = [
+            $this->properties[$propertyName],
             $propertyValue,
         ];
 
@@ -218,7 +232,7 @@ abstract class AbstractType
     {
         $this->checkPropertyExists($propertyName);
 
-        $this->$propertyName = null;
+        $this->properties[$propertyName] = null;
 
         return $this;
     }
@@ -230,16 +244,7 @@ abstract class AbstractType
      */
     public function getPropertyNames(): array
     {
-        $properties = \array_keys(
-            \array_filter(
-                \get_object_vars($this),
-                function ($property) {
-                    return \substr($property, 0, 1) !== '_';
-                },
-                ARRAY_FILTER_USE_KEY
-            )
-        );
-
+        $properties = \array_keys($this->properties);
         \sort($properties);
 
         return $properties;
@@ -253,7 +258,7 @@ abstract class AbstractType
     public function isEmpty(): bool
     {
         $propertiesNotEmpty = \array_filter($this->getPropertyNames(), function ($property) {
-            return !empty($this->$property);
+            return !empty($this->properties[$property]);
         });
 
         return empty($propertiesNotEmpty);
@@ -288,29 +293,29 @@ abstract class AbstractType
 
     private function addIdToResultArray(): void
     {
-        if ($this->_id) {
-            $this->__resultArray['@id'] = $this->_id;
+        if ($this->id) {
+            $this->__resultArray['@id'] = $this->id;
         }
     }
 
     private function addPropertiesToResultArray(): void
     {
         foreach ($this->getPropertyNames() as $property) {
-            if ($this->$property === null || $this->$property === '') {
+            if ($this->properties[$property] === null || $this->properties[$property] === '') {
                 continue;
             }
 
-            if ($this->$property instanceof AbstractType) {
-                $this->__resultArray[$property] = $this->$property->toArray();
+            if ($this->properties[$property] instanceof AbstractType) {
+                $this->__resultArray[$property] = $this->properties[$property]->toArray();
 
                 continue;
             }
 
-            if (\is_array($this->$property)) {
+            if (\is_array($this->properties[$property])) {
                 $this->__resultArray[$property] = [];
 
                 /** @var AbstractType|string $singleValue */
-                foreach ($this->$property as $singleValue) {
+                foreach ($this->properties[$property] as $singleValue) {
                     $this->__resultArray[$property][] =
                         \is_string($singleValue)
                             ? $singleValue
@@ -320,7 +325,7 @@ abstract class AbstractType
                 continue;
             }
 
-            $this->__resultArray[$property] = $this->$property;
+            $this->__resultArray[$property] = $this->properties[$property];
         }
     }
 }

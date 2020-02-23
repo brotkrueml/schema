@@ -11,14 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
  */
 final class PerformanceRole extends AbstractType
 {
-    use TypeTrait\PerformanceRoleTrait;
-    use TypeTrait\RoleTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'characterName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endDate' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'roleName' => null,
+        'sameAs' => null,
+        'startDate' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

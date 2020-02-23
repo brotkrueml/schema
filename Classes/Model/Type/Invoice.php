@@ -11,13 +11,39 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A statement of the money due for goods or services; a bill.
  */
 final class Invoice extends AbstractType
 {
-    use TypeTrait\InvoiceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'accountId' => null,
+        'additionalType' => null,
+        'alternateName' => null,
+        'billingPeriod' => null,
+        'broker' => null,
+        'category' => null,
+        'confirmationNumber' => null,
+        'customer' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'minimumPaymentDue' => null,
+        'name' => null,
+        'paymentDueDate' => null,
+        'paymentMethod' => null,
+        'paymentMethodId' => null,
+        'paymentStatus' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'referencesOrder' => null,
+        'sameAs' => null,
+        'scheduledPaymentDate' => null,
+        'subjectOf' => null,
+        'totalPaymentDue' => null,
+        'url' => null,
+    ];
 }

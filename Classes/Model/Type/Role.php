@@ -11,13 +11,27 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Represents additional information about a relationship or property. For example a Role can be used to say that a \&#039;member\&#039; role linking some SportsTeam to a player occurred during a particular time period. Or that a Person\&#039;s \&#039;actor\&#039; role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like \&#039;member\&#039; or \&#039;actor\&#039;.
  */
 final class Role extends AbstractType
 {
-    use TypeTrait\RoleTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endDate' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'roleName' => null,
+        'sameAs' => null,
+        'startDate' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

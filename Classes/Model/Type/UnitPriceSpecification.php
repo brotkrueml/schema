@@ -11,14 +11,38 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The price asked for a given offer by the respective organization or person.
  */
 final class UnitPriceSpecification extends AbstractType
 {
-    use TypeTrait\PriceSpecificationTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\UnitPriceSpecificationTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'billingIncrement' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'eligibleQuantity' => null,
+        'eligibleTransactionVolume' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxPrice' => null,
+        'minPrice' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'price' => null,
+        'priceCurrency' => null,
+        'priceType' => null,
+        'referenceQuantity' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'unitCode' => null,
+        'unitText' => null,
+        'url' => null,
+        'validFrom' => null,
+        'validThrough' => null,
+        'valueAddedTaxIncluded' => null,
+    ];
 }

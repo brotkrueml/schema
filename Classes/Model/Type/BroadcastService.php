@@ -11,14 +11,53 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
  */
 final class BroadcastService extends AbstractType
 {
-    use TypeTrait\BroadcastServiceTrait;
-    use TypeTrait\ServiceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'areaServed' => null,
+        'audience' => null,
+        'availableChannel' => null,
+        'award' => null,
+        'brand' => null,
+        'broadcastAffiliateOf' => null,
+        'broadcastDisplayName' => null,
+        'broadcastFrequency' => null,
+        'broadcastTimezone' => null,
+        'broadcaster' => null,
+        'broker' => null,
+        'category' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'hasBroadcastChannel' => null,
+        'hasOfferCatalog' => null,
+        'hoursAvailable' => null,
+        'identifier' => null,
+        'image' => null,
+        'inLanguage' => null,
+        'isRelatedTo' => null,
+        'isSimilarTo' => null,
+        'logo' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'offers' => null,
+        'parentService' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'providerMobility' => null,
+        'review' => null,
+        'sameAs' => null,
+        'serviceOutput' => null,
+        'serviceType' => null,
+        'slogan' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'videoFormat' => null,
+    ];
 }

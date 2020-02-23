@@ -11,14 +11,27 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An EducationalAudience.
  */
 final class EducationalAudience extends AbstractType
 {
-    use TypeTrait\AudienceTrait;
-    use TypeTrait\EducationalAudienceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'audienceType' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'educationalRole' => null,
+        'geographicArea' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

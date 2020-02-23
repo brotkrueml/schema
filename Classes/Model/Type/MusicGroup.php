@@ -11,14 +11,70 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
  */
 final class MusicGroup extends AbstractType
 {
-    use TypeTrait\MusicGroupTrait;
-    use TypeTrait\OrganizationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'address' => null,
+        'aggregateRating' => null,
+        'album' => null,
+        'alternateName' => null,
+        'alumni' => null,
+        'areaServed' => null,
+        'award' => null,
+        'brand' => null,
+        'contactPoint' => null,
+        'department' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'dissolutionDate' => null,
+        'duns' => null,
+        'email' => null,
+        'employee' => null,
+        'event' => null,
+        'faxNumber' => null,
+        'founder' => null,
+        'foundingDate' => null,
+        'foundingLocation' => null,
+        'funder' => null,
+        'genre' => null,
+        'globalLocationNumber' => null,
+        'hasOfferCatalog' => null,
+        'hasPOS' => null,
+        'identifier' => null,
+        'image' => null,
+        'interactionStatistic' => null,
+        'isicV4' => null,
+        'legalName' => null,
+        'leiCode' => null,
+        'location' => null,
+        'logo' => null,
+        'mainEntityOfPage' => null,
+        'makesOffer' => null,
+        'member' => null,
+        'memberOf' => null,
+        'naics' => null,
+        'name' => null,
+        'numberOfEmployees' => null,
+        'owns' => null,
+        'parentOrganization' => null,
+        'potentialAction' => null,
+        'publishingPrinciples' => null,
+        'review' => null,
+        'sameAs' => null,
+        'seeks' => null,
+        'slogan' => null,
+        'sponsor' => null,
+        'subOrganization' => null,
+        'subjectOf' => null,
+        'taxID' => null,
+        'telephone' => null,
+        'track' => null,
+        'url' => null,
+        'vatID' => null,
+    ];
 }

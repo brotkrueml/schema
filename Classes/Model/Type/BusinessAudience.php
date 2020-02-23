@@ -11,14 +11,29 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A set of characteristics belonging to businesses, e.g. who compose an item\&#039;s target audience.
  */
 final class BusinessAudience extends AbstractType
 {
-    use TypeTrait\AudienceTrait;
-    use TypeTrait\BusinessAudienceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'audienceType' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'geographicArea' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'numberOfEmployees' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'yearlyRevenue' => null,
+        'yearsInOperation' => null,
+    ];
 }

@@ -11,14 +11,32 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An aggregate rating of an Organization related to its role as an employer.
  */
 final class EmployerAggregateRating extends AbstractType
 {
-    use TypeTrait\AggregateRatingTrait;
-    use TypeTrait\RatingTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'author' => null,
+        'bestRating' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'itemReviewed' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'ratingCount' => null,
+        'ratingValue' => null,
+        'reviewAspect' => null,
+        'reviewCount' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'worstRating' => null,
+    ];
 }

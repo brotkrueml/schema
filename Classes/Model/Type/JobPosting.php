@@ -11,13 +11,43 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A listing that describes a job opening in a certain organization.
  */
 final class JobPosting extends AbstractType
 {
-    use TypeTrait\JobPostingTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'baseSalary' => null,
+        'datePosted' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'employmentType' => null,
+        'estimatedSalary' => null,
+        'experienceRequirements' => null,
+        'hiringOrganization' => null,
+        'identifier' => null,
+        'image' => null,
+        'incentiveCompensation' => null,
+        'industry' => null,
+        'jobBenefits' => null,
+        'jobLocation' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'occupationalCategory' => null,
+        'potentialAction' => null,
+        'relevantOccupation' => null,
+        'responsibilities' => null,
+        'salaryCurrency' => null,
+        'sameAs' => null,
+        'skills' => null,
+        'specialCommitments' => null,
+        'subjectOf' => null,
+        'title' => null,
+        'url' => null,
+        'validThrough' => null,
+        'workHours' => null,
+    ];
 }

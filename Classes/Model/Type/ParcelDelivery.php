@@ -11,13 +11,35 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
  */
 final class ParcelDelivery extends AbstractType
 {
-    use TypeTrait\ParcelDeliveryTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'deliveryAddress' => null,
+        'deliveryStatus' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'expectedArrivalFrom' => null,
+        'expectedArrivalUntil' => null,
+        'hasDeliveryMethod' => null,
+        'identifier' => null,
+        'image' => null,
+        'itemShipped' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'originAddress' => null,
+        'partOfOrder' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'trackingNumber' => null,
+        'trackingUrl' => null,
+        'url' => null,
+    ];
 }

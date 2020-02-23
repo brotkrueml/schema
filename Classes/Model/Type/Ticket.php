@@ -11,13 +11,32 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
  */
 final class Ticket extends AbstractType
 {
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TicketTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'dateIssued' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'issuedBy' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'priceCurrency' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'ticketNumber' => null,
+        'ticketToken' => null,
+        'ticketedSeat' => null,
+        'totalPrice' => null,
+        'underName' => null,
+        'url' => null,
+    ];
 }

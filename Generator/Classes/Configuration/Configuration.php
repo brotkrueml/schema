@@ -12,7 +12,6 @@ namespace Brotkrueml\Schema\Generator\Configuration;
 class Configuration
 {
     public $schemaPath = '';
-    public $modelTypeTraitPathTemplate = '';
     public $modelTypePathTemplate = '';
     public $viewHelperTypePathTemplate = '';
     public $typesProviderTemplate = '';

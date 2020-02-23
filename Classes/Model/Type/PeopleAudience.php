@@ -11,14 +11,32 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A set of characteristics belonging to people, e.g. who compose an item\&#039;s target audience.
  */
 final class PeopleAudience extends AbstractType
 {
-    use TypeTrait\AudienceTrait;
-    use TypeTrait\PeopleAudienceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'audienceType' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'geographicArea' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'requiredGender' => null,
+        'requiredMaxAge' => null,
+        'requiredMinAge' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'suggestedGender' => null,
+        'suggestedMaxAge' => null,
+        'suggestedMinAge' => null,
+        'url' => null,
+    ];
 }

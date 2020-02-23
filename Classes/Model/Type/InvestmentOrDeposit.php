@@ -11,15 +11,48 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
  */
 final class InvestmentOrDeposit extends AbstractType
 {
-    use TypeTrait\FinancialProductTrait;
-    use TypeTrait\InvestmentOrDepositTrait;
-    use TypeTrait\ServiceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'amount' => null,
+        'annualPercentageRate' => null,
+        'areaServed' => null,
+        'audience' => null,
+        'availableChannel' => null,
+        'award' => null,
+        'brand' => null,
+        'broker' => null,
+        'category' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'feesAndCommissionsSpecification' => null,
+        'hasOfferCatalog' => null,
+        'hoursAvailable' => null,
+        'identifier' => null,
+        'image' => null,
+        'interestRate' => null,
+        'isRelatedTo' => null,
+        'isSimilarTo' => null,
+        'logo' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'offers' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'providerMobility' => null,
+        'review' => null,
+        'sameAs' => null,
+        'serviceOutput' => null,
+        'serviceType' => null,
+        'slogan' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

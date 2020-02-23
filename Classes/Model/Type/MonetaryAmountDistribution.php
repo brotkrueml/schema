@@ -11,14 +11,31 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A statistical distribution of monetary amounts.
  */
 final class MonetaryAmountDistribution extends AbstractType
 {
-    use TypeTrait\MonetaryAmountDistributionTrait;
-    use TypeTrait\QuantitativeValueDistributionTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'currency' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'duration' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'median' => null,
+        'name' => null,
+        'percentile10' => null,
+        'percentile25' => null,
+        'percentile75' => null,
+        'percentile90' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

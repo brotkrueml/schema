@@ -180,40 +180,8 @@ class Generator
 
     protected function createTypes(): void
     {
-        $this->createTypeTrait($this->types[static::ROOT_TYPE_ID]);
         $this->createType($this->types[static::ROOT_TYPE_ID]);
         $this->createListOfAvailableTypes($this->types[static::ROOT_TYPE_ID]);
-    }
-
-    protected function createTypeTrait(Vertex $type): void
-    {
-        $properties = (array)$type->getAttribute('properties');
-
-        if (!empty($properties)) {
-            $label = (string)$type->getAttribute(self::ATTRIBUTE_LABEL);
-
-            $typeTrait = $this->twig->render(
-                'TypeTrait.php.twig',
-                [
-                    'traitName' => $label . 'Trait',
-                    'properties' => $this->getModelProperties($properties),
-                ]
-            );
-
-            \file_put_contents(
-                \sprintf(
-                    $this->configuration->modelTypeTraitPathTemplate,
-                    $label
-                ),
-                $typeTrait
-            );
-
-            $this->availableTypeTraits[] = $type->getId();
-        }
-
-        foreach ($type->getEdgesOut() as $edge) {
-            $this->createTypeTrait($edge->getVertexEnd());
-        }
     }
 
     protected function createType(Vertex $type): void
@@ -221,14 +189,14 @@ class Generator
         $label = (string)$type->getAttribute(self::ATTRIBUTE_LABEL);
         $comment = $this->shortenAndSanatiseComment((string)$type->getAttribute(self::ATTRIBUTE_COMMENT));
 
-        $typeTraits = $this->getTypeTraits($type);
+        $properties = $this->getPropertiesForType($type);
 
         $typeClass = $this->twig->render(
             'Type.php.twig',
             [
                 'comment' => $comment,
                 'className' => $label,
-                'traits' => $typeTraits,
+                'properties' => $properties,
                 'isWebPageType' => \in_array($label, $this->webPageTypes),
             ]
         );
@@ -262,43 +230,25 @@ class Generator
         }
     }
 
-    protected function getTypeTraits(Vertex $type): array
-    {
-        $typeTraits = [];
-
-        $properties = (array)$type->getAttribute('properties');
-        if (!empty($properties)) {
-            $typeTraits[] = $type->getAttribute(self::ATTRIBUTE_LABEL);
-        }
-
-        /** @var Directed $edge */
-        foreach ($type->getEdgesIn() as $edge) {
-            $parentType = $edge->getVertexStart();
-
-            if (\in_array($parentType->getId(), $this->availableTypeTraits)) {
-                $typeTraits = \array_merge(
-                    $typeTraits,
-                    [$parentType->getAttribute(self::ATTRIBUTE_LABEL)]
-                );
-            }
-
-            $typeTraits = \array_merge(
-                $typeTraits,
-                $this->getTypeTraits($parentType)
-            );
-        }
-
-        $typeTraits = \array_unique($typeTraits);
-        \sort($typeTraits);
-
-        return $typeTraits;
-    }
-
     protected function shortenAndSanatiseComment(string $comment): string
     {
         $tokenisedComment = \explode("\n", \str_replace("'", "\\'", \strip_tags($comment)));
 
         return $tokenisedComment[0];
+    }
+
+    protected function getPropertiesForType(Vertex $type)
+    {
+        $properties = $this->getModelProperties((array)$type->getAttribute('properties'));
+
+        foreach ($type->getEdgesIn() as $edge) {
+            $properties = \array_merge($properties, $this->getPropertiesForType($edge->getVertexStart()));
+        }
+
+        $properties = \array_unique($properties);
+        \sort($properties);
+
+        return $properties;
     }
 
     protected function getModelProperties(array $properties): array

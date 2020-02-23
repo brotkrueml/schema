@@ -11,13 +11,30 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A radio channel that uses FM.
  */
 final class FMRadioChannel extends AbstractType
 {
-    use TypeTrait\BroadcastChannelTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'broadcastChannelId' => null,
+        'broadcastFrequency' => null,
+        'broadcastServiceTier' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'genre' => null,
+        'identifier' => null,
+        'image' => null,
+        'inBroadcastLineup' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'providesBroadcastService' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

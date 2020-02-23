@@ -11,16 +11,42 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
  */
 final class RsvpAction extends AbstractType
 {
-    use TypeTrait\ActionTrait;
-    use TypeTrait\CommunicateActionTrait;
-    use TypeTrait\InformActionTrait;
-    use TypeTrait\RsvpActionTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'about' => null,
+        'actionStatus' => null,
+        'additionalNumberOfGuests' => null,
+        'additionalType' => null,
+        'agent' => null,
+        'alternateName' => null,
+        'comment' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endTime' => null,
+        'error' => null,
+        'event' => null,
+        'identifier' => null,
+        'image' => null,
+        'inLanguage' => null,
+        'instrument' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'object' => null,
+        'participant' => null,
+        'potentialAction' => null,
+        'recipient' => null,
+        'result' => null,
+        'rsvpResponse' => null,
+        'sameAs' => null,
+        'startTime' => null,
+        'subjectOf' => null,
+        'target' => null,
+        'url' => null,
+    ];
 }

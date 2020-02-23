@@ -11,14 +11,35 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The costs of settling the payment using a particular payment method.
  */
 final class PaymentChargeSpecification extends AbstractType
 {
-    use TypeTrait\PaymentChargeSpecificationTrait;
-    use TypeTrait\PriceSpecificationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'appliesToDeliveryMethod' => null,
+        'appliesToPaymentMethod' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'eligibleQuantity' => null,
+        'eligibleTransactionVolume' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxPrice' => null,
+        'minPrice' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'price' => null,
+        'priceCurrency' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'validFrom' => null,
+        'validThrough' => null,
+        'valueAddedTaxIncluded' => null,
+    ];
 }

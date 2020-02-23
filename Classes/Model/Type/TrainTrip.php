@@ -11,14 +11,34 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A trip on a commercial train line.
  */
 final class TrainTrip extends AbstractType
 {
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TrainTripTrait;
-    use TypeTrait\TripTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'arrivalPlatform' => null,
+        'arrivalStation' => null,
+        'arrivalTime' => null,
+        'departurePlatform' => null,
+        'departureStation' => null,
+        'departureTime' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'offers' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'trainName' => null,
+        'trainNumber' => null,
+        'url' => null,
+    ];
 }

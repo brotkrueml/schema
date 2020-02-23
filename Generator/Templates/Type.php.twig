@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
@@ -14,7 +14,6 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 {% if isWebPageType %}
     use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 {% endif %}
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * {{ comment }}
@@ -24,7 +23,9 @@ final class {{ className }} extends AbstractType
     implements WebPageTypeInterface
 {% endif %}
 {
-    {% for trait in traits %}
-        use TypeTrait\{{ trait }}Trait;
-    {% endfor %}
+    protected $properties = [
+        {% for property in properties %}
+            '{{ property }}' => null,
+        {% endfor %}
+    ];
 }

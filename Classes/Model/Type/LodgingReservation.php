@@ -11,14 +11,42 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A reservation for lodging at a hotel, motel, inn, etc.
  */
 final class LodgingReservation extends AbstractType
 {
-    use TypeTrait\LodgingReservationTrait;
-    use TypeTrait\ReservationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'bookingTime' => null,
+        'broker' => null,
+        'checkinTime' => null,
+        'checkoutTime' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'lodgingUnitDescription' => null,
+        'lodgingUnitType' => null,
+        'mainEntityOfPage' => null,
+        'modifiedTime' => null,
+        'name' => null,
+        'numAdults' => null,
+        'numChildren' => null,
+        'potentialAction' => null,
+        'priceCurrency' => null,
+        'programMembershipUsed' => null,
+        'provider' => null,
+        'reservationFor' => null,
+        'reservationId' => null,
+        'reservationStatus' => null,
+        'reservedTicket' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'totalPrice' => null,
+        'underName' => null,
+        'url' => null,
+    ];
 }

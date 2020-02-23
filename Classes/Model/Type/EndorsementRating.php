@@ -11,13 +11,29 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An EndorsementRating is a rating that expresses some level of endorsement, for example inclusion in a &quot;critic\&#039;s pick&quot; blog, a
  */
 final class EndorsementRating extends AbstractType
 {
-    use TypeTrait\RatingTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'author' => null,
+        'bestRating' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'ratingValue' => null,
+        'reviewAspect' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'worstRating' => null,
+    ];
 }

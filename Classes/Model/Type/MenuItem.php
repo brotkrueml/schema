@@ -11,13 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A food or drink item listed in a menu or menu section.
  */
 final class MenuItem extends AbstractType
 {
-    use TypeTrait\MenuItemTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'menuAddOn' => null,
+        'name' => null,
+        'nutrition' => null,
+        'offers' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'suitableForDiet' => null,
+        'url' => null,
+    ];
 }

@@ -11,14 +11,36 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * The price for the delivery of an offer using a particular delivery method.
  */
 final class DeliveryChargeSpecification extends AbstractType
 {
-    use TypeTrait\DeliveryChargeSpecificationTrait;
-    use TypeTrait\PriceSpecificationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'appliesToDeliveryMethod' => null,
+        'areaServed' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'eligibleQuantity' => null,
+        'eligibleRegion' => null,
+        'eligibleTransactionVolume' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxPrice' => null,
+        'minPrice' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'price' => null,
+        'priceCurrency' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'validFrom' => null,
+        'validThrough' => null,
+        'valueAddedTaxIncluded' => null,
+    ];
 }

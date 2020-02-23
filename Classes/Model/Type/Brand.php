@@ -11,13 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A brand is a name used by an organization or business person for labeling a product, product group, or similar.
  */
 final class Brand extends AbstractType
 {
-    use TypeTrait\BrandTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'logo' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'review' => null,
+        'sameAs' => null,
+        'slogan' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

@@ -11,13 +11,30 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A profession, may involve prolonged training and/or a formal qualification.
  */
 final class Occupation extends AbstractType
 {
-    use TypeTrait\OccupationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'estimatedSalary' => null,
+        'experienceRequirements' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'occupationLocation' => null,
+        'occupationalCategory' => null,
+        'potentialAction' => null,
+        'responsibilities' => null,
+        'sameAs' => null,
+        'skills' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

@@ -11,13 +11,30 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A set of requirements that a must be fulfilled in order to perform an Action.
  */
 final class ActionAccessSpecification extends AbstractType
 {
-    use TypeTrait\ActionAccessSpecificationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'availabilityEnds' => null,
+        'availabilityStarts' => null,
+        'category' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'eligibleRegion' => null,
+        'expectsAcceptanceOf' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'requiresSubscription' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

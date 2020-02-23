@@ -11,14 +11,34 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.
  */
 final class LocationFeatureSpecification extends AbstractType
 {
-    use TypeTrait\LocationFeatureSpecificationTrait;
-    use TypeTrait\PropertyValueTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'hoursAvailable' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxValue' => null,
+        'minValue' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'propertyID' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'unitCode' => null,
+        'unitText' => null,
+        'url' => null,
+        'validFrom' => null,
+        'validThrough' => null,
+        'value' => null,
+        'valueReference' => null,
+    ];
 }

@@ -11,13 +11,29 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
  */
 final class TypeAndQuantityNode extends AbstractType
 {
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TypeAndQuantityNodeTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'amountOfThisGood' => null,
+        'businessFunction' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'typeOfGood' => null,
+        'unitCode' => null,
+        'unitText' => null,
+        'url' => null,
+    ];
 }

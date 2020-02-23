@@ -11,14 +11,29 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An item used as either a tool or supply when performing the instructions for how to to achieve a result.
  */
 final class HowToItem extends AbstractType
 {
-    use TypeTrait\HowToItemTrait;
-    use TypeTrait\ListItemTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'item' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'nextItem' => null,
+        'position' => null,
+        'potentialAction' => null,
+        'previousItem' => null,
+        'requiredQuantity' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

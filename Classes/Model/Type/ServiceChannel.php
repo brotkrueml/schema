@@ -11,13 +11,32 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
  */
 final class ServiceChannel extends AbstractType
 {
-    use TypeTrait\ServiceChannelTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'availableLanguage' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'processingTime' => null,
+        'providesService' => null,
+        'sameAs' => null,
+        'serviceLocation' => null,
+        'servicePhone' => null,
+        'servicePostalAddress' => null,
+        'serviceSmsNumber' => null,
+        'serviceUrl' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

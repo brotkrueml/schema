@@ -11,13 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A trip or journey. An itinerary of visits to one or more places.
  */
 final class Trip extends AbstractType
 {
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TripTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'arrivalTime' => null,
+        'departureTime' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'offers' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

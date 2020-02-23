@@ -11,13 +11,29 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
  */
 final class Rating extends AbstractType
 {
-    use TypeTrait\RatingTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'author' => null,
+        'bestRating' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'ratingValue' => null,
+        'reviewAspect' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'worstRating' => null,
+    ];
 }

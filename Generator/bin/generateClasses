@@ -6,7 +6,6 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 echo "Removing old type and view helper classes ..."
-rm $CURRENT_DIR/../../Classes/Model/TypeTrait/*.php
 rm $CURRENT_DIR/../../Classes/Model/Type/*.php
 rm $CURRENT_DIR/../../Classes/ViewHelpers/Type/*.php
 echo
@@ -16,7 +15,6 @@ php $CURRENT_DIR/../generate.php
 echo
 
 echo "Formatting model classes ..."
-php-cs-fixer fix $CURRENT_DIR/../../Classes/Model/TypeTrait/ --config $CURRENT_DIR/../../.php_cs
 php-cs-fixer fix $CURRENT_DIR/../../Classes/Model/Type/ --config $CURRENT_DIR/../../.php_cs
 echo
 

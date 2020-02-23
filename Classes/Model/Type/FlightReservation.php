@@ -11,14 +11,40 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A reservation for air travel.
  */
 final class FlightReservation extends AbstractType
 {
-    use TypeTrait\FlightReservationTrait;
-    use TypeTrait\ReservationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'boardingGroup' => null,
+        'bookingTime' => null,
+        'broker' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'modifiedTime' => null,
+        'name' => null,
+        'passengerPriorityStatus' => null,
+        'passengerSequenceNumber' => null,
+        'potentialAction' => null,
+        'priceCurrency' => null,
+        'programMembershipUsed' => null,
+        'provider' => null,
+        'reservationFor' => null,
+        'reservationId' => null,
+        'reservationStatus' => null,
+        'reservedTicket' => null,
+        'sameAs' => null,
+        'securityScreening' => null,
+        'subjectOf' => null,
+        'totalPrice' => null,
+        'underName' => null,
+        'url' => null,
+    ];
 }

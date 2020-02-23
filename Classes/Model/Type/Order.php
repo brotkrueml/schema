@@ -11,13 +11,44 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
  */
 final class Order extends AbstractType
 {
-    use TypeTrait\OrderTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'acceptedOffer' => null,
+        'additionalType' => null,
+        'alternateName' => null,
+        'billingAddress' => null,
+        'broker' => null,
+        'confirmationNumber' => null,
+        'customer' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'discount' => null,
+        'discountCode' => null,
+        'discountCurrency' => null,
+        'identifier' => null,
+        'image' => null,
+        'isGift' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'orderDate' => null,
+        'orderDelivery' => null,
+        'orderNumber' => null,
+        'orderStatus' => null,
+        'orderedItem' => null,
+        'partOfInvoice' => null,
+        'paymentDueDate' => null,
+        'paymentMethod' => null,
+        'paymentMethodId' => null,
+        'paymentUrl' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'seller' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

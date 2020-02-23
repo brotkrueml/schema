@@ -11,14 +11,42 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An airline flight.
  */
 final class Flight extends AbstractType
 {
-    use TypeTrait\FlightTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TripTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'aircraft' => null,
+        'alternateName' => null,
+        'arrivalAirport' => null,
+        'arrivalGate' => null,
+        'arrivalTerminal' => null,
+        'arrivalTime' => null,
+        'boardingPolicy' => null,
+        'departureAirport' => null,
+        'departureGate' => null,
+        'departureTerminal' => null,
+        'departureTime' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'estimatedFlightDuration' => null,
+        'flightDistance' => null,
+        'flightNumber' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'mealService' => null,
+        'name' => null,
+        'offers' => null,
+        'potentialAction' => null,
+        'provider' => null,
+        'sameAs' => null,
+        'seller' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'webCheckinTime' => null,
+    ];
 }

@@ -11,13 +11,32 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A value indicating a steering position.
  */
 final class SteeringPositionValue extends AbstractType
 {
-    use TypeTrait\QualitativeValueTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalProperty' => null,
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'equal' => null,
+        'greater' => null,
+        'greaterOrEqual' => null,
+        'identifier' => null,
+        'image' => null,
+        'lesser' => null,
+        'lesserOrEqual' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'nonEqual' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'valueReference' => null,
+    ];
 }

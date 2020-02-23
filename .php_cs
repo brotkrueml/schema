@@ -3,6 +3,7 @@
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/Classes')
     ->in(__DIR__ . '/Configuration')
+    ->in(__DIR__ . '/Generator/Classes')
     ->in(__DIR__ . '/Tests')
 ;
 
@@ -11,6 +12,7 @@ return PhpCsFixer\Config::create()
     ->setRules([
         '@DoctrineAnnotation' => true,
         '@PSR2' => true,
+        'array_indentation' => true,
         'array_syntax' => ['syntax' => 'short'],
         'cast_spaces' => ['space' => 'none'],
         'concat_space' => ['spacing' => 'one'],

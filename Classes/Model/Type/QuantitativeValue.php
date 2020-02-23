@@ -11,13 +11,31 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A point value or interval for product characteristics and other purposes.
  */
 final class QuantitativeValue extends AbstractType
 {
-    use TypeTrait\QuantitativeValueTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalProperty' => null,
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxValue' => null,
+        'minValue' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'unitCode' => null,
+        'unitText' => null,
+        'url' => null,
+        'value' => null,
+        'valueReference' => null,
+    ];
 }

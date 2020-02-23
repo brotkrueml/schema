@@ -11,14 +11,60 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An event involving the delivery of an item.
  */
 final class DeliveryEvent extends AbstractType
 {
-    use TypeTrait\DeliveryEventTrait;
-    use TypeTrait\EventTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'about' => null,
+        'accessCode' => null,
+        'actor' => null,
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'attendee' => null,
+        'audience' => null,
+        'availableFrom' => null,
+        'availableThrough' => null,
+        'composer' => null,
+        'contributor' => null,
+        'description' => null,
+        'director' => null,
+        'disambiguatingDescription' => null,
+        'doorTime' => null,
+        'duration' => null,
+        'endDate' => null,
+        'eventStatus' => null,
+        'funder' => null,
+        'hasDeliveryMethod' => null,
+        'identifier' => null,
+        'image' => null,
+        'inLanguage' => null,
+        'isAccessibleForFree' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'maximumAttendeeCapacity' => null,
+        'name' => null,
+        'offers' => null,
+        'organizer' => null,
+        'performer' => null,
+        'potentialAction' => null,
+        'previousStartDate' => null,
+        'recordedIn' => null,
+        'remainingAttendeeCapacity' => null,
+        'review' => null,
+        'sameAs' => null,
+        'sponsor' => null,
+        'startDate' => null,
+        'subEvent' => null,
+        'subjectOf' => null,
+        'superEvent' => null,
+        'translator' => null,
+        'typicalAgeRange' => null,
+        'url' => null,
+        'workFeatured' => null,
+        'workPerformed' => null,
+    ];
 }

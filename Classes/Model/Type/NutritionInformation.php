@@ -11,13 +11,36 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Nutritional information about the recipe.
  */
 final class NutritionInformation extends AbstractType
 {
-    use TypeTrait\NutritionInformationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'calories' => null,
+        'carbohydrateContent' => null,
+        'cholesterolContent' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'fatContent' => null,
+        'fiberContent' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'proteinContent' => null,
+        'sameAs' => null,
+        'saturatedFatContent' => null,
+        'servingSize' => null,
+        'sodiumContent' => null,
+        'subjectOf' => null,
+        'sugarContent' => null,
+        'transFatContent' => null,
+        'unsaturatedFatContent' => null,
+        'url' => null,
+    ];
 }

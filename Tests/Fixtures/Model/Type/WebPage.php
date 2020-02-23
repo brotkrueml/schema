@@ -7,5 +7,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 final class WebPage extends AbstractType
 {
-    protected $expires;
+    protected $properties = [
+        'expires' => null,
+    ];
 }

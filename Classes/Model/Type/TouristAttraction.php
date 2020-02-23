@@ -11,14 +11,62 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A tourist attraction.  In principle any Thing can be a TouristAttraction, from a Mountain and LandmarksOrHistoricalBuildings to a LocalBusiness.  This Type can be used on its own to describe a general TouristAttraction, or be used as an additionalType to add tourist attraction properties to any other type.  (See examples below)
  */
 final class TouristAttraction extends AbstractType
 {
-    use TypeTrait\PlaceTrait;
-    use TypeTrait\ThingTrait;
-    use TypeTrait\TouristAttractionTrait;
+    protected $properties = [
+        'additionalProperty' => null,
+        'additionalType' => null,
+        'address' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'amenityFeature' => null,
+        'availableLanguage' => null,
+        'branchCode' => null,
+        'containedInPlace' => null,
+        'containsPlace' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'event' => null,
+        'faxNumber' => null,
+        'geo' => null,
+        'geoContains' => null,
+        'geoCoveredBy' => null,
+        'geoCovers' => null,
+        'geoCrosses' => null,
+        'geoDisjoint' => null,
+        'geoEquals' => null,
+        'geoIntersects' => null,
+        'geoOverlaps' => null,
+        'geoTouches' => null,
+        'geoWithin' => null,
+        'globalLocationNumber' => null,
+        'hasMap' => null,
+        'identifier' => null,
+        'image' => null,
+        'isAccessibleForFree' => null,
+        'isicV4' => null,
+        'latitude' => null,
+        'logo' => null,
+        'longitude' => null,
+        'mainEntityOfPage' => null,
+        'maximumAttendeeCapacity' => null,
+        'name' => null,
+        'openingHoursSpecification' => null,
+        'photo' => null,
+        'potentialAction' => null,
+        'publicAccess' => null,
+        'review' => null,
+        'sameAs' => null,
+        'slogan' => null,
+        'smokingAllowed' => null,
+        'specialOpeningHoursSpecification' => null,
+        'subjectOf' => null,
+        'telephone' => null,
+        'touristType' => null,
+        'url' => null,
+    ];
 }

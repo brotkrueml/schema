@@ -9,7 +9,6 @@ require __DIR__ . '/../.Build/vendor/autoload.php';
 
 $configuration = new Configuration();
 $configuration->schemaPath = __DIR__ . '/Schema/schema.jsonld';
-$configuration->modelTypeTraitPathTemplate = __DIR__ . '/../Classes/Model/TypeTrait/%sTrait.php';
 $configuration->modelTypePathTemplate = __DIR__ . '/../Classes/Model/Type/%s.php';
 $configuration->viewHelperTypePathTemplate = __DIR__ . '/../Classes/ViewHelpers/Type/%sViewHelper.php';
 $configuration->typesProviderTemplate = __DIR__ . '/../Classes/Provider/TypesProvider.php';

@@ -11,15 +11,34 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
  */
 final class ParentAudience extends AbstractType
 {
-    use TypeTrait\AudienceTrait;
-    use TypeTrait\ParentAudienceTrait;
-    use TypeTrait\PeopleAudienceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'audienceType' => null,
+        'childMaxAge' => null,
+        'childMinAge' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'geographicArea' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'requiredGender' => null,
+        'requiredMaxAge' => null,
+        'requiredMinAge' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'suggestedGender' => null,
+        'suggestedMaxAge' => null,
+        'suggestedMinAge' => null,
+        'url' => null,
+    ];
 }

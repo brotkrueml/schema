@@ -11,13 +11,56 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * Event type: Comedy event.
  */
 final class ComedyEvent extends AbstractType
 {
-    use TypeTrait\EventTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'about' => null,
+        'actor' => null,
+        'additionalType' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'attendee' => null,
+        'audience' => null,
+        'composer' => null,
+        'contributor' => null,
+        'description' => null,
+        'director' => null,
+        'disambiguatingDescription' => null,
+        'doorTime' => null,
+        'duration' => null,
+        'endDate' => null,
+        'eventStatus' => null,
+        'funder' => null,
+        'identifier' => null,
+        'image' => null,
+        'inLanguage' => null,
+        'isAccessibleForFree' => null,
+        'location' => null,
+        'mainEntityOfPage' => null,
+        'maximumAttendeeCapacity' => null,
+        'name' => null,
+        'offers' => null,
+        'organizer' => null,
+        'performer' => null,
+        'potentialAction' => null,
+        'previousStartDate' => null,
+        'recordedIn' => null,
+        'remainingAttendeeCapacity' => null,
+        'review' => null,
+        'sameAs' => null,
+        'sponsor' => null,
+        'startDate' => null,
+        'subEvent' => null,
+        'subjectOf' => null,
+        'superEvent' => null,
+        'translator' => null,
+        'typicalAgeRange' => null,
+        'url' => null,
+        'workFeatured' => null,
+        'workPerformed' => null,
+    ];
 }

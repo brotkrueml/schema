@@ -11,14 +11,64 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * An accommodation is a place that can accommodate human beings, e.g. a hotel room, a camping pitch, or a meeting room. Many accommodations are for overnight stays, but this is not a mandatory requirement.
  */
 final class Accommodation extends AbstractType
 {
-    use TypeTrait\AccommodationTrait;
-    use TypeTrait\PlaceTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalProperty' => null,
+        'additionalType' => null,
+        'address' => null,
+        'aggregateRating' => null,
+        'alternateName' => null,
+        'amenityFeature' => null,
+        'branchCode' => null,
+        'containedInPlace' => null,
+        'containsPlace' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'event' => null,
+        'faxNumber' => null,
+        'floorSize' => null,
+        'geo' => null,
+        'geoContains' => null,
+        'geoCoveredBy' => null,
+        'geoCovers' => null,
+        'geoCrosses' => null,
+        'geoDisjoint' => null,
+        'geoEquals' => null,
+        'geoIntersects' => null,
+        'geoOverlaps' => null,
+        'geoTouches' => null,
+        'geoWithin' => null,
+        'globalLocationNumber' => null,
+        'hasMap' => null,
+        'identifier' => null,
+        'image' => null,
+        'isAccessibleForFree' => null,
+        'isicV4' => null,
+        'latitude' => null,
+        'logo' => null,
+        'longitude' => null,
+        'mainEntityOfPage' => null,
+        'maximumAttendeeCapacity' => null,
+        'name' => null,
+        'numberOfRooms' => null,
+        'openingHoursSpecification' => null,
+        'permittedUsage' => null,
+        'petsAllowed' => null,
+        'photo' => null,
+        'potentialAction' => null,
+        'publicAccess' => null,
+        'review' => null,
+        'sameAs' => null,
+        'slogan' => null,
+        'smokingAllowed' => null,
+        'specialOpeningHoursSpecification' => null,
+        'subjectOf' => null,
+        'telephone' => null,
+        'url' => null,
+    ];
 }

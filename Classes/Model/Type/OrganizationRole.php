@@ -11,14 +11,28 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A subclass of Role used to describe roles within organizations.
  */
 final class OrganizationRole extends AbstractType
 {
-    use TypeTrait\OrganizationRoleTrait;
-    use TypeTrait\RoleTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'endDate' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'name' => null,
+        'numberedPosition' => null,
+        'potentialAction' => null,
+        'roleName' => null,
+        'sameAs' => null,
+        'startDate' => null,
+        'subjectOf' => null,
+        'url' => null,
+    ];
 }

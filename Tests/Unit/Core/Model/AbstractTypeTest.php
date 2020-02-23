@@ -342,13 +342,13 @@ class AbstractTypeTest extends TestCase
         ];
 
         yield 'Value is a number as string' => [
-        'name',
-        '1',
-        [
-            '@type' => 'FixtureThing',
-            'name' => '1',
-        ],
-    ];
+            'name',
+            '1',
+            [
+                '@type' => 'FixtureThing',
+                'name' => '1',
+            ],
+        ];
 
         yield 'Value is a number as integer' => [
             'name',

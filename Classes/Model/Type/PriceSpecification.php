@@ -11,13 +11,33 @@ namespace Brotkrueml\Schema\Model\Type;
  */
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Model\TypeTrait;
 
 /**
  * A structured value representing a price or price range. Typically, only the subclasses of this type are used for markup. It is recommended to use MonetaryAmount to describe independent amounts of money such as a salary, credit card limits, etc.
  */
 final class PriceSpecification extends AbstractType
 {
-    use TypeTrait\PriceSpecificationTrait;
-    use TypeTrait\ThingTrait;
+    protected $properties = [
+        'additionalType' => null,
+        'alternateName' => null,
+        'description' => null,
+        'disambiguatingDescription' => null,
+        'eligibleQuantity' => null,
+        'eligibleTransactionVolume' => null,
+        'identifier' => null,
+        'image' => null,
+        'mainEntityOfPage' => null,
+        'maxPrice' => null,
+        'minPrice' => null,
+        'name' => null,
+        'potentialAction' => null,
+        'price' => null,
+        'priceCurrency' => null,
+        'sameAs' => null,
+        'subjectOf' => null,
+        'url' => null,
+        'validFrom' => null,
+        'validThrough' => null,
+        'valueAddedTaxIncluded' => null,
+    ];
 }
