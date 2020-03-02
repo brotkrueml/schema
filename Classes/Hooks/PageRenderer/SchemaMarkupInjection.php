@@ -59,7 +59,7 @@ final class SchemaMarkupInjection
         $this->cache = $cache ?? $this->getCache();
     }
 
-    private function getCache(): FrontendInterface
+    private function getCache(): ?FrontendInterface
     {
         $identifier = 'pages';
         if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 10000000) {
