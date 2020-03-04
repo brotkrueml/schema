@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Generator\Unit\Event;
+namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use PHPUnit\Framework\TestCase;
