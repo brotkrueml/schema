@@ -6,9 +6,38 @@ use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Provider\WebPageTypeProvider;
 use Brotkrueml\Schema\Utility\Utility;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class WebPageTypeProviderTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->defineCacheStubsWhichReturnEmptyEntry();
+    }
+
+    protected function defineCacheStubsWhichReturnEmptyEntry(): void
+    {
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+    }
+
+    protected function tearDown(): void
+    {
+        GeneralUtility::purgeInstances();
+    }
+
     public function dataProvider(): iterable
     {
         $webPageTypes = [
@@ -28,9 +57,7 @@ class WebPageTypeProviderTest extends TestCase
         ];
 
         foreach ($webPageTypes as $type) {
-            $key = sprintf('Type "%s"', $type);
-
-            yield $key => [$type];
+            yield \sprintf('Type "%s"', $type) => [$type];
         }
     }
 

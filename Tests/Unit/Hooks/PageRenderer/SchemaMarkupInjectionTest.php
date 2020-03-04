@@ -9,6 +9,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -104,6 +105,24 @@ class SchemaMarkupInjectionTest extends TestCase
             ->willReturn($this->signalSlotDispatcherMock);
 
         GeneralUtility::setSingletonInstance(ObjectManager::class, $this->objectManagerMock);
+
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+    }
+
+    protected function tearDown(): void
+    {
+        GeneralUtility::purgeInstances();
     }
 
     /**

@@ -10,7 +10,13 @@ namespace Brotkrueml\Schema\Core\Model;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Utility\Utility;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 abstract class AbstractType
 {
@@ -35,6 +41,44 @@ abstract class AbstractType
      * @var array
      */
     private $__resultArray = [];
+
+    public function __construct()
+    {
+        $this->addAdditionalProperties();
+    }
+
+    protected function addAdditionalProperties(): void
+    {
+        $cacheEntryIdentifier = 'additionalTypeProperties-' . \str_replace('\\', '_', static::class);
+        $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('tx_schema');
+        if (($additionalProperties = $cache->get($cacheEntryIdentifier)) === false) {
+            $event = new RegisterAdditionalTypePropertiesEvent(static::class);
+
+            if (\class_exists(EventDispatcher::class)) {
+                /** @var EventDispatcherInterface $eventDispatcher */
+                $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
+                $event = $eventDispatcher->dispatch($event);
+            }
+
+            /** @var Dispatcher $signalSlotDispatcher */
+            $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
+            $signalSlotDispatcher->dispatch(self::class, 'registerAdditionalTypeProperties', [$event]);
+
+            $additionalProperties = $event->getAdditionalProperties();
+            $cache->set($cacheEntryIdentifier, $additionalProperties, [], 0);
+        }
+
+        if (empty($additionalProperties)) {
+            return;
+        }
+
+        $this->properties = \array_merge(
+            $this->properties,
+            \array_fill_keys($additionalProperties, null)
+        );
+
+        \ksort($this->properties);
+    }
 
     /**
      * Get the id

@@ -10,6 +10,9 @@ use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SchemaManagerTest extends Testcase
 {
@@ -20,7 +23,25 @@ class SchemaManagerTest extends Testcase
 
     protected function setUp(): void
     {
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+
         $this->subject = new SchemaManager();
+    }
+
+    protected function tearDown(): void
+    {
+        GeneralUtility::purgeInstances();
     }
 
     /**

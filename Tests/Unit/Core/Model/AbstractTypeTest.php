@@ -3,9 +3,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
+use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 class AbstractTypeTest extends TestCase
 {
@@ -16,7 +23,29 @@ class AbstractTypeTest extends TestCase
 
     protected function setUp(): void
     {
+        $this->defineCacheStubsWhichReturnEmptyEntry();
         $this->subject = new FixtureThing();
+    }
+
+    protected function defineCacheStubsWhichReturnEmptyEntry(): void
+    {
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+    }
+
+    protected function tearDown(): void
+    {
+        GeneralUtility::purgeInstances();
     }
 
     /**
@@ -332,6 +361,8 @@ class AbstractTypeTest extends TestCase
 
     public function dataProviderForToArrayReturnsCorrectResult(): iterable
     {
+        $this->defineCacheStubsWhichReturnEmptyEntry();
+
         yield 'Value is a string' => [
             'name',
             'some string value',
@@ -485,5 +516,170 @@ class AbstractTypeTest extends TestCase
         $actual = $this->subject->toArray();
 
         self::assertSame(['@type' => 'FixtureThing'], $actual);
+    }
+
+    /**
+     * @test
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
+     */
+    public function cacheForAdditionalPropertiesReturnsPropertiesAndTheseAreAddedSortedIntoPropertiesArray(): void
+    {
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn(['someAdditionalProperty', 'anotherAdditionalProperty']);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+
+        $subject = new FixtureThing();
+
+        self::assertSame(
+            [
+                'alternateName',
+                'anotherAdditionalProperty',
+                'description',
+                'identifier',
+                'image',
+                'name',
+                'someAdditionalProperty',
+                'url',
+            ],
+            $subject->getPropertyNames()
+        );
+    }
+
+    /**
+     * @test
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
+     */
+    public function cacheForAdditionalPropertiesReturnsFalseAndDispatcherIsCalled(): void
+    {
+        $cacheFrontendMock = $this->createStub(FrontendInterface::class);
+        $cacheFrontendMock
+            ->expects(self::once())
+            ->method('get')
+            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing')
+            ->willReturn(false);
+
+        $cacheFrontendMock
+            ->method('set')
+            ->with(
+                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing',
+                [],
+                [],
+                0
+            );
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendMock);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+
+        /** @var MockObject|Dispatcher $signalSlotDispatcherMock */
+        $signalSlotDispatcherMock = $this->getMockBuilder(Dispatcher::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $signalSlotDispatcherMock
+            ->expects(self::once())
+            ->method('dispatch')
+            ->with(AbstractType::class, 'registerAdditionalTypeProperties');
+
+        GeneralUtility::setSingletonInstance(Dispatcher::class, $signalSlotDispatcherMock);
+
+        if (\class_exists(EventDispatcher::class)) {
+            /* Only TYPO3 v10+ */
+            $event = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+
+            /** @var MockObject|EventDispatcher $eventDispatcherMock */
+            $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
+                ->disableOriginalConstructor()
+                ->getMock();
+            $eventDispatcherMock
+                ->expects(self::once())
+                ->method('dispatch')
+                ->with($event)
+                ->willReturn($event);
+
+            GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
+        }
+
+        new FixtureThing();
+    }
+
+    /**
+     * @test
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
+     */
+    public function cacheForAdditionalPropertiesReturnsFalseAndEventDispatcherIsCalled(): void
+    {
+        if (!\class_exists(EventDispatcher::class)) {
+            self::markTestSkipped('Only TYPO3 v10+');
+        }
+
+        $cacheFrontendMock = $this->createStub(FrontendInterface::class);
+        $cacheFrontendMock
+            ->expects(self::once())
+            ->method('get')
+            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing')
+            ->willReturn(false);
+
+        $cacheFrontendMock
+            ->method('set')
+            ->with(
+                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing',
+                ['someAdditionalProperty'],
+                [],
+                0
+            );
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendMock);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+
+        /** @var MockObject|Dispatcher $signalSlotDispatcherMock */
+        $signalSlotDispatcherMock = $this->getMockBuilder(Dispatcher::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $signalSlotDispatcherMock
+            ->expects(self::once())
+            ->method('dispatch')
+            ->with(AbstractType::class, 'registerAdditionalTypeProperties');
+
+        GeneralUtility::setSingletonInstance(Dispatcher::class, $signalSlotDispatcherMock);
+
+        $inEvent = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+
+        $outEvent = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+        $outEvent->registerAdditionalProperty('someAdditionalProperty');
+
+        /** @var MockObject|EventDispatcher $eventDispatcherMock */
+        $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $eventDispatcherMock
+            ->expects(self::once())
+            ->method('dispatch')
+            ->with($inEvent)
+            ->willReturn($outEvent);
+
+        GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
+
+        new FixtureThing();
     }
 }

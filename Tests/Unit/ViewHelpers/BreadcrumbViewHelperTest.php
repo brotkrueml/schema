@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
@@ -22,6 +24,31 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
     {
         static::restoreOriginalTypeNamespace();
         parent::tearDownAfterClass();
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        GeneralUtility::purgeInstances();
     }
 
     /**

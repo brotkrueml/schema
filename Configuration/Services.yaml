@@ -15,3 +15,9 @@ services:
   Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
     arguments:
       $cache: '@cache.pages'
+
+  Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending:
+    tags:
+      - name: event.listener
+        identifier: 'ext-schema/registerTypePropertiesMovedFromOfficialToPending'
+        event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent

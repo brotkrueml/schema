@@ -4,19 +4,21 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\WebPageAspect;
-use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-class WebPageAspectTest extends UnitTestCase
+class WebPageAspectTest extends TestCase
 {
     use TypeFixtureNamespace;
 
@@ -33,14 +35,33 @@ class WebPageAspectTest extends UnitTestCase
 
     public static function setUpBeforeClass(): void
     {
-        parent::setUpBeforeClass();
         static::setTypeNamespaceToFixtureNamespace();
     }
 
     public static function tearDownAfterClass(): void
     {
         static::restoreOriginalTypeNamespace();
-        parent::tearDownAfterClass();
+    }
+
+    protected function setUp(): void
+    {
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+    }
+
+    protected function tearDown(): void
+    {
+        GeneralUtility::purgeInstances();
     }
 
     /**
@@ -140,61 +161,87 @@ class WebPageAspectTest extends UnitTestCase
         return $configurationMock;
     }
 
-    public function pagePropertiesProvider(): iterable
-    {
-        yield 'Type is empty, so WebPage is used' => [
-            [
-                'tx_schema_webpagetype' => '',
-                'title' => 'A test title',
-                'description' => 'A test description',
-                'endtime' => 0,
-            ],
-            (new WebPage())
-        ];
-
-        yield 'Type is set, so this type is used' => [
-            [
-                'tx_schema_webpagetype' => 'ItemPage',
-                'title' => 'An item title',
-                'description' => 'An item description',
-                'endtime' => 0,
-            ],
-            (new ItemPage())
-        ];
-
-        yield 'Endtime is defined, expires is set' => [
-            [
-                'tx_schema_webpagetype' => 'WebPage',
-                'title' => 'An item title',
-                'description' => 'An item description',
-                'endtime' => 1561672753,
-            ],
-            (new WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00')
-        ];
-    }
-
     /**
      * @test
-     * @dataProvider pagePropertiesProvider
-     *
-     * @param array $pageProperties
-     * @param AbstractType $expectedWebPage
      * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
      */
-    public function withNotAlreadyAssignedWebPageModelPropertiesFromTsfeAreSet(
-        array $pageProperties,
-        AbstractType $expectedWebPage
-    ): void {
+    public function pagePropertyForWebPageTypeIsEmptyThenWebPageIsUsed(): void
+    {
         $this->setUpGeneralMocks();
 
-        $this->controllerMock->page = $pageProperties;
+        $this->controllerMock->page = [
+            'tx_schema_webpagetype' => '',
+            'title' => 'A test title',
+            'description' => 'A test description',
+            'endtime' => 0,
+        ];
 
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects(self::once())
             ->method('addType')
-            ->with($expectedWebPage);
+            ->with(new WebPage());
+
+        $subject = new WebPageAspect(
+            $this->controllerMock,
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
+        );
+
+        $subject->execute($schemaManagerMock);
+    }
+
+    /**
+     * @test
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
+     */
+    public function pagePropertyForWebPageTypeIsSetThenThisTypeIsUsed(): void
+    {
+        $this->setUpGeneralMocks();
+
+        $this->controllerMock->page = [
+            'tx_schema_webpagetype' => 'ItemPage',
+            'title' => 'An item title',
+            'description' => 'An item description',
+            'endtime' => 0,
+        ];
+
+        /** @var MockObject|SchemaManager $schemaManagerMock */
+        $schemaManagerMock = $this->createMock(SchemaManager::class);
+        $schemaManagerMock
+            ->expects(self::once())
+            ->method('addType')
+            ->with(new ItemPage());
+
+        $subject = new WebPageAspect(
+            $this->controllerMock,
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
+        );
+
+        $subject->execute($schemaManagerMock);
+    }
+
+    /**
+     * @test
+     * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
+     */
+    public function pagePropertyForEndtimeIsSetThenExpiresPropertyIsSet(): void
+    {
+        $this->setUpGeneralMocks();
+
+        $this->controllerMock->page = [
+            'tx_schema_webpagetype' => 'WebPage',
+            'title' => 'An item title',
+            'description' => 'An item description',
+            'endtime' => 1561672753,
+        ];
+
+        /** @var MockObject|SchemaManager $schemaManagerMock */
+        $schemaManagerMock = $this->createMock(SchemaManager::class);
+        $schemaManagerMock
+            ->expects(self::once())
+            ->method('addType')
+            ->with((new WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00'));
 
         $subject = new WebPageAspect(
             $this->controllerMock,

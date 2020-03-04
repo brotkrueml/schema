@@ -10,6 +10,14 @@ Configuration
 
 Target group: **Developers, Integrators**
 
+.. contents:: Table of Contents
+   :depth: 1
+   :local:
+
+
+Extension Configuration
+=======================
+
 To configure the extension, go to :guilabel:`Admin Tools` > :guilabel:`Settings`
 > :guilabel:`Extension Configuration` and click on the
 :guilabel:`Configure extensions` button. Open the :guilabel:`schema`
@@ -75,3 +83,23 @@ section of the page.
    disabled
 
 .. youtube:: lI6EtxjoyDU
+
+
+Cache Configuration
+===================
+
+The extension stores some data temporarily, e.g. :ref:`additional type
+properties <register-additional-types>` They are cached for better performance.
+By default, the cache uses the default database backend cache. You can
+reconfigure it to use a different cache backend. You can find further
+information in the chapter :ref:`Caching Framework <t3coreapi:caching>` in the
+TYPO3 documentation.
+
+For example, place the following snippet in the :file:`ext_localconf.php` file
+of your site package extension to use the simple file backend (which stored the
+data in the file system) instead:
+
+   if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'])) {
+      $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] = \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;
+   }
+

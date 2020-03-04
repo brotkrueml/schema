@@ -2,11 +2,39 @@
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 class PropertyViewHelperTest extends ViewHelperTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub
+            ->method('get')
+            ->willReturn([]);
+
+        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub
+            ->method('getCache')
+            ->with('tx_schema')
+            ->willReturn($cacheFrontendStub);
+
+        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        GeneralUtility::purgeInstances();
+    }
+
     /**
      * Data provider for testing the property view helper in Fluid templates
      *
