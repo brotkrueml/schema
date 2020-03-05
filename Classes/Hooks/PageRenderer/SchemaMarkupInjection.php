@@ -11,8 +11,6 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
  */
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
-use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
-use Brotkrueml\Schema\Aspect\WebPageAspect;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -38,8 +36,6 @@ final class SchemaMarkupInjection
 
     /** @var SchemaManager */
     private $schemaManager;
-
-    private $aspects = [];
 
     /** @var FrontendInterface */
     private $cache;
@@ -85,7 +81,7 @@ final class SchemaMarkupInjection
 
         $result = $this->getMarkupFromCache();
         if ($result === null) {
-            foreach ($this->getAspects() as $aspect) {
+            foreach ($this->getRegisteredAspects() as $aspect) {
                 $aspect->execute($this->schemaManager);
             }
 
@@ -155,25 +151,27 @@ final class SchemaMarkupInjection
         );
     }
 
-    private function getAspects(): array
+    private function getRegisteredAspects(): array
     {
-        if (empty($this->aspects)) {
-            return [
-                new WebPageAspect(),
-                new BreadcrumbListAspect(),
-            ];
+        $aspects = [];
+        // This hook is only for internal use and will be transformed to PSR-14 event
+        // when TYPO3 v10 is a minimum requirement
+        foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect'] ?? [] as $aspect) {
+            $aspectInstance = new $aspect();
+            if (!$aspectInstance instanceof AspectInterface) {
+                throw new \InvalidArgumentException(
+                    \sprintf(
+                        'Aspect "%s" must implement interface "%s"',
+                        $aspect,
+                        AspectInterface::class
+                    ),
+                    1583429697
+                );
+            }
+
+            $aspects[] = new $aspectInstance;
         }
 
-        return $this->aspects;
-    }
-
-    /**
-     * For testing purposes only!
-     *
-     * @param AspectInterface $aspect
-     */
-    public function addAspect(AspectInterface $aspect): void
-    {
-        $this->aspects[] = $aspect;
+        return $aspects;
     }
 }

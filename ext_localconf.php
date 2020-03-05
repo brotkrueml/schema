@@ -28,4 +28,10 @@ defined('TYPO3_MODE') || die();
             '__invoke'
         );
     }
+
+    // @internal no official hooks
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['breadcrumbList']
+        = \Brotkrueml\Schema\Aspect\BreadcrumbListAspect::class;
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['webPage']
+        = \Brotkrueml\Schema\Aspect\WebPageAspect::class;
 })();

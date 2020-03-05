@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
-use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
@@ -163,18 +162,7 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->setSeoExtensionInstallationState(false);
 
         $params = [];
-        $this->subject->addAspect($this->getDummyAspectMock());
         $this->subject->execute($params, $this->pageRendererMock);
-    }
-
-    private function getDummyAspectMock(): AspectInterface
-    {
-        $dummyAspectMock = $this->createMock(AspectInterface::class);
-        $dummyAspectMock
-            ->expects(self::any())
-            ->method('execute');
-
-        return $dummyAspectMock;
     }
 
     /**
@@ -211,7 +199,6 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $params = [];
-        $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
     }
 
@@ -249,7 +236,6 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $params = [];
-        $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
     }
 
@@ -286,7 +272,6 @@ class SchemaMarkupInjectionTest extends TestCase
             ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
 
         $params = [];
-        $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
     }
 
@@ -316,26 +301,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData');
 
         $params = [];
-        $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
-    }
-
-    /**
-     * @test
-     */
-    public function givenAspectIsCalled(): void
-    {
-        $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(true);
-
-        $aspectMock = $this->createMock(AspectInterface::class);
-        $aspectMock
-            ->expects(self::once())
-            ->method('execute');
-
-        $params = [];
-        $this->subject->addAspect($aspectMock);
-        $this->subject->execute($params, $this->pageRendererMock);
     }
 
     protected function setSeoExtensionInstallationState(bool $state): void
@@ -378,7 +344,6 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $params = [];
-        $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
     }
 
@@ -416,7 +381,6 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $params = [];
-        $subject->addAspect($this->getDummyAspectMock());
         $subject->execute($params, $this->pageRendererMock);
     }
 
