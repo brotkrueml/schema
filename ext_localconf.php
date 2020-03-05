@@ -17,10 +17,6 @@ defined('TYPO3_MODE') || die();
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$cacheIdentifier] = [];
     }
 
-//    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'])) {
-//        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] = \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class;
-//    }
-
     if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch) < 10000000) {
         $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
             TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
