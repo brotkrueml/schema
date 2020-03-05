@@ -282,16 +282,13 @@ abstract class AbstractType
     }
 
     /**
-     * Get the available properties names
+     * Get the available property names
      *
-     * @return array
+     * @return array<string>
      */
     public function getPropertyNames(): array
     {
-        $properties = \array_keys($this->properties);
-        \sort($properties);
-
-        return $properties;
+        return \array_keys($this->properties);
     }
 
     /**

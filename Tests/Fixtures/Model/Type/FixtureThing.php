@@ -9,8 +9,8 @@ class FixtureThing extends AbstractType
 {
     protected $properties = [
         'alternateName' => null,
-        'identifier' => null,
         'description' => null,
+        'identifier' => null,
         'image' => null,
         'name' => null,
         'url' => null,
