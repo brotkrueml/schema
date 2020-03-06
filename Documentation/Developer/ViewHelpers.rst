@@ -38,14 +38,15 @@ detail page that you want to enrich with structured markup:
       familyName="Smith"
       gender="http://schema.org/Male"
    >
-      <schema:type.corporation
-         -as="worksFor"
-         name="Acme Ltd."
-         image="https://example.org/logo.png"
-         url="https://example.org/">
-            <schema:property -as="sameAs" value="https://twitter.com/acme"/>
-            <schema:property -as="sameAs" value="https://facebook.com/acme"/>
-      </schema:type.corporation>
+      <schema:type.event
+         -as="attendee"
+         name="Fancy Event"
+         image="https://example.org/event.png"
+         url="https://example.org/"
+         isAccessibleForFree="true">
+            <schema:property -as="sameAs" value="https://twitter.com/fancy-event"/>
+            <schema:property -as="sameAs" value="https://facebook.com/fancy-event"/>
+      </schema:type.event>
    </schema:type.person>
 
 Every type view helper starts with :html:`<schema:type.xxx>` where :html:`xxx`
@@ -58,6 +59,10 @@ schema.org page, e.g. for the `Person <http://schema.org/Person>`__.
 In the example, there are two attributes that begin with a -. They are explained
 in detail in the chapter
 :ref:`Special Attributes <view-helpers-special-attributes>`.
+
+As you can see, the value ``true`` (and ``false`` accordingly) can be used.
+They are mapped later to the schema types ``http://schema.org/True`` and
+``http://schema.org/False``.
 
 Please also recognise the :html:`<schema:property>` view helper. With this view
 helper you can pass more than one string value to the according type.
@@ -95,19 +100,20 @@ have a deeper look on them.
 
 This attribute sets a unique id for the type and is mapped in JSON-LD to the
 ``@id`` property. The LD in JSON-LD means "linked data". With an ``@id`` you can
-define a type on one page (e.g. ``Corporation``):
+define a type on one page (e.g. ``Event``):
 
 .. code-block:: json
    :emphasize-lines: 4
 
    {
       "@context": "http://schema.org",
-      "@type": "Corporation",
-      "@id": "http://example.org/#organization-1",
-      "name": "Acme Ltd.",
-      "image": "https://example.org/logo.png",
+      "@type": "Event",
+      "@id": "http://example.org/#event-1",
+      "name": "Fancy Event",
+      "image": "https://example.org/event.png",
       "url": "https://example.org",
-      "sameAs": ["https://twitter.com/acme", "https://facebook.com/acme"]
+      "isAccessibleForFree": "http://schema.org/True",
+      "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
    }
 
 and reference it on the same or another page (e.g. ``Person``):
@@ -122,10 +128,10 @@ and reference it on the same or another page (e.g. ``Person``):
       "givenName": "John",
       "familyName": "Smith",
       "gender": "http://schema.org/Male",
-      "worksFor": {
-         "@type": "Corporation",
-         "@id": "http://example.org/#organization-1",
-         "name": "Acme Ltd."
+      "attendee": {
+         "@type": "Event",
+         "@id": "http://example.org/#event-1",
+         "name": "Fancy Event"
       }
    }
 

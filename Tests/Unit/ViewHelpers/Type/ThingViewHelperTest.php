@@ -197,6 +197,20 @@ class ThingViewHelperTest extends ViewHelperTestCase
              />',
             '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Offer","price":"0.01","priceCurrency":"EUR"}</script>',
         ];
+
+        yield 'Property value of "false" is rendered to http://schema.org/False' => [
+            '<schema:type.event
+                isAccessibleForFree="false"
+             />',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Event","isAccessibleForFree":"http://schema.org/False"}</script>',
+        ];
+
+        yield 'Property value of "true" is rendered to http://schema.org/True' => [
+            '<schema:type.event
+                isAccessibleForFree="true"
+             />',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Event","isAccessibleForFree":"http://schema.org/True"}</script>',
+        ];
     }
 
     /**

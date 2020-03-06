@@ -47,23 +47,24 @@ Surely you will need to add some properties:
       ->setProperty('gender', 'http://schema.org/Male');
    ;
 
-That was easy ... let's go on and define the company the person works for:
+That was easy ... let's go on and define an event the person attends:
 
 .. code-block:: php
 
-   $corporation = (new \Brotkrueml\Schema\Model\Type\Corporation())
-      ->setProperty('name', 'Acme Ltd.')
-      ->setProperty('image', 'https:/example.org/logo.png')
+   $event = (new \Brotkrueml\Schema\Model\Type\Event())
+      ->setProperty('name', 'Fancy Event')
+      ->setProperty('image', 'https:/example.org/event.png')
       ->setProperty('url', 'https://example.org/')
-      ->setProperty('sameAs', 'https://twitter.com/acme')
-      ->addProperty('sameAs', 'https://facebook.com/acme')
+      ->setProperty('isAccessibleForFree', true)
+      ->setProperty('sameAs', 'https://twitter.com/fancy-event')
+      ->addProperty('sameAs', 'https://facebook.com/fancy-event')
    ;
 
 Now we have to connect the two types together:
 
 .. code-block:: php
 
-   $person->setProperty('worksFor', $corporation);
+   $person->setProperty('attendee', $event);
 
 The defined models are ready to embed on the web page. The schema manager does
 that for you:
@@ -88,12 +89,13 @@ automatically into the head section:
       "givenName": "John",
       "familyName": "Smith",
       "gender": "http://schema.org/Male",
-      "worksFor": {
-         "@type": "Corporation",
-         "name": "Acme Ltd.",
-         "image": "https://example.org/logo.png",
+      "attendee": {
+         "@type": "Event",
+         "name": "Fancy Event",
+         "image": "https://example.org/event.png",
          "url": "https://example.org",
-         "sameAs": ["https://twitter.com/acme", "https://facebook.com/acme"]
+         "isAccessibleForFree": "http://schema.org/True",
+         "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
       }
    }
 
@@ -149,7 +151,7 @@ Call this method to set a property or overwrite a previously one.
 
    * :php:`string $propertyName`: The property name to set. If the property does
      not exist in the model, an exception is thrown.
-   * :php:`string|array|AbstractType|null $propertyValue`: The value of the
+   * :php:`string|array|bool|AbstractType|null $propertyValue`: The value of the
      property to set. This can be a string, another model or an array of strings
      or models. Also null is possible to clear the property value.
 
@@ -173,7 +175,7 @@ e.g. in a loop, to set some values on a property.
 
    * :php:`string $propertyName`: The property name to set. If the property does
      not exist in the model, an exception is thrown.
-   * :php:`string|array|AbstractType|null $propertyValue`: The value of the
+   * :php:`string|array|bool|AbstractType|null $propertyValue`: The value of the
      property to set. This can be a string, another model or an array of strings
      or models. Also null is possible to clear the property value.
 
@@ -210,7 +212,7 @@ Get the value of a property.
 
 :aspect:`Return value`
 
-   The value of the property (string, model, array of strings, array of models,
+   The value of the property (string, bool, model, array of strings, array of models,
    null).
 
 
@@ -262,9 +264,37 @@ Checks, whether all properties of the models are empty.
 
    :php:`true` if all properties have an empty value, :php:`false` otherwise.
 
+   .. note::
+      If at least one property has a boolean value, the method :php:`isEmpty()`
+      returns false, because it is mapped on the type
+      ``http://schema.org/False`` or ``http://schema.org/True``.
+
 
 Other Useful APIs
 =================
+
+.. index::
+   single: Boolean
+
+Boolean Data Type
+-----------------
+
+Boolean property values are mapped to the according schema types
+``http://schema.org/True`` or ``http://schema.org/False``. But you can also use
+the :php:`Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
+two public constants:
+
+:php:`::FALSE`
+   Has the value ``http://schema.org/False``.
+
+:php:`::TRUE`
+   Has the value ``http://schema.org/True``.
+
+and one static method:
+
+:php:`::convertToType(bool $value): string`
+   This method returns the according schema type.
+
 
 .. index::
    single: Type list

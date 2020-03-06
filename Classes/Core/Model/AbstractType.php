@@ -11,6 +11,7 @@ namespace Brotkrueml\Schema\Core\Model;
  */
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
+use Brotkrueml\Schema\Model\DataType\Boolean;
 use Brotkrueml\Schema\Utility\Utility;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -187,7 +188,7 @@ abstract class AbstractType
         if (!$this->isValidDataTypeForPropertyValue($propertyValue)) {
             throw new \InvalidArgumentException(
                 \sprintf(
-                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, instanceof AbstractType',
+                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof AbstractType',
                     $propertyName,
                     \is_object($propertyValue) ? \get_class($propertyValue) : \gettype($propertyValue)
                 ),
@@ -207,6 +208,7 @@ abstract class AbstractType
         return $propertyValue === null
             || \is_string($propertyValue)
             || \is_array($propertyValue)
+            || \is_bool($propertyValue)
             || $propertyValue instanceof AbstractType;
     }
 
@@ -229,7 +231,7 @@ abstract class AbstractType
         }
 
         if (\is_array($this->properties[$propertyName])) {
-            if (\is_string($propertyValue) || $propertyValue instanceof AbstractType) {
+            if (\is_string($propertyValue) || \is_bool($propertyValue) || $propertyValue instanceof AbstractType) {
                 $propertyValue = [$propertyValue];
             }
 
@@ -299,7 +301,7 @@ abstract class AbstractType
     public function isEmpty(): bool
     {
         $propertiesNotEmpty = \array_filter($this->getPropertyNames(), function ($property) {
-            return !empty($this->properties[$property]);
+            return \is_bool($this->properties[$property]) ? true : !empty($this->properties[$property]);
         });
 
         return empty($propertiesNotEmpty);
@@ -355,14 +357,26 @@ abstract class AbstractType
             if (\is_array($this->properties[$property])) {
                 $this->__resultArray[$property] = [];
 
-                /** @var AbstractType|string $singleValue */
+                /** @var AbstractType|string|bool $singleValue */
                 foreach ($this->properties[$property] as $singleValue) {
-                    $this->__resultArray[$property][] =
-                        \is_string($singleValue)
-                            ? $singleValue
-                            : $singleValue->toArray();
+                    if (\is_string($singleValue)) {
+                        $this->__resultArray[$property][] = $singleValue;
+                        continue;
+                    }
+
+                    if (\is_bool($singleValue)) {
+                        $this->__resultArray[$property][] = Boolean::convertToType($singleValue);
+                        continue;
+                    }
+
+                    $this->__resultArray[$property][] = $singleValue->toArray();
                 }
 
+                continue;
+            }
+
+            if (\is_bool($this->properties[$property])) {
+                $this->__resultArray[$property] = Boolean::convertToType($this->properties[$property]);
                 continue;
             }
 

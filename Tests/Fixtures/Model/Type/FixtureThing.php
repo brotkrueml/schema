@@ -12,6 +12,7 @@ class FixtureThing extends AbstractType
         'description' => null,
         'identifier' => null,
         'image' => null,
+        'isAccessibleForFree' => null,
         'name' => null,
         'url' => null,
     ];

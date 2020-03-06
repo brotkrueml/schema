@@ -178,6 +178,16 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         unset($this->arguments[static::ARGUMENT_ID]);
 
         foreach ($this->arguments as $name => $value) {
+            if ($value === 'false') {
+                $model->setProperty($name, false);
+                continue;
+            }
+
+            if ($value === 'true') {
+                $model->setProperty($name, true);
+                continue;
+            }
+
             $model->setProperty($name, $value);
         }
 

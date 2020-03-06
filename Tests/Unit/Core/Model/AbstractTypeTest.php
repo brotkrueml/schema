@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Core\Model;
+namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
+use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
+use Brotkrueml\Schema\Model\DataType\Boolean;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -230,6 +232,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('name', 'Pi');
         $this->subject->setProperty('description', ['The answert for everything']);
         $this->subject->addProperty('identifier', 42);
+        $this->subject->addProperty('isAccessibleForFree', true);
         $this->subject->addProperty('alternateName', 3.141592653);
 
         $anotherType = new class extends AbstractType {
@@ -239,6 +242,47 @@ class AbstractTypeTest extends TestCase
 
         // Assertion is valid, when no exception above is thrown
         self::assertTrue(true);
+    }
+
+    /**
+     * @test
+     */
+    public function toArrayIsCorrectWhenAddPropertyCalledMultipleTimesOnTheSamePropertyName(): void
+    {
+        $this->subject->addProperty('name', 'name 1');
+        $this->subject->addProperty('name', 'name 2');
+        $this->subject->addProperty('name', 'name 3');
+
+        $this->subject->addProperty('alternateName', ['alternateName 1']);
+        $this->subject->addProperty('alternateName', ['alternateName 2']);
+        $this->subject->addProperty('alternateName', ['alternateName 3']);
+
+        $this->subject->addProperty('isAccessibleForFree', true);
+        $this->subject->addProperty('isAccessibleForFree', false);
+        $this->subject->addProperty('isAccessibleForFree', true);
+
+        $this->subject->addProperty('image', new class extends AbstractType {
+            protected $properties = ['someName' => 'someValue 1'];
+        });
+        $this->subject->addProperty('image', new class extends AbstractType {
+            protected $properties = ['someName' => 'someValue 2'];
+        });
+        $this->subject->addProperty('image', new class extends AbstractType {
+            protected $properties = ['someName' => 'someValue 3'];
+        });
+
+        $actual = $this->subject->toArray();
+
+        self::assertSame('FixtureThing', $actual['@type']);
+        self::assertSame(['alternateName 1', 'alternateName 2', 'alternateName 3'], $actual['alternateName']);
+        self::assertSame(
+            ['http://schema.org/True', 'http://schema.org/False', 'http://schema.org/True'],
+            $actual['isAccessibleForFree']
+        );
+        self::assertSame(['name 1', 'name 2', 'name 3'], $actual['name']);
+        self::assertSame('someValue 1', $actual['image'][0]['someName']);
+        self::assertSame('someValue 2', $actual['image'][1]['someName']);
+        self::assertSame('someValue 3', $actual['image'][2]['someName']);
     }
 
     /**
@@ -316,6 +360,7 @@ class AbstractTypeTest extends TestCase
                 'description',
                 'identifier',
                 'image',
+                'isAccessibleForFree',
                 'name',
                 'url',
             ],
@@ -357,6 +402,18 @@ class AbstractTypeTest extends TestCase
         $actual = $this->subject->isEmpty();
 
         self::assertTrue($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function isEmptyReturnsFalseWithOnePropertySetToFalse(): void
+    {
+        $this->subject->setProperty('isAccessibleForFree', false);
+
+        $actual = $this->subject->isEmpty();
+
+        self::assertFalse($actual);
     }
 
     public function dataProviderForToArrayReturnsCorrectResult(): iterable
@@ -490,13 +547,31 @@ class AbstractTypeTest extends TestCase
                 '@type' => 'FixtureThing',
             ],
         ];
+
+        yield 'value is a boolean (true)' => [
+            'isAccessibleForFree',
+            true,
+            [
+                '@type' => 'FixtureThing',
+                'isAccessibleForFree' => Boolean::TRUE,
+            ],
+        ];
+
+        yield 'value is a boolean (false)' => [
+            'isAccessibleForFree',
+            false,
+            [
+                '@type' => 'FixtureThing',
+                'isAccessibleForFree' => Boolean::FALSE,
+            ],
+        ];
     }
 
     /**
      * @test
      * @dataProvider dataProviderForToArrayReturnsCorrectResult
      * @param string $key
-     * @param string|array|AbstractType $value
+     * @param string|array|bool|AbstractType $value
      * @param array $expected
      */
     public function toArrayReturnsCorrectResult(string $key, $value, array $expected): void
@@ -547,6 +622,7 @@ class AbstractTypeTest extends TestCase
                 'description',
                 'identifier',
                 'image',
+                'isAccessibleForFree',
                 'name',
                 'someAdditionalProperty',
                 'url',
