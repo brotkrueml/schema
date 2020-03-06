@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Possibility to register additional type properties (#36)
-- Allow boolean property values which are mapped to http://schema.org/[True|False] (#37)
+- Allow boolean property values which are mapped to http://schema.org/True / http://schema.org/False (#37)
 
 ### Changed
 - Adapt properties management in type models
