@@ -40,8 +40,7 @@ into the page. The web page type can be defined in the field
 :guilabel:`Specific type of web page` of the :ref:`page properties <for-editors>`
 and defaults to :ref:`WebPage <web-page-type>`.
 
-:aspect:`Default value`
-
+Default value
    enabled
 
 .. index::
@@ -55,11 +54,10 @@ basic.automaticBreadcrumbSchemaGeneration
 If this option is enabled, the breadcrumb is automatically generated from the
 rootline of the current page.
 
-:aspect:`Default value`
-
+Default value
    disabled
 
-.. NOTE::
+.. note::
 
    Since multiple breadcrumbs are allowed for a page, this option adds a
    breadcrumb to the possibly already existing ones (e.g. defined via the
@@ -78,8 +76,7 @@ If this option is enabled, the schema markup is embedded at the end of the
 :html:`<body>` section. If it is disabled, it is embedded in the :html:`<head>`
 section of the page.
 
-:aspect:`Default value`
-
+Default value
    disabled
 
 .. youtube:: lI6EtxjoyDU
@@ -89,15 +86,15 @@ Cache Configuration
 ===================
 
 The extension stores some data temporarily, e.g. :ref:`additional type
-properties <register-additional-types>` They are cached for better performance.
-By default, the cache uses the default database backend cache. You can
-reconfigure it to use a different cache backend. You can find further
-information in the chapter :ref:`Caching Framework <t3coreapi:caching>` in the
+properties <event-register-additional-properties>`. They are cached for better
+performance. By default, the cache uses the default database backend cache. You
+can reconfigure it to use a different cache backend. You can find further
+information in the chapter :ref:`t3coreapi:caching` of the
 TYPO3 documentation.
 
 For example, place the following snippet in the :file:`ext_localconf.php` file
-of your site package extension to use the simple file backend (which stored the
-data in the file system) instead::
+of your site package extension to use the file backend (which stored the data
+in the file system) instead::
 
    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'])) {
       $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] = \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;

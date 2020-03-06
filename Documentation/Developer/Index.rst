@@ -9,14 +9,21 @@ Developer Corner
 
 Target group: **Developers**, **Integrators**
 
-The structured data can be generated in two ways:
+.. contents:: Table of Contents
+   :depth: 2
+   :local:
+
+Introduction
+============
+
+The structured markup can be generated in two ways:
 
 * using the :ref:`API <api>`
 * with :ref:`view helpers <view-helpers>` in Fluid templates
 
 Each type in the
 `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ corresponds to
-a **PHP model** that provides the possible properties. There is also a
+a **PHP model** that provides the available properties. There is also a
 **view helper** for each type that makes it easy to integrate the data into your
 website via a Fluid template.
 
@@ -27,8 +34,7 @@ Attention should be paid to the following points:
   if the corresponding
   :ref:`configuration option <configuration-automaticWebPageSchemaGeneration>`
   is set. But it can always overridden manually with the desired type and
-  properties. The chapter ":ref:`The WebPage type <web-page-type>`" is dedicated
-  to this topic.
+  properties. The chapter :ref:`web-page-type` is dedicated to this topic.
 * A breadcrumb does not only help the user to recognise the location of a
   particular page on the website. It is also helpful for search engines to
   understand the structure of your website. Google honors the website operator
@@ -44,9 +50,12 @@ Attention should be paid to the following points:
    shown at all on that page. This makes no sense as the page is ignored by
    search engines and so the markup is also ignored.
 
+   But: If you like to add markup to non-indexed pages, you can use a
+   :ref:`slot/PSR-14 <event-de-activate-embedding-of-markup>` event.
 
-Introduction
-============
+
+Quick Dive-In
+=============
 
 The `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ consists of
 many **types**, like ``Person``, ``Organization``, ``Product``, and so on. They
@@ -93,7 +102,7 @@ generating the markup on the web page.
    );
    $schemaManager->addType($thing);
 
-The chapter :ref:`Using the API <api>` describes in-depth how to use the models
+The chapter :ref:`api` describes in-depth how to use the models
 and the schema manager.
 
 .. NOTE::
@@ -115,7 +124,7 @@ arguments, e.g.:
 
 The view helpers can be nested into each other.
 
-The chapter :ref:`Using the View Helpers <view-helpers>` explains the usage of
+The chapter :ref:`view-helpers` explains the usage of
 the view helpers in detail.
 
 .. NOTE::

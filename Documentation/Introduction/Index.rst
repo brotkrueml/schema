@@ -7,10 +7,13 @@
 Introduction
 ============
 
+.. contents:: Table of Contents
+   :depth: 1
+   :local:
 
 .. _what-it-does:
 
-What does it do?
+What Does It Do?
 ================
 
 Structured data is essential for search engine optimisation nowadays. This
@@ -21,7 +24,8 @@ introduction to the topic is provided by Google:
 
 The defined structured data is embedded on a web page in
 `JSON-LD <https://json-ld.org/>`__ markup and can be checked with Google's
-`Structured Data Testing Tool <https://search.google.com/structured-data/testing-tool>`__.
+`Structured Data Testing Tool <https://search.google.com/structured-data/testing-tool>`__
+and `Rich Results Test <https://search.google.com/test/rich-results>`__.
 
 There are also browser extensions available which ease the testing of the
 markup, e.g.
@@ -34,13 +38,17 @@ For the differences between the versions have a look at the
 
 .. _limitations:
 
-Current limitations
+Current Limitations
 ===================
 
 For now, only accepted terms are available, the usage of
 `pending types and properties <https://pending.schema.org/>`__ is not possible.
 But if they are integrated into the core vocabulary, they are available within
 the next update. Also extensions, like bib or health, are not included.
+
+If you need custom properties (like pending properties) you may use a
+:ref:`slot/PSR-14 event <event-register-additional-properties>` to register them
+to one or more types.
 
 
 .. _release-management:

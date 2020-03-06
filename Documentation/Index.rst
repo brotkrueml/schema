@@ -7,6 +7,13 @@
 Structured data with the schema extension
 =========================================
 
+.. rst-class:: horizbuttons-tip-xxl
+
+- :ref:`api`
+- :ref:`view-helpers`
+- :ref:`events`
+
+
 :Version:
    |release|
 
@@ -30,40 +37,37 @@ Structured data with the schema extension
    `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`__ (Creative Commons)
    license
 
+.. rst-class:: horizbuttons-tip-xxl
+
+- :ref:`Sitemap`
+
 Structured data is essential for search engine optimisation nowadays. This extension allows the easy integration of
 structured data based on the `schema.org vocabulary <https://schema.org/>`__ on a TYPO3 website. A good introduction to the topic is provided
 by Google: `Understand how structured data works <https://developers.google.com/search/docs/guides/intro-structured-data>`__.
 
 **TYPO3**
 
-   The content of this document is related to TYPO3 CMS,
-   a GNU/GPL CMS/Framework available from `typo3.org
-   <https://typo3.org/>`_ .
+The content of this document is related to TYPO3 CMS,
+a GNU/GPL CMS/Framework available from `typo3.org
+<https://typo3.org/>`_ .
 
-**Community Documentation:**
+**Community Documentation**
 
-   This documentation is community documentation for the TYPO3 extension {extension.name}
+This documentation is community documentation for the TYPO3 extension {extension.name}
 
-   It is maintained as part of this third party extension.
+It is maintained as part of this third party extension.
 
-   If you find an error or something is missing, please:
-   `Report a Problem <https://github.com/brotkrueml/schema/issues/new>`__
+If you find an error or something is missing, please:
+`Report a Problem <https://github.com/brotkrueml/schema/issues/new>`__
 
 **Extension Manual**
 
-   This documentation is for the TYPO3 extension schema.
-
-
+This documentation is for the TYPO3 extension schema.
 
 **For Contributors**
 
-   You are welcome to help improve this guide. Just click on "Edit me on GitHub"
-   on the top right to submit your change request.
-
-
-**Sitemap:**
-
-   :ref:`sitemap`
+You are welcome to help improve this guide. Just click on "Edit me on GitHub"
+on the top right to submit your change request.
 
 
 .. toctree::

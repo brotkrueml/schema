@@ -10,6 +10,10 @@ The Breadcrumb Markup
 
 Target group: **Developers**
 
+.. contents:: Table of Contents
+   :depth: 2
+   :local:
+
 
 Introduction
 ============
@@ -28,13 +32,11 @@ his guidelines for a
 
 .. _breadcrumb-api:
 
-Using the API
+Using The API
 =============
 
-You can define a breadcrumb with the :ref:`API <api>` as you may already know
-it. For example, you have defined a breadcrumb somewhere:
-
-.. code-block:: php
+You can define a breadcrumb with the :ref:`API <api>` as you may already
+guessed. For example, you have defined a breadcrumb somewhere::
 
    $breadcrumb = [
       'Some product category' => 'http://example.org/some-product-category/',
@@ -42,9 +44,7 @@ it. For example, you have defined a breadcrumb somewhere:
       'Some fancy product' => 'http://example.org/some-fancy-product/',
    ];
 
-Now you can iterate over the pages:
-
-.. code-block:: php
+Now you can iterate over the pages::
 
    $breadcrumbList = (new \Brotkrueml\Schema\Model\Type\BreadcrumbList());
    $counter = 0;
@@ -104,12 +104,12 @@ As you can see, the breadcrumb is embedded in a ``WebPage`` automatically.
 
 .. _breadcrumb-viewhelpers:
 
-Using the view helpers
+Using The View Helpers
 ======================
 
 .. index:: breadcrumbList view helper
 
-View helper :html:`<schema:type.breadcrumbList>`
+View Helper :html:`<schema:type.breadcrumbList>`
 ------------------------------------------------
 
 The schema markup can also be achieved by a view helper in a Fluid template:
@@ -149,7 +149,7 @@ It is also possible to use it in combination with one of the ``WebPage`` types:
 
 .. _breadcrumb-view-helper:
 
-View helper :html:`<schema:breadcrumb>`
+View Helper :html:`<schema:breadcrumb>`
 ---------------------------------------
 
 But mostly you will have the breadcrumb structure in a Fluid variable created by
@@ -197,9 +197,7 @@ set it to :html:`1`:
    <schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>
 
 You can build your own breadcrumb array and assign it to the template. It should
-have the following structure:
-
-.. code-block:: php
+have the following structure::
 
    $breadcrumb = [
       [

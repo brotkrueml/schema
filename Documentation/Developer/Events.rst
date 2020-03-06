@@ -1,6 +1,6 @@
 .. include:: ../Includes.txt
 
-.. index:: Signal
+.. index:: Signals
 .. index:: PSR-14 Events
 
 .. _events:
@@ -55,9 +55,9 @@ This is the only way in TYPO3 v9 and deprecated in TYPO3 v10.
    `Signals and Slots – Extend TYPO3 Functionality <https://typo3worx.eu/2017/07/signals-and-slots-in-typo3/>`_.
 
 
-.. _register-additional-types:
+.. _event-register-additional-properties:
 
-Register Additional Properties for a Type
+Register Additional Properties For A Type
 =========================================
 
 Sometimes it can be necessary to use properties which are not standardised or
@@ -82,7 +82,7 @@ provides the following methods:
    This method registers an additional property for one or more types.
 
 
-PSR-14 Event (for TYPO3 v10+)
+PSR-14 Event (For TYPO3 v10+)
 -----------------------------
 
 .. note::
@@ -133,7 +133,7 @@ Example
                  identifier: 'myAdditionalPropertiesForPerson'
                  event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
 
-Signal/Slot (for TYPO3 v9/v10)
+Signal/Slot (For TYPO3 v9/v10)
 ------------------------------
 
 .. note::
@@ -197,7 +197,9 @@ We use the same example as for the PSR-14 event.
    forth argument the method name of that class.
 
 
-Activate or Deactivate Embedding of Markup on Pages
+.. _event-de-activate-embedding-of-markup:
+
+Activate Or Deactivate Embedding Of Markup On Pages
 ===================================================
 
 As default, markup is not embedded on pages which should not be indexed by
@@ -225,7 +227,7 @@ methods:
    if not.
 
 
-PSR-14 Event (for TYPO3 v10+)
+PSR-14 Event (For TYPO3 v10+)
 -----------------------------
 
 With the PSR-14 event :php:`Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent` you
@@ -279,7 +281,7 @@ Example
                  event: Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent
 
 
-Signal/Slot (for TYPO3 v9/v10)
+Signal/Slot (For TYPO3 v9/v10)
 ------------------------------
 
 The signal :php:`shouldEmbedMarkup` of the

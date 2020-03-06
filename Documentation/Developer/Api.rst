@@ -5,10 +5,18 @@
 .. _api:
 
 =============
-Using the API
+Using The API
 =============
 
 Target group: **Developers**
+
+.. contents:: Table of Contents
+   :depth: 3
+   :local:
+
+
+Introduction
+============
 
 With the extension's API you can define the structured markup with PHP. For
 example, create a class which gets an Extbase model as input and defines the
@@ -21,14 +29,12 @@ and get the properties of a model.
 
 There are currently over 600 models available.
 
-Starting with an Example
+Starting With An Example
 ========================
 
 Let's start with a simple example. Imagine you describe a
 `person <https://schema.org/Person>`__ on a plugin's detail page that you want
-to enrich with structured markup. First you have to create the schema model:
-
-.. code-block:: php
+to enrich with structured markup. First you have to create the schema model::
 
    $person = new \Brotkrueml\Schema\Model\Type\Person();
 
@@ -36,9 +42,7 @@ As you see, the schema type ``Person`` maps to the model :php:`Person`. You can
 use every accepted type of the
 `schema.org vocabulary <https://schema.org/docs/full.html>`__.
 
-Surely you will need to add some properties:
-
-.. code-block:: php
+Surely you will need to add some properties::
 
    $person
       ->setId('http://example.org/#person-42')
@@ -47,9 +51,7 @@ Surely you will need to add some properties:
       ->setProperty('gender', 'http://schema.org/Male');
    ;
 
-That was easy ... let's go on and define an event the person attends:
-
-.. code-block:: php
+That was easy ... let's go on and define an event the person attends::
 
    $event = (new \Brotkrueml\Schema\Model\Type\Event())
       ->setProperty('name', 'Fancy Event')
@@ -60,16 +62,12 @@ That was easy ... let's go on and define an event the person attends:
       ->addProperty('sameAs', 'https://facebook.com/fancy-event')
    ;
 
-Now we have to connect the two types together:
-
-.. code-block:: php
+Now we have to connect the two types together::
 
    $person->setProperty('attendee', $event);
 
 The defined models are ready to embed on the web page. The schema manager does
-that for you:
-
-.. code-block:: php
+that for you::
 
    $schemaManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
       \Brotkrueml\Schema\Manager\SchemaManager::class
@@ -107,10 +105,13 @@ automatically into the head section:
 The Model In-Depth
 ==================
 
+Available Type Model Methods
+----------------------------
+
 The type models expose several methods:
 
 :php:`->setId(string $id)`
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The method sets the unique ID of the model. With the ID, you can cross-reference
 types on the same page or between different pages (and even between different
@@ -125,43 +126,45 @@ name is changed. The person is still the same, so the IRI should be.
 The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you
 call it in a browser.
 
-:aspect:`Parameter`
+Parameter
+   :php:`string $id`: The unique id to set.
 
-   * :php:`string $id`: The unique id to set.
-
-:aspect:`Return value`
-
-   Reference to itself.
+Return value
+   Reference to the model itself.
 
 
 :php:`->getId()`
-----------------
+~~~~~~~~~~~~~~~~
 
-:aspect:`Return value`
+Gets the id of the type model.
 
-   A previously set id or null (if not set).
+Parameter
+   none
+
+Return value
+   A previously set id or null (if not defined).
 
 
 :php:`->setProperty(string $propertyName, $propertyValue)`
-----------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Call this method to set a property or overwrite a previously one.
 
-:aspect:`Parameters`
+Parameters
+   :php:`string $propertyName`
+      The property name to set. If the property does not exist in the model,
+      an exception is thrown.
+   :php:`string|array|bool|AbstractType|null $propertyValue`
+      The value of the property to set. This can be a string, a boolean, another
+      model or an array of strings, booleans or models. Also null is possible to
+      clear the property value.
 
-   * :php:`string $propertyName`: The property name to set. If the property does
-     not exist in the model, an exception is thrown.
-   * :php:`string|array|bool|AbstractType|null $propertyValue`: The value of the
-     property to set. This can be a string, another model or an array of strings
-     or models. Also null is possible to clear the property value.
-
-:aspect:`Return value`
-
+Return value
    Reference to the model itself.
 
 
 :php:`->addProperty(string $propertyName, $propertyValue)`
-----------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Call this method if you want to add a value to an existing one. In the example
 above, you can see that :php:`addProperty()` is used to add a second value to
@@ -171,97 +174,94 @@ Calling the :php:`addProperty()` method on a property that has no value assigned
 has the same effect as calling :php:`setProperty()`. So you can safely use it,
 e.g. in a loop, to set some values on a property.
 
-:aspect:`Parameters`
+Parameters
+   :php:`string $propertyName`
+      The property name to set. If the property does not exist in the model, an
+      exception is thrown.
+   :php:`string|array|bool|AbstractType|null $propertyValue`
+      The value of the property to set. This can be a string, a boolean, another
+      model or an array of strings, booleans or models. Also null is possible to
+      clear the property value.
 
-   * :php:`string $propertyName`: The property name to set. If the property does
-     not exist in the model, an exception is thrown.
-   * :php:`string|array|bool|AbstractType|null $propertyValue`: The value of the
-     property to set. This can be a string, another model or an array of strings
-     or models. Also null is possible to clear the property value.
-
-:aspect:`Return value`
-
+Return value
    Reference to the model itself.
 
 
 :php:`->setProperties(array $properties)`
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set multiple properties at once.
 
-:aspect:`Parameter`
+Parameter
+   :php:`array $properties`
+      The properties to set. The key of the array is the property name, the
+      value is the property value. Allowed as values are the same as with the
+      method :php:`->setProperty()`.
 
-   * :php:`array $properties`: The properties to set. The key of the array is
-     the property name, the value is the property value. Allowed as values are
-     the same as with the method :php:`->setProperty()`.
-
-:aspect:`Return value`
-
+Return value
    Reference to the model itself.
 
 
 :php:`->getProperty(string $propertyName)`
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Get the value of a property.
 
-:aspect:`Parameter`
+Parameter
+   :php:`string $propertyName`
+      The property name to get the value from. If the property name does not
+      exist in the model, an exception is thrown.
 
-   * :php:`string $propertyName`: The property name to get the value from. If
-     the property name does not exist in the model, an exception is thrown.
-
-:aspect:`Return value`
-
-   The value of the property (string, bool, model, array of strings, array of models,
-   null).
+Return value
+   The value of the property (string, bool, model, array of strings, array of
+   models, null).
 
 
 :php:`->hasProperty(string $propertyName)`
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Check whether the property name exists in a particular model.
 
-:aspect:`Parameter`
+Parameter
+   :php:`string $propertyName`
+      The property name to check.
 
-   * :php:`string $propertyName`: The property name to check.
-
-:aspect:`Return value`
-
+Return value
    :php:`true`, if the property exists and :php:`false`, otherwise.
 
 
 :php:`->clearProperty(string $propertyName)`
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resets the value of the property (set it to :php:`null`).
 
-:aspect:`Parameter`
+Parameter
+   :php:`string $propertyName`
+      The property name to set. If the property does not exist in the model, an
+      exception is thrown.
 
-   * :php:`string $propertyName`: The property name to set. If the property does
-     not exist in the model, an exception is thrown.
-
-:aspect:`Return value`
-
+Return value
    Reference to the model itself.
 
 
 :php:`->getPropertyNames()`
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Get the names of all properties of the model.
 
-:aspect:`Return value`
-
+Return value
    Array of all property names of the model.
 
 
 :php:`->isEmpty()`
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Checks, whether all properties of the models are empty.
 
-:aspect:`Return value`
+Parameter
+   none
 
+Return value
    :php:`true` if all properties have an empty value, :php:`false` otherwise.
 
    .. note::
@@ -300,7 +300,7 @@ and one static method:
    single: Type list
    seealso: Type list; API
 
-List of types
+List Of Types
 -------------
 
 If you need a list of the available types or a subset of them, you can call
@@ -311,13 +311,14 @@ methods on the :php:`Brotkrueml\Schema\Provider\TypesProvider` class.
 
 Get all available type names.
 
-:aspect:`Return value`
+Parameter
+   none
 
+Return value
    Array, sorted alphabetically by type name.
 
-:aspect:`Example`
-
-   .. code-block:: php
+Example
+   ::
 
       $types = (new \Brotkrueml\Schema\Provider\TypesProvider())->getTypes();
 
@@ -327,8 +328,10 @@ Get all available type names.
 
 Get the `WebPage <https://schema.org/WebPage>`__ type and its descendants.
 
-:aspect:`Return value`
+Parameter
+   none
 
+Return value
    Array, sorted alphabetically by type name.
 
 
@@ -338,8 +341,10 @@ Get the `WebPage <https://schema.org/WebPage>`__ type and its descendants.
 Get the `WebPageElement <https://schema.org/WebPageElement>`__ type and its
 descendants.
 
-:aspect:`Return value`
+Parameter
+   none
 
+Return value
    Array, sorted alphabetically by type name.
 
 
@@ -350,11 +355,13 @@ The types useful for an editor are returned as an array, sorted alphabetically.
 
 The following types are filtered out:
 
- - ``BreadcrumbList``
- - ``WebPage`` and descendants
- - ``WebPageElement`` and descendants
- - ``WebSite``
+- ``BreadcrumbList``
+- ``WebPage`` and descendants
+- ``WebPageElement`` and descendants
+- ``WebSite``
 
-:aspect:`Return value`
+Parameter
+   none
 
+Return value
    Array, sorted alphabetically by type name.

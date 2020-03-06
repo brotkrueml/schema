@@ -10,13 +10,22 @@ For Editors
 
 Target group: **Editors**
 
+.. contents:: Table of Contents
+   :depth: 1
+   :local:
+
+Adjustment Of The Web Page Type
+===============================
+
 As an editor you have the possibility to adjust the type of every single web
 page for the schema markup. The default value is the most generic one:
-*WebPage*.
+``WebPage``.
 
 You'll find the field in the page properties under the :guilabel:`SEO` tab
-(with installed seo system extension) or under the :guilabel:`Metadata` tab (if
-the seo system extension is not installed):
+(with installed
+`seo system extension <https://docs.typo3.org/c/typo3/cms-seo/master/en-us/>`__)
+or under the :guilabel:`Metadata` tab (if the seo system extension is not
+installed):
 
 .. figure:: ../Images/Editor/TypeOfWebPage.png
    :alt: Field in the page properties
@@ -30,11 +39,14 @@ If no value is selected, *WebPage* is assumed.
 
    If the seo system extension is installed and the checkbox
    :guilabel:`no_index` is activated, the field is not shown. This makes no
-   sense on pages which are ignored by search engines.
+   sense on pages which are ignored by search engines. But you can override this
+   behaviour with a
+   :ref:`slot/PSR-14 event <event-de-activate-embedding-of-markup>`.
+
 
 .. index:: WebPage types
 
-Available web page types
+Available Web Page Types
 ========================
 
 .. _webpage-types-list:
