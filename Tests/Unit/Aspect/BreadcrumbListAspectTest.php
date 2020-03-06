@@ -5,12 +5,11 @@ namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -20,6 +19,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class BreadcrumbListAspectTest extends UnitTestCase
 {
+    use SchemaCacheTrait;
     use TypeFixtureNamespace;
 
     protected $resetSingletonInstances = true;
@@ -38,18 +38,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
     protected function setUp(): void
     {
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn([]);
-
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with('tx_schema')
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+        $this->defineCacheStubsWhichReturnEmptyEntry();
     }
 
     protected function tearDown(): void

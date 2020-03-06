@@ -7,19 +7,19 @@ use Brotkrueml\Schema\Aspect\WebPageAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class WebPageAspectTest extends TestCase
 {
+    use SchemaCacheTrait;
     use TypeFixtureNamespace;
 
     protected $resetSingletonInstances = true;
@@ -45,18 +45,7 @@ class WebPageAspectTest extends TestCase
 
     protected function setUp(): void
     {
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn([]);
-
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with('tx_schema')
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+        $this->defineCacheStubsWhichReturnEmptyEntry();
     }
 
     protected function tearDown(): void

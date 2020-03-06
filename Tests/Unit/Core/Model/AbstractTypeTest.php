@@ -8,6 +8,7 @@ use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Model\DataType\Boolean;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -18,6 +19,8 @@ use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 class AbstractTypeTest extends TestCase
 {
+    use SchemaCacheTrait;
+
     /**
      * @var AbstractType
      */
@@ -27,22 +30,6 @@ class AbstractTypeTest extends TestCase
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
         $this->subject = new FixtureThing();
-    }
-
-    protected function defineCacheStubsWhichReturnEmptyEntry(): void
-    {
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn([]);
-
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with('tx_schema')
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
     }
 
     protected function tearDown(): void

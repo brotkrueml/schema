@@ -8,10 +8,10 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Aspect\TestAspect;
 use Brotkrueml\Schema\Tests\Fixtures\Aspect\WrongAspect;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -24,6 +24,8 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class SchemaMarkupInjectionWithAspectTest extends TestCase
 {
+    use SchemaCacheTrait;
+
     /**
      * @var Stub|PageRenderer
      */
@@ -83,19 +85,6 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
 
         GeneralUtility::setSingletonInstance(ObjectManager::class, $objectManagerStub);
 
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn([]);
-
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with('tx_schema')
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
         /** @var MockObject|PackageManager $packageManagerStub */
         $packageManagerStub = $this->createStub(PackageManager::class);
         $packageManagerStub
@@ -104,6 +93,8 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             ->willReturn(false);
 
         ExtensionManagementUtility::setPackageManager($packageManagerStub);
+
+        $this->defineCacheStubsWhichReturnEmptyEntry();
     }
 
     protected function tearDown(): void

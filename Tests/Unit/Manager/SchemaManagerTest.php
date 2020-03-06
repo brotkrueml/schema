@@ -8,14 +8,15 @@ use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\CollectionPage;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SchemaManagerTest extends Testcase
 {
+    use SchemaCacheTrait;
+
     /**
      * @var SchemaManager
      */
@@ -23,19 +24,7 @@ class SchemaManagerTest extends Testcase
 
     protected function setUp(): void
     {
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn([]);
-
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with('tx_schema')
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
+        $this->defineCacheStubsWhichReturnEmptyEntry();
         $this->subject = new SchemaManager();
     }
 

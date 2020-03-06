@@ -2,30 +2,19 @@
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 class PropertyViewHelperTest extends ViewHelperTestCase
 {
+    use SchemaCacheTrait;
+
     protected function setUp(): void
     {
         parent::setUp();
-
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn([]);
-
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with('tx_schema')
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
+        $this->defineCacheStubsWhichReturnEmptyEntry();
     }
 
     protected function tearDown(): void
