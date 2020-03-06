@@ -2,27 +2,11 @@ name: CI
 
 on:
   push:
-    paths-ignore:
-      - .crowdin.yml
-      - .editorconfig
-      - .gitattributes
-      - .gitignore
-      - .php_cs
-      - CHANGELOG.md
-      - Documentation/**
-      - README.md
-      - Resources/**
+    paths:
+      - '**.php'
   pull_request:
-    paths-ignore:
-      - .crowdin.yml
-      - .editorconfig
-      - .gitattributes
-      - .gitignore
-      - .php_cs
-      - CHANGELOG.md
-      - Documentation/**
-      - README.md
-      - Resources/**
+    paths:
+      - '**.php'
 
 jobs:
   build:
