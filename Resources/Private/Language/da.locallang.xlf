@@ -2,17 +2,17 @@
 <xliff version="1.0">
   <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2019-09-12T18:32:21Z" target-language="da">
     <body>
-      <trans-unit id="config.automaticBreadcrumbSchemaGeneration" resname="config.automaticBreadcrumbSchemaGeneration">
+      <trans-unit id="config.automaticBreadcrumbSchemaGeneration" resname="config.automaticBreadcrumbSchemaGeneration" approved="yes">
         <source><![CDATA[Automatic embedding of the breadcrumb markup into the page]]></source>
-        <target state="translated"><![CDATA[Automatisk indlejring af brødkrumme-opmærkning på siden]]></target>
+        <target state="final"><![CDATA[Automatisk indlejring af brødkrumme-opmærkning på siden]]></target>
       </trans-unit>
-      <trans-unit id="config.automaticWebPageSchemaGeneration" resname="config.automaticWebPageSchemaGeneration">
+      <trans-unit id="config.automaticWebPageSchemaGeneration" resname="config.automaticWebPageSchemaGeneration" approved="yes">
         <source><![CDATA[Automatic embedding of the WebPage schema into the page]]></source>
-        <target state="translated"><![CDATA[Automatisk indlejring af webside-oversigt på siden]]></target>
+        <target state="final"><![CDATA[Automatisk indlejring af webside-oversigt på siden]]></target>
       </trans-unit>
-      <trans-unit id="config.embedMarkupInBodySection" resname="config.embedMarkupInBodySection">
+      <trans-unit id="config.embedMarkupInBodySection" resname="config.embedMarkupInBodySection" approved="yes">
         <source><![CDATA[Embed markup in the body section]]></source>
-        <target state="translated"><![CDATA[Indlejring af opmærkning i body sektionen]]></target>
+        <target state="final"><![CDATA[Indlejring af opmærkning i body sektionen]]></target>
       </trans-unit>
     </body>
   </file>
