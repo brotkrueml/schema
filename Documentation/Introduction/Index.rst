@@ -35,6 +35,11 @@ for Chrome.
 For the differences between the versions have a look at the
 `change log <https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md>`__.
 
+.. tip::
+
+   There is a Slack channel #ext-schema on `typo3.slack.com
+   <https://typo3.slack.com/>`__ for questions, suggestions, feedback, etc.
+
 
 .. _limitations:
 

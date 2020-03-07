@@ -12,4 +12,5 @@ The extension supports TYPO3 9 LTS and TYPO3 v10.
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/) |
 [Translation](https://crowdin.com/project/typo3-extension-schema) |
 [Changelog](https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md) |
-[Extension in TER](https://extensions.typo3.org/extension/schema/)
+[Extension in TER](https://extensions.typo3.org/extension/schema/) |
+[Slack #ext-schema](https://typo3.slack.com/)
