@@ -41,7 +41,7 @@ abstract class AbstractType
      *
      * @var array
      */
-    private $__resultArray = [];
+    private $result = [];
 
     public function __construct()
     {
@@ -320,24 +320,24 @@ abstract class AbstractType
      */
     public function toArray(): array
     {
-        $this->__resultArray = [];
+        $this->result = [];
 
         $this->addTypeToResultArray();
         $this->addIdToResultArray();
         $this->addPropertiesToResultArray();
 
-        return $this->__resultArray;
+        return $this->result;
     }
 
     private function addTypeToResultArray(): void
     {
-        $this->__resultArray['@type'] = $this->getType();
+        $this->result['@type'] = $this->getType();
     }
 
     private function addIdToResultArray(): void
     {
         if ($this->id) {
-            $this->__resultArray['@id'] = $this->id;
+            $this->result['@id'] = $this->id;
         }
     }
 
@@ -349,14 +349,14 @@ abstract class AbstractType
             }
 
             if (\is_array($this->properties[$property])) {
-                $this->__resultArray[$property] = [];
+                $this->result[$property] = [];
                 foreach ($this->properties[$property] as $singleValue) {
-                    $this->__resultArray[$property][] = $this->getPropertyValueForResult($singleValue);
+                    $this->result[$property][] = $this->getPropertyValueForResult($singleValue);
                 }
                 continue;
             }
 
-            $this->__resultArray[$property] = $this->getPropertyValueForResult($this->properties[$property]);
+            $this->result[$property] = $this->getPropertyValueForResult($this->properties[$property]);
         }
     }
 
