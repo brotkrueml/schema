@@ -350,28 +350,11 @@ abstract class AbstractType
 
             if ($this->properties[$property] instanceof AbstractType) {
                 $this->__resultArray[$property] = $this->properties[$property]->toArray();
-
                 continue;
             }
 
             if (\is_array($this->properties[$property])) {
-                $this->__resultArray[$property] = [];
-
-                /** @var AbstractType|string|bool $singleValue */
-                foreach ($this->properties[$property] as $singleValue) {
-                    if (\is_string($singleValue)) {
-                        $this->__resultArray[$property][] = $singleValue;
-                        continue;
-                    }
-
-                    if (\is_bool($singleValue)) {
-                        $this->__resultArray[$property][] = Boolean::convertToType($singleValue);
-                        continue;
-                    }
-
-                    $this->__resultArray[$property][] = $singleValue->toArray();
-                }
-
+                $this->handleArrayPropertyForResult($property);
                 continue;
             }
 
@@ -381,6 +364,26 @@ abstract class AbstractType
             }
 
             $this->__resultArray[$property] = $this->properties[$property];
+        }
+    }
+
+    private function handleArrayPropertyForResult(string $property): void
+    {
+        $this->__resultArray[$property] = [];
+
+        /** @var AbstractType|string|bool $singleValue */
+        foreach ($this->properties[$property] as $singleValue) {
+            if (\is_string($singleValue)) {
+                $this->__resultArray[$property][] = $singleValue;
+                continue;
+            }
+
+            if (\is_bool($singleValue)) {
+                $this->__resultArray[$property][] = Boolean::convertToType($singleValue);
+                continue;
+            }
+
+            $this->__resultArray[$property][] = $singleValue->toArray();
         }
     }
 }
