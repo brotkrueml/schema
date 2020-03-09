@@ -6,9 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2020-03-09
+
 ### Added
 - Possibility to register additional type properties (#36)
 - Allow boolean property values which are mapped to http://schema.org/True / http://schema.org/False (#37)
+- Add translations from Crowdin
 
 ### Changed
 - Adapt properties management in type models
@@ -161,7 +164,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.5.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/brotkrueml/schema/compare/v1.5.2...v1.6.0
 [1.5.2]: https://github.com/brotkrueml/schema/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/brotkrueml/schema/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/brotkrueml/schema/compare/v1.4.2...v1.5.0
