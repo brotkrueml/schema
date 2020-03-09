@@ -301,7 +301,7 @@ abstract class AbstractType
     public function isEmpty(): bool
     {
         $propertiesNotEmpty = \array_filter($this->getPropertyNames(), function ($property) {
-            return \is_bool($this->properties[$property]) ? true : !empty($this->properties[$property]);
+            return \is_bool($this->properties[$property]) ?: !empty($this->properties[$property]);
         });
 
         return empty($propertiesNotEmpty);
