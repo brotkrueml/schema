@@ -279,8 +279,8 @@ Other Useful APIs
 Boolean Data Type
 -----------------
 
-Boolean property values are mapped to the according schema types
-``http://schema.org/True`` or ``http://schema.org/False``. But you can also use
+Boolean property values are mapped to the according schema terms
+``http://schema.org/True`` or ``http://schema.org/False``. You can also use
 the :php:`Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
 two public constants:
 
@@ -292,8 +292,8 @@ two public constants:
 
 and one static method:
 
-:php:`::convertToType(bool $value): string`
-   This method returns the according schema type.
+:php:`::convertToTerm(bool $value): string`
+   This method returns the according schema term.
 
 
 .. index::

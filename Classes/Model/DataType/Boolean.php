@@ -19,7 +19,7 @@ final class Boolean
     public const FALSE = 'http://schema.org/False';
     public const TRUE = 'http://schema.org/True';
 
-    public static function convertToType(bool $value): string
+    public static function convertToTerm(bool $value): string
     {
         return $value ? self::TRUE : self::FALSE;
     }

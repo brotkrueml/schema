@@ -371,7 +371,7 @@ abstract class AbstractType
         }
 
         if (\is_bool($value)) {
-            return Boolean::convertToType($value);
+            return Boolean::convertToTerm($value);
         }
 
         return $value;

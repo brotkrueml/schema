@@ -11,16 +11,16 @@ class BooleanTest extends TestCase
     /**
      * @test
      */
-    public function convertToValueWithTrue(): void
+    public function convertToTermWithArgumentTrue(): void
     {
-        self::assertSame(Boolean::TRUE, Boolean::convertToType(true));
+        self::assertSame(Boolean::TRUE, Boolean::convertToTerm(true));
     }
 
     /**
      * @test
      */
-    public function convertToValueWithFalse(): void
+    public function convertToTermWithArgumentFalse(): void
     {
-        self::assertSame(Boolean::FALSE, Boolean::convertToType(false));
+        self::assertSame(Boolean::FALSE, Boolean::convertToTerm(false));
     }
 }
