@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang_db.xlf" date="2019-08-29T20:36:19Z" target-language="de">
+    <body>
+      <trans-unit id="pages.palette.structuredData" resname="pages.palette.structuredData" approved="yes">
+        <source><![CDATA[Structured Data]]></source>
+        <target state="final"><![CDATA[Strukturierte Daten]]></target>
+      </trans-unit>
+      <trans-unit id="pages.tx_schema_webpagetype" resname="pages.tx_schema_webpagetype" approved="yes">
+        <source><![CDATA[Type of web page]]></source>
+        <target state="final"><![CDATA[Art der Webseite]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
