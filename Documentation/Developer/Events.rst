@@ -61,8 +61,10 @@ Register Additional Properties For A Type
 =========================================
 
 Sometimes it can be necessary to use properties which are not standardised or
-pending. Therefore an event is available which can be used in a slot
-(TYPO3 v9/v10) and a PSR-14 event listener (TYPO3 v10+).
+`pending <https://pending.schema.org/>`_, or to add `property annotations
+<https://schema.org/docs/actions.html#part-4>`_. Therefore an event is available
+which can be used in a slot (TYPO3 v9/v10) and a PSR-14 event listener
+(TYPO3 v10+).
 
 These additional properties are not only available in the :ref:`API <api>` but
 also as arguments in the :ref:`view helpers <view-helpers>`.
