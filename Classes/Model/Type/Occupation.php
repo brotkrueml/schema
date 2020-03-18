@@ -29,7 +29,6 @@ final class Occupation extends AbstractType
         'mainEntityOfPage' => null,
         'name' => null,
         'occupationLocation' => null,
-        'occupationalCategory' => null,
         'potentialAction' => null,
         'responsibilities' => null,
         'sameAs' => null,

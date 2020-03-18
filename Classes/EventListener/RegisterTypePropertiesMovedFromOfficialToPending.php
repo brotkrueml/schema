@@ -29,6 +29,11 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         Type\Offer::class,
     ];
 
+    private $occupationalCategoryTypes = [
+        Type\JobPosting::class,
+        Type\Occupation::class,
+    ];
+
     private $sportTypes = [
         Type\SportsEvent::class,
         Type\SportsOrganization::class,
@@ -56,6 +61,11 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         if (\in_array($type, $this->ineligibleRegionTypes)) {
             /* from official to pending in schema version 4.0 */
             $event->registerAdditionalProperty('ineligibleRegion');
+        }
+
+        if (\in_array($type, $this->occupationalCategoryTypes)) {
+            /* from official to pending in schema version 7.0 */
+            $event->registerAdditionalProperty('occupationalCategory');
         }
 
         if (\in_array($type, $this->sportTypes)) {

@@ -97,4 +97,24 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
             [Type\TVEpisode::class],
         ];
     }
+
+    /**
+     * @test
+     * @dataProvider dataProviderForOccupationalCategory
+     */
+    public function additionalPropertyOccupationalCategorIsRegisteredCorrectly(string $type): void
+    {
+        $event = new RegisterAdditionalTypePropertiesEvent($type);
+        ($this->subject)($event);
+
+        self::assertContains('occupationalCategory', $event->getAdditionalProperties());
+    }
+
+    public function dataProviderForOccupationalCategory(): array
+    {
+        return [
+            [Type\JobPosting::class],
+            [Type\Occupation::class],
+        ];
+    }
 }

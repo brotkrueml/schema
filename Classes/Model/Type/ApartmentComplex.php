@@ -55,6 +55,7 @@ final class ApartmentComplex extends AbstractType
         'maximumAttendeeCapacity' => null,
         'name' => null,
         'openingHoursSpecification' => null,
+        'petsAllowed' => null,
         'photo' => null,
         'potentialAction' => null,
         'publicAccess' => null,

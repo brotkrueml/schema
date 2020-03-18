@@ -36,7 +36,6 @@ final class JobPosting extends AbstractType
         'jobLocation' => null,
         'mainEntityOfPage' => null,
         'name' => null,
-        'occupationalCategory' => null,
         'potentialAction' => null,
         'relevantOccupation' => null,
         'responsibilities' => null,
