@@ -3,10 +3,11 @@
 .. index:: WebPage page property
 
 .. _for-editors:
+.. _webpage-types:
 
-===========
-For Editors
-===========
+==============
+Web Page Types
+==============
 
 Target group: **Editors**
 
@@ -35,7 +36,7 @@ installed):
 
 If no value is selected, *WebPage* is assumed.
 
-.. NOTE::
+.. note::
 
    If the seo system extension is installed and the checkbox
    :guilabel:`no_index` is activated, the field is not shown. This makes no

@@ -66,19 +66,40 @@ This documentation is for the TYPO3 extension schema.
 
 **For Contributors**
 
-You are welcome to help improve this guide. Just click on "Edit me on GitHub"
+You are welcome to help improve this manual. Just click on "Edit on GitHub"
 on the top right to submit your change request.
+
+**Table of Contents**
+
+.. toctree::
+   Introduction/Index
+
+.. toctree::
+   :caption: For Editors
+
+   Editor/Index
+
+.. toctree::
+   :caption: For Integrators
+
+   Installation/Index
+   Configuration/Index
+   Developer/ViewHelpers
+   KnownProblems/Index
+
+.. toctree::
+   :caption: Developer Corner
+
+   Developer/Index
+   Developer/Api
+   Developer/WebPage
+   Developer/Breadcrumb
+   Developer/MainEntity
+   Developer/Events
 
 
 .. toctree::
-   :hidden:
 
-   Introduction/Index
-   Installation/Index
-   Configuration/Index
-   Editor/Index
-   Developer/Index
-   KnownProblems/Index
    genindex
    Sitemap
 

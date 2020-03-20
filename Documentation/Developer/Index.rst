@@ -3,9 +3,9 @@
 
 .. _developer:
 
-================
-Developer Corner
-================
+===========================
+Introduction For Developers
+===========================
 
 Target group: **Developers**, **Integrators**
 
@@ -43,7 +43,7 @@ Attention should be paid to the following points:
 * The :ref:`main entity <main-entity-of-web-page>` of a web page indicates the
   primary entity. It can be set separately from a ``WebPage``.
 
-.. NOTE::
+.. note::
 
    Please keep in mind: If the seo system extension is installed and the
    checkbox :guilabel:`no_index` on a page is activated, no schema markup is
@@ -105,7 +105,7 @@ generating the markup on the web page.
 The chapter :ref:`api` describes in-depth how to use the models
 and the schema manager.
 
-.. NOTE::
+.. note::
 
    The models were generated from the schema.org definition and will be updated
    as the standard evolves.
@@ -127,21 +127,7 @@ The view helpers can be nested into each other.
 The chapter :ref:`view-helpers` explains the usage of
 the view helpers in detail.
 
-.. NOTE::
+.. note::
 
    The view helpers were generated from the schema.org definition and will be
    updated as the standard evolves.
-
-
-In-Depth
-========
-
-.. toctree::
-   :maxdepth: 1
-
-   Api
-   ViewHelpers
-   WebPage
-   Breadcrumb
-   MainEntity
-   Events

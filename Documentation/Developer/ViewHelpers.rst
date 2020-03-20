@@ -9,7 +9,7 @@
 Using The View Helpers
 ======================
 
-Target group: **Developers**
+Target group: **Developers, Integrators**
 
 .. contents:: Table of Contents
    :depth: 3
