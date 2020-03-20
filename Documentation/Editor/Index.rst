@@ -51,34 +51,38 @@ Available Web Page Types
 
 .. _webpage-types-list:
 
-================== ==================================================================================
-Type               Description
-================== ==================================================================================
-WebPage            This is the most generic type for a web page
------------------- ----------------------------------------------------------------------------------
-AboutPage          Page about the site, the organization, the person behind the site, etc.
------------------- ----------------------------------------------------------------------------------
-CheckoutPage       Checkout page in a web shop
------------------- ----------------------------------------------------------------------------------
-CollectionPage     Page about multiple things, like a paginated page listing blog posts, a product
-                   category, etc.
------------------- ----------------------------------------------------------------------------------
-ContactPage        Page with contact information
------------------- ----------------------------------------------------------------------------------
-FAQPage            Page with frequently asked questions
------------------- ----------------------------------------------------------------------------------
-ImageGallery       Page with an image gallery as the most valuable content
------------------- ----------------------------------------------------------------------------------
-ItemPage           Page about a single item, e.g. a blog posting, a photograph, a product
------------------- ----------------------------------------------------------------------------------
-MediaGallery       A mixed-media page that can contains media such as images, videos, and other
-                   multimedia
------------------- ----------------------------------------------------------------------------------
-ProfilePage        Page for user profiles
------------------- ----------------------------------------------------------------------------------
-QAPage             A page with a question and one or more answers to this question
------------------- ----------------------------------------------------------------------------------
-SearchResultsPage  Page for the result pages of the search function
------------------- ----------------------------------------------------------------------------------
-VideoGallery       Page with a video gallery
-================== ==================================================================================
+`WebPage` is the most common web page type, the other types are more specific:
+
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| Type                | Description                                                                       |
++=+=+=+===============+===================================================================================+
+| WebPage             | This is the most generic type for a web page                                      |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | AboutPage         | Page about the site, the organization, the person behind the site, etc.           |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | CheckoutPage      | Checkout page in a web shop                                                       |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | CollectionPage    | Page about multiple things, like a paginated page listing blog posts, a product   |
+| |                   | category, etc.                                                                    |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | | MediaGallery    | A mixed-media page that can contains media such as images, videos, and other      |
+| | |                 | multimedia                                                                        |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | | | ImageGallery  | Page with an image gallery as the most valuable content                           |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | | | VideoGallery  | Page with a video gallery                                                         |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | ContactPage       | Page with contact information                                                     |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | FAQPage           | Page with frequently asked questions                                              |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | ImageGallery      | Page with an image gallery as the most valuable content                           |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | ItemPage          | Page about a single item, e.g. a blog posting, a photograph, a product            |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | ProfilePage       | Page for user profiles                                                            |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | QAPage            | A page with a question and one or more answers to this question                   |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | SearchResultsPage | Page for the result pages of the search function                                  |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
