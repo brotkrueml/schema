@@ -64,10 +64,10 @@ Adding Types
 
 You can add additional types for use in the :ref:`API <api>` or as a
 :ref:`WebPage type <webpage-types>`. As an example, in March 2020, Schema.org
-introduces a new `VirtualLocation <https://schema.org/VirtualLocation>` type
+introduces a new `VirtualLocation <https://schema.org/VirtualLocation>`_ type
 related to the corona crisis, which also was also quickly adopted by Google.
-The type can be used as `location <https://schema.org/location>` in the
-`Event <https://schema.org/Event>` type. So let's start with this example.
+The type can be used as `location <https://schema.org/location>`_ in the
+`Event <https://schema.org/Event>`_ type. So let's start with this example.
 
 .. rst-class:: bignums-xxl
 
@@ -155,7 +155,7 @@ Add A New WebPage Type
 ======================
 
 If you are responsible for a medical website, the chances are high that you need
-the `MedicalWebPage <https://schema.org/MedicalWebPage>` web page type, which is
+the `MedicalWebPage <https://schema.org/MedicalWebPage>`_ web page type, which is
 part of the Health Schema.org extension.
 
 Register this web page type so that it is available in the :ref:`web page type
