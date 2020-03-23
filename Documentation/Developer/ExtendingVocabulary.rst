@@ -49,7 +49,7 @@ describes how to register additional properties in detail.
 
 .. note::
 
-   Approximately every 2 months a new version of of the Schema.org definitions
+   Approximately every 2 months a new version of the Schema.org definitions
    is `released <https://schema.org/docs/releases.html>`_. The extension adopts
    these changes in future releases. If you register a pending property for
    a type, this property can be included in the core vocabulary in a later
@@ -64,11 +64,10 @@ Adding Types
 
 You can add additional types for use in the :ref:`API <api>` or as a
 :ref:`WebPage type <webpage-types>`. As an example, in March 2020, Schema.org
-introduces for example a new `VirtualLocation
-<https://schema.org/VirtualLocation>` type related to the corona crisis, which
-also was also quickly adopted by Google. The type can be used as `location
-<https://schema.org/location>` in the `Event <https://schema.org/Event>` type.
-So let's start with this example.
+introduces a new `VirtualLocation <https://schema.org/VirtualLocation>` type
+related to the corona crisis, which also was also quickly adopted by Google.
+The type can be used as `location <https://schema.org/location>` in the
+`Event <https://schema.org/Event>` type. So let's start with this example.
 
 .. rst-class:: bignums-xxl
 
@@ -80,7 +79,7 @@ So let's start with this example.
       <?php
       declare(strict_types=1);
 
-      namespace Acme\LooneyTunes\Model\Type;
+      namespace Acme\LooneyTunes\Domain\Schema\Type;
 
       use Brotkrueml\Schema\Core\Model\AbstractType;
 
@@ -102,13 +101,14 @@ So let's start with this example.
          ];
       }
 
-   That's it. In the example, the class is stored in :file:`Classes/Model/Type`
-   but you can choose any namespace. The protected static property
-   :php:`$propertyNames` contains the available Schema.org properties.
+   That's it. In the example, the class is stored in
+   :file:`Classes/Domain/Schema/Type` but you can choose any namespace. The
+   protected static property :php:`$propertyNames` contains the available
+   Schema.org properties.
 
    Now you can use the `VirtualLocation` in your PHP code::
 
-      $location = new \Acme\LooneyTunes\Model\Type\VirtualLocation();
+      $location = new \Acme\LooneyTunes\Domain\Schema\Type\VirtualLocation();
       $location
          ->setProperty('url', 'https://example.com/looney-tunes-webinar-12345/register')
       ;
@@ -126,7 +126,7 @@ So let's start with this example.
 
       <?php
       return [
-         \Acme\LooneyTunes\Model\Type\VirtualLocation::class,
+         \Acme\LooneyTunes\Domain\Schema\Type\VirtualLocation::class,
       ];
 
    As it is not mandatory to register the class for usage in the API only, the
@@ -138,8 +138,8 @@ So let's start with this example.
 .. note::
 
    As you can intentionally "override" a class model, e.g. the delivered
-   `Person` class model with an customised one, it is not recommended to do so.
-   Instead, use the option to :ref:`register additional properties
+   `Person` class model with a customised one, but it is not recommended to do
+   so. Instead, use the option to :ref:`register additional properties
    <extending-register-additional-properties>`.
 
 .. important::
@@ -169,7 +169,7 @@ Then mark your class as a WebPage type with the interface
    <?php
    declare(strict_types=1);
 
-   namespace Acme\LooneyTunes\Model\Type;
+   namespace Acme\LooneyTunes\Domain\Schema\Type;
 
    use Brotkrueml\Schema\Core\Model\AbstractType;
    use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
@@ -181,7 +181,7 @@ Then mark your class as a WebPage type with the interface
       ];
    }
 
-The new web page type can now be selected:
+The new web page type can now be selected in the page properties:
 
 .. figure:: ../Images/Developer/MedicalWebPageTypeSelection.png
    :alt: MedicalWebPage in the list of available web page types
@@ -194,7 +194,7 @@ Add A New View Helper
 
 As the API and thus the :ref:`defined model class <extending-adding-types>`
 can be accessed in PHP, the use as a view helper in Fluid templates would also
-be useful sometimes. If you have the need for this, simply create a new view
+be nice sometimes. If you have the need for this, simply create a new view
 helper::
 
    <?php
@@ -206,7 +206,7 @@ helper::
 
    final class VirtualLocationViewHelper extends AbstractTypeViewHelper
    {
-      protected static $typeModel = \Acme\LooneyTunes\Model\Type\VirtualLocation::class;
+      protected static $typeModel = \Acme\LooneyTunes\Domain\Schema\Type\VirtualLocation::class;
    }
 
 The view helper must extend the
