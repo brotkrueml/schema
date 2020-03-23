@@ -17,21 +17,21 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class InteractionCounter extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'interactionService' => null,
-        'interactionType' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'userInteractionCount' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'interactionService',
+        'interactionType',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'userInteractionCount',
     ];
 }

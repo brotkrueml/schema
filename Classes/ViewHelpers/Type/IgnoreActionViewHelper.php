@@ -17,4 +17,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class IgnoreActionViewHelper extends AbstractTypeViewHelper
 {
+    protected static $typeModel = \Brotkrueml\Schema\Model\Type\IgnoreAction::class;
 }

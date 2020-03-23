@@ -10,6 +10,9 @@ namespace Brotkrueml\Schema\Provider;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Registry\TypeRegistry;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * @internal
  */
@@ -17,7 +20,7 @@ final class WebPageTypeProvider
 {
     public static function getTypesForTcaSelect(): array
     {
-        $types = (new TypesProvider())->getWebPageTypes();
+        $types = GeneralUtility::makeInstance(TypeRegistry::class)->getWebPageTypes();
 
         \array_walk($types, function (&$type) {
             $type = [$type, $type];

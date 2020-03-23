@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class DataFeedItem extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'dateCreated' => null,
-        'dateDeleted' => null,
-        'dateModified' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'item' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'dateCreated',
+        'dateDeleted',
+        'dateModified',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'item',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

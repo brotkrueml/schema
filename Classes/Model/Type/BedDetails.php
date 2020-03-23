@@ -17,20 +17,20 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class BedDetails extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'numberOfBeds' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'typeOfBed' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'numberOfBeds',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'typeOfBed',
+        'url',
     ];
 }

@@ -248,15 +248,9 @@ class AbstractTypeTest extends TestCase
         $this->subject->addProperty('isAccessibleForFree', false);
         $this->subject->addProperty('isAccessibleForFree', true);
 
-        $this->subject->addProperty('image', new class extends AbstractType {
-            protected $properties = ['someName' => 'someValue 1'];
-        });
-        $this->subject->addProperty('image', new class extends AbstractType {
-            protected $properties = ['someName' => 'someValue 2'];
-        });
-        $this->subject->addProperty('image', new class extends AbstractType {
-            protected $properties = ['someName' => 'someValue 3'];
-        });
+        $this->subject->addProperty('image', (new FixtureImage())->setProperty('name', 'someValue 1'));
+        $this->subject->addProperty('image', (new FixtureImage())->setProperty('name', 'someValue 2'));
+        $this->subject->addProperty('image', (new FixtureImage())->setProperty('name', 'someValue 3'));
 
         $actual = $this->subject->toArray();
 
@@ -267,9 +261,9 @@ class AbstractTypeTest extends TestCase
             $actual['isAccessibleForFree']
         );
         self::assertSame(['name 1', 'name 2', 'name 3'], $actual['name']);
-        self::assertSame('someValue 1', $actual['image'][0]['someName']);
-        self::assertSame('someValue 2', $actual['image'][1]['someName']);
-        self::assertSame('someValue 3', $actual['image'][2]['someName']);
+        self::assertSame('someValue 1', $actual['image'][0]['name']);
+        self::assertSame('someValue 2', $actual['image'][1]['name']);
+        self::assertSame('someValue 3', $actual['image'][2]['name']);
     }
 
     /**

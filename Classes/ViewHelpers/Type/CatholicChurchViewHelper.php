@@ -17,4 +17,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class CatholicChurchViewHelper extends AbstractTypeViewHelper
 {
+    protected static $typeModel = \Brotkrueml\Schema\Model\Type\CatholicChurch::class;
 }

@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class OwnershipInfo extends AbstractType
 {
-    protected $properties = [
-        'acquiredFrom' => null,
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'ownedFrom' => null,
-        'ownedThrough' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'typeOfGood' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'acquiredFrom',
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'ownedFrom',
+        'ownedThrough',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'typeOfGood',
+        'url',
     ];
 }

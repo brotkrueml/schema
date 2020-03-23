@@ -17,21 +17,21 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class Role extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'endDate' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'roleName' => null,
-        'sameAs' => null,
-        'startDate' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'endDate',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'roleName',
+        'sameAs',
+        'startDate',
+        'subjectOf',
+        'url',
     ];
 }

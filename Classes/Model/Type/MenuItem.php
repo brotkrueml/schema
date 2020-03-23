@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class MenuItem extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'menuAddOn' => null,
-        'name' => null,
-        'nutrition' => null,
-        'offers' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'suitableForDiet' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'menuAddOn',
+        'name',
+        'nutrition',
+        'offers',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'suitableForDiet',
+        'url',
     ];
 }

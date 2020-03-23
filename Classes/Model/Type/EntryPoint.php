@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class EntryPoint extends AbstractType
 {
-    protected $properties = [
-        'actionApplication' => null,
-        'actionPlatform' => null,
-        'additionalType' => null,
-        'alternateName' => null,
-        'contentType' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'encodingType' => null,
-        'httpMethod' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'urlTemplate' => null,
+    protected static $propertyNames = [
+        'actionApplication',
+        'actionPlatform',
+        'additionalType',
+        'alternateName',
+        'contentType',
+        'description',
+        'disambiguatingDescription',
+        'encodingType',
+        'httpMethod',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'urlTemplate',
     ];
 }

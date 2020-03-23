@@ -12,9 +12,18 @@ services:
     factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
     arguments: ['pages']
 
+  cache.tx_schema_core:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['tx_schema_core']
+
   Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
     arguments:
       $cache: '@cache.pages'
+
+  Brotkrueml\Schema\Registry\TypeRegistry:
+    arguments:
+      $cache: '@cache.tx_schema_core'
 
   Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending:
     tags:

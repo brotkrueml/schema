@@ -1,10 +1,11 @@
 <phpunit
-     convertErrorsToExceptions="true"
-     convertNoticesToExceptions="true"
-     convertWarningsToExceptions="true"
-     stopOnFailure="false"
+    convertDeprecationsToExceptions="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    stopOnFailure="false"
 >
-<testsuites>
+    <testsuites>
         <testsuite name="Unit tests">
             <directory>Unit/</directory>
         </testsuite>

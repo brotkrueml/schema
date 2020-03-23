@@ -7,11 +7,12 @@
 Structured data with the schema extension
 =========================================
 
-.. rst-class:: horizbuttons-tip-xxl
+.. rst-class:: horizbuttons-tip-m
 
 - :ref:`api`
 - :ref:`view-helpers`
 - :ref:`events`
+- :ref:`extending-vocabulary`
 
 
 :Version:
@@ -96,6 +97,7 @@ on the top right to submit your change request.
    Developer/Breadcrumb
    Developer/MainEntity
    Developer/Events
+   Developer/ExtendingVocabulary
 
 
 .. toctree::

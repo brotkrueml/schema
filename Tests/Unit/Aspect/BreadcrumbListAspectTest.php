@@ -5,9 +5,11 @@ namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Tests\Unit\Helper\TypeFixtureNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -20,7 +22,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 class BreadcrumbListAspectTest extends UnitTestCase
 {
     use SchemaCacheTrait;
-    use TypeFixtureNamespace;
 
     protected $resetSingletonInstances = true;
 
@@ -35,6 +36,9 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
     /** @var MockObject|ContentObjectRenderer */
     protected $contentObjectRendererMock;
+
+    /** @var Stub|TypeRegistry */
+    private $typeRegistryStub;
 
     protected function setUp(): void
     {
@@ -70,7 +74,8 @@ class BreadcrumbListAspectTest extends UnitTestCase
         (new BreadcrumbListAspect(
             $this->controllerMock,
             $configurationMock,
-            $this->contentObjectRendererMock
+            $this->contentObjectRendererMock,
+            $this->typeRegistryStub
         ))
             ->execute($schemaManagerMock);
     }
@@ -79,6 +84,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $this->contentObjectRendererMock = $this->createMock(ContentObjectRenderer::class);
+        $this->typeRegistryStub = $this->createStub(TypeRegistry::class);
     }
 
     /**
@@ -99,7 +105,8 @@ class BreadcrumbListAspectTest extends UnitTestCase
         (new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock
+            $this->contentObjectRendererMock,
+            $this->typeRegistryStub
         ))
             ->execute($schemaManagerMock);
     }
@@ -121,30 +128,6 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
     public function rootLineProvider(): iterable
     {
-        yield 'Rootline with web page type set' => [
-            [
-                2 => [
-                    'uid' => 2,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => 'ItemPage',
-                ],
-                1 => [
-                    'uid' => 1,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '1',
-                    'tx_schema_webpagetype' => '',
-                ],
-            ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
-        ];
-
         yield 'Rootline with nav_title set' => [
             [
                 2 => [
@@ -329,7 +312,8 @@ class BreadcrumbListAspectTest extends UnitTestCase
         $subject = new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock
+            $this->contentObjectRendererMock,
+            $this->typeRegistryStub
         );
 
         $subject->execute($schemaManager);
@@ -380,7 +364,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             ])
             ->willReturn('https://example.org/level-4/');
 
-        $this->controllerMock->rootLine =             [
+        $this->controllerMock->rootLine = [
             [
                 'uid' => 111,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,
@@ -433,11 +417,73 @@ class BreadcrumbListAspectTest extends UnitTestCase
         $subject = new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock
+            $this->contentObjectRendererMock,
+            $this->typeRegistryStub
         );
 
         $subject->execute($schemaManager);
 
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}</script>', $schemaManager->renderJsonLd());
+        self::assertSame(
+            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}</script>',
+            $schemaManager->renderJsonLd()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function rootlineWithDifferentWebPageTypeSet(): void
+    {
+        $this->setUpGeneralMocks();
+
+        $this->typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->with('ItemPage')
+            ->willReturn(ItemPage::class);
+
+        $this->controllerMock->rootLine = [
+            2 => [
+                'uid' => 2,
+                'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                'title' => 'A page',
+                'nav_title' => '',
+                'nav_hide' => '0',
+                'is_siteroot' => '0',
+                'tx_schema_webpagetype' => 'ItemPage',
+            ],
+            1 => [
+                'uid' => 1,
+                'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                'title' => 'Site root page',
+                'nav_title' => '',
+                'nav_hide' => '0',
+                'is_siteroot' => '1',
+                'tx_schema_webpagetype' => '',
+            ],
+        ];
+
+        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
+
+        $this->contentObjectRendererMock
+            ->expects(self::once())
+            ->method('typoLink_URL')
+            ->with([
+                'parameter' => '2',
+                'forceAbsoluteUrl' => true,
+            ])
+            ->willReturn('https://example.org/the-page/');
+
+        $subject = new BreadcrumbListAspect(
+            $this->controllerMock,
+            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
+            $this->contentObjectRendererMock,
+            $this->typeRegistryStub
+        );
+
+        $subject->execute($schemaManager);
+
+        $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>';
+
+        self::assertSame($expected, $schemaManager->renderJsonLd());
     }
 }

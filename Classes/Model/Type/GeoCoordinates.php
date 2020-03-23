@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class GeoCoordinates extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'address' => null,
-        'addressCountry' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'elevation' => null,
-        'identifier' => null,
-        'image' => null,
-        'latitude' => null,
-        'longitude' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'postalCode' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'address',
+        'addressCountry',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'elevation',
+        'identifier',
+        'image',
+        'latitude',
+        'longitude',
+        'mainEntityOfPage',
+        'name',
+        'postalCode',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class Trip extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'arrivalTime' => null,
-        'departureTime' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'offers' => null,
-        'potentialAction' => null,
-        'provider' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'arrivalTime',
+        'departureTime',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'offers',
+        'potentialAction',
+        'provider',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

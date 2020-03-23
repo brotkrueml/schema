@@ -304,7 +304,13 @@ List Of Types
 -------------
 
 If you need a list of the available types or a subset of them, you can call
-methods on the :php:`Brotkrueml\Schema\Provider\TypesProvider` class.
+methods on the :php:`Brotkrueml\Schema\Registry\TypeRegistry` class. As this is
+a singleton, instantiate the class with::
+
+   $typeRegistry = GeneralUtility::makeInstance(\Brotkrueml\Schema\Registry\TypeRegistry::class);
+
+or use dependency injection in TYPO3 v10+.
+
 
 :php:`->getTypes()`
 ~~~~~~~~~~~~~~~~~~~
@@ -316,11 +322,6 @@ Parameter
 
 Return value
    Array, sorted alphabetically by type name.
-
-Example
-   ::
-
-      $types = (new \Brotkrueml\Schema\Provider\TypesProvider())->getTypes();
 
 
 :php:`->getWebPageTypes()`
@@ -347,6 +348,8 @@ Parameter
 Return value
    Array, sorted alphabetically by type name.
 
+
+.. _api-typesprovider-getcontenttypes:
 
 :php:`->getContentTypes()`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

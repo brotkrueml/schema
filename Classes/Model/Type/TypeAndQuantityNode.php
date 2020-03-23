@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class TypeAndQuantityNode extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'amountOfThisGood' => null,
-        'businessFunction' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'typeOfGood' => null,
-        'unitCode' => null,
-        'unitText' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'amountOfThisGood',
+        'businessFunction',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'typeOfGood',
+        'unitCode',
+        'unitText',
+        'url',
     ];
 }

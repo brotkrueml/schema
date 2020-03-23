@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class HowToTool extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'item' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'nextItem' => null,
-        'position' => null,
-        'potentialAction' => null,
-        'previousItem' => null,
-        'requiredQuantity' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'item',
+        'mainEntityOfPage',
+        'name',
+        'nextItem',
+        'position',
+        'potentialAction',
+        'previousItem',
+        'requiredQuantity',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

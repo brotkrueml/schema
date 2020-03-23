@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class BusinessAudience extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'audienceType' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'geographicArea' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'numberOfEmployees' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'yearlyRevenue' => null,
-        'yearsInOperation' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'audienceType',
+        'description',
+        'disambiguatingDescription',
+        'geographicArea',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'numberOfEmployees',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'yearlyRevenue',
+        'yearsInOperation',
     ];
 }

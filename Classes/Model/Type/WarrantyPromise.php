@@ -17,20 +17,20 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class WarrantyPromise extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'durationOfWarranty' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'warrantyScope' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'durationOfWarranty',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'warrantyScope',
     ];
 }

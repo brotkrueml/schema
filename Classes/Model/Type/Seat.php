@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class Seat extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'seatNumber' => null,
-        'seatRow' => null,
-        'seatSection' => null,
-        'seatingType' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'seatNumber',
+        'seatRow',
+        'seatSection',
+        'seatingType',
+        'subjectOf',
+        'url',
     ];
 }

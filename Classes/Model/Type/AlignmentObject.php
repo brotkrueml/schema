@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class AlignmentObject extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alignmentType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'educationalFramework' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'targetDescription' => null,
-        'targetName' => null,
-        'targetUrl' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alignmentType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'educationalFramework',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'targetDescription',
+        'targetName',
+        'targetUrl',
+        'url',
     ];
 }

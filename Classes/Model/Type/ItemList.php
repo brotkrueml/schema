@@ -17,21 +17,21 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class ItemList extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'itemListElement' => null,
-        'itemListOrder' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'numberOfItems' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'itemListElement',
+        'itemListOrder',
+        'mainEntityOfPage',
+        'name',
+        'numberOfItems',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

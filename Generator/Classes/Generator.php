@@ -55,10 +55,9 @@ class Generator
     protected $types = [];
 
     protected $webPageTypes = [];
+    protected $webPageElementTypes = [];
 
     protected $properties = [];
-
-    protected $availableTypeTraits = [];
 
     public function __construct(Configuration $configuration, Environment $twig)
     {
@@ -84,6 +83,7 @@ class Generator
         $this->buildGraph();
         $this->attachPropertiesToTypes();
         $this->identifyWebPageTypes();
+        $this->identifyWebPageElementTypes();
         $this->createTypes();
     }
 
@@ -198,6 +198,7 @@ class Generator
                 'className' => $label,
                 'properties' => $properties,
                 'isWebPageType' => \in_array($label, $this->webPageTypes),
+                'isWebPageElementType' => \in_array($label, $this->webPageElementTypes),
             ]
         );
 
@@ -213,7 +214,7 @@ class Generator
             'ViewHelper.php.twig',
             [
                 'comment' => $comment,
-                'className' => $label . 'ViewHelper',
+                'type' => $label,
             ]
         );
 
@@ -298,15 +299,13 @@ class Generator
         \sort($types);
 
         $providerClass = $this->twig->render(
-            'TypesProvider.php.twig',
+            'TypeModels.php.twig',
             [
                 'types' => $types,
-                'webPageTypes' => $this->webPageTypes,
-                'webPageElementTypes' => $this->identifyWebPageElementTypes(),
             ]
         );
 
-        \file_put_contents($this->configuration->typesProviderTemplate, $providerClass);
+        \file_put_contents($this->configuration->typeModelsTemplate, $providerClass);
     }
 
     protected function collectAvailableTypes(Vertex $type): array
@@ -319,12 +318,10 @@ class Generator
         return $types;
     }
 
-    protected function identifyWebPageElementTypes(): array
+    protected function identifyWebPageElementTypes(): void
     {
-        $types = $this->getWebPageElementTypeChildren($this->types[static::ROOT_WEBPAGEELEMENT_TYPE_ID]);
-        \sort($types);
-
-        return $types;
+        $this->webPageElementTypes = $this->getWebPageElementTypeChildren($this->types[static::ROOT_WEBPAGEELEMENT_TYPE_ID]);
+        \sort($this->webPageElementTypes);
     }
 
     protected function getWebPageElementTypeChildren(Vertex $type): array

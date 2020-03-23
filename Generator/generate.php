@@ -11,7 +11,7 @@ $configuration = new Configuration();
 $configuration->schemaPath = __DIR__ . '/Schema/schema.jsonld';
 $configuration->modelTypePathTemplate = __DIR__ . '/../Classes/Model/Type/%s.php';
 $configuration->viewHelperTypePathTemplate = __DIR__ . '/../Classes/ViewHelpers/Type/%sViewHelper.php';
-$configuration->typesProviderTemplate = __DIR__ . '/../Classes/Provider/TypesProvider.php';
+$configuration->typeModelsTemplate = __DIR__ . '/../Configuration/TxSchema/TypeModels.php';
 
 $loader = new FilesystemLoader(__DIR__ . '/Templates');
 $twig = new Environment($loader, [

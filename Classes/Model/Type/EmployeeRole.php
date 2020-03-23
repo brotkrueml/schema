@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class EmployeeRole extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'baseSalary' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'endDate' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'numberedPosition' => null,
-        'potentialAction' => null,
-        'roleName' => null,
-        'salaryCurrency' => null,
-        'sameAs' => null,
-        'startDate' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'baseSalary',
+        'description',
+        'disambiguatingDescription',
+        'endDate',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'numberedPosition',
+        'potentialAction',
+        'roleName',
+        'salaryCurrency',
+        'sameAs',
+        'startDate',
+        'subjectOf',
+        'url',
     ];
 }

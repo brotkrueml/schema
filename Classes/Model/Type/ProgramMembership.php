@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class ProgramMembership extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'hostingOrganization' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'member' => null,
-        'membershipNumber' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'programName' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'hostingOrganization',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'member',
+        'membershipNumber',
+        'name',
+        'potentialAction',
+        'programName',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

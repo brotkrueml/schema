@@ -1,0 +1,6 @@
+<?php
+return [
+    {% for type in types %}
+        \Brotkrueml\Schema\Model\Type\{{ type }}::class,
+    {% endfor %}
+];

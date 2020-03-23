@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class Rating extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'author' => null,
-        'bestRating' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'ratingValue' => null,
-        'reviewAspect' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'worstRating' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'author',
+        'bestRating',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'ratingValue',
+        'reviewAspect',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'worstRating',
     ];
 }

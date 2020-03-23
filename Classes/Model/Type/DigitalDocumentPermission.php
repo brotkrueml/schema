@@ -17,20 +17,20 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class DigitalDocumentPermission extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'grantee' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'permissionType' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'grantee',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'permissionType',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

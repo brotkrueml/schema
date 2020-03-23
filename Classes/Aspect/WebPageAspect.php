@@ -12,7 +12,7 @@ namespace Brotkrueml\Schema\Aspect;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Utility\Utility;
+use Brotkrueml\Schema\Registry\TypeRegistry;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -27,12 +27,17 @@ final class WebPageAspect implements AspectInterface
     /** @var ExtensionConfiguration */
     private $configuration;
 
+    /** @var TypeRegistry */
+    private $typeRegistry;
+
     public function __construct(
         TypoScriptFrontendController $controller = null,
-        ExtensionConfiguration $configuration = null
+        ExtensionConfiguration $configuration = null,
+        TypeRegistry $typeRegistry = null
     ) {
-        $this->controller = $controller ?: $GLOBALS['TSFE'];
-        $this->configuration = $configuration ?: GeneralUtility::makeInstance(ExtensionConfiguration::class);
+        $this->controller = $controller ?? $GLOBALS['TSFE'];
+        $this->configuration = $configuration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
+        $this->typeRegistry = $typeRegistry ?? new TypeRegistry();
     }
 
     public function execute(SchemaManager $schemaManager): void
@@ -50,10 +55,10 @@ final class WebPageAspect implements AspectInterface
 
         $type = $this->controller->page['tx_schema_webpagetype'] ?: static::DEFAULT_WEBPAGE_TYPE;
 
-        $webPageClass = Utility::getNamespacedClassNameForType($type);
+        $webPageClass = $this->typeRegistry->resolveModelClassFromType($type);
         if ($webPageClass) {
             /** @var AbstractType $webPage */
-            $webPage = GeneralUtility::makeInstance($webPageClass);
+            $webPage = new $webPageClass();
 
             if ($this->controller->page['endtime']) {
                 $webPage->setProperty('expires', \date('c', $this->controller->page['endtime']));

@@ -17,22 +17,22 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class Brand extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'aggregateRating' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'logo' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'review' => null,
-        'sameAs' => null,
-        'slogan' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'aggregateRating',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'logo',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'review',
+        'sameAs',
+        'slogan',
+        'subjectOf',
+        'url',
     ];
 }

@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class OpeningHoursSpecification extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'closes' => null,
-        'dayOfWeek' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'opens' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'validFrom' => null,
-        'validThrough' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'closes',
+        'dayOfWeek',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'opens',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'validFrom',
+        'validThrough',
     ];
 }

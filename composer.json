@@ -20,7 +20,7 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
-        "typo3/cms-core": "^9.5 || ^10.0"
+        "typo3/cms-core": "^9.5 || ^10.1"
     },
     "require-dev": {
         "clue/graph": "^0.9",
@@ -55,7 +55,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.6.x-dev"
+            "dev-master": "1.7.x-dev"
         },
         "typo3/cms": {
             "app-dir": ".Build",

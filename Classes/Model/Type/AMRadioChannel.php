@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class AMRadioChannel extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'broadcastChannelId' => null,
-        'broadcastFrequency' => null,
-        'broadcastServiceTier' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'genre' => null,
-        'identifier' => null,
-        'image' => null,
-        'inBroadcastLineup' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'providesBroadcastService' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'broadcastChannelId',
+        'broadcastFrequency',
+        'broadcastServiceTier',
+        'description',
+        'disambiguatingDescription',
+        'genre',
+        'identifier',
+        'image',
+        'inBroadcastLineup',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'providesBroadcastService',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

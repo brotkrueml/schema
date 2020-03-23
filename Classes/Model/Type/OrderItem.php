@@ -17,23 +17,23 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class OrderItem extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'orderDelivery' => null,
-        'orderItemNumber' => null,
-        'orderItemStatus' => null,
-        'orderQuantity' => null,
-        'orderedItem' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'orderDelivery',
+        'orderItemNumber',
+        'orderItemStatus',
+        'orderQuantity',
+        'orderedItem',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

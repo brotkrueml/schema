@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class QuantitativeValueDistribution extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'duration' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'median' => null,
-        'name' => null,
-        'percentile10' => null,
-        'percentile25' => null,
-        'percentile75' => null,
-        'percentile90' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'duration',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'median',
+        'name',
+        'percentile10',
+        'percentile25',
+        'percentile75',
+        'percentile90',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

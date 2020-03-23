@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class MonetaryAmount extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'currency' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'maxValue' => null,
-        'minValue' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'validFrom' => null,
-        'validThrough' => null,
-        'value' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'currency',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'maxValue',
+        'minValue',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'validFrom',
+        'validThrough',
+        'value',
     ];
 }

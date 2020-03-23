@@ -1,7 +1,7 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3_MODE') or die();
 
-(function ($extensionKey='schema') {
+(function ($extensionKey = 'schema') {
     $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',tx_schema_webpagetype';
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] =
@@ -16,6 +16,15 @@ defined('TYPO3_MODE') || die();
     if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$cacheIdentifier])) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$cacheIdentifier] = [];
     }
+
+    $coreCacheIdentifier = 'tx_' . $extensionKey . '_core';
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier] = [
+        'frontend' => \TYPO3\CMS\Core\Cache\Frontend\PhpFrontend::class,
+        'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
+        'options' => [
+            'defaultLifetime' => 0,
+        ],
+    ];
 
     if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch) < 10000000) {
         $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(

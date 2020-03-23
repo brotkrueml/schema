@@ -17,21 +17,21 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class GameServer extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'game' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'playersOnline' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'serverStatus' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'description',
+        'disambiguatingDescription',
+        'game',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'playersOnline',
+        'potentialAction',
+        'sameAs',
+        'serverStatus',
+        'subjectOf',
+        'url',
     ];
 }

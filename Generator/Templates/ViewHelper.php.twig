@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * {{ comment }}
  */
-final class {{ className }} extends AbstractTypeViewHelper
+final class {{ type }}ViewHelper extends AbstractTypeViewHelper
 {
+    protected static $typeModel = \Brotkrueml\Schema\Model\Type\{{ type }}::class;
 }

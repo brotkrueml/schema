@@ -17,20 +17,20 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class SpeakableSpecification extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'cssSelector' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
-        'xpath' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'cssSelector',
+        'description',
+        'disambiguatingDescription',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'sameAs',
+        'subjectOf',
+        'url',
+        'xpath',
     ];
 }

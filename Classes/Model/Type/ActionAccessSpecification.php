@@ -17,24 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  */
 final class ActionAccessSpecification extends AbstractType
 {
-    protected $properties = [
-        'additionalType' => null,
-        'alternateName' => null,
-        'availabilityEnds' => null,
-        'availabilityStarts' => null,
-        'category' => null,
-        'description' => null,
-        'disambiguatingDescription' => null,
-        'eligibleRegion' => null,
-        'expectsAcceptanceOf' => null,
-        'identifier' => null,
-        'image' => null,
-        'mainEntityOfPage' => null,
-        'name' => null,
-        'potentialAction' => null,
-        'requiresSubscription' => null,
-        'sameAs' => null,
-        'subjectOf' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'additionalType',
+        'alternateName',
+        'availabilityEnds',
+        'availabilityStarts',
+        'category',
+        'description',
+        'disambiguatingDescription',
+        'eligibleRegion',
+        'expectsAcceptanceOf',
+        'identifier',
+        'image',
+        'mainEntityOfPage',
+        'name',
+        'potentialAction',
+        'requiresSubscription',
+        'sameAs',
+        'subjectOf',
+        'url',
     ];
 }

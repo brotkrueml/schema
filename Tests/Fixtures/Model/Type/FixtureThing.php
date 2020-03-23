@@ -7,13 +7,13 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 class FixtureThing extends AbstractType
 {
-    protected $properties = [
-        'alternateName' => null,
-        'description' => null,
-        'identifier' => null,
-        'image' => null,
-        'isAccessibleForFree' => null,
-        'name' => null,
-        'url' => null,
+    protected static $propertyNames = [
+        'alternateName',
+        'description',
+        'identifier',
+        'image',
+        'isAccessibleForFree',
+        'name',
+        'url',
     ];
 }

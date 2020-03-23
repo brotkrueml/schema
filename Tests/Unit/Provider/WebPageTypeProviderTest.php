@@ -2,20 +2,28 @@
 
 namespace Brotkrueml\Schema\Tests\Unit\Provider;
 
-use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Provider\WebPageTypeProvider;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Utility\Utility;
+use Brotkrueml\Schema\Registry\TypeRegistry;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class WebPageTypeProviderTest extends TestCase
 {
-    use SchemaCacheTrait;
+    protected $availableWebPageTypesForTesting = [
+        'FooPage',
+        'BarPage',
+        'SomePage',
+        'AnotherPage',
+    ];
 
     protected function setUp(): void
     {
-        $this->defineCacheStubsWhichReturnEmptyEntry();
+        $typeRegistryStub = $this->createStub(TypeRegistry::class);
+        $typeRegistryStub
+            ->method('getWebPageTypes')
+            ->willReturn($this->availableWebPageTypesForTesting);
+
+        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
     }
 
     protected function tearDown(): void
@@ -25,55 +33,18 @@ class WebPageTypeProviderTest extends TestCase
 
     public function dataProvider(): iterable
     {
-        $webPageTypes = [
-            'AboutPage',
-            'CheckoutPage',
-            'CollectionPage',
-            'ContactPage',
-            'FAQPage',
-            'ImageGallery',
-            'ItemPage',
-            'MediaGallery',
-            'ProfilePage',
-            'QAPage',
-            'SearchResultsPage',
-            'VideoGallery',
-            'WebPage',
-        ];
-
-        foreach ($webPageTypes as $type) {
+        foreach ($this->availableWebPageTypesForTesting as $type) {
             yield \sprintf('Type "%s"', $type) => [$type];
         }
     }
 
     /**
-     * We have to assure that no WebPage type is removed by the generator
-     * when the schema definition changes. A WebPage type can be assigned
-     * by the user in the page field!
-     *
      * @test
      * @dataProvider dataProvider
      *
      * @param string $type
      */
-    public function givenWebPageTypeIsAnInstanceOfWebPageTypeInterface(string $type): void
-    {
-        $className = Utility::getNamespacedClassNameForType($type);
-        $class = new $className();
-
-        self::assertInstanceOf(WebPageTypeInterface::class, $class);
-    }
-
-    /**
-     * We also have to assure that the structure for the TCA is correct
-     * and has also the empty option available!
-     *
-     * @test
-     * @dataProvider dataProvider
-     *
-     * @param string $type
-     */
-    public function givenTypeIsInTcaSelect(string $type): void
+    public function getTypesForTcaSelectReturnsAllAvailableWebPageTypes(string $type): void
     {
         $actual = WebPageTypeProvider::getTypesForTcaSelect();
 

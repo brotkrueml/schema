@@ -13,7 +13,7 @@ namespace Brotkrueml\Schema\Aspect;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type;
-use Brotkrueml\Schema\Utility\Utility;
+use Brotkrueml\Schema\Registry\TypeRegistry;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -27,17 +27,22 @@ final class BreadcrumbListAspect implements AspectInterface
     /** @var ExtensionConfiguration */
     private $configuration;
 
-    /** @var object|ContentObjectRenderer */
+    /** @var ContentObjectRenderer */
     private $contentObjectRenderer;
+
+    /** @var TypeRegistry */
+    private $typeRegistry;
 
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $configuration = null,
-        ContentObjectRenderer $contentObjectRenderer = null
+        ContentObjectRenderer $contentObjectRenderer = null,
+        TypeRegistry $typeRegistry = null
     ) {
-        $this->controller = $controller ?: $GLOBALS['TSFE'];
-        $this->configuration = $configuration ?: GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $this->contentObjectRenderer = $contentObjectRenderer ?: GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $this->controller = $controller ?? $GLOBALS['TSFE'];
+        $this->configuration = $configuration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
+        $this->contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $this->typeRegistry = $typeRegistry ?? GeneralUtility::makeInstance(TypeRegistry::class);
     }
 
     public function execute(SchemaManager $schemaManager): void
@@ -77,8 +82,8 @@ final class BreadcrumbListAspect implements AspectInterface
     {
         $breadcrumbList = (new Type\BreadcrumbList());
         foreach ($rootLine as $index => $page) {
-            $givenItemTypeClass = Utility::getNamespacedClassNameForType($page['tx_schema_webpagetype']);
-            $webPageTypeClass = $givenItemTypeClass ?: Type\WebPage::class;
+            $givenItemTypeClass = $this->typeRegistry->resolveModelClassFromType($page['tx_schema_webpagetype'] ?? '');
+            $webPageTypeClass = $givenItemTypeClass ?? Type\WebPage::class;
 
             /** @var AbstractType $itemType */
             $itemType = new $webPageTypeClass();

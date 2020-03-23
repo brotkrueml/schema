@@ -12,7 +12,6 @@ namespace Brotkrueml\Schema\Core\Model;
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Model\DataType\Boolean;
-use Brotkrueml\Schema\Utility\Utility;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
@@ -22,6 +21,15 @@ use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 abstract class AbstractType
 {
     /**
+     * The properties of a specific type
+     * These are defined in the concrete type model class
+     *
+     * @var array<string>
+     * @api
+     */
+    protected static $propertyNames = [];
+
+    /**
      * The ID of the type (mapped to @id in result)
      *
      * @var string|null
@@ -29,12 +37,13 @@ abstract class AbstractType
     private $id;
 
     /**
-     * The properties of a specific type: <propertyName> => <propertyValue>
-     * These are defined in the type model class
+     * The properties of a specific type with their corresponding value:
+     * <propertyName> => <propertyValue>
+     * Also the additional properties added by an event listener are included
      *
-     * @var array
+     * @var array<string, mixed>
      */
-    protected $properties = [];
+    private $properties = [];
 
     /**
      * The fully rendered type with all children as array
@@ -45,10 +54,16 @@ abstract class AbstractType
 
     public function __construct()
     {
+        $this->initialiseProperties();
         $this->addAdditionalProperties();
     }
 
-    protected function addAdditionalProperties(): void
+    private function initialiseProperties(): void
+    {
+        $this->properties = \array_fill_keys(static::$propertyNames, null);
+    }
+
+    private function addAdditionalProperties(): void
     {
         $cacheEntryIdentifier = 'additionalTypeProperties-' . \str_replace('\\', '_', static::class);
         $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('tx_schema');
@@ -138,7 +153,7 @@ abstract class AbstractType
     {
         if (!\array_key_exists($propertyName, $this->properties)) {
             throw new \DomainException(
-                sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
+                \sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
                 1561829996
             );
         }
@@ -309,7 +324,7 @@ abstract class AbstractType
 
     private function getType(): string
     {
-        return Utility::getClassNameWithoutNamespace(static::class);
+        return \substr(\strrchr(static::class, '\\') ?: '', 1);
     }
 
     /**

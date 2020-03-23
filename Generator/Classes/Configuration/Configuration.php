@@ -14,5 +14,5 @@ class Configuration
     public $schemaPath = '';
     public $modelTypePathTemplate = '';
     public $viewHelperTypePathTemplate = '';
-    public $typesProviderTemplate = '';
+    public $typeModelsTemplate = '';
 }
