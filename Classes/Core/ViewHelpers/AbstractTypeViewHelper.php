@@ -10,7 +10,7 @@ namespace Brotkrueml\Schema\Core\ViewHelpers;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Registry\TypeRegistry;
@@ -65,7 +65,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
 
         $modelClassName = static::$typeModel;
-        /** @var AbstractType $model */
+        /** @var TypeInterface $model */
         $model = new $modelClassName();
         foreach ($model->getPropertyNames() as $property) {
             $this->registerArgument($property, 'mixed', 'Property ' . $property);
@@ -84,11 +84,11 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
         $this->renderChildren();
 
-        /** @var AbstractType $recent */
+        /** @var TypeInterface $recent */
         $recent = $this->stack->pop();
 
         if ($this->parentPropertyName) {
-            /** @var AbstractType $parent */
+            /** @var TypeInterface $parent */
             $parent = $this->stack->pop();
             $parent->addProperty($this->parentPropertyName, $recent);
             $this->stack->push($parent);
@@ -177,7 +177,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     {
         $modelClassName = $this->specificTypeModelClassName ?: static::$typeModel;
 
-        /** @var AbstractType $model */
+        /** @var TypeInterface $model */
         $model = new $modelClassName();
 
         if (!empty($this->arguments[static::ARGUMENT_ID])) {

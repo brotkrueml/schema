@@ -10,7 +10,7 @@ namespace Brotkrueml\Schema\ViewHelpers;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\ListItem;
@@ -111,7 +111,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
                 $id = $siteUrl . \ltrim($id, '/');
             }
 
-            /** @var AbstractType $itemType */
+            /** @var TypeInterface $itemType */
             $itemType = new $webPageTypeClass();
             $itemType->setId($id);
 

@@ -10,7 +10,7 @@ namespace Brotkrueml\Schema\Aspect;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Registry\TypeRegistry;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -57,7 +57,7 @@ final class WebPageAspect implements AspectInterface
 
         $webPageClass = $this->typeRegistry->resolveModelClassFromType($type);
         if ($webPageClass) {
-            /** @var AbstractType $webPage */
+            /** @var TypeInterface $webPage */
             $webPage = new $webPageClass();
 
             if ($this->controller->page['endtime']) {

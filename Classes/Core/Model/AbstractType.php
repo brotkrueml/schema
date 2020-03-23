@@ -18,7 +18,7 @@ use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
-abstract class AbstractType
+abstract class AbstractType implements TypeInterface
 {
     /**
      * The properties of a specific type
@@ -97,9 +97,7 @@ abstract class AbstractType
     }
 
     /**
-     * Get the id
-     *
-     * @return string|null
+     * @inheritDoc
      */
     public function getId(): ?string
     {
@@ -107,10 +105,7 @@ abstract class AbstractType
     }
 
     /**
-     * Set the id
-     *
-     * @param string $id The id
-     * @return AbstractType
+     * @inheritDoc
      */
     public function setId(string $id): self
     {
@@ -120,10 +115,7 @@ abstract class AbstractType
     }
 
     /**
-     * Check, if a property exists
-     *
-     * @param string $propertyName The property name
-     * @return bool
+     * @inheritDoc
      */
     public function hasProperty(string $propertyName): bool
     {
@@ -137,10 +129,7 @@ abstract class AbstractType
     }
 
     /**
-     * Get the value of a property
-     *
-     * @param string $propertyName The property name
-     * @return string|array|AbstractType
+     * @inheritDoc
      */
     public function getProperty(string $propertyName)
     {
@@ -160,11 +149,7 @@ abstract class AbstractType
     }
 
     /**
-     * Set the value of a property
-     *
-     * @param string $propertyName The property name
-     * @param string|array|AbstractType $propertyValue The value of the property
-     * @return AbstractType
+     * @inheritDoc
      */
     public function setProperty(string $propertyName, $propertyValue): self
     {
@@ -180,7 +165,7 @@ abstract class AbstractType
      * If the value is a numeric one, stringify it
      *
      * @param mixed $value
-     * @return string|AbstractType
+     * @return string|mixed
      */
     private function stringifyNumericValue($value)
     {
@@ -203,7 +188,7 @@ abstract class AbstractType
         if (!$this->isValidDataTypeForPropertyValue($propertyValue)) {
             throw new \InvalidArgumentException(
                 \sprintf(
-                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof AbstractType',
+                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface',
                     $propertyName,
                     \is_object($propertyValue) ? \get_class($propertyValue) : \gettype($propertyValue)
                 ),
@@ -224,15 +209,11 @@ abstract class AbstractType
             || \is_string($propertyValue)
             || \is_array($propertyValue)
             || \is_bool($propertyValue)
-            || $propertyValue instanceof AbstractType;
+            || $propertyValue instanceof TypeInterface;
     }
 
     /**
-     * Adds a value to a property
-     *
-     * @param string $propertyName The property name
-     * @param string|array|AbstractType $propertyValue The property value
-     * @return AbstractType
+     * @inheritDoc
      */
     public function addProperty(string $propertyName, $propertyValue): self
     {
@@ -246,7 +227,7 @@ abstract class AbstractType
         }
 
         if (\is_array($this->properties[$propertyName])) {
-            if (\is_string($propertyValue) || \is_bool($propertyValue) || $propertyValue instanceof AbstractType) {
+            if (\is_string($propertyValue) || \is_bool($propertyValue) || $propertyValue instanceof TypeInterface) {
                 $propertyValue = [$propertyValue];
             }
 
@@ -264,14 +245,7 @@ abstract class AbstractType
     }
 
     /**
-     * Set multiple properties at once
-     *
-     * The method expects the properties in the following format:
-     * key = property name
-     * value = property value
-     *
-     * @param array $properties
-     * @return AbstractType
+     * @inheritDoc
      */
     public function setProperties(array $properties): self
     {
@@ -283,11 +257,7 @@ abstract class AbstractType
     }
 
     /**
-     * Clear a property (set it to null)
-     *
-     * @param string $propertyName The property name
-     *
-     * @return AbstractType
+     * @inheritDoc
      */
     public function clearProperty(string $propertyName): self
     {
@@ -299,9 +269,7 @@ abstract class AbstractType
     }
 
     /**
-     * Get the available property names
-     *
-     * @return array<string>
+     * @inheritDoc
      */
     public function getPropertyNames(): array
     {
@@ -309,9 +277,7 @@ abstract class AbstractType
     }
 
     /**
-     * Check if all properties are not set with a value
-     *
-     * @return bool
+     * @inheritDoc
      */
     public function isEmpty(): bool
     {
@@ -328,10 +294,7 @@ abstract class AbstractType
     }
 
     /**
-     * Generate an array representation of the type
-     *
-     * @return array
-     * @internal
+     * @inheritDoc
      */
     public function toArray(): array
     {
@@ -376,12 +339,12 @@ abstract class AbstractType
     }
 
     /**
-     * @param AbstractType|bool|string $value
+     * @param TypeInterface|bool|string $value
      * @return array|string
      */
     private function getPropertyValueForResult($value)
     {
-        if ($value instanceof AbstractType) {
+        if ($value instanceof TypeInterface) {
             return $value->toArray();
         }
 

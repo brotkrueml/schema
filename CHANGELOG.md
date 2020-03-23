@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Possibility to register additional schema types (#38)
+- Introduce TypeInterface
 
 ### Deprecated
 - TypesProvider in favour of TypeRegistry (which now is a singleton)

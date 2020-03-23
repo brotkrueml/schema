@@ -10,7 +10,7 @@ namespace Brotkrueml\Schema\Aspect;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Registry\TypeRegistry;
@@ -85,7 +85,7 @@ final class BreadcrumbListAspect implements AspectInterface
             $givenItemTypeClass = $this->typeRegistry->resolveModelClassFromType($page['tx_schema_webpagetype'] ?? '');
             $webPageTypeClass = $givenItemTypeClass ?? Type\WebPage::class;
 
-            /** @var AbstractType $itemType */
+            /** @var TypeInterface $itemType */
             $itemType = new $webPageTypeClass();
 
             $link = $this->contentObjectRenderer->typoLink_URL([

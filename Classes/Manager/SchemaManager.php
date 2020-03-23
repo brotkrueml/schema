@@ -10,7 +10,7 @@ namespace Brotkrueml\Schema\Manager;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\WebPage;
@@ -25,7 +25,7 @@ final class SchemaManager implements SingletonInterface
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
-    /** @var AbstractType[] */
+    /** @var TypeInterface[] */
     private $types = [];
 
     /** @var WebPage|null */
@@ -34,16 +34,16 @@ final class SchemaManager implements SingletonInterface
     /** @var BreadcrumbList[] */
     private $breadcrumbList = [];
 
-    /** @var AbstractType[] */
+    /** @var TypeInterface[] */
     private $mainEntityOfWebPage = [];
 
     /**
      * Add a type
      *
-     * @param AbstractType $type The model type
+     * @param TypeInterface $type The model type
      * @return SchemaManager
      */
-    public function addType(AbstractType $type): self
+    public function addType(TypeInterface $type): self
     {
         if ($this->isWebPageType($type)) {
             $this->setWebPage($type);
@@ -63,12 +63,12 @@ final class SchemaManager implements SingletonInterface
         return $this;
     }
 
-    private function isWebPageType(AbstractType $type): bool
+    private function isWebPageType(TypeInterface $type): bool
     {
         return $type instanceof WebPageTypeInterface;
     }
 
-    private function setWebPage(AbstractType $webPage): void
+    private function setWebPage(TypeInterface $webPage): void
     {
         $breadcrumb = $webPage->getProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
         $webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
@@ -86,11 +86,11 @@ final class SchemaManager implements SingletonInterface
         $mainEntity = $webPage->getProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
         $webPage->clearProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
 
-        if ($mainEntity instanceof AbstractType) {
+        if ($mainEntity instanceof TypeInterface) {
             $this->addMainEntityOfWebPage($mainEntity);
         } elseif (\is_array($mainEntity)) {
             foreach ($mainEntity as $item) {
-                if ($item instanceof AbstractType) {
+                if ($item instanceof TypeInterface) {
                     $this->addMainEntityOfWebPage($item);
                 }
             }
@@ -99,7 +99,7 @@ final class SchemaManager implements SingletonInterface
         $this->webPage = $webPage;
     }
 
-    private function isBreadCrumbList(AbstractType $type): bool
+    private function isBreadCrumbList(TypeInterface $type): bool
     {
         return $type instanceof BreadcrumbList;
     }
@@ -122,12 +122,12 @@ final class SchemaManager implements SingletonInterface
     /**
      * Add a main entity of the WebPage
      *
-     * @param AbstractType $mainEntity
+     * @param TypeInterface $mainEntity
      * @return SchemaManager
      *
      * @deprecated since version 1.4.1, will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.
      */
-    public function setMainEntityOfWebPage(AbstractType $mainEntity): self
+    public function setMainEntityOfWebPage(TypeInterface $mainEntity): self
     {
         @\trigger_error(
             'Using SchemaManager->setMainEntityOfWebPage() is deprecated since version 1.4.1 and will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.',
@@ -140,10 +140,10 @@ final class SchemaManager implements SingletonInterface
     /**
      * Add a main entity of the WebPage
      *
-     * @param AbstractType $mainEntity
+     * @param TypeInterface $mainEntity
      * @return SchemaManager
      */
-    public function addMainEntityOfWebPage(AbstractType $mainEntity): self
+    public function addMainEntityOfWebPage(TypeInterface $mainEntity): self
     {
         $this->mainEntityOfWebPage[] = $mainEntity;
 
@@ -159,7 +159,7 @@ final class SchemaManager implements SingletonInterface
     {
         $result = [];
 
-        if ($this->webPage instanceof AbstractType) {
+        if ($this->webPage instanceof TypeInterface) {
             $this->preparePropertiesForWebPage();
             $result[] = $this->webPage->toArray();
         } else {
