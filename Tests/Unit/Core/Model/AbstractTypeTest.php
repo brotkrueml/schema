@@ -5,8 +5,6 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
-use Brotkrueml\Schema\Model\DataType\Boolean;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -234,41 +232,6 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
-    public function toArrayIsCorrectWhenAddPropertyCalledMultipleTimesOnTheSamePropertyName(): void
-    {
-        $this->subject->addProperty('name', 'name 1');
-        $this->subject->addProperty('name', 'name 2');
-        $this->subject->addProperty('name', 'name 3');
-
-        $this->subject->addProperty('alternateName', ['alternateName 1']);
-        $this->subject->addProperty('alternateName', ['alternateName 2']);
-        $this->subject->addProperty('alternateName', ['alternateName 3']);
-
-        $this->subject->addProperty('isAccessibleForFree', true);
-        $this->subject->addProperty('isAccessibleForFree', false);
-        $this->subject->addProperty('isAccessibleForFree', true);
-
-        $this->subject->addProperty('image', (new FixtureImage())->setProperty('name', 'someValue 1'));
-        $this->subject->addProperty('image', (new FixtureImage())->setProperty('name', 'someValue 2'));
-        $this->subject->addProperty('image', (new FixtureImage())->setProperty('name', 'someValue 3'));
-
-        $actual = $this->subject->toArray();
-
-        self::assertSame('FixtureThing', $actual['@type']);
-        self::assertSame(['alternateName 1', 'alternateName 2', 'alternateName 3'], $actual['alternateName']);
-        self::assertSame(
-            ['http://schema.org/True', 'http://schema.org/False', 'http://schema.org/True'],
-            $actual['isAccessibleForFree']
-        );
-        self::assertSame(['name 1', 'name 2', 'name 3'], $actual['name']);
-        self::assertSame('someValue 1', $actual['image'][0]['name']);
-        self::assertSame('someValue 2', $actual['image'][1]['name']);
-        self::assertSame('someValue 3', $actual['image'][2]['name']);
-    }
-
-    /**
-     * @test
-     */
     public function setPropertiesReturnsReferenceToItself(): void
     {
         $actual = $this->subject->setProperties([]);
@@ -354,6 +317,8 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsTrueOnNewlyCreatedModel(): void
     {
+        $this->expectDeprecation();
+
         $actual = $this->subject->isEmpty();
 
         self::assertTrue($actual);
@@ -364,6 +329,8 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsFalseIfOnePropertyHasStringValue(): void
     {
+        $this->expectDeprecation();
+
         $this->subject->setProperty('name', 'some name');
 
         $actual = $this->subject->isEmpty();
@@ -376,6 +343,8 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsTrueWithPropertiesSetToEmptyValues(): void
     {
+        $this->expectDeprecation();
+
         $this->subject
             ->setProperty('name', '')
             ->setProperty('description', []);
@@ -390,188 +359,13 @@ class AbstractTypeTest extends TestCase
      */
     public function isEmptyReturnsFalseWithOnePropertySetToFalse(): void
     {
+        $this->expectDeprecation();
+
         $this->subject->setProperty('isAccessibleForFree', false);
 
         $actual = $this->subject->isEmpty();
 
         self::assertFalse($actual);
-    }
-
-    public function dataProviderForToArrayReturnsCorrectResult(): iterable
-    {
-        $this->defineCacheStubsWhichReturnEmptyEntry();
-
-        yield 'Value is a string' => [
-            'name',
-            'some string value',
-            [
-                '@type' => 'FixtureThing',
-                'name' => 'some string value',
-            ],
-        ];
-
-        yield 'Value is a number as string' => [
-            'name',
-            '1',
-            [
-                '@type' => 'FixtureThing',
-                'name' => '1',
-            ],
-        ];
-
-        yield 'Value is a number as integer' => [
-            'name',
-            1,
-            [
-                '@type' => 'FixtureThing',
-                'name' => '1',
-            ],
-        ];
-
-        yield 'Value is the number 0 as integer' => [
-            'name',
-            0,
-            [
-                '@type' => 'FixtureThing',
-                'name' => '0',
-            ],
-        ];
-
-        yield 'Value is the number 0.10 as float' => [
-            'name',
-            0.10,
-            [
-                '@type' => 'FixtureThing',
-                'name' => '0.1',
-            ],
-        ];
-
-        yield 'Value is a model' => [
-            'image',
-            (new FixtureImage())
-                ->setProperty('name', 'some value for name'),
-            [
-                '@type' => 'FixtureThing',
-                'image' => [
-                    '@type' => 'FixtureImage',
-                    'name' => 'some value for name',
-                ],
-            ],
-        ];
-
-        yield 'Value is an array of models' => [
-            'image',
-            [
-                (new FixtureImage())
-                    ->setProperty('name', 'some value for name'),
-                (new FixtureImage())
-                    ->setProperty('description', 'some value for description'),
-            ],
-            [
-                '@type' => 'FixtureThing',
-                'image' => [
-                    [
-                        '@type' => 'FixtureImage',
-                        'name' => 'some value for name',
-                    ],
-                    [
-                        '@type' => 'FixtureImage',
-                        'description' => 'some value for description',
-                    ],
-                ],
-            ],
-        ];
-
-        yield 'Value is an array of strings' => [
-            'image',
-            ['the first string', 'the second string'],
-            [
-                '@type' => 'FixtureThing',
-                'image' => [
-                    'the first string',
-                    'the second string',
-                ],
-            ],
-        ];
-
-        yield 'Value is an array of a string and a model' => [
-            'image',
-            [
-                'the first string',
-                (new FixtureImage())
-                    ->setProperty('name', 'some value for image'),
-            ],
-            [
-                '@type' => 'FixtureThing',
-                'image' => [
-                    'the first string',
-                    [
-                        '@type' => 'FixtureImage',
-                        'name' => 'some value for image',
-                    ],
-                ],
-            ],
-        ];
-
-        yield 'value is null' => [
-            'image',
-            null,
-            [
-                '@type' => 'FixtureThing',
-            ],
-        ];
-
-        yield 'value is an empty string' => [
-            'image',
-            '',
-            [
-                '@type' => 'FixtureThing',
-            ],
-        ];
-
-        yield 'value is a boolean (true)' => [
-            'isAccessibleForFree',
-            true,
-            [
-                '@type' => 'FixtureThing',
-                'isAccessibleForFree' => Boolean::TRUE,
-            ],
-        ];
-
-        yield 'value is a boolean (false)' => [
-            'isAccessibleForFree',
-            false,
-            [
-                '@type' => 'FixtureThing',
-                'isAccessibleForFree' => Boolean::FALSE,
-            ],
-        ];
-    }
-
-    /**
-     * @test
-     * @dataProvider dataProviderForToArrayReturnsCorrectResult
-     * @param string $key
-     * @param string|array|bool|AbstractType $value
-     * @param array $expected
-     */
-    public function toArrayReturnsCorrectResult(string $key, $value, array $expected): void
-    {
-        $actual = $this->subject
-            ->setProperty($key, $value)
-            ->toArray();
-
-        self::assertSame($expected, $actual);
-    }
-
-    /**
-     * @test
-     */
-    public function toArrayReturnsCorrectResultWhenNoPropertiesAreSet(): void
-    {
-        $actual = $this->subject->toArray();
-
-        self::assertSame(['@type' => 'FixtureThing'], $actual);
     }
 
     /**

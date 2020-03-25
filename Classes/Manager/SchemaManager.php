@@ -12,30 +12,35 @@ namespace Brotkrueml\Schema\Manager;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
+use Brotkrueml\Schema\JsonLd\Renderer;
+use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
-use Brotkrueml\Schema\Model\Type\WebPage;
 use TYPO3\CMS\Core\SingletonInterface;
 
 final class SchemaManager implements SingletonInterface
 {
-    private const TAG_TEMPLATE = '<script type="application/ld+json">%s</script>';
-
-    private const CONTEXT = 'http://schema.org';
-
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
+
+    /** @var RendererInterface */
+    private $renderer;
 
     /** @var TypeInterface[] */
     private $types = [];
 
-    /** @var WebPage|null */
+    /** @var WebPageTypeInterface|TypeInterface */
     private $webPage;
 
     /** @var BreadcrumbList[] */
-    private $breadcrumbList = [];
+    private $breadcrumbLists = [];
 
     /** @var TypeInterface[] */
-    private $mainEntityOfWebPage = [];
+    private $mainEntitiesOfWebPage = [];
+
+    public function __construct(RendererInterface $renderer = null)
+    {
+        $this->renderer = $renderer ?? new Renderer();
+    }
 
     /**
      * Add a type
@@ -106,7 +111,7 @@ final class SchemaManager implements SingletonInterface
 
     private function addBreadcrumbList(BreadcrumbList $breadcrumbList): void
     {
-        $this->breadcrumbList[] = $breadcrumbList;
+        $this->breadcrumbLists[] = $breadcrumbList;
     }
 
     /**
@@ -129,7 +134,7 @@ final class SchemaManager implements SingletonInterface
      */
     public function setMainEntityOfWebPage(TypeInterface $mainEntity): self
     {
-        @\trigger_error(
+        \trigger_error(
             'Using SchemaManager->setMainEntityOfWebPage() is deprecated since version 1.4.1 and will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.',
             \E_USER_DEPRECATED
         );
@@ -145,7 +150,7 @@ final class SchemaManager implements SingletonInterface
      */
     public function addMainEntityOfWebPage(TypeInterface $mainEntity): self
     {
-        $this->mainEntityOfWebPage[] = $mainEntity;
+        $this->mainEntitiesOfWebPage[] = $mainEntity;
 
         return $this;
     }
@@ -157,58 +162,35 @@ final class SchemaManager implements SingletonInterface
      */
     public function renderJsonLd(): string
     {
-        $result = [];
+        $this->renderer->clearTypes();
 
         if ($this->webPage instanceof TypeInterface) {
             $this->preparePropertiesForWebPage();
-            $result[] = $this->webPage->toArray();
+            $this->renderer->addType($this->webPage);
         } else {
-            foreach ($this->breadcrumbList as $breadcrumb) {
-                $result[] = $breadcrumb->toArray();
-            }
-
-            foreach ($this->mainEntityOfWebPage as $mainEntity) {
-                $result[] = $mainEntity->toArray();
-            }
+            $this->renderer->addType(...$this->breadcrumbLists, ...$this->mainEntitiesOfWebPage);
         }
 
-        foreach ($this->types as $type) {
-            $result[] = $type->toArray();
-        }
+        $this->renderer->addType(...$this->types);
 
-        if (empty($result)) {
-            return '';
-        }
-
-        if (\count($result) === 1) {
-            $result = $result[0];
-        } else {
-            $result = ['@graph' => $result];
-        }
-
-        $result = \array_merge(['@context' => static::CONTEXT], $result);
-
-        return \sprintf(
-            static::TAG_TEMPLATE,
-            \json_encode($result, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE)
-        );
+        return $this->renderer->render();
     }
 
     private function preparePropertiesForWebPage(): void
     {
-        if (\count($this->breadcrumbList)) {
+        if (\count($this->breadcrumbLists)) {
             $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
 
-            foreach ($this->breadcrumbList as $breadcrumb) {
+            foreach ($this->breadcrumbLists as $breadcrumb) {
                 $this->webPage->addProperty(static::WEBPAGE_PROPERTY_BREADCRUMB, $breadcrumb);
             }
         }
 
-        $numberOfMainEntities = \count($this->mainEntityOfWebPage);
+        $numberOfMainEntities = \count($this->mainEntitiesOfWebPage);
         if ($numberOfMainEntities === 1) {
-            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage[0]);
+            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntitiesOfWebPage[0]);
         } elseif ($numberOfMainEntities > 1) {
-            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPage);
+            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntitiesOfWebPage);
         }
     }
 }

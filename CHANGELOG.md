@@ -10,8 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Possibility to register additional schema types (#38)
 - Introduce TypeInterface
 
+### Changed
+- Decouple rendering of JSON-LD from AbstractType and SchemaManager
+
 ### Deprecated
 - TypesProvider in favour of TypeRegistry (which now is a singleton)
+- AbstractType->isEmpty()
 
 ## [1.6.0] - 2020-03-09
 

@@ -11,7 +11,6 @@ namespace Brotkrueml\Schema\Core\Model;
  */
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
-use Brotkrueml\Schema\Model\DataType\Boolean;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
@@ -44,13 +43,6 @@ abstract class AbstractType implements TypeInterface
      * @var array<string, mixed>
      */
     private $properties = [];
-
-    /**
-     * The fully rendered type with all children as array
-     *
-     * @var array
-     */
-    private $result = [];
 
     public function __construct()
     {
@@ -277,7 +269,7 @@ abstract class AbstractType implements TypeInterface
     }
 
     /**
-     * @inheritDoc
+     * @deprected Since version 1.7.0, will be removed in version 2.0.
      */
     public function isEmpty(): bool
     {
@@ -285,73 +277,19 @@ abstract class AbstractType implements TypeInterface
             return \is_bool($this->properties[$property]) ?: !empty($this->properties[$property]);
         });
 
-        return empty($propertiesNotEmpty);
-    }
+        \trigger_error(
+            'AbstractType::isEmpty() is deprecated and will be removed in version 2.0',
+            \E_USER_DEPRECATED
+        );
 
-    private function getType(): string
-    {
-        return \substr(\strrchr(static::class, '\\') ?: '', 1);
+        return empty($propertiesNotEmpty);
     }
 
     /**
      * @inheritDoc
      */
-    public function toArray(): array
+    public function getType(): string
     {
-        $this->result = [];
-
-        $this->addTypeToResultArray();
-        $this->addIdToResultArray();
-        $this->addPropertiesToResultArray();
-
-        return $this->result;
-    }
-
-    private function addTypeToResultArray(): void
-    {
-        $this->result['@type'] = $this->getType();
-    }
-
-    private function addIdToResultArray(): void
-    {
-        if ($this->id) {
-            $this->result['@id'] = $this->id;
-        }
-    }
-
-    private function addPropertiesToResultArray(): void
-    {
-        foreach ($this->getPropertyNames() as $property) {
-            if ($this->properties[$property] === null || $this->properties[$property] === '') {
-                continue;
-            }
-
-            if (\is_array($this->properties[$property])) {
-                $this->result[$property] = [];
-                foreach ($this->properties[$property] as $singleValue) {
-                    $this->result[$property][] = $this->getPropertyValueForResult($singleValue);
-                }
-                continue;
-            }
-
-            $this->result[$property] = $this->getPropertyValueForResult($this->properties[$property]);
-        }
-    }
-
-    /**
-     * @param TypeInterface|bool|string $value
-     * @return array|string
-     */
-    private function getPropertyValueForResult($value)
-    {
-        if ($value instanceof TypeInterface) {
-            return $value->toArray();
-        }
-
-        if (\is_bool($value)) {
-            return Boolean::convertToTerm($value);
-        }
-
-        return $value;
+        return \substr(\strrchr(static::class, '\\') ?: '', 1);
     }
 }

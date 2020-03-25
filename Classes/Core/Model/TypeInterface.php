@@ -82,16 +82,9 @@ interface TypeInterface
     public function getPropertyNames(): array;
 
     /**
-     * Check if all properties are not set with a value
+     * Get the type the model represents
      *
-     * @return bool
+     * @return string
      */
-    public function isEmpty(): bool;
-
-    /**
-     * Generate an array representation of the type
-     *
-     * @return array
-     */
-    public function toArray(): array;
+    public function getType(): string;
 }

@@ -253,23 +253,6 @@ Return value
    Array of all property names of the model.
 
 
-:php:`->isEmpty()`
-~~~~~~~~~~~~~~~~~~
-
-Checks, whether all properties of the models are empty.
-
-Parameter
-   none
-
-Return value
-   :php:`true` if all properties have an empty value, :php:`false` otherwise.
-
-   .. note::
-      If at least one property has a boolean value, the method :php:`isEmpty()`
-      returns false, because it is mapped on the type
-      ``http://schema.org/False`` or ``http://schema.org/True``.
-
-
 Other Useful APIs
 =================
 

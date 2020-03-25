@@ -7,6 +7,9 @@ services:
   Brotkrueml\Schema\:
     resource: '../Classes/*'
 
+  Brotkrueml\Schema\JsonLd\Renderer:
+    public: true
+
   cache.pages:
     class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
     factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']

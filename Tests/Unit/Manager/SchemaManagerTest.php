@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
+use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
-use Brotkrueml\Schema\Model\Type\CollectionPage;
+use Brotkrueml\Schema\Model\Type\ItemPage;
+use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -17,15 +18,26 @@ class SchemaManagerTest extends Testcase
 {
     use SchemaCacheTrait;
 
-    /**
-     * @var SchemaManager
-     */
+    /** @var SchemaManager */
     protected $subject;
+
+    /** @var \ReflectionProperty */
+    private $rendererTypes;
+
+    /** @var Renderer */
+    private $renderer;
 
     protected function setUp(): void
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
-        $this->subject = new SchemaManager();
+
+        $reflector = new \ReflectionClass(Renderer::class);
+        $this->rendererTypes = $reflector->getProperty('types');
+        $this->rendererTypes->setAccessible(true);
+
+        $this->renderer = new Renderer();
+
+        $this->subject = new SchemaManager($this->renderer);
     }
 
     protected function tearDown(): void
@@ -36,50 +48,9 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function renderJsonLdWithNoTypeAddedReturnsEmptyString(): void
-    {
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('', $actual);
-    }
-
-    /**
-     * @test
-     */
-    public function renderJsonLdWithOneTypeAddedReturnsCorrectJson(): void
-    {
-        $actual = $this->subject
-            ->addType((new Thing())->setProperty('name', 'Some test thing'))
-            ->renderJsonLd();
-
-        $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"Some test thing"}</script>';
-
-        self::assertSame($expected, $actual);
-    }
-
-    /**
-     * @test
-     */
-    public function renderJsonLdWithTwoTypesAddedReturnsCorrectJsonArray(): void
-    {
-        $actual = $this->subject
-            ->addType((new Thing())->setProperty('name', 'Some test thing'))
-            ->addType((new Thing())->setId('someId')->setProperty('name', 'Some other thing'))
-            ->renderJsonLd();
-
-        $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","name":"Some test thing"},{"@type":"Thing","@id":"someId","name":"Some other thing"}]}</script>';
-
-        self::assertSame($expected, $actual);
-    }
-
-    /**
-     * @test
-     */
     public function hasWebPageReturnsFalseWhenNoWebPageIsSet(): void
     {
-        $actual = $this->subject->hasWebPage();
-
-        self::assertFalse($actual);
+        self::assertFalse($this->subject->hasWebPage());
     }
 
     /**
@@ -87,300 +58,300 @@ class SchemaManagerTest extends Testcase
      */
     public function hasWebPageReturnsTrueWhenWebPageIsSet(): void
     {
-        $webPage = new WebPage();
-        $this->subject->addType($webPage);
+        $this->subject->addType(new WebPage());
 
-        $actual = $this->subject->hasWebPage();
-
-        self::assertTrue($actual);
+        self::assertTrue($this->subject->hasWebPage());
     }
 
     /**
      * @test
      */
-    public function addedWebPageIsAvailableAndRendersCorrectly(): void
+    public function renderJsonLdWithOnBreadcrumbListAndNoWebPageAvailable(): void
     {
-        $webPage = (new WebPage())->setProperty('name', 'Some web page');
-        $this->subject->addType($webPage);
+        $breadcrumbList = new BreadcrumbList();
 
-        $actual = $this->subject->renderJsonLd();
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($breadcrumbList);
+        $subject->renderJsonLd();
 
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","name":"Some web page"}</script>', $actual);
+        self::assertSame([$breadcrumbList], $this->rendererTypes->getValue($this->renderer));
     }
 
     /**
      * @test
      */
-    public function onlyOneWebPageIsUsedWhenAddingMoreThanOne(): void
+    public function renderJsonLdWithTwoBreadcrumbListAndNoWebPageAvailable(): void
     {
-        $webPage = (new WebPage())->setProperty('name', 'Some web page');
-        $this->subject->addType($webPage);
+        $breadcrumbList1 = new BreadcrumbList();
+        $breadcrumbList2 = new BreadcrumbList();
 
-        $collectionPage = (new CollectionPage())->setProperty('name', 'Some collection page');
-        $this->subject->addType($collectionPage);
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($breadcrumbList1);
+        $subject->addType($breadcrumbList2);
+        $subject->renderJsonLd();
 
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"CollectionPage","name":"Some collection page"}</script>', $actual);
+        self::assertSame([$breadcrumbList1, $breadcrumbList2], $this->rendererTypes->getValue($this->renderer));
     }
 
     /**
      * @test
      */
-    public function addBreadcrumbListRendersCorrectly(): void
-    {
-        $breadcrumbList1 = (new BreadcrumbList())->setProperty('name', 'some breadcrumb list');
-        $this->subject->addType($breadcrumbList1);
-
-        $actual1 = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","name":"some breadcrumb list"}</script>', $actual1);
-
-        $breadcrumbList2 = (new BreadcrumbList())->setProperty('name', 'another breadcrumb list');
-        $this->subject->addType($breadcrumbList2);
-
-        $actual2 = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"BreadcrumbList","name":"some breadcrumb list"},{"@type":"BreadcrumbList","name":"another breadcrumb list"}]}</script>', $actual2);
-    }
-
-    /**
-     * @test
-     */
-    public function addBreadcrumbListIndependentFromWebPageIncludesBreadcrumbIntoWebPageMarkup(): void
-    {
-        $webPage = (new WebPage())->setProperty('name', 'Some web page');
-        $this->subject->addType($webPage);
-
-        $breadcrumbList1 = (new BreadcrumbList())->setProperty('name', 'some breadcrumb list');
-        $this->subject->addType($breadcrumbList1);
-
-        $breadcrumbList2 = (new BreadcrumbList())->setProperty('name', 'another breadcrumb list');
-        $this->subject->addType($breadcrumbList2);
-
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"some breadcrumb list"},{"@type":"BreadcrumbList","name":"another breadcrumb list"}],"name":"Some web page"}</script>', $actual);
-    }
-
-    /**
-     * @test
-     */
-    public function breadcrumbFromWebPageIsMergedWithIndependentlySetBreadcrumb(): void
+    public function renderJsonLdWithABreadcrumbListInAWebPage(): void
     {
         $webPage = new WebPage();
-        $webPage->setProperty(
-            'breadcrumb',
-            (new BreadcrumbList())->setProperty('name', 'Breadcrumb in WebPage')
-        );
-        $this->subject->addType($webPage);
+        $breadcrumbList = new BreadcrumbList();
 
-        $breadcrumbList = (new BreadcrumbList())->setProperty('name', 'Independent breadcrumb');
-        $this->subject->addType($breadcrumbList);
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($breadcrumbList);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
 
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"Breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
+        self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
+        self::assertSame($breadcrumbList, $webPage->getProperty('breadcrumb'));
     }
 
     /**
      * @test
      */
-    public function multipleBreadcrumbsFromWebPageAreMergedWithIndependentlySetBreadcrumb(): void
+    public function renderJsonLdWithABreadcrumbListInAWebPageAndAnAdditionalWebPage(): void
+    {
+        $breadcrumbList1 = new BreadcrumbList();
+        $breadcrumbList2 = new BreadcrumbList();
+
+        $webPage = new WebPage();
+        $webPage->setProperty('breadcrumb', $breadcrumbList2);
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($breadcrumbList1);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        $this->rendererTypes->getValue($this->renderer);
+
+        self::assertSame([$breadcrumbList1, $breadcrumbList2], $webPage->getProperty('breadcrumb'));
+    }
+
+    /**
+     * @test
+     */
+    public function renderJsonLdWithTwoBreadcrumbListInAWebPage(): void
+    {
+        $breadcrumbLists = [new BreadcrumbList(), new BreadcrumbList()];
+
+        $webPage = new WebPage();
+        $webPage->setProperty('breadcrumb', $breadcrumbLists);
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        self::assertSame($breadcrumbLists, $webPage->getProperty('breadcrumb'));
+    }
+
+    /**
+     * @test
+     */
+    public function renderJsonLdWithAWrongTypeAsBreadcrumbListInWebPageIsIgnored(): void
+    {
+        $breadcrumbList = new BreadcrumbList();
+
+        $webPage = new WebPage();
+        $webPage->setProperty('breadcrumb', $breadcrumbList);
+        $webPage->addProperty('breadcrumb', new Thing());
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        self::assertSame($breadcrumbList, $webPage->getProperty('breadcrumb'));
+    }
+
+    /**
+     * @test
+     */
+    public function renderJsonLdWithWebPageAndOneMainEntityDefined(): void
+    {
+        $thing = new Thing();
+
+        $webPage = new WebPage();
+        $webPage->setProperty('mainEntity', $thing);
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        self::assertSame($thing, $webPage->getProperty('mainEntity'));
+    }
+
+    /**
+     * @test
+     */
+    public function renderJsonLdWithWebPageAndOneInvalidMainEntityDefined(): void
     {
         $webPage = new WebPage();
-        $webPage->addProperty(
-            'breadcrumb',
-            (new BreadcrumbList())->setProperty('name', 'One breadcrumb in WebPage')
-        );
-        $webPage->addProperty(
-            'breadcrumb',
-            (new BreadcrumbList())->setProperty('name', 'Another breadcrumb in WebPage')
-        );
-        $this->subject->addType($webPage);
+        $webPage->setProperty('mainEntity', 'some string');
 
-        $breadcrumbList = (new BreadcrumbList())->setProperty('name', 'Independent breadcrumb');
-        $this->subject->addType($breadcrumbList);
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
 
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"One breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Another breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
+        self::assertNull($webPage->getProperty('mainEntity'));
     }
 
     /**
      * @test
      */
-    public function breadcrumbsFromWebPageWhichAreNotOfTypeBreadcrumbListAreIgnored(): void
+    public function renderJsonLdWithWebPageAndTwoMainEntitiesDefined(): void
+    {
+        $thing1 = new Thing();
+        $thing2 = new Thing();
+
+        $webPage = new WebPage();
+        $webPage->setProperty('mainEntity', $thing1);
+        $webPage->addProperty('mainEntity', $thing2);
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        self::assertSame([$thing1, $thing2], $webPage->getProperty('mainEntity'));
+    }
+
+    /**
+     * @test
+     */
+    public function renderJsonLdWithWebPageAndTwoMainEntitiedDefinedOneIsInvalid(): void
+    {
+        $thing = new Thing();
+
+        $webPage = new WebPage();
+        $webPage->setProperty('mainEntity', $thing);
+        $webPage->addProperty('mainEntity', 'some string');
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        self::assertSame($thing, $webPage->getProperty('mainEntity'));
+    }
+
+    /**
+     * @test
+     */
+    public function addTypeWithWebPageSetTwiceThanTheSecondOneOverridesTheFirstOne(): void
     {
         $webPage = new WebPage();
-        $webPage->addProperty(
-            'breadcrumb',
-            (new BreadcrumbList())->setProperty('name', 'BreadcrumbList breadcrumb in WebPage')
-        );
-        $webPage->addProperty(
-            'breadcrumb',
-            (new Thing())->setProperty('name', 'Thingy breadcrumb in WebPage')
-        );
-        $this->subject->addType($webPage);
+        $itemPage = new ItemPage();
 
-        $breadcrumbList = (new BreadcrumbList())->setProperty('name', 'Independent breadcrumb');
-        $this->subject->addType($breadcrumbList);
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($webPage);
+        $subject->addType($itemPage);
 
-        $actual = $this->subject->renderJsonLd();
+        $subject->renderJsonLd();
 
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","breadcrumb":[{"@type":"BreadcrumbList","name":"BreadcrumbList breadcrumb in WebPage"},{"@type":"BreadcrumbList","name":"Independent breadcrumb"}]}</script>', $actual);
+        self::assertSame([$itemPage], $this->rendererTypes->getValue($this->renderer));
     }
 
     /**
      * @test
      */
-    public function addMainEntityOfWebPageReturnsInstanceOfSchemaManager(): void
+    public function renderJsonLdWithSomeTypesAreHandledCorrectly(): void
     {
-        $actual = $this->subject->addMainEntityOfWebPage(new Thing());
+        $thing = new Thing();
+        $person = new Person();
 
-        self::assertInstanceOf(SchemaManager::class, $actual);
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType($thing);
+        $subject->addType($person);
+        $subject->renderJsonLd();
+
+        self::assertSame([$thing, $person], $this->rendererTypes->getValue($this->renderer));
     }
 
     /**
      * @test
      */
-    public function addMainEntityOfWebPageWithWebPageAvailable(): void
+    public function addMainEntityOfWebPageCalledMultipleTimes(): void
     {
+        $thing = new Thing();
+        $person = new Person();
         $webPage = new WebPage();
-        $this->subject->addType($webPage);
 
-        $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
-        $this->subject->addMainEntityOfWebPage($mainEntity);
+        $subject = new SchemaManager($this->renderer);
+        $subject->addMainEntityOfWebPage($thing);
+        $subject->addMainEntityOfWebPage($person);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
 
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":{"@type":"Thing","name":"A thing, set as main entity"}}</script>', $actual);
+        self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
+        self::assertSame([$thing, $person], $webPage->getProperty('mainEntity'));
     }
 
     /**
      * @test
      */
-    public function addMainEntityOfWebPageWithoutWebPageAvailable(): void
+    public function setMainEntityOfWebPageCalledMultipleTime(): void
     {
-        $mainEntity = (new Thing())->setProperty('name', 'A thing, set as main entity');
-        $this->subject->addMainEntityOfWebPage($mainEntity);
+        $this->expectDeprecation();
 
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"A thing, set as main entity"}</script>', $actual);
-    }
-
-    /**
-     * @test
-     */
-    public function addMainEntityOfWebPageTwiceWithWebPageAvailable(): void
-    {
+        $thing = new Thing();
+        $person = new Person();
         $webPage = new WebPage();
-        $this->subject->addType($webPage);
 
-        $mainEntity1 = (new Thing())->setProperty('name', 'A thing, set as main entity #1');
-        $this->subject->addMainEntityOfWebPage($mainEntity1);
+        $subject = new SchemaManager($this->renderer);
+        $subject->setMainEntityOfWebPage($thing);
+        $subject->setMainEntityOfWebPage($person);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
 
-        $mainEntity2 = (new Thing())->setProperty('name', 'A thing, set as main entity #2');
-        $this->subject->addMainEntityOfWebPage($mainEntity2);
-
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity #1"},{"@type":"Thing","name":"A thing, set as main entity #2"}]}</script>', $actual);
+        self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
+        self::assertSame([$thing, $person], $webPage->getProperty('mainEntity'));
     }
 
     /**
      * @test
      */
-    public function addWebPageAndMainEntityOfWebPageAfterThatPreservesFirstType(): void
+    public function addTypeReturnsInstanceOfSelf(): void
     {
-        $webPage = (new WebPage())
-            ->setProperty(
-                'mainEntity',
-                (new Thing())
-                    ->setProperty('name', 'A thing, set as main entity directly in WebPage')
-            );
-        $this->subject->addType($webPage);
+        $subject = new SchemaManager($this->renderer);
 
-        $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
-        $this->subject->addMainEntityOfWebPage($newMainEntity);
-
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
+        self::assertSame($subject, $subject->addType(new Thing()));
     }
 
     /**
      * @test
      */
-    public function addWebPageAndMultipleMainEntityOfWebPage(): void
+    public function setMainEntityOfWebPageReturnsInstanceOfSelf(): void
     {
-        $webPage = (new WebPage())
-            ->addProperty(
-                'mainEntity',
-                (new Thing())
-                    ->setProperty('name', 'A thing, set as main entity directly in WebPage #1')
-            )
-            ->addProperty(
-                'mainEntity',
-                (new Thing())
-                    ->setProperty('name', 'A thing, set as main entity directly in WebPage #2')
-            );
+        $this->expectDeprecation();
 
-        $this->subject->addType($webPage);
+        $subject = new SchemaManager($this->renderer);
 
-        $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
-        $this->subject->addMainEntityOfWebPage($newMainEntity);
-
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #1"},{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #2"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
+        self::assertSame($subject, $subject->setMainEntityOfWebPage(new Thing()));
     }
 
     /**
      * @test
      */
-    public function addWebPageAndMultipleMainEntityOfWebPageAsArray(): void
+    public function addMainEntityOfWebPageReturnsInstanceOfSelf(): void
     {
-        $webPage = (new WebPage())
-            ->setProperty(
-                'mainEntity',
-                [
-                    (new Thing())
-                        ->setProperty('name', 'A thing, set as main entity directly in WebPage #1'),
-                    (new Thing())
-                        ->setProperty('name', 'A thing, set as main entity directly in WebPage #2'),
-                ]
-            );
+        $subject = new SchemaManager($this->renderer);
 
-        $this->subject->addType($webPage);
-
-        $newMainEntity = (new Thing())->setProperty('name', 'A thing, set as new main entity');
-        $this->subject->addMainEntityOfWebPage($newMainEntity);
-
-        $actual = $this->subject->renderJsonLd();
-
-        self::assertSame('<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","mainEntity":[{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #1"},{"@type":"Thing","name":"A thing, set as main entity directly in WebPage #2"},{"@type":"Thing","name":"A thing, set as new main entity"}]}</script>', $actual);
+        self::assertSame($subject, $subject->addMainEntityOfWebPage(new Thing()));
     }
 
     /**
      * @test
      */
-    public function setMainEntityOfWebPageCallsAddMainEntityOfWebPage(): void
+    public function multipleCallsOfRenderJsonLd(): void
     {
-        /** @var MockObject|SchemaManager $subject */
-        $subject = $this->getMockBuilder(SchemaManager::class)
-            ->onlyMethods(['addMainEntityOfWebPage'])
-            ->getMock();
+        $subject = new SchemaManager($this->renderer);
+        $subject->addType(new Thing());
 
-        $mainEntity = (new Thing())->setProperty('name', 'Some main entity');
+        $subject->renderJsonLd();
+        self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
 
-        $subject
-            ->expects(self::once())
-            ->method('addMainEntityOfWebPage')
-            ->with($mainEntity)
-            ->willReturn($subject);
-
-        $subject->setMainEntityOfWebPage($mainEntity);
+        $subject->renderJsonLd();
+        self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
     }
 }
