@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\Schema\Manager;
-
 /*
  * This file is part of the "schema" extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Brotkrueml\Schema\Manager;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
