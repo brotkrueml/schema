@@ -105,6 +105,32 @@ automatically into the head section:
 The Model In-Depth
 ==================
 
+Each type model, like `Thing`, `Person` or `Event`, must implement the interface
+:php:`Brotkrueml\Schema\Core\Model\TypeInterface`. For convenience, a type
+model can also extend the abstract class
+:php:`Brotkrueml\Schema\Core\Model\AbstractType` which implements every needed
+method.
+
+Two other interfaces are available, they are used to "tag" a type model class as
+a "special type" and don't require the implementation of additional methods:
+
+- :php:`Brotkrueml\Schema\Core\Model\WebPageTypeInterface` for a
+  :ref:`web page type <webpage-types>`.
+- :php:`Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface` for a
+  `web page element type <https://schema.org/WebPageElement>`_.
+
+These interfaces can be useful when you want to :ref:`extend the
+vocabulary <extending-vocabulary>`.
+
+.. figure:: ../Images/Developer/TypeModels.png
+   :alt: Inheritance of the type models
+
+   Inheritance of the type models
+
+Each type model delivered with this extension extends the :php:`AbstractType`
+class.
+
+
 Available Type Model Methods
 ----------------------------
 
