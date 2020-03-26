@@ -1,6 +1,5 @@
 <?php
-/** @noinspection PhpFullyQualifiedNameUsageInspection */
-call_user_func(function () {
+(function () {
     $fields = [
         'tx_schema_webpagetype' => [
             'exclude' => true,
@@ -29,4 +28,4 @@ call_user_func(function () {
         'tx_schema_structureddata',
         'tx_schema_webpagetype'
     );
-});
+})();
