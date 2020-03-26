@@ -313,7 +313,7 @@ template:
    <html
        xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
        xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
-       schema:schemaLocation="https://brot.krue.ml/schemas/schema-1.0.0.xsd"
+       schema:schemaLocation="https://brot.krue.ml/schemas/schema-1.7.0.xsd"
        data-namespace-typo3-fluid="true"
    >
 
@@ -324,4 +324,4 @@ definition.
 
 You can also import the XSD file into your favorite IDE after downloading it
 from the following URL:
-`https://brot.krue.ml/schemas/schema-1.0.0.xsd <https://brot.krue.ml/schemas/schema-1.0.0.xsd>`__.
+`https://brot.krue.ml/schemas/schema-1.7.0.xsd <https://brot.krue.ml/schemas/schema-1.7.0.xsd>`__.
