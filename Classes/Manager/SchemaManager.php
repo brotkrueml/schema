@@ -159,6 +159,8 @@ final class SchemaManager implements SingletonInterface
      * Render the JSON-LD from the assigned types
      *
      * @return string
+     *
+     * @internal
      */
     public function renderJsonLd(): string
     {

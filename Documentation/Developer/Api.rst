@@ -253,11 +253,65 @@ Return value
    Array of all property names of the model.
 
 
+.. index:: Schema Manager
+
+.. _api-schema-manager:
+
+Schema Manager
+==============
+
+The Schema Manager (class :php:`Brotkrueml\Schema\Manager\SchemaManager`) –
+well – manages the type models and prepares them for embedding into the web
+page.
+
+The class exposes the following methods:
+
+:php:`->addType(TypeInterface $type)`
+-------------------------------------
+
+Adds the given type model to the Schema Manager for inclusion on the web page.
+
+Parameter
+   :php:`TypeInterface $type`
+      The type model class with the set properties. This can be also
+      "special" types, like a `WebPage` or a `BreadcrumbList`.
+
+Return value
+   Reference to itself.
+
+
+:php:`hasWebPage()`
+-------------------
+
+Checks, if a :ref:`web page type <webpage-types>` is already available.
+
+Parameter
+   none
+
+Return value
+   :php:`true`, if a web page type is available, otherwise :php:`false`
+
+
+.. _api-schema-manager-addmainentityofwebpage:
+
+:php:`addMainEntityOfWebPage(TypeInterface $mainEntity)`
+--------------------------------------------------------
+
+Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
+
+Parameter
+   :php:`TypeInterface $mainEntity`
+      The type model to be added.
+
+Return value
+   Reference to itself.
+
+
+
 Other Useful APIs
 =================
 
-.. index::
-   single: Boolean
+.. index:: Boolean
 
 Boolean Data Type
 -----------------
@@ -282,6 +336,8 @@ and one static method:
 .. index::
    single: Type list
    seealso: Type list; API
+
+.. _api-list-of-types:
 
 List Of Types
 -------------
@@ -387,7 +443,7 @@ Will be removed in version
 
 Alternative
    Use :php:`Brotkrueml\Schema\Manager\SchemaManager->addMainEntityOfWebPage()`
-   instead.
+   instead. See the :ref:`API <api-schema-manager-addmainentityofwebpage>`.
 
 
 :php:`Brotkrueml\Schema\Provider\TypesProvider` class
@@ -402,4 +458,4 @@ Will be removed in version
 Alternative
    Use :php:`Brotkrueml\Schema\Registry\TypeRegistry` which is now a singleton
    and can be instantiated with :php:`GeneralUtility::makeInstance()` or in
-   TYPO3 v10+ via dependency injection.
+   TYPO3 v10+ via dependency injection. See section :ref:`api-list-of-types`.
