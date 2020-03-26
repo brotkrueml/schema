@@ -351,3 +351,55 @@ Parameter
 
 Return value
    Array, sorted alphabetically by type name.
+
+
+.. index:: Deprecations
+
+.. _api-deprecations:
+
+Deprecations
+============
+
+:php:`Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
+-----------------------------------------------------------
+
+Deprecated since version
+   1.7.0
+
+Will be removed in version
+   2.0.0
+
+Alternative
+   None. If you need it use
+   :php:`Brotkrueml\Schema\Core\Model\AbstractType->getPropertyNames()`
+   and loop over the property names with
+   :php:`Brotkrueml\Schema\Core\Model\AbstractType->getProperty()`.
+
+
+:php:`Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
+------------------------------------------------------------------------
+
+Deprecated since version
+   1.4.1
+
+Will be removed in version
+   2.0.0
+
+Alternative
+   Use :php:`Brotkrueml\Schema\Manager\SchemaManager->addMainEntityOfWebPage()`
+   instead.
+
+
+:php:`Brotkrueml\Schema\Provider\TypesProvider` class
+-----------------------------------------------------
+
+Deprecated since version
+   1.7.0
+
+Will be removed in version
+   2.0.0
+
+Alternative
+   Use :php:`Brotkrueml\Schema\Registry\TypeRegistry` which is now a singleton
+   and can be instantiated with :php:`GeneralUtility::makeInstance()` or in
+   TYPO3 v10+ via dependency injection.
