@@ -22,7 +22,7 @@ final class Renderer implements RendererInterface
     private const CONTEXT = 'http://schema.org';
 
     private $types = [];
-    private $result;
+    private $typeResult;
 
     public function addType(TypeInterface ...$type): void
     {
@@ -61,25 +61,25 @@ final class Renderer implements RendererInterface
 
     private function prepare(TypeInterface $type): array
     {
-        $this->result = [];
+        $this->typeResult = [];
 
         $this->addTypeToResult($type);
         $this->addIdToResult($type);
         $this->addPropertiesToResult($type);
 
-        return $this->result;
+        return $this->typeResult;
     }
 
     private function addTypeToResult(TypeInterface $type): void
     {
-        $this->result['@type'] = $type->getType();
+        $this->typeResult['@type'] = $type->getType();
     }
 
     private function addIdToResult(TypeInterface $type): void
     {
         $id = $type->getId();
         if ($id) {
-            $this->result['@id'] = $id;
+            $this->typeResult['@id'] = $id;
         }
     }
 
@@ -93,14 +93,14 @@ final class Renderer implements RendererInterface
             }
 
             if (\is_array($propertyValue)) {
-                $this->result[$propertyName] = [];
+                $this->typeResult[$propertyName] = [];
                 foreach ($propertyValue as $singlePropertyValue) {
-                    $this->result[$propertyName][] = $this->getPropertyValueForResult($singlePropertyValue);
+                    $this->typeResult[$propertyName][] = $this->getPropertyValueForResult($singlePropertyValue);
                 }
                 continue;
             }
 
-            $this->result[$propertyName] = $this->getPropertyValueForResult($propertyValue);
+            $this->typeResult[$propertyName] = $this->getPropertyValueForResult($propertyValue);
         }
     }
 
