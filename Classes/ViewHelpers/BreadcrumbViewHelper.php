@@ -107,7 +107,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
             }
 
             $id = $arguments[static::ARGUMENT_BREADCRUMB][$i]['link'];
-            if (\strpos($id, $siteUrl) === false) {
+            if (!\str_contains($id, $siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }
 

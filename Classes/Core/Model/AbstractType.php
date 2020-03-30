@@ -182,7 +182,7 @@ abstract class AbstractType implements TypeInterface
                 \sprintf(
                     'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface',
                     $propertyName,
-                    \is_object($propertyValue) ? \get_class($propertyValue) : \gettype($propertyValue)
+                    \get_debug_type($propertyValue)
                 ),
                 1561830012
             );
