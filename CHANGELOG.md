@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Decouple rendering of JSON-LD from AbstractType and SchemaManager
+- Move decision about embedding markup into event listener
 
 ### Deprecated
 - TypesProvider in favour of TypeRegistry (which now is a singleton)

@@ -18,9 +18,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
@@ -157,8 +155,6 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::never())
             ->method('addFooterData');
 
-        $this->setSeoExtensionInstallationState(false);
-
         $params = [];
         $this->subject->execute($params, $this->pageRendererMock);
     }
@@ -169,7 +165,6 @@ class SchemaMarkupInjectionTest extends TestCase
     public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
     {
         $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(true);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -206,7 +201,6 @@ class SchemaMarkupInjectionTest extends TestCase
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
         $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(true);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -243,7 +237,6 @@ class SchemaMarkupInjectionTest extends TestCase
     public function seoExtensionIsNotInstalledAddsHeaderData(): void
     {
         $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(false);
 
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $controllerMock->page = ['uid' => 42];
@@ -276,52 +269,9 @@ class SchemaMarkupInjectionTest extends TestCase
     /**
      * @test
      */
-    public function seoExtensionIsInstalledAndNoIndexIsSetNoHeaderDataIsEmbedded(): void
-    {
-        $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(true);
-
-        $controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $controllerMock->page = ['no_index' => 1];
-
-        $subject = new SchemaMarkupInjection(
-            $controllerMock,
-            $this->extensionConfigurationMock,
-            null,
-            $this->cacheMock
-        );
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
-
-        $this->pageRendererMock
-            ->expects(self::never())
-            ->method('addHeaderData');
-
-        $params = [];
-        $subject->execute($params, $this->pageRendererMock);
-    }
-
-    protected function setSeoExtensionInstallationState(bool $state): void
-    {
-        /** @var MockObject|PackageManager $packageManagerMock */
-        $packageManagerMock = $this->createMock(PackageManager::class);
-        $packageManagerMock
-            ->expects(self::once())
-            ->method('isPackageActive')
-            ->with('seo')
-            ->willReturn($state);
-
-        ExtensionManagementUtility::setPackageManager($packageManagerMock);
-    }
-
-    /**
-     * @test
-     */
     public function whenCacheIDefinedItIsUsedToGetMarkup(): void
     {
         $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(true);
 
         $cacheMock = $this->createMock(FrontendInterface::class);
         $cacheMock
@@ -351,7 +301,6 @@ class SchemaMarkupInjectionTest extends TestCase
     public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
     {
         $this->defineConstants('9.5', 'FE');
-        $this->setSeoExtensionInstallationState(true);
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));

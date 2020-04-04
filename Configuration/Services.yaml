@@ -28,6 +28,12 @@ services:
     arguments:
       $cache: '@cache.tx_schema_core'
 
+  Brotkrueml\Schema\EventListener\EmbedMarkupDependingOnNoIndexPageField:
+    tags:
+      - name: event.listener
+        identifier: 'ext-schema/embedMarkupDependingOnNoIndexPageField'
+        event: Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent
+
   Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending:
     tags:
       - name: event.listener

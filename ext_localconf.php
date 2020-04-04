@@ -31,6 +31,12 @@ defined('TYPO3_MODE') or die();
             TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
         );
         $signalSlotDispatcher->connect(
+            \Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection::class,
+            'shouldEmbedMarkup',
+            \Brotkrueml\Schema\EventListener\EmbedMarkupDependingOnNoIndexPageField::class,
+            '__invoke'
+        );
+        $signalSlotDispatcher->connect(
             \Brotkrueml\Schema\Core\Model\AbstractType::class,
             'registerAdditionalTypeProperties',
             \Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending::class,
