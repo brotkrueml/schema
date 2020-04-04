@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
+use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -38,6 +39,9 @@ final class SchemaMarkupInjection
 
     /** @var FrontendInterface */
     private $cache;
+
+    /** @var Typo3Mode */
+    private $typo3Mode;
 
     public function __construct(
         TypoScriptFrontendController $controller = null,
@@ -70,7 +74,7 @@ final class SchemaMarkupInjection
 
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
     {
-        if (TYPO3_MODE !== 'FE') {
+        if ($this->getTypo3Mode()->isInBackendMode()) {
             return;
         }
 
@@ -166,5 +170,23 @@ final class SchemaMarkupInjection
         }
 
         return $aspects;
+    }
+
+    private function getTypo3Mode(): Typo3Mode
+    {
+        if (!$this->typo3Mode) {
+            $this->typo3Mode = new Typo3Mode();
+        }
+
+        return $this->typo3Mode;
+    }
+
+    /**
+     * @param Typo3Mode $typo3Mode
+     * @internal For testing purposes only!
+     */
+    public function setTypo3Mode(Typo3Mode $typo3Mode): void
+    {
+        $this->typo3Mode = $typo3Mode;
     }
 }

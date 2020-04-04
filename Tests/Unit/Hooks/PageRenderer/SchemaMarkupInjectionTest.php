@@ -10,11 +10,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -66,6 +68,11 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     private $signalSlotDispatcherMock;
 
+    /**
+     * @var Stub|Typo3Mode
+     */
+    private $typo3ModeStub;
+
     public static function setUpBeforeClass(): void
     {
         if (!\defined('TYPO3_version')) {
@@ -99,6 +106,10 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->cacheMock
         );
 
+        $this->typo3ModeStub = $this->createStub(Typo3Mode::class);
+
+        $this->subject->setTypo3Mode($this->typo3ModeStub);
+
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
 
         $this->signalSlotDispatcherMock = $this->createMock(Dispatcher::class);
@@ -125,7 +136,8 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeInBackendModeDoesNothing()
     {
-        $this->defineConstants('9.5', 'BE');
+        $this->defineConstants('9.5');
+
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
@@ -137,6 +149,10 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::never())
             ->method('addFooterData');
 
+        $this->typo3ModeStub
+            ->method('isInBackendMode')
+            ->willReturn(true);
+
         $params = [];
         $this->subject->execute($params, $this->pageRendererMock);
     }
@@ -146,7 +162,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithoutDefinedMarkupAndNoAspectsDoesNotEmbedAnything()
     {
-        $this->defineConstants('9.5', 'FE');
+        $this->defineConstants('9.5');
         $this->pageRendererMock
             ->expects(self::never())
             ->method('addHeaderData');
@@ -164,7 +180,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
     {
-        $this->defineConstants('9.5', 'FE');
+        $this->defineConstants('9.5');
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -200,7 +216,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
-        $this->defineConstants('9.5', 'FE');
+        $this->defineConstants('9.5');
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -236,7 +252,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function seoExtensionIsNotInstalledAddsHeaderData(): void
     {
-        $this->defineConstants('9.5', 'FE');
+        $this->defineConstants('9.5');
 
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $controllerMock->page = ['uid' => 42];
@@ -271,7 +287,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIDefinedItIsUsedToGetMarkup(): void
     {
-        $this->defineConstants('9.5', 'FE');
+        $this->defineConstants('9.5');
 
         $cacheMock = $this->createMock(FrontendInterface::class);
         $cacheMock
@@ -300,7 +316,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
     {
-        $this->defineConstants('9.5', 'FE');
+        $this->defineConstants('9.5');
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
@@ -331,9 +347,8 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    private function defineConstants(string $version, string $mode): void
+    private function defineConstants(string $version): void
     {
         \define('TYPO3_branch', $version);
-        \define('TYPO3_MODE', $mode);
     }
 }
