@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
+use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
@@ -20,15 +22,12 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-/**
- * @runTestsInSeparateProcesses
- */
 class SchemaMarkupInjectionTest extends TestCase
 {
     use SchemaCacheTrait;
@@ -64,23 +63,14 @@ class SchemaMarkupInjectionTest extends TestCase
     private $objectManagerMock;
 
     /**
-     * @var MockObject|Dispatcher
+     * @var Stub|EventDispatcher
      */
-    private $signalSlotDispatcherMock;
+    private $eventDispatcherStub;
 
     /**
      * @var Stub|Typo3Mode
      */
     private $typo3ModeStub;
-
-    public static function setUpBeforeClass(): void
-    {
-        if (!\defined('TYPO3_version')) {
-            $_EXTKEY = 'core';
-            include __DIR__ . '/../../../../.Build/web/typo3/sysext/' . $_EXTKEY . '/ext_emconf.php';
-            \define('TYPO3_version', \array_pop($EM_CONF)['version']);
-        }
-    }
 
     protected function setUp(): void
     {
@@ -99,11 +89,21 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::any())
             ->method('set');
 
+        if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
+            $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
+            $this->eventDispatcherStub
+                ->method('dispatch')
+                ->with(self::anything())
+                ->willReturn(new ShouldEmbedMarkupEvent([], true));
+        }
+
         $this->subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
-            $this->cacheMock
+            $this->cacheMock,
+            false,
+            $this->eventDispatcherStub
         );
 
         $this->typo3ModeStub = $this->createStub(Typo3Mode::class);
@@ -111,17 +111,6 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->subject->setTypo3Mode($this->typo3ModeStub);
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
-
-        $this->signalSlotDispatcherMock = $this->createMock(Dispatcher::class);
-
-        $this->objectManagerMock = $this->createMock(ObjectManager::class);
-        $this->objectManagerMock
-            ->expects(self::any())
-            ->method('get')
-            ->with(Dispatcher::class)
-            ->willReturn($this->signalSlotDispatcherMock);
-
-        GeneralUtility::setSingletonInstance(ObjectManager::class, $this->objectManagerMock);
 
         $this->defineCacheStubsWhichReturnEmptyEntry();
     }
@@ -136,8 +125,6 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeInBackendModeDoesNothing()
     {
-        $this->defineConstants('9.5');
-
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
@@ -162,7 +149,6 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithoutDefinedMarkupAndNoAspectsDoesNotEmbedAnything()
     {
-        $this->defineConstants('9.5');
         $this->pageRendererMock
             ->expects(self::never())
             ->method('addHeaderData');
@@ -180,8 +166,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
     {
-        $this->defineConstants('9.5');
-
+        /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
@@ -204,7 +189,9 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
-            $this->cacheMock
+            $this->cacheMock,
+            false,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -216,8 +203,6 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
-        $this->defineConstants('9.5');
-
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
@@ -240,7 +225,9 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
-            $this->cacheMock
+            $this->cacheMock,
+            false,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -252,8 +239,6 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function seoExtensionIsNotInstalledAddsHeaderData(): void
     {
-        $this->defineConstants('9.5');
-
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $controllerMock->page = ['uid' => 42];
 
@@ -267,7 +252,9 @@ class SchemaMarkupInjectionTest extends TestCase
             $controllerMock,
             $this->extensionConfigurationMock,
             null,
-            $this->cacheMock
+            $this->cacheMock,
+            false,
+            $this->eventDispatcherStub
         );
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
@@ -287,8 +274,6 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIDefinedItIsUsedToGetMarkup(): void
     {
-        $this->defineConstants('9.5');
-
         $cacheMock = $this->createMock(FrontendInterface::class);
         $cacheMock
             ->expects(self::once())
@@ -304,7 +289,9 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             null,
-            $cacheMock
+            $cacheMock,
+            false,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -316,8 +303,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
     {
-        $this->defineConstants('9.5');
-
+        /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
 
@@ -340,15 +326,50 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
-            $cacheMock
+            $cacheMock,
+            false,
+            $this->eventDispatcherStub
         );
 
         $params = [];
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    private function defineConstants(string $version): void
+    /**
+     * @test
+     */
+    public function eventDispatcherForShouldEmbedMarkupEventReturnsFalseThenNoMarkupIsEmbedded(): void
     {
-        \define('TYPO3_branch', $version);
+        if (!(new Compatibility())->isPsr14EventDispatcherAvailable()) {
+            self::markTestSkipped('Event Dispatcher is available only in TYPO3 v10+');
+        }
+
+        /** @var SchemaManager $schemaManager */
+        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
+        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+
+        $cacheMock = $this->createMock(FrontendInterface::class);
+        $cacheMock
+            ->expects(self::never())
+            ->method('get')
+            ->willReturn(false);
+
+        $eventDispatcherStub = $this->createStub(EventDispatcher::class);
+        $eventDispatcherStub
+            ->method('dispatch')
+            ->with(self::anything())
+            ->willReturn(new ShouldEmbedMarkupEvent([], false));
+
+        $subject = new SchemaMarkupInjection(
+            $this->controllerMock,
+            $this->extensionConfigurationMock,
+            $schemaManager,
+            $cacheMock,
+            false,
+            $eventDispatcherStub
+        );
+
+        $params = [];
+        $subject->execute($params, $this->pageRendererMock);
     }
 }

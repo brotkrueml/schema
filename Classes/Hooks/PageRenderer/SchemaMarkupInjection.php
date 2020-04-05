@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
+use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -21,8 +22,6 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\VersionNumberUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -40,6 +39,15 @@ final class SchemaMarkupInjection
     /** @var FrontendInterface */
     private $cache;
 
+    /** @var Dispatcher */
+    private $signalSlotDispatcher;
+
+    /** @var EventDispatcher */
+    private $eventDispatcher;
+
+    /** @var Compatibility */
+    private $compatibility;
+
     /** @var Typo3Mode */
     private $typo3Mode;
 
@@ -47,21 +55,37 @@ final class SchemaMarkupInjection
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
         SchemaManager $schemaManager = null,
-        FrontendInterface $cache = null
+        FrontendInterface $cache = null,
+        $signalSlotDispatcher = null,
+        $eventDispatcher = null
     ) {
-        $this->controller = $controller ?? $GLOBALS['TSFE'];
-        $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
+        $this->compatibility = new Compatibility();
 
+        $this->controller = $controller ?? $GLOBALS['TSFE'];
         $extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->configuration = $extensionConfiguration->get('schema');
-
+        $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
         $this->cache = $cache ?? $this->getCache();
+
+        if ($signalSlotDispatcher !== false) {
+            $this->signalSlotDispatcher =
+                $signalSlotDispatcher instanceof Dispatcher
+                    ? $signalSlotDispatcher
+                    : GeneralUtility::makeInstance(Dispatcher::class);
+        }
+
+        if ($this->compatibility->isPsr14EventDispatcherAvailable()) {
+            $this->eventDispatcher =
+                $eventDispatcher instanceof EventDispatcher
+                    ? $eventDispatcher
+                    : GeneralUtility::makeInstance(EventDispatcher::class);
+        }
     }
 
     private function getCache(): ?FrontendInterface
     {
         $identifier = 'pages';
-        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 10000000) {
+        if ($this->compatibility->hasCachePrefixForCacheIdentifier()) {
             $identifier = 'cache_' . $identifier;
         }
 
@@ -106,16 +130,13 @@ final class SchemaMarkupInjection
 
     private function shouldEmbedMarkup(): bool
     {
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $event = new ShouldEmbedMarkupEvent($this->controller->page, true);
-
-        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch) >= 10000000) {
-            $eventDispatcher = $objectManager->get(EventDispatcher::class);
-            $event = $eventDispatcher->dispatch($event);
+        if ($this->eventDispatcher) {
+            $event = $this->eventDispatcher->dispatch($event);
         }
-
-        $signalSlotDispatcher = $objectManager->get(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(__CLASS__, 'shouldEmbedMarkup', [$event]);
+        if ($this->signalSlotDispatcher) {
+            $this->signalSlotDispatcher->dispatch(static::class, 'shouldEmbedMarkup', [$event]);
+        }
 
         return $event->getEmbedMarkup();
     }

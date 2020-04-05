@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Compatibility\Compatibility;
+use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Aspect\TestAspect;
@@ -21,12 +23,11 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class SchemaMarkupInjectionWithAspectTest extends TestCase
@@ -53,17 +54,10 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
      */
     private $cacheStub;
 
-    public static function setUpBeforeClass(): void
-    {
-        \define('TYPO3_branch', '9.5');
-        \define('TYPO3_MODE', 'FE');
-
-        if (!\defined('TYPO3_version')) {
-            $_EXTKEY = 'core';
-            include __DIR__ . '/../../../../.Build/web/typo3/sysext/' . $_EXTKEY . '/ext_emconf.php';
-            \define('TYPO3_version', \array_pop($EM_CONF)['version']);
-        }
-    }
+    /**
+     * @var Stub|EventDispatcher
+     */
+    private $eventDispatcherStub;
 
     protected function setUp(): void
     {
@@ -80,17 +74,15 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
         $this->cacheStub
             ->method('set');
 
+        if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
+            $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
+            $this->eventDispatcherStub
+                ->method('dispatch')
+                ->with(self::anything())
+                ->willReturn(new ShouldEmbedMarkupEvent([], true));
+        }
+
         $this->pageRendererStub = $this->createStub(PageRenderer::class);
-
-        $signalSlotDispatcherStub = $this->createStub(Dispatcher::class);
-
-        $objectManagerStub = $this->createStub(ObjectManager::class);
-        $objectManagerStub
-            ->method('get')
-            ->with(Dispatcher::class)
-            ->willReturn($signalSlotDispatcherStub);
-
-        GeneralUtility::setSingletonInstance(ObjectManager::class, $objectManagerStub);
 
         /** @var MockObject|PackageManager $packageManagerStub */
         $packageManagerStub = $this->createStub(PackageManager::class);
@@ -129,7 +121,9 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->controllerStub,
             $this->extensionConfigurationStub,
             $schemaManagerMock,
-            $this->cacheStub
+            $this->cacheStub,
+            false,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -154,7 +148,9 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->controllerStub,
             $this->extensionConfigurationStub,
             $schemaManagerStub,
-            $this->cacheStub
+            $this->cacheStub,
+            false,
+            $this->eventDispatcherStub
         );
 
         $params = [];
