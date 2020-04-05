@@ -26,7 +26,7 @@ defined('TYPO3_MODE') or die();
         ],
     ];
 
-    if ((new Brotkrueml\Schema\Compatibility\Compatibility())->isPsr14EventDispatcherAvailable()) {
+    if (!(new Brotkrueml\Schema\Compatibility\Compatibility())->isPsr14EventDispatcherAvailable()) {
         $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
             TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
         );
