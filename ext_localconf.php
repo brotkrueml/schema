@@ -18,13 +18,18 @@ defined('TYPO3_MODE') or die();
     }
 
     $coreCacheIdentifier = 'tx_' . $extensionKey . '_core';
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier] = [
-        'frontend' => \TYPO3\CMS\Core\Cache\Frontend\PhpFrontend::class,
-        'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
-        'options' => [
-            'defaultLifetime' => 0,
-        ],
-    ];
+    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier] = [];
+    }
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['frontend'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['frontend'] = \TYPO3\CMS\Core\Cache\Frontend\PhpFrontend::class;
+    }
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['backend'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['backend'] = \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class;
+    }
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['options'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['options']['defaultLifetime'] = 0;
+    }
 
     if (!(new Brotkrueml\Schema\Compatibility\Compatibility())->isPsr14EventDispatcherAvailable()) {
         $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
