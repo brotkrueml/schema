@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Possibility to register additional schema types (#38)
 - Introduce TypeInterface
-- Update schema definition to version 7.01 (#3)
+- Update schema definition to version 7.03 (#3)
 
 ### Changed
 - Decouple rendering of JSON-LD from AbstractType and SchemaManager
