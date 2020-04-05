@@ -27,6 +27,7 @@ services:
   Brotkrueml\Schema\Registry\TypeRegistry:
     arguments:
       $cache: '@cache.tx_schema_core'
+      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
 
   Brotkrueml\Schema\EventListener\EmbedMarkupDependingOnNoIndexPageField:
     tags:
