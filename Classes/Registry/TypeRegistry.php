@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Registry;
 use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -49,7 +50,11 @@ final class TypeRegistry implements SingletonInterface
     {
         if (!$cache) {
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-            $this->cache = $cacheManager->getCache(static::CACHE_IDENTIFIER);
+            try {
+                $this->cache = $cacheManager->getCache(static::CACHE_IDENTIFIER);
+            } catch (NoSuchCacheException $e) {
+                // Ignore
+            }
         } else {
             $this->cache = $cache;
         }
@@ -78,8 +83,8 @@ final class TypeRegistry implements SingletonInterface
 
     private function loadConfiguration(): array
     {
-        if ($this->cache->has(static::CACHE_ENTRY_IDENTIFIER_TYPES)) {
-            return $this->cache->require(static::CACHE_ENTRY_IDENTIFIER_TYPES);
+        if (($cacheEntry = $this->requireCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES)) !== null) {
+            return $cacheEntry;
         }
 
         $packages = $this->packageManager->getActivePackages();
@@ -96,9 +101,25 @@ final class TypeRegistry implements SingletonInterface
         $typeModels = \array_replace_recursive(...$allTypeModels);
         \ksort($typeModels);
 
-        $this->cache->set(static::CACHE_ENTRY_IDENTIFIER_TYPES, 'return ' . \var_export($typeModels, true) . ';');
+        $this->setCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES, $typeModels);
 
         return $typeModels;
+    }
+
+    private function requireCacheEntry(string $identifier): ?array
+    {
+        if ($this->cache instanceof FrontendInterface && $this->cache->has($identifier)) {
+            return $this->cache->require($identifier);
+        }
+
+        return null;
+    }
+
+    private function setCacheEntry(string $identifier, array $data): void
+    {
+        if ($this->cache instanceof FrontendInterface) {
+            $this->cache->set($identifier, 'return ' . \var_export($data, true) . ';');
+        }
     }
 
     private function enrichTypeModelsArrayWithTypeKey(array $typeModels): array
@@ -133,8 +154,8 @@ final class TypeRegistry implements SingletonInterface
 
     private function loadSpecialTypes(string $cacheEntryIdentifier, string $typeInterface): array
     {
-        if ($this->cache->has($cacheEntryIdentifier)) {
-            return $this->cache->require($cacheEntryIdentifier);
+        if (($cacheEntry = $this->requireCacheEntry($cacheEntryIdentifier)) !== null) {
+            return $cacheEntry;
         }
 
         $specialTypes = [];
@@ -151,8 +172,7 @@ final class TypeRegistry implements SingletonInterface
         }
 
         \sort($specialTypes);
-
-        $this->cache->set($cacheEntryIdentifier, 'return ' . \var_export($specialTypes, true) . ';');
+        $this->setCacheEntry($cacheEntryIdentifier, $specialTypes);
 
         return $specialTypes;
     }
