@@ -15,19 +15,20 @@ services:
     factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
     arguments: ['pages']
 
-  cache.tx_schema_core:
-    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
-    arguments: ['tx_schema_core']
-
   Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
     arguments:
       $cache: '@cache.pages'
 
-  Brotkrueml\Schema\Registry\TypeRegistry:
-    arguments:
-      $cache: '@cache.tx_schema_core'
-      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
+# Deactivated because of https://forge.typo3.org/issues/90962
+#  cache.tx_schema_core:
+#    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+#    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+#    arguments: ['tx_schema_core']
+#
+#  Brotkrueml\Schema\Registry\TypeRegistry:
+#    arguments:
+#      $cache: '@cache.tx_schema_core'
+#      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
 
   Brotkrueml\Schema\EventListener\EmbedMarkupDependingOnNoIndexPageField:
     tags:
