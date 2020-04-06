@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
+use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -62,7 +63,7 @@ abstract class AbstractType implements TypeInterface
         if (($additionalProperties = $cache->get($cacheEntryIdentifier)) === false) {
             $event = new RegisterAdditionalTypePropertiesEvent(static::class);
 
-            if (\class_exists(EventDispatcher::class)) {
+            if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
                 /** @var EventDispatcherInterface $eventDispatcher */
                 $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
                 $event = $eventDispatcher->dispatch($event);
