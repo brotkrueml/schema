@@ -8,9 +8,9 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\Registry;
+namespace Brotkrueml\Schema\Tests\Unit\Type;
 
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\VideoGallery;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;

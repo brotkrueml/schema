@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\ListItem;
 use Brotkrueml\Schema\Model\Type\WebPage;
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper;

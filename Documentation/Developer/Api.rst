@@ -369,10 +369,10 @@ List Of Types
 -------------
 
 If you need a list of the available types or a subset of them, you can call
-methods on the :php:`Brotkrueml\Schema\Registry\TypeRegistry` class. As this is
+methods on the :php:`Brotkrueml\Schema\Type\TypeRegistry` class. As this is
 a singleton, instantiate the class with::
 
-   $typeRegistry = GeneralUtility::makeInstance(\Brotkrueml\Schema\Registry\TypeRegistry::class);
+   $typeRegistry = GeneralUtility::makeInstance(\Brotkrueml\Schema\Type\TypeRegistry::class);
 
 or use dependency injection in TYPO3 v10+.
 
@@ -482,6 +482,6 @@ Will be removed in version
    2.0.0
 
 Alternative
-   Use :php:`Brotkrueml\Schema\Registry\TypeRegistry` which is now a singleton
+   Use :php:`Brotkrueml\Schema\Type\TypeRegistry` which is a singleton
    and can be instantiated with :php:`GeneralUtility::makeInstance()` or in
    TYPO3 v10+ via dependency injection. See section :ref:`api-list-of-types`.

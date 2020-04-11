@@ -12,7 +12,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;

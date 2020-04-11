@@ -10,7 +10,7 @@
 namespace Brotkrueml\Schema\Tests\Unit\Provider;
 
 use Brotkrueml\Schema\Provider\WebPageTypeProvider;
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 

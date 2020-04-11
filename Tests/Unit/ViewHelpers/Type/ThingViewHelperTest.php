@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers\Type;
 
 use Brotkrueml\Schema\Model\Type\Corporation;
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Brotkrueml\Schema\Tests\Fixtures\ViewHelpers\Type\TypeModelNotSetViewHelper;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Unit\ViewHelpers\ViewHelperTestCase;

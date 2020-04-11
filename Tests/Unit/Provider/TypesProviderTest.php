@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Provider;
 
 use Brotkrueml\Schema\Provider\TypesProvider;
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

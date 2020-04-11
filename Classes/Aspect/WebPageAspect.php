@@ -12,7 +12,7 @@ namespace Brotkrueml\Schema\Aspect;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;

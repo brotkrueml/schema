@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Provider;
 
-use Brotkrueml\Schema\Registry\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**

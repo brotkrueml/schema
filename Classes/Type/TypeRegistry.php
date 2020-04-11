@@ -8,7 +8,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Registry;
+namespace Brotkrueml\Schema\Type;
 
 use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
