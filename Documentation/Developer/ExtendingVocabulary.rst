@@ -133,20 +133,22 @@ The type can be used as `location <https://schema.org/location>`_ in the
    After changes to the :file:`TypeModels.php` file the cache must be cleared.
 
 .. note::
-
    As you can intentionally "override" a class model, e.g. the delivered
    `Person` class model with a customised one, but it is not recommended to do
    so. Instead, use the option to :ref:`register additional properties
    <extending-register-additional-properties>`.
 
 .. important::
-
-   Add the schema extension as a dependency to your extension. This ensured that
+   Add the schema extension as a dependency to your extension. This ensures that
    your class models take precedence over the delivered models from the schema
    extension. This may be necessary if you define a pending type with pending
    properties (which you also use) to avoid breaks when the type is included
    into the core vocabulary but some properties aren't.
 
+.. tip::
+   Have a look into the
+   `schema_virtuallocation <https://github.com/brotkrueml/schema-virtuallocation>`_
+   extension. It serves as a blueprint for adding own types and view helpers.
 
 Add A New WebPage Type
 ======================
