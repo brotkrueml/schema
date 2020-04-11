@@ -17,5 +17,4 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class HardwareStoreViewHelper extends AbstractTypeViewHelper
 {
-    protected static $typeModel = \Brotkrueml\Schema\Model\Type\HardwareStore::class;
 }

@@ -17,5 +17,4 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ReturnActionViewHelper extends AbstractTypeViewHelper
 {
-    protected static $typeModel = \Brotkrueml\Schema\Model\Type\ReturnAction::class;
 }

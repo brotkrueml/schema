@@ -12,15 +12,11 @@ namespace Brotkrueml\Schema\Tests\Fixtures\Model\Type;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
-class FixtureThing extends AbstractType
+final class ListItem extends AbstractType
 {
     protected static $propertyNames = [
-        'alternateName',
-        'description',
-        'identifier',
-        'image',
-        'isAccessibleForFree',
+        'item',
         'name',
-        'url',
+        'position',
     ];
 }

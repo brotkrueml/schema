@@ -85,17 +85,13 @@ This extension provides model classes for each type under the PHP namespace
 :php:`\Brotkrueml\Schema\Model\Type`. For example, the type ``Thing`` is mapped
 to the model :php:`\Brotkrueml\Schema\Model\Type\Thing`, which knows about the
 according schema.org properties. A property value can be set with an according
-method.
+method::
 
-.. code-block:: php
-
-   $thing = new \Brotkrueml\Schema\Model\Type\Thing();
+   $thing = \Brotkrueml\Schema\Type\TypeFactory::createType('Thing');
    $thing->setProperty('name', 'A thing');
 
 The schema manager connects the type models to the page and is responsible for
-generating the markup on the web page.
-
-.. code-block:: php
+generating the markup on the web page::
 
    $schemaManager = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
       \Brotkrueml\Schema\Manager\SchemaManager::class
@@ -128,6 +124,5 @@ The chapter :ref:`view-helpers` explains the usage of
 the view helpers in detail.
 
 .. note::
-
    The view helpers were generated from the schema.org definition and will be
    updated as the standard evolves.

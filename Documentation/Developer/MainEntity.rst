@@ -24,7 +24,6 @@ primary content of a page. Every type is allowed - although some types doesn't
 make sense (e.g. a breadcrumb cannot be the primary content).
 
 .. note::
-
    Technically, there can be more than one main entity at a time. For example,
    if you have a ``FAQPage`` you will usually assign `more than one question
    <https://developers.google.com/search/docs/data-types/faqpage>`__ as
@@ -37,12 +36,12 @@ Using The API
 The main entity of a web page can be defined with the API. Let's start with an
 example that specifies a product as the primary content::
 
-   $aggregateRating = (new \Brotkrueml\Schema\Model\Type\Product())
+   $aggregateRating = \Brotkrueml\Schema\Type\TypeFactory::createType('AggregateRating');
       ->setProperty('ratingValue', '4')
       ->setProperty('reviewCount', '126')
    ;
 
-   $product = (new \Brotkrueml\Schema\Model\Type\Product())
+   $product = \Brotkrueml\Schema\Type\TypeFactory::createType('Product')
       ->setProperties([
          'name' => 'Some fancy product',
          'color' => 'blue',

@@ -12,10 +12,9 @@ namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\WebPageAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Type\TypeRegistry;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -49,6 +48,17 @@ class WebPageAspectTest extends TestCase
     protected function setUp(): void
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
+
+        $typeRegistryStub = $this->createStub(TypeRegistry::class);
+        $map = [
+            ['ItemPage', FixtureType\ItemPage::class],
+            ['WebPage', FixtureType\WebPage::class],
+        ];
+        $typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->willReturnMap($map);
+
+        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
     }
 
     protected function tearDown(): void
@@ -75,9 +85,6 @@ class WebPageAspectTest extends TestCase
         $configuration = $reflector->getProperty('configuration');
         $configuration->setAccessible(true);
 
-        $typeRegistry = $reflector->getProperty('typeRegistry');
-        $typeRegistry->setAccessible(true);
-
         $packageManagerStub = $this->createStub(PackageManager::class);
         $packageManagerStub
             ->method('getActivePackages')
@@ -102,7 +109,6 @@ class WebPageAspectTest extends TestCase
 
         self::assertSame('fake controller', $controller->getValue($subject));
         self::assertInstanceOf(ExtensionConfiguration::class, $configuration->getValue($subject));
-        self::assertInstanceOf(TypeRegistry::class, $typeRegistry->getValue($subject));
 
         unset($GLOBALS['TSFE']);
     }
@@ -132,8 +138,7 @@ class WebPageAspectTest extends TestCase
 
         (new WebPageAspect(
             $this->controllerMock,
-            $configurationMock,
-            $this->typeRegistryStub
+            $configurationMock
         ))
             ->execute($schemaManagerMock);
     }
@@ -141,7 +146,6 @@ class WebPageAspectTest extends TestCase
     protected function setUpGeneralMocks(): void
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $this->typeRegistryStub = $this->createStub(TypeRegistry::class);
     }
 
     /**
@@ -162,8 +166,7 @@ class WebPageAspectTest extends TestCase
 
         (new WebPageAspect(
             $this->controllerMock,
-            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->typeRegistryStub
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         ))
             ->execute($schemaManagerMock);
     }
@@ -198,22 +201,16 @@ class WebPageAspectTest extends TestCase
             'endtime' => 0,
         ];
 
-        $this->typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->with('WebPage')
-            ->willReturn(WebPage::class);
-
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects(self::once())
             ->method('addType')
-            ->with(new WebPage());
+            ->with(new FixtureType\WebPage());
 
         $subject = new WebPageAspect(
             $this->controllerMock,
-            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->typeRegistryStub
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         );
 
         $subject->execute($schemaManagerMock);
@@ -234,22 +231,16 @@ class WebPageAspectTest extends TestCase
             'endtime' => 0,
         ];
 
-        $this->typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->with('ItemPage')
-            ->willReturn(ItemPage::class);
-
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects(self::once())
             ->method('addType')
-            ->with(new ItemPage());
+            ->with(new FixtureType\ItemPage());
 
         $subject = new WebPageAspect(
             $this->controllerMock,
-            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->typeRegistryStub
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         );
 
         $subject->execute($schemaManagerMock);
@@ -270,22 +261,16 @@ class WebPageAspectTest extends TestCase
             'endtime' => 1561672753,
         ];
 
-        $this->typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->with('WebPage')
-            ->willReturn(WebPage::class);
-
         /** @var MockObject|SchemaManager $schemaManagerMock */
         $schemaManagerMock = $this->createMock(SchemaManager::class);
         $schemaManagerMock
             ->expects(self::once())
             ->method('addType')
-            ->with((new WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00'));
+            ->with((new FixtureType\WebPage())->setProperty('expires', '2019-06-27T21:59:13+00:00'));
 
         $subject = new WebPageAspect(
             $this->controllerMock,
-            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->typeRegistryStub
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         );
 
         $subject->execute($schemaManagerMock);
@@ -312,8 +297,7 @@ class WebPageAspectTest extends TestCase
 
         (new WebPageAspect(
             $this->controllerMock,
-            $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->typeRegistryStub
+            $this->getExtensionConfigurationMockWithGetReturnsTrue()
         ))
             ->execute($schemaManagerMock);
     }

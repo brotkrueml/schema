@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use PHPUnit\Framework\TestCase;
 
 class RegisterAdditionalTypePropertiesEventTest extends TestCase
@@ -23,7 +23,7 @@ class RegisterAdditionalTypePropertiesEventTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->subject = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+        $this->subject = new RegisterAdditionalTypePropertiesEvent(Thing::class);
     }
 
     /**
@@ -31,7 +31,7 @@ class RegisterAdditionalTypePropertiesEventTest extends TestCase
      */
     public function getTypeReturnsTheTypeCorrectly(): void
     {
-        self::assertSame(FixtureThing::class, $this->subject->getType());
+        self::assertSame(Thing::class, $this->subject->getType());
     }
 
     /**

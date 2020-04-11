@@ -10,11 +10,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers\Type;
 
-use Brotkrueml\Schema\Model\Type\Corporation;
-use Brotkrueml\Schema\Type\TypeRegistry;
-use Brotkrueml\Schema\Tests\Fixtures\ViewHelpers\Type\TypeModelNotSetViewHelper;
+use Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Unit\ViewHelpers\ViewHelperTestCase;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
@@ -26,6 +25,25 @@ class ThingViewHelperTest extends ViewHelperTestCase
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
+
+        $typeRegistryStub = $this->createStub(TypeRegistry::class);
+        $map = [
+            ['Action', Type\Action::class],
+            ['ContactPoint', Type\ContactPoint::class],
+            ['Corporation', Type\Corporation::class],
+            ['CreativeWork', Type\CreativeWork::class],
+            ['Event', Type\Event::class],
+            ['Offer', Type\Offer::class],
+            ['Organization', Type\Organization::class],
+            ['Person', Type\Person::class],
+            ['Thing', Type\Thing::class],
+            ['WebPage', Type\WebPage::class],
+        ];
+        $typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->willReturnMap($map);
+
+        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
     }
 
     protected function tearDown(): void
@@ -264,15 +282,6 @@ class ThingViewHelperTest extends ViewHelperTestCase
      */
     public function itRecognisesAGivenSpecificType(): void
     {
-        $typeRegistryMock = $this->createMock(TypeRegistry::class);
-        $typeRegistryMock
-            ->expects(self::once())
-            ->method('resolveModelClassFromType')
-            ->with('Corporation')
-            ->willReturn(Corporation::class);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryMock);
-
         $template = '<schema:type.organization name="a corporation" -specificType="Corporation"/>';
         $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Corporation","name":"a corporation"}</script>';
 
@@ -321,59 +330,5 @@ class ThingViewHelperTest extends ViewHelperTestCase
         $this->expectExceptionMessage($expectedExceptionMessage);
 
         $this->renderTemplate($template);
-    }
-
-    /**
-     * @test
-     */
-    public function itThrowsExceptionWhenTypeModelIsNotDefined(): void
-    {
-        $this->expectException(ViewHelper\Exception::class);
-        $this->expectExceptionCode(1584715529);
-        $this->expectExceptionMessage('Brotkrueml\\Schema\\Core\\ViewHelpers\\AbstractTypeViewHelper::$typeModel must be set to the appropriate type model class');
-
-        new TypeModelNotSetViewHelper();
-    }
-
-    /**
-     * @test
-     */
-    public function itThrowsExceptionWhenSpecificTypeIsNotAvailable(): void
-    {
-        $this->expectException(ViewHelper\Exception::class);
-        $this->expectExceptionCode(1561829970);
-        $this->expectExceptionMessage('The given specific type "TypeDoesNotExist" does not exist in the schema.org vocabulary, perhaps it is misspelled? Remember, the type must start with a capital letter.');
-
-        $typeRegistryMock = $this->createMock(TypeRegistry::class);
-        $typeRegistryMock
-            ->expects(self::once())
-            ->method('resolveModelClassFromType')
-            ->with('TypeDoesNotExist')
-            ->willReturn(null);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryMock);
-
-        $this->renderTemplate('<schema:type.thing -specificType="TypeDoesNotExist"/>');
-    }
-
-    /**
-     * @test
-     */
-    public function itThrowsExceptionWhenSpecificTypeClassDoesNotExist(): void
-    {
-        $this->expectException(ViewHelper\Exception::class);
-        $this->expectExceptionCode(1561829970);
-        $this->expectExceptionMessage('The given specific type "TypeDoesNotExist" does not exist in the schema.org vocabulary, perhaps it is misspelled? Remember, the type must start with a capital letter.');
-
-        $typeRegistryMock = $this->createMock(TypeRegistry::class);
-        $typeRegistryMock
-            ->expects(self::once())
-            ->method('resolveModelClassFromType')
-            ->with('TypeDoesNotExist')
-            ->willReturn('\\TypeDoesNotExistClass');
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryMock);
-
-        $this->renderTemplate('<schema:type.thing -specificType="TypeDoesNotExist"/>');
     }
 }

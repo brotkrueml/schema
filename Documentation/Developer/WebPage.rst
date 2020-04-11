@@ -52,18 +52,18 @@ As you saw in a previous chapter you can use the :ref:`API <api>` to define the
 schema for a page. The ``WebPage`` type is no exception to that. Define a
 ``WebPage`` type for a page via API::
 
-   $itemPage = new \Brotkrueml\Schema\Model\Type\ItemPage()
+   $itemPage = \Brotkrueml\Schema\Type\TypeFactory::createType('ItemPage')
    $this->schemaManager->addType($itemPage);
 
 That's it. But you can add one or more properties to it - let's define a page
 with a product as primary content::
 
-   $aggregateRating = (new \Brotkrueml\Schema\Model\Type\Product())
+   $aggregateRating = \Brotkrueml\Schema\Type\TypeFactory::createType('AggregateRating')
       ->setProperty('ratingValue', '4')
       ->setProperty('reviewCount', '126')
    ;
 
-   $product = (new \Brotkrueml\Schema\Model\Type\Product())
+   $product = \Brotkrueml\Schema\Type\TypeFactory::createType('Product')
       ->setProperties([
          'name' => 'Some fancy product',
          'color' => 'blue',
@@ -73,7 +73,7 @@ with a product as primary content::
       ])
    ;
 
-   $itemPage = (new \Brotkrueml\Schema\Model\Type\ItemPage())
+   $itemPage = \Brotkrueml\Schema\Type\TypeFactory::createType('ItemPage')
       ->setProperty('mainEntity', $product)
    ;
 
@@ -104,7 +104,6 @@ If you define a web page on your own, this overrules the :ref:`page field value
 <for-editors>` of the specific type of web page.
 
 .. tip::
-
    You don't have to define a web page type, if you only want to set the main
    entity of the page. You can also set the main entity independently of the web
    page. Have a look at the chapter :ref:`Main entity <main-entity-of-web-page>`.

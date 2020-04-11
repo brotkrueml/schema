@@ -12,7 +12,7 @@ namespace Brotkrueml\Schema\Tests\Fixtures\Model\Type;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
-class FixtureImage extends AbstractType
+class Image extends AbstractType
 {
     protected static $propertyNames = [
         'name',

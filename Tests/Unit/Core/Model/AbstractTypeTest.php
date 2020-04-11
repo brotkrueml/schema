@@ -12,7 +12,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -34,7 +34,7 @@ class AbstractTypeTest extends TestCase
     protected function setUp(): void
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
-        $this->subject = new FixtureThing();
+        $this->subject = new Thing();
     }
 
     protected function tearDown(): void
@@ -395,7 +395,7 @@ class AbstractTypeTest extends TestCase
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
 
-        $subject = new FixtureThing();
+        $subject = new Thing();
 
         self::assertSame(
             [
@@ -424,13 +424,13 @@ class AbstractTypeTest extends TestCase
         $cacheFrontendMock
             ->expects(self::once())
             ->method('get')
-            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing')
+            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing')
             ->willReturn(false);
 
         $cacheFrontendMock
             ->method('set')
             ->with(
-                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing',
+                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing',
                 [],
                 [],
                 0
@@ -457,7 +457,7 @@ class AbstractTypeTest extends TestCase
 
         if (\class_exists(EventDispatcher::class)) {
             /* Only TYPO3 v10+ */
-            $event = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+            $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
 
             /** @var MockObject|EventDispatcher $eventDispatcherMock */
             $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
@@ -472,7 +472,7 @@ class AbstractTypeTest extends TestCase
             GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
         }
 
-        new FixtureThing();
+        new Thing();
     }
 
     /**
@@ -490,13 +490,13 @@ class AbstractTypeTest extends TestCase
         $cacheFrontendMock
             ->expects(self::once())
             ->method('get')
-            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing')
+            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing')
             ->willReturn(false);
 
         $cacheFrontendMock
             ->method('set')
             ->with(
-                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_FixtureThing',
+                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing',
                 ['someAdditionalProperty'],
                 [],
                 0
@@ -521,9 +521,9 @@ class AbstractTypeTest extends TestCase
 
         GeneralUtility::setSingletonInstance(Dispatcher::class, $signalSlotDispatcherMock);
 
-        $inEvent = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+        $inEvent = new RegisterAdditionalTypePropertiesEvent(Thing::class);
 
-        $outEvent = new RegisterAdditionalTypePropertiesEvent(FixtureThing::class);
+        $outEvent = new RegisterAdditionalTypePropertiesEvent(Thing::class);
         $outEvent->registerAdditionalProperty('someAdditionalProperty');
 
         /** @var MockObject|EventDispatcher $eventDispatcherMock */
@@ -538,6 +538,6 @@ class AbstractTypeTest extends TestCase
 
         GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
 
-        new FixtureThing();
+        new Thing();
     }
 }

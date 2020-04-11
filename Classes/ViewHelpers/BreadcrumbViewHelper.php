@@ -10,12 +10,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\ViewHelpers;
 
-use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Model\Type\BreadcrumbList;
-use Brotkrueml\Schema\Model\Type\ListItem;
-use Brotkrueml\Schema\Model\Type\WebPage;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
@@ -59,6 +55,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 {
     private const ARGUMENT_BREADCRUMB = 'breadcrumb';
     private const ARGUMENT_RENDER_FIRST_ITEM = 'renderFirstItem';
+    private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
     public function initializeArguments()
     {
@@ -97,25 +94,19 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 
         $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
-        $breadcrumbList = (new BreadcrumbList());
+        $breadcrumbList = TypeFactory::createType('BreadcrumbList');
         for ($i = 0; $i < count($arguments[static::ARGUMENT_BREADCRUMB]); $i++) {
-            $webPageTypeClass = WebPage::class;
-            if (static::hasWebPageType($arguments[static::ARGUMENT_BREADCRUMB][$i])) {
-                $givenItemTypeClass = GeneralUtility::makeInstance(TypeRegistry::class)
-                    ->resolveModelClassFromType($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'] ?? '');
-                $webPageTypeClass = $givenItemTypeClass ?: $webPageTypeClass;
-            }
-
             $id = $arguments[static::ARGUMENT_BREADCRUMB][$i]['link'];
             if (!\str_contains($id, $siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }
 
-            /** @var TypeInterface $itemType */
-            $itemType = new $webPageTypeClass();
+            $webPageTypeClass = ($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'] ?? '')
+                ?: static::DEFAULT_WEBPAGE_TYPE;
+            $itemType = TypeFactory::createType($webPageTypeClass);
             $itemType->setId($id);
 
-            $item = (new ListItem())->setProperties([
+            $item = TypeFactory::createType('ListItem')->setProperties([
                 'position' => $i + 1,
                 'name' => $arguments[static::ARGUMENT_BREADCRUMB][$i]['title'],
                 'item' => $itemType,
@@ -127,13 +118,6 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType($breadcrumbList);
-    }
-
-    private static function hasWebPageType(array $breadcrumbItem): bool
-    {
-        return isset($breadcrumbItem['data'])
-            && \is_array($breadcrumbItem['data'])
-            && isset($breadcrumbItem['data']['tx_schema_webpagetype']);
     }
 
     private static function checkBreadcrumbStructure($breadcrumb)

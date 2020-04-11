@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Type;
 
-use Brotkrueml\Schema\Type\TypeRegistry;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureImage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Image;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\VideoGallery;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
@@ -69,7 +69,7 @@ class TypeRegistryTest extends TestCase
             ->method('require')
             ->with('types')
             ->willReturn([
-                'FixtureImage' => FixtureImage::class,
+                'Image' => Image::class,
                 'VideoGallery' => VideoGallery::class,
                 'WebPage' => WebPage::class,
             ]);
@@ -80,7 +80,7 @@ class TypeRegistryTest extends TestCase
 
         $actual = $this->subject->getTypes();
 
-        self::assertSame(['FixtureImage', 'VideoGallery', 'WebPage'], $actual);
+        self::assertSame(['Image', 'VideoGallery', 'WebPage'], $actual);
     }
 
     /**
@@ -105,9 +105,9 @@ class TypeRegistryTest extends TestCase
                 'types',
                 "return array (
   'BreadcrumbList' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\BreadcrumbList',
-  'FixtureImage' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\FixtureImage',
-  'FixtureThing' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\FixtureThing',
+  'Image' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\Image',
   'Table' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\Table',
+  'Thing' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\Thing',
   'WebPage' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\WebPage',
   'WebSite' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\WebSite',
 );"
@@ -115,7 +115,7 @@ class TypeRegistryTest extends TestCase
 
         $actual = $this->subject->getTypes();
 
-        self::assertSame(['BreadcrumbList', 'FixtureImage', 'FixtureThing', 'Table', 'WebPage', 'WebSite'], $actual);
+        self::assertSame(['BreadcrumbList', 'Image', 'Table', 'Thing', 'WebPage', 'WebSite'], $actual);
     }
 
     /**
@@ -132,7 +132,7 @@ class TypeRegistryTest extends TestCase
         $this->subject->getTypes();
         $actual = $this->subject->getTypes();
 
-        self::assertSame(['BreadcrumbList', 'FixtureImage', 'FixtureThing', 'Table', 'WebPage', 'WebSite'], $actual);
+        self::assertSame(['BreadcrumbList', 'Image', 'Table', 'Thing', 'WebPage', 'WebSite'], $actual);
     }
 
     /**
@@ -257,7 +257,7 @@ class TypeRegistryTest extends TestCase
 
         $actual = $this->subject->getContentTypes();
 
-        self::assertSame(['FixtureImage', 'FixtureThing'], $actual);
+        self::assertSame(['Image', 'Thing'], $actual);
     }
 
     /**
@@ -269,9 +269,9 @@ class TypeRegistryTest extends TestCase
             ->method('has')
             ->willReturn(false);
 
-        $actual = $this->subject->resolveModelClassFromType('FixtureImage');
+        $actual = $this->subject->resolveModelClassFromType('Image');
 
-        self::assertSame(FixtureImage::class, $actual);
+        self::assertSame(Image::class, $actual);
     }
 
     /**

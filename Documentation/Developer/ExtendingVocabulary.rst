@@ -108,13 +108,10 @@ The type can be used as `location <https://schema.org/location>`_ in the
 
    Now you can use the `VirtualLocation` in your PHP code::
 
-      $location = new \Acme\LooneyTunes\Domain\Schema\Type\VirtualLocation();
-      $location
-         ->setProperty('url', 'https://example.com/looney-tunes-webinar-12345/register')
-      ;
+      $location = \Brotkrueml\Schema\Type\TypeFactory::createType('VirtualLocation');
+      $location->setProperty('url', 'https://example.com/looney-tunes-webinar-12345/register');
 
    .. important::
-
       The class name must be named after the type name of Schema.org. In this
       example, the type is called `VirtualLocation`, so the class name is
       :php:`VirtualLocation`.
@@ -206,13 +203,13 @@ helper::
 
    final class VirtualLocationViewHelper extends AbstractTypeViewHelper
    {
-      protected static $typeModel = \Acme\LooneyTunes\Domain\Schema\Type\VirtualLocation::class;
    }
 
 The view helper must extend the
-:php:`Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper`. Define the
-connection between the view helper and the corresponding type model class
-with the :php:`$typeModel` property.
+:php:`Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper`. The view
+helper must be named after the according type model. In the example the
+:php:`VirtualLocationViewHelper` is connected to the :php:`VirtualLocation`
+type model automatically.
 
 Now you can use the view helper in a Fluid template (for example, when using the
 `acme` namespace):

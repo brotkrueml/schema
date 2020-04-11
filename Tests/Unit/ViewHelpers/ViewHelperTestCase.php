@@ -11,7 +11,6 @@ namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
 use Brotkrueml\Schema\Manager\SchemaManager;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
@@ -22,9 +21,6 @@ class ViewHelperTestCase extends UnitTestCase
 
     protected $resetSingletonInstances = true;
 
-    /** @var vfsStreamDirectory */
-    protected $root;
-
     /** @var TemplateView */
     protected $view;
 
@@ -33,7 +29,7 @@ class ViewHelperTestCase extends UnitTestCase
 
     protected function setUp(): void
     {
-        $this->root = vfsStream::setup('test-dir');
+        vfsStream::setup('test-dir');
         $this->view = new TemplateView();
         $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
     }

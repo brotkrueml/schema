@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -126,7 +126,7 @@ class SchemaMarkupInjectionTest extends TestCase
     public function executeInBackendModeDoesNothing()
     {
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $this->pageRendererMock
             ->expects(self::never())
@@ -168,7 +168,7 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $this->extensionConfigurationMock
             ->expects(self::once())
@@ -179,7 +179,7 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addHeaderData')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
+            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
 
         $this->pageRendererMock
             ->expects(self::never())
@@ -204,7 +204,7 @@ class SchemaMarkupInjectionTest extends TestCase
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $this->extensionConfigurationMock
             ->expects(self::once())
@@ -219,7 +219,7 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addFooterData')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
+            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
 
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
@@ -258,12 +258,12 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addHeaderData')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>');
+            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
 
         $params = [];
         $subject->execute($params, $this->pageRendererMock);
@@ -305,7 +305,7 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $cacheMock = $this->createMock(FrontendInterface::class);
         $cacheMock
@@ -317,7 +317,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('set')
             ->with(
                 self::anything(),
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"FixtureThing","name":"some name"}</script>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>',
                 self::anything(),
                 self::anything()
             );
@@ -346,7 +346,7 @@ class SchemaMarkupInjectionTest extends TestCase
 
         /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new FixtureThing())->setProperty('name', 'some name'));
+        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $cacheMock = $this->createMock(FrontendInterface::class);
         $cacheMock

@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Possibility to register additional schema types (#38)
-- Introduce TypeInterface
+- Introduce a TypeInterface for type models implementations
+- Introduce a TypeFactory for creation of type models (#48)
 - Update schema definition to version 7.03 (#3)
 
 ### Changed

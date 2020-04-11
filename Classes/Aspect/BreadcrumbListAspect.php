@@ -12,8 +12,7 @@ namespace Brotkrueml\Schema\Aspect;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Model\Type;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -30,19 +29,14 @@ final class BreadcrumbListAspect implements AspectInterface
     /** @var ContentObjectRenderer */
     private $contentObjectRenderer;
 
-    /** @var TypeRegistry */
-    private $typeRegistry;
-
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $configuration = null,
-        ContentObjectRenderer $contentObjectRenderer = null,
-        TypeRegistry $typeRegistry = null
+        ContentObjectRenderer $contentObjectRenderer = null
     ) {
         $this->controller = $controller ?? $GLOBALS['TSFE'];
         $this->configuration = $configuration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
-        $this->typeRegistry = $typeRegistry ?? GeneralUtility::makeInstance(TypeRegistry::class);
     }
 
     public function execute(SchemaManager $schemaManager): void
@@ -78,15 +72,12 @@ final class BreadcrumbListAspect implements AspectInterface
         }
     }
 
-    private function buildBreadCrumbList(array $rootLine): Type\BreadcrumbList
+    private function buildBreadCrumbList(array $rootLine): TypeInterface
     {
-        $breadcrumbList = (new Type\BreadcrumbList());
+        $breadcrumbList = TypeFactory::createType('BreadcrumbList');
         foreach ($rootLine as $index => $page) {
-            $givenItemTypeClass = $this->typeRegistry->resolveModelClassFromType($page['tx_schema_webpagetype'] ?? '');
-            $webPageTypeClass = $givenItemTypeClass ?? Type\WebPage::class;
-
-            /** @var TypeInterface $itemType */
-            $itemType = new $webPageTypeClass();
+            $givenItemType = ($page['tx_schema_webpagetype'] ?? '') ?: 'WebPage';
+            $itemType = TypeFactory::createType($givenItemType);
 
             $link = $this->contentObjectRenderer->typoLink_URL([
                 'parameter' => $page['uid'],
@@ -95,7 +86,7 @@ final class BreadcrumbListAspect implements AspectInterface
 
             $itemType->setId($link);
 
-            $item = (new Type\ListItem())->setProperties([
+            $item = TypeFactory::createType('ListItem')->setProperties([
                 'position' => $index + 1,
                 'name' => $page['nav_title'] ?: $page['title'],
                 'item' => $itemType,

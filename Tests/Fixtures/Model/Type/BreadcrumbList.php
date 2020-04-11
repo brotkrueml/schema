@@ -14,4 +14,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 final class BreadcrumbList extends AbstractType
 {
+    protected static $propertyNames = [
+        'breadcrumb',
+        'itemListElement',
+        'mainEntity',
+    ];
 }

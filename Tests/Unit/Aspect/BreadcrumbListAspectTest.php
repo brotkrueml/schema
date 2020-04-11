@@ -12,9 +12,9 @@ namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Type\TypeRegistry;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use Psr\Http\Message\ServerRequestInterface;
@@ -50,6 +50,19 @@ class BreadcrumbListAspectTest extends UnitTestCase
     protected function setUp(): void
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
+
+        $typeRegistryStub = $this->createStub(TypeRegistry::class);
+        $map = [
+            ['BreadcrumbList', FixtureType\BreadcrumbList::class],
+            ['ItemPage', FixtureType\ItemPage::class],
+            ['ListItem', FixtureType\ListItem::class],
+            ['WebPage', FixtureType\WebPage::class],
+        ];
+        $typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->willReturnMap($map);
+
+        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
     }
 
     protected function tearDown(): void
@@ -81,8 +94,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
         (new BreadcrumbListAspect(
             $this->controllerMock,
             $configurationMock,
-            $this->contentObjectRendererMock,
-            $this->typeRegistryStub
+            $this->contentObjectRendererMock
         ))
             ->execute($schemaManagerMock);
     }
@@ -91,7 +103,6 @@ class BreadcrumbListAspectTest extends UnitTestCase
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $this->contentObjectRendererMock = $this->createMock(ContentObjectRenderer::class);
-        $this->typeRegistryStub = $this->createStub(TypeRegistry::class);
     }
 
     /**
@@ -112,8 +123,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
         (new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock,
-            $this->typeRegistryStub
+            $this->contentObjectRendererMock
         ))
             ->execute($schemaManagerMock);
     }
@@ -305,6 +315,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
         $this->controllerMock->rootLine = $rootLine;
 
+        /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
 
         $this->contentObjectRendererMock
@@ -319,8 +330,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
         $subject = new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock,
-            $this->typeRegistryStub
+            $this->contentObjectRendererMock
         );
 
         $subject->execute($schemaManager);
@@ -419,13 +429,13 @@ class BreadcrumbListAspectTest extends UnitTestCase
             ],
         ];
 
+        /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
 
         $subject = new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock,
-            $this->typeRegistryStub
+            $this->contentObjectRendererMock
         );
 
         $subject->execute($schemaManager);
@@ -442,11 +452,6 @@ class BreadcrumbListAspectTest extends UnitTestCase
     public function rootlineWithDifferentWebPageTypeSet(): void
     {
         $this->setUpGeneralMocks();
-
-        $this->typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->with('ItemPage')
-            ->willReturn(ItemPage::class);
 
         $this->controllerMock->rootLine = [
             2 => [
@@ -469,6 +474,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
             ],
         ];
 
+        /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
 
         $this->contentObjectRendererMock
@@ -483,8 +489,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
         $subject = new BreadcrumbListAspect(
             $this->controllerMock,
             $this->getExtensionConfigurationMockWithGetReturnsTrue(),
-            $this->contentObjectRendererMock,
-            $this->typeRegistryStub
+            $this->contentObjectRendererMock
         );
 
         $subject->execute($schemaManager);

@@ -13,7 +13,7 @@ namespace Brotkrueml\Schema\Core\ViewHelpers;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
@@ -24,14 +24,11 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
 
-    protected static $typeModel = '';
-
-    private $item = [];
-
     private $isMainEntityOfWebPage = false;
-    private $specificTypeModelClassName = '';
-
     private $parentPropertyName = '';
+
+    /** @var TypeInterface */
+    private $model;
 
     /** @var TypeStack */
     private $stack;
@@ -41,18 +38,9 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
-        if (empty(static::$typeModel)) {
-            throw new ViewHelper\Exception(
-                \sprintf(
-                    '%s::$typeModel must be set to the appropriate type model class',
-                    __CLASS__
-                ),
-                1584715529
-            );
-        }
-
-        $this->stack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
-        $this->schemaManager = $schemaManager ?: GeneralUtility::makeInstance(SchemaManager::class);
+        $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);
+        $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
+        $this->model = TypeFactory::createType($this->getType());
     }
 
     public function initializeArguments()
@@ -64,10 +52,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'bool', 'Set to true, if the type is the primary content of the web page', false, false);
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
 
-        $modelClassName = static::$typeModel;
-        /** @var TypeInterface $model */
-        $model = new $modelClassName();
-        foreach ($model->getPropertyNames() as $property) {
+        foreach ($this->model->getPropertyNames() as $property) {
             $this->registerArgument($property, 'mixed', 'Property ' . $property);
         }
     }
@@ -80,7 +65,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
         $this->assignArgumentsToItem();
 
-        $this->stack->push($this->item);
+        $this->stack->push($this->model);
 
         $this->renderChildren();
 
@@ -112,20 +97,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
             return;
         }
 
-        $className = GeneralUtility::makeInstance(TypeRegistry::class)
-            ->resolveModelClassFromType($specificTypeFromArguments);
-
-        if (empty($className) || !\class_exists($className)) {
-            throw new ViewHelper\Exception(
-                \sprintf(
-                    'The given specific type "%s" does not exist in the schema.org vocabulary, perhaps it is misspelled? Remember, the type must start with a capital letter.',
-                    $specificTypeFromArguments
-                ),
-                1561829970
-            );
-        }
-
-        $this->specificTypeModelClassName = $className;
+        $this->model = TypeFactory::createType($specificTypeFromArguments);
     }
 
     private function checkAsAttribute(): void
@@ -170,36 +142,37 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     private function getType(): string
     {
-        return \substr(\strrchr(static::$typeModel, '\\') ?: '', 1);
+        return \str_replace(
+            'ViewHelper',
+            '',
+            \substr(\strrchr(static::class, '\\') ?: '', 1)
+        );
     }
 
     private function assignArgumentsToItem(): void
     {
-        $modelClassName = $this->specificTypeModelClassName ?: static::$typeModel;
-
-        /** @var TypeInterface $model */
-        $model = new $modelClassName();
-
         if (!empty($this->arguments[static::ARGUMENT_ID])) {
-            $model->setId($this->arguments[static::ARGUMENT_ID]);
+            $this->model->setId($this->arguments[static::ARGUMENT_ID]);
         }
 
         unset($this->arguments[static::ARGUMENT_ID]);
 
         foreach ($this->arguments as $name => $value) {
+            if ($value === null) {
+                continue;
+            }
+
             if ($value === 'false') {
-                $model->setProperty($name, false);
+                $this->model->setProperty($name, false);
                 continue;
             }
 
             if ($value === 'true') {
-                $model->setProperty($name, true);
+                $this->model->setProperty($name, true);
                 continue;
             }
 
-            $model->setProperty($name, $value);
+            $this->model->setProperty($name, $value);
         }
-
-        $this->item = $model;
     }
 }

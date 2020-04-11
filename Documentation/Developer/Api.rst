@@ -33,14 +33,22 @@ Starting With An Example
 ========================
 
 Let's start with a simple example. Imagine you describe a
-`person <https://schema.org/Person>`__ on a plugin's detail page that you want
+`person <https://schema.org/Person>`_ on a plugin's detail page that you want
 to enrich with structured markup. First you have to create the schema model::
 
-   $person = new \Brotkrueml\Schema\Model\Type\Person();
+   $person = \Brotkrueml\Schema\Type\TypeFactory::createType('Person')
 
-As you see, the schema type ``Person`` maps to the model :php:`Person`. You can
-use every accepted type of the
-`schema.org vocabulary <https://schema.org/docs/full.html>`__.
+The schema type ``Person`` maps to the model :php:`Person`. You can
+use every accepted type from the core vocabulary from `schema.org
+<https://schema.org/docs/full.html>`_. Also have a look into the
+:file:`Classes\Model\Type` folder of this extension to get a general idea of the
+available types.
+
+If the type is not available a :php:`\DomainException` is thrown.
+
+Every type implements the :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`.
+You will find a list of the available methods in the section
+:ref:`<api-type-interface>`.
 
 Surely you will need to add some properties::
 
@@ -53,7 +61,7 @@ Surely you will need to add some properties::
 
 That was easy ... let's go on and define an event the person attends::
 
-   $event = (new \Brotkrueml\Schema\Model\Type\Event())
+   $event = \Brotkrueml\Schema\Type\TypeFactory::createType('Event')
       ->setProperty('name', 'Fancy Event')
       ->setProperty('image', 'https:/example.org/event.png')
       ->setProperty('url', 'https://example.org/')
@@ -97,6 +105,7 @@ automatically into the head section:
       }
    }
 
+
 .. index::
    single: Model API
    seealso: Model API; API
@@ -130,6 +139,8 @@ vocabulary <extending-vocabulary>`.
 Each type model delivered with this extension extends the :php:`AbstractType`
 class.
 
+
+.. _api-type-interface:
 
 Available Type Model Methods
 ----------------------------

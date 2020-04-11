@@ -12,12 +12,12 @@ namespace Brotkrueml\Schema\Tests\Fixtures\Aspect;
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\FixtureThing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 
 class TestAspect implements AspectInterface
 {
     public function execute(SchemaManager $schemaManager): void
     {
-        $schemaManager->addType(new FixtureThing());
+        $schemaManager->addType(new Thing());
     }
 }

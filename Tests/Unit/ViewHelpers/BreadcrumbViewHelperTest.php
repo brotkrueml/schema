@@ -10,10 +10,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ItemPage;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\VideoGallery;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -29,6 +28,20 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
+
+        $typeRegistryStub = $this->createStub(TypeRegistry::class);
+        $map = [
+            ['BreadcrumbList', FixtureType\BreadcrumbList::class],
+            ['ItemPage', FixtureType\ItemPage::class],
+            ['ListItem', FixtureType\ListItem::class],
+            ['VideoGallery', FixtureType\VideoGallery::class],
+            ['WebPage', FixtureType\WebPage::class],
+        ];
+        $typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->willReturnMap($map);
+
+        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
     }
 
     protected function tearDown(): void
@@ -43,7 +56,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProvider(): iterable
+    public function fluidTemplatesProvider(): \Generator
     {
         yield 'Breadcrumb is empty' => [
             '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
@@ -109,7 +122,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     [
                         'title' => 'Unicorns in TYPO3 land',
                         'link' => '/videos/unicorns-in-typo3-land/',
-                        'data' => new \stdClass(),
+                        'data' => [],
                     ],
                 ],
             ],
@@ -169,9 +182,9 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
         $cacheFrontendStub
             ->method('require')
             ->willReturn([
-                'ItemPage' => ItemPage::class,
-                'VideoGallery' => VideoGallery::class,
-                'WebPage' => WebPage::class,
+                'ItemPage' => FixtureType\ItemPage::class,
+                'VideoGallery' => FixtureType\VideoGallery::class,
+                'WebPage' => FixtureType\WebPage::class,
             ]);
 
         $cacheManagerStub = $this->createStub(CacheManager::class);

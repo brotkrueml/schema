@@ -9,7 +9,9 @@
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
@@ -22,12 +24,21 @@ class PropertyViewHelperTest extends ViewHelperTestCase
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
+
+        $typeRegistryStub = $this->createStub(TypeRegistry::class);
+        $map = [
+            ['Thing', FixtureType\Thing::class],
+        ];
+        $typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->willReturnMap($map);
+
+        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
-
         GeneralUtility::purgeInstances();
     }
 
