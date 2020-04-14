@@ -5,9 +5,6 @@
       <trans-unit id="pages.palette.structuredData" resname="pages.palette.structuredData" approved="yes">
         <source><![CDATA[Structured Data]]></source>
         <target state="final"><![CDATA[Dane strukturalne]]></target>
-        <alt-trans>
-          <target><![CDATA[Dane ustrukturyzowane]]></target>
-        </alt-trans>
       </trans-unit>
       <trans-unit id="pages.tx_schema_webpagetype" resname="pages.tx_schema_webpagetype" approved="yes">
         <source><![CDATA[Type of web page]]></source>
