@@ -122,7 +122,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     [
                         'title' => 'Unicorns in TYPO3 land',
                         'link' => '/videos/unicorns-in-typo3-land/',
-                        'data' => [],
+                        'data' => new \stdClass(),
                     ],
                 ],
             ],
