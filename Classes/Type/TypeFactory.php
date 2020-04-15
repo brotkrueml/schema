@@ -13,8 +13,12 @@ namespace Brotkrueml\Schema\Type;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class TypeFactory
+final class TypeFactory
 {
+    private function __construct()
+    {
+    }
+
     public static function createType(string $type): TypeInterface
     {
         $typeRegistry = GeneralUtility::makeInstance(TypeRegistry::class);

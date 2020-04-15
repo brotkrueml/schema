@@ -71,4 +71,14 @@ class TypeFactoryTest extends TestCase
 
         TypeFactory::createType('UnavailableThing');
     }
+
+    /**
+     * @test
+     */
+    public function instantiatingTypeFactoryThrowsError(): void
+    {
+        $this->expectException(\Error::class);
+
+        new TypeFactory();
+    }
 }
