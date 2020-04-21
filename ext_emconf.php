@@ -17,6 +17,9 @@ $EM_CONF[$_EXTKEY] = [
         'conflicts' => [
             'sdbreadcrumb' => '',
         ],
+        'suggests' => [
+            'schema_virtuallocation' => '',
+        ],
     ],
     'autoload' => [
         'psr-4' => ['Brotkrueml\\Schema\\' => 'Classes']
