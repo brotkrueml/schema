@@ -7,7 +7,7 @@
 [![Latest Stable Version](https://poser.pugx.org/brotkrueml/schema/v/stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://poser.pugx.org/brotkrueml/schema/downloads.svg)](https://packagist.org/packages/brotkrueml/schema)
 
-The extension supports TYPO3 9 LTS and TYPO3 v10.
+The extension supports TYPO3 v9 LTS and TYPO3 v10 LTS.
 
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/) |
 [Translation](https://crowdin.com/project/typo3-extension-schema) |

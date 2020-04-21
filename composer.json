@@ -21,7 +21,7 @@
         "php": "^7.2",
         "ext-json": "*",
         "symfony/polyfill-php80": "^1.15",
-        "typo3/cms-core": "^9.5 || ^10.1"
+        "typo3/cms-core": "^9.5 || ^10.4"
     },
     "require-dev": {
         "clue/graph": "^0.9",
@@ -31,9 +31,9 @@
         "mikey179/vfsstream": "^1.6",
         "php-coveralls/php-coveralls": "^2.2",
         "phpstan/phpstan": "^0.11",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^8.5 || ^9.1",
         "twig/twig": "^3.0",
-        "typo3/testing-framework": "^4.13 || ^5.0 || ^6.2"
+        "typo3/testing-framework": "^4.13 || ^6.2"
     },
     "suggest": {
         "brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events"
