@@ -134,7 +134,8 @@ vocabulary <extending-vocabulary>`.
 .. figure:: ../Images/Developer/TypeModels.png
    :alt: Inheritance of the type models
 
-   Inheritance of the type models
+   Inheritance of the type models (namespaces are omitted for better
+   readability)
 
 Each type model delivered with this extension extends the :php:`AbstractType`
 class.
@@ -145,10 +146,11 @@ class.
 Available type model methods
 ----------------------------
 
-The type models expose several methods:
+The type models implement :php:`Brotkrueml\Schema\Core\Model\TypeInterface`
+or extend :php:`Brotkrueml\Schema\Core\Model\AbstractType` and expose the
+following methods:
 
-:php:`->setId(string $id)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: setId(string $id)
 
 The method sets the unique ID of the model. With the ID, you can cross-reference
 types on the same page or between different pages (and even between different
@@ -170,8 +172,7 @@ Return value
    Reference to the model itself.
 
 
-:php:`->getId()`
-~~~~~~~~~~~~~~~~
+.. option:: getId()
 
 Gets the id of the type model.
 
@@ -182,8 +183,7 @@ Return value
    A previously set id or null (if not defined).
 
 
-:php:`->setProperty(string $propertyName, $propertyValue)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: setProperty(string $propertyName, $propertyValue)
 
 Call this method to set a property or overwrite a previously one.
 
@@ -200,8 +200,7 @@ Return value
    Reference to the model itself.
 
 
-:php:`->addProperty(string $propertyName, $propertyValue)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: addProperty(string $propertyName, $propertyValue)
 
 Call this method if you want to add a value to an existing one. In the example
 above, you can see that :php:`addProperty()` is used to add a second value to
@@ -224,8 +223,7 @@ Return value
    Reference to the model itself.
 
 
-:php:`->setProperties(array $properties)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: setProperties(array $properties)
 
 Set multiple properties at once.
 
@@ -239,8 +237,7 @@ Return value
    Reference to the model itself.
 
 
-:php:`->getProperty(string $propertyName)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: getProperty(string $propertyName)
 
 Get the value of a property.
 
@@ -254,8 +251,7 @@ Return value
    models, null).
 
 
-:php:`->hasProperty(string $propertyName)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: hasProperty(string $propertyName)
 
 Check whether the property name exists in a particular model.
 
@@ -267,8 +263,7 @@ Return value
    :php:`true`, if the property exists and :php:`false`, otherwise.
 
 
-:php:`->clearProperty(string $propertyName)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: clearProperty(string $propertyName)
 
 Resets the value of the property (set it to :php:`null`).
 
@@ -281,8 +276,7 @@ Return value
    Reference to the model itself.
 
 
-:php:`->getPropertyNames()`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: getPropertyNames()
 
 Get the names of all properties of the model.
 
@@ -303,8 +297,7 @@ page.
 
 The class exposes the following methods:
 
-:php:`->addType(TypeInterface $type)`
--------------------------------------
+.. option:: addType(TypeInterface $type)
 
 Adds the given type model to the Schema Manager for inclusion on the web page.
 
@@ -317,8 +310,7 @@ Return value
    Reference to itself.
 
 
-:php:`hasWebPage()`
--------------------
+.. option:: hasWebPage()
 
 Checks, if a :ref:`web page type <webpage-types>` is already available.
 
@@ -331,8 +323,7 @@ Return value
 
 .. _api-schema-manager-addmainentityofwebpage:
 
-:php:`addMainEntityOfWebPage(TypeInterface $mainEntity)`
---------------------------------------------------------
+.. option:: addMainEntityOfWebPage(TypeInterface $mainEntity)
 
 Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
 
@@ -358,16 +349,19 @@ Boolean property values are mapped to the according schema terms
 the :php:`Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
 two public constants:
 
-:php:`::FALSE`
-   Has the value ``http://schema.org/False``.
+.. option:: FALSE
 
-:php:`::TRUE`
-   Has the value ``http://schema.org/True``.
+Provides the value ``http://schema.org/False``.
+
+.. option:: TRUE
+
+Provides the value ``http://schema.org/True``.
 
 and one static method:
 
-:php:`::convertToTerm(bool $value): string`
-   This method returns the according schema term.
+.. option:: convertToTerm(bool $value): string
+
+This method returns the according schema term.
 
 
 .. index::
@@ -376,7 +370,7 @@ and one static method:
 
 .. _api-list-of-types:
 
-List Of types
+List of types
 -------------
 
 If you need a list of the available types or a subset of them, you can call
@@ -388,8 +382,7 @@ a singleton, instantiate the class with::
 or use dependency injection in TYPO3 v10+.
 
 
-:php:`->getTypes()`
-~~~~~~~~~~~~~~~~~~~
+.. option:: getTypes()
 
 Get all available type names.
 
@@ -400,8 +393,7 @@ Return value
    Array, sorted alphabetically by type name.
 
 
-:php:`->getWebPageTypes()`
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: getWebPageTypes()
 
 Get the `WebPage <https://schema.org/WebPage>`__ type and its descendants.
 
@@ -412,8 +404,7 @@ Return value
    Array, sorted alphabetically by type name.
 
 
-:php:`->getWebPageElementTypes()`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: getWebPageElementTypes()
 
 Get the `WebPageElement <https://schema.org/WebPageElement>`__ type and its
 descendants.
@@ -427,8 +418,7 @@ Return value
 
 .. _api-typesprovider-getcontenttypes:
 
-:php:`->getContentTypes()`
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. option:: getContentTypes()
 
 The types useful for an editor are returned as an array, sorted alphabetically.
 
@@ -453,8 +443,7 @@ Return value
 Deprecations
 ============
 
-:php:`Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
------------------------------------------------------------
+.. option:: Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()
 
 Deprecated since version
    1.7.0
@@ -469,8 +458,7 @@ Alternative
    :php:`Brotkrueml\Schema\Core\Model\AbstractType->getProperty()`.
 
 
-:php:`Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
-------------------------------------------------------------------------
+.. option:: Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()
 
 Deprecated since version
    1.4.1
@@ -483,8 +471,7 @@ Alternative
    instead. See the :ref:`API <api-schema-manager-addmainentityofwebpage>`.
 
 
-:php:`Brotkrueml\Schema\Provider\TypesProvider` class
------------------------------------------------------
+.. option:: Brotkrueml\Schema\Provider\TypesProvider
 
 Deprecated since version
    1.7.0

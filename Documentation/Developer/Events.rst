@@ -72,16 +72,19 @@ also as arguments in the :ref:`view helpers <view-helpers>`.
 The event :php:`Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent`
 provides the following methods:
 
-:php:`->getType(): string`
-   Returns the class name of the type. You can use this to add a property only
-   to one type.
+.. option:: getType(): string
 
-:php:`->getAdditionalProperties(): array`
-   Retrieve the already defined additionalProperties for this type, e.g. by
-   other slots/event listeners.
+Returns the class name of the type. You can use this to add a property only
+to one type.
 
-:php:`->registerAdditionalProperty(string $propertyName): void`
-   This method registers an additional property for one or more types.
+.. option:: getAdditionalProperties(): array
+
+Retrieve the already defined additionalProperties for this type, e.g. by other
+slots/event listeners.
+
+.. option:: registerAdditionalProperty(string $propertyName): void
+
+This method registers an additional property for one or more types.
 
 
 PSR-14 event (for TYPO3 v10+)
@@ -217,16 +220,19 @@ Both versions receive the
 :php:`Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent` with the following
 methods:
 
-:php:`->getPage(): array`
-   Get the current page fields.
+.. option:: getPage(): array
 
-:php:`->getEmbedMarkup(): bool`
-   Gets the current status: :php:`true` if the markup should be embedded,
-   :php:`false` if not.
+Get the current page fields.
 
-:php:`->setEmbedMarkup(bool $embedMarkup): void`
-   Sets the status: :php:`true` if the markups should be embedded, :php:`false`
-   if not.
+.. option:: getEmbedMarkup(): bool
+
+Gets the current status: :php:`true` if the markup should be embedded,
+:php:`false` if not.
+
+.. option:: setEmbedMarkup(bool $embedMarkup): void
+
+Sets the status: :php:`true` if the markups should be embedded, :php:`false`
+if not.
 
 
 PSR-14 event (for TYPO3 v10+)
