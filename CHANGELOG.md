@@ -6,10 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2020-04-22
+
 ### Added
 - Possibility to register additional schema types (#38)
 - Introduce a TypeInterface for type models implementations
-- Introduce a TypeFactory for creation of type models (#48)
+- Introduce a TypeFactory for creating type models (#48)
 - Update schema definition to version 7.04 (#3)
 
 ### Changed
@@ -179,7 +181,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/brotkrueml/schema/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/brotkrueml/schema/compare/v1.5.2...v1.6.0
 [1.5.2]: https://github.com/brotkrueml/schema/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/brotkrueml/schema/compare/v1.5.0...v1.5.1
