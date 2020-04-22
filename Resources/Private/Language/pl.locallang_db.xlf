@@ -2,16 +2,13 @@
 <xliff version="1.0">
   <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang_db.xlf" date="2019-08-29T20:36:19Z" target-language="pl">
     <body>
-      <trans-unit id="pages.palette.structuredData" resname="pages.palette.structuredData">
+      <trans-unit id="pages.palette.structuredData" resname="pages.palette.structuredData" approved="yes">
         <source><![CDATA[Structured Data]]></source>
-        <target state="translated"><![CDATA[Dane strukturalne]]></target>
-        <alt-trans>
-          <target><![CDATA[Dane ustrukturyzowane]]></target>
-        </alt-trans>
+        <target state="final"><![CDATA[Dane strukturalne]]></target>
       </trans-unit>
-      <trans-unit id="pages.tx_schema_webpagetype" resname="pages.tx_schema_webpagetype">
+      <trans-unit id="pages.tx_schema_webpagetype" resname="pages.tx_schema_webpagetype" approved="yes">
         <source><![CDATA[Type of web page]]></source>
-        <target state="translated"><![CDATA[Typ strony internetowej]]></target>
+        <target state="final"><![CDATA[Typ strony internetowej]]></target>
       </trans-unit>
     </body>
   </file>
