@@ -3,7 +3,7 @@
 .. _extending-vocabulary:
 
 ========================
-Extending The Vocabulary
+Extending the vocabulary
 ========================
 
 Target group: **Developers**
@@ -40,7 +40,7 @@ properties to existing types or to introduce new types on your website.
 
 .. _extending-register-additional-properties:
 
-Register Additional Properties
+Register additional properties
 ==============================
 
 You can use a slot or a PSR-14 event listener to add one ore more properties to
@@ -59,7 +59,7 @@ describes how to register additional properties in detail.
 
 .. _extending-adding-types:
 
-Adding Types
+Adding types
 ============
 
 You can add additional types for use in the :ref:`API <api>` or as a
@@ -71,7 +71,7 @@ The type can be used as `location <https://schema.org/location>`_ in the
 
 .. rst-class:: bignums-xxl
 
-#. Create The Type Model Class
+#. Create the type model class
 
    The model class for a type defines the available properties. The model class
    for the `VirtualLocation` type may look like the following::
@@ -116,7 +116,7 @@ The type can be used as `location <https://schema.org/location>`_ in the
       example, the type is called `VirtualLocation`, so the class name is
       :php:`VirtualLocation`.
 
-#. Register The Type Model
+#. Register the type model
 
    Now register the new type in the configuration file
    :file:`Configuration/TxSchema/TypeModels.php`::
@@ -150,7 +150,8 @@ The type can be used as `location <https://schema.org/location>`_ in the
    `schema_virtuallocation <https://github.com/brotkrueml/schema-virtuallocation>`_
    extension. It serves as a blueprint for adding own types and view helpers.
 
-Add A New WebPage Type
+
+Add a new WebPage type
 ======================
 
 If you are responsible for a medical website, the chances are high that you need
@@ -188,7 +189,7 @@ The new web page type can now be selected in the page properties:
    *MedicalWebPage* in the list of available web page types
 
 
-Add A New View Helper
+Add a new view helper
 =====================
 
 As the API and thus the :ref:`defined model class <extending-adding-types>`

@@ -15,7 +15,7 @@ Target group: **Developers, Integrators**
    :local:
 
 
-Extension Configuration
+Extension configuration
 =======================
 
 To configure the extension, go to :guilabel:`Admin Tools` > :guilabel:`Settings`
@@ -82,7 +82,7 @@ Default value
 .. youtube:: lI6EtxjoyDU
 
 
-Cache Configuration
+Cache configuration
 ===================
 
 The extension stores some data temporarily, e.g. :ref:`additional type

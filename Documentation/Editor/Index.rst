@@ -6,7 +6,7 @@
 .. _webpage-types:
 
 ==============
-Web Page Types
+Web page types
 ==============
 
 Target group: **Editors**
@@ -15,7 +15,7 @@ Target group: **Editors**
    :depth: 1
    :local:
 
-Adjustment Of The Web Page Type
+Adjustment of the web page type
 ===============================
 
 As an editor you have the possibility to adjust the type of every single web
@@ -47,7 +47,7 @@ If no value is selected, *WebPage* is assumed.
 
 .. index:: WebPage types
 
-Available Web Page Types
+Available web page types
 ========================
 
 .. _webpage-types-list:

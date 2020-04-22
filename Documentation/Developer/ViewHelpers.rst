@@ -6,7 +6,7 @@
 .. _view-helpers:
 
 ======================
-Using The View Helpers
+Using the view helpers
 ======================
 
 Target group: **Developers, Integrators**
@@ -32,7 +32,7 @@ There are currently over 600 view helpers available.
 
 .. _schema-type-view-helpers:
 
-:html:`<schema:type>` View Helpers
+:html:`<schema:type>` view helpers
 ==================================
 
 Let's start with a simple example. It's the same markup about John Smith as in
@@ -92,7 +92,7 @@ You can also use the default Fluid view helpers::
 
 .. _view-helpers-special-attributes:
 
-Special Attributes
+Special attributes
 ------------------
 
 The special attributes are starting with a dash (:html:`-`) to separate them
@@ -233,7 +233,7 @@ which results in the output:
 
 .. index:: property view helper
 
-:html:`<schema:property>` View Helper
+:html:`<schema:property>` view helper
 =====================================
 
 You can only set one string value in the argument of a type view helper, but
@@ -293,7 +293,7 @@ This view helper is described in-depth in the chapter
 .. index:: XSD
 
 
-Using The XML Schema (XSD) In Your Code Editor
+Using the XML schema (XSD) in your code editor
 ==============================================
 
 It is possible to assist your code editor on suggesting the tag name and the

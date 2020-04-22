@@ -45,7 +45,7 @@ But now let's look at code.
 
 .. index:: WebPage via API
 
-Using The API
+Using the API
 =============
 
 As you saw in a previous chapter you can use the :ref:`API <api>` to define the
@@ -111,7 +111,7 @@ If you define a web page on your own, this overrules the :ref:`page field value
 
 .. index:: WebPage via view helper
 
-Using The View Helpers
+Using the view helpers
 ======================
 
 But imagine you don't have the possibility to add PHP code to an extension (e.g.

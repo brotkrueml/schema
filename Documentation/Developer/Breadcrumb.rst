@@ -5,7 +5,7 @@
 .. _breadcrumb:
 
 =====================
-The Breadcrumb Markup
+The breadcrumb markup
 =====================
 
 Target group: **Developers**
@@ -32,7 +32,7 @@ his guidelines for a
 
 .. _breadcrumb-api:
 
-Using The API
+Using the API
 =============
 
 You can define a breadcrumb with the :ref:`API <api>` as you may already
@@ -104,12 +104,12 @@ As you can see, the breadcrumb is embedded in a ``WebPage`` automatically.
 
 .. _breadcrumb-viewhelpers:
 
-Using The View Helpers
+Using the view helpers
 ======================
 
 .. index:: breadcrumbList view helper
 
-View Helper :html:`<schema:type.breadcrumbList>`
+View helper :html:`<schema:type.breadcrumbList>`
 ------------------------------------------------
 
 The schema markup can also be achieved by a view helper in a Fluid template:
@@ -149,7 +149,7 @@ It is also possible to use it in combination with one of the ``WebPage`` types:
 
 .. _breadcrumb-view-helper:
 
-View Helper :html:`<schema:breadcrumb>`
+View helper :html:`<schema:breadcrumb>`
 ---------------------------------------
 
 But mostly you will have the breadcrumb structure in a Fluid variable created by

@@ -7,7 +7,7 @@
 .. _main-entity-of-web-page:
 
 =========================
-Main Entity of a Web Page
+Main entity of a web page
 =========================
 
 Target group: **Developers**
@@ -30,7 +30,7 @@ make sense (e.g. a breadcrumb cannot be the primary content).
    ``mainEntity``.
 
 
-Using The API
+Using the API
 =============
 
 The main entity of a web page can be defined with the API. Let's start with an
@@ -84,7 +84,7 @@ helper.
    a root type.
 
 
-Using The View Helpers
+Using the view helpers
 ======================
 
 You can define the main entity also in a view helper:

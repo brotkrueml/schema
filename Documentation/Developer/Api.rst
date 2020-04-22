@@ -29,7 +29,7 @@ and get the properties of a model.
 
 There are currently over 600 models available.
 
-Starting With An Example
+Starting with an example
 ========================
 
 Let's start with a simple example. Imagine you describe a
@@ -111,7 +111,7 @@ automatically into the head section:
    seealso: Model API; API
    seealso: Model API; Model
 
-The Model In-Depth
+The model in-depth
 ==================
 
 Each type model, like `Thing`, `Person` or `Event`, must implement the interface
@@ -142,7 +142,7 @@ class.
 
 .. _api-type-interface:
 
-Available Type Model Methods
+Available type model methods
 ----------------------------
 
 The type models expose several methods:
@@ -345,12 +345,12 @@ Return value
 
 
 
-Other Useful APIs
+Other useful APIs
 =================
 
 .. index:: Boolean
 
-Boolean Data Type
+Boolean data type
 -----------------
 
 Boolean property values are mapped to the according schema terms
@@ -376,7 +376,7 @@ and one static method:
 
 .. _api-list-of-types:
 
-List Of Types
+List Of types
 -------------
 
 If you need a list of the available types or a subset of them, you can call

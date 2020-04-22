@@ -13,7 +13,7 @@ Introduction
 
 .. _what-it-does:
 
-What Does It Do?
+What does it do?
 ================
 
 Structured data is essential for search engine optimisation nowadays. This
@@ -43,7 +43,7 @@ For the differences between the versions have a look at the
 
 .. _limitations:
 
-Current Limitations
+Current limitations
 ===================
 
 For now, only accepted terms are available, the usage of
@@ -58,7 +58,7 @@ to one or more types.
 
 .. _release-management:
 
-Release Management
+Release management
 ==================
 
 This extension uses `semantic versioning <https://semver.org/>`__ which

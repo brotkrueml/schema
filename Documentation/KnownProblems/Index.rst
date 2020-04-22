@@ -4,7 +4,7 @@
 .. _known-problems:
 
 ==============
-Known Problems
+Known problems
 ==============
 
 Have a look at the

@@ -6,7 +6,7 @@
 .. _events:
 
 =========================
-PSR-14 Events and Signals
+PSR-14 events and signals
 =========================
 
 Target group: **Developers**
@@ -30,7 +30,7 @@ later use as a PSR-14 event listener during migration.
    operate on the modified event from the PSR-14 events.
 
 
-PSR-14 Events
+PSR-14 events
 -------------
 
 The standardised way, which is available since TYPO3 v10. If you are using TYPO3
@@ -44,7 +44,7 @@ v10, use event listeners to be future-proof.
    `TYPO3 documentation <https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/Hooks/EventDispatcher/Index.html>`_.
 
 
-Signal/Slots
+Signal/slots
 ------------
 
 This is the only way in TYPO3 v9 and deprecated in TYPO3 v10.
@@ -57,7 +57,7 @@ This is the only way in TYPO3 v9 and deprecated in TYPO3 v10.
 
 .. _event-register-additional-properties:
 
-Register Additional Properties For A Type
+Register additional properties for a type
 =========================================
 
 Sometimes it can be necessary to use properties which are not standardised or
@@ -84,7 +84,7 @@ provides the following methods:
    This method registers an additional property for one or more types.
 
 
-PSR-14 Event (For TYPO3 v10+)
+PSR-14 event (for TYPO3 v10+)
 -----------------------------
 
 .. note::
@@ -96,7 +96,7 @@ Example
 
 .. rst-class:: bignums-xxl
 
-#. Create the Event Listener
+#. Create the event listener
 
    ::
 
@@ -135,7 +135,7 @@ Example
                  identifier: 'myAdditionalPropertiesForPerson'
                  event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
 
-Signal/Slot (For TYPO3 v9/v10)
+Signal/slot (for TYPO3 v9/v10)
 ------------------------------
 
 .. note::
@@ -151,7 +151,7 @@ We use the same example as for the PSR-14 event.
 
 .. rst-class:: bignums-xxl
 
-#. Create the Slot
+#. Create the slot
 
    ::
 
@@ -181,7 +181,7 @@ We use the same example as for the PSR-14 event.
    the event listener above, the only change is the namespace. This makes
    migration to the PSR-14 events much easier.
 
-#. Register the Slot in :file:`ext_localconf.php`
+#. Register the slot in :file:`ext_localconf.php`
 
    ::
 
@@ -201,7 +201,7 @@ We use the same example as for the PSR-14 event.
 
 .. _event-de-activate-embedding-of-markup:
 
-Activate Or Deactivate Embedding Of Markup On Pages
+Activate or deactivate embedding of markup on pages
 ===================================================
 
 As default, markup is not embedded on pages which should not be indexed by
@@ -229,7 +229,7 @@ methods:
    if not.
 
 
-PSR-14 Event (For TYPO3 v10+)
+PSR-14 event (for TYPO3 v10+)
 -----------------------------
 
 With the PSR-14 event :php:`Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent` you
@@ -244,7 +244,7 @@ Example
 
 .. rst-class:: bignums-xxl
 
-#. Create the Event Listener
+#. Create the event listener
 
    ::
 
@@ -283,7 +283,7 @@ Example
                  event: Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent
 
 
-Signal/Slot (For TYPO3 v9/v10)
+Signal/slot (for TYPO3 v9/v10)
 ------------------------------
 
 The signal :php:`shouldEmbedMarkup` of the

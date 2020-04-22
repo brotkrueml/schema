@@ -4,7 +4,7 @@
 .. _developer:
 
 ===========================
-Introduction For Developers
+Introduction for developers
 ===========================
 
 Target group: **Developers**, **Integrators**
@@ -54,7 +54,7 @@ Attention should be paid to the following points:
    :ref:`slot/PSR-14 <event-de-activate-embedding-of-markup>` event.
 
 
-Quick Dive-In
+Quick dive-in
 =============
 
 The `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ consists of
@@ -107,7 +107,7 @@ and the schema manager.
    as the standard evolves.
 
 
-View Helpers
+View helpers
 ------------
 
 For usage in Fluid templates, each type is mapped to a view helper in the
