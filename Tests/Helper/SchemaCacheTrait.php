@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Helper;
 
+use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -26,7 +27,7 @@ trait SchemaCacheTrait
         $cacheManagerStub = $this->createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
-            ->with('tx_schema')
+            ->with(Extension::CACHE_IDENTIFIER)
             ->willReturn($cacheFrontendStub);
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);

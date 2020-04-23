@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Hooks\TableConfiguration;
 
+use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Core\Database\TableConfigurationPostProcessingHookInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
@@ -25,7 +26,7 @@ final class Pages implements TableConfigurationPostProcessingHookInterface
 
         ExtensionManagementUtility::addToAllTCAtypes(
             'pages',
-            '--palette--;LLL:EXT:schema/Resources/Private/Language/locallang_db.xlf:pages.palette.structuredData;tx_schema_structureddata',
+            '--palette--;' . Extension::LANGUAGE_PATH_DATABASE . ':pages.palette.structuredData;tx_schema_structureddata',
             '',
             $position
         );

@@ -11,7 +11,7 @@
     $fields = [
         'tx_schema_webpagetype' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:schema/Resources/Private/Language/locallang_db.xlf:pages.tx_schema_webpagetype',
+            'label' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DATABASE . ':pages.tx_schema_webpagetype',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

@@ -12,6 +12,7 @@ namespace Brotkrueml\Schema\Type;
 
 use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
+use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
@@ -31,7 +32,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class TypeRegistry implements SingletonInterface
 {
-    private const CACHE_IDENTIFIER = 'tx_schema_core';
     private const CACHE_ENTRY_IDENTIFIER_TYPES = 'types';
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES = 'webpage_types';
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES = 'webpageelement_types';
@@ -51,7 +51,7 @@ final class TypeRegistry implements SingletonInterface
         if (!$cache) {
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
             try {
-                $this->cache = $cacheManager->getCache(static::CACHE_IDENTIFIER);
+                $this->cache = $cacheManager->getCache(Extension::CACHE_CORE_IDENTIFIER);
             } catch (NoSuchCacheException $e) {
                 // Ignore
             }

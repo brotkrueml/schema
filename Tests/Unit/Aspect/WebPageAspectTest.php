@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\WebPageAspect;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
@@ -100,7 +101,7 @@ class WebPageAspectTest extends TestCase
         $cacheManagerStub = $this->createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
-            ->with('tx_schema_core')
+            ->with(Extension::CACHE_CORE_IDENTIFIER)
             ->willReturn($cacheFrontendStub);
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);

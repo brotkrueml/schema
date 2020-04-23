@@ -12,6 +12,7 @@ namespace Brotkrueml\Schema\Core\Model;
 
 use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
+use Brotkrueml\Schema\Extension;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
@@ -59,7 +60,7 @@ abstract class AbstractType implements TypeInterface
     private function addAdditionalProperties(): void
     {
         $cacheEntryIdentifier = 'additionalTypeProperties-' . \str_replace('\\', '_', static::class);
-        $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('tx_schema');
+        $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(Extension::CACHE_IDENTIFIER);
         if (($additionalProperties = $cache->get($cacheEntryIdentifier)) === false) {
             $event = new RegisterAdditionalTypePropertiesEvent(static::class);
 

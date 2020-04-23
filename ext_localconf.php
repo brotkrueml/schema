@@ -1,7 +1,7 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-(function ($extensionKey = 'schema') {
+(function () {
     $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',tx_schema_webpagetype';
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] =
@@ -12,23 +12,21 @@ defined('TYPO3_MODE') or die();
 
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['schema'] = ['Brotkrueml\\Schema\\ViewHelpers'];
 
-    $cacheIdentifier = 'tx_' . $extensionKey;
-    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$cacheIdentifier])) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$cacheIdentifier] = [];
+    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_IDENTIFIER])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_IDENTIFIER] = [];
     }
 
-    $coreCacheIdentifier = 'tx_' . $extensionKey . '_core';
-    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier])) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier] = [];
+    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER] = [];
     }
-    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['frontend'])) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['frontend'] = \TYPO3\CMS\Core\Cache\Frontend\PhpFrontend::class;
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['frontend'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['frontend'] = \TYPO3\CMS\Core\Cache\Frontend\PhpFrontend::class;
     }
-    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['backend'])) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['backend'] = \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class;
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['backend'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['backend'] = \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class;
     }
-    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['options'])) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$coreCacheIdentifier]['options']['defaultLifetime'] = 0;
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['options'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['options']['defaultLifetime'] = 0;
     }
 
     if (!(new Brotkrueml\Schema\Compatibility\Compatibility())->isPsr14EventDispatcherAvailable()) {

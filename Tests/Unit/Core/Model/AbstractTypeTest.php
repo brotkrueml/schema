@@ -12,6 +12,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -390,7 +391,7 @@ class AbstractTypeTest extends TestCase
         $cacheManagerStub = $this->createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
-            ->with('tx_schema')
+            ->with(Extension::CACHE_IDENTIFIER)
             ->willReturn($cacheFrontendStub);
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
@@ -439,7 +440,7 @@ class AbstractTypeTest extends TestCase
         $cacheManagerStub = $this->createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
-            ->with('tx_schema')
+            ->with(Extension::CACHE_IDENTIFIER)
             ->willReturn($cacheFrontendMock);
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
@@ -505,7 +506,7 @@ class AbstractTypeTest extends TestCase
         $cacheManagerStub = $this->createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
-            ->with('tx_schema')
+            ->with(Extension::CACHE_IDENTIFIER)
             ->willReturn($cacheFrontendMock);
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
