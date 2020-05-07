@@ -152,6 +152,11 @@ Example
 
 We use the same example as for the PSR-14 event.
 
+.. tip::
+
+   Place the slot in the folder :file:`EventListener` (like in the example
+   below). So you are prepared for PSR-14 events in TYPO3 v10.
+
 .. rst-class:: bignums-xxl
 
 #. Create the slot
@@ -161,7 +166,7 @@ We use the same example as for the PSR-14 event.
       <?php
       declare(strict_types=1);
 
-      namespace YourVendor\YourExtension\Slot;
+      namespace YourVendor\YourExtension\EventListener;
 
       use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
       use Brotkrueml\Schema\Model\Type\Person;
@@ -194,7 +199,7 @@ We use the same example as for the PSR-14 event.
       $signalSlotDispatcher->connect(
          \Brotkrueml\Schema\Core\Model\AbstractType::class,
          'registerAdditionalTypeProperties',
-         \Brotkrueml\Schema\EventListener\AdditionalPropertiesForPerson::class,
+         \YourVendor\YourExtension\EventListener\AdditionalPropertiesForPerson::class,
          '__invoke'
       );
 
@@ -307,6 +312,11 @@ Example
 
 We use the same example as for the PSR-14 event.
 
+.. tip::
+
+   Place the slot in the folder :file:`EventListener` (like in the example
+   below). So you are prepared for PSR-14 events in TYPO3 v10.
+
 .. rst-class:: bignums-xxl
 
 #. Create the Slot
@@ -316,7 +326,7 @@ We use the same example as for the PSR-14 event.
       <?php
       declare(strict_types=1);
 
-      namespace YourVendor\YourExtension\Slot;
+      namespace YourVendor\YourExtension\EventListener;
 
       use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 
@@ -349,7 +359,7 @@ We use the same example as for the PSR-14 event.
       $signalSlotDispatcher->connect(
          \Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection::class,
          'shouldEmbedMarkup',
-         \YourVendor\YourExtension\Slot\EmbedMarkupDependentOnPageUid::class,
+         \YourVendor\YourExtension\EventListener\EmbedMarkupDependentOnPageUid::class,
          '__invoke'
       );
 
