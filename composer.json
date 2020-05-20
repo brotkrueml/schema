@@ -18,7 +18,7 @@
         "schema.org"
     ],
     "require": {
-        "php": "^7.2",
+        "php": ">=7.2",
         "ext-json": "*",
         "symfony/polyfill-php80": "^1.15",
         "typo3/cms-core": "^9.5 || ^10.4"
