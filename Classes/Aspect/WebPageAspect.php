@@ -26,6 +26,7 @@ final class WebPageAspect implements AspectInterface
     /** @var ExtensionConfiguration */
     private $configuration;
 
+    /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $configuration = null

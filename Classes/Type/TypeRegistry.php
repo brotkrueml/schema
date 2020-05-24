@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -59,6 +60,7 @@ final class TypeRegistry implements SingletonInterface
             $this->cache = $cache;
         }
 
+        /** @psalm-suppress PropertyTypeCoercion */
         $this->packageManager = $packageManager ?? GeneralUtility::makeInstance(PackageManager::class);
     }
 
@@ -108,7 +110,7 @@ final class TypeRegistry implements SingletonInterface
 
     private function requireCacheEntry(string $identifier): ?array
     {
-        if ($this->cache instanceof FrontendInterface && $this->cache->has($identifier)) {
+        if ($this->cache instanceof PhpFrontend && $this->cache->has($identifier)) {
             return $this->cache->require($identifier);
         }
 
@@ -117,7 +119,7 @@ final class TypeRegistry implements SingletonInterface
 
     private function setCacheEntry(string $identifier, array $data): void
     {
-        if ($this->cache instanceof FrontendInterface) {
+        if ($this->cache instanceof PhpFrontend) {
             $this->cache->set($identifier, 'return ' . \var_export($data, true) . ';');
         }
     }

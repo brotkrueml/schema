@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\ViewHelpers;
 
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
@@ -36,6 +37,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 
     public function __construct(TypeStack $typeStack = null)
     {
+        /** @psalm-suppress PropertyTypeCoercion */
         $this->typeStack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
     }
 
@@ -47,7 +49,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         $this->registerArgument(static::ARGUMENT_VALUE, 'string', 'The value of the property', true);
     }
 
-    public function render()
+    public function render(): void
     {
         $this->checkAttributes();
 
@@ -58,7 +60,9 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
             );
         }
 
+        /** @var TypeInterface $type */
         $type = $this->typeStack->pop();
+        /** @psalm-suppress MixedArgument */
         $type->addProperty($this->arguments[static::ARGUMENT_AS], $this->arguments[static::ARGUMENT_VALUE]);
         $this->typeStack->push($type);
     }

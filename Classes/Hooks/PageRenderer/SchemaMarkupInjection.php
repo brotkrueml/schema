@@ -30,13 +30,13 @@ final class SchemaMarkupInjection
     /** @var TypoScriptFrontendController */
     private $controller;
 
-    /** @var ExtensionConfiguration */
+    /** @var array<string, mixed> */
     private $configuration;
 
     /** @var SchemaManager */
     private $schemaManager;
 
-    /** @var FrontendInterface */
+    /** @var FrontendInterface|null */
     private $cache;
 
     /** @var Dispatcher */
@@ -51,6 +51,7 @@ final class SchemaMarkupInjection
     /** @var Typo3Mode */
     private $typo3Mode;
 
+    /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
@@ -187,7 +188,7 @@ final class SchemaMarkupInjection
                 );
             }
 
-            $aspects[] = new $aspectInstance;
+            $aspects[] = $aspectInstance;
         }
 
         return $aspects;

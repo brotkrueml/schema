@@ -36,6 +36,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     /** @var SchemaManager */
     private $schemaManager;
 
+    /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
         $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);

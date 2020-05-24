@@ -29,6 +29,7 @@ final class BreadcrumbListAspect implements AspectInterface
     /** @var ContentObjectRenderer */
     private $contentObjectRenderer;
 
+    /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $configuration = null,
@@ -75,7 +76,7 @@ final class BreadcrumbListAspect implements AspectInterface
     private function buildBreadCrumbList(array $rootLine): TypeInterface
     {
         $breadcrumbList = TypeFactory::createType('BreadcrumbList');
-        foreach ($rootLine as $index => $page) {
+        foreach (\array_values($rootLine) as $index => $page) {
             $givenItemType = ($page['tx_schema_webpagetype'] ?? '') ?: 'WebPage';
             $itemType = TypeFactory::createType($givenItemType);
 

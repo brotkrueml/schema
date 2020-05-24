@@ -30,10 +30,10 @@
         "infection/infection": "^0.13",
         "mikey179/vfsstream": "^1.6",
         "php-coveralls/php-coveralls": "^2.2",
-        "phpstan/phpstan": "^0.11",
         "phpunit/phpunit": "^8.5 || ^9.1",
         "twig/twig": "^3.0",
-        "typo3/testing-framework": "^4.13 || ^6.2"
+        "typo3/testing-framework": "^4.13 || ^6.2",
+        "vimeo/psalm": "^3.11"
     },
     "suggest": {
         "brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events"

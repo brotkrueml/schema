@@ -21,6 +21,7 @@ final class TypeFactory
 
     public static function createType(string $type): TypeInterface
     {
+        /** @var TypeRegistry $typeRegistry */
         $typeRegistry = GeneralUtility::makeInstance(TypeRegistry::class);
         $typeClass = $typeRegistry->resolveModelClassFromType($type);
 
@@ -31,6 +32,9 @@ final class TypeFactory
             );
         }
 
-        return new $typeClass();
+        /** @var TypeInterface $type */
+        $type = new $typeClass();
+
+        return $type;
     }
 }
