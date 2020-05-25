@@ -21,8 +21,11 @@ final class Renderer implements RendererInterface
     private const TAG_TEMPLATE = '<script type="application/ld+json">%s</script>';
     private const CONTEXT = 'http://schema.org';
 
+    /** @var TypeInterface[] */
     private $types = [];
-    private $typeResult;
+
+    /** @var array<string,scalar|array> */
+    private $typeResult = [];
 
     public function addType(TypeInterface ...$type): void
     {

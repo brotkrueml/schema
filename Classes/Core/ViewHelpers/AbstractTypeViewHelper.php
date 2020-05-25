@@ -24,7 +24,10 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
 
+    /** @var bool */
     private $isMainEntityOfWebPage = false;
+
+    /** @var string */
     private $parentPropertyName = '';
 
     /** @var TypeInterface */
@@ -58,7 +61,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
     }
 
-    public function render()
+    public function render(): void
     {
         $this->checkSpecificTypeAttribute();
         $this->checkAsAttribute();

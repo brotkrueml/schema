@@ -10,4 +10,5 @@
 /CHANGELOG.md export-ignore
 /README.md export-ignore
 /infection.json.dist export-ignore
+/psalm.xml export-ignore
 /sonar-project.properties export-ignore

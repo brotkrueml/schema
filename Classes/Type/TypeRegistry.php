@@ -37,8 +37,13 @@ final class TypeRegistry implements SingletonInterface
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES = 'webpage_types';
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES = 'webpageelement_types';
 
+    /** @var array<string,class-string> */
     private $types = [];
+
+    /** @var string[] */
     private $webPageTypes = [];
+
+    /** @var string[] */
     private $webPageElementTypes = [];
 
     /** @var FrontendInterface */
@@ -220,6 +225,10 @@ final class TypeRegistry implements SingletonInterface
     }
 
     /**
+     * @param string $type
+     * @return string|null
+     * @psalm-return class-string|null
+     *
      * @internal Only for internal use, not a public API!
      */
     public function resolveModelClassFromType(string $type): ?string

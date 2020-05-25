@@ -125,7 +125,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $schemaManager->addType($breadcrumbList);
     }
 
-    private static function checkBreadcrumbStructure($breadcrumb)
+    private static function checkBreadcrumbStructure(array $breadcrumb): void
     {
         foreach ($breadcrumb as $item) {
             if (!isset($item['title'])) {

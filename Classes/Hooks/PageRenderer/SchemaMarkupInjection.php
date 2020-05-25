@@ -48,10 +48,13 @@ final class SchemaMarkupInjection
     /** @var Compatibility */
     private $compatibility;
 
-    /** @var Typo3Mode */
+    /** @var Typo3Mode|null */
     private $typo3Mode;
 
-    /** @psalm-suppress PropertyTypeCoercion */
+    /**
+     * @psalm-suppress MissingParamType
+     * @psalm-suppress PropertyTypeCoercion
+     */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
@@ -196,7 +199,7 @@ final class SchemaMarkupInjection
 
     private function getTypo3Mode(): Typo3Mode
     {
-        if (!$this->typo3Mode) {
+        if ($this->typo3Mode === null) {
             $this->typo3Mode = new Typo3Mode();
         }
 

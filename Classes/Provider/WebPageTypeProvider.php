@@ -22,10 +22,11 @@ final class WebPageTypeProvider
     {
         $types = GeneralUtility::makeInstance(TypeRegistry::class)->getWebPageTypes();
 
-        \array_walk($types, function (&$type) {
-            $type = [$type, $type];
+        $select = [['', '']];
+        \array_walk($types, static function (string $type) use (&$select): void {
+            $select[] = [$type, $type];
         });
 
-        return \array_merge([['', '']], $types);
+        return $select;
     }
 }

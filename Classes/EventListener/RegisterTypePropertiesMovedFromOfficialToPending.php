@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Model\Type;
  */
 class RegisterTypePropertiesMovedFromOfficialToPending
 {
+    /** @var array<class-string> */
     private $ineligibleRegionTypes = [
         Type\ActionAccessSpecification::class,
         Type\AggregateOffer::class,
@@ -29,17 +30,20 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         Type\Offer::class,
     ];
 
+    /** @var array<class-string> */
     private $occupationalCategoryTypes = [
         Type\JobPosting::class,
         Type\Occupation::class,
     ];
 
+    /** @var array<class-string> */
     private $sportTypes = [
         Type\SportsEvent::class,
         Type\SportsOrganization::class,
         Type\SportsTeam::class,
     ];
 
+    /** @var array<class-string> */
     private $subtitleLanguageTypes = [
         Type\BroadcastEvent::class,
         Type\Movie::class,
