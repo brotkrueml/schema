@@ -31,6 +31,9 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     private $parentPropertyName = '';
 
     /** @var TypeInterface */
+    private $modelTemplate;
+
+    /** @var TypeInterface */
     private $model;
 
     /** @var TypeStack */
@@ -44,7 +47,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     {
         $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
-        $this->model = TypeFactory::createType($this->getType());
+        $this->modelTemplate = TypeFactory::createType($this->getType());
     }
 
     public function initializeArguments()
@@ -56,13 +59,15 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'bool', 'Set to true, if the type is the primary content of the web page', false, false);
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
 
-        foreach ($this->model->getPropertyNames() as $property) {
+        foreach ($this->modelTemplate->getPropertyNames() as $property) {
             $this->registerArgument($property, 'mixed', 'Property ' . $property);
         }
     }
 
     public function render(): void
     {
+        $this->model = clone $this->modelTemplate;
+
         $this->checkSpecificTypeAttribute();
         $this->checkAsAttribute();
         $this->checkIsMainEntityOfWebPage();
