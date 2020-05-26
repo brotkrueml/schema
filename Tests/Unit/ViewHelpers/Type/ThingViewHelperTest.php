@@ -143,6 +143,13 @@ class ThingViewHelperTest extends ViewHelperTestCase
             '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","contactPoint":[{"@type":"ContactPoint","areaServed":"DE","contactType":"sales","telephone":"+49 30 123456789"},{"@type":"ContactPoint","areaServed":"PL","contactType":"sales","telephone":"+48 22 123456789"},{"@type":"ContactPoint","areaServed":"TR","contactType":"sales","telephone":"+90 212 123456789"}],"logo":"https://www.example.org/logo.png","name":"Acme Ltd.","url":"https://www.example.org/"}</script>',
         ];
 
+        yield 'Type inside "for" loop' => [
+            '<f:for each="{0: \'foo\', 1: \'bar\', 2: \'qux\'}" as="item" iteration="iterator">
+                <schema:type.thing name="{item}" identifier="{iterator.cycle}"/>
+            </f:for>',
+            '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","identifier":"1","name":"foo"},{"@type":"Thing","identifier":"2","name":"bar"},{"@type":"Thing","identifier":"3","name":"qux"}]}</script>',
+        ];
+
         yield 'Type with -isMainEntityOfWebPage set to true without a WebPage' => [
             '<schema:type.thing
                 -id="parentThing"
