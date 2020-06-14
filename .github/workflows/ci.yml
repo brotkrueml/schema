@@ -42,7 +42,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer --version
-          composer require typo3/cms-core=${{ matrix.typo3-versions }}
+          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --no-suggest --prefer-dist --optimize-autoloader
           git checkout composer.json
       - name: Run PHP linter
         run: |
@@ -87,7 +87,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer --version
-          composer install
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
       - name: Run unit tests
         run: |
           .Build/bin/phpunit -c Tests/phpunit.xml.dist --log-junit .Build/logs/phpunit.xml --coverage-text --coverage-clover .Build/logs/clover.xml
