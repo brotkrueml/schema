@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.2] - 2020-06-14
+
+### Fixed
+- Remove usage of PHP 8.0 functions, as polyfill is not available in classic installation
+
 ## [1.7.1] - 2020-05-26
 
 ### Fixed
@@ -186,7 +191,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.7.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.7.2...HEAD
+[1.7.2]: https://github.com/brotkrueml/schema/compare/v1.7.1...v1.7.2
 [1.7.1]: https://github.com/brotkrueml/schema/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/brotkrueml/schema/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/brotkrueml/schema/compare/v1.5.2...v1.6.0
