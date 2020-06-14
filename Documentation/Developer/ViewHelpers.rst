@@ -48,7 +48,7 @@ detail page that you want to enrich with structured markup::
       gender="http://schema.org/Male"
    >
       <schema:type.event
-         -as="attendee"
+         -as="performerIn"
          name="Fancy Event"
          image="https://example.org/event.png"
          url="https://example.org/"
@@ -134,7 +134,7 @@ and reference it on the same or another page (e.g. ``Person``):
       "givenName": "John",
       "familyName": "Smith",
       "gender": "http://schema.org/Male",
-      "attendee": {
+      "performerIn": {
          "@type": "Event",
          "@id": "http://example.org/#event-1",
          "name": "Fancy Event"
@@ -155,7 +155,7 @@ and reference it on the same or another page (e.g. ``Person``):
 
 This attribute is used to connect a type to its parent. In the above example,
 you can see that the event type view helper uses :html:`-as` to connect to the
-``attendee`` property of the person type view helper.
+``performerIn`` property of the person type view helper.
 
 .. note::
 

@@ -72,7 +72,7 @@ That was easy ... let's go on and define an event the person attends::
 
 Now we have to connect the two types together::
 
-   $person->setProperty('attendee', $event);
+   $person->setProperty('performerIn', $event);
 
 The defined models are ready to embed on the web page. The schema manager does
 that for you::
@@ -95,7 +95,7 @@ automatically into the head section:
       "givenName": "John",
       "familyName": "Smith",
       "gender": "http://schema.org/Male",
-      "attendee": {
+      "performerIn": {
          "@type": "Event",
          "name": "Fancy Event",
          "image": "https://example.org/event.png",
