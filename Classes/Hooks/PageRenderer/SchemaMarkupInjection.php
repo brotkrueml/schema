@@ -11,13 +11,11 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
+use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
@@ -36,9 +34,6 @@ final class SchemaMarkupInjection
     /** @var SchemaManager */
     private $schemaManager;
 
-    /** @var FrontendInterface|null */
-    private $cache;
-
     /** @var Dispatcher */
     private $signalSlotDispatcher;
 
@@ -51,6 +46,9 @@ final class SchemaMarkupInjection
     /** @var Typo3Mode|null */
     private $typo3Mode;
 
+    /** @var PagesCacheService */
+    private $pagesCacheService;
+
     /**
      * @psalm-suppress MissingParamType
      * @psalm-suppress PropertyTypeCoercion
@@ -59,7 +57,7 @@ final class SchemaMarkupInjection
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
         SchemaManager $schemaManager = null,
-        FrontendInterface $cache = null,
+        PagesCacheService $pagesCacheService = null,
         $signalSlotDispatcher = null,
         $eventDispatcher = null
     ) {
@@ -69,7 +67,7 @@ final class SchemaMarkupInjection
         $extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->configuration = $extensionConfiguration->get('schema');
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
-        $this->cache = $cache ?? $this->getCache();
+        $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
 
         if ($signalSlotDispatcher !== false) {
             $this->signalSlotDispatcher =
@@ -86,20 +84,6 @@ final class SchemaMarkupInjection
         }
     }
 
-    private function getCache(): ?FrontendInterface
-    {
-        $identifier = 'pages';
-        if ($this->compatibility->hasCachePrefixForCacheIdentifier()) {
-            $identifier = 'cache_' . $identifier;
-        }
-
-        try {
-            return GeneralUtility::makeInstance(CacheManager::class)->getCache($identifier);
-        } catch (NoSuchCacheException $e) {
-            return null;
-        }
-    }
-
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
     {
         if ($this->getTypo3Mode()->isInBackendMode()) {
@@ -110,14 +94,14 @@ final class SchemaMarkupInjection
             return;
         }
 
-        $result = $this->getMarkupFromCache();
+        $result = $this->pagesCacheService->getMarkupFromCache();
         if ($result === null) {
             foreach ($this->getRegisteredAspects() as $aspect) {
                 $aspect->execute($this->schemaManager);
             }
 
             if ($result = $this->schemaManager->renderJsonLd()) {
-                $this->storeMarkupInCache($result);
+                $this->pagesCacheService->storeMarkupInCache($result);
             }
         }
 
@@ -143,34 +127,6 @@ final class SchemaMarkupInjection
         }
 
         return $event->getEmbedMarkup();
-    }
-
-    private function getMarkupFromCache(): ?string
-    {
-        if ($this->cache instanceof FrontendInterface && $markup = $this->cache->get($this->getCacheIdentifier())) {
-            return $markup;
-        }
-
-        return null;
-    }
-
-    private function getCacheIdentifier(): string
-    {
-        return $this->controller->newHash . '-tx-schema';
-    }
-
-    private function storeMarkupInCache(string $markup): void
-    {
-        if (!$this->cache instanceof FrontendInterface) {
-            return;
-        }
-
-        $this->cache->set(
-            $this->getCacheIdentifier(),
-            $markup,
-            ['pageId_' . $this->controller->page['uid']],
-            $this->controller->get_cache_timeout()
-        );
     }
 
     private function getRegisteredAspects(): array

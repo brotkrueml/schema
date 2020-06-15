@@ -1,0 +1,74 @@
+<html
+    xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+<p>{f:translate(key: 'LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.info.intro')}</p>
+
+<f:if condition="{types}">
+    <f:then>
+        <f:variable name="typeKey" value="@type"/>
+        <f:for each="{types}" as="type">
+            <h2 class="typo3-adminPanel-headline">{type.{typeKey}}</h2>
+            <div class="typo3-adminPanel-table-overflow">
+                <table class="typo3-adminPanel-table typo3-adminPanel-table-debug">
+                    <tbody>
+                        <f:for each="{type}" as="value" key="name">
+                            <f:render section="ShowProperty"
+                                      arguments="{name: name, value: value, typeKey: typeKey, indent: 0}"/>
+                        </f:for>
+                    </tbody>
+                </table>
+            </div>
+        </f:for>
+    </f:then>
+    <f:else>
+        <br>
+        <div class="typo3-adminPanel-message typo3-adminPanel-message-info">
+            <div class="typo3-adminPanel-message-text">
+                {f:translate(key: 'LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.info.noEntries')}
+            </div>
+        </div>
+    </f:else>
+</f:if>
+
+<f:section name="ShowProperty">
+    <f:if condition="{value.0}">
+        <f:then>
+            <f:for each="{value}" as="subValue">
+                <f:render section="PropertyRow"
+                          arguments="{name: name, value: subValue, typeKey: typeKey, indent: indent}"/>
+            </f:for>
+        </f:then>
+        <f:else>
+            <f:render section="PropertyRow" arguments="{name: name, value: value, typeKey: typeKey, indent: indent}"/>
+        </f:else>
+    </f:if>
+</f:section>
+
+<f:section name="PropertyRow">
+    <f:if condition="{value.{typeKey}}">
+        <f:then>
+            <f:variable name="hasSubType" value="1"/>
+        </f:then>
+        <f:else>
+            <f:variable name="hasSubType" value="0"/>
+        </f:else>
+    </f:if>
+    <tr>
+        <th scope="row" class="typo3-adminPanel-table-cell-key">
+            {f:format.padding(padLength: '{indent * 18}', padString: '&nbsp;') -> f:format.raw()}
+            {name}
+        </th>
+        <td>
+            <schema:adminPanel.propertyValue name="{name}" value="{value}"/>
+        </td>
+    </tr>
+    <f:if condition="{hasSubType}">
+        <f:for each="{value}" as="subValue" key="subName">
+            <f:render section="ShowProperty"
+                      arguments="{name: subName, value: subValue, typeKey: typeKey, indent: '{indent + 1}'}"/>
+        </f:for>
+    </f:if>
+</f:section>
+</html>

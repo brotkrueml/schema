@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
@@ -21,7 +22,6 @@ use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -50,9 +50,9 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
     protected $controllerStub;
 
     /**
-     * @var Stub|FrontendInterface
+     * @var Stub|PagesCacheService
      */
-    private $cacheStub;
+    private $pagesCacheServiceStub;
 
     /**
      * @var Stub|EventDispatcher
@@ -67,12 +67,7 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
 
         $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
 
-        $this->cacheStub = $this->createStub(FrontendInterface::class);
-        $this->cacheStub
-            ->method('get')
-            ->willReturn(null);
-        $this->cacheStub
-            ->method('set');
+        $this->pagesCacheServiceStub = $this->createStub(PagesCacheService::class);
 
         if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
             $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
@@ -121,7 +116,7 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->controllerStub,
             $this->extensionConfigurationStub,
             $schemaManagerMock,
-            $this->cacheStub,
+            $this->pagesCacheServiceStub,
             false,
             $this->eventDispatcherStub
         );
@@ -148,7 +143,7 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->controllerStub,
             $this->extensionConfigurationStub,
             $schemaManagerStub,
-            $this->cacheStub,
+            $this->pagesCacheServiceStub,
             false,
             $this->eventDispatcherStub
         );

@@ -34,7 +34,7 @@ class ViewHelperTestCase extends UnitTestCase
         $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
     }
 
-    protected function renderTemplate(string $template, array $variables = []): void
+    protected function renderTemplate(string $template, array $variables = []): string
     {
         \file_put_contents(vfsStream::url('test-dir') . '/template.html', self::VIEWHELPER_NAMESPACE . $template);
 
@@ -44,6 +44,6 @@ class ViewHelperTestCase extends UnitTestCase
             $this->view->assignMultiple($variables);
         }
 
-        $this->view->render();
+        return (string)$this->view->render();
     }
 }

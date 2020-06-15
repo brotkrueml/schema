@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
@@ -53,6 +54,11 @@ class SchemaMarkupInjectionTest extends TestCase
     protected $controllerMock;
 
     /**
+     * @var PagesCacheService|MockObject
+     */
+    private $pagesCacheServiceMock;
+
+    /**
      * @var MockObject|FrontendInterface
      */
     private $cacheMock;
@@ -80,14 +86,7 @@ class SchemaMarkupInjectionTest extends TestCase
 
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
 
-        $this->cacheMock = $this->createMock(FrontendInterface::class);
-        $this->cacheMock
-            ->expects(self::any())
-            ->method('get')
-            ->willReturn(null);
-        $this->cacheMock
-            ->expects(self::any())
-            ->method('set');
+        $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
 
         if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
             $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
@@ -101,7 +100,7 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
-            $this->cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $this->eventDispatcherStub
         );
@@ -189,7 +188,7 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
-            $this->cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $this->eventDispatcherStub
         );
@@ -225,7 +224,7 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
-            $this->cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $this->eventDispatcherStub
         );
@@ -252,7 +251,7 @@ class SchemaMarkupInjectionTest extends TestCase
             $controllerMock,
             $this->extensionConfigurationMock,
             null,
-            $this->cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $this->eventDispatcherStub
         );
@@ -274,10 +273,9 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIDefinedItIsUsedToGetMarkup(): void
     {
-        $cacheMock = $this->createMock(FrontendInterface::class);
-        $cacheMock
+        $this->pagesCacheServiceMock
             ->expects(self::once())
-            ->method('get')
+            ->method('getMarkupFromCache')
             ->willReturn('some-cached-markup');
 
         $this->pageRendererMock
@@ -289,7 +287,7 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             null,
-            $cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $this->eventDispatcherStub
         );
@@ -307,26 +305,20 @@ class SchemaMarkupInjectionTest extends TestCase
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
-        $cacheMock = $this->createMock(FrontendInterface::class);
-        $cacheMock
-            ->expects(self::once())
-            ->method('get')
-            ->willReturn(false);
-        $cacheMock
-            ->expects(self::once())
-            ->method('set')
-            ->with(
-                self::anything(),
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>',
-                self::anything(),
-                self::anything()
-            );
+        $this->pagesCacheServiceMock
+            ->expects(self::at(0))
+            ->method('getMarkupFromCache')
+            ->willReturn(null);
+        $this->pagesCacheServiceMock
+            ->expects(self::at(1))
+            ->method('storeMarkupInCache')
+            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
 
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
-            $cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $this->eventDispatcherStub
         );
@@ -364,7 +356,7 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
-            $cacheMock,
+            $this->pagesCacheServiceMock,
             false,
             $eventDispatcherStub
         );

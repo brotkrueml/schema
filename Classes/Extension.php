@@ -18,6 +18,7 @@ final class Extension
     public const KEY = 'schema';
 
     public const LANGUAGE_PATH_DATABASE = 'LLL:EXT:' . self::KEY . '/Resources/Private/Language/locallang_db.xlf';
+    public const LANGUAGE_PATH_DEFAULT = 'LLL:EXT:' . self::KEY . '/Resources/Private/Language/locallang.xlf';
 
     public const CACHE_IDENTIFIER = 'tx_' . self::KEY;
     public const CACHE_CORE_IDENTIFIER = 'tx_' . self::KEY . '_core';

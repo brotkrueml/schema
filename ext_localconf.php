@@ -52,4 +52,10 @@ defined('TYPO3_MODE') or die();
         = \Brotkrueml\Schema\Aspect\BreadcrumbListAspect::class;
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['webPage']
         = \Brotkrueml\Schema\Aspect\WebPageAspect::class;
+
+    if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['info'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['info']['submodules']['tx_schema'] = [
+            'module' => Brotkrueml\Schema\AdminPanel\SchemaInformation::class,
+        ];
+    }
 })();

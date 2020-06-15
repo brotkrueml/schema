@@ -18,6 +18,7 @@ $EM_CONF[$_EXTKEY] = [
             'sdbreadcrumb' => '',
         ],
         'suggests' => [
+            'adminpanel' => '',
             'schema_virtuallocation' => '',
         ],
     ],

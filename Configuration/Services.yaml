@@ -10,15 +10,6 @@ services:
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
 
-  cache.pages:
-    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
-    arguments: ['pages']
-
-  Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
-    arguments:
-      $cache: '@cache.pages'
-
 # Deactivated because of https://forge.typo3.org/issues/90962
 #  cache.tx_schema_core:
 #    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Display schema markup of a page in the Admin Panel (#49)
+
 ## [1.7.2] - 2020-06-14
 
 ### Fixed

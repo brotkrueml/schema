@@ -87,6 +87,7 @@ on the top right to submit your change request.
    Installation/Index
    Configuration/Index
    Developer/ViewHelpers
+   AdminPanel/Index
    KnownProblems/Index
 
 .. toctree::
