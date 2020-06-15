@@ -22,12 +22,15 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 final class SchemaInformation implements ModuleInterface, ContentProviderInterface
 {
-    /** @var StandaloneView */
+    /** @var StandaloneView|null */
     private $view;
 
     /** @var PagesCacheService */
     private $pagesCacheService;
 
+    /**
+     * @psalm-suppress PropertyTypeCoercion
+     */
     public function __construct(PagesCacheService $pagesCacheService = null)
     {
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
@@ -56,12 +59,13 @@ final class SchemaInformation implements ModuleInterface, ContentProviderInterfa
         }
 
         $this->initialiseView();
+        /** @psalm-suppress PossiblyNullReference */
         $this->view->assign('types', $types);
 
         return $this->view->render();
     }
 
-    private function convertJsonLdToArray($jsonLd): array
+    private function convertJsonLdToArray(string $jsonLd): array
     {
         $jsonLd = \str_replace(['<script type="application/ld+json">', '</script>'], '', $jsonLd);
         $decodedJsonLd = \json_decode($jsonLd, true);
@@ -75,6 +79,7 @@ final class SchemaInformation implements ModuleInterface, ContentProviderInterfa
         // The StandaloneView cannot be injected via DI in the constructor, because then the error
         // "TypoScriptFrontendController was tried to be injected before initial creation" occurs!
         if (!$this->view) {
+            /** @psalm-suppress PropertyTypeCoercion */
             $this->view = GeneralUtility::makeInstance(StandaloneView::class);
         }
 

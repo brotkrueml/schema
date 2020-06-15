@@ -85,6 +85,7 @@ class PagesCacheService
 
     private function initialiseTypoScriptFrontendController(): void
     {
+        /** @psalm-suppress DocblockTypeContradiction */
         if (!$this->controller) {
             // Cannot be done in constructor as an empty TSFE is injected via DI in TYPO3 v10
             $this->controller = $GLOBALS['TSFE'];
