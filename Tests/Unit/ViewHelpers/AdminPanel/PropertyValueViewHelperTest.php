@@ -12,11 +12,11 @@ namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Unit\ViewHelpers\ViewHelperTestCase;
+use Brotkrueml\Schema\ViewHelpers\AdminPanel\PropertyValueViewHelper;
 use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class PropertyValueViewHelperTest extends ViewHelperTestCase
 {
@@ -41,12 +41,12 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         $iconFactoryStub
             ->method('getIcon')
             ->willReturn($this->iconStub);
-        GeneralUtility::addInstance(IconFactory::class, $iconFactoryStub);
+
+        PropertyValueViewHelper::setIconFactory($iconFactoryStub);
     }
 
     protected function tearDown(): void
     {
-        GeneralUtility::purgeInstances();
         unset($GLOBALS['LANG']);
         parent::tearDown();
     }
@@ -185,5 +185,40 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
             'goToWebsite',
             'Go to website',
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function additionalManualsAreRenderedCorrectly(): void
+    {
+        $this->languageServiceStub
+            ->expects(self::at(0))
+            ->method('sL')
+            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openDocumentationOnSchemaOrg')
+            ->willReturn('Open documentation on schema.org');
+
+        $this->languageServiceStub
+            ->expects(self::at(1))
+            ->method('sL')
+            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference')
+            ->willReturn('Open Google reference');
+
+        PropertyValueViewHelper::setAdditionalManuals([
+            'Thing' => [
+                [
+                    'link' => 'https://example.org/Thing',
+                    'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+                    'iconIdentifier' => 'txschema-documentation-google',
+                ],
+            ],
+        ]);
+
+        $actual = $this->renderTemplate(
+            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>'
+        );
+
+        self::assertSame('<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            $actual);
     }
 }
