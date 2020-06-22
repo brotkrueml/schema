@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-06-15T07:15:54Z" target-language="de">
+  <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-06-22T13:33:05Z" target-language="de">
     <body>
       <trans-unit id="adminPanel.info.goToWebsite" resname="adminPanel.info.goToWebsite" approved="yes">
         <source><![CDATA[Go to website]]></source>
@@ -15,8 +15,12 @@
         <target state="final"><![CDATA[Keine strukturierten Daten vorhanden.]]></target>
       </trans-unit>
       <trans-unit id="adminPanel.info.openDocumentationOnSchemaOrg" resname="adminPanel.info.openDocumentationOnSchemaOrg" approved="yes">
-        <source><![CDATA[Open documentation on schema.org]]></source>
-        <target state="final"><![CDATA[Dokumentation auf schema.org öffnen]]></target>
+        <source><![CDATA[Open schema.org documentation for %s]]></source>
+        <target state="final"><![CDATA[schema.org-Dokumentation für %s öffnen]]></target>
+      </trans-unit>
+      <trans-unit id="adminPanel.info.openGoogleReference" resname="adminPanel.info.openGoogleReference" approved="yes">
+        <source><![CDATA[Open Google reference for %s]]></source>
+        <target state="final"><![CDATA[Google-Referenz für %s öffnen]]></target>
       </trans-unit>
       <trans-unit id="adminPanel.info.showImage" resname="adminPanel.info.showImage" approved="yes">
         <source><![CDATA[Show image]]></source>
