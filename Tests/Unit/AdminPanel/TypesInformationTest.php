@@ -10,15 +10,17 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 
-use Brotkrueml\Schema\AdminPanel\SchemaInformation;
+use Brotkrueml\Schema\AdminPanel\TypesInformation;
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Extension;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class SchemaInformationTest extends TestCase
+class TypesInformationTest extends TestCase
 {
     /** @var Stub|PagesCacheService */
     private $pagesCacheServiceStub;
@@ -26,7 +28,10 @@ class SchemaInformationTest extends TestCase
     /** @var MockObject|StandaloneView */
     private $viewMock;
 
-    /** @var SchemaInformation */
+    /** @var Stub|LanguageService */
+    private $languageServiceStub;
+
+    /** @var TypesInformation */
     private $subject;
 
     protected function setUp(): void
@@ -37,8 +42,16 @@ class SchemaInformationTest extends TestCase
             ->method('render')
             ->willReturn('');
 
-        $this->subject = new SchemaInformation($this->pagesCacheServiceStub);
+        $this->subject = new TypesInformation($this->pagesCacheServiceStub);
         $this->subject->setView($this->viewMock);
+
+        $this->languageServiceStub = $this->createStub(LanguageService::class);
+        $GLOBALS['LANG'] = $this->languageServiceStub;
+    }
+
+    protected function tearDown(): void
+    {
+        unset($GLOBALS['LANG']);
     }
 
     /**
@@ -46,7 +59,7 @@ class SchemaInformationTest extends TestCase
      */
     public function getIdentifierReturnsIdentifierCorrectly(): void
     {
-        self::assertSame('tx_schema_info', $this->subject->getIdentifier());
+        self::assertSame('ext-schema_types', $this->subject->getIdentifier());
     }
 
     /**
@@ -54,7 +67,12 @@ class SchemaInformationTest extends TestCase
      */
     public function getLabelReturnsLabelCorrectly(): void
     {
-        self::assertSame('Schema', $this->subject->getLabel());
+        $this->languageServiceStub
+            ->method('sL')
+            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.types')
+            ->willReturn('Types');
+
+        self::assertSame('Types', $this->subject->getLabel());
     }
 
     /**

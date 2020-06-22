@@ -53,9 +53,15 @@ defined('TYPO3_MODE') or die();
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['webPage']
         = \Brotkrueml\Schema\Aspect\WebPageAspect::class;
 
-    if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['info'])) {
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['info']['submodules']['tx_schema'] = [
-            'module' => Brotkrueml\Schema\AdminPanel\SchemaInformation::class,
+    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('adminpanel')) {
+        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['ext-schema'] = [
+            'module' => \Brotkrueml\Schema\AdminPanel\SchemaModule::class,
+            'after' => ['tsdebug'],
+            'submodules' => [
+                'types' => [
+                    'module' => \Brotkrueml\Schema\AdminPanel\TypesInformation::class,
+                ],
+            ],
         ];
     }
 })();

@@ -14,168 +14,168 @@ return [
     'Article' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/article',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Book' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/book',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'BreadcrumbList' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/breadcrumb',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'ClaimReview' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/factcheck',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Course' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/course',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Dataset' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/dataset',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'EducationalOccupationalProgram' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/job-training',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'EmployerAggregateRating' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/employer-rating',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Event' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/event',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'FAQPage' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/faqpage',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'HowTo' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/how-to',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'ImageObject' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/image-license-metadata',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'JobPosting' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/job-posting',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'MobileApplication' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/software-app',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'MonetaryAmountDistribution' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/estimated-salary',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Movie' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/movie',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'NewsArticle' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/paywalled-content',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Product' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/product',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'QAPage' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/qapage',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Recipe' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/recipe',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Review' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/review-snippet',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'SoftwareApplication' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/software-app',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'Video' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/video',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],
     'WebApplication' => [
         [
             'link' => 'https://developers.google.com/search/docs/data-types/software-app',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'txschema-documentation-google',
         ],
     ],

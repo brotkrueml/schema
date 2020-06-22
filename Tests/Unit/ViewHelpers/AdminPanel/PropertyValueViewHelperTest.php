@@ -68,7 +68,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         if ($localisedInput) {
             $this->languageServiceStub
                 ->method('sL')
-                ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.' . $localisedInput)
+                ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.' . $localisedInput)
                 ->willReturn($localisedOutput);
         }
 
@@ -195,20 +195,20 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         $this->languageServiceStub
             ->expects(self::at(0))
             ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openDocumentationOnSchemaOrg')
+            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg')
             ->willReturn('Open documentation on schema.org');
 
         $this->languageServiceStub
             ->expects(self::at(1))
             ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference')
+            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference')
             ->willReturn('Open Google reference');
 
         PropertyValueViewHelper::setAdditionalManuals([
             'Thing' => [
                 [
                     'link' => 'https://example.org/Thing',
-                    'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openGoogleReference',
+                    'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
                     'iconIdentifier' => 'txschema-documentation-google',
                 ],
             ],
@@ -218,7 +218,9 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
             '<schema:adminPanel.propertyValue name="@type" value="Thing"/>'
         );
 
-        self::assertSame('<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            $actual);
+        self::assertSame(
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            $actual
+        );
     }
 }

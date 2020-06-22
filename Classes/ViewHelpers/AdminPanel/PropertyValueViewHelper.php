@@ -75,14 +75,14 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
         if (\strpos($value, 'http://schema.org/') === 0 || \strpos($value, 'https://schema.org/') === 0) {
             $linkTitle = \sprintf(
-                self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openDocumentationOnSchemaOrg'),
+                self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                 $value
             );
             $iconIdentifier = 'txschema-documentation-schema';
         }
 
         if (\in_array(\pathinfo($value, \PATHINFO_EXTENSION), self::IMAGE_EXTENSIONS)) {
-            $linkTitle = self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.showImage');
+            $linkTitle = self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
             $iconIdentifier = 'actions-image';
         }
 
@@ -90,7 +90,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             [
                 [
                     'link' => $value,
-                    'title' => $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.goToWebsite'),
+                    'title' => $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
                     'iconIdentifier' => $iconIdentifier ?: 'actions-link',
                 ],
             ],
@@ -104,7 +104,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             [
                 'link' => 'https://schema.org/' . $type,
                 'title' => \sprintf(
-                    self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.info.openDocumentationOnSchemaOrg'),
+                    self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                     $type
                 ),
                 'iconIdentifier' => 'txschema-documentation-schema',

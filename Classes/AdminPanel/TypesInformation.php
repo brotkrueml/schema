@@ -11,16 +11,18 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\AdminPanel;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Adminpanel\ModuleApi\ContentProviderInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleInterface;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * @internal
  */
-final class SchemaInformation implements ModuleInterface, ContentProviderInterface
+final class TypesInformation implements ModuleInterface, ContentProviderInterface
 {
     /** @var StandaloneView|null */
     private $view;
@@ -38,12 +40,14 @@ final class SchemaInformation implements ModuleInterface, ContentProviderInterfa
 
     public function getIdentifier(): string
     {
-        return 'tx_schema_info';
+        return 'ext-schema_types';
     }
 
     public function getLabel(): string
     {
-        return 'Schema';
+        return $this->getLanguageService()->sL(
+            Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.types'
+        );
     }
 
     public function getContent(ModuleData $data): string
@@ -86,6 +90,11 @@ final class SchemaInformation implements ModuleInterface, ContentProviderInterfa
         $this->view->setTemplatePathAndFilename(
             'EXT:schema/Resources/Private/Templates/AdminPanel/SchemaInformation.html'
         );
+    }
+
+    private function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 
     /**
