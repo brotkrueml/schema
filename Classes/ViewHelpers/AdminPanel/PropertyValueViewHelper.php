@@ -78,7 +78,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
                 self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                 $value
             );
-            $iconIdentifier = 'txschema-documentation-schema';
+            $iconIdentifier = 'ext-schema-documentation-schema';
         }
 
         if (\in_array(\pathinfo($value, \PATHINFO_EXTENSION), self::IMAGE_EXTENSIONS)) {
@@ -107,7 +107,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
                     self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                     $type
                 ),
-                'iconIdentifier' => 'txschema-documentation-schema',
+                'iconIdentifier' => 'ext-schema-documentation-schema',
             ],
         ];
 

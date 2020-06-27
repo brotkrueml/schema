@@ -209,7 +209,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
                 [
                     'link' => 'https://example.org/Thing',
                     'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-                    'iconIdentifier' => 'txschema-documentation-google',
+                    'iconIdentifier' => 'ext-schema-documentation-google',
                 ],
             ],
         ]);

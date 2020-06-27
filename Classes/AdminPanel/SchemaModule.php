@@ -36,7 +36,7 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 
     public function getIconIdentifier(): string
     {
-        return 'txschema-module-adminpanel';
+        return 'ext-schema-module-adminpanel';
     }
 
     /**
