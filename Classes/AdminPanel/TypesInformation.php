@@ -87,9 +87,10 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
             $this->view = GeneralUtility::makeInstance(StandaloneView::class);
         }
 
-        $this->view->setTemplatePathAndFilename(
-            'EXT:schema/Resources/Private/Templates/AdminPanel/SchemaInformation.html'
-        );
+        $this->view->setTemplatePathAndFilename(\sprintf(
+            'EXT:%s/Resources/Private/Templates/AdminPanel/TypesInformation.html',
+            Extension::KEY
+        ));
     }
 
     private function getLanguageService(): LanguageService
