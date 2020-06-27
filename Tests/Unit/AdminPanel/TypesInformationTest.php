@@ -85,7 +85,7 @@ class TypesInformationTest extends TestCase
     {
         $this->pagesCacheServiceStub
             ->method('getMarkupFromCache')
-            ->willReturn($markupFromCache);
+            ->willReturn($markupFromCache ? \sprintf(Extension::JSONLD_TEMPLATE, $markupFromCache) : $markupFromCache);
 
         $this->viewMock
             ->expects(self::once())
@@ -103,7 +103,7 @@ class TypesInformationTest extends TestCase
         ];
 
         yield 'One type is available' => [
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"}</script>',
+            '{"@context":"http://schema.org","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"}',
             [
                 [
                     '@type' => 'Thing',
@@ -115,7 +115,7 @@ class TypesInformationTest extends TestCase
         ];
 
         yield 'Two types are available' => [
-            '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Action","name":"action name","url":"http://example.org/"},{"@type":"Person","@id":"personId","name":"person name","worksFor":"someone"}]}</script>',
+            '{"@context":"http://schema.org","@graph":[{"@type":"Action","name":"action name","url":"http://example.org/"},{"@type":"Person","@id":"personId","name":"person name","worksFor":"someone"}]}',
             [
                 [
                     '@type' => 'Action',
@@ -132,7 +132,7 @@ class TypesInformationTest extends TestCase
         ];
 
         yield 'Types are sorted alphabetically' => [
-            '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"Thing","name":"A thing"},{"@type":"Event","name":"An event"},{"@type":"Person","name":"A person"}]}</script>',
+            '{"@context":"http://schema.org","@graph":[{"@type":"Thing","name":"A thing"},{"@type":"Event","name":"An event"},{"@type":"Person","name":"A person"}]}',
             [
                 [
                     '@type' => 'Event',

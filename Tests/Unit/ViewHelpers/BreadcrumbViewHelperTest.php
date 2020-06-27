@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
@@ -88,7 +89,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     ],
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/"},"name":"Some page","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/"},"name":"Some page","position":"1"}}',
         ];
 
         yield 'Breadcrumb with two pages and minimum fields' => [
@@ -105,7 +106,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     ],
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/sub-page/"},"name":"Some sub page","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/sub-page/"},"name":"Some sub page","position":"1"}}',
         ];
 
         yield 'Breadcrumb with multiple pages and a class given as data item (which can happen when you add a virtual category page with a domain model to it)' => [
@@ -126,7 +127,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     ],
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}',
         ];
 
         yield 'Breadcrumb item with an absolute URL as link given' => [
@@ -143,7 +144,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     ],
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}',
         ];
     }
 
@@ -164,7 +165,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
 
         $actual = $this->schemaManager->renderJsonLd();
 
-        self::assertSame($expected, $actual);
+        self::assertSame($expected ? \sprintf(Extension::JSONLD_TEMPLATE, $expected) : $expected, $actual);
     }
 
     /**
@@ -231,7 +232,10 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
         $this->renderTemplate('<schema:breadcrumb breadcrumb="{breadcrumb}"/>', $variables);
 
         $actual = $this->schemaManager->renderJsonLd();
-        $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}</script>';
+        $expected = \sprintf(
+            Extension::JSONLD_TEMPLATE,
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}'
+        );
 
         self::assertSame($expected, $actual);
     }
@@ -256,7 +260,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                 'breadcrumb' => [
                     [
                         'link' => '/',
-                    ]
+                    ],
                 ],
             ],
             ViewHelper\Exception::class,
@@ -269,7 +273,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
                 'breadcrumb' => [
                     [
                         'title' => 'Some title',
-                    ]
+                    ],
                 ],
             ],
             ViewHelper\Exception::class,

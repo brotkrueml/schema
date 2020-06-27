@@ -14,6 +14,7 @@ use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
@@ -178,7 +179,10 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addHeaderData')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
+            ->with(\sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+            ));
 
         $this->pageRendererMock
             ->expects(self::never())
@@ -218,7 +222,10 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addFooterData')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
+            ->with(\sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+            ));
 
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
@@ -262,7 +269,10 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addHeaderData')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
+            ->with(\sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+            ));
 
         $params = [];
         $subject->execute($params, $this->pageRendererMock);
@@ -312,7 +322,10 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pagesCacheServiceMock
             ->expects(self::at(1))
             ->method('storeMarkupInCache')
-            ->with('<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","name":"some name"}</script>');
+            ->with(\sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+            ));
 
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,

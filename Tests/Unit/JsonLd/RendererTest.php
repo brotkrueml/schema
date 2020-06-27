@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,7 +45,7 @@ class RendererTest extends TestCase
     {
         $this->subject->addType($this->createTypeStub($id, $properties));
 
-        self::assertSame($expected, $this->subject->render());
+        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
     }
 
     public function dataProvider(): \Generator
@@ -55,13 +56,13 @@ class RendererTest extends TestCase
                 'null-property' => null,
                 'empty-string-property' => '',
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType"}',
         ];
 
         yield 'Id is set' => [
             'some-id',
             [],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","@id":"some-id"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","@id":"some-id"}',
         ];
 
         yield 'Value is a string' => [
@@ -69,7 +70,7 @@ class RendererTest extends TestCase
             [
                 'some-string' => 'some string value',
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-string":"some string value"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-string":"some string value"}',
         ];
 
         yield 'Value is a number as integer' => [
@@ -77,15 +78,15 @@ class RendererTest extends TestCase
             [
                 'some-number' => 1,
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-number":"1"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-number":"1"}',
         ];
 
         yield 'Value is the number 0 as integer' => [
             null,
             [
-                'some-number' => 0
+                'some-number' => 0,
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-number":"0"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-number":"0"}',
         ];
 
         yield 'Value is the number 0.10 as float' => [
@@ -93,7 +94,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0.10,
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-number":"0.1"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-number":"0.1"}',
         ];
 
         yield 'Value is the number 0.00 as float' => [
@@ -101,7 +102,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0.00,
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-number":"0"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-number":"0"}',
         ];
 
         yield 'Value is a boolean (true)' => [
@@ -109,7 +110,7 @@ class RendererTest extends TestCase
             [
                 'some-boolean-true' => true,
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-boolean-true":"http://schema.org/True"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-boolean-true":"http://schema.org/True"}',
         ];
 
         yield 'Value is a boolean (false)' => [
@@ -117,7 +118,7 @@ class RendererTest extends TestCase
             [
                 'some-boolean-false' => false,
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-boolean-false":"http://schema.org/False"}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-boolean-false":"http://schema.org/False"}',
         ];
 
         yield 'Value is an array of strings' => [
@@ -126,9 +127,9 @@ class RendererTest extends TestCase
                 'some-array' => [
                     'some-array-value',
                     'another-array-value',
-                ]
+                ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-array":["some-array-value","another-array-value"]}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-array":["some-array-value","another-array-value"]}',
         ];
 
         yield 'Value is a model' => [
@@ -140,7 +141,7 @@ class RendererTest extends TestCase
                     'SomeSubTypeStub'
                 ),
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
         ];
 
         yield 'Value is an array of models' => [
@@ -157,9 +158,9 @@ class RendererTest extends TestCase
                         ['another-property' => 'another-value'],
                         'AnotherSubTypeStub'
                     ),
-                ]
+                ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}</script>',
+            '{"@context":"http://schema.org","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
         ];
     }
 
@@ -236,7 +237,10 @@ class RendererTest extends TestCase
         $this->subject->addType($this->createTypeStub('another-id'));
 
         self::assertSame(
-            '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}</script>',
+            \sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
+            ),
             $this->subject->render()
         );
     }
@@ -254,7 +258,10 @@ class RendererTest extends TestCase
         $this->subject->addType(...$types);
 
         self::assertSame(
-            '<script type="application/ld+json">{"@context":"http://schema.org","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}</script>',
+            \sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
+            ),
             $this->subject->render()
         );
     }

@@ -64,7 +64,7 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 
         $numberOfTypes = 0;
         if (!empty($jsonLd)) {
-            $jsonLd = \str_replace(['<script type="application/ld+json">', '</script>'], '', $jsonLd);
+            $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
             $decodedJsonLd = \json_decode($jsonLd, true);
             $numberOfTypes = isset($decodedJsonLd['@graph']) ? \count($decodedJsonLd['@graph']) : 1;
         }

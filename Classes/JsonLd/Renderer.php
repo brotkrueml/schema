@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\JsonLd;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Model\DataType\Boolean;
 
 /**
@@ -18,7 +19,6 @@ use Brotkrueml\Schema\Model\DataType\Boolean;
  */
 final class Renderer implements RendererInterface
 {
-    private const TAG_TEMPLATE = '<script type="application/ld+json">%s</script>';
     private const CONTEXT = 'http://schema.org';
 
     /** @var TypeInterface[] */
@@ -57,7 +57,7 @@ final class Renderer implements RendererInterface
         $result = \array_merge(['@context' => static::CONTEXT], $result);
 
         return \sprintf(
-            static::TAG_TEMPLATE,
+            Extension::JSONLD_TEMPLATE,
             \json_encode($result, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE)
         );
     }

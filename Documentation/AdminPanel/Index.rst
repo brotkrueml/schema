@@ -23,6 +23,8 @@ The icons are linked: The type to the according schema.org documentation and - i
 available - to the Google reference for the specific type, other URLs to their
 destination.
 
+Additionally, you can call Google's Structured Data Testing Tool to validate
+the structured data on this page.
 
 Configuration
 =============

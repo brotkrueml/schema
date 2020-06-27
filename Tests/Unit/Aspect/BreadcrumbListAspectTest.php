@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Aspect;
 
 use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
@@ -166,7 +167,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}',
         ];
 
         yield 'Rootline with nav_hide set' => [
@@ -199,7 +200,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
         yield 'Rootline with siteroot not on first level' => [
@@ -232,7 +233,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
         yield 'Folder in rootline should not be rendered' => [
@@ -265,7 +266,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
         yield 'Menu separator in rootline should not be rendered, but doktype 198' => [
@@ -298,7 +299,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page with doktype 198","position":"1"}}</script>',
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page with doktype 198","position":"1"}}',
         ];
     }
 
@@ -335,7 +336,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
         $subject->execute($schemaManager);
 
-        self::assertSame($expected, $schemaManager->renderJsonLd());
+        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $schemaManager->renderJsonLd());
     }
 
     /**
@@ -441,7 +442,10 @@ class BreadcrumbListAspectTest extends UnitTestCase
         $subject->execute($schemaManager);
 
         self::assertSame(
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}</script>',
+            \sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}'
+            ),
             $schemaManager->renderJsonLd()
         );
     }
@@ -494,7 +498,10 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
         $subject->execute($schemaManager);
 
-        $expected = '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}</script>';
+        $expected = \sprintf(
+            Extension::JSONLD_TEMPLATE,
+            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}'
+        );
 
         self::assertSame($expected, $schemaManager->renderJsonLd());
     }

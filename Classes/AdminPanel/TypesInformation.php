@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Adminpanel\ModuleApi\ContentProviderInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleInterface;
+use TYPO3\CMS\Adminpanel\ModuleApi\ResourceProviderInterface;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -22,7 +23,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 /**
  * @internal
  */
-final class TypesInformation implements ModuleInterface, ContentProviderInterface
+final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
     /** @var StandaloneView|null */
     private $view;
@@ -71,7 +72,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
     private function convertJsonLdToArray(string $jsonLd): array
     {
-        $jsonLd = \str_replace(['<script type="application/ld+json">', '</script>'], '', $jsonLd);
+        $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
         $decodedJsonLd = \json_decode($jsonLd, true);
         unset($decodedJsonLd['@context']);
 
@@ -96,6 +97,16 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     private function getLanguageService(): LanguageService
     {
         return $GLOBALS['LANG'];
+    }
+
+    public function getJavaScriptFiles(): array
+    {
+        return [\sprintf('EXT:%s/Resources/Public/JavaScript/AdminPanel/Validate.js', Extension::KEY)];
+    }
+
+    public function getCssFiles(): array
+    {
+        return [];
     }
 
     /**

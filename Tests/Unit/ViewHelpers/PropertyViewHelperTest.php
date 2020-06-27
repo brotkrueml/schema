@@ -9,6 +9,7 @@
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
@@ -53,7 +54,7 @@ class PropertyViewHelperTest extends ViewHelperTestCase
             '<schema:type.thing>
                     <schema:property -as="image" value="http://example.org/image.png"/>
                 </schema:type.thing>',
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","image":"http://example.org/image.png"}</script>',
+            \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"http://schema.org","@type":"Thing","image":"http://example.org/image.png"}'),
         ];
 
         yield 'Property with multiple values' => [
@@ -63,7 +64,7 @@ class PropertyViewHelperTest extends ViewHelperTestCase
                     <schema:property -as="image" value="http://example.org/image3.png"/>
                     <schema:property -as="image" value="http://example.org/image4.png"/>
                 </schema:type.thing>',
-            '<script type="application/ld+json">{"@context":"http://schema.org","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}</script>',
+            \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"http://schema.org","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}'),
         ];
     }
 
