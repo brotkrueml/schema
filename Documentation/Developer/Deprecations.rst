@@ -8,7 +8,7 @@
 Deprecations
 ============
 
-.. option:: Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()
+.. option:: Brotkrueml\\Schema\\Core\\Model\\AbstractType->isEmpty()
 
 Deprecated since version
    1.7.0
@@ -23,7 +23,7 @@ Alternative
    :php:`Brotkrueml\Schema\Core\Model\AbstractType->getProperty()`.
 
 
-.. option:: Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()
+.. option:: Brotkrueml\\Schema\\Manager\\SchemaManager->setMainEntityOfWebPage()
 
 Deprecated since version
    1.4.1
@@ -36,7 +36,7 @@ Alternative
    instead. See the :ref:`API <api-schema-manager-addmainentityofwebpage>`.
 
 
-.. option:: Brotkrueml\Schema\Provider\TypesProvider
+.. option:: Brotkrueml\\Schema\\Provider\\TypesProvider
 
 Deprecated since version
    1.7.0
