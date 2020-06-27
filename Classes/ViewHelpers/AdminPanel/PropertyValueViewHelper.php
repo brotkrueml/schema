@@ -25,6 +25,17 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 {
     private const IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'svg'];
 
+    private const MANUAL_PROVIDERS = [
+        'google' => [
+            'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
+            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+        'yandex' => [
+            'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference',
+            'iconIdentifier' => 'ext-schema-documentation-yandex',
+        ],
+    ];
+
     protected $escapeOutput = false;
 
     /** @var RenderingContextInterface */
@@ -112,11 +123,17 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         ];
 
         $additionalManuals = self::getAdditionalManuals();
-        foreach ($additionalManuals[$type] ?? [] as $manual) {
+        $manualType = $additionalManuals[$type]['like'] ?? $type;
+        foreach ($additionalManuals[$manualType] ?? [] as $manual) {
+            $provider = $manual['provider'] ?? '';
+            if (!$provider || !\array_key_exists($provider, self::MANUAL_PROVIDERS)) {
+                continue;
+            }
+
             $links[] = [
                 'link' => $manual['link'],
-                'title' => \sprintf(self::getLanguageService()->sL($manual['title']), $type),
-                'iconIdentifier' => $manual['iconIdentifier'],
+                'title' => \sprintf(self::getLanguageService()->sL(self::MANUAL_PROVIDERS[$provider]['title']), $manualType),
+                'iconIdentifier' => self::MANUAL_PROVIDERS[$provider]['iconIdentifier'],
             ];
         }
 

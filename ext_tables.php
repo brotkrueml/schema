@@ -8,7 +8,7 @@ defined('TYPO3_MODE') || die('Access denied.');
 
     /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
     $iconRegistry = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(TYPO3\CMS\Core\Imaging\IconRegistry::class);
-    foreach (['documentation-google', 'documentation-schema', 'module-adminpanel'] as $icon) {
+    foreach (['documentation-google', 'documentation-schema', 'documentation-yandex', 'module-adminpanel'] as $icon) {
         $iconRegistry->registerIcon(
             'ext-schema-' . $icon,
             TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,

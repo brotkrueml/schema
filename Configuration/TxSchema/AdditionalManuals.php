@@ -13,170 +13,181 @@
 return [
     'Article' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/article',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'Book' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/book',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'BreadcrumbList' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/breadcrumb',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'ClaimReview' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/factcheck',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'Course' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/course',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+    ],
+    'CreativeWork' => [
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/essay.html',
         ],
     ],
     'Dataset' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/dataset',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'EducationalOccupationalProgram' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/job-training',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'EmployerAggregateRating' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/employer-rating',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'Event' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/event',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'FAQPage' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/faqpage',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'HowTo' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/how-to',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'ImageObject' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/image-license-metadata',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'JobPosting' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/job-posting',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'MobileApplication' => [
-        [
-            'link' => 'https://developers.google.com/search/docs/data-types/software-app',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
-        ],
+        'like' => 'SoftwareApplication',
     ],
     'MonetaryAmountDistribution' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/estimated-salary',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'Movie' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/movie',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/movie-description.html',
         ],
     ],
     'NewsArticle' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/paywalled-content',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+    ],
+    'Organization' => [
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/address-organization.html',
         ],
     ],
     'Product' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/product',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/goods-prices.html',
         ],
     ],
     'QAPage' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/qapage',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+    ],
+    'Question' => [
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/questions.html',
         ],
     ],
     'Recipe' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/recipe',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/recipe.html',
         ],
     ],
     'Review' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/review-snippet',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
         ],
     ],
     'SoftwareApplication' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/software-app',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/webmaster/supported-schemas/software.html',
         ],
     ],
-    'Video' => [
+    'VideoGame' => [
+        'like' => 'SoftwareApplication',
+    ],
+    'VideoObject' => [
         [
+            'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/video',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
+        ],
+        [
+            'provider' => 'yandex',
+            'link' => 'https://yandex.com/support/video/partners/schema-org.html',
         ],
     ],
     'WebApplication' => [
-        [
-            'link' => 'https://developers.google.com/search/docs/data-types/software-app',
-            'title' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
-        ],
+        'like' => 'SoftwareApplication',
     ],
 ];
