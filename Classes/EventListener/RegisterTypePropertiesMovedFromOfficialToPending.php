@@ -56,6 +56,7 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         $type = $event->getType();
 
         if ($type === Type\Person::class) {
+            /* @see https://github.com/schemaorg/schemaorg/issues/2499 */
             $event->registerAdditionalProperty('gender');
 
             /* from official to pending in schema version 3.7 */
