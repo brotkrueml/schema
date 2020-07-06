@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-06-22T16:12:34Z" target-language="de">
+  <file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-06-27T14:58:02Z" target-language="de">
     <body>
       <trans-unit id="adminPanel.goToWebsite" resname="adminPanel.goToWebsite" approved="yes">
         <source><![CDATA[Go to website]]></source>
@@ -21,6 +21,10 @@
       <trans-unit id="adminPanel.openGoogleReference" resname="adminPanel.openGoogleReference" approved="yes">
         <source><![CDATA[Open Google reference for %s]]></source>
         <target state="final"><![CDATA[Google-Referenz für %s öffnen]]></target>
+      </trans-unit>
+      <trans-unit id="adminPanel.openYandexReference" resname="adminPanel.openYandexReference" approved="yes">
+        <source><![CDATA[Open Yandex reference for %s]]></source>
+        <target state="final"><![CDATA[Yandex-Referenz für %s öffnen]]></target>
       </trans-unit>
       <trans-unit id="adminPanel.showImage" resname="adminPanel.showImage" approved="yes">
         <source><![CDATA[Show image]]></source>
