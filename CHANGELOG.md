@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.0] - 2020-07-08
+
 ### Added
 - Display schema markup of a page in the Admin Panel (#49)
 
@@ -194,7 +196,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.7.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/brotkrueml/schema/compare/v1.7.2...v1.8.0
 [1.7.2]: https://github.com/brotkrueml/schema/compare/v1.7.1...v1.7.2
 [1.7.1]: https://github.com/brotkrueml/schema/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/brotkrueml/schema/compare/v1.6.0...v1.7.0
