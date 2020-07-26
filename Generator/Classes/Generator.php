@@ -104,6 +104,11 @@ class Generator
                 continue;
             }
 
+            if (\array_key_exists('http://schema.org/isPartOf', $term)) {
+                // Not part of the core vocabulary, e.g. pending, auto, health-lifesci
+                continue;
+            }
+
             if ($type === 'rdfs:Class') {
                 $this->types[$id] = $this->graph->createVertex($id);
 

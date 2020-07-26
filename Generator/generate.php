@@ -8,7 +8,7 @@ use Twig\Loader\FilesystemLoader;
 require __DIR__ . '/../.Build/vendor/autoload.php';
 
 $configuration = new Configuration();
-$configuration->schemaPath = __DIR__ . '/Schema/schema.jsonld';
+$configuration->schemaPath = __DIR__ . '/Schema/schemaorg-current-http.jsonld';
 $configuration->modelTypePathTemplate = __DIR__ . '/../Classes/Model/Type/%s.php';
 $configuration->viewHelperTypePathTemplate = __DIR__ . '/../Classes/ViewHelpers/Type/%sViewHelper.php';
 $configuration->typeModelsTemplate = __DIR__ . '/../Configuration/TxSchema/TypeModels.php';

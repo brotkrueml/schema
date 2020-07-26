@@ -47,6 +47,7 @@ final class Vehicle extends AbstractType
         'isConsumableFor',
         'isRelatedTo',
         'isSimilarTo',
+        'isVariantOf',
         'itemCondition',
         'knownVehicleDamages',
         'logo',

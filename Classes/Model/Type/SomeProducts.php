@@ -42,6 +42,7 @@ final class SomeProducts extends AbstractType
         'isConsumableFor',
         'isRelatedTo',
         'isSimilarTo',
+        'isVariantOf',
         'itemCondition',
         'logo',
         'mainEntityOfPage',

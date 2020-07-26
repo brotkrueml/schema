@@ -13,8 +13,8 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A private parcel service as the delivery mode available for a certain offer.
+ * Lists or enumerations dealing with status types.
  */
-final class ParcelServiceViewHelper extends AbstractTypeViewHelper
+final class StatusEnumerationViewHelper extends AbstractTypeViewHelper
 {
 }

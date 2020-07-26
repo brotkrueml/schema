@@ -13,9 +13,9 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A DeliveryMethod in which an item is made available via locker.
+ * Lists or enumerations dealing with status types.
  */
-final class LockerDelivery extends AbstractType
+final class StatusEnumeration extends AbstractType
 {
     protected static $propertyNames = [
         'additionalType',

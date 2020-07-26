@@ -41,6 +41,7 @@ final class IndividualProduct extends AbstractType
         'isConsumableFor',
         'isRelatedTo',
         'isSimilarTo',
+        'isVariantOf',
         'itemCondition',
         'logo',
         'mainEntityOfPage',
