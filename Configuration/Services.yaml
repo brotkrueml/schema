@@ -6,6 +6,7 @@ services:
 
   Brotkrueml\Schema\:
     resource: '../Classes/*'
+    exclude: '../Classes/{AdminPanel,Hooks,Model,ViewHelpers,Extension.php}'
 
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
