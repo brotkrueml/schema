@@ -17,6 +17,12 @@ return [
             'link' => 'https://developers.google.com/search/docs/data-types/article',
         ],
     ],
+    'BlogPosting' => [
+        [
+            'provider' => 'google',
+            'link' => 'https://developers.google.com/search/docs/data-types/article',
+        ],
+    ],
     'Book' => [
         [
             'provider' => 'google',
@@ -115,6 +121,10 @@ return [
         ],
     ],
     'NewsArticle' => [
+        [
+            'provider' => 'google',
+            'link' => 'https://developers.google.com/search/docs/data-types/article',
+        ],
         [
             'provider' => 'google',
             'link' => 'https://developers.google.com/search/docs/data-types/paywalled-content',
