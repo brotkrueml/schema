@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-06-27T14:58:02Z">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-08-04T16:36:23Z">
 		<body>
 			<trans-unit id="adminPanel.goToWebsite" resname="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
@@ -31,6 +31,9 @@
 			</trans-unit>
 			<trans-unit id="adminPanel.validateInStructuredDataTestingTool" resname="adminPanel.validateInStructuredDataTestingTool">
 				<source><![CDATA[Validate in Structured Data Testing Tool]]></source>
+			</trans-unit>
+			<trans-unit id="adminPanel.validateInRichResultTest" resname="adminPanel.validateInRichResultTest">
+				<source><![CDATA[Validate in Rich Result Test]]></source>
 			</trans-unit>
 			<trans-unit id="config.automaticBreadcrumbSchemaGeneration" resname="config.automaticBreadcrumbSchemaGeneration">
 				<source><![CDATA[Automatic embedding of the breadcrumb markup into the page]]></source>

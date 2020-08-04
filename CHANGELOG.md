@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Update schema definition to version 9.0 (#3)
+- Button in Admin Panel to verify structured data in Rich Result Test
 
 ## [1.8.0] - 2020-07-08
 
