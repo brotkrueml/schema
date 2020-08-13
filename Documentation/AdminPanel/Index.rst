@@ -26,6 +26,12 @@ URLs to their destination.
 Additionally, you can call Google's Structured Data Testing Tool and Google's
 Rich Result Test to validate the structured data on this page.
 
+.. hint::
+   Since the JSON-LD markup is fetched from the page cache, please make sure
+   that this cache is enabled (e.g. no use of the :php:`NullBackend`). Otherwise
+   you will not see any markup.
+
+
 Configuration
 =============
 
