@@ -9,6 +9,12 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "chat": "https://typo3.slack.com/archives/CV36M73D5",
+        "docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/",
+        "issues": "https://github.com/brotkrueml/schema/issues",
+        "source": "https://github.com/brotkrueml/schema"
+    },
     "keywords": [
         "TYPO3 CMS",
         "TYPO3 extension",
