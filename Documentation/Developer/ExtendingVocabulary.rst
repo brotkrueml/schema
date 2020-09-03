@@ -132,11 +132,38 @@ The type can be used as `location <https://schema.org/location>`_ in the
 
    After changes to the :file:`TypeModels.php` file the cache must be cleared.
 
-.. note::
-   As you can intentionally "override" a class model, e.g. the delivered
-   `Person` class model with a customised one, but it is not recommended to do
-   so. Instead, use the option to :ref:`register additional properties
-   <extending-register-additional-properties>`.
+   .. note::
+      You can intentionally "override" a class model, e.g. the delivered
+      `Person` class model with a customised one, but it is not recommended to
+      do so. Instead, use the option to :ref:`register additional properties
+      <extending-register-additional-properties>`.
+
+#. Create the view helper
+
+   If you have the need for a view helper with that type, you can create one
+   easily::
+
+      <?php
+      declare(strict_types=1);
+
+      namespace Acme\LooneyTunes\ViewHelpers\Type;
+
+      use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
+
+      final class VirtualLocationViewHelper extends AbstractTypeViewHelper
+      {
+      }
+
+   To use the ``schema`` namespace in Fluid templates also with your own
+   view helpers add the following snippet to the :file:`ext_localconf.php` file
+   of your extension::
+
+      $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['schema'][]
+         = 'Acme\\LooneyTunes\\ViewHelpers';
+
+   This way you don't have to think about which namespace to use. And if the
+   pending type is moved to the core vocabulary you have no need to touch your
+   Fluid templates. Of course, feel free to use another namespace.
 
 .. important::
    Add the schema extension as a dependency to your extension. This ensures that
