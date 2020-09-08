@@ -85,6 +85,7 @@ final class Question extends AbstractType
         'mentions',
         'name',
         'offers',
+        'parentItem',
         'position',
         'potentialAction',
         'producer',

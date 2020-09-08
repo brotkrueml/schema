@@ -472,6 +472,7 @@ return [
     \Brotkrueml\Schema\Model\Type\ReplaceAction::class,
     \Brotkrueml\Schema\Model\Type\ReplyAction::class,
     \Brotkrueml\Schema\Model\Type\Report::class,
+    \Brotkrueml\Schema\Model\Type\Researcher::class,
     \Brotkrueml\Schema\Model\Type\Reservation::class,
     \Brotkrueml\Schema\Model\Type\ReservationPackage::class,
     \Brotkrueml\Schema\Model\Type\ReservationStatusType::class,
