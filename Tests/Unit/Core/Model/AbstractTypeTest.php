@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -115,7 +116,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('identifier', 42);
         $this->subject->setProperty('alternateName', 3.141592653);
 
-        $anotherType = new class extends AbstractType {
+        $anotherType = new class() extends AbstractType {
         };
 
         $this->subject->setProperty('image', $anotherType);
@@ -228,7 +229,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->addProperty('isAccessibleForFree', true);
         $this->subject->addProperty('alternateName', 3.141592653);
 
-        $anotherType = new class extends AbstractType {
+        $anotherType = new class() extends AbstractType {
         };
 
         $this->subject->addProperty('image', $anotherType);

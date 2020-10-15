@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -78,11 +79,9 @@ class WebPageAspectTest extends TestCase
 
         $reflector = new \ReflectionClass(WebPageAspect::class);
 
-        /** @noinspection PhpUnhandledExceptionInspection */
         $controller = $reflector->getProperty('controller');
         $controller->setAccessible(true);
 
-        /** @noinspection PhpUnhandledExceptionInspection */
         $configuration = $reflector->getProperty('configuration');
         $configuration->setAccessible(true);
 
