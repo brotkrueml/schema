@@ -19,7 +19,7 @@ final class RegisterAdditionalTypePropertiesEvent
     private $type;
 
     /**
-     * @param array<string>
+     * @var list<string>
      */
     private $additionalProperties = [];
 
