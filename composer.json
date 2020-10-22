@@ -71,6 +71,7 @@
 			"dev-master": "1.9.x-dev"
 		},
 		"typo3/cms": {
+			"extension-key": "schema",
 			"app-dir": ".Build",
 			"web-dir": ".Build/web"
 		}
