@@ -1,4 +1,5 @@
-.. include:: ../Includes.txt
+.. include:: /Includes.rst.txt
+
 .. highlight:: html
 
 .. index:: View helpers
@@ -293,7 +294,7 @@ Using the XML schema (XSD) in your code editor
 It is possible to assist your code editor on suggesting the tag name and the
 possible attributes:
 
-.. figure:: ../Images/Developer/XsdSchemaSuggestion.png
+.. figure:: /Images/Developer/XsdSchemaSuggestion.png
    :alt: Auto completion in PhpStorm with configured XSD schema
 
    Auto completion in PhpStorm with configured XSD schema

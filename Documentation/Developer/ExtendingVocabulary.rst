@@ -1,4 +1,4 @@
-.. include:: ../Includes.txt
+.. include:: /Includes.rst.txt
 
 .. _extending-vocabulary:
 
@@ -210,7 +210,7 @@ Then mark your class as a WebPage type with the interface
 
 The new web page type can now be selected in the page properties:
 
-.. figure:: ../Images/Developer/MedicalWebPageTypeSelection.png
+.. figure:: /Images/Developer/MedicalWebPageTypeSelection.png
    :alt: MedicalWebPage in the list of available web page types
 
    *MedicalWebPage* in the list of available web page types

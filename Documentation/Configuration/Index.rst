@@ -1,4 +1,4 @@
-.. include:: ../Includes.txt
+.. include:: /Includes.rst.txt
 
 .. index:: Configuration
 
@@ -23,7 +23,7 @@ To configure the extension, go to :guilabel:`Admin Tools` > :guilabel:`Settings`
 :guilabel:`Configure extensions` button. Open the :guilabel:`schema`
 configuration:
 
-.. figure:: ../Images/Configuration/ExtensionConfiguration.png
+.. figure:: /Images/Configuration/ExtensionConfiguration.png
    :alt: Options in the extension configuration
 
    Options in the extension configuration

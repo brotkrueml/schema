@@ -1,4 +1,4 @@
-.. include:: ../Includes.txt
+.. include:: /Includes.rst.txt
 
 .. index:: API
 
@@ -131,7 +131,7 @@ a "special type" and don't require the implementation of additional methods:
 These interfaces can be useful when you want to :ref:`extend the
 vocabulary <extending-vocabulary>`.
 
-.. figure:: ../Images/Developer/TypeModels.png
+.. figure:: /Images/Developer/TypeModels.png
    :alt: Inheritance of the type models
 
    Inheritance of the type models (namespaces are omitted for better
