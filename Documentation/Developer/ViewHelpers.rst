@@ -30,6 +30,10 @@ in the example, you can also nest view helpers into each other.
 
 There are currently over 600 view helpers available.
 
+.. note::
+   The extension registers ``schema`` in the global Fluid namespace. So there is
+   no need to import the namespace in your templates.
+
 
 .. _schema-type-view-helpers:
 
