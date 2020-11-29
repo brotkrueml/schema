@@ -106,6 +106,7 @@ final class TypeRegistry implements SingletonInterface
                 }
             }
         }
+        /** @psalm-suppress TooFewArguments */
         $typeModels = \array_replace_recursive(...$allTypeModels);
         \ksort($typeModels);
 

@@ -41,7 +41,7 @@
 		"typo3/cms-adminpanel": "^9.5 || ^10.4",
 		"typo3/coding-standards": "^0.2",
 		"typo3/testing-framework": "^4.13 || ^6.2",
-		"vimeo/psalm": "^3.11"
+		"vimeo/psalm": "^4.0"
 	},
 	"suggest": {
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
