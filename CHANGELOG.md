@@ -6,11 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Updated
+- Schema definition to version 11.01 (#3)
+
 ## [1.9.0] - 2020-09-08
 
 ### Added
-- Update schema definition to version 10.0 (#3)
 - Button in Admin Panel to verify structured data in Rich Result Test
+
+### Updated
+- Schema definition to version 10.0 (#3)
 
 ## [1.8.0] - 2020-07-08
 
@@ -33,7 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Possibility to register additional schema types (#38)
 - Introduce a TypeInterface for type models implementations
 - Introduce a TypeFactory for creating type models (#48)
-- Update schema definition to version 7.04 (#3)
+
+### Updated
+- Schema definition to version 7.04 (#3)
 
 ### Changed
 - Decouple rendering of JSON-LD from AbstractType and SchemaManager
@@ -68,7 +75,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add Signal/PSR-14 event to decide about embedding of markup (#29)
-- Update schema definition to version 6.0 (#3)
+
+### Updated
+- Schema definition to version 6.0 (#3)
 
 ## [1.4.2] - 2019-12-13
 
@@ -91,7 +100,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Multiple items in mainEntity of a WebPage (#25)
-- Update schema definition to version 5.0 (#3)
+
+### Updated
+- Schema definition to version 5.0 (#3)
 
 ## [1.3.1] - 2019-11-04
 

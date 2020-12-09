@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A doctor\&#039;s office.
+ * A doctor's office.
  */
 final class PhysicianViewHelper extends AbstractTypeViewHelper
 {

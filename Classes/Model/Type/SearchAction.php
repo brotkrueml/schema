@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of searching for an object.
+ *
+ * Related actions:
+ * FindAction: SearchAction generally leads to a FindAction, but not necessarily.
  */
 final class SearchAction extends AbstractType
 {

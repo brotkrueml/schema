@@ -23,6 +23,16 @@ use Brotkrueml\Schema\Model\Type;
 class RegisterTypePropertiesMovedFromOfficialToPending
 {
     /** @var array<class-string> */
+    private $hasEnergyConsumptionDetails = [
+        Type\Car::class,
+        Type\IndividualProduct::class,
+        Type\Product::class,
+        Type\ProductModel::class,
+        Type\SomeProducts::class,
+        Type\Vehicle::class,
+    ];
+
+    /** @var array<class-string> */
     private $ineligibleRegionTypes = [
         Type\ActionAccessSpecification::class,
         Type\AggregateOffer::class,
@@ -64,6 +74,10 @@ class RegisterTypePropertiesMovedFromOfficialToPending
             $event->registerAdditionalProperty('jobTitle');
         }
 
+        if (\in_array($type, $this->hasEnergyConsumptionDetails)) {
+            /* from official to pending in schema version 11.0 */
+            $event->registerAdditionalProperty('hasEnergyConsumptionDetails');
+        }
         if (\in_array($type, $this->ineligibleRegionTypes)) {
             /* from official to pending in schema version 4.0 */
             $event->registerAdditionalProperty('ineligibleRegion');

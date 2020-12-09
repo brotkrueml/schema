@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of responding to a question/message asked/sent by the object. Related to AskAction
+ *
+ * Related actions:
+ * AskAction: Appears generally as an origin of a ReplyAction.
  */
 final class ReplyActionViewHelper extends AbstractTypeViewHelper
 {

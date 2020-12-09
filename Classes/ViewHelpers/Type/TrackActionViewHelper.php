@@ -15,6 +15,10 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * An agent tracks an object for updates.
+ *
+ * Related actions:
+ * FollowAction: Unlike FollowAction, TrackAction refers to the interest on the location of innanimates objects.
+ * SubscribeAction: Unlike SubscribeAction, TrackAction refers to  the interest on the location of innanimate objects.
  */
 final class TrackActionViewHelper extends AbstractTypeViewHelper
 {

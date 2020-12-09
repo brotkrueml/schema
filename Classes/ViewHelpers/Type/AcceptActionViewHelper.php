@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of committing to/adopting an object.
+ *
+ * Related actions:
+ * RejectAction: The antonym of AcceptAction.
  */
 final class AcceptActionViewHelper extends AbstractTypeViewHelper
 {

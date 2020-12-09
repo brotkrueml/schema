@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of posing a question / favor to someone.
+ *
+ * Related actions:
+ * ReplyAction: Appears generally as a response to AskAction.
  */
 final class AskAction extends AbstractType
 {

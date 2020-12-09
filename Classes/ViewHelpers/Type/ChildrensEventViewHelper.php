@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * Event type: Children\&#039;s event.
+ * Event type: Children's event.
  */
 final class ChildrensEventViewHelper extends AbstractTypeViewHelper
 {

@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of an agent relocating to a place.
+ *
+ * Related actions:
+ * TransferAction: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.
  */
 final class MoveAction extends AbstractType
 {

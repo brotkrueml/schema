@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * An agent inspects, determines, investigates, inquires, or examines an object\&#039;s accuracy, quality, condition, or state.
+ * An agent inspects, determines, investigates, inquires, or examines an object's accuracy, quality, condition, or state.
  */
 final class CheckAction extends AbstractType
 {

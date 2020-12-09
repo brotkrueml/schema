@@ -15,6 +15,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A hotel room is a single room in a hotel.
+ *
+ * See also the <a href="https://schema.org/docs/hotels.html">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.
  */
 final class HotelRoom extends AbstractType
 {

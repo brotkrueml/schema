@@ -15,6 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * Accountancy business.
+ *
+ * As a LocalBusiness it can be described as a provider of one or more Service\(s).
  */
 final class AccountingServiceViewHelper extends AbstractTypeViewHelper
 {

@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * Event type: Children\&#039;s event.
+ * Event type: Children's event.
  */
 final class ChildrensEvent extends AbstractType
 {

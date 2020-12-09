@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A financial product for the loaning of an amount of money under agreed terms and charges.
+ * A financial product for the loaning of an amount of money, or line of credit, under agreed terms and charges.
  */
 final class LoanOrCredit extends AbstractType
 {

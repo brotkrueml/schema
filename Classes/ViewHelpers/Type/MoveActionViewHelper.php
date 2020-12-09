@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of an agent relocating to a place.
+ *
+ * Related actions:
+ * TransferAction: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.
  */
 final class MoveActionViewHelper extends AbstractTypeViewHelper
 {

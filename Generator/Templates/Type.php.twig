@@ -12,7 +12,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 {% endif %}
 
 /**
- * {{ comment }}
+{% for line in comment %}
+ * {{ line|trim|raw }}
+{% endfor %}
  */
 final class {{ className }} extends AbstractType
 {% if isWebPageType %}

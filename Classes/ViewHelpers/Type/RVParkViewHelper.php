@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A place offering space for &quot;Recreational Vehicles&quot;, Caravans, mobile homes and the like.
+ * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
  */
 final class RVParkViewHelper extends AbstractTypeViewHelper
 {

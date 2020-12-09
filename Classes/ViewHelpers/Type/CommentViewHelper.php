@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A comment on an item - for example, a comment on a blog post. The comment\&#039;s content is expressed via the text property, and its topic via about, properties shared with all CreativeWorks.
+ * A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the text property, and its topic via about, properties shared with all CreativeWorks.
  */
 final class CommentViewHelper extends AbstractTypeViewHelper
 {

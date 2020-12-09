@@ -42,6 +42,30 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 
     /**
      * @test
+     * @dataProvider dataProviderForHasEnergyConsumptionDetails
+     */
+    public function additionalPropertyHasEnergyConsumptionDetailsIsRegisteredCorrectly(string $type): void
+    {
+        $event = new RegisterAdditionalTypePropertiesEvent($type);
+        ($this->subject)($event);
+
+        self::assertContains('hasEnergyConsumptionDetails', $event->getAdditionalProperties());
+    }
+
+    public function dataProviderForHasEnergyConsumptionDetails(): array
+    {
+        return [
+            [Type\Car::class],
+            [Type\IndividualProduct::class],
+            [Type\Product::class],
+            [Type\ProductModel::class],
+            [Type\SomeProducts::class],
+            [Type\Vehicle::class],
+        ];
+    }
+
+    /**
+     * @test
      * @dataProvider dataProviderForIneligibleRegion
      */
     public function additionalPropertyIneligibleRegionIsRegisteredCorrectly(string $type): void

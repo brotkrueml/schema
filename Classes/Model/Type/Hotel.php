@@ -15,6 +15,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A hotel is an establishment that provides lodging paid on a short-term basis (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Hotel).
+ *
+ * See also the <a href="https://schema.org/docs/hotels.html">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.
  */
 final class Hotel extends AbstractType
 {

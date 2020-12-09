@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A doctor\&#039;s office.
+ * A doctor's office.
  */
 final class Physician extends AbstractType
 {

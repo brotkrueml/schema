@@ -6,7 +6,9 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * {{ comment }}
+{% for line in comment %}
+ * {{ line|trim|raw }}
+{% endfor %}
  */
 final class {{ type }}ViewHelper extends AbstractTypeViewHelper
 {

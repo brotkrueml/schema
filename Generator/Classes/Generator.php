@@ -20,9 +20,9 @@ use Twig\Environment;
 
 class Generator
 {
-    protected const ROOT_TYPE_ID = 'http://schema.org/Thing';
-    protected const ROOT_WEBPAGE_TYPE_ID = 'http://schema.org/WebPage';
-    protected const ROOT_WEBPAGEELEMENT_TYPE_ID = 'http://schema.org/WebPageElement';
+    protected const ROOT_TYPE_ID = 'schema:Thing';
+    protected const ROOT_WEBPAGE_TYPE_ID = 'schema:WebPage';
+    protected const ROOT_WEBPAGEELEMENT_TYPE_ID = 'schema:WebPageElement';
 
     protected const ATTRIBUTE_SUBTYPE_OF = 'rdfs:subClassOf';
     protected const ATTRIBUTE_COMMENT = 'rdfs:comment';
@@ -37,16 +37,16 @@ class Generator
     protected $twig;
 
     protected $dataTypeIds = [
-        'http://schema.org/Boolean',
-        'http://schema.org/DataType',
-        'http://schema.org/Date',
-        'http://schema.org/DateTime',
-        'http://schema.org/Float',
-        'http://schema.org/Integer',
-        'http://schema.org/Number',
-        'http://schema.org/Text',
-        'http://schema.org/Time',
-        'http://schema.org/URL',
+        'schema:Boolean',
+        'schema:DataType',
+        'schema:Date',
+        'schema:DateTime',
+        'schema:Float',
+        'schema:Integer',
+        'schema:Number',
+        'schema:Text',
+        'schema:Time',
+        'schema:URL',
     ];
 
     /** @var Graph */
@@ -101,11 +101,11 @@ class Generator
                 continue;
             }
 
-            if (\array_key_exists('http://schema.org/supersededBy', $term)) {
+            if (\array_key_exists('schema:supersededBy', $term)) {
                 continue;
             }
 
-            if (\array_key_exists('http://schema.org/isPartOf', $term)) {
+            if (\array_key_exists('schema:isPartOf', $term)) {
                 // Not part of the core vocabulary, e.g. pending, auto, health-lifesci
                 continue;
             }
@@ -159,15 +159,15 @@ class Generator
     protected function attachPropertiesToTypes(): void
     {
         foreach ($this->properties as $propertyId => $property) {
-            if (!\array_key_exists('http://schema.org/domainIncludes', $property)) {
+            if (!\array_key_exists('schema:domainIncludes', $property)) {
                 continue;
             }
 
-            if (\count($property['http://schema.org/domainIncludes']) === 1) {
-                $typeIds = [$property['http://schema.org/domainIncludes']['@id']];
+            if (\count($property['schema:domainIncludes']) === 1) {
+                $typeIds = [$property['schema:domainIncludes']['@id']];
             } else {
                 $typeIds = [];
-                foreach ($property['http://schema.org/domainIncludes'] as $type) {
+                foreach ($property['schema:domainIncludes'] as $type) {
                     $typeIds[] = $type['@id'];
                 }
             }
@@ -193,7 +193,7 @@ class Generator
     protected function createType(Vertex $type): void
     {
         $label = (string)$type->getAttribute(self::ATTRIBUTE_LABEL);
-        $comment = $this->shortenAndSanatiseComment((string)$type->getAttribute(self::ATTRIBUTE_COMMENT));
+        $comment = $this->prepareComment((string)$type->getAttribute(self::ATTRIBUTE_COMMENT));
 
         $properties = $this->getPropertiesForType($type);
 
@@ -237,11 +237,32 @@ class Generator
         }
     }
 
-    protected function shortenAndSanatiseComment(string $comment): string
+    protected function prepareComment(string $comment): array
     {
-        $tokenisedComment = \explode("\n", \str_replace("'", "\\'", \strip_tags($comment)));
+        $replacements = [
+            '[[' => '',
+            ']]' => '',
+            '&amp;' => '&',
+            '&quot;' => '"',
+            '&lt;' => '<',
+            '&gt;' => '>',
+            '&#x2014;' => ' - ',
+            '\\n' => "\n",
+            '<a href="/' => '<a href="https://schema.org/',
+        ];
 
-        return $tokenisedComment[0];
+        $commentLines = \explode(
+            '\n',
+            \str_replace(
+                \array_keys($replacements),
+                \array_values($replacements),
+                \strip_tags($comment, ['<a>'])
+            )
+        );
+
+        return \array_filter($commentLines, static function (string $line): bool {
+            return $line !== '';
+        });
     }
 
     protected function getPropertiesForType(Vertex $type)

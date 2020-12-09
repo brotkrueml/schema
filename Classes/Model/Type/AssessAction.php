@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * The act of forming one\&#039;s opinion, reaction or sentiment.
+ * The act of forming one's opinion, reaction or sentiment.
  */
 final class AssessAction extends AbstractType
 {

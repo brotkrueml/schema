@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of rejecting to/adopting an object.
+ *
+ * Related actions:
+ * AcceptAction: The antonym of RejectAction.
  */
 final class RejectAction extends AbstractType
 {

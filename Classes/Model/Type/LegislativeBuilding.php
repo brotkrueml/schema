@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A legislative building&amp;#x2014;for example, the state capitol.
+ * A legislative building - for example, the state capitol.
  */
 final class LegislativeBuilding extends AbstractType
 {

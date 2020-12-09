@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A contact point&amp;#x2014;for example, a Customer Complaints department.
+ * A contact point - for example, a Customer Complaints department.
  */
 final class ContactPoint extends AbstractType
 {

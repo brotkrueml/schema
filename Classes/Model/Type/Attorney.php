@@ -15,6 +15,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Professional service: Attorney.
+ *
+ * This type is deprecated - LegalService is more inclusive and less ambiguous.
  */
 final class Attorney extends AbstractType
 {

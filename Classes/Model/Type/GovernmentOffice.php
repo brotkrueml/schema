@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A government office&amp;#x2014;for example, an IRS or DMV office.
+ * A government office - for example, an IRS or DMV office.
  */
 final class GovernmentOffice extends AbstractType
 {

@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A utility class that serves as the umbrella for a number of \&#039;intangible\&#039; things such as quantities, structured values, etc.
+ * A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
  */
 final class IntangibleViewHelper extends AbstractTypeViewHelper
 {

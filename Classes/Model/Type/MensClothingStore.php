@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A men\&#039;s clothing store.
+ * A men's clothing store.
  */
 final class MensClothingStore extends AbstractType
 {

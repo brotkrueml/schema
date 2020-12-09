@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * Properties that take Mass as values are of the form \&#039;&amp;lt;Number&amp;gt; &amp;lt;Mass unit of measure&amp;gt;\&#039;. E.g., \&#039;7 kg\&#039;.
+ * Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'.
  */
 final class Mass extends AbstractType
 {

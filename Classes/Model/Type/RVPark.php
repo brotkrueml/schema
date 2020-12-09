@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A place offering space for &quot;Recreational Vehicles&quot;, Caravans, mobile homes and the like.
+ * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
  */
 final class RVPark extends AbstractType
 {

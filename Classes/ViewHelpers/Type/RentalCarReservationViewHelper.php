@@ -15,6 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * A reservation for a rental car.
+ *
+ * Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
  */
 final class RentalCarReservationViewHelper extends AbstractTypeViewHelper
 {

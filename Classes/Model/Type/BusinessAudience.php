@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A set of characteristics belonging to businesses, e.g. who compose an item\&#039;s target audience.
+ * A set of characteristics belonging to businesses, e.g. who compose an item's target audience.
  */
 final class BusinessAudience extends AbstractType
 {

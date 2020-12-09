@@ -15,13 +15,13 @@ php $CURRENT_DIR/../generate.php
 echo
 
 echo "Formatting model classes ..."
-php-cs-fixer fix $CURRENT_DIR/../../Classes/Model/Type/ --config $CURRENT_DIR/../../.php_cs
+$CURRENT_DIR/../../.Build/bin/php-cs-fixer fix $CURRENT_DIR/../../Classes/Model/Type/ --config $CURRENT_DIR/../../.php_cs
 echo
 
 echo "Formatting view helper classes ..."
-php-cs-fixer fix $CURRENT_DIR/../../Classes/ViewHelpers/Type/ --config $CURRENT_DIR/../../.php_cs
+$CURRENT_DIR/../../.Build/bin/php-cs-fixer fix $CURRENT_DIR/../../Classes/ViewHelpers/Type/ --config $CURRENT_DIR/../../.php_cs
 echo
 
 echo "Formatting provider class ..."
-php-cs-fixer fix $CURRENT_DIR/../../Classes/Provider/WebPageTypeProvider.php --config $CURRENT_DIR/../../.php_cs
+$CURRENT_DIR/../../.Build/bin/php-cs-fixer fix $CURRENT_DIR/../../Classes/Provider/WebPageTypeProvider.php --config $CURRENT_DIR/../../.php_cs
 echo

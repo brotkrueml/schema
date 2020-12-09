@@ -14,7 +14,9 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A property-value pair, e.g. representing a feature of a product or place. Use the \&#039;name\&#039; property for the name of the property. If there is an additional human-readable version of the value, put that into the \&#039;description\&#039; property.
+ * A property-value pair, e.g. representing a feature of a product or place. Use the 'name' property for the name of the property. If there is an additional human-readable version of the value, put that into the 'description' property.
+ *
+ * Always use specific schema.org properties when a) they exist and b) you can populate them. Using PropertyValue as a substitute will typically not trigger the same effect as using the original, specific property.
  */
 final class PropertyValueViewHelper extends AbstractTypeViewHelper
 {

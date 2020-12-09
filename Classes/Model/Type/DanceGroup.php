@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A dance group&amp;#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
+ * A dance group - for example, the Alvin Ailey Dance Theater or Riverdance.
  */
 final class DanceGroup extends AbstractType
 {

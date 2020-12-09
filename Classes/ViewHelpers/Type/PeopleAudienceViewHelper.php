@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A set of characteristics belonging to people, e.g. who compose an item\&#039;s target audience.
+ * A set of characteristics belonging to people, e.g. who compose an item's target audience.
  */
 final class PeopleAudienceViewHelper extends AbstractTypeViewHelper
 {

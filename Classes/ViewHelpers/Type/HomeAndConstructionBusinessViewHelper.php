@@ -15,6 +15,10 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * A construction business.
+ *
+ * A HomeAndConstructionBusiness is a LocalBusiness that provides services around homes and buildings.
+ *
+ * As a LocalBusiness it can be described as a provider of one or more Service\(s).
  */
 final class HomeAndConstructionBusinessViewHelper extends AbstractTypeViewHelper
 {

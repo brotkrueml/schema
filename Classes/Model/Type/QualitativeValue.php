@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A predefined value for a product characteristic, e.g. the power cord plug type \&#039;US\&#039; or the garment sizes \&#039;S\&#039;, \&#039;M\&#039;, \&#039;L\&#039;, and \&#039;XL\&#039;.
+ * A predefined value for a product characteristic, e.g. the power cord plug type 'US' or the garment sizes 'S', 'M', 'L', and 'XL'.
  */
 final class QualitativeValue extends AbstractType
 {

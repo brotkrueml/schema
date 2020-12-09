@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A legislative building&amp;#x2014;for example, the state capitol.
+ * A legislative building - for example, the state capitol.
  */
 final class LegislativeBuildingViewHelper extends AbstractTypeViewHelper
 {

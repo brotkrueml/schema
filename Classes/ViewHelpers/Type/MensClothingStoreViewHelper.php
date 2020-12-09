@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A men\&#039;s clothing store.
+ * A men's clothing store.
  */
 final class MensClothingStoreViewHelper extends AbstractTypeViewHelper
 {

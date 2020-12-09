@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * Classification of the album by it\&#039;s type of content: soundtrack, live album, studio album, etc.
+ * Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
  */
 final class MusicAlbumProductionType extends AbstractType
 {
