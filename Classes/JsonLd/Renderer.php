@@ -109,7 +109,7 @@ final class Renderer implements RendererInterface
     }
 
     /**
-     * @param TypeInterface|bool|string $value
+     * @param TypeInterface|bool|string|int|float $value
      * @return array|string
      */
     private function getPropertyValueForResult($value)
