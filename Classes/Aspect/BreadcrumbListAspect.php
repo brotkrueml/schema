@@ -82,7 +82,7 @@ final class BreadcrumbListAspect implements AspectInterface
             $itemType = TypeFactory::createType($givenItemType);
 
             $link = $this->contentObjectRenderer->typoLink_URL([
-                'parameter' => $page['uid'],
+                'parameter' => (string)$page['uid'],
                 'forceAbsoluteUrl' => true,
             ]);
 

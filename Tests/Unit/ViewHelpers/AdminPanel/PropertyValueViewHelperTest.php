@@ -193,23 +193,15 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
      */
     public function additionalManualsAreRenderedCorrectly(): void
     {
-        $this->languageServiceStub
-            ->expects(self::at(0))
-            ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg')
-            ->willReturn('Open documentation on schema.org');
+        $languageMap = [
+            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg', 'Open documentation on schema.org'],
+            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference', 'Open Google reference'],
+            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference', 'Open Yandex reference'],
+        ];
 
         $this->languageServiceStub
-            ->expects(self::at(1))
             ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference')
-            ->willReturn('Open Google reference');
-
-        $this->languageServiceStub
-            ->expects(self::at(2))
-            ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference')
-            ->willReturn('Open Yandex reference');
+            ->willReturnMap($languageMap);
 
         PropertyValueViewHelper::setAdditionalManuals([
             'Thing' => [
@@ -239,17 +231,14 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
      */
     public function additionalManualsWithLikeReferenceAreRenderedCorrectly(): void
     {
-        $this->languageServiceStub
-            ->expects(self::at(0))
-            ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg')
-            ->willReturn('Open documentation on schema.org');
+        $languageMap = [
+            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg', 'Open documentation on schema.org'],
+            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference', 'Open Google reference'],
+        ];
 
         $this->languageServiceStub
-            ->expects(self::at(1))
             ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference')
-            ->willReturn('Open Google reference');
+            ->willReturnMap($languageMap);
 
         PropertyValueViewHelper::setAdditionalManuals([
             'Foo' => [

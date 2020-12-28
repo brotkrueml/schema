@@ -347,41 +347,16 @@ class BreadcrumbListAspectTest extends UnitTestCase
     {
         $this->setUpGeneralMocks();
 
-        $this->contentObjectRendererMock
-            ->expects(self::at(0))
-            ->method('typoLink_URL')
-            ->with([
-                'parameter' => '2',
-                'forceAbsoluteUrl' => true,
-            ])
-            ->willReturn('https://example.org/level-1/');
+        $typoLinkMap = [
+            [['parameter' => '2', 'forceAbsoluteUrl' => true], 'https://example.org/level-1/'],
+            [['parameter' => '33', 'forceAbsoluteUrl' => true], 'https://example.org/level-2/'],
+            [['parameter' => '22', 'forceAbsoluteUrl' => true], 'https://example.org/level-3/'],
+            [['parameter' => '111', 'forceAbsoluteUrl' => true], 'https://example.org/level-4/'],
+        ];
 
         $this->contentObjectRendererMock
-            ->expects(self::at(1))
             ->method('typoLink_URL')
-            ->with([
-                'parameter' => '33',
-                'forceAbsoluteUrl' => true,
-            ])
-            ->willReturn('https://example.org/level-2/');
-
-        $this->contentObjectRendererMock
-            ->expects(self::at(2))
-            ->method('typoLink_URL')
-            ->with([
-                'parameter' => '22',
-                'forceAbsoluteUrl' => true,
-            ])
-            ->willReturn('https://example.org/level-3/');
-
-        $this->contentObjectRendererMock
-            ->expects(self::at(3))
-            ->method('typoLink_URL')
-            ->with([
-                'parameter' => '111',
-                'forceAbsoluteUrl' => true,
-            ])
-            ->willReturn('https://example.org/level-4/');
+            ->willReturnMap($typoLinkMap);
 
         $this->controllerMock->rootLine = [
             [

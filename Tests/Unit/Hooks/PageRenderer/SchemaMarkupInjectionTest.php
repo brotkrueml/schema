@@ -317,11 +317,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $this->pagesCacheServiceMock
-            ->expects(self::at(0))
+            ->expects(self::once())
             ->method('getMarkupFromCache')
             ->willReturn(null);
         $this->pagesCacheServiceMock
-            ->expects(self::at(1))
+            ->expects(self::once())
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,

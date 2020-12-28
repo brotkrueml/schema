@@ -33,7 +33,6 @@
 		"composer/package-versions-deprecated": "^1.8",
 		"dg/bypass-finals": "^1.1",
 		"friendsofphp/php-cs-fixer": "^2.16",
-		"infection/infection": "^0.13",
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.2",
 		"phpunit/phpunit": "^8.5 || ^9.1",
