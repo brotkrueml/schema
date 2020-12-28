@@ -153,11 +153,6 @@ class PagesCacheServiceTest extends TestCase
 
     private function isTypo3Version9(): bool
     {
-        if (!\class_exists(Typo3Version::class)) {
-            // Class available since 9.5.16
-            return true;
-        }
-
-        return (new Typo3Version())->getBranch() === '9.5';
+        return (new Typo3Version())->getMajorVersion() === 9;
     }
 }

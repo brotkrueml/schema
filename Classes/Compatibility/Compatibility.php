@@ -20,12 +20,7 @@ class Compatibility
 
     public function __construct()
     {
-        if (\class_exists(Typo3Version::class)) {
-            $this->majorVersion = (new Typo3Version())->getMajorVersion();
-            return;
-        }
-
-        $this->majorVersion = 9;
+        $this->majorVersion = (new Typo3Version())->getMajorVersion();
     }
 
     public function hasCachePrefixForCacheIdentifier(): bool

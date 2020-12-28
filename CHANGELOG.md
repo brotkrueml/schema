@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Updated
 - Schema definition to version 11.01 (#3)
 
+### Changed
+- Raise minimum required version to TYPO3 9.5.16
+
 ## [1.9.0] - 2020-09-08
 
 ### Added
