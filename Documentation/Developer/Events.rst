@@ -25,7 +25,7 @@ later use as a PSR-14 event listener during migration.
 
 .. attention::
 
-   In TYPO3 v10 you can use signal/slots **and** PSR-14 events. If you use both,
+   In TYPO3 v10/v11 you can use signal/slots **and** PSR-14 events. If you use both,
    the PSR-14 events are called first in this extension, and the signal/slots
    operate on the modified event from the PSR-14 events.
 
@@ -34,7 +34,7 @@ PSR-14 events
 -------------
 
 The standardised way, which is available since TYPO3 v10. If you are using TYPO3
-v10, use event listeners to be future-proof.
+v10 or above, use event listeners to be future-proof.
 
 .. seealso::
 
@@ -63,7 +63,7 @@ Register additional properties for a type
 Sometimes it can be necessary to use properties which are not standardised or
 `pending <https://pending.schema.org/>`_, or to add `property annotations
 <https://schema.org/docs/actions.html#part-4>`_. Therefore an event is available
-which can be used in a slot (TYPO3 v9/v10) and a PSR-14 event listener
+which can be used in a slot (TYPO3 v9/v10/v11) and a PSR-14 event listener
 (TYPO3 v10+).
 
 These additional properties are not only available in the :ref:`API <api>` but
@@ -138,12 +138,12 @@ Example
                  identifier: 'myAdditionalPropertiesForPerson'
                  event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
 
-Signal/slot (for TYPO3 v9/v10)
-------------------------------
+Signal/slot (for TYPO3 v9/v10/v11)
+----------------------------------
 
 .. note::
 
-   If you use TYPO3 v10 you should use the PSR-14 event above. The signal/slot
+   If you use TYPO3 v10 or above you should use the PSR-14 event above. The signal/slot
    will be deleted when the compatibility of this extension for TYPO3 v9 is
    removed in later versions.
 
@@ -218,7 +218,7 @@ intentional to add markup on such a page, e.g. you declared a detail page as
 ``noindex`` in the page properties, but the plugin on that page changes it to
 ``index``.
 
-For TYPO3 v9/v10 you can use a signal/slot, for TYPO3 v10+ is also a PSR-14
+For TYPO3 v9/v10/v11 you can use a signal/slot, for TYPO3 v10+ is also a PSR-14
 event available to change the default behaviour.
 
 Both versions receive the
@@ -294,8 +294,8 @@ Example
                  event: Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent
 
 
-Signal/slot (for TYPO3 v9/v10)
-------------------------------
+Signal/slot (for TYPO3 v9/v10/v11)
+----------------------------------
 
 The signal :php:`shouldEmbedMarkup` of the
 :php:`Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection`
@@ -303,7 +303,7 @@ class enables you to modify the embedding of the markup on a page.
 
 .. note::
 
-   If you use TYPO3 v10 you should use the PSR-14 event above. The signal/slot
+   If you use TYPO3 v10 or above you should use the PSR-14 event above. The signal/slot
    will be deleted when the compatibility of this extension for TYPO3 v9 is
    removed in later versions.
 

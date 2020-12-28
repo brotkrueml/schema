@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Aspect\BreadcrumbListAspect;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
+use Brotkrueml\Schema\Tests\Helper\PageRepository;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -25,7 +26,6 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
-use TYPO3\CMS\Frontend\Page\PageRepository;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class BreadcrumbListAspectTest extends UnitTestCase
