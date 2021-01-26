@@ -48,7 +48,7 @@ If the type is not available a :php:`\DomainException` is thrown.
 
 Every type implements the :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`.
 You will find a list of the available methods in the section
-:ref:`<api-type-interface>`.
+:ref:`Available type model methods <api-type-interface>`.
 
 Surely you will need to add some properties::
 
