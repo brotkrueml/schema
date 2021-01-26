@@ -250,6 +250,15 @@ can activate or deactivate the embedding of markup on a specific page.
 
    This is the preferred way for TYPO3 v10+.
 
+.. note::
+
+   It can be necessary to :ref:`define an order <t3coreapi:EventDispatcherRegistration>`
+   for these event listeners. Use :yaml:`before` or :yaml:`after` for this
+   when configuring the event listener in the :file:`Configuration/Services.yaml`
+   file. Also note that this extension ships an event listener for deactivating
+   the embedding of structured data dependent on the ``noindex`` field of the
+   seo system extension.
+
 Example
 ~~~~~~~
 
