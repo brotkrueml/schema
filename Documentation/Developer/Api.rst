@@ -120,7 +120,7 @@ model can also extend the abstract class
 :php:`Brotkrueml\Schema\Core\Model\AbstractType` which implements every needed
 method.
 
-Two other interfaces are available, they are used to "tag" a type model class as
+Two other interfaces are available, they are used to "mark" a type model class as
 a "special type" and don't require the implementation of additional methods:
 
 - :php:`Brotkrueml\Schema\Core\Model\WebPageTypeInterface` for a
@@ -131,11 +131,27 @@ a "special type" and don't require the implementation of additional methods:
 These interfaces can be useful when you want to :ref:`extend the
 vocabulary <extending-vocabulary>`.
 
-.. figure:: /Images/Developer/TypeModels.png
-   :alt: Inheritance of the type models
+.. uml::
+   :caption: Inheritance of the type models (namespaces are omitted for better readability)
 
-   Inheritance of the type models (namespaces are omitted for better
-   readability)
+   interface TypeInterface
+   interface WebPageElementTypeInterface
+   interface WebPageTypeInterface
+   abstract AbstractType
+   object WebPageElement
+   object Thing
+   object Event
+   object OtherTypes
+   object WebPage
+
+   WebPageElementTypeInterface <|-- WebPageElement
+   WebPageTypeInterface <|-- WebPage
+   TypeInterface <|-- AbstractType
+   AbstractType <|-- WebPageElement
+   AbstractType <|-- Thing
+   AbstractType <|-- Event
+   AbstractType <|-- OtherTypes
+   AbstractType <|-- WebPage
 
 Each type model delivered with this extension extends the :php:`AbstractType`
 class.
