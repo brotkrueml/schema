@@ -30,17 +30,16 @@
 	},
 	"require-dev": {
 		"clue/graph": "^0.9",
-		"composer/package-versions-deprecated": "^1.8",
-		"dg/bypass-finals": "^1.1",
-		"friendsofphp/php-cs-fixer": "^2.16",
+		"dg/bypass-finals": "^1.3",
+		"friendsofphp/php-cs-fixer": "^2.18",
 		"mikey179/vfsstream": "^1.6",
-		"php-coveralls/php-coveralls": "^2.2",
-		"phpunit/phpunit": "^8.5 || ^9.1",
-		"twig/twig": "^3.0",
+		"php-coveralls/php-coveralls": "^2.4",
+		"phpunit/phpunit": "^8.5 || ^9.5",
+		"twig/twig": "^3.3",
 		"typo3/cms-adminpanel": "^9.5.16 || ^10.4 || ^11.0",
 		"typo3/coding-standards": "^0.2",
-		"typo3/testing-framework": "^4.13 || ^6.2",
-		"vimeo/psalm": "^4.0"
+		"typo3/testing-framework": "^4.13 || ^6.7",
+		"vimeo/psalm": "^4.6"
 	},
 	"suggest": {
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
