@@ -56,6 +56,7 @@ final class TVEpisode extends AbstractType
         'director',
         'disambiguatingDescription',
         'discussionUrl',
+        'duration',
         'editor',
         'educationalAlignment',
         'educationalUse',

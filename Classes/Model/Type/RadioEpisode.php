@@ -55,6 +55,7 @@ final class RadioEpisode extends AbstractType
         'director',
         'disambiguatingDescription',
         'discussionUrl',
+        'duration',
         'editor',
         'educationalAlignment',
         'educationalUse',

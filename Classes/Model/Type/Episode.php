@@ -55,6 +55,7 @@ final class Episode extends AbstractType
         'director',
         'disambiguatingDescription',
         'discussionUrl',
+        'duration',
         'editor',
         'educationalAlignment',
         'educationalUse',
