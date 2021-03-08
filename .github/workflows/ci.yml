@@ -93,7 +93,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer --version
-          composer install --no-progress --prefer-dist --optimize-autoloader
+          composer update --no-progress --prefer-dist --optimize-autoloader
       - name: Run unit tests
         run: |
           .Build/bin/phpunit -c Tests/phpunit.xml.dist --log-junit .Build/logs/phpunit.xml --coverage-text --coverage-clover .Build/logs/clover.xml
