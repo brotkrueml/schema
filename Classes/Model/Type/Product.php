@@ -60,6 +60,7 @@ final class Product extends AbstractType
         'review',
         'sameAs',
         'sku',
+        'size',
         'slogan',
         'subjectOf',
         'url',
