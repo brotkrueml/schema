@@ -37,7 +37,7 @@
 		"phpunit/phpunit": "^8.5 || ^9.5",
 		"twig/twig": "^3.3",
 		"typo3/cms-adminpanel": "^9.5.16 || ^10.4 || ^11.0",
-		"typo3/coding-standards": "^0.2",
+		"typo3/coding-standards": "^0.3",
 		"typo3/testing-framework": "^4.13 || ^6.7",
 		"vimeo/psalm": "^4.6"
 	},
