@@ -97,7 +97,8 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
         $breadcrumbList = TypeFactory::createType('BreadcrumbList');
-        for ($i = 0; $i < count($arguments[static::ARGUMENT_BREADCRUMB]); $i++) {
+        $itemsCount = \count($arguments[static::ARGUMENT_BREADCRUMB]);
+        for ($i = 0; $i < $itemsCount; $i++) {
             $id = $arguments[static::ARGUMENT_BREADCRUMB][$i]['link'];
             if (\strpos($id, $siteUrl) === false) {
                 $id = $siteUrl . \ltrim($id, '/');

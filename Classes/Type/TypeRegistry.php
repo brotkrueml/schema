@@ -55,7 +55,7 @@ final class TypeRegistry implements SingletonInterface
 
     public function __construct(FrontendInterface $cache = null, PackageManager $packageManager = null)
     {
-        if (!$cache) {
+        if ($cache === null) {
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
             try {
                 $this->cache = $cacheManager->getCache(Extension::CACHE_CORE_IDENTIFIER);
@@ -117,11 +117,14 @@ final class TypeRegistry implements SingletonInterface
 
     private function requireCacheEntry(string $identifier): ?array
     {
-        if ($this->cache instanceof PhpFrontend && $this->cache->has($identifier)) {
-            return $this->cache->require($identifier);
+        if (!$this->cache instanceof PhpFrontend) {
+            return null;
+        }
+        if (!$this->cache->has($identifier)) {
+            return null;
         }
 
-        return null;
+        return $this->cache->require($identifier);
     }
 
     private function setCacheEntry(string $identifier, array $data): void
@@ -170,9 +173,7 @@ final class TypeRegistry implements SingletonInterface
         $specialTypes = [];
         foreach ($this->getTypesWithModels() as $type => $typeModel) {
             try {
-                $interfaces = \array_keys((new \ReflectionClass($typeModel))->getInterfaces());
-
-                if (\in_array($typeInterface, $interfaces)) {
+                if (array_key_exists($typeInterface, (new \ReflectionClass($typeModel))->getInterfaces())) {
                     $specialTypes[] = $type;
                 }
             } catch (\ReflectionException $e) {

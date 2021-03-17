@@ -82,7 +82,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         /** @var TypeInterface $recent */
         $recent = $this->stack->pop();
 
-        if ($this->parentPropertyName) {
+        if ($this->parentPropertyName !== '') {
             /** @var TypeInterface $parent */
             $parent = $this->stack->pop();
             $parent->addProperty($this->parentPropertyName, $recent);

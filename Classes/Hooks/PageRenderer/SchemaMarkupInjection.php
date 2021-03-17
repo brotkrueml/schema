@@ -101,12 +101,12 @@ final class SchemaMarkupInjection
                 $aspect->execute($this->schemaManager);
             }
 
-            if ($result = $this->schemaManager->renderJsonLd()) {
+            if (($result = $this->schemaManager->renderJsonLd()) !== '') {
                 $this->pagesCacheService->storeMarkupInCache($result);
             }
         }
 
-        if (!$result) {
+        if ($result === '') {
             return;
         }
 

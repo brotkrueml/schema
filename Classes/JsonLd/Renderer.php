@@ -49,11 +49,7 @@ final class Renderer implements RendererInterface
             return '';
         }
 
-        if (\count($renderedTypes) === 1) {
-            $result = $renderedTypes[0];
-        } else {
-            $result = ['@graph' => $renderedTypes];
-        }
+        $result = \count($renderedTypes) === 1 ? $renderedTypes[0] : ['@graph' => $renderedTypes];
 
         $result = \array_merge(['@context' => static::CONTEXT], $result);
 
@@ -91,8 +87,10 @@ final class Renderer implements RendererInterface
     {
         foreach ($type->getPropertyNames() as $propertyName) {
             $propertyValue = $type->getProperty($propertyName);
-
-            if ($propertyValue === null || $propertyValue === '') {
+            if ($propertyValue === null) {
+                continue;
+            }
+            if ($propertyValue === '') {
                 continue;
             }
 

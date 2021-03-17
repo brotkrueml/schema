@@ -185,7 +185,7 @@ final class SchemaManager implements SingletonInterface
     /** @psalm-suppress PossiblyUndefinedMethod */
     private function preparePropertiesForWebPage(): void
     {
-        if (\count($this->breadcrumbLists)) {
+        if ($this->breadcrumbLists !== []) {
             $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
 
             foreach ($this->breadcrumbLists as $breadcrumb) {

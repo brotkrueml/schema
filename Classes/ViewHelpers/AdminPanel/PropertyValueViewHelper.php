@@ -39,9 +39,6 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     protected $escapeOutput = false;
 
-    /** @var RenderingContextInterface */
-    private static $localRenderingContext;
-
     /** @var array|null */
     private static $additionalManuals;
 
@@ -61,8 +58,6 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
-        self::$localRenderingContext = $renderingContext;
-
         $name = $arguments['name'];
         $value = $arguments['value'];
 
@@ -77,8 +72,10 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         if ($name === '@id') {
             return \htmlspecialchars($value);
         }
-
-        if (\filter_var($value, \FILTER_VALIDATE_URL) === false || \strpos($value, 'http') !== 0) {
+        if (\filter_var($value, \FILTER_VALIDATE_URL) === false) {
+            return \htmlspecialchars($value);
+        }
+        if (\strpos($value, 'http') !== 0) {
             return \htmlspecialchars($value);
         }
 
@@ -127,7 +124,10 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         $manualType = $additionalManuals[$type]['like'] ?? $type;
         foreach ($additionalManuals[$manualType] ?? [] as $manual) {
             $provider = $manual['provider'] ?? '';
-            if (!$provider || !\array_key_exists($provider, self::MANUAL_PROVIDERS)) {
+            if (!$provider) {
+                continue;
+            }
+            if (!\array_key_exists($provider, self::MANUAL_PROVIDERS)) {
                 continue;
             }
 
