@@ -79,8 +79,6 @@ class TypesInformationTest extends TestCase
     /**
      * @test
      * @dataProvider dataProviderForGetContent
-     * @param string|null $markupFromCache
-     * @param array $expectedTypes
      */
     public function getContentWithNoCacheEntryAvailable(?string $markupFromCache, array $expectedTypes): void
     {

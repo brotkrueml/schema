@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 use Rector\Core\Configuration\Option;
 use Rector\Core\ValueObject\PhpVersion;
+use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
+use Rector\PHPUnit\Sets\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::PATHS, [__DIR__ . '/Classes']);
+    $parameters->set(Option::PATHS, [
+        __DIR__ . '/Classes',
+        __DIR__ . '/Tests',
+    ]);
 
     $parameters->set(Option::AUTOLOAD_PATHS, [__DIR__ . '/.Build/vendor/autoload.php']);
 
@@ -31,11 +36,19 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHP_71,
         SetList::PHP_72,
 //        SetList::TYPE_DECLARATION,
+        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+        PHPUnitSetList::PHPUNIT_EXCEPTION,
+        PHPUnitSetList::PHPUNIT_MOCK,
+        PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
+        PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
     ]);
 
     $parameters->set(Option::SKIP, [
         CountOnNullRector::class => [
-            __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php'
+            __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
+        ],
+        RecastingRemovalRector::class => [
+            __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
         ],
     ]);
 };

@@ -18,7 +18,6 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -43,9 +42,6 @@ class WebPageAspectTest extends TestCase
 
     /** @var MockObject|RequestHandlerInterface */
     protected $handlerMock;
-
-    /** @var Stub|TypeRegistry */
-    private $typeRegistryStub;
 
     protected function setUp(): void
     {

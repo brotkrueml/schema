@@ -37,10 +37,6 @@ class RendererTest extends TestCase
     /**
      * @test
      * @dataProvider dataProvider
-     *
-     * @param string|null $id
-     * @param array $properties
-     * @param string $expected
      */
     public function renderReturnsCorrectOutputWithOneTypeGiven(?string $id, array $properties, string $expected): void
     {

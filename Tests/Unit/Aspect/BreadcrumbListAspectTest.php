@@ -19,7 +19,6 @@ use Brotkrueml\Schema\Tests\Helper\PageRepository;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Stub;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -45,9 +44,6 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
     /** @var MockObject|ContentObjectRenderer */
     protected $contentObjectRendererMock;
-
-    /** @var Stub|TypeRegistry */
-    private $typeRegistryStub;
 
     protected function setUp(): void
     {
@@ -307,9 +303,6 @@ class BreadcrumbListAspectTest extends UnitTestCase
     /**
      * @test
      * @dataProvider rootLineProvider
-     *
-     * @param array $rootLine
-     * @param string $expected
      */
     public function breadCrumbIsGeneratedCorrectly(array $rootLine, string $expected): void
     {

@@ -48,8 +48,6 @@ class WebPageTypeProviderTest extends TestCase
     /**
      * @test
      * @dataProvider dataProvider
-     *
-     * @param string $type
      */
     public function getTypesForTcaSelectReturnsAllAvailableWebPageTypes(string $type): void
     {

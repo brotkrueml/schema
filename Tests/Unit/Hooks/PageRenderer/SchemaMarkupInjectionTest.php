@@ -28,7 +28,6 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class SchemaMarkupInjectionTest extends TestCase
@@ -59,16 +58,6 @@ class SchemaMarkupInjectionTest extends TestCase
      * @var PagesCacheService|MockObject
      */
     private $pagesCacheServiceMock;
-
-    /**
-     * @var MockObject|FrontendInterface
-     */
-    private $cacheMock;
-
-    /**
-     * @var MockObject|ObjectManager
-     */
-    private $objectManagerMock;
 
     /**
      * @var Stub|EventDispatcher

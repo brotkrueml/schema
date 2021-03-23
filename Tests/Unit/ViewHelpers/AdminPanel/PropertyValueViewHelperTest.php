@@ -55,10 +55,6 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
     /**
      * @test
      * @dataProvider dataProvider
-     * @param string $template
-     * @param string $expected
-     * @param string $localisedInput
-     * @param string $localisedOutput
      */
     public function viewHelperReturnsOutputCorrectly(
         string $template,
@@ -66,7 +62,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         string $localisedInput = '',
         string $localisedOutput = ''
     ): void {
-        if ($localisedInput) {
+        if ($localisedInput !== '') {
             $this->languageServiceStub
                 ->method('sL')
                 ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.' . $localisedInput)

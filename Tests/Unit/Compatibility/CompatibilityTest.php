@@ -28,6 +28,7 @@ class CompatibilityTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
+        $EM_CONF = null;
         /** @noinspection PhpUnusedLocalVariableInspection */
         $_EXTKEY = 'core';
         include __DIR__ . '/../../../.Build/web/typo3/sysext/core/ext_emconf.php';

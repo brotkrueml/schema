@@ -52,16 +52,14 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('hasEnergyConsumptionDetails', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForHasEnergyConsumptionDetails(): array
+    public function dataProviderForHasEnergyConsumptionDetails(): \Generator
     {
-        return [
-            [Type\Car::class],
-            [Type\IndividualProduct::class],
-            [Type\Product::class],
-            [Type\ProductModel::class],
-            [Type\SomeProducts::class],
-            [Type\Vehicle::class],
-        ];
+        yield [Type\Car::class];
+        yield [Type\IndividualProduct::class];
+        yield [Type\Product::class];
+        yield [Type\ProductModel::class];
+        yield [Type\SomeProducts::class];
+        yield [Type\Vehicle::class];
     }
 
     /**
@@ -76,15 +74,13 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('ineligibleRegion', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForIneligibleRegion(): array
+    public function dataProviderForIneligibleRegion(): \Generator
     {
-        return [
-            [Type\ActionAccessSpecification::class],
-            [Type\AggregateOffer::class],
-            [Type\DeliveryChargeSpecification::class],
-            [Type\Demand::class],
-            [Type\Offer::class],
-        ];
+        yield [Type\ActionAccessSpecification::class];
+        yield [Type\AggregateOffer::class];
+        yield [Type\DeliveryChargeSpecification::class];
+        yield [Type\Demand::class];
+        yield [Type\Offer::class];
     }
 
     /**
@@ -99,13 +95,11 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('sport', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForSport(): array
+    public function dataProviderForSport(): \Generator
     {
-        return [
-            [Type\SportsEvent::class],
-            [Type\SportsOrganization::class],
-            [Type\SportsTeam::class],
-        ];
+        yield [Type\SportsEvent::class];
+        yield [Type\SportsOrganization::class];
+        yield [Type\SportsTeam::class];
     }
 
     /**
@@ -120,14 +114,12 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('subtitleLanguage', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForSubtitleLanguage(): array
+    public function dataProviderForSubtitleLanguage(): \Generator
     {
-        return [
-            [Type\BroadcastEvent::class],
-            [Type\Movie::class],
-            [Type\ScreeningEvent::class],
-            [Type\TVEpisode::class],
-        ];
+        yield [Type\BroadcastEvent::class];
+        yield [Type\Movie::class];
+        yield [Type\ScreeningEvent::class];
+        yield [Type\TVEpisode::class];
     }
 
     /**
@@ -142,11 +134,9 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('occupationalCategory', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForOccupationalCategory(): array
+    public function dataProviderForOccupationalCategory(): \Generator
     {
-        return [
-            [Type\JobPosting::class],
-            [Type\Occupation::class],
-        ];
+        yield [Type\JobPosting::class];
+        yield [Type\Occupation::class];
     }
 }
