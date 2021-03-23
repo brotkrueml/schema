@@ -4,8 +4,8 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=brotkrueml_schema&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=brotkrueml_schema)
 [![Coverage Status](https://coveralls.io/repos/github/brotkrueml/schema/badge.svg?branch=master)](https://coveralls.io/github/brotkrueml/schema?branch=master)
 [![Crowdin](https://badges.crowdin.net/typo3-extension-schema/localized.svg)](https://crowdin.com/project/typo3-extension-schema)
-[![Latest Stable Version](https://poser.pugx.org/brotkrueml/schema/v/stable)](https://packagist.org/packages/brotkrueml/schema)
-[![Total Downloads](https://poser.pugx.org/brotkrueml/schema/downloads.svg)](https://packagist.org/packages/brotkrueml/schema)
+[![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
+[![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
 
 The extension supports TYPO3 v9 LTS, TYPO3 v10 LTS and TYPO3 v11.
 
