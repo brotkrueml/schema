@@ -20,6 +20,9 @@ final class TypeFactory
     {
     }
 
+    /**
+     * @psalm-suppress InvalidStringClass
+     */
     public static function createType(string $type): TypeInterface
     {
         /** @var TypeRegistry $typeRegistry */
