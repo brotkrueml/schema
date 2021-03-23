@@ -228,10 +228,6 @@ final class TypeRegistry implements SingletonInterface
     }
 
     /**
-     * @param string $type
-     * @return string|null
-     * @psalm-return class-string|null
-     *
      * @internal Only for internal use, not a public API!
      */
     public function resolveModelClassFromType(string $type): ?string

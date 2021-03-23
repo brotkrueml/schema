@@ -13,7 +13,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(Option::PATHS, [__DIR__ . '/Classes']);
 
-    $parameters->set(Option::AUTOLOAD_PATHS, __DIR__ . '/.Build/vendor/autoload.php');
+    $parameters->set(Option::AUTOLOAD_PATHS, [__DIR__ . '/.Build/vendor/autoload.php']);
 
     $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_72);
 

@@ -182,7 +182,6 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     /**
      * For testing purposes only!
-     * @param array $additionalManuals
      */
     public static function setAdditionalManuals(array $additionalManuals): void
     {
@@ -191,7 +190,6 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     /**
      * For testing purposes only!
-     * @param IconFactory $iconFactory
      */
     public static function setIconFactory(IconFactory $iconFactory): void
     {

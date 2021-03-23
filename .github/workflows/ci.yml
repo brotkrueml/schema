@@ -47,7 +47,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer --version
-          composer require typo3/cms-core=${{ matrix.typo3-versions }} rector/rector-prefixed=^0.8 --no-progress --prefer-dist --optimize-autoloader
+          composer require typo3/cms-core=${{ matrix.typo3-versions }} rector/rector=^0.8 --no-progress --prefer-dist --optimize-autoloader
           git checkout composer.json
       - name: Run PHP linter
         run: |
@@ -107,5 +107,5 @@ jobs:
           .Build/bin/psalm --no-progress --monochrome
       - name: Run rector
         run: |
-          .Build/bin/rector process --dry-run --no-progress-bar
+          .Build/bin/rector --dry-run --no-progress-bar
 

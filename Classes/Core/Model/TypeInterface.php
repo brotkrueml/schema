@@ -15,8 +15,6 @@ interface TypeInterface
 {
     /**
      * Get the id
-     *
-     * @return string|null
      */
     public function getId(): ?string;
 
@@ -32,7 +30,6 @@ interface TypeInterface
      * Check, if a property exists
      *
      * @param string $propertyName The property name
-     * @return bool
      */
     public function hasProperty(string $propertyName): bool;
 
@@ -91,8 +88,6 @@ interface TypeInterface
 
     /**
      * Get the type the model represents
-     *
-     * @return string
      */
     public function getType(): string;
 }

@@ -196,7 +196,6 @@ abstract class AbstractType implements TypeInterface
      * Returns true, if data type of property value is allowed
      *
      * @param mixed $propertyValue
-     * @return bool
      */
     private function isValidDataTypeForPropertyValue($propertyValue): bool
     {

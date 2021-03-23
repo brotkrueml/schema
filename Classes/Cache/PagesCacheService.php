@@ -98,7 +98,6 @@ class PagesCacheService
 
     /**
      * For testing purposes only!
-     * @param TypoScriptFrontendController $controller
      */
     public function setTypoScriptFrontendController(TypoScriptFrontendController $controller): void
     {

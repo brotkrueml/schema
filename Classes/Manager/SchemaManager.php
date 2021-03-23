@@ -47,7 +47,6 @@ final class SchemaManager implements SingletonInterface
      * Add a type
      *
      * @param TypeInterface $type The model type
-     * @return SchemaManager
      */
     public function addType(TypeInterface $type): self
     {
@@ -120,8 +119,6 @@ final class SchemaManager implements SingletonInterface
 
     /**
      * A WebPage or its descendants is available
-     *
-     * @return bool
      */
     public function hasWebPage(): bool
     {
@@ -130,9 +127,6 @@ final class SchemaManager implements SingletonInterface
 
     /**
      * Add a main entity of the WebPage
-     *
-     * @param TypeInterface $mainEntity
-     * @return SchemaManager
      *
      * @deprecated since version 1.4.1, will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.
      */
@@ -148,9 +142,6 @@ final class SchemaManager implements SingletonInterface
 
     /**
      * Add a main entity of the WebPage
-     *
-     * @param TypeInterface $mainEntity
-     * @return SchemaManager
      */
     public function addMainEntityOfWebPage(TypeInterface $mainEntity): self
     {
@@ -161,8 +152,6 @@ final class SchemaManager implements SingletonInterface
 
     /**
      * Render the JSON-LD from the assigned types
-     *
-     * @return string
      *
      * @internal
      */

@@ -164,7 +164,6 @@ final class SchemaMarkupInjection
     }
 
     /**
-     * @param Typo3Mode $typo3Mode
      * @internal For testing purposes only!
      */
     public function setTypo3Mode(Typo3Mode $typo3Mode): void

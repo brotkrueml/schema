@@ -112,7 +112,6 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
     /**
      * For testing purposes only!
-     * @param StandaloneView $view
      */
     public function setView(StandaloneView $view): void
     {
