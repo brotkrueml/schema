@@ -35,7 +35,7 @@
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.4",
 		"phpunit/phpunit": "^8.5 || ^9.5",
-		"rector/rector": "^0.10",
+		"rector/rector": "^0.10.3",
 		"twig/twig": "^3.3",
 		"typo3/cms-adminpanel": "^9.5.16 || ^10.4 || ^11.0",
 		"typo3/coding-standards": "^0.3",
