@@ -1,4 +1,3 @@
-/Generator/ export-ignore
 /Tests/ export-ignore
 /.coveralls.yml export-ignore
 /.crowdin.yml export-ignore
