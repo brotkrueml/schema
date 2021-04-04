@@ -18,15 +18,20 @@ Introduction
 
 The TYPO3 schema extension ships :ref:`type models <api>` and :ref:`view helpers
 <view-helpers>` with their properties from the core vocabulary of the Schema.org
-definitions. However, there are several extensions, like `Health and medical
-types <https://schema.org/docs/meddocs.html>`_ or `Autos
+definitions. However, there are several extensions, like `Health and lifesciences
+<https://schema.org/docs/meddocs.html>`_ or `Autos
 <https://schema.org/docs/automotive.html>`_. There are also `pending types and
-properties <https://pending.schema.org/>`_ available that enable Schema.org to
-introduce terms on an experimental basis.
+properties <https://pending.schema.org/docs/pending.home.html>`_ available that
+enable Schema.org to introduce terms on an experimental basis.
 
 The embedding of these vocabulary extensions goes beyond the scope of this TYPO3
 extension, as it will considerably increase the number of terms – while most of
 them are not used by the majority of users.
+
+For your convenience there are separate extensions to :ref:`extend the
+vocabulary <vocabulary>` available with the terms of the different sections. But
+if you only want to add only a few terms you are encouraged to add them on your
+own, especially pending terms.
 
 Pending terms are experimental, after a certain time a term will be incorporated
 into the core vocabulary or dropped. This depends on the usage, adoption and

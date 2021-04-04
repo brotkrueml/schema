@@ -42,6 +42,10 @@
 	},
 	"suggest": {
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
+		"brotkrueml/schema-auto": "Provides additional terms related to auto",
+		"brotkrueml/schema-bib": "Provides additional terms related to bibliography",
+		"brotkrueml/schema-health": "Provides additional terms related to health and lifesciences",
+		"brotkrueml/schema-pending": "Provides pending terms which have yet to be accepted into the core vocabulary",
 		"brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events"
 	},
 	"conflict": {

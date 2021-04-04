@@ -87,3 +87,6 @@ Available web page types
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
 | | SearchResultsPage | Page for the result pages of the search function                                  |
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
+
+Depending on :ref:`other sections of the schema.org vocabulary <vocabulary>`
+there might be some more web page types available.
