@@ -292,6 +292,13 @@ abstract class AbstractType implements TypeInterface
      */
     public function getType(): string
     {
-        return \substr(\strrchr(static::class, '\\') ?: '', 1);
+        $type = \substr(\strrchr(static::class, '\\') ?: '', 1);
+        if (\strpos($type, '_') === 0) {
+            // As a class cannot start with a number an underscore prefixes the type class name
+            // which is now removed (e.g. _3DModel => 3DModel)
+            $type = \substr($type, 1);
+        }
+
+        return $type;
     }
 }

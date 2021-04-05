@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -541,5 +542,16 @@ class AbstractTypeTest extends TestCase
         GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
 
         new Thing();
+    }
+
+    /**
+     * @test
+     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::getType()
+     */
+    public function getTypeReturnsTypeCorrectlyWhenClassNameStartsWithUnderscore(): void
+    {
+        $type = new _3DModel();
+
+        self::assertSame('3DModel', $type->getType());
     }
 }
