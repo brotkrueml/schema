@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.1] - 2021-04-06
+
 ### Fixed
 - Add missing properties for types Pharmacy and Physician
 - Allow value "0" in PropertyViewHelper
@@ -230,7 +232,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.11.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.11.1...HEAD
+[1.11.1]: https://github.com/brotkrueml/schema/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/brotkrueml/schema/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/brotkrueml/schema/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/brotkrueml/schema/compare/v1.8.0...v1.9.0
