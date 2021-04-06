@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Add missing properties for types Pharmacy and Physician
+- Allow value "0" in PropertyViewHelper
 
 ## [1.11.0] - 2021-03-10
 

@@ -66,6 +66,13 @@ class PropertyViewHelperTest extends ViewHelperTestCase
                 </schema:type.thing>',
             \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"http://schema.org","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}'),
         ];
+
+        yield 'Property with value "0"' => [
+            '<schema:type.thing>
+                    <schema:property -as="isAccessibleForFree" value="0"/>
+                </schema:type.thing>',
+            \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"http://schema.org","@type":"Thing","isAccessibleForFree":"0"}'),
+        ];
     }
 
     /**

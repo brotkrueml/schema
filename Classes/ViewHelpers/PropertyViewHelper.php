@@ -72,14 +72,14 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     {
         $emptyMessage = 'The argument "%s" cannot be empty';
 
-        if (empty($this->arguments[static::ARGUMENT_AS])) {
+        if ($this->arguments[static::ARGUMENT_AS] === '') {
             throw new ViewHelper\Exception(
                 \sprintf($emptyMessage, static::ARGUMENT_AS),
                 1561838834
             );
         }
 
-        if (empty($this->arguments[static::ARGUMENT_VALUE])) {
+        if ($this->arguments[static::ARGUMENT_VALUE] === '') {
             throw new ViewHelper\Exception(
                 \sprintf($emptyMessage, static::ARGUMENT_VALUE),
                 1561838999
