@@ -35,6 +35,9 @@ Alternative
    Use :php:`Brotkrueml\Schema\Manager\SchemaManager->addMainEntityOfWebPage()`
    instead. See the :ref:`API <api-schema-manager-addmainentityofwebpage>`.
 
+.. note::
+   Use the `brotkrueml/schema-rector <https://github.com/brotkrueml/schema-rector>`_
+   package for migrating the code with Rector automatically.
 
 .. option:: Brotkrueml\\Schema\\Provider\\TypesProvider
 
