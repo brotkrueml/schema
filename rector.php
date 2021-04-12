@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\Core\Configuration\Option;
 use Rector\Core\ValueObject\PhpVersion;
+use Rector\DeadCode\Rector\Assign\RemoveUnusedVariableAssignRector;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
@@ -50,5 +51,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
         ],
+        RemoveUnusedVariableAssignRector::class => [
+            __DIR__ . '/Tests/Unit/Compatibility/CompatibilityTest.php'
+        ]
     ]);
 };
