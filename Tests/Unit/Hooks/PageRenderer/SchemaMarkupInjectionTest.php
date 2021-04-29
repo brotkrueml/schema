@@ -92,7 +92,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
             $this->pagesCacheServiceMock,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -183,7 +182,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             $schemaManager,
             $this->pagesCacheServiceMock,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -222,7 +220,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
             $this->pagesCacheServiceMock,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -249,7 +246,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             null,
             $this->pagesCacheServiceMock,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -288,7 +284,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             null,
             $this->pagesCacheServiceMock,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -322,7 +317,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             $schemaManager,
             $this->pagesCacheServiceMock,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -360,7 +354,6 @@ class SchemaMarkupInjectionTest extends TestCase
             $this->extensionConfigurationMock,
             $schemaManager,
             $this->pagesCacheServiceMock,
-            false,
             $eventDispatcherStub
         );
 

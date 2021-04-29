@@ -21,7 +21,6 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
@@ -34,9 +33,6 @@ final class SchemaMarkupInjection
 
     /** @var SchemaManager */
     private $schemaManager;
-
-    /** @var Dispatcher */
-    private $signalSlotDispatcher;
 
     /** @var EventDispatcher */
     private $eventDispatcher;
@@ -59,7 +55,6 @@ final class SchemaMarkupInjection
         ExtensionConfiguration $extensionConfiguration = null,
         SchemaManager $schemaManager = null,
         PagesCacheService $pagesCacheService = null,
-        $signalSlotDispatcher = null,
         $eventDispatcher = null
     ) {
         $this->compatibility = new Compatibility();
@@ -69,13 +64,6 @@ final class SchemaMarkupInjection
         $this->configuration = $extensionConfiguration->get('schema');
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
-
-        if ($signalSlotDispatcher !== false) {
-            $this->signalSlotDispatcher =
-                $signalSlotDispatcher instanceof Dispatcher
-                    ? $signalSlotDispatcher
-                    : GeneralUtility::makeInstance(Dispatcher::class);
-        }
 
         if ($this->compatibility->isPsr14EventDispatcherAvailable()) {
             $this->eventDispatcher =
@@ -122,9 +110,6 @@ final class SchemaMarkupInjection
         $event = new ShouldEmbedMarkupEvent($this->controller->page, true);
         if ($this->eventDispatcher) {
             $event = $this->eventDispatcher->dispatch($event);
-        }
-        if ($this->signalSlotDispatcher) {
-            $this->signalSlotDispatcher->dispatch(static::class, 'shouldEmbedMarkup', [$event]);
         }
 
         return $event->getEmbedMarkup();

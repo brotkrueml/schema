@@ -118,7 +118,6 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->extensionConfigurationStub,
             $schemaManagerMock,
             $this->pagesCacheServiceStub,
-            false,
             $this->eventDispatcherStub
         );
 
@@ -145,7 +144,6 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->extensionConfigurationStub,
             $schemaManagerStub,
             $this->pagesCacheServiceStub,
-            false,
             $this->eventDispatcherStub
         );
 

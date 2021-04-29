@@ -29,24 +29,6 @@ defined('TYPO3_MODE') or die();
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['options']['defaultLifetime'] = 0;
     }
 
-    if (!(new Brotkrueml\Schema\Compatibility\Compatibility())->isPsr14EventDispatcherAvailable()) {
-        $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-            TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
-        );
-        $signalSlotDispatcher->connect(
-            \Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection::class,
-            'shouldEmbedMarkup',
-            \Brotkrueml\Schema\EventListener\EmbedMarkupDependingOnNoIndexPageField::class,
-            '__invoke'
-        );
-        $signalSlotDispatcher->connect(
-            \Brotkrueml\Schema\Core\Model\AbstractType::class,
-            'registerAdditionalTypeProperties',
-            \Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending::class,
-            '__invoke'
-        );
-    }
-
     // @internal no official hooks
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['breadcrumbList']
         = \Brotkrueml\Schema\Aspect\BreadcrumbListAspect::class;

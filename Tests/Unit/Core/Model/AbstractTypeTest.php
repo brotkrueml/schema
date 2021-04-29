@@ -23,7 +23,6 @@ use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 class AbstractTypeTest extends TestCase
 {
@@ -447,17 +446,6 @@ class AbstractTypeTest extends TestCase
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
 
-        /** @var MockObject|Dispatcher $signalSlotDispatcherMock */
-        $signalSlotDispatcherMock = $this->getMockBuilder(Dispatcher::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $signalSlotDispatcherMock
-            ->expects(self::once())
-            ->method('dispatch')
-            ->with(AbstractType::class, 'registerAdditionalTypeProperties');
-
-        GeneralUtility::setSingletonInstance(Dispatcher::class, $signalSlotDispatcherMock);
-
         if (\class_exists(EventDispatcher::class)) {
             /* Only TYPO3 v10+ */
             $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
@@ -512,17 +500,6 @@ class AbstractTypeTest extends TestCase
             ->willReturn($cacheFrontendMock);
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
-        /** @var MockObject|Dispatcher $signalSlotDispatcherMock */
-        $signalSlotDispatcherMock = $this->getMockBuilder(Dispatcher::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $signalSlotDispatcherMock
-            ->expects(self::once())
-            ->method('dispatch')
-            ->with(AbstractType::class, 'registerAdditionalTypeProperties');
-
-        GeneralUtility::setSingletonInstance(Dispatcher::class, $signalSlotDispatcherMock);
 
         $inEvent = new RegisterAdditionalTypePropertiesEvent(Thing::class);
 

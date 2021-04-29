@@ -95,6 +95,11 @@ on the top right to submit your change request.
    Developer/ExtendingVocabulary
    Developer/Deprecations
 
+.. toctree::
+   :caption: Upgrade
+
+   Migration/Index
+
 
 .. toctree::
 

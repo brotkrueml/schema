@@ -51,7 +51,7 @@ Attention should be paid to the following points:
    search engines and so the markup is also ignored.
 
    But: If you like to add markup to non-indexed pages, you can use a
-   :ref:`slot/PSR-14 <event-de-activate-embedding-of-markup>` event.
+   :ref:`PSR-14 <event-de-activate-embedding-of-markup>` event listener.
 
 
 Quick dive-in

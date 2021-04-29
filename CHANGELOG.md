@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- Signal/Slots in favour of PSR-14 events (#43)
+
 ## [1.11.1] - 2021-04-06
 
 ### Fixed

@@ -48,13 +48,13 @@ properties to existing types or to introduce new types on your website.
 Register additional properties
 ==============================
 
-You can use a slot or a PSR-14 event listener to add one ore more properties to
-one or more types. The chapter :ref:`event-register-additional-properties`
-describes how to register additional properties in detail.
+You can use a PSR-14 event listener to add one ore more properties to one or
+more types. The chapter :ref:`event-register-additional-properties` describes
+how to register additional properties in detail.
 
 .. note::
 
-   Approximately every 2 months a new version of the Schema.org definitions
+   Approximately every 2-3 months a new version of the Schema.org definition
    is `released <https://schema.org/docs/releases.html>`_. The extension adopts
    these changes in future releases. If you register a pending property for
    a type, this property can be included in the core vocabulary in a later

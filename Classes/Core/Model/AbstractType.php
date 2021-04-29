@@ -18,7 +18,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 abstract class AbstractType implements TypeInterface
 {
@@ -70,10 +69,6 @@ abstract class AbstractType implements TypeInterface
                 $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
                 $event = $eventDispatcher->dispatch($event);
             }
-
-            /** @var Dispatcher $signalSlotDispatcher */
-            $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
-            $signalSlotDispatcher->dispatch(self::class, 'registerAdditionalTypeProperties', [$event]);
 
             $additionalProperties = $event->getAdditionalProperties();
             $cache->set($cacheEntryIdentifier, $additionalProperties, [], 0);
