@@ -13,7 +13,6 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -37,9 +36,6 @@ final class SchemaMarkupInjection
     /** @var EventDispatcher */
     private $eventDispatcher;
 
-    /** @var Compatibility */
-    private $compatibility;
-
     /** @var Typo3Mode|null */
     private $typo3Mode;
 
@@ -57,20 +53,15 @@ final class SchemaMarkupInjection
         PagesCacheService $pagesCacheService = null,
         $eventDispatcher = null
     ) {
-        $this->compatibility = new Compatibility();
-
         $this->controller = $controller ?? $GLOBALS['TSFE'];
         $extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->configuration = $extensionConfiguration->get('schema');
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
-
-        if ($this->compatibility->isPsr14EventDispatcherAvailable()) {
-            $this->eventDispatcher =
-                $eventDispatcher instanceof EventDispatcher
-                    ? $eventDispatcher
-                    : GeneralUtility::makeInstance(EventDispatcher::class);
-        }
+        $this->eventDispatcher =
+            $eventDispatcher instanceof EventDispatcher
+                ? $eventDispatcher
+                : GeneralUtility::makeInstance(EventDispatcher::class);
     }
 
     public function execute(?array &$params, PageRenderer &$pageRenderer): void

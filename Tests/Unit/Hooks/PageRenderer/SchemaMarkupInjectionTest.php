@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Extension;
@@ -79,13 +78,11 @@ class SchemaMarkupInjectionTest extends TestCase
 
         $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
 
-        if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
-            $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
-            $this->eventDispatcherStub
-                ->method('dispatch')
-                ->with(self::anything())
-                ->willReturn(new ShouldEmbedMarkupEvent([], true));
-        }
+        $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
+        $this->eventDispatcherStub
+            ->method('dispatch')
+            ->with(self::anything())
+            ->willReturn(new ShouldEmbedMarkupEvent([], true));
 
         $this->subject = new SchemaMarkupInjection(
             $this->controllerMock,
@@ -329,10 +326,6 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function eventDispatcherForShouldEmbedMarkupEventReturnsFalseThenNoMarkupIsEmbedded(): void
     {
-        if (!(new Compatibility())->isPsr14EventDispatcherAvailable()) {
-            self::markTestSkipped('Event Dispatcher is available only in TYPO3 v10+');
-        }
-
         /** @var SchemaManager $schemaManager */
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new Thing())->setProperty('name', 'some name'));

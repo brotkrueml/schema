@@ -18,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -114,32 +113,8 @@ class PagesCacheServiceTest extends TestCase
     /**
      * @test
      */
-    public function correctCacheIdentifierIsUsedForTypo3Version9(): void
+    public function correctCacheIdentifierIsUsed(): void
     {
-        if (!$this->isTypo3Version9()) {
-            self::markTestSkipped('Test only for TYPO3 v9');
-        }
-
-        $cacheManagerMock = $this->createStub(CacheManager::class);
-        $cacheManagerMock
-            ->expects(self::once())
-            ->method('getCache')
-            ->with('cache_pages');
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerMock);
-
-        new PagesCacheService(null);
-    }
-
-    /**
-     * @test
-     */
-    public function correctCacheIdentifierIsUsedForTypo3Version10AndUp(): void
-    {
-        if ($this->isTypo3Version9()) {
-            self::markTestSkipped('Test only for TYPO3 v10+');
-        }
-
         $cacheManagerMock = $this->createStub(CacheManager::class);
         $cacheManagerMock
             ->expects(self::once())
@@ -149,10 +124,5 @@ class PagesCacheServiceTest extends TestCase
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerMock);
 
         new PagesCacheService(null);
-    }
-
-    private function isTypo3Version9(): bool
-    {
-        return (new Typo3Version())->getMajorVersion() === 9;
     }
 }

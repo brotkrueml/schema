@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -64,11 +63,9 @@ abstract class AbstractType implements TypeInterface
         if (($additionalProperties = $cache->get($cacheEntryIdentifier)) === false) {
             $event = new RegisterAdditionalTypePropertiesEvent(static::class);
 
-            if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
-                /** @var EventDispatcherInterface $eventDispatcher */
-                $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
-                $event = $eventDispatcher->dispatch($event);
-            }
+            /** @var EventDispatcherInterface $eventDispatcher */
+            $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
+            $event = $eventDispatcher->dispatch($event);
 
             $additionalProperties = $event->getAdditionalProperties();
             $cache->set($cacheEntryIdentifier, $additionalProperties, [], 0);

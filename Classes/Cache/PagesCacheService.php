@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Cache;
 
-use Brotkrueml\Schema\Compatibility\Compatibility;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
@@ -23,8 +22,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class PagesCacheService
 {
-    /** @var Compatibility */
-    private $compatibility;
+    private const CACHE_IDENTIFIER = 'pages';
 
     /** @var TypoScriptFrontendController */
     private $controller;
@@ -34,7 +32,6 @@ class PagesCacheService
 
     public function __construct(FrontendInterface $cache = null)
     {
-        $this->compatibility = new Compatibility();
         $this->cache = $cache ?? $this->getCache();
     }
 
@@ -42,13 +39,8 @@ class PagesCacheService
     {
         $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
 
-        $identifier = 'pages';
-        if ($this->compatibility->hasCachePrefixForCacheIdentifier()) {
-            $identifier = 'cache_' . $identifier;
-        }
-
         try {
-            return $cacheManager->getCache($identifier);
+            return $cacheManager->getCache(self::CACHE_IDENTIFIER);
         } catch (NoSuchCacheException $e) {
             return null;
         }

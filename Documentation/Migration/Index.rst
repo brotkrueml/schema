@@ -9,6 +9,8 @@ Migration
 From version 1.x to version 2.0
 ===============================
 
+In version 2.0 the compatibility with TYPO3 v9 LTS was removed.
+
 Signal/Slots
 ------------
 

@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Compatibility\Compatibility;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -70,13 +69,11 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
 
         $this->pagesCacheServiceStub = $this->createStub(PagesCacheService::class);
 
-        if ((new Compatibility())->isPsr14EventDispatcherAvailable()) {
-            $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
-            $this->eventDispatcherStub
-                ->method('dispatch')
-                ->with(self::anything())
-                ->willReturn(new ShouldEmbedMarkupEvent([], true));
-        }
+        $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
+        $this->eventDispatcherStub
+            ->method('dispatch')
+            ->with(self::anything())
+            ->willReturn(new ShouldEmbedMarkupEvent([], true));
 
         $this->pageRendererStub = $this->createStub(PageRenderer::class);
 

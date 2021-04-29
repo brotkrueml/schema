@@ -7,10 +7,11 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
 
-The extension supports TYPO3 v9 LTS, TYPO3 v10 LTS and TYPO3 v11.
+The current version of the extension supports TYPO3 v10 LTS and TYPO3 v11.
+Use version 1.x for compatibility with TYPO3 v9 LTS.
 
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/) |
 [Translation](https://crowdin.com/project/typo3-extension-schema) |
 [Changelog](https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md) |
-[Extension in TER](https://extensions.typo3.org/extension/schema/) |
+[TYPO3 Extension Repository](https://extensions.typo3.org/extension/schema/) |
 [Slack #ext-schema](https://typo3.slack.com/)
