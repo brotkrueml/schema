@@ -323,62 +323,6 @@ class AbstractTypeTest extends TestCase
 
     /**
      * @test
-     */
-    public function isEmptyReturnsTrueOnNewlyCreatedModel(): void
-    {
-        $this->expectDeprecation();
-
-        $actual = $this->subject->isEmpty();
-
-        self::assertTrue($actual);
-    }
-
-    /**
-     * @test
-     */
-    public function isEmptyReturnsFalseIfOnePropertyHasStringValue(): void
-    {
-        $this->expectDeprecation();
-
-        $this->subject->setProperty('name', 'some name');
-
-        $actual = $this->subject->isEmpty();
-
-        self::assertFalse($actual);
-    }
-
-    /**
-     * @test
-     */
-    public function isEmptyReturnsTrueWithPropertiesSetToEmptyValues(): void
-    {
-        $this->expectDeprecation();
-
-        $this->subject
-            ->setProperty('name', '')
-            ->setProperty('description', []);
-
-        $actual = $this->subject->isEmpty();
-
-        self::assertTrue($actual);
-    }
-
-    /**
-     * @test
-     */
-    public function isEmptyReturnsFalseWithOnePropertySetToFalse(): void
-    {
-        $this->expectDeprecation();
-
-        $this->subject->setProperty('isAccessibleForFree', false);
-
-        $actual = $this->subject->isEmpty();
-
-        self::assertFalse($actual);
-    }
-
-    /**
-     * @test
      * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
      * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
      */

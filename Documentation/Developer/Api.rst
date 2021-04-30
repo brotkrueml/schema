@@ -432,8 +432,6 @@ Return value
    Array, sorted alphabetically by type name.
 
 
-.. _api-typesprovider-getcontenttypes:
-
 .. option:: getContentTypes()
 
 The types useful for an editor are returned as an array, sorted alphabetically.

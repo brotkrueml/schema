@@ -298,44 +298,11 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function setMainEntityOfWebPageCalledMultipleTime(): void
-    {
-        $this->expectDeprecation();
-
-        $thing = new Thing();
-        $person = new Person();
-        $webPage = new WebPage();
-
-        $subject = new SchemaManager($this->renderer);
-        $subject->setMainEntityOfWebPage($thing);
-        $subject->setMainEntityOfWebPage($person);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
-
-        self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
-        self::assertSame([$thing, $person], $webPage->getProperty('mainEntity'));
-    }
-
-    /**
-     * @test
-     */
     public function addTypeReturnsInstanceOfSelf(): void
     {
         $subject = new SchemaManager($this->renderer);
 
         self::assertSame($subject, $subject->addType(new Thing()));
-    }
-
-    /**
-     * @test
-     */
-    public function setMainEntityOfWebPageReturnsInstanceOfSelf(): void
-    {
-        $this->expectDeprecation();
-
-        $subject = new SchemaManager($this->renderer);
-
-        self::assertSame($subject, $subject->setMainEntityOfWebPage(new Thing()));
     }
 
     /**

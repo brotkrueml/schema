@@ -6,6 +6,11 @@
 Migration
 =========
 
+.. contents:: Table of Contents
+   :depth: 2
+   :local:
+
+
 From version 1.x to version 2.0
 ===============================
 
@@ -46,3 +51,19 @@ You can migrate the slots easily to the PSR-14 event listeners:
 
 You can find more information about the PSR-14 event listeners in the chapter
 :ref:`events`.
+
+
+Removed Deprecations
+--------------------
+
+The following :ref:`deprecated methods and classes <api-deprecations>` were
+removed:
+
+- :php:`Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
+- :php:`Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
+- :php:`Brotkrueml\Schema\Provider\TypesProvider`
+
+For the migration of the :php:`SchemaManager->setMainEntityOfWebPage()` method
+call a `Rector <https://github.com/brotkrueml/schema-rector>`_ exists. For the
+other two follow the instructions on the :ref:`deprecations <api-deprecations>`
+chapter.

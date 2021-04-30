@@ -13,7 +13,7 @@ Deprecations
 Deprecated since version
    1.7.0
 
-Will be removed in version
+Removed in version
    2.0.0
 
 Alternative
@@ -28,7 +28,7 @@ Alternative
 Deprecated since version
    1.4.1
 
-Will be removed in version
+Removed in version
    2.0.0
 
 Alternative
@@ -44,11 +44,10 @@ Alternative
 Deprecated since version
    1.7.0
 
-Will be removed in version
+Removed in version
    2.0.0
 
 Alternative
    Use :php:`Brotkrueml\Schema\Type\TypeRegistry` which is a singleton
    and can be instantiated with :php:`GeneralUtility::makeInstance()` or
-   injected with dependency injection in TYPO3 v10+. See section
-   :ref:`api-list-of-types`.
+   injected with dependency injection. See section :ref:`api-list-of-types`.

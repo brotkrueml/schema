@@ -127,21 +127,6 @@ final class SchemaManager implements SingletonInterface
 
     /**
      * Add a main entity of the WebPage
-     *
-     * @deprecated since version 1.4.1, will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.
-     */
-    public function setMainEntityOfWebPage(TypeInterface $mainEntity): self
-    {
-        \trigger_error(
-            'Using SchemaManager->setMainEntityOfWebPage() is deprecated since version 1.4.1 and will be removed in version 2.0.0. Use SchemaManager->addMainEntityOfWebPage() instead.',
-            \E_USER_DEPRECATED
-        );
-
-        return $this->addMainEntityOfWebPage($mainEntity);
-    }
-
-    /**
-     * Add a main entity of the WebPage
      */
     public function addMainEntityOfWebPage(TypeInterface $mainEntity): self
     {

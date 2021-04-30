@@ -263,23 +263,6 @@ abstract class AbstractType implements TypeInterface
     }
 
     /**
-     * @deprected Since version 1.7.0, will be removed in version 2.0.
-     */
-    public function isEmpty(): bool
-    {
-        $propertiesNotEmpty = \array_filter($this->getPropertyNames(), function ($property) {
-            return \is_bool($this->properties[$property]) ?: !empty($this->properties[$property]);
-        });
-
-        \trigger_error(
-            'AbstractType::isEmpty() is deprecated and will be removed in version 2.0',
-            \E_USER_DEPRECATED
-        );
-
-        return empty($propertiesNotEmpty);
-    }
-
-    /**
      * @inheritDoc
      */
     public function getType(): string
