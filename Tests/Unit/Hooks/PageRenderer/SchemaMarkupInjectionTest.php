@@ -164,7 +164,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
             ));
 
         $this->pageRendererMock
@@ -206,7 +206,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addFooterData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
             ));
 
         $subject = new SchemaMarkupInjection(
@@ -251,7 +251,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
             ));
 
         $params = [];
@@ -303,7 +303,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
             ));
 
         $subject = new SchemaMarkupInjection(

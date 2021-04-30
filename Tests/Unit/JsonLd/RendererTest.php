@@ -52,13 +52,13 @@ class RendererTest extends TestCase
                 'null-property' => null,
                 'empty-string-property' => '',
             ],
-            '{"@context":"http://schema.org","@type":"StubType"}',
+            '{"@context":"https://schema.org/","@type":"StubType"}',
         ];
 
         yield 'Id is set' => [
             'some-id',
             [],
-            '{"@context":"http://schema.org","@type":"StubType","@id":"some-id"}',
+            '{"@context":"https://schema.org/","@type":"StubType","@id":"some-id"}',
         ];
 
         yield 'Value is a string' => [
@@ -66,7 +66,7 @@ class RendererTest extends TestCase
             [
                 'some-string' => 'some string value',
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-string":"some string value"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-string":"some string value"}',
         ];
 
         yield 'Value is a number as integer' => [
@@ -74,7 +74,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 1,
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-number":"1"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-number":"1"}',
         ];
 
         yield 'Value is the number 0 as integer' => [
@@ -82,7 +82,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0,
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-number":"0"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-number":"0"}',
         ];
 
         yield 'Value is the number 0.10 as float' => [
@@ -90,7 +90,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0.10,
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-number":"0.1"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-number":"0.1"}',
         ];
 
         yield 'Value is the number 0.00 as float' => [
@@ -98,7 +98,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0.00,
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-number":"0"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-number":"0"}',
         ];
 
         yield 'Value is a boolean (true)' => [
@@ -106,7 +106,7 @@ class RendererTest extends TestCase
             [
                 'some-boolean-true' => true,
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-boolean-true":"http://schema.org/True"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-boolean-true":"https://schema.org/True"}',
         ];
 
         yield 'Value is a boolean (false)' => [
@@ -114,7 +114,7 @@ class RendererTest extends TestCase
             [
                 'some-boolean-false' => false,
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-boolean-false":"http://schema.org/False"}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-boolean-false":"https://schema.org/False"}',
         ];
 
         yield 'Value is an array of strings' => [
@@ -125,7 +125,7 @@ class RendererTest extends TestCase
                     'another-array-value',
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-array":["some-array-value","another-array-value"]}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-array":["some-array-value","another-array-value"]}',
         ];
 
         yield 'Value is a model' => [
@@ -137,7 +137,7 @@ class RendererTest extends TestCase
                     'SomeSubTypeStub'
                 ),
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
         ];
 
         yield 'Value is an array of models' => [
@@ -156,7 +156,7 @@ class RendererTest extends TestCase
                     ),
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
+            '{"@context":"https://schema.org/","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
         ];
     }
 
@@ -235,7 +235,7 @@ class RendererTest extends TestCase
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
+                '{"@context":"https://schema.org/","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
             ),
             $this->subject->render()
         );
@@ -256,7 +256,7 @@ class RendererTest extends TestCase
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
+                '{"@context":"https://schema.org/","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
             ),
             $this->subject->render()
         );

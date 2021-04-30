@@ -17,8 +17,8 @@ namespace Brotkrueml\Schema\Model\DataType;
  */
 final class Boolean
 {
-    public const FALSE = 'http://schema.org/False';
-    public const TRUE = 'http://schema.org/True';
+    public const FALSE = 'https://schema.org/False';
+    public const TRUE = 'https://schema.org/True';
 
     public static function convertToTerm(bool $value): string
     {

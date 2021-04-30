@@ -68,7 +68,7 @@ with a product as primary content::
          'name' => 'Some fancy product',
          'color' => 'blue',
          'material' => 'wood',
-         'image' => 'http://example.org/some-fancy-product.jpg',
+         'image' => 'https://example.org/some-fancy-product.jpg',
          'aggregateRating' => $aggregateRating,
       ])
    ;
@@ -84,7 +84,7 @@ The example is rendered as JSON-LD:
 .. code-block:: json
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "ItemPage",
       "mainEntity": {
          "@type": "Product",
@@ -94,7 +94,7 @@ The example is rendered as JSON-LD:
             "reviewCount": "126"
          },
          "color": "blue",
-         "image": "http://example.org/some-fancy-product.jpg",
+         "image": "https://example.org/some-fancy-product.jpg",
          "material": "wood",
          "name": "Some fancy product"
       }
@@ -126,7 +126,7 @@ implement the same example as above with view helpers:
          name="Some fancy product"
          color="blue"
          material="wood"
-         image="http://example.org/some-fancy-product.jpg"
+         image="https://example.org/some-fancy-product.jpg"
       >
          <schema:type.aggregateRating
             -as="aggregateRating"

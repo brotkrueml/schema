@@ -47,10 +47,10 @@ Imagine you describe a `person <https://schema.org/Person>`__ on a plugin's
 detail page that you want to enrich with structured markup::
 
    <schema:type.person
-      -id="http://example.org/#person-42"
+      -id="https://example.org/#person-42"
       givenName="John"
       familyName="Smith"
-      gender="http://schema.org/Male"
+      gender="https://schema.org/Male"
    >
       <schema:type.event
          -as="performerIn"
@@ -69,14 +69,14 @@ is the lower camel case variant of the schema.org type name.
 
 The according properties (like ``givenName`` and ``familyName``) are attributes.
 You can find a list of all available properties for a specific type on the
-schema.org page, e.g. for the `Person <http://schema.org/Person>`__.
+schema.org page, e.g. for the `Person <https://schema.org/Person>`_.
 
 In the example, there are two attributes that begin with a :html:`-`. They are
 explained in detail in the chapter :ref:`view-helpers-special-attributes`.
 
 As you can see, the value :html:`true` (and :html:`false` accordingly) can be
-used. They are mapped later to the schema types ``http://schema.org/True`` and
-``http://schema.org/False``.
+used. They are mapped later to the schema types ``https://schema.org/True`` and
+``https://schema.org/False``.
 
 Please also recognise the :html:`<schema:property>` view helper. With this view
 helper you can pass more than one string value to the according type.
@@ -117,13 +117,13 @@ define a type on one page (e.g. ``Event``):
    :emphasize-lines: 4
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "Event",
-      "@id": "http://example.org/#event-1",
+      "@id": "https://example.org/#event-1",
       "name": "Fancy Event",
       "image": "https://example.org/event.png",
       "url": "https://example.org",
-      "isAccessibleForFree": "http://schema.org/True",
+      "isAccessibleForFree": "https://schema.org/True",
       "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
    }
 
@@ -133,15 +133,15 @@ and reference it on the same or another page (e.g. ``Person``):
    :emphasize-lines: 10
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "Person",
-      "@id": "http://example.org/#person-42",
+      "@id": "https://example.org/#person-42",
       "givenName": "John",
       "familyName": "Smith",
-      "gender": "http://schema.org/Male",
+      "gender": "https://schema.org/Male",
       "performerIn": {
          "@type": "Event",
-         "@id": "http://example.org/#event-1",
+         "@id": "https://example.org/#event-1",
          "name": "Fancy Event"
       }
    }
@@ -207,11 +207,11 @@ This argument defines the type as the
    :emphasize-lines: 3
 
    <schema:type.person
-      -id="http://example.org/#person-42"
+      -id="https://example.org/#person-42"
       -isMainEntityOfWebPage="1"
       givenName="John"
       familyName="Smith"
-      gender="http://schema.org/Male"
+      gender="https://schema.org/Male"
    />
 
 which results in the output:
@@ -220,14 +220,14 @@ which results in the output:
    :emphasize-lines: 3-4,9
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "WebPage",
       "mainEntity": {
          "@type": "Person",
-         "@id": "http://example.org/#person-42",
+         "@id": "https://example.org/#person-42",
          "givenName": "John",
          "familyName": "Smith",
-         "gender": "http://schema.org/Male"
+         "gender": "https://schema.org/Male"
       }
    }
 
@@ -311,16 +311,16 @@ template:
 
    <html
        xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-       xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
+       xmlns:schema="https://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
        schema:schemaLocation="https://brot.krue.ml/schemas/schema-1.9.0.xsd"
        data-namespace-typo3-fluid="true"
    >
 
 The relevant parts are the namespace declaration
-(:html:`xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"`)
+(:html:`xmlns:schema="https://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"`)
 and the :html:`schema:schemaLocation` attribute which points to the recent XSD
 definition.
 
 You can also import the XSD file into your favorite IDE after downloading it
 from the following URL:
-`https://brot.krue.ml/schemas/schema-1.9.0.xsd <https://brot.krue.ml/schemas/schema-1.9.0.xsd>`__.
+`https://brot.krue.ml/schemas/schema-1.9.0.xsd <https://brot.krue.ml/schemas/schema-1.9.0.xsd>`_.

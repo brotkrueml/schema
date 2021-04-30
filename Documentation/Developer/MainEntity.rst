@@ -46,7 +46,7 @@ example that specifies a product as the primary content::
          'name' => 'Some fancy product',
          'color' => 'blue',
          'material' => 'wood',
-         'image' => 'http://example.org/some-fancy-product.jpg',
+         'image' => 'https://example.org/some-fancy-product.jpg',
          'aggregateRating' => $aggregateRating,
       ])
    ;
@@ -60,7 +60,7 @@ helper.
 .. code-block:: json
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "ItemPage",
       "mainEntity": {
          "@type": "Product",
@@ -70,7 +70,7 @@ helper.
             "reviewCount": "126"
          },
          "color": "blue",
-         "image": "http://example.org/some-fancy-product.jpg",
+         "image": "https://example.org/some-fancy-product.jpg",
          "material": "wood",
          "name": "Some fancy product"
       }
@@ -98,7 +98,7 @@ You can define the main entity also in a view helper:
       name="Some fancy product"
       color="blue"
       material="wood"
-      image="http://example.org/some-fancy-product.jpg"
+      image="https://example.org/some-fancy-product.jpg"
    >
       <schema:type.aggregateRating
          -as="aggregateRating"

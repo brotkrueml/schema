@@ -39,9 +39,9 @@ You can define a breadcrumb with the :ref:`API <api>` as you may already
 guessed. For example, you have defined a breadcrumb somewhere::
 
    $breadcrumb = [
-      'Some product category' => 'http://example.org/some-product-category/',
-      'Some product subcategory' => 'http://example.org/some-product-subcategory/',
-      'Some fancy product' => 'http://example.org/some-fancy-product/',
+      'Some product category' => 'https://example.org/some-product-category/',
+      'Some product subcategory' => 'https://example.org/some-product-subcategory/',
+      'Some fancy product' => 'https://example.org/some-fancy-product/',
    ];
 
 Now you can iterate over the pages::
@@ -71,26 +71,26 @@ This results in the following schema markup:
 .. code-block:: json
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "WebPage",
       "breadcrumb": {
          "@type": "BreadcrumbList",
          "itemListElement": [
             {
                "@type": "ListItem",
-               "item": "http://example.org/some-product-category/",
+               "item": "https://example.org/some-product-category/",
                "name": "Some product category",
                "position": "1"
             },
             {
                "@type": "ListItem",
-               "item": "http://example.org/some-product-subcategory/",
+               "item": "https://example.org/some-product-subcategory/",
                "name": "Some product subcategory",
                "position": "2"
             },
             {
                "@type": "ListItem",
-               "item": "hhttp://example.org/some-fancy-product/",
+               "item": "https://example.org/some-fancy-product/",
                "name": "Some fancy product",
                "position": "3"
             }

@@ -164,7 +164,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}',
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}',
         ];
 
         yield 'Rootline with nav_hide set' => [
@@ -197,7 +197,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
         yield 'Rootline with siteroot not on first level' => [
@@ -230,7 +230,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
         yield 'Folder in rootline should not be rendered' => [
@@ -263,7 +263,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
         yield 'Menu separator in rootline should not be rendered, but doktype 198' => [
@@ -296,7 +296,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
                     'tx_schema_webpagetype' => '',
                 ],
             ],
-            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page with doktype 198","position":"1"}}',
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page with doktype 198","position":"1"}}',
         ];
     }
 
@@ -413,7 +413,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}'
+                '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}'
             ),
             $schemaManager->renderJsonLd()
         );
@@ -469,7 +469,7 @@ class BreadcrumbListAspectTest extends UnitTestCase
 
         $expected = \sprintf(
             Extension::JSONLD_TEMPLATE,
-            '{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}'
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}'
         );
 
         self::assertSame($expected, $schemaManager->renderJsonLd());

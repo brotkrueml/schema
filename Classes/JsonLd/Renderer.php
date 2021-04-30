@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Model\DataType\Boolean;
  */
 final class Renderer implements RendererInterface
 {
-    private const CONTEXT = 'http://schema.org';
+    private const CONTEXT = 'https://schema.org/';
 
     /** @var TypeInterface[] */
     private array $types = [];

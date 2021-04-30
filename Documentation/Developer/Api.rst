@@ -53,10 +53,10 @@ You will find a list of the available methods in the section
 Surely you will need to add some properties::
 
    $person
-      ->setId('http://example.org/#person-42')
+      ->setId('https://example.org/#person-42')
       ->setProperty('givenName', 'John')
       ->setProperty('familyName', 'Smith')
-      ->setProperty('gender', 'http://schema.org/Male');
+      ->setProperty('gender', 'https://schema.org/Male');
    ;
 
 That was easy ... let's go on and define an event the person attends::
@@ -89,18 +89,18 @@ automatically into the head section:
 .. code-block:: json
 
    {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org/",
       "@type": "Person",
-      "@id": "http://example.org/#person-42",
+      "@id": "https://example.org/#person-42",
       "givenName": "John",
       "familyName": "Smith",
-      "gender": "http://schema.org/Male",
+      "gender": "https://schema.org/Male",
       "performerIn": {
          "@type": "Event",
          "name": "Fancy Event",
          "image": "https://example.org/event.png",
          "url": "https://example.org",
-         "isAccessibleForFree": "http://schema.org/True",
+         "isAccessibleForFree": "https://schema.org/True",
          "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
       }
    }
@@ -361,17 +361,17 @@ Boolean data type
 -----------------
 
 Boolean property values are mapped to the according schema terms
-``http://schema.org/True`` or ``http://schema.org/False``. You can also use
+``https://schema.org/True`` or ``https://schema.org/False``. You can also use
 the :php:`Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
 two public constants:
 
 .. option:: FALSE
 
-Provides the value ``http://schema.org/False``.
+Provides the value ``https://schema.org/False``.
 
 .. option:: TRUE
 
-Provides the value ``http://schema.org/True``.
+Provides the value ``https://schema.org/True``.
 
 and one static method:
 

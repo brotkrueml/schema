@@ -121,8 +121,8 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         ];
 
         yield 'value is a schema.org URL with http' => [
-            '<schema:adminPanel.propertyValue name="some-name" value="http://schema.org/Thing"/>',
-            '<a href="http://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> http://schema.org/Thing',
+            '<schema:adminPanel.propertyValue name="some-name" value="https://schema.org/Thing"/>',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> https://schema.org/Thing',
             'openDocumentationOnSchemaOrg',
             'Open documentation on schema.org',
         ];
