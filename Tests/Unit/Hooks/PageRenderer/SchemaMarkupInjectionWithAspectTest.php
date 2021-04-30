@@ -24,6 +24,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -59,6 +60,11 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
      */
     private $eventDispatcherStub;
 
+    /**
+     * @var Stub|ApplicationType
+     */
+    private $applicationTypeStub;
+
     protected function setUp(): void
     {
         $this->controllerStub = $this->createStub(TypoScriptFrontendController::class);
@@ -76,6 +82,11 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             ->willReturn(new ShouldEmbedMarkupEvent([], true));
 
         $this->pageRendererStub = $this->createStub(PageRenderer::class);
+
+        $this->applicationTypeStub = $this->createStub(ApplicationType::class);
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
 
         /** @var MockObject|PackageManager $packageManagerStub */
         $packageManagerStub = $this->createStub(PackageManager::class);
@@ -115,7 +126,8 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->extensionConfigurationStub,
             $schemaManagerMock,
             $this->pagesCacheServiceStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];
@@ -141,7 +153,8 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->extensionConfigurationStub,
             $schemaManagerStub,
             $this->pagesCacheServiceStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];

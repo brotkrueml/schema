@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
@@ -25,6 +24,7 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -61,9 +61,9 @@ class SchemaMarkupInjectionTest extends TestCase
     private $eventDispatcherStub;
 
     /**
-     * @var Stub|Typo3Mode
+     * @var Stub|ApplicationType
      */
-    private $typo3ModeStub;
+    private $applicationTypeStub;
 
     protected function setUp(): void
     {
@@ -81,17 +81,16 @@ class SchemaMarkupInjectionTest extends TestCase
             ->with(self::anything())
             ->willReturn(new ShouldEmbedMarkupEvent([], true));
 
+        $this->applicationTypeStub = $this->createStub(ApplicationType::class);
+
         $this->subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
             $this->pagesCacheServiceMock,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
-
-        $this->typo3ModeStub = $this->createStub(Typo3Mode::class);
-
-        $this->subject->setTypo3Mode($this->typo3ModeStub);
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
 
@@ -119,8 +118,8 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::never())
             ->method('addFooterData');
 
-        $this->typo3ModeStub
-            ->method('isInBackendMode')
+        $this->applicationTypeStub
+            ->method('isBackend')
             ->willReturn(true);
 
         $params = [];
@@ -139,6 +138,10 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->pageRendererMock
             ->expects(self::never())
             ->method('addFooterData');
+
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
 
         $params = [];
         $this->subject->execute($params, $this->pageRendererMock);
@@ -171,12 +174,17 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::never())
             ->method('addFooterData');
 
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
             $this->pagesCacheServiceMock,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];
@@ -209,12 +217,17 @@ class SchemaMarkupInjectionTest extends TestCase
                 '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
             ));
 
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             GeneralUtility::makeInstance(SchemaManager::class),
             $this->pagesCacheServiceMock,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];
@@ -235,12 +248,17 @@ class SchemaMarkupInjectionTest extends TestCase
             ->with('schema')
             ->willReturn(['embedMarkupInBodySection' => '0']);
 
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $subject = new SchemaMarkupInjection(
             $controllerMock,
             $this->extensionConfigurationMock,
             null,
             $this->pagesCacheServiceMock,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
@@ -273,12 +291,17 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData')
             ->with('some-cached-markup');
 
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             null,
             $this->pagesCacheServiceMock,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];
@@ -306,12 +329,17 @@ class SchemaMarkupInjectionTest extends TestCase
                 '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
             ));
 
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
             $this->pagesCacheServiceMock,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];
@@ -339,12 +367,17 @@ class SchemaMarkupInjectionTest extends TestCase
             ->with(self::anything())
             ->willReturn(new ShouldEmbedMarkupEvent([], false));
 
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
             $schemaManager,
             $this->pagesCacheServiceMock,
-            $eventDispatcherStub
+            $eventDispatcherStub,
+            $this->applicationTypeStub
         );
 
         $params = [];

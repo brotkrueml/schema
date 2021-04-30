@@ -13,17 +13,19 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Context\Typo3Mode;
 use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
 {
+    private ApplicationType $applicationType;
     private TypoScriptFrontendController $controller;
 
     /** @var array<string, mixed> */
@@ -31,20 +33,21 @@ final class SchemaMarkupInjection
 
     private SchemaManager $schemaManager;
     private EventDispatcher $eventDispatcher;
-    private ?Typo3Mode $typo3Mode = null;
     private PagesCacheService $pagesCacheService;
 
-    /**
-     * @psalm-suppress MissingParamType
-     * @psalm-suppress PropertyTypeCoercion
-     */
+    /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
         SchemaManager $schemaManager = null,
         PagesCacheService $pagesCacheService = null,
-        $eventDispatcher = null
+        EventDispatcher $eventDispatcher = null,
+        ApplicationType $applicationType = null
     ) {
+        $this->applicationType = $applicationType ?? ApplicationType::fromRequest($this->getRequest());
+        if ($this->applicationType->isBackend()) {
+            return;
+        }
         $this->controller = $controller ?? $GLOBALS['TSFE'];
         $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->configuration = $extensionConfiguration->get('schema') ?? [];
@@ -58,7 +61,7 @@ final class SchemaMarkupInjection
 
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
     {
-        if ($this->getTypo3Mode()->isInBackendMode()) {
+        if ($this->applicationType->isBackend()) {
             return;
         }
 
@@ -121,20 +124,8 @@ final class SchemaMarkupInjection
         return $aspects;
     }
 
-    private function getTypo3Mode(): Typo3Mode
+    private function getRequest(): ServerRequestInterface
     {
-        if ($this->typo3Mode === null) {
-            $this->typo3Mode = new Typo3Mode();
-        }
-
-        return $this->typo3Mode;
-    }
-
-    /**
-     * @internal For testing purposes only!
-     */
-    public function setTypo3Mode(Typo3Mode $typo3Mode): void
-    {
-        $this->typo3Mode = $typo3Mode;
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }
