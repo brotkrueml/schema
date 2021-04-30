@@ -29,8 +29,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     /** @var StandaloneView|null */
     private $view;
 
-    /** @var PagesCacheService */
-    private $pagesCacheService;
+    private PagesCacheService $pagesCacheService;
 
     /**
      * @psalm-suppress PropertyTypeCoercion
@@ -59,9 +58,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         $types = [];
         if (!empty($jsonLd)) {
             $types = $this->convertJsonLdToArray($jsonLd);
-            \usort($types, static function (array $a, array $b): int {
-                return $a['@type'] <=> $b['@type'];
-            });
+            \usort($types, static fn (array $a, array $b): int => $a['@type'] <=> $b['@type']);
         }
 
         $this->initialiseView();
@@ -74,7 +71,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     private function convertJsonLdToArray(string $jsonLd): array
     {
         $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
-        $decodedJsonLd = \json_decode($jsonLd, true);
+        $decodedJsonLd = \json_decode($jsonLd, true, 512, \JSON_THROW_ON_ERROR);
         unset($decodedJsonLd['@context']);
 
         return $decodedJsonLd['@graph'] ?? [$decodedJsonLd];

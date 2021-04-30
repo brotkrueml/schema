@@ -39,11 +39,8 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     protected $escapeOutput = false;
 
-    /** @var array|null */
-    private static $additionalManuals;
-
-    /** @var IconFactory|null */
-    private static $iconFactory;
+    private static ?array $additionalManuals = null;
+    private static ?IconFactory $iconFactory = null;
 
     public function initializeArguments()
     {

@@ -18,8 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 class RendererTest extends TestCase
 {
-    /** @var Renderer */
-    private $subject;
+    private Renderer $subject;
 
     protected function setUp(): void
     {
@@ -167,9 +166,9 @@ class RendererTest extends TestCase
         string $type = 'StubType'
     ): TypeInterface {
         return new class($id, $properties, $type) implements TypeInterface {
-            private $id;
-            private $properties;
-            private $type;
+            private ?string $id;
+            private array $properties;
+            private string $type;
 
             public function __construct(?string $id, array $properties, string $type)
             {

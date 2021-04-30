@@ -23,10 +23,10 @@ final class Renderer implements RendererInterface
     private const CONTEXT = 'http://schema.org';
 
     /** @var TypeInterface[] */
-    private $types = [];
+    private array $types = [];
 
     /** @var array<string,scalar|array> */
-    private $typeResult = [];
+    private array $typeResult = [];
 
     public function addType(TypeInterface ...$type): void
     {

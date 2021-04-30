@@ -23,8 +23,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  */
 class EmbedMarkupDependingOnNoIndexPageFieldTest extends TestCase
 {
-    /** @var EmbedMarkupDependingOnNoIndexPageField */
-    private $subject;
+    private EmbedMarkupDependingOnNoIndexPageField $subject;
 
     protected function setUp(): void
     {

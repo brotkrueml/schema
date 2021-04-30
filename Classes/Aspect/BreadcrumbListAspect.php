@@ -21,14 +21,9 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class BreadcrumbListAspect implements AspectInterface
 {
-    /** @var TypoScriptFrontendController */
-    private $controller;
-
-    /** @var ExtensionConfiguration */
-    private $configuration;
-
-    /** @var ContentObjectRenderer */
-    private $contentObjectRenderer;
+    private TypoScriptFrontendController $controller;
+    private ExtensionConfiguration $configuration;
+    private ContentObjectRenderer $contentObjectRenderer;
 
     /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(

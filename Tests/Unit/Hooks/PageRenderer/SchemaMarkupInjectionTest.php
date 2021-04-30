@@ -33,10 +33,7 @@ class SchemaMarkupInjectionTest extends TestCase
 {
     use SchemaCacheTrait;
 
-    /**
-     * @var SchemaMarkupInjection
-     */
-    protected $subject;
+    protected SchemaMarkupInjection $subject;
 
     /**
      * @var MockObject|PageRenderer

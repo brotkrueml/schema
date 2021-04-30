@@ -23,8 +23,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class PagesCacheServiceTest extends TestCase
 {
-    /** @var PagesCacheService */
-    private $subject;
+    private PagesCacheService $subject;
 
     /** @var MockObject|FrontendInterface */
     private $cacheFrontendMock;

@@ -13,8 +13,7 @@ namespace Brotkrueml\Schema\Context;
 
 class Typo3Mode
 {
-    /** @var string */
-    private $mode;
+    private string $mode;
 
     public function __construct()
     {

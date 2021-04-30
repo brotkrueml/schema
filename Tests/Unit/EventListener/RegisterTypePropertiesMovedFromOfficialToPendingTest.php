@@ -18,10 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 {
-    /**
-     * @var RegisterTypePropertiesMovedFromOfficialToPending
-     */
-    private $subject;
+    private RegisterTypePropertiesMovedFromOfficialToPending $subject;
 
     protected function setUp(): void
     {

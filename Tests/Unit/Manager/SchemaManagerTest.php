@@ -26,14 +26,11 @@ class SchemaManagerTest extends Testcase
 {
     use SchemaCacheTrait;
 
-    /** @var SchemaManager */
-    protected $subject;
+    protected SchemaManager $subject;
 
-    /** @var \ReflectionProperty */
-    private $rendererTypes;
+    private \ReflectionProperty $rendererTypes;
 
-    /** @var Renderer */
-    private $renderer;
+    private Renderer $renderer;
 
     protected function setUp(): void
     {

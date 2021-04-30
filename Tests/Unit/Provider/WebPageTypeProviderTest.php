@@ -16,7 +16,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class WebPageTypeProviderTest extends TestCase
 {
-    protected $availableWebPageTypesForTesting = [
+    protected array $availableWebPageTypesForTesting = [
         'FooPage',
         'BarPage',
         'SomePage',

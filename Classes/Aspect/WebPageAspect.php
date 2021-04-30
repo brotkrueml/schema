@@ -21,11 +21,8 @@ final class WebPageAspect implements AspectInterface
 {
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
-    /** @var TypoScriptFrontendController */
-    private $controller;
-
-    /** @var ExtensionConfiguration */
-    private $configuration;
+    private TypoScriptFrontendController $controller;
+    private ExtensionConfiguration $configuration;
 
     /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(

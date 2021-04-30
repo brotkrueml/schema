@@ -17,10 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 class RegisterAdditionalTypePropertiesEventTest extends TestCase
 {
-    /**
-     * @var RegisterAdditionalTypePropertiesEvent
-     */
-    private $subject;
+    private RegisterAdditionalTypePropertiesEvent $subject;
 
     protected function setUp(): void
     {

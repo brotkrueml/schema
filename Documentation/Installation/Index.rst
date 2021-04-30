@@ -14,8 +14,9 @@ Target group: **Administrators**
 
 .. note::
 
-   The extension in version |release| supports TYPO3 v10 LTS and TYPO3 v11.
-   Use version 1.x for compatibility with TYPO3 v9 LTS.
+   The extension in version |release| supports TYPO3 v10 LTS and TYPO3 v11
+   and needs at least PHP 7.4. Use version 1.x for compatibility with
+   TYPO3 v9 LTS or PHP 7.2/7.3.
 
 The recommended way to install this extension is by using Composer. In your
 Composer-based TYPO3 project root, just type::

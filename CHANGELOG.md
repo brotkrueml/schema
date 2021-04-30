@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Compatibility with TYPO3 v9 LTS (#41)
+- Compatibility with PHP 7.2 and PHP 7.3 (#42)
 - Signal/slots in favour of PSR-14 events (#43)
 - Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 - Deprecated class TypesProvider (#44)

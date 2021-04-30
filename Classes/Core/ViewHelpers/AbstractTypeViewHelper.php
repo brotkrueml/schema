@@ -25,23 +25,12 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
 
-    /** @var bool */
-    private $isMainEntityOfWebPage = false;
-
-    /** @var string */
-    private $parentPropertyName = '';
-
-    /** @var TypeInterface */
-    private $modelTemplate;
-
-    /** @var TypeInterface */
-    private $model;
-
-    /** @var TypeStack */
-    private $stack;
-
-    /** @var SchemaManager */
-    private $schemaManager;
+    private bool $isMainEntityOfWebPage = false;
+    private string $parentPropertyName = '';
+    private TypeInterface $modelTemplate;
+    private ?TypeInterface $model = null;
+    private TypeStack $stack;
+    private SchemaManager $schemaManager;
 
     /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
@@ -161,6 +150,10 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     private function assignArgumentsToItem(): void
     {
+        if ($this->model === null) {
+            return;
+        }
+
         if (!empty($this->arguments[static::ARGUMENT_ID])) {
             $this->model->setId($this->arguments[static::ARGUMENT_ID]);
         }
@@ -173,7 +166,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
             }
 
             if ($value === 'false') {
-                $this->model->setProperty($name, false);
+                $this->model->setProperty((string)$name, false);
                 continue;
             }
 

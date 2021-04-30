@@ -26,8 +26,7 @@ use TYPO3\CMS\Core\Package\PackageManager;
  */
 class TypeRegistryTest extends TestCase
 {
-    /** @var TypeRegistry */
-    private $subject;
+    private TypeRegistry $subject;
 
     /** @var MockObject|PhpFrontend */
     private $cacheMock;

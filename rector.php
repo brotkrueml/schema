@@ -7,6 +7,7 @@ use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Assign\RemoveUnusedVariableAssignRector;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
+use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -21,7 +22,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(Option::AUTOLOAD_PATHS, [__DIR__ . '/.Build/vendor/autoload.php']);
 
-    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_72);
+    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_74);
 
     $parameters->set(Option::SETS, [
         SetList::CODE_QUALITY,
@@ -36,6 +37,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHP_70,
         SetList::PHP_71,
         SetList::PHP_72,
+        SetList::PHP_73,
+        SetList::PHP_74,
 //        SetList::TYPE_DECLARATION,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::PHPUNIT_EXCEPTION,
@@ -45,6 +48,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
 
     $parameters->set(Option::SKIP, [
+        AddLiteralSeparatorToNumberRector::class,
         CountOnNullRector::class => [
             __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
         ],

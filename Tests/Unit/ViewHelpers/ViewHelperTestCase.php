@@ -21,11 +21,9 @@ class ViewHelperTestCase extends UnitTestCase
 
     protected $resetSingletonInstances = true;
 
-    /** @var TemplateView */
-    protected $view;
+    protected TemplateView $view;
 
-    /** @var SchemaManager */
-    protected $schemaManager;
+    protected SchemaManager $schemaManager;
 
     protected function setUp(): void
     {

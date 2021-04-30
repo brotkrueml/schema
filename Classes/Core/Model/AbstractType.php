@@ -31,10 +31,8 @@ abstract class AbstractType implements TypeInterface
 
     /**
      * The ID of the type (mapped to @id in result)
-     *
-     * @var string|null
      */
-    private $id;
+    private ?string $id = null;
 
     /**
      * The properties of a specific type with their corresponding value:
@@ -43,7 +41,7 @@ abstract class AbstractType implements TypeInterface
      *
      * @var array<string, mixed>
      */
-    private $properties = [];
+    private array $properties = [];
 
     public function __construct()
     {

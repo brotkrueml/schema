@@ -13,15 +13,8 @@ namespace Brotkrueml\Schema\Event;
 
 final class ShouldEmbedMarkupEvent
 {
-    /**
-     * @var array
-     */
-    private $page = [];
-
-    /**
-     * @var bool
-     */
-    private $embedMarkup = true;
+    private array $page = [];
+    private bool $embedMarkup = true;
 
     public function __construct(array $page, bool $embedMarkup)
     {

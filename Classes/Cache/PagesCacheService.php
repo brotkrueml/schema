@@ -24,11 +24,8 @@ class PagesCacheService
 {
     private const CACHE_IDENTIFIER = 'pages';
 
-    /** @var TypoScriptFrontendController */
-    private $controller;
-
-    /** @var FrontendInterface|null */
-    private $cache;
+    private ?TypoScriptFrontendController $controller = null;
+    private ?FrontendInterface $cache;
 
     public function __construct(FrontendInterface $cache = null)
     {
@@ -61,6 +58,7 @@ class PagesCacheService
 
     private function getCacheIdentifier(): string
     {
+        /** @psalm-suppress PossiblyNullPropertyFetch */
         return $this->controller->newHash . '-tx-schema';
     }
 
@@ -71,18 +69,19 @@ class PagesCacheService
         }
 
         $this->initialiseTypoScriptFrontendController();
-        $this->cache->set(
-            $this->getCacheIdentifier(),
-            $markup,
-            ['pageId_' . $this->controller->page['uid']],
-            $this->controller->get_cache_timeout()
-        );
+        if ($this->controller !== null) {
+            $this->cache->set(
+                $this->getCacheIdentifier(),
+                $markup,
+                ['pageId_' . $this->controller->page['uid']],
+                $this->controller->get_cache_timeout()
+            );
+        }
     }
 
     private function initialiseTypoScriptFrontendController(): void
     {
-        /** @psalm-suppress DocblockTypeContradiction */
-        if (!$this->controller) {
+        if ($this->controller === null) {
             // Cannot be done in constructor as an empty TSFE is injected via DI in TYPO3 v10
             $this->controller = $GLOBALS['TSFE'];
         }

@@ -7,8 +7,10 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
 
-The current version of the extension supports TYPO3 v10 LTS and TYPO3 v11.
-Use version 1.x for compatibility with TYPO3 v9 LTS.
+The current version of the extension supports TYPO3 v10 LTS and TYPO3 v11
+and needs at least PHP 7.4.
+
+Use version 1.x for compatibility with TYPO3 v9 LTS or PHP 7.2/7.3.
 
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/master/en-us/) |
 [Translation](https://crowdin.com/project/typo3-extension-schema) |

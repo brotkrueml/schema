@@ -1,25 +1,23 @@
+<?xml version="1.0"?>
 <phpunit
-    convertDeprecationsToExceptions="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    stopOnFailure="false"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../.Build/vendor/phpunit/phpunit/phpunit.xsd"
 >
-    <testsuites>
-        <testsuite name="Unit tests">
-            <directory>Unit/</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist>
-            <directory>../Classes/</directory>
-            <exclude>
-                <directory>../Classes/Model/Type/</directory>
-                <directory>../Classes/ViewHelpers/Type/</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-    <extensions>
-        <extension class="Brotkrueml\Schema\Tests\Hooks\BypassFinalHook"/>
-    </extensions>
+  <coverage>
+    <include>
+      <directory>../Classes/</directory>
+    </include>
+    <exclude>
+      <directory>../Classes/Model/Type/</directory>
+      <directory>../Classes/ViewHelpers/Type/</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Unit tests">
+      <directory>Unit/</directory>
+    </testsuite>
+  </testsuites>
+  <extensions>
+    <extension class="Brotkrueml\Schema\Tests\Hooks\BypassFinalHook"/>
+  </extensions>
 </phpunit>

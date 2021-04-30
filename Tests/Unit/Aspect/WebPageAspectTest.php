@@ -32,7 +32,7 @@ class WebPageAspectTest extends TestCase
 {
     use SchemaCacheTrait;
 
-    protected $resetSingletonInstances = true;
+    protected bool $resetSingletonInstances = true;
 
     /** @var MockObject|TypoScriptFrontendController */
     protected $controllerMock;
@@ -71,7 +71,7 @@ class WebPageAspectTest extends TestCase
      */
     public function constructWorksCorrectlyWithNoParametersAreGiven(): void
     {
-        $GLOBALS['TSFE'] = 'fake controller';
+        $GLOBALS['TSFE'] = $this->createStub(TypoScriptFrontendController::class);
 
         $reflector = new \ReflectionClass(WebPageAspect::class);
 
@@ -103,7 +103,7 @@ class WebPageAspectTest extends TestCase
 
         $subject = new WebPageAspect();
 
-        self::assertSame('fake controller', $controller->getValue($subject));
+        self::assertSame($GLOBALS['TSFE'], $controller->getValue($subject));
         self::assertInstanceOf(ExtensionConfiguration::class, $configuration->getValue($subject));
 
         unset($GLOBALS['TSFE']);

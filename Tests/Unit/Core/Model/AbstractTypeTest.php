@@ -28,10 +28,7 @@ class AbstractTypeTest extends TestCase
 {
     use SchemaCacheTrait;
 
-    /**
-     * @var AbstractType
-     */
-    protected $subject;
+    protected Thing $subject;
 
     protected function setUp(): void
     {

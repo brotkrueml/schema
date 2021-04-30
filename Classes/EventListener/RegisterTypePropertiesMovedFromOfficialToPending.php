@@ -23,7 +23,7 @@ use Brotkrueml\Schema\Model\Type;
 class RegisterTypePropertiesMovedFromOfficialToPending
 {
     /** @var array<class-string> */
-    private $hasEnergyConsumptionDetails = [
+    private array $hasEnergyConsumptionDetails = [
         Type\Car::class,
         Type\IndividualProduct::class,
         Type\Product::class,
@@ -33,7 +33,7 @@ class RegisterTypePropertiesMovedFromOfficialToPending
     ];
 
     /** @var array<class-string> */
-    private $ineligibleRegionTypes = [
+    private array $ineligibleRegionTypes = [
         Type\ActionAccessSpecification::class,
         Type\AggregateOffer::class,
         Type\DeliveryChargeSpecification::class,
@@ -42,20 +42,20 @@ class RegisterTypePropertiesMovedFromOfficialToPending
     ];
 
     /** @var array<class-string> */
-    private $occupationalCategoryTypes = [
+    private array $occupationalCategoryTypes = [
         Type\JobPosting::class,
         Type\Occupation::class,
     ];
 
     /** @var array<class-string> */
-    private $sportTypes = [
+    private array $sportTypes = [
         Type\SportsEvent::class,
         Type\SportsOrganization::class,
         Type\SportsTeam::class,
     ];
 
     /** @var array<class-string> */
-    private $subtitleLanguageTypes = [
+    private array $subtitleLanguageTypes = [
         Type\BroadcastEvent::class,
         Type\Movie::class,
         Type\ScreeningEvent::class,

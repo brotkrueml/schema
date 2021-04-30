@@ -23,20 +23,18 @@ final class SchemaManager implements SingletonInterface
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
-    /** @var RendererInterface */
-    private $renderer;
+    private RendererInterface $renderer;
 
     /** @var TypeInterface[] */
-    private $types = [];
+    private array $types = [];
 
-    /** @var WebPageTypeInterface|TypeInterface */
-    private $webPage;
+    private ?TypeInterface $webPage = null;
 
     /** @var BreadcrumbList[] */
-    private $breadcrumbLists = [];
+    private array $breadcrumbLists = [];
 
     /** @var TypeInterface[] */
-    private $mainEntitiesOfWebPage = [];
+    private array $mainEntitiesOfWebPage = [];
 
     public function __construct(RendererInterface $renderer = null)
     {
@@ -156,7 +154,7 @@ final class SchemaManager implements SingletonInterface
         return $this->renderer->render();
     }
 
-    /** @psalm-suppress PossiblyUndefinedMethod */
+    /** @psalm-suppress PossiblyNullReference */
     private function preparePropertiesForWebPage(): void
     {
         if ($this->breadcrumbLists !== []) {

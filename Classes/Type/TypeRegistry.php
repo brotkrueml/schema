@@ -39,19 +39,16 @@ final class TypeRegistry implements SingletonInterface
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES = 'webpageelement_types';
 
     /** @var array<string,class-string> */
-    private $types = [];
+    private array $types = [];
 
     /** @var string[] */
-    private $webPageTypes = [];
+    private array $webPageTypes = [];
 
     /** @var string[] */
-    private $webPageElementTypes = [];
+    private array $webPageElementTypes = [];
 
-    /** @var FrontendInterface */
-    private $cache;
-
-    /** @var PackageManager */
-    private $packageManager;
+    private ?FrontendInterface $cache = null;
+    private PackageManager $packageManager;
 
     public function __construct(FrontendInterface $cache = null, PackageManager $packageManager = null)
     {

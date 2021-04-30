@@ -24,23 +24,15 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
 {
-    /** @var TypoScriptFrontendController */
-    private $controller;
+    private TypoScriptFrontendController $controller;
 
     /** @var array<string, mixed> */
-    private $configuration;
+    private array $configuration;
 
-    /** @var SchemaManager */
-    private $schemaManager;
-
-    /** @var EventDispatcher */
-    private $eventDispatcher;
-
-    /** @var Typo3Mode|null */
-    private $typo3Mode;
-
-    /** @var PagesCacheService */
-    private $pagesCacheService;
+    private SchemaManager $schemaManager;
+    private EventDispatcher $eventDispatcher;
+    private ?Typo3Mode $typo3Mode = null;
+    private PagesCacheService $pagesCacheService;
 
     /**
      * @psalm-suppress MissingParamType
@@ -54,8 +46,8 @@ final class SchemaMarkupInjection
         $eventDispatcher = null
     ) {
         $this->controller = $controller ?? $GLOBALS['TSFE'];
-        $extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $this->configuration = $extensionConfiguration->get('schema');
+        $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
+        $this->configuration = $extensionConfiguration->get('schema') ?? [];
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
         $this->eventDispatcher =
@@ -98,10 +90,9 @@ final class SchemaMarkupInjection
 
     private function shouldEmbedMarkup(): bool
     {
+        /** @psalm-suppress PossiblyNullPropertyFetch, PossiblyNullArgument */
         $event = new ShouldEmbedMarkupEvent($this->controller->page, true);
-        if ($this->eventDispatcher) {
-            $event = $this->eventDispatcher->dispatch($event);
-        }
+        $event = $this->eventDispatcher->dispatch($event);
 
         return $event->getEmbedMarkup();
     }

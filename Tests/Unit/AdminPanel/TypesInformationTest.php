@@ -32,8 +32,7 @@ class TypesInformationTest extends TestCase
     /** @var Stub|LanguageService */
     private $languageServiceStub;
 
-    /** @var TypesInformation */
-    private $subject;
+    private TypesInformation $subject;
 
     protected function setUp(): void
     {

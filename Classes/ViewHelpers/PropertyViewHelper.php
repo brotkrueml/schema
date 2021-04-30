@@ -33,8 +33,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     private const ARGUMENT_AS = '-as';
     private const ARGUMENT_VALUE = 'value';
 
-    /** @var TypeStack */
-    private $typeStack;
+    private TypeStack $typeStack;
 
     public function __construct(TypeStack $typeStack = null)
     {

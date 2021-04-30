@@ -22,8 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
-    /** @var PagesCacheService */
-    private $pagesCacheService;
+    private PagesCacheService $pagesCacheService;
 
     /**
      * @psalm-suppress PropertyTypeCoercion
@@ -66,7 +65,7 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
         $numberOfTypes = 0;
         if (!empty($jsonLd)) {
             $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
-            $decodedJsonLd = \json_decode($jsonLd, true);
+            $decodedJsonLd = \json_decode($jsonLd, true, 512, \JSON_THROW_ON_ERROR);
             $numberOfTypes = isset($decodedJsonLd['@graph']) ? \count($decodedJsonLd['@graph']) : 1;
         }
 
