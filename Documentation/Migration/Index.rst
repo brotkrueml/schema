@@ -16,6 +16,7 @@ From version 1.x to version 2.0
 
 In version 2.0 the compatibility with TYPO3 v9 LTS was removed.
 
+
 Signal/Slots
 ------------
 
@@ -67,3 +68,19 @@ For the migration of the :php:`SchemaManager->setMainEntityOfWebPage()` method
 call a `Rector <https://github.com/brotkrueml/schema-rector>`_ exists. For the
 other two follow the instructions on the :ref:`deprecations <api-deprecations>`
 chapter.
+
+
+Markup is embedded by default on "noindex" pages
+------------------------------------------------
+
+In schema version 1.x the markup was not embedded on "noindex" pages (with
+installed :ref:`SEO system extension <t3seo:introduction>`). In version 2
+the markup is embedded by default also on these pages. You can deactivate this
+behaviour in the :ref:`extension configuration
+<configuration-embedMarkupOnNoindexPages>`.
+
+Also in version 1.x a PSR-14 event
+:php:`Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent` was available to change
+the default behaviour of not embedding the markup on "noindex" pages. With the
+new configuration option this is not necessary anymore and event listeners for
+this event must be removed.

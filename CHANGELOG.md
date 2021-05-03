@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Context moved from http://schema.org to https://schema.org/
+- Context moved from http://schema.org to https://schema.org/ (#58)
+- By default, markup is added to noindex pages, a configuration setting is available for deactivation (#60)
 
 ### Removed
 - Compatibility with TYPO3 v9 LTS (#41)
 - Compatibility with PHP 7.2 and PHP 7.3 (#42)
+- The PSR-14 event and signal for (de)activating the embedding of markup are removed (#60)
 - Signal/slots in favour of PSR-14 events (#43)
 - Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 - Deprecated class TypesProvider (#44)

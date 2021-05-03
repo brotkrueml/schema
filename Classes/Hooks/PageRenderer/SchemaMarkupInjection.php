@@ -11,14 +11,12 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Adapter\ApplicationType;
+use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
-use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -32,8 +30,8 @@ final class SchemaMarkupInjection
     private array $configuration;
 
     private SchemaManager $schemaManager;
-    private EventDispatcher $eventDispatcher;
     private PagesCacheService $pagesCacheService;
+    private ExtensionAvailability $extensionAvailability;
 
     /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
@@ -41,10 +39,10 @@ final class SchemaMarkupInjection
         ExtensionConfiguration $extensionConfiguration = null,
         SchemaManager $schemaManager = null,
         PagesCacheService $pagesCacheService = null,
-        EventDispatcher $eventDispatcher = null,
-        ApplicationType $applicationType = null
+        ApplicationType $applicationType = null,
+        ExtensionAvailability $extensionAvailability = null
     ) {
-        $this->applicationType = $applicationType ?? ApplicationType::fromRequest($this->getRequest());
+        $this->applicationType = $applicationType ?? new ApplicationType();
         if ($this->applicationType->isBackend()) {
             return;
         }
@@ -53,10 +51,7 @@ final class SchemaMarkupInjection
         $this->configuration = $extensionConfiguration->get('schema') ?? [];
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
-        $this->eventDispatcher =
-            $eventDispatcher instanceof EventDispatcher
-                ? $eventDispatcher
-                : GeneralUtility::makeInstance(EventDispatcher::class);
+        $this->extensionAvailability = $extensionAvailability ?? new ExtensionAvailability();
     }
 
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
@@ -65,7 +60,7 @@ final class SchemaMarkupInjection
             return;
         }
 
-        if (!$this->shouldEmbedMarkup()) {
+        if (!$this->isMarkupToBeEmbedded()) {
             return;
         }
 
@@ -91,13 +86,17 @@ final class SchemaMarkupInjection
         }
     }
 
-    private function shouldEmbedMarkup(): bool
+    private function isMarkupToBeEmbedded(): bool
     {
-        /** @psalm-suppress PossiblyNullPropertyFetch, PossiblyNullArgument */
-        $event = new ShouldEmbedMarkupEvent($this->controller->page, true);
-        $event = $this->eventDispatcher->dispatch($event);
+        if (!$this->extensionAvailability->isSeoAvailable()) {
+            return true;
+        }
 
-        return $event->getEmbedMarkup();
+        if (!($this->controller->page['no_index'] ?? false)) {
+            return true;
+        }
+
+        return (bool)($this->configuration['embedMarkupOnNoindexPages'] ?? true);
     }
 
     private function getRegisteredAspects(): array
@@ -122,10 +121,5 @@ final class SchemaMarkupInjection
         }
 
         return $aspects;
-    }
-
-    private function getRequest(): ServerRequestInterface
-    {
-        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

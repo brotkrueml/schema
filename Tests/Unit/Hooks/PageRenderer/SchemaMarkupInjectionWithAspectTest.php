@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
+use Brotkrueml\Schema\Adapter\ApplicationType;
+use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\PagesCacheService;
-use Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Aspect\TestAspect;
@@ -23,8 +24,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
-use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -56,14 +55,14 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
     private $pagesCacheServiceStub;
 
     /**
-     * @var Stub|EventDispatcher
-     */
-    private $eventDispatcherStub;
-
-    /**
      * @var Stub|ApplicationType
      */
     private $applicationTypeStub;
+
+    /**
+     * @var Stub|ExtensionAvailability
+     */
+    private $extensionAvailability;
 
     protected function setUp(): void
     {
@@ -72,20 +71,17 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
         $this->controllerStub->page = ['no_index' => 0, 'uid' => 42];
 
         $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
-
         $this->pagesCacheServiceStub = $this->createStub(PagesCacheService::class);
-
-        $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
-        $this->eventDispatcherStub
-            ->method('dispatch')
-            ->with(self::anything())
-            ->willReturn(new ShouldEmbedMarkupEvent([], true));
-
         $this->pageRendererStub = $this->createStub(PageRenderer::class);
 
         $this->applicationTypeStub = $this->createStub(ApplicationType::class);
         $this->applicationTypeStub
             ->method('isBackend')
+            ->willReturn(false);
+
+        $this->extensionAvailability = $this->createStub(ExtensionAvailability::class);
+        $this->extensionAvailability
+            ->method('isSeoAvailable')
             ->willReturn(false);
 
         /** @var MockObject|PackageManager $packageManagerStub */
@@ -126,8 +122,8 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->extensionConfigurationStub,
             $schemaManagerMock,
             $this->pagesCacheServiceStub,
-            $this->eventDispatcherStub,
-            $this->applicationTypeStub
+            $this->applicationTypeStub,
+            $this->extensionAvailability
         );
 
         $params = [];
@@ -153,8 +149,8 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
             $this->extensionConfigurationStub,
             $schemaManagerStub,
             $this->pagesCacheServiceStub,
-            $this->eventDispatcherStub,
-            $this->applicationTypeStub
+            $this->applicationTypeStub,
+            $this->extensionAvailability
         );
 
         $params = [];

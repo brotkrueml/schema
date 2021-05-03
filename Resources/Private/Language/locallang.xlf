@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-08-04T16:36:23Z" product-name="schema">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2021-05-03T17:17:44Z" product-name="schema">
 		<body>
 			<trans-unit id="adminPanel.goToWebsite" resname="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
@@ -43,6 +43,9 @@
 			</trans-unit>
 			<trans-unit id="config.embedMarkupInBodySection" resname="config.embedMarkupInBodySection">
 				<source><![CDATA[Embed markup in the body section]]></source>
+			</trans-unit>
+			<trans-unit id="config.embedMarkupOnNoindexPages" resname="config.embedMarkupOnNoindexPages">
+				<source><![CDATA[Embed markup on noindex pages: The option is considered only if the SEO system extension is installed.]]></source>
 			</trans-unit>
 		</body>
 	</file>

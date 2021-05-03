@@ -25,6 +25,7 @@ configuration:
 
 .. figure:: /Images/Configuration/ExtensionConfiguration.png
    :alt: Options in the extension configuration
+   :class: with-border
 
    Options in the extension configuration
 
@@ -32,8 +33,8 @@ configuration:
 
 .. _configuration-automaticWebPageSchemaGeneration:
 
-basic.automaticWebPageSchemaGeneration
---------------------------------------
+Automatic embedding of the WebPage schema into the page
+-------------------------------------------------------
 
 If this option is enabled, the ``WebPage`` type schema is automatically embedded
 into the page. The web page type can be defined in the field
@@ -48,8 +49,8 @@ Default value
 
 .. _configuration-automaticBreadcrumbSchemaGeneration:
 
-basic.automaticBreadcrumbSchemaGeneration
------------------------------------------
+Automatic embedding of the breadcrumb markup into the page
+----------------------------------------------------------
 
 If this option is enabled, the breadcrumb is automatically generated from the
 rootline of the current page.
@@ -69,8 +70,8 @@ Default value
 
 .. _configuration-embedMarkupInBodySection:
 
-basic.embedMarkupInBodySection
-------------------------------
+Embed markup in the body section
+--------------------------------
 
 If this option is enabled, the schema markup is embedded at the end of the
 :html:`<body>` section. If it is disabled, it is embedded in the :html:`<head>`
@@ -80,6 +81,23 @@ Default value
    disabled
 
 .. youtube:: lI6EtxjoyDU
+
+
+.. _configuration-embedMarkupOnNoindexPages:
+
+Embed markup on "noindex" pages
+-------------------------------
+
+If this option is enabled, the schema markup is embedded also on "noindex"
+pages.
+
+Default value
+   enabled
+
+.. note::
+   The option is considered only if the :ref:`SEO system extension
+   <t3seo:introduction>` is installed. If this is not the case, the markup is
+   always embedded.
 
 
 Cache configuration
