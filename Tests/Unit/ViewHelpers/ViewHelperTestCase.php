@@ -19,10 +19,8 @@ class ViewHelperTestCase extends TestCase
 {
     protected const VIEWHELPER_NAMESPACE = '{namespace schema=Brotkrueml\Schema\ViewHelpers}';
 
-    protected $resetSingletonInstances = true;
-
+    protected bool $resetSingletonInstances = true;
     protected TemplateView $view;
-
     protected SchemaManager $schemaManager;
 
     protected function setUp(): void

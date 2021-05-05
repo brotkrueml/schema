@@ -31,7 +31,7 @@ class BreadcrumbListAspectTest extends TestCase
 {
     use SchemaCacheTrait;
 
-    protected $resetSingletonInstances = true;
+    protected bool $resetSingletonInstances = true;
 
     /** @var MockObject|TypoScriptFrontendController */
     protected $controllerMock;
