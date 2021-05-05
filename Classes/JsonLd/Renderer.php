@@ -59,6 +59,9 @@ final class Renderer implements RendererInterface
         );
     }
 
+    /**
+     * @return mixed[][]|bool[]|float[]|int[]|string[]
+     */
     private function prepare(TypeInterface $type): array
     {
         $this->typeResult = [];

@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 class Thing extends AbstractType
 {
+    /**
+     * @var string[]
+     */
     protected static $propertyNames = [
         'alternateName',
         'description',

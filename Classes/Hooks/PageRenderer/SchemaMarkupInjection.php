@@ -99,6 +99,9 @@ final class SchemaMarkupInjection
         return (bool)($this->configuration['embedMarkupOnNoindexPages'] ?? true);
     }
 
+    /**
+     * @return AspectInterface[]
+     */
     private function getRegisteredAspects(): array
     {
         $aspects = [];

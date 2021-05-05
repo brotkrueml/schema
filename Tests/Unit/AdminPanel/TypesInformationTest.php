@@ -93,7 +93,7 @@ class TypesInformationTest extends TestCase
         $this->subject->getContent(new ModuleData());
     }
 
-    public function dataProviderForGetContent(): \Generator
+    public function dataProviderForGetContent(): \Iterator
     {
         yield 'No cache entry found, assign empty array to view' => [
             null,

@@ -114,7 +114,7 @@ class WebPageAspectTest extends TestCase
      *
      * @covers \Brotkrueml\Schema\Aspect\WebPageAspect::execute
      */
-    public function whenAutomaticWebPageGenerationIsDeactivatedNoTypeIsAdded()
+    public function whenAutomaticWebPageGenerationIsDeactivatedNoTypeIsAdded(): void
     {
         $this->setUpGeneralMocks();
 

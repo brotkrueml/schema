@@ -74,7 +74,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         self::assertSame($expected, $actual);
     }
 
-    public function dataProvider(): \Generator
+    public function dataProvider(): \Iterator
     {
         yield 'when value is an array, an empty string is returned' => [
             '<schema:adminPanel.propertyValue name="some-property" value="{0: \'some-value\'}"/>',

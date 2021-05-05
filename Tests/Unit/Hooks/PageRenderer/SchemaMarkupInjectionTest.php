@@ -98,7 +98,7 @@ class SchemaMarkupInjectionTest extends TestCase
     /**
      * @test
      */
-    public function executeInBackendModeDoesNothing()
+    public function executeInBackendModeDoesNothing(): void
     {
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
@@ -122,7 +122,7 @@ class SchemaMarkupInjectionTest extends TestCase
     /**
      * @test
      */
-    public function executeWithoutDefinedMarkupAndNoAspectsDoesNotEmbedAnything()
+    public function executeWithoutDefinedMarkupAndNoAspectsDoesNotEmbedAnything(): void
     {
         $this->pageRendererMock
             ->expects(self::never())

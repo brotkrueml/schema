@@ -19,6 +19,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class WebPageTypeProvider
 {
+    /**
+     * @return list<string[]>
+     */
     public static function getTypesForTcaSelect(): array
     {
         $types = GeneralUtility::makeInstance(TypeRegistry::class)->getWebPageTypes();

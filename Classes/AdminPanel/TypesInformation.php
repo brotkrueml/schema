@@ -68,6 +68,9 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         return $this->view->render();
     }
 
+    /**
+     * @return array<mixed>
+     */
     private function convertJsonLdToArray(string $jsonLd): array
     {
         $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
@@ -97,11 +100,17 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         return $GLOBALS['LANG'];
     }
 
+    /**
+     * @return string[]
+     */
     public function getJavaScriptFiles(): array
     {
         return [\sprintf('EXT:%s/Resources/Public/JavaScript/AdminPanel/Validate.js', Extension::KEY)];
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getCssFiles(): array
     {
         return [];

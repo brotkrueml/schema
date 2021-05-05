@@ -30,6 +30,9 @@ final class RegisterAdditionalTypePropertiesEvent
         return $this->type;
     }
 
+    /**
+     * @return string[]
+     */
     public function getAdditionalProperties(): array
     {
         return $this->additionalProperties;

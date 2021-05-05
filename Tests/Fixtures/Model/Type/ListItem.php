@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 final class ListItem extends AbstractType
 {
+    /**
+     * @var string[]
+     */
     protected static $propertyNames = [
         'item',
         'name',

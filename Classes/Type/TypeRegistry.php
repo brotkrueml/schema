@@ -70,13 +70,16 @@ final class TypeRegistry implements SingletonInterface
     /**
      * Get all available types
      *
-     * @return array<string>
+     * @return string[]
      */
     public function getTypes(): array
     {
         return \array_keys($this->getTypesWithModels());
     }
 
+    /**
+     * @return array<string,class-string>
+     */
     private function getTypesWithModels(): array
     {
         if (empty($this->types)) {
@@ -86,6 +89,9 @@ final class TypeRegistry implements SingletonInterface
         return $this->types;
     }
 
+    /**
+     * @return array<string,class-string>
+     */
     private function loadConfiguration(): array
     {
         if (($cacheEntry = $this->requireCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES)) !== null) {
@@ -131,11 +137,17 @@ final class TypeRegistry implements SingletonInterface
         }
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function enrichTypeModelsArrayWithTypeKey(array $typeModels): array
     {
         $typeModelsWithTypeKey = [];
         foreach ($typeModels as $typeModel) {
             $type = \substr(\strrchr($typeModel, '\\') ?: '', 1);
+            if ($type === false) {
+                continue;
+            }
             $typeModelsWithTypeKey[$type] = $typeModel;
         }
 
@@ -145,7 +157,7 @@ final class TypeRegistry implements SingletonInterface
     /**
      * Get the WebPage types
      *
-     * @return array<string>
+     * @return string[]
      *
      * @see https://schema.org/WebPage
      */
@@ -161,6 +173,9 @@ final class TypeRegistry implements SingletonInterface
         return $this->webPageTypes;
     }
 
+    /**
+     * @return mixed[]|string[]
+     */
     private function loadSpecialTypes(string $cacheEntryIdentifier, string $typeInterface): array
     {
         if (($cacheEntry = $this->requireCacheEntry($cacheEntryIdentifier)) !== null) {
@@ -187,7 +202,7 @@ final class TypeRegistry implements SingletonInterface
     /**
      * Get the WebPageElement types
      *
-     * @return array<string>
+     * @return string[]
      *
      * @see https://schema.org/WebPageElement
      */
@@ -207,7 +222,7 @@ final class TypeRegistry implements SingletonInterface
      * Get the content types
      * "Content types" mean: Useful for structuring page content by an editor
      *
-     * @return array<string>
+     * @return string[]
      */
     public function getContentTypes(): array
     {

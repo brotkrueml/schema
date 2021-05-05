@@ -10,6 +10,8 @@ use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -39,7 +41,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHP_72,
         SetList::PHP_73,
         SetList::PHP_74,
-//        SetList::TYPE_DECLARATION,
+        SetList::TYPE_DECLARATION,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::PHPUNIT_EXCEPTION,
         PHPUnitSetList::PHPUNIT_MOCK,
@@ -50,6 +52,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::SKIP, [
         __DIR__ . '/Classes/Model/Type/*',
         __DIR__ . '/Classes/ViewHelpers/Type/*',
+        AddArrayParamDocTypeRector::class => [
+            __DIR__ . '/Tests/*',
+        ],
+        AddArrayReturnDocTypeRector::class => [
+            __DIR__ . '/Tests/*',
+        ],
         AddLiteralSeparatorToNumberRector::class,
         CountOnNullRector::class => [
             __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
@@ -58,7 +66,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
         ],
         RemoveUnusedVariableAssignRector::class => [
-            __DIR__ . '/Tests/Unit/Compatibility/CompatibilityTest.php'
-        ]
+            __DIR__ . '/Tests/Unit/Compatibility/CompatibilityTest.php',
+        ],
     ]);
 };

@@ -15,6 +15,9 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 class Image extends AbstractType
 {
+    /**
+     * @var string[]
+     */
     protected static $propertyNames = [
         'name',
         'description',

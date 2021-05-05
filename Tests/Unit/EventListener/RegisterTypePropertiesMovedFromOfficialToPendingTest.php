@@ -49,7 +49,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('hasEnergyConsumptionDetails', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForHasEnergyConsumptionDetails(): \Generator
+    public function dataProviderForHasEnergyConsumptionDetails(): \Iterator
     {
         yield [Type\Car::class];
         yield [Type\IndividualProduct::class];
@@ -71,7 +71,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('ineligibleRegion', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForIneligibleRegion(): \Generator
+    public function dataProviderForIneligibleRegion(): \Iterator
     {
         yield [Type\ActionAccessSpecification::class];
         yield [Type\AggregateOffer::class];
@@ -92,7 +92,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('sport', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForSport(): \Generator
+    public function dataProviderForSport(): \Iterator
     {
         yield [Type\SportsEvent::class];
         yield [Type\SportsOrganization::class];
@@ -111,7 +111,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('subtitleLanguage', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForSubtitleLanguage(): \Generator
+    public function dataProviderForSubtitleLanguage(): \Iterator
     {
         yield [Type\BroadcastEvent::class];
         yield [Type\Movie::class];
@@ -131,7 +131,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('occupationalCategory', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForOccupationalCategory(): \Generator
+    public function dataProviderForOccupationalCategory(): \Iterator
     {
         yield [Type\JobPosting::class];
         yield [Type\Occupation::class];

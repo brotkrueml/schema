@@ -44,7 +44,7 @@ class RendererTest extends TestCase
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
     }
 
-    public function dataProvider(): \Generator
+    public function dataProvider(): \Iterator
     {
         yield 'No id set and properties are empty' => [
             null,

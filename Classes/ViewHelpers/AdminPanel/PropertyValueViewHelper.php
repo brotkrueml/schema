@@ -37,9 +37,16 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         ],
     ];
 
+    /**
+     * @var bool
+     */
     protected $escapeOutput = false;
 
+    /**
+     * @var array<string, mixed>|null
+     */
     private static ?array $additionalManuals = null;
+
     private static ?IconFactory $iconFactory = null;
 
     public function initializeArguments()
@@ -104,6 +111,9 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         );
     }
 
+    /**
+     * @return list<array<string, string>>
+     */
     private static function buildLinksForType(string $type): array
     {
         $links = [
@@ -138,6 +148,9 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         return $links;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private static function getAdditionalManuals(): array
     {
         return self::$additionalManuals ?? require __DIR__ . '/../../../Configuration/TxSchema/AdditionalManuals.php';
@@ -179,6 +192,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     /**
      * For testing purposes only!
+     * @param array<string, mixed> $additionalManuals
      */
     public static function setAdditionalManuals(array $additionalManuals): void
     {

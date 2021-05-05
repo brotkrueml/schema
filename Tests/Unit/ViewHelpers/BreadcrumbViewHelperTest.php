@@ -55,10 +55,8 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
 
     /**
      * Data provider for testing the property view helper in Fluid templates
-     *
-     * @return array
      */
-    public function fluidTemplatesProvider(): \Generator
+    public function fluidTemplatesProvider(): \Iterator
     {
         yield 'Breadcrumb is empty' => [
             '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
