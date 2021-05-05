@@ -100,7 +100,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $itemsCount = \count($arguments[static::ARGUMENT_BREADCRUMB]);
         for ($i = 0; $i < $itemsCount; $i++) {
             $id = $arguments[static::ARGUMENT_BREADCRUMB][$i]['link'];
-            if (\strpos($id, $siteUrl) === false) {
+            if (!\str_starts_with($id, $siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }
 

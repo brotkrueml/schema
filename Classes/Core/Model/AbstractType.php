@@ -175,7 +175,7 @@ abstract class AbstractType implements TypeInterface
                 \sprintf(
                     'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface',
                     $propertyName,
-                    \is_object($propertyValue) ? \get_class($propertyValue) : \gettype($propertyValue)
+                    \get_debug_type($propertyValue)
                 ),
                 1561830012
             );
@@ -266,7 +266,7 @@ abstract class AbstractType implements TypeInterface
     public function getType(): string
     {
         $type = \substr(\strrchr(static::class, '\\') ?: '', 1);
-        if (\strpos($type, '_') === 0) {
+        if (\str_starts_with($type, '_')) {
             // As a class cannot start with a number an underscore prefixes the type class name
             // which is now removed (e.g. _3DModel => 3DModel)
             $type = \substr($type, 1);
