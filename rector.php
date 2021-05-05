@@ -48,6 +48,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
 
     $parameters->set(Option::SKIP, [
+        __DIR__ . '/Classes/Model/Type/*',
+        __DIR__ . '/Classes/ViewHelpers/Type/*',
         AddLiteralSeparatorToNumberRector::class,
         CountOnNullRector::class => [
             __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
