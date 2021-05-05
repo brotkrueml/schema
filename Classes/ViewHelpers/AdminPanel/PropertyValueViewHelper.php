@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Extension;
+use Brotkrueml\Schema\Model\Manual\TypeLink;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
@@ -43,7 +44,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
     protected $escapeOutput = false;
 
     /**
-     * @var array<string, mixed>|null
+     * @var TypeLink[]|null
      */
     private static ?array $additionalManuals = null;
 
@@ -86,7 +87,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         $iconIdentifier = '';
         $linkTitle = '';
 
-        if (\strpos($value, 'http://schema.org/') === 0 || \strpos($value, 'https://schema.org/') === 0) {
+        if (\str_starts_with($value, 'http://schema.org/') || \str_starts_with($value, 'https://schema.org/')) {
             $linkTitle = \sprintf(
                 self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                 $value
@@ -101,31 +102,22 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
         return self::renderValue(
             [
-                [
-                    'link' => $value,
-                    'title' => $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
-                    'iconIdentifier' => $iconIdentifier ?: 'actions-link',
-                ],
+                new TypeLink(
+                    $value,
+                    $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
+                    $iconIdentifier ?: 'actions-link'
+                )
             ],
             $value
         );
     }
 
     /**
-     * @return list<array<string, string>>
+     * @return TypeLink[]
      */
     private static function buildLinksForType(string $type): array
     {
-        $links = [
-            [
-                'link' => 'https://schema.org/' . $type,
-                'title' => \sprintf(
-                    self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
-                    $type
-                ),
-                'iconIdentifier' => 'ext-schema-documentation-schema',
-            ],
-        ];
+        $links = [self::buildLinkForSchemaOrgType($type)];
 
         $additionalManuals = self::getAdditionalManuals();
         $manualType = $additionalManuals[$type]['like'] ?? $type;
@@ -138,14 +130,26 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
                 continue;
             }
 
-            $links[] = [
-                'link' => $manual['link'],
-                'title' => \sprintf(self::getLanguageService()->sL(self::MANUAL_PROVIDERS[$provider]['title']), $manualType),
-                'iconIdentifier' => self::MANUAL_PROVIDERS[$provider]['iconIdentifier'],
-            ];
+            $links[] = new TypeLink(
+                $manual['link'],
+                \sprintf(self::getLanguageService()->sL(self::MANUAL_PROVIDERS[$provider]['title']), $manualType),
+                self::MANUAL_PROVIDERS[$provider]['iconIdentifier']
+            );
         }
 
         return $links;
+    }
+
+    private static function buildLinkForSchemaOrgType(string $type): TypeLink
+    {
+        return new TypeLink(
+            'https://schema.org/' . $type,
+            \sprintf(
+                self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
+                $type
+            ),
+            'ext-schema-documentation-schema'
+        );
     }
 
     /**
@@ -156,23 +160,26 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         return self::$additionalManuals ?? require __DIR__ . '/../../../Configuration/TxSchema/AdditionalManuals.php';
     }
 
-    private static function renderValue(array $links, string $value): string
+    /**
+     * @param TypeLink[] $typeLinks
+     */
+    private static function renderValue(array $typeLinks, string $value): string
     {
         $iconLinks = [];
-        foreach ($links as $link) {
-            $iconLinks[] = self::renderIconLink($link['link'], $link['title'], $link['iconIdentifier']);
+        foreach ($typeLinks as $typeLink) {
+            $iconLinks[] = self::renderIconLink($typeLink);
         }
 
         return \trim(\implode(' ', $iconLinks) . ' ' . \htmlspecialchars($value));
     }
 
-    private static function renderIconLink(string $link, string $title, string $iconIdentifier): string
+    private static function renderIconLink(TypeLink $typeLink): string
     {
         return \sprintf(
-            '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
-            \htmlspecialchars($link),
-            \htmlspecialchars($title),
-            self::getIconFactory()->getIcon($iconIdentifier, Icon::SIZE_SMALL)->render()
+            '<a href="%s" title="%s" target="_blank" rel="noopener">%s</a>',
+            \htmlspecialchars($typeLink->getLink()),
+            \htmlspecialchars($typeLink->getTitle()),
+            self::getIconFactory()->getIcon($typeLink->getIconIdentifier(), Icon::SIZE_SMALL)->render()
         );
     }
 

@@ -26,6 +26,7 @@
 	"require": {
 		"php": ">=7.4",
 		"ext-json": "*",
+		"symfony/polyfill-php80": "^1.17",
 		"typo3/cms-core": "^10.4.11 || ^11.0"
 	},
 	"require-dev": {

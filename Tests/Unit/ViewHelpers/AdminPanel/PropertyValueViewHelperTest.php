@@ -93,14 +93,14 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
 
         yield '@type is linked to schema.org documentation' => [
             '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> Thing',
             'openDocumentationOnSchemaOrg',
             'Open documentation on schema.org',
         ];
 
         yield '@type value is htmlspecialchar\'d' => [
             '<schema:adminPanel.propertyValue name="@type" value="Th&ing"/>',
-            '<a href="https://schema.org/Th&amp;ing" title="Open &quot;documentation&quot; on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Th&amp;ing',
+            '<a href="https://schema.org/Th&amp;ing" title="Open &quot;documentation&quot; on schema.org" target="_blank" rel="noopener">stubbed icon</a> Th&amp;ing',
             'openDocumentationOnSchemaOrg',
             'Open "documentation" on schema.org',
         ];
@@ -122,63 +122,63 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
 
         yield 'value is a schema.org URL with http' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://schema.org/Thing"/>',
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> https://schema.org/Thing',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> https://schema.org/Thing',
             'openDocumentationOnSchemaOrg',
             'Open documentation on schema.org',
         ];
 
         yield 'value is a schema.org URL with https' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://schema.org/Thing"/>',
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> https://schema.org/Thing',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> https://schema.org/Thing',
             'openDocumentationOnSchemaOrg',
             'Open documentation on schema.org',
         ];
 
         yield 'value is a gif image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.gif"/>',
-            '<a href="http://example.org/image.gif" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.gif',
+            '<a href="http://example.org/image.gif" title="Show image" target="_blank" rel="noopener">stubbed icon</a> http://example.org/image.gif',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a jpg image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.jpg"/>',
-            '<a href="http://example.org/image.jpg" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.jpg',
+            '<a href="http://example.org/image.jpg" title="Show image" target="_blank" rel="noopener">stubbed icon</a> http://example.org/image.jpg',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a jpeg image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.jpeg"/>',
-            '<a href="http://example.org/image.jpeg" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.jpeg',
+            '<a href="http://example.org/image.jpeg" title="Show image" target="_blank" rel="noopener">stubbed icon</a> http://example.org/image.jpeg',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a png image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.png"/>',
-            '<a href="http://example.org/image.png" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.png',
+            '<a href="http://example.org/image.png" title="Show image" target="_blank" rel="noopener">stubbed icon</a> http://example.org/image.png',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a svg image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://example.org/image.svg"/>',
-            '<a href="https://example.org/image.svg" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> https://example.org/image.svg',
+            '<a href="https://example.org/image.svg" title="Show image" target="_blank" rel="noopener">stubbed icon</a> https://example.org/image.svg',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a URL with http' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/page.html"/>',
-            '<a href="http://example.org/page.html" title="Go to website" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/page.html',
+            '<a href="http://example.org/page.html" title="Go to website" target="_blank" rel="noopener">stubbed icon</a> http://example.org/page.html',
             'goToWebsite',
             'Go to website',
         ];
 
         yield 'value is a URL with https' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://example.org/page.html"/>',
-            '<a href="https://example.org/page.html" title="Go to website" target="_blank" rel="noreferrer">stubbed icon</a> https://example.org/page.html',
+            '<a href="https://example.org/page.html" title="Go to website" target="_blank" rel="noopener">stubbed icon</a> https://example.org/page.html',
             'goToWebsite',
             'Go to website',
         ];
@@ -217,7 +217,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         );
 
         self::assertSame(
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.com/Thing" title="Open Yandex reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noopener">stubbed icon</a> <a href="https://example.com/Thing" title="Open Yandex reference" target="_blank" rel="noopener">stubbed icon</a> Thing',
             $actual
         );
     }
@@ -253,7 +253,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         );
 
         self::assertSame(
-            '<a href="https://schema.org/Foo" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Bar" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> Foo',
+            '<a href="https://schema.org/Foo" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> <a href="https://example.org/Bar" title="Open Google reference" target="_blank" rel="noopener">stubbed icon</a> Foo',
             $actual
         );
     }
@@ -281,7 +281,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         );
 
         self::assertSame(
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> Thing',
             $actual
         );
     }
@@ -310,7 +310,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
         );
 
         self::assertSame(
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noopener">stubbed icon</a> Thing',
             $actual
         );
     }
