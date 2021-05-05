@@ -37,7 +37,6 @@
 		"rector/rector": "^0.10.3",
 		"typo3/cms-adminpanel": "*",
 		"typo3/coding-standards": "^0.3",
-		"typo3/testing-framework": "^6.7",
 		"vimeo/psalm": "^4.6"
 	},
 	"suggest": {

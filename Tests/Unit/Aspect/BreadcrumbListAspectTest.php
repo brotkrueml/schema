@@ -18,6 +18,7 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -25,9 +26,8 @@ use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-class BreadcrumbListAspectTest extends UnitTestCase
+class BreadcrumbListAspectTest extends TestCase
 {
     use SchemaCacheTrait;
 
