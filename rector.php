@@ -15,6 +15,27 @@ use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import(SetList::CODE_QUALITY);
+    $containerConfigurator->import(SetList::CODE_QUALITY_STRICT);
+    $containerConfigurator->import(SetList::DEAD_CODE);
+    $containerConfigurator->import(SetList::EARLY_RETURN);
+    $containerConfigurator->import(SetList::PHP_52);
+    $containerConfigurator->import(SetList::PHP_53);
+    $containerConfigurator->import(SetList::PHP_54);
+    $containerConfigurator->import(SetList::PHP_55);
+    $containerConfigurator->import(SetList::PHP_56);
+    $containerConfigurator->import(SetList::PHP_70);
+    $containerConfigurator->import(SetList::PHP_71);
+    $containerConfigurator->import(SetList::PHP_72);
+    $containerConfigurator->import(SetList::PHP_73);
+    $containerConfigurator->import(SetList::PHP_74);
+    $containerConfigurator->import(SetList::TYPE_DECLARATION);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_EXCEPTION);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_MOCK);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER);
+
     $parameters = $containerConfigurator->parameters();
 
     $parameters->set(Option::PATHS, [
@@ -25,29 +46,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::AUTOLOAD_PATHS, [__DIR__ . '/.Build/vendor/autoload.php']);
 
     $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_74);
-
-    $parameters->set(Option::SETS, [
-        SetList::CODE_QUALITY,
-        SetList::CODE_QUALITY_STRICT,
-        SetList::DEAD_CODE,
-        SetList::EARLY_RETURN,
-        SetList::PHP_52,
-        SetList::PHP_53,
-        SetList::PHP_54,
-        SetList::PHP_55,
-        SetList::PHP_56,
-        SetList::PHP_70,
-        SetList::PHP_71,
-        SetList::PHP_72,
-        SetList::PHP_73,
-        SetList::PHP_74,
-        SetList::TYPE_DECLARATION,
-        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
-        PHPUnitSetList::PHPUNIT_EXCEPTION,
-        PHPUnitSetList::PHPUNIT_MOCK,
-        PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
-        PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
-    ]);
 
     $parameters->set(Option::SKIP, [
         __DIR__ . '/Classes/Model/Type/*',
