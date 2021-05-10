@@ -11,13 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-interface TypeInterface
+interface TypeInterface extends NodeIdentifierInterface
 {
-    /**
-     * Get the id
-     */
-    public function getId(): ?string;
-
     /**
      * Set the id
      *

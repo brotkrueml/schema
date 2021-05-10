@@ -31,8 +31,10 @@ abstract class AbstractType implements TypeInterface
 
     /**
      * The ID of the type (mapped to @id in result)
+     *
+     * @var NodeIdentifierInterface|string|null
      */
-    private ?string $id = null;
+    private $id = null;
 
     /**
      * The properties of a specific type with their corresponding value:
@@ -86,17 +88,41 @@ abstract class AbstractType implements TypeInterface
      */
     public function getId(): ?string
     {
+        if ($this->id instanceof NodeIdentifierInterface) {
+            return $this->id->getId();
+        }
+
         return $this->id;
     }
 
     /**
      * @inheritDoc
      */
-    public function setId(string $id): self
+    public function setId($id): self
     {
+        if (!$this->isValidDataTypeForId($id)) {
+            throw new \InvalidArgumentException(
+                \sprintf(
+                    'Value for id has not a valid data type (given: "%s"). Valid types are: null, string, instanceof NodeIdentifierInterface',
+                    \get_debug_type($id)
+                ),
+                1620654936
+            );
+        }
+
         $this->id = $id;
 
         return $this;
+    }
+
+    /**
+     * @param NodeIdentifierInterface|string|null $id
+     */
+    private function isValidDataTypeForId($id): bool
+    {
+        return $id === null
+            || \is_string($id)
+            || $id instanceof NodeIdentifierInterface;
     }
 
     /**
@@ -173,7 +199,7 @@ abstract class AbstractType implements TypeInterface
         if (!$this->isValidDataTypeForPropertyValue($propertyValue)) {
             throw new \InvalidArgumentException(
                 \sprintf(
-                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface',
+                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface, instanceof NodeIdentifierInterface',
                     $propertyName,
                     \get_debug_type($propertyValue)
                 ),
@@ -193,6 +219,7 @@ abstract class AbstractType implements TypeInterface
             || \is_string($propertyValue)
             || \is_array($propertyValue)
             || \is_bool($propertyValue)
+            || $propertyValue instanceof NodeIdentifierInterface
             || $propertyValue instanceof TypeInterface;
     }
 

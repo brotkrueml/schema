@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\JsonLd;
 
+use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Model\DataType\Boolean;
@@ -117,6 +118,10 @@ final class Renderer implements RendererInterface
     {
         if ($value instanceof TypeInterface) {
             return (new self())->prepare($value);
+        }
+
+        if ($value instanceof NodeIdentifierInterface) {
+            return ['@id' => $value->getId()];
         }
 
         if (\is_bool($value)) {

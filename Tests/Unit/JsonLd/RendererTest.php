@@ -11,11 +11,15 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 
+use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class RendererTest extends TestCase
 {
     private Renderer $subject;
@@ -157,6 +161,19 @@ class RendererTest extends TestCase
                 ],
             ],
             '{"@context":"https://schema.org/","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
+        ];
+
+        yield 'Value is of type NodeIdentifierInterface' => [
+            null,
+            [
+                'some-property' => new class() implements NodeIdentifierInterface {
+                    public function getId(): ?string
+                    {
+                        return 'some-node-identifier';
+                    }
+                },
+            ],
+            '{"@context":"https://schema.org/","@type":"StubType","some-property":{"@id":"some-node-identifier-id"}}',
         ];
     }
 

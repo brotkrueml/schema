@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
@@ -42,13 +44,19 @@ class AbstractTypeTest extends TestCase
     }
 
     /**
-     * @test
+     * @est
      */
-    public function setIdReturnsInstanceOfAbstractClass(): void
+    public function subjectImplementsTypeInterface(): void
     {
-        $actual = $this->subject->setId('concreteTestId');
+        self::assertInstanceOf(TypeInterface::class, $this->subject);
+    }
 
-        self::assertInstanceOf(AbstractType::class, $actual);
+    /**
+     * @est
+     */
+    public function subjectImplementsNodeIdentifierInterface(): void
+    {
+        self::assertInstanceOf(NodeIdentifierInterface::class, $this->subject);
     }
 
     /**
@@ -64,13 +72,48 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
-    public function getIdReturnsTheIdCorrectly(): void
+    public function getIdReturnsTheIdCorrectlyWhenSetPreviouslyWithNull(): void
+    {
+        $this->subject->setId(null);
+
+        self::assertNull($this->subject->getId());
+    }
+
+    /**
+     * @test
+     */
+    public function getIdReturnsTheIdCorrectlyWhenSetPreviouslyWithAString(): void
     {
         $this->subject->setId('concreteTestId');
 
-        $actual = $this->subject->getId();
+        self::assertSame('concreteTestId', $this->subject->getId());
+    }
 
-        self::assertSame('concreteTestId', $actual);
+    /**
+     * @test
+     */
+    public function getIdReturnsTheIdAsStringWhenSetPreviouslyWithANodeIdentifier(): void
+    {
+        $this->subject->setId(new class() implements NodeIdentifierInterface {
+            public function getId(): ?string
+            {
+                return 'someNodeIdentifier';
+            }
+        });
+
+        self::assertSame('someNodeIdentifier', $this->subject->getId());
+    }
+
+    /**
+     * @test
+     */
+    public function setIdThrowsExceptionWhenInvalidTypeGiven(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionCode(1620654936);
+        $this->expectExceptionMessage('Value for id has not a valid data type (given: "bool"). Valid types are: null, string, instanceof NodeIdentifierInterface');
+
+        $this->subject->setId(true);
     }
 
     /**
@@ -108,18 +151,21 @@ class AbstractTypeTest extends TestCase
      */
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
+        // Test is valid, when no exception is thrown
+        self::expectNotToPerformAssertions();
+
         $this->subject->setProperty('name', 'Pi');
-        $this->subject->setProperty('description', ['The answert for everything']);
+        $this->subject->setProperty('description', ['The answer for everything']);
         $this->subject->setProperty('identifier', 42);
         $this->subject->setProperty('alternateName', 3.141592653);
-
-        $anotherType = new class() extends AbstractType {
-        };
-
-        $this->subject->setProperty('image', $anotherType);
-
-        // Assertion is valid, when no exception above is thrown
-        self::assertTrue(true);
+        $this->subject->setProperty('image', new class() extends AbstractType {
+        });
+        $this->subject->setProperty('subjectOf', new class() implements NodeIdentifierInterface {
+            public function getId(): ?string
+            {
+                return 'some-node-identifier';
+            }
+        });
     }
 
     /**
@@ -312,6 +358,7 @@ class AbstractTypeTest extends TestCase
                 'image',
                 'isAccessibleForFree',
                 'name',
+                'subjectOf',
                 'url',
             ],
             $actual
@@ -350,6 +397,7 @@ class AbstractTypeTest extends TestCase
                 'isAccessibleForFree',
                 'name',
                 'someAdditionalProperty',
+                'subjectOf',
                 'url',
             ],
             $subject->getPropertyNames()

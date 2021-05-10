@@ -16,12 +16,13 @@
             </button>
         </div>
         <f:variable name="typeKey" value="@type"/>
+        <f:variable name="idKey" value="@id"/>
         <f:for each="{types}" as="type">
             <h2 class="typo3-adminPanel-headline">{type.{typeKey}}</h2>
             <table class="typo3-adminPanel-table typo3-adminPanel-table-debug">
                 <tbody>
                     <f:for each="{type}" as="value" key="name">
-                        <f:render section="ShowProperty" arguments="{name: name, value: value, typeKey: typeKey, indent: 0}"/>
+                        <f:render section="ShowProperty" arguments="{name: name, value: value, typeKey: typeKey, idKey: idKey, indent: 0}"/>
                     </f:for>
                 </tbody>
             </table>
@@ -41,17 +42,17 @@
     <f:if condition="{value.0}">
         <f:then>
             <f:for each="{value}" as="subValue">
-                <f:render section="PropertyRow" arguments="{name: name, value: subValue, typeKey: typeKey, indent: indent}"/>
+                <f:render section="PropertyRow" arguments="{name: name, value: subValue, typeKey: typeKey, idKey: idKey, indent: indent}"/>
             </f:for>
         </f:then>
         <f:else>
-            <f:render section="PropertyRow" arguments="{name: name, value: value, typeKey: typeKey, indent: indent}"/>
+            <f:render section="PropertyRow" arguments="{name: name, value: value, typeKey: typeKey, idKey: idKey, indent: indent}"/>
         </f:else>
     </f:if>
 </f:section>
 
 <f:section name="PropertyRow">
-    <f:if condition="{value.{typeKey}}">
+    <f:if condition="{value.{typeKey}} || {value.{idKey}}">
         <f:then>
             <f:variable name="hasSubType" value="1"/>
         </f:then>
