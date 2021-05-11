@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 
-use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
-use Brotkrueml\Schema\Core\Model\TypeInterface;
+use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
+use Brotkrueml\Schema\Tests\Fixtures\Renderer\StubType;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -43,7 +43,7 @@ class RendererTest extends TestCase
      */
     public function renderReturnsCorrectOutputWithOneTypeGiven(?string $id, array $properties, string $expected): void
     {
-        $this->subject->addType($this->createTypeStub($id, $properties));
+        $this->subject->addType(new StubType($id, $properties));
 
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
     }
@@ -135,7 +135,7 @@ class RendererTest extends TestCase
         yield 'Value is a model' => [
             null,
             [
-                'some-type' => $this->createTypeStub(
+                'some-type' => new StubType(
                     'from-type-property',
                     ['some-property' => 'some-value'],
                     'SomeSubTypeStub'
@@ -148,12 +148,12 @@ class RendererTest extends TestCase
             null,
             [
                 'some-type' => [
-                    $this->createTypeStub(
+                    new StubType(
                         'from-type-property',
                         ['some-property' => 'some-value'],
                         'SomeSubTypeStub'
                     ),
-                    $this->createTypeStub(
+                    new StubType(
                         'from-another-type-property',
                         ['another-property' => 'another-value'],
                         'AnotherSubTypeStub'
@@ -166,79 +166,10 @@ class RendererTest extends TestCase
         yield 'Value is of type NodeIdentifierInterface' => [
             null,
             [
-                'some-property' => new class() implements NodeIdentifierInterface {
-                    public function getId(): ?string
-                    {
-                        return 'some-node-identifier';
-                    }
-                },
+                'some-property' => new NodeIdentifier('some-node-identifier-id'),
             ],
             '{"@context":"https://schema.org/","@type":"StubType","some-property":{"@id":"some-node-identifier-id"}}',
         ];
-    }
-
-    private function createTypeStub(
-        ?string $id = null,
-        array $properties = [],
-        string $type = 'StubType'
-    ): TypeInterface {
-        return new class($id, $properties, $type) implements TypeInterface {
-            private ?string $id;
-            private array $properties;
-            private string $type;
-
-            public function __construct(?string $id, array $properties, string $type)
-            {
-                $this->id = $id;
-                $this->properties = $properties;
-                $this->type = $type;
-            }
-
-            public function getId(): ?string
-            {
-                return $this->id;
-            }
-
-            public function setId(string $id)
-            {
-            }
-
-            public function hasProperty(string $propertyName): bool
-            {
-                return true;
-            }
-
-            public function getProperty(string $propertyName)
-            {
-                return $this->properties[$propertyName];
-            }
-
-            public function setProperty(string $propertyName, $propertyValue)
-            {
-            }
-
-            public function addProperty(string $propertyName, $propertyValue)
-            {
-            }
-
-            public function setProperties(array $properties)
-            {
-            }
-
-            public function clearProperty(string $propertyName)
-            {
-            }
-
-            public function getPropertyNames(): array
-            {
-                return \array_keys($this->properties);
-            }
-
-            public function getType(): string
-            {
-                return $this->type;
-            }
-        };
     }
 
     /**
@@ -246,8 +177,8 @@ class RendererTest extends TestCase
      */
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedSeparately(): void
     {
-        $this->subject->addType($this->createTypeStub('some-id'));
-        $this->subject->addType($this->createTypeStub('another-id'));
+        $this->subject->addType(new StubType('some-id'));
+        $this->subject->addType(new StubType('another-id'));
 
         self::assertSame(
             \sprintf(
@@ -264,8 +195,8 @@ class RendererTest extends TestCase
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedAtOnce(): void
     {
         $types = [
-            $this->createTypeStub('some-id'),
-            $this->createTypeStub('another-id'),
+            new StubType('some-id'),
+            new StubType('another-id'),
         ];
 
         $this->subject->addType(...$types);
@@ -284,7 +215,7 @@ class RendererTest extends TestCase
      */
     public function clearTypesRemovesAllTypes(): void
     {
-        $this->subject->addType($this->createTypeStub('some-id'));
+        $this->subject->addType(new StubType('some-id'));
         $this->subject->clearTypes();
 
         self::assertSame('', $this->subject->render());

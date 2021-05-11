@@ -34,7 +34,7 @@ abstract class AbstractType implements TypeInterface
      *
      * @var NodeIdentifierInterface|string|null
      */
-    private $id = null;
+    private $id;
 
     /**
      * The properties of a specific type with their corresponding value:
