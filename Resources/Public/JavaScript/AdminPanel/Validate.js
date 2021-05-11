@@ -8,9 +8,9 @@
         checkButtonId: 'ext-schema-check-rtt',
         actionUrl: 'https://search.google.com/test/rich-results'
       },
-      sdtt: {
-        checkButtonId: 'ext-schema-check-sdtt',
-        actionUrl: 'https://search.google.com/structured-data/testing-tool'
+      smv: {
+        checkButtonId: 'ext-schema-check-smv',
+        actionUrl: 'https://validator.schema.org/'
       }
     },
   };
@@ -32,8 +32,8 @@
     var rttButton = document.getElementById(options.tools.rtt.checkButtonId);
     rttButton && rttButton.addEventListener('click', invokeRichResultTest);
 
-    var sdttButton = document.getElementById(options.tools.sdtt.checkButtonId);
-    sdttButton && sdttButton.addEventListener('click', invokeStructuredDataTestingTool);
+    var smvButton = document.getElementById(options.tools.smv.checkButtonId);
+    smvButton && smvButton.addEventListener('click', invokeSchemaMarkupValidator);
   }
 
   var invokeRichResultTest = function(event) {
@@ -41,9 +41,9 @@
     submitForm(options.tools.rtt.actionUrl, 'code_snippet');
   }
 
-  var invokeStructuredDataTestingTool = function(event) {
+  var invokeSchemaMarkupValidator = function(event) {
     event.preventDefault();
-    submitForm(options.tools.sdtt.actionUrl, 'code');
+    submitForm(options.tools.smv.actionUrl, 'code');
   }
 
   var submitForm = function(actionUrl, codeFieldName) {

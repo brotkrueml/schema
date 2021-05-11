@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2020-08-04T16:36:23Z" product-name="schema">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2021-05-11T18:25:34Z" product-name="schema">
 		<body>
 			<trans-unit id="adminPanel.goToWebsite" resname="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
@@ -29,8 +29,8 @@
 			<trans-unit id="adminPanel.types" resname="adminPanel.types">
 				<source><![CDATA[Types]]></source>
 			</trans-unit>
-			<trans-unit id="adminPanel.validateInStructuredDataTestingTool" resname="adminPanel.validateInStructuredDataTestingTool">
-				<source><![CDATA[Validate in Structured Data Testing Tool]]></source>
+			<trans-unit id="adminPanel.validateInSchemaMarkupValidator" resname="adminPanel.validateInSchemaMarkupValidator">
+				<source><![CDATA[Validate in Schema Markup Validator]]></source>
 			</trans-unit>
 			<trans-unit id="adminPanel.validateInRichResultTest" resname="adminPanel.validateInRichResultTest">
 				<source><![CDATA[Validate in Rich Result Test]]></source>
