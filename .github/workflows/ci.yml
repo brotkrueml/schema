@@ -103,9 +103,6 @@ jobs:
       - name: Run psalm
         run: |
           .Build/bin/psalm --no-progress --monochrome
-      - name: Run rector
-        run: |
-          .Build/bin/rector --dry-run --no-progress-bar
   xliff-validation:
     name: XLIFF validation
     runs-on: ubuntu-latest
