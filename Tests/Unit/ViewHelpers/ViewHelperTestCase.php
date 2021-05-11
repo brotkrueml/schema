@@ -11,11 +11,11 @@ namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
 use Brotkrueml\Schema\Manager\SchemaManager;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
 
-class ViewHelperTestCase extends UnitTestCase
+class ViewHelperTestCase extends TestCase
 {
     protected const VIEWHELPER_NAMESPACE = '{namespace schema=Brotkrueml\Schema\ViewHelpers}';
 
