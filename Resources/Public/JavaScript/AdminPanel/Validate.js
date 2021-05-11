@@ -7,9 +7,9 @@
           checkButtonId: 'ext-schema-check-rtt',
           actionUrl: 'https://search.google.com/test/rich-results'
         },
-        sdtt: {
-          checkButtonId: 'ext-schema-check-sdtt',
-          actionUrl: 'https://search.google.com/structured-data/testing-tool'
+        smv: {
+          checkButtonId: 'ext-schema-check-smv',
+          actionUrl: 'https://validator.schema.org/'
         }
       },
     };
@@ -38,8 +38,8 @@
       const rttButton = document.getElementById(this.options.tools.rtt.checkButtonId);
       rttButton && rttButton.addEventListener('click', this.invokeRichResultTest.bind(this));
 
-      const sdttButton = document.getElementById(this.options.tools.sdtt.checkButtonId);
-      sdttButton && sdttButton.addEventListener('click', this.invokeStructuredDataTestingTool.bind(this));
+      const smvButton = document.getElementById(this.options.tools.smv.checkButtonId);
+      smvButton && smvButton.addEventListener('click', this.invokeSchemaMarkupValidator.bind(this));
     }
 
     invokeRichResultTest(event) {
@@ -47,9 +47,9 @@
       this.submitForm(this.options.tools.rtt.actionUrl, 'code_snippet');
     }
 
-    invokeStructuredDataTestingTool(event) {
+    invokeSchemaMarkupValidator(event) {
       event.preventDefault();
-      this.submitForm(this.options.tools.sdtt.actionUrl, 'code');
+      this.submitForm(this.options.tools.smv.actionUrl, 'code');
     }
 
     submitForm(actionUrl, codeFieldName) {

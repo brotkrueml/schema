@@ -23,8 +23,10 @@ The icons are linked: The type to the according schema.org documentation and - i
 available - to the Google and Yandex references for the specific type, other
 URLs to their destination.
 
-Additionally, you can call Google's Structured Data Testing Tool and Google's
-Rich Result Test to validate the structured data on this page.
+Additionally, you can call the `Schema Markup Validator
+<https://validator.schema.org/>`_ and `Google's Rich Result Test
+<https://search.google.com/test/rich-results>`_ to validate the structured data
+on the specific page.
 
 .. hint::
    Since the JSON-LD markup is fetched from the page cache, please make sure
