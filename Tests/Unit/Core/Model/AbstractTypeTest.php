@@ -82,6 +82,16 @@ class AbstractTypeTest extends TestCase
     /**
      * @test
      */
+    public function getIdReturnsNullWhenSetPreviouslyWithEmptyString(): void
+    {
+        $this->subject->setId('');
+
+        self::assertNull($this->subject->getId());
+    }
+
+    /**
+     * @test
+     */
     public function getIdReturnsTheIdCorrectlyWhenSetPreviouslyWithAString(): void
     {
         $this->subject->setId('concreteTestId');

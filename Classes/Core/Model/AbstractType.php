@@ -31,10 +31,8 @@ abstract class AbstractType implements TypeInterface
 
     /**
      * The ID of the type (mapped to @id in result)
-     *
-     * @var NodeIdentifierInterface|string|null
      */
-    private $id;
+    private ?NodeIdentifierInterface $id = null;
 
     /**
      * The properties of a specific type with their corresponding value:
@@ -88,11 +86,7 @@ abstract class AbstractType implements TypeInterface
      */
     public function getId(): ?string
     {
-        if ($this->id instanceof NodeIdentifierInterface) {
-            return $this->id->getId();
-        }
-
-        return $this->id;
+        return $this->id instanceof NodeIdentifierInterface ? $this->id->getId() : null;
     }
 
     /**
@@ -108,6 +102,14 @@ abstract class AbstractType implements TypeInterface
                 ),
                 1620654936
             );
+        }
+
+        if ($id === '') {
+            $id = null;
+        }
+
+        if (\is_string($id)) {
+            $id = new NodeIdentifier($id);
         }
 
         $this->id = $id;
