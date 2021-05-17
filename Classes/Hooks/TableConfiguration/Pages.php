@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Hooks\TableConfiguration;
 
+use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Core\Database\TableConfigurationPostProcessingHookInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -21,7 +22,7 @@ final class Pages implements TableConfigurationPostProcessingHookInterface
     {
         $position = 'after:description';
 
-        if (ExtensionManagementUtility::isLoaded('seo')) {
+        if ((new ExtensionAvailability())->isSeoAvailable()) {
             $position = 'after:canonical_link';
         }
 
