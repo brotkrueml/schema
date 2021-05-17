@@ -11,16 +11,14 @@ services:
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
 
-# Deactivated because of https://forge.typo3.org/issues/90962
-#  cache.tx_schema_core:
-#    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-#    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
-#    arguments: ['tx_schema_core']
-#
-#  Brotkrueml\Schema\Registry\TypeRegistry:
-#    arguments:
-#      $cache: '@cache.tx_schema_core'
-#      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
+  cache.tx_schema_core:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['tx_schema_core']
+
+  Brotkrueml\Schema\Type\TypeRegistry:
+    arguments:
+      $cache: '@cache.tx_schema_core'
 
   Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending:
     tags:

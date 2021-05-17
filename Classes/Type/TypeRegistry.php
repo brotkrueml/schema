@@ -13,14 +13,10 @@ namespace Brotkrueml\Schema\Type;
 
 use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
-use Brotkrueml\Schema\Extension;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Provide lists of all available types or a subset of them
@@ -47,24 +43,13 @@ final class TypeRegistry implements SingletonInterface
     /** @var string[] */
     private array $webPageElementTypes = [];
 
-    private ?FrontendInterface $cache = null;
+    private FrontendInterface $cache;
     private PackageManager $packageManager;
 
-    public function __construct(FrontendInterface $cache = null, PackageManager $packageManager = null)
+    public function __construct(FrontendInterface $cache, PackageManager $packageManager)
     {
-        if ($cache === null) {
-            $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-            try {
-                $this->cache = $cacheManager->getCache(Extension::CACHE_CORE_IDENTIFIER);
-            } catch (NoSuchCacheException $e) {
-                // Ignore
-            }
-        } else {
-            $this->cache = $cache;
-        }
-
-        /** @psalm-suppress PropertyTypeCoercion */
-        $this->packageManager = $packageManager ?? GeneralUtility::makeInstance(PackageManager::class);
+        $this->cache = $cache;
+        $this->packageManager = $packageManager;
     }
 
     /**
