@@ -16,6 +16,11 @@ services:
     factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
     arguments: ['tx_schema_core']
 
+  Brotkrueml\Schema\Cache\PagesCacheService:
+    public: true
+    arguments:
+      $cache: '@cache.pages'
+
   Brotkrueml\Schema\Type\TypeRegistry:
     arguments:
       $cache: '@cache.tx_schema_core'

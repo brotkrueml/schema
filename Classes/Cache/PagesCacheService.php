@@ -11,10 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Cache;
 
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -22,33 +19,17 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class PagesCacheService
 {
-    private const CACHE_IDENTIFIER = 'pages';
-
     private ?TypoScriptFrontendController $controller = null;
-    private ?FrontendInterface $cache;
+    private FrontendInterface $cache;
 
-    public function __construct(FrontendInterface $cache = null)
+    public function __construct(FrontendInterface $cache)
     {
-        $this->cache = $cache ?? $this->getCache();
-    }
-
-    private function getCache(): ?FrontendInterface
-    {
-        $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-
-        try {
-            return $cacheManager->getCache(self::CACHE_IDENTIFIER);
-        } catch (NoSuchCacheException $e) {
-            return null;
-        }
+        $this->cache = $cache;
     }
 
     public function getMarkupFromCache(): ?string
     {
         $this->initialiseTypoScriptFrontendController();
-        if (!$this->cache instanceof FrontendInterface) {
-            return null;
-        }
         if (!($markup = $this->cache->get($this->getCacheIdentifier()))) {
             return null;
         }
@@ -64,10 +45,6 @@ class PagesCacheService
 
     public function storeMarkupInCache(string $markup): void
     {
-        if (!$this->cache instanceof FrontendInterface) {
-            return;
-        }
-
         $this->initialiseTypoScriptFrontendController();
         if ($this->controller !== null) {
             $this->cache->set(

@@ -15,10 +15,7 @@ use Brotkrueml\Schema\Cache\PagesCacheService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class PagesCacheServiceTest extends TestCase
@@ -44,29 +41,6 @@ class PagesCacheServiceTest extends TestCase
 
         $this->subject = new PagesCacheService($this->cacheFrontendMock);
         $this->subject->setTypoScriptFrontendController($this->controllerStub);
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
-    }
-
-    /**
-     * @test
-     */
-    public function getMarkupFromCacheReturnsNullWhenCacheIsNotAvailable(): void
-    {
-        $cacheManagerStub = $this->createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->willThrowException(new NoSuchCacheException());
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
-        $subject = new PagesCacheService(null);
-        $subject->setTypoScriptFrontendController($this->controllerStub);
-
-        self::assertNull($subject->getMarkupFromCache());
     }
 
     /**
@@ -107,21 +81,5 @@ class PagesCacheServiceTest extends TestCase
             ->with('some-hash-tx-schema', 'markup to store', ['pageId_42'], 3600);
 
         $this->subject->storeMarkupInCache('markup to store');
-    }
-
-    /**
-     * @test
-     */
-    public function correctCacheIdentifierIsUsed(): void
-    {
-        $cacheManagerMock = $this->createStub(CacheManager::class);
-        $cacheManagerMock
-            ->expects(self::once())
-            ->method('getCache')
-            ->with('pages');
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerMock);
-
-        new PagesCacheService(null);
     }
 }
