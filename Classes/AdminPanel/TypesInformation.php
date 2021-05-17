@@ -26,10 +26,8 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
-    /** @var StandaloneView|null */
-    private $view;
-
     private PagesCacheService $pagesCacheService;
+    private ?StandaloneView $view = null;
 
     /**
      * @psalm-suppress PropertyTypeCoercion
@@ -85,8 +83,9 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         // The StandaloneView cannot be injected via DI in the constructor, because then the error
         // "TypoScriptFrontendController was tried to be injected before initial creation" occurs!
         if ($this->view === null) {
-            /** @psalm-suppress PropertyTypeCoercion */
-            $this->view = GeneralUtility::makeInstance(StandaloneView::class);
+            /** @var StandaloneView $view */
+            $view = GeneralUtility::makeInstance(StandaloneView::class);
+            $this->view = $view;
         }
 
         $this->view->setTemplatePathAndFilename(\sprintf(
