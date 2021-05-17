@@ -44,10 +44,10 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     {
         parent::initializeArguments();
 
-        $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node');
-        $this->registerArgument(static::ARGUMENT_ID, 'string', 'IRI to identify the node');
+        $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node', false, '');
+        $this->registerArgument(static::ARGUMENT_ID, 'string', 'IRI to identify the node', false, '');
         $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'bool', 'Set to true, if the type is the primary content of the web page', false, false);
-        $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid');
+        $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid', false, '');
 
         foreach ($this->modelTemplate->getPropertyNames() as $property) {
             $this->registerArgument($property, 'mixed', 'Property ' . $property);
@@ -89,10 +89,10 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     private function checkSpecificTypeAttribute(): void
     {
-        $specificTypeFromArguments = (string)($this->arguments[static::ARGUMENT_SPECIFIC_TYPE] ?? '');
+        $specificTypeFromArguments = $this->arguments[static::ARGUMENT_SPECIFIC_TYPE];
         unset($this->arguments[static::ARGUMENT_SPECIFIC_TYPE]);
 
-        if (empty($specificTypeFromArguments)) {
+        if ($specificTypeFromArguments === '') {
             return;
         }
 
@@ -102,9 +102,9 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
     private function checkAsAttribute(): void
     {
         if (!$this->stack->isEmpty()) {
-            $parentPropertyNameFromArgument = (string)($this->arguments[static::ARGUMENT_AS] ?? '');
+            $parentPropertyNameFromArgument = $this->arguments[static::ARGUMENT_AS];
 
-            if (empty($parentPropertyNameFromArgument)) {
+            if ($parentPropertyNameFromArgument === '') {
                 throw new ViewHelper\Exception(
                     \sprintf(
                         'The child view helper of schema type "%s" must have an "%s" argument for embedding into the parent type',
@@ -154,7 +154,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
             return;
         }
 
-        if (!empty($this->arguments[static::ARGUMENT_ID])) {
+        if ($this->arguments[static::ARGUMENT_ID] !== '') {
             $this->model->setId($this->arguments[static::ARGUMENT_ID]);
         }
 

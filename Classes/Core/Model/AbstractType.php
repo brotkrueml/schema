@@ -69,7 +69,7 @@ abstract class AbstractType implements TypeInterface
             $cache->set($cacheEntryIdentifier, $additionalProperties, [], 0);
         }
 
-        if (empty($additionalProperties)) {
+        if ($additionalProperties === []) {
             return;
         }
 

@@ -82,7 +82,7 @@ final class TypeRegistry implements SingletonInterface
      */
     private function getTypesWithModels(): array
     {
-        if (empty($this->types)) {
+        if ($this->types === []) {
             $this->types = $this->loadConfiguration();
         }
 
@@ -163,7 +163,7 @@ final class TypeRegistry implements SingletonInterface
      */
     public function getWebPageTypes(): array
     {
-        if (empty($this->webPageTypes)) {
+        if ($this->webPageTypes === []) {
             $this->webPageTypes = $this->loadSpecialTypes(
                 static::CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES,
                 WebPageTypeInterface::class
@@ -208,7 +208,7 @@ final class TypeRegistry implements SingletonInterface
      */
     public function getWebPageElementTypes(): array
     {
-        if (empty($this->webPageElementTypes)) {
+        if ($this->webPageElementTypes === []) {
             $this->webPageElementTypes = $this->loadSpecialTypes(
                 static::CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES,
                 WebPageElementTypeInterface::class
@@ -244,11 +244,11 @@ final class TypeRegistry implements SingletonInterface
      */
     public function resolveModelClassFromType(string $type): ?string
     {
-        if (empty($type)) {
+        if ($type === '') {
             return null;
         }
 
-        if (empty($this->types)) {
+        if ($this->types === []) {
             $this->getTypesWithModels();
         }
 

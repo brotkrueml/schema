@@ -60,10 +60,10 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
      */
     public function getShortInfo(): string
     {
-        $jsonLd = $this->pagesCacheService->getMarkupFromCache();
+        $jsonLd = $this->pagesCacheService->getMarkupFromCache() ?? '';
 
         $numberOfTypes = 0;
-        if (!empty($jsonLd)) {
+        if ($jsonLd !== '') {
             $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
             $decodedJsonLd = \json_decode($jsonLd, true, 512, \JSON_THROW_ON_ERROR);
             $numberOfTypes = isset($decodedJsonLd['@graph']) ? \count($decodedJsonLd['@graph']) : 1;

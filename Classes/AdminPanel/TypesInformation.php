@@ -53,10 +53,10 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
     public function getContent(ModuleData $data): string
     {
-        $jsonLd = $this->pagesCacheService->getMarkupFromCache();
+        $jsonLd = $this->pagesCacheService->getMarkupFromCache() ?? '';
 
         $types = [];
-        if (!empty($jsonLd)) {
+        if ($jsonLd !== '') {
             $types = $this->convertJsonLdToArray($jsonLd);
             \usort($types, static fn (array $a, array $b): int => $a['@type'] <=> $b['@type']);
         }

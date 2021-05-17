@@ -46,7 +46,7 @@ final class Renderer implements RendererInterface
             $renderedTypes[] = $this->prepare($type);
         }
 
-        if (empty($renderedTypes)) {
+        if ($renderedTypes === []) {
             return '';
         }
 

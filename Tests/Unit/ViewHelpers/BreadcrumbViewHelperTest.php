@@ -180,6 +180,10 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
             ->method('has')
             ->willReturn(true);
         $cacheFrontendStub
+            ->method('get')
+            ->with(self::anything())
+            ->willReturn([]);
+        $cacheFrontendStub
             ->method('require')
             ->willReturn([
                 'ItemPage' => FixtureType\ItemPage::class,

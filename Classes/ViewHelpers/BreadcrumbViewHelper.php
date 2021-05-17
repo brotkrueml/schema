@@ -88,7 +88,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
             \array_shift($arguments[static::ARGUMENT_BREADCRUMB]);
         }
 
-        if (empty($arguments[static::ARGUMENT_BREADCRUMB])) {
+        if ($arguments[static::ARGUMENT_BREADCRUMB] === []) {
             return;
         }
 
@@ -106,7 +106,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 
             $webPageTypeClass = static::DEFAULT_WEBPAGE_TYPE;
             if (\is_array($arguments[static::ARGUMENT_BREADCRUMB][$i]['data'] ?? false)
-                && !empty($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'] ?? '')) {
+                && ($arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'] ?? '') !== '') {
                 $webPageTypeClass = $arguments[static::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'];
             }
 

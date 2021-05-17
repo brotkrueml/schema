@@ -62,11 +62,13 @@ final class BreadcrumbListAspect implements AspectInterface
             $rootLine[] = $page;
         }
 
-        if (!empty($rootLine)) {
-            $rootLine = \array_reverse($rootLine);
-            $breadcrumbList = $this->buildBreadCrumbList($rootLine);
-            $schemaManager->addType($breadcrumbList);
+        if ($rootLine === []) {
+            return;
         }
+
+        $rootLine = \array_reverse($rootLine);
+        $breadcrumbList = $this->buildBreadCrumbList($rootLine);
+        $schemaManager->addType($breadcrumbList);
     }
 
     private function buildBreadCrumbList(array $rootLine): TypeInterface
