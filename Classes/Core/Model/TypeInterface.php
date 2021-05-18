@@ -16,10 +16,10 @@ interface TypeInterface extends NodeIdentifierInterface
     /**
      * Set the id
      *
-     * @param string $id The id
+     * @param NodeIdentifierInterface|string|null $id The id
      * @return self
      */
-    public function setId(string $id);
+    public function setId($id);
 
     /**
      * Check, if a property exists
