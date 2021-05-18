@@ -32,7 +32,7 @@ class StubType implements NodeIdentifierInterface, TypeInterface
         return $this->id;
     }
 
-    public function setId(string $id)
+    public function setId($id)
     {
     }
 
