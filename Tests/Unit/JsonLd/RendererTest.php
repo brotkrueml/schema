@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
-use Brotkrueml\Schema\Tests\Fixtures\Renderer\StubType;
+use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -43,7 +43,7 @@ class RendererTest extends TestCase
      */
     public function renderReturnsCorrectOutputWithOneTypeGiven(?string $id, array $properties, string $expected): void
     {
-        $this->subject->addType(new StubType($id, $properties));
+        $this->subject->addType(new GenericStub($id, $properties));
 
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
     }
@@ -56,13 +56,13 @@ class RendererTest extends TestCase
                 'null-property' => null,
                 'empty-string-property' => '',
             ],
-            '{"@context":"https://schema.org/","@type":"StubType"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub"}',
         ];
 
         yield 'Id is set' => [
             'some-id',
             [],
-            '{"@context":"https://schema.org/","@type":"StubType","@id":"some-id"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-id"}',
         ];
 
         yield 'Value is a string' => [
@@ -70,7 +70,7 @@ class RendererTest extends TestCase
             [
                 'some-string' => 'some string value',
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-string":"some string value"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-string":"some string value"}',
         ];
 
         yield 'Value is a number as integer' => [
@@ -78,7 +78,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 1,
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-number":"1"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-number":"1"}',
         ];
 
         yield 'Value is the number 0 as integer' => [
@@ -86,7 +86,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0,
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-number":"0"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-number":"0"}',
         ];
 
         yield 'Value is the number 0.10 as float' => [
@@ -94,7 +94,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0.10,
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-number":"0.1"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-number":"0.1"}',
         ];
 
         yield 'Value is the number 0.00 as float' => [
@@ -102,7 +102,7 @@ class RendererTest extends TestCase
             [
                 'some-number' => 0.00,
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-number":"0"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-number":"0"}',
         ];
 
         yield 'Value is a boolean (true)' => [
@@ -110,7 +110,7 @@ class RendererTest extends TestCase
             [
                 'some-boolean-true' => true,
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-boolean-true":"https://schema.org/True"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-boolean-true":"https://schema.org/True"}',
         ];
 
         yield 'Value is a boolean (false)' => [
@@ -118,7 +118,7 @@ class RendererTest extends TestCase
             [
                 'some-boolean-false' => false,
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-boolean-false":"https://schema.org/False"}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-boolean-false":"https://schema.org/False"}',
         ];
 
         yield 'Value is an array of strings' => [
@@ -129,38 +129,38 @@ class RendererTest extends TestCase
                     'another-array-value',
                 ],
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-array":["some-array-value","another-array-value"]}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-array":["some-array-value","another-array-value"]}',
         ];
 
         yield 'Value is a model' => [
             null,
             [
-                'some-type' => new StubType(
+                'some-type' => new GenericStub(
                     'from-type-property',
                     ['some-property' => 'some-value'],
                     'SomeSubTypeStub'
                 ),
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
         ];
 
         yield 'Value is an array of models' => [
             null,
             [
                 'some-type' => [
-                    new StubType(
+                    new GenericStub(
                         'from-type-property',
                         ['some-property' => 'some-value'],
                         'SomeSubTypeStub'
                     ),
-                    new StubType(
+                    new GenericStub(
                         'from-another-type-property',
                         ['another-property' => 'another-value'],
                         'AnotherSubTypeStub'
                     ),
                 ],
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
         ];
 
         yield 'Value is of type NodeIdentifierInterface' => [
@@ -168,7 +168,7 @@ class RendererTest extends TestCase
             [
                 'some-property' => new NodeIdentifier('some-node-identifier-id'),
             ],
-            '{"@context":"https://schema.org/","@type":"StubType","some-property":{"@id":"some-node-identifier-id"}}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-property":{"@id":"some-node-identifier-id"}}',
         ];
     }
 
@@ -177,13 +177,13 @@ class RendererTest extends TestCase
      */
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedSeparately(): void
     {
-        $this->subject->addType(new StubType('some-id'));
-        $this->subject->addType(new StubType('another-id'));
+        $this->subject->addType(new GenericStub('some-id'));
+        $this->subject->addType(new GenericStub('another-id'));
 
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
+                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}'
             ),
             $this->subject->render()
         );
@@ -195,8 +195,8 @@ class RendererTest extends TestCase
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedAtOnce(): void
     {
         $types = [
-            new StubType('some-id'),
-            new StubType('another-id'),
+            new GenericStub('some-id'),
+            new GenericStub('another-id'),
         ];
 
         $this->subject->addType(...$types);
@@ -204,7 +204,7 @@ class RendererTest extends TestCase
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@graph":[{"@type":"StubType","@id":"some-id"},{"@type":"StubType","@id":"another-id"}]}'
+                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}'
             ),
             $this->subject->render()
         );
@@ -215,7 +215,7 @@ class RendererTest extends TestCase
      */
     public function clearTypesRemovesAllTypes(): void
     {
-        $this->subject->addType(new StubType('some-id'));
+        $this->subject->addType(new GenericStub('some-id'));
         $this->subject->clearTypes();
 
         self::assertSame('', $this->subject->render());

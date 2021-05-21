@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Aspect\TestAspect;
 use Brotkrueml\Schema\Tests\Fixtures\Aspect\WrongAspect;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -115,7 +115,7 @@ class SchemaMarkupInjectionWithAspectTest extends TestCase
         $schemaManagerMock
             ->expects(self::once())
             ->method('addType')
-            ->with(new Thing());
+            ->with(new GenericStub());
 
         $subject = new SchemaMarkupInjection(
             $this->controllerStub,

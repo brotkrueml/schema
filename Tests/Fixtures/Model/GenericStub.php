@@ -9,18 +9,18 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Fixtures\Renderer;
+namespace Brotkrueml\Schema\Tests\Fixtures\Model;
 
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 
-class StubType implements NodeIdentifierInterface, TypeInterface
+class GenericStub implements NodeIdentifierInterface, TypeInterface
 {
     private ?string $id;
     private array $properties;
     private string $type;
 
-    public function __construct(?string $id = null, array $properties = [], string $type = 'StubType')
+    public function __construct(?string $id = null, array $properties = [], string $type = 'GenericStub')
     {
         $this->id = $id;
         $this->properties = $properties;
