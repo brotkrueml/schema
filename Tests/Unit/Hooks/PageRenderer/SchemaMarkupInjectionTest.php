@@ -14,15 +14,16 @@ namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -31,8 +32,6 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class SchemaMarkupInjectionTest extends TestCase
 {
-    use SchemaCacheTrait;
-
     protected SchemaMarkupInjection $subject;
 
     /**
@@ -44,6 +43,8 @@ class SchemaMarkupInjectionTest extends TestCase
      * @var MockObject|ExtensionConfiguration
      */
     protected $extensionConfigurationMock;
+
+    private SchemaManager $schemaManager;
 
     /**
      * @var MockObject|TypoScriptFrontendController
@@ -65,6 +66,11 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     private $extensionAvailabilityStub;
 
+    /**
+     * @var Stub|EventDispatcher
+     */
+    private $eventDispatcherStub;
+
     protected function setUp(): void
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
@@ -72,22 +78,27 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->controllerMock->page = ['no_index' => 0, 'uid' => 42];
 
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
+        $this->schemaManager = new SchemaManager();
         $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
         $this->applicationTypeStub = $this->createStub(ApplicationType::class);
         $this->extensionAvailabilityStub = $this->createStub(ExtensionAvailability::class);
+        $this->eventDispatcherStub = $this->createStub(EventDispatcher::class);
+
+        $this->eventDispatcherStub
+            ->method('dispatch')
+            ->willReturn(new RenderAdditionalTypesEvent(false));
 
         $this->subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            GeneralUtility::makeInstance(SchemaManager::class),
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
-
-        $this->defineCacheStubsWhichReturnEmptyEntry();
     }
 
     protected function tearDown(): void
@@ -100,8 +111,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeInBackendModeDoesNothing(): void
     {
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub());
 
         $this->pageRendererMock
             ->expects(self::never())
@@ -145,9 +155,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->extensionConfigurationMock
             ->expects(self::once())
@@ -160,7 +168,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->pageRendererMock
@@ -178,10 +186,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -193,8 +202,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->extensionConfigurationMock
             ->expects(self::once())
@@ -211,7 +219,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('addFooterData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->applicationTypeStub
@@ -225,10 +233,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            GeneralUtility::makeInstance(SchemaManager::class),
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -240,6 +249,8 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function seoExtensionIsNotInstalledAddsHeaderData(): void
     {
+        $this->schemaManager->addType(new GenericStub('some-type'));
+
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $controllerMock->page = ['uid' => 42];
 
@@ -260,21 +271,19 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $controllerMock,
             $this->extensionConfigurationMock,
-            null,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
 
         $this->pageRendererMock
             ->expects(self::once())
             ->method('addHeaderData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $params = [];
@@ -307,10 +316,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            null,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -322,9 +332,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -335,7 +343,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->applicationTypeStub
@@ -349,10 +357,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -364,9 +373,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenPageShouldBeIndexedThenMarkupIsEmbedded(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -377,7 +384,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->applicationTypeStub
@@ -391,10 +398,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -406,9 +414,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenPageShouldNotBeIndexedAndConfigurationOptionIsNotDefinedThenMarkupIsEmbedded(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
 
@@ -427,7 +433,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->applicationTypeStub
@@ -441,10 +447,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -456,9 +463,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenPageShouldNotBeIndexedAndConfigurationOptionIsActivatedThenMarkupIsEmbedded(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
 
@@ -477,7 +482,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->applicationTypeStub
@@ -491,10 +496,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -506,9 +512,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenPageShouldNotBeIndexedAndConfigurationOptionIsDeactivatedThenMarkupIsNotEmbedded(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
 
@@ -533,10 +537,11 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
         );
 
         $params = [];
@@ -548,9 +553,7 @@ class SchemaMarkupInjectionTest extends TestCase
      */
     public function whenSeoExtensionIsNotLoadedMarkupIsAlwaysEmbedded(): void
     {
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType((new Thing())->setProperty('name', 'some name'));
+        $this->schemaManager->addType(new GenericStub('some-type'));
 
         $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
 
@@ -569,7 +572,7 @@ class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"Thing","name":"some name"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
             ));
 
         $this->applicationTypeStub
@@ -583,9 +586,70 @@ class SchemaMarkupInjectionTest extends TestCase
         $subject = new SchemaMarkupInjection(
             $this->controllerMock,
             $this->extensionConfigurationMock,
-            $schemaManager,
+            $this->schemaManager,
             $this->pagesCacheServiceMock,
-            $this->applicationTypeStub
+            $this->applicationTypeStub,
+            $this->extensionAvailabilityStub,
+            $this->eventDispatcherStub
+        );
+
+        $packageManagerStub = $this->createStub(PackageManager::class);
+        $packageManagerStub
+            ->method('isPackageActive')
+            ->with('seo')
+            ->willReturn(false);
+        ExtensionManagementUtility::setPackageManager($packageManagerStub);
+
+        $params = [];
+        $subject->execute($params, $this->pageRendererMock);
+    }
+
+    /**
+     * @test
+     */
+    public function additionalTypeAddedViaEventDispatcherIsAddedCorrectly(): void
+    {
+        $this->extensionConfigurationMock
+            ->expects(self::once())
+            ->method('get')
+            ->with('schema')
+            ->willReturn(['embedMarkupOnNoindexPages' => '0']);
+
+        $this->pagesCacheServiceMock
+            ->expects(self::once())
+            ->method('getMarkupFromCache')
+            ->willReturn(null);
+        $this->pagesCacheServiceMock
+            ->expects(self::once())
+            ->method('storeMarkupInCache')
+            ->with(\sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"from-event"}'
+            ));
+
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
+        $this->extensionAvailabilityStub
+            ->method('isSeoAvailable')
+            ->willReturn(false);
+
+        $event = new RenderAdditionalTypesEvent(false);
+        $event->addType(new GenericStub('from-event'));
+        $eventDispatcherStub = $this->createStub(EventDispatcher::class);
+        $eventDispatcherStub
+            ->method('dispatch')
+            ->willReturn($event);
+
+        $subject = new SchemaMarkupInjection(
+            $this->controllerMock,
+            $this->extensionConfigurationMock,
+            $this->schemaManager,
+            $this->pagesCacheServiceMock,
+            $this->applicationTypeStub,
+            $this->extensionAvailabilityStub,
+            $eventDispatcherStub
         );
 
         $packageManagerStub = $this->createStub(PackageManager::class);

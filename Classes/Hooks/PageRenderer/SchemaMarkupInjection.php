@@ -13,10 +13,11 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
-use Brotkrueml\Schema\Aspect\AspectInterface;
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -32,6 +33,7 @@ final class SchemaMarkupInjection
     private SchemaManager $schemaManager;
     private PagesCacheService $pagesCacheService;
     private ExtensionAvailability $extensionAvailability;
+    private EventDispatcher $eventDispatcher;
 
     /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
@@ -40,20 +42,22 @@ final class SchemaMarkupInjection
         SchemaManager $schemaManager = null,
         PagesCacheService $pagesCacheService = null,
         ApplicationType $applicationType = null,
-        ExtensionAvailability $extensionAvailability = null
+        ExtensionAvailability $extensionAvailability = null,
+        EventDispatcher $eventDispatcher = null
     ) {
         $this->applicationType = $applicationType ?? new ApplicationType();
-        if ($this->applicationType->isBackend()) {
-            return;
+        if (!$this->applicationType->isBackend()) {
+            $this->controller = $controller ?? $GLOBALS['TSFE'];
+            $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
+            $this->configuration = $extensionConfiguration->get('schema') ?? [];
+            $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
+            $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
+            $this->extensionAvailability = $extensionAvailability ?? new ExtensionAvailability();
+            $this->eventDispatcher = $eventDispatcher ?? GeneralUtility::makeInstance(EventDispatcher::class);
         }
-        $this->controller = $controller ?? $GLOBALS['TSFE'];
-        $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $this->configuration = $extensionConfiguration->get('schema') ?? [];
-        $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
-        $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
-        $this->extensionAvailability = $extensionAvailability ?? new ExtensionAvailability();
     }
 
+    /** @noinspection PhpUnusedParameterInspection */
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
     {
         if ($this->applicationType->isBackend()) {
@@ -66,8 +70,10 @@ final class SchemaMarkupInjection
 
         $result = $this->pagesCacheService->getMarkupFromCache();
         if ($result === null) {
-            foreach ($this->getRegisteredAspects() as $aspect) {
-                $aspect->execute($this->schemaManager);
+            /** @var RenderAdditionalTypesEvent $event */
+            $event = $this->eventDispatcher->dispatch(new RenderAdditionalTypesEvent($this->schemaManager->hasWebPage()));
+            foreach ($event->getAdditionalTypes() as $additionalType) {
+                $this->schemaManager->addType($additionalType);
             }
 
             if (($result = $this->schemaManager->renderJsonLd()) !== '') {
@@ -97,32 +103,5 @@ final class SchemaMarkupInjection
         }
 
         return (bool)($this->configuration['embedMarkupOnNoindexPages'] ?? true);
-    }
-
-    /**
-     * @return AspectInterface[]
-     */
-    private function getRegisteredAspects(): array
-    {
-        $aspects = [];
-        // This hook is only for internal use and will be transformed to PSR-14 event
-        // when TYPO3 v10 is a minimum requirement
-        foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect'] ?? [] as $aspect) {
-            $aspectInstance = new $aspect();
-            if (!$aspectInstance instanceof AspectInterface) {
-                throw new \InvalidArgumentException(
-                    \sprintf(
-                        'Aspect "%s" must implement interface "%s"',
-                        $aspect,
-                        AspectInterface::class
-                    ),
-                    1583429697
-                );
-            }
-
-            $aspects[] = $aspectInstance;
-        }
-
-        return $aspects;
     }
 }

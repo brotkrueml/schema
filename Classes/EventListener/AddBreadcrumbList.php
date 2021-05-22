@@ -9,36 +9,36 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Aspect;
+namespace Brotkrueml\Schema\EventListener;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-final class BreadcrumbListAspect implements AspectInterface
+/**
+ * @internal
+ */
+final class AddBreadcrumbList
 {
     private TypoScriptFrontendController $controller;
     private ExtensionConfiguration $configuration;
     private ContentObjectRenderer $contentObjectRenderer;
 
-    /** @psalm-suppress PropertyTypeCoercion */
     public function __construct(
-        TypoScriptFrontendController $controller = null,
-        ExtensionConfiguration $configuration = null,
-        ContentObjectRenderer $contentObjectRenderer = null
+        ContentObjectRenderer $contentObjectRenderer,
+        ExtensionConfiguration $configuration,
+        TypoScriptFrontendController $controller
     ) {
-        $this->controller = $controller ?? $GLOBALS['TSFE'];
-        $this->configuration = $configuration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $this->contentObjectRenderer = $contentObjectRenderer ?? GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $this->contentObjectRenderer = $contentObjectRenderer;
+        $this->configuration = $configuration;
+        $this->controller = $controller;
     }
 
-    public function execute(SchemaManager $schemaManager): void
+    public function __invoke(RenderAdditionalTypesEvent $event): void
     {
-        /** @noinspection PhpUnhandledExceptionInspection */
         $shouldEmbedBreadcrumbMarkup = (bool)$this->configuration->get('schema', 'automaticBreadcrumbSchemaGeneration');
 
         if (!$shouldEmbedBreadcrumbMarkup) {
@@ -67,8 +67,7 @@ final class BreadcrumbListAspect implements AspectInterface
         }
 
         $rootLine = \array_reverse($rootLine);
-        $breadcrumbList = $this->buildBreadCrumbList($rootLine);
-        $schemaManager->addType($breadcrumbList);
+        $event->addType($this->buildBreadCrumbList($rootLine));
     }
 
     private function buildBreadCrumbList(array $rootLine): TypeInterface

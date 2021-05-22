@@ -26,6 +26,18 @@ services:
     arguments:
       $cache: '@cache.pages'
 
+  Brotkrueml\Schema\EventListener\AddBreadcrumbList:
+    tags:
+      - name: event.listener
+        identifier: 'ext-schema/addBreadcrumbList'
+        event: Brotkrueml\Schema\Event\RenderAdditionalTypesEvent
+
+  Brotkrueml\Schema\EventListener\AddWebPageType:
+    tags:
+      - name: event.listener
+        identifier: 'ext-schema/addWebPageType'
+        event: Brotkrueml\Schema\Event\RenderAdditionalTypesEvent
+
   Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending:
     tags:
       - name: event.listener

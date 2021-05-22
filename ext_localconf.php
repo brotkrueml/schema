@@ -29,12 +29,6 @@ defined('TYPO3') or die();
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['options']['defaultLifetime'] = 0;
     }
 
-    // @internal no official hooks
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['breadcrumbList']
-        = Brotkrueml\Schema\Aspect\BreadcrumbListAspect::class;
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/schema']['registerAspect']['webPage']
-        = Brotkrueml\Schema\Aspect\WebPageAspect::class;
-
     if (TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('adminpanel')) {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['ext-schema'] = [
             'module' => Brotkrueml\Schema\AdminPanel\SchemaModule::class,
