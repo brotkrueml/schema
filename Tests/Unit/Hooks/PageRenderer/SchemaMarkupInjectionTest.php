@@ -27,7 +27,6 @@ use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class SchemaMarkupInjectionTest extends TestCase
@@ -99,11 +98,6 @@ class SchemaMarkupInjectionTest extends TestCase
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
     }
 
     /**
