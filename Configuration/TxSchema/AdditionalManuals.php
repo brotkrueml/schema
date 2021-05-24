@@ -158,6 +158,12 @@ return [
             'link' => 'https://yandex.com/support/webmaster/supported-schemas/questions.html',
         ],
     ],
+    'Quiz' => [
+        [
+            'provider' => 'google',
+            'link' => 'https://developers.google.com/search/docs/advanced/structured-data/practice-problems',
+        ],
+    ],
     'Recipe' => [
         [
             'provider' => 'google',
