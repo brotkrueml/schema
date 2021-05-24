@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Node identifier and blank node identifier (#65)
+- Multiple types for a node (#64)
 
 ### Changed
 - Context moved from http://schema.org to https://schema.org/ (#58)

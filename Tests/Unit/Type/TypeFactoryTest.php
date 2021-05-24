@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Type;
 
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use Brotkrueml\Schema\Core\Model\MultipleType;
+use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\Stub;
@@ -21,8 +23,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class TypeFactoryTest extends TestCase
 {
-    use SchemaCacheTrait;
-
     /**
      * @var TypeRegistry|Stub
      */
@@ -32,8 +32,6 @@ class TypeFactoryTest extends TestCase
     {
         $this->typeRegistryStub = $this->createStub(TypeRegistry::class);
         GeneralUtility::setSingletonInstance(TypeRegistry::class, $this->typeRegistryStub);
-
-        $this->defineCacheStubsWhichReturnEmptyEntry();
     }
 
     protected function tearDown(): void
@@ -44,33 +42,79 @@ class TypeFactoryTest extends TestCase
     /**
      * @test
      */
-    public function createTypeReturnsInstanceOfTypeModel(): void
+    public function createTypeWithNoArgumentThrowsException(): void
     {
-        $this->typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->with('Thing')
-            ->willReturn(Thing::class);
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionCode(1621787452);
+        $this->expectExceptionMessage('At least one type has to be given as argument');
 
-        $type = TypeFactory::createType('Thing');
-
-        self::assertInstanceOf(Thing::class, $type);
+        TypeFactory::createType();
     }
 
     /**
      * @test
      */
-    public function createTypeThrowsExceptionOnInvalidType(): void
+    public function createTypeWithSingleArgumentReturnsInstanceOfTypeModel(): void
+    {
+        $this->typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->with('GenericStub')
+            ->willReturn(GenericStub::class);
+
+        $type = TypeFactory::createType('GenericStub');
+
+        self::assertInstanceOf(GenericStub::class, $type);
+    }
+
+    /**
+     * @test
+     */
+    public function createTypeWithSingleArgumentThrowsExceptionOnInvalidType(): void
     {
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1586590157);
-        $this->expectExceptionMessage('No model class for type "UnavailableThing" available!');
+        $this->expectExceptionMessage('No model class for type "UnavailableType" available!');
 
         $this->typeRegistryStub
             ->method('resolveModelClassFromType')
-            ->with('UnavailableThing')
+            ->with('UnavailableType')
             ->willReturn(null);
 
-        TypeFactory::createType('UnavailableThing');
+        TypeFactory::createType('UnavailableType');
+    }
+
+    /**
+     * @test
+     */
+    public function createTypeWithTwoArgumentsReturnsInstanceOfMultipleType(): void
+    {
+        $map = [
+            ['ProductStub', ProductStub::class],
+            ['ServiceStub', ServiceStub::class],
+        ];
+        $this->typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->willReturnMap($map);
+
+        $actual = TypeFactory::createType('ProductStub', 'ServiceStub');
+
+        self::assertInstanceOf(MultipleType::class, $actual);
+        self::assertSame(['ProductStub', 'ServiceStub'], $actual->getType());
+    }
+
+    /**
+     * @test
+     */
+    public function createTypeWithTwoSameArgumentsReturnsSingleTypeInstance(): void
+    {
+        $this->typeRegistryStub
+            ->method('resolveModelClassFromType')
+            ->with('GenericStub')
+            ->willReturn(GenericStub::class);
+
+        $type = TypeFactory::createType('GenericStub', 'GenericStub');
+
+        self::assertInstanceOf(GenericStub::class, $type);
     }
 
     /**

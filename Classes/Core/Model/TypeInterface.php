@@ -77,12 +77,15 @@ interface TypeInterface extends NodeIdentifierInterface
     /**
      * Get the available property names
      *
-     * @return array<string>
+     * @return string[]
      */
     public function getPropertyNames(): array;
 
     /**
      * Get the type the model represents
+     * This can also be an array of types for a multiple type
+     *
+     * @return string|string[]
      */
-    public function getType(): string;
+    public function getType();
 }

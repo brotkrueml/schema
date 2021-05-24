@@ -32,6 +32,13 @@ There are currently over 600 models available.
 Starting with examples
 ======================
 
+.. index:: Type
+
+.. _types:
+
+Types
+-----
+
 Let's start with a simple example. Imagine you describe a
 `person <https://schema.org/Person>`_ on a plugin's detail page that you want
 to enrich with structured markup. First you have to create the schema model::
@@ -105,13 +112,57 @@ automatically into the head section:
       }
    }
 
+
+.. index:: Multiple type
+
+.. _multiple-types:
+
+Multiple types
+--------------
+
+JSON-LD allows multiple types for a node. The rendered `@type` property is then
+an array, the properties of the single types are merged. This way, a node can
+be, e.g., a `Product` and a `Service` at the same time - which can be useful
+in some cases.
+
+The difference to a single type is only that you call
+:php:`\Brotkrueml\Schema\Type\TypeFactory::createType()` with more than one
+argument::
+
+   $productAndService = \Brotkrueml\Schema\Type\TypeFactory::createType('Product', 'Service');
+   $productAndService
+      ->setId('https://example.org/#my-product-and-service')
+      ->setProperty('name', 'My product and service')
+      ->setProperty('manufacturer', 'Acme Ltd.') // from Product
+      ->setProperty('provider', 'Acme Ltd.') // from Service
+   ;
+   $schemaManager->addType($productAndService);
+
+The factory method returns an instance of the
+:php:`\Brotkrueml\Schema\Core\Model\MultipleType` class which provides the
+same API as a single type.
+
+This results in the following JSON-LD:
+
+.. code-block:: json
+
+   {
+      "@context": "https://schema.org/",
+      "@type": ["Product", "Service"],
+      "@id": "https://example.org/#my-product-and-service",
+      "manufacturer": "Acme Ltd.",
+      "name": "My product and service",
+      "provider": "Acme Ltd."
+   }
+
+
 .. index::
    single: Node identifier
 
 .. node-identifier::
 
-Node identifier
----------------
+Node identifiers
+----------------
 
 JSON-LD supports the usage of `@id` as reference without giving a type. This is
 useful when using circular references, e.g.:
@@ -197,8 +248,6 @@ This results in the following JSON-LD output:
          "knows": { "@id": "_:b0" }
       }
    }
-
-
 
 
 .. index::
@@ -395,6 +444,15 @@ Get the names of all properties of the model.
 
 Return value
    Array of all property names of the model.
+
+
+.. option:: getType()
+
+Get the type of the model.
+
+Return value
+   A string (if it is a single type) or an array of strings (if it is a multiple
+   type).
 
 
 .. index:: Schema Manager

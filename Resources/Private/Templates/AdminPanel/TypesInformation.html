@@ -18,7 +18,19 @@
         <f:variable name="typeKey" value="@type"/>
         <f:variable name="idKey" value="@id"/>
         <f:for each="{types}" as="type">
-            <h2 class="typo3-adminPanel-headline">{type.{typeKey}}</h2>
+            <h2 class="typo3-adminPanel-headline">
+                <f:if condition="{type.{typeKey}.0}">
+                    <f:then>
+                        <f:for each="{type.{typeKey}}" as="typeKey" iteration="i">
+                            <f:if condition="!{i.isFirst}">/</f:if>
+                            {typeKey}
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        {type.{typeKey}}
+                    </f:else>
+                </f:if>
+            </h2>
             <table class="typo3-adminPanel-table typo3-adminPanel-table-debug">
                 <tbody>
                     <f:for each="{type}" as="value" key="name">

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Type;
 
+use Brotkrueml\Schema\Core\Model\MultipleType;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -20,10 +21,27 @@ final class TypeFactory
     {
     }
 
+    public static function createType(string ...$type): TypeInterface
+    {
+        if ($type === []) {
+            throw new \DomainException(
+                'At least one type has to be given as argument',
+                1621787452
+            );
+        }
+
+        $type = \array_unique($type);
+        if (\count($type) === 1) {
+            return self::createSingleType($type[0]);
+        }
+
+        return self::createMultipleType($type);
+    }
+
     /**
      * @psalm-suppress InvalidStringClass
      */
-    public static function createType(string $type): TypeInterface
+    private static function createSingleType(string $type): TypeInterface
     {
         /** @var TypeRegistry $typeRegistry */
         $typeRegistry = GeneralUtility::makeInstance(TypeRegistry::class);
@@ -40,5 +58,13 @@ final class TypeFactory
         $type = new $typeClass();
 
         return $type;
+    }
+
+    private static function createMultipleType(array $types): MultipleType
+    {
+        return new MultipleType(...\array_map(
+            static fn (string $type): TypeInterface => self::createSingleType($type),
+            $types
+        ));
     }
 }

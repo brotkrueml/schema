@@ -54,7 +54,10 @@ abstract class AbstractType implements TypeInterface
         $this->properties = \array_fill_keys(static::$propertyNames, null);
     }
 
-    private function addAdditionalProperties(): void
+    /**
+     * @internal
+     */
+    protected function addAdditionalProperties(): void
     {
         $cacheEntryIdentifier = 'additionalTypeProperties-' . \str_replace('\\', '_', static::class);
         $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(Extension::CACHE_IDENTIFIER);
@@ -154,8 +157,13 @@ abstract class AbstractType implements TypeInterface
     private function checkPropertyExists(string $propertyName): void
     {
         if (!\array_key_exists($propertyName, $this->properties)) {
+            $type = $this->getType();
             throw new \DomainException(
-                \sprintf('Property "%s" is unknown for type "%s"', $propertyName, $this->getType()),
+                \sprintf(
+                    'Property "%s" is unknown for type "%s"',
+                    $propertyName,
+                    \is_array($type) ? \implode(' / ', $type) : $type
+                ),
                 1561829996
             );
         }
@@ -292,7 +300,7 @@ abstract class AbstractType implements TypeInterface
     /**
      * @inheritDoc
      */
-    public function getType(): string
+    public function getType()
     {
         $type = \substr(\strrchr(static::class, '\\') ?: '', 1);
         if (\str_starts_with($type, '_')) {
