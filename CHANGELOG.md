@@ -25,6 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 - Deprecated class TypesProvider (#44)
 
+## [1.12.0] - Planned
+
+### Changed
+- Move from Structured Data Testing Tool to Schema Markup Validator in Admin Panel (#66)
+
 ## [1.11.1] - 2021-04-06
 
 ### Fixed
@@ -252,6 +257,7 @@ Initial release
 
 
 [Unreleased]: https://github.com/brotkrueml/schema/compare/v1.11.1...HEAD
+[1.12.0]: https://github.com/brotkrueml/schema/compare/v1.11.1...1.x
 [1.11.1]: https://github.com/brotkrueml/schema/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/brotkrueml/schema/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/brotkrueml/schema/compare/v1.9.0...v1.10.0
