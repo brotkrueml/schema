@@ -271,6 +271,39 @@ class AddBreadcrumbListTest extends TestCase
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
+        yield 'Recycler in rootline should not be rendered' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_RECYCLER,
+                    'title' => 'A folder',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                0 => [
+                    'uid' => 42,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
         yield 'Menu separator in rootline should not be rendered, but doktype 198' => [
             [
                 2 => [
@@ -302,6 +335,54 @@ class AddBreadcrumbListTest extends TestCase
                 ],
             ],
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page with doktype 198","position":"1"}}',
+        ];
+
+        yield 'Doktype 200 should be rendered' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'doktype' => 200,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
+        yield 'Doktype 300 should be rendered' => [
+            [
+                2 => [
+                    'uid' => 2,
+                    'doktype' => 300,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
     }
 

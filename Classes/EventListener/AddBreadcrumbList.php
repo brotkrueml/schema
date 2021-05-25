@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -23,6 +24,12 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 final class AddBreadcrumbList
 {
+    private const DOKTYPES_TO_EXCLUDE = [
+        PageRepository::DOKTYPE_RECYCLER,
+        PageRepository::DOKTYPE_SPACER,
+        PageRepository::DOKTYPE_SYSFOLDER,
+    ];
+
     private TypoScriptFrontendController $controller;
     private ExtensionConfiguration $configuration;
     private ContentObjectRenderer $contentObjectRenderer;
@@ -47,15 +54,15 @@ final class AddBreadcrumbList
 
         $rootLine = [];
         foreach ($this->controller->rootLine as $page) {
-            if ($page['is_siteroot']) {
+            if ($page['is_siteroot'] ?? false) {
                 break;
             }
 
-            if ($page['nav_hide']) {
+            if ($page['nav_hide'] ?? false) {
                 continue;
             }
 
-            if ($page['doktype'] >= 199) {
+            if (\in_array($page['doktype'] ?? PageRepository::DOKTYPE_DEFAULT, self::DOKTYPES_TO_EXCLUDE, true)) {
                 continue;
             }
 
