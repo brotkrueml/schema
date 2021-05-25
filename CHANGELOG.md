@@ -235,7 +235,7 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.11.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.11.1...1.x
 [1.11.1]: https://github.com/brotkrueml/schema/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/brotkrueml/schema/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/brotkrueml/schema/compare/v1.9.0...v1.10.0
