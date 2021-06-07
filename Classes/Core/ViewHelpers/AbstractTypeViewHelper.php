@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\ViewHelpers;
 
+use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -45,7 +46,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
         parent::initializeArguments();
 
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node', false, '');
-        $this->registerArgument(static::ARGUMENT_ID, 'string', 'IRI to identify the node', false, '');
+        $this->registerArgument(static::ARGUMENT_ID, 'mixed', 'IRI or a node identifier to identify the node', false, '');
         $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'bool', 'Set to true, if the type is the primary content of the web page', false, false);
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid', false, '');
 
@@ -154,10 +155,7 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
             return;
         }
 
-        if ($this->arguments[static::ARGUMENT_ID] !== '') {
-            $this->model->setId($this->arguments[static::ARGUMENT_ID]);
-        }
-
+        $this->assignIdToModel();
         unset($this->arguments[static::ARGUMENT_ID]);
 
         foreach ($this->arguments as $name => $value) {
@@ -177,5 +175,29 @@ abstract class AbstractTypeViewHelper extends ViewHelper\AbstractViewHelper
 
             $this->model->setProperty($name, $value);
         }
+    }
+
+    public function assignIdToModel(): void
+    {
+        $id = $this->arguments[static::ARGUMENT_ID];
+        if ($id === '') {
+            return;
+        }
+
+        if (!\is_string($id) && !$id instanceof NodeIdentifierInterface) {
+            throw new ViewHelper\Exception(
+                \sprintf(
+                    'The %s argument has to be either a string or an instance of %s, %s given',
+                    static::ARGUMENT_ID,
+                    NodeIdentifierInterface::class,
+                    \get_debug_type($id)
+                )
+            );
+        }
+
+        /**
+         * @psalm-suppress PossiblyNullReference
+         */
+        $this->model->setId($this->arguments[static::ARGUMENT_ID]);
     }
 }

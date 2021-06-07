@@ -232,6 +232,109 @@ which results in the output:
    }
 
 
+.. index::
+   single: Node identifier view helper
+
+.. _schema-nodeIdentifier-view-helper:
+
+:html:`<schema:nodeIdentifier>` view helper
+===========================================
+
+Sometimes it is useful to reference a node with just the ID. For this case the
+:html:`<schema:nodeIdentifier>` view helper is available:
+
+.. code-block:: html
+
+   <f:variable name="identifier1" value="{schema:nodeIdentifier(id: 'https://example.org/#john-smith')}"/>
+   <f:variable name="identifier2" value="{schema:nodeIdentifier(id: 'https://example.org/#sarah-jane-smith')}"/>
+   <schema:type.person name="John Smith" -id="{identifier1}" knows="{identifier2}"/>
+   <schema:type.person name="Sarah Jane Smith" -id="{identifier2}" knows="{identifier1}"/>
+
+This generates the following JSON-LD:
+
+.. code-block:: json
+   :emphasize-lines: 6,9,14,17
+
+   {
+      "@context": "https://schema.org/",
+      "@graph": [
+         {
+            "@type": "Person",
+            "@id": "https://example.org/#john-smith",
+            "name": "John Smith",
+            "knows": {
+               "@id": "https://example.org/#sarah-jane-smith"
+            }
+         },
+         {
+            "@type": "Person",
+            "@id": "https://example.org/#sarah-jane-smith",
+            "name": "Sarah Jane Smith",
+            "knows": {
+               "@id": "https://example.org/#john-smith"
+            }
+         }
+      ]
+   }
+
+The view helper has only one attribute which is required:
+
+.. option:: id
+
+This attribute defines the id and is mapped in JSON-LD to the ``@id`` property.
+
+
+.. index::
+   single: Blank node identifier view helper
+
+.. _schema-blankNodeIdentifier-view-helper:
+
+:html:`<schema:blankNodeIdentifier>` view helper
+================================================
+
+Sometimes it is not necessary (or possible) to define a globally unique ID
+with an IRI. For these cases you can use a blank node identifier:
+
+.. code-block:: html
+
+   <f:variable name="blankIdentifier1" value="{schema:blankNodeIdentifier()}"/>
+   <f:variable name="blankIdentifier2" value="{schema:blankNodeIdentifier()}"/>
+   <schema:type.person name="John Smith" -id="{blankIdentifier1}" knows="{blankIdentifier2}"/>
+   <schema:type.person name="Sarah Jane Smith" -id="{blankIdentifier2}" knows="{blankIdentifier1}"/>
+
+This generates the following JSON-LD:
+
+.. code-block:: json
+   :emphasize-lines: 6,9,14,17
+
+   {
+      "@context": "https://schema.org/",
+      "@graph": [
+         {
+            "@type": "Person",
+            "@id": "_:b0",
+            "name": "John Smith",
+            "knows": {
+               "@id": "_:b1"
+            }
+         },
+         {
+            "@type": "Person",
+            "@id": "_:b1",
+            "name": "Sarah Jane Smith",
+            "knows": {
+               "@id": "_:b0"
+            }
+         }
+      ]
+   }
+
+The view helper has no arguments.
+
+You can find more information in the :ref:`Blank node identifier API section
+<blank-node-identifier>`.
+
+
 .. index:: property view helper
 
 :html:`<schema:property>` view helper

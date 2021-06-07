@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Node identifier and blank node identifier (#65)
+- Node identifier and blank node identifier (#65, #67)
 - Multiple types for a node (#64)
 
 ### Changed

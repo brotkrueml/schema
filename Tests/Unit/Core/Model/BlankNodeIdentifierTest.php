@@ -31,6 +31,14 @@ class BlankNodeIdentifierTest extends TestCase
     /**
      * @test
      */
+    public function subjectIsInstanceOfStringableInterface(): void
+    {
+        self::assertInstanceOf(\Stringable::class, new BlankNodeIdentifier());
+    }
+
+    /**
+     * @test
+     */
     public function getIdReturnsBlankIdentifier(): void
     {
         $subject = new BlankNodeIdentifier();
@@ -58,5 +66,12 @@ class BlankNodeIdentifierTest extends TestCase
         ];
 
         self::assertSame($expected, $actual);
+    }
+
+    public function toStringReturnsBlankIdentifier(): void
+    {
+        $subject = new BlankNodeIdentifier();
+
+        self::assertSame('_:b0', $subject->__toString());
     }
 }

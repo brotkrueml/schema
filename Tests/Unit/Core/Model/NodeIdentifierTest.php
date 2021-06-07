@@ -28,10 +28,25 @@ class NodeIdentifierTest extends TestCase
     /**
      * @test
      */
+    public function subjectIsInstanceOfStringableInterface(): void
+    {
+        self::assertInstanceOf(\Stringable::class, new NodeIdentifier('some-id'));
+    }
+
+    /**
+     * @test
+     */
     public function getIdReturnsCorrectId(): void
     {
         $subject = new NodeIdentifier('some-id');
 
         self::assertSame('some-id', $subject->getId());
+    }
+
+    public function toStringReturnsBlankIdentifier(): void
+    {
+        $subject = new NodeIdentifier('some-id');
+
+        self::assertSame('some-id', $subject->__toString());
     }
 }

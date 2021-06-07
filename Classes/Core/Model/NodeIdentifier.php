@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Core\Model;
 /**
  * @psalm-immutable
  */
-class NodeIdentifier implements NodeIdentifierInterface
+class NodeIdentifier implements NodeIdentifierInterface, \Stringable
 {
     /**
      * The ID of the type (mapped to @id in result)
@@ -32,5 +32,10 @@ class NodeIdentifier implements NodeIdentifierInterface
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getId();
     }
 }
