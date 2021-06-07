@@ -198,7 +198,7 @@ You can accomplish this with the help of the
 
    $person1->setProperty('knows', $person2);
 
-As you can see in the example, you can also user a node identifier as an
+As you can see in the example, you can also use a node identifier as an
 argument for :php:`->setId()` instead of a string.
 
 
