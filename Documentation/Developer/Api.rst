@@ -159,7 +159,7 @@ This results in the following JSON-LD:
 .. index::
    single: Node identifier
 
-.. node-identifier::
+.. _node-identifier:
 
 Node identifiers
 ----------------
@@ -205,7 +205,7 @@ argument for :php:`->setId()` instead of a string.
 .. index::
    single: Blank node identifier
 
-.. blank-node-identifier::
+.. _blank-node-identifier:
 
 Blank node identifiers
 ----------------------
