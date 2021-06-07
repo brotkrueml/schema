@@ -25,16 +25,12 @@ indent_style = tab
 indent_size = 3
 max_line_length = 80
 
-# MD-Files
-[*.md]
-indent_size = 4
-
 # YAML-Files
 [*.{yaml,yml}]
 indent_size = 2
 
 # package.json
-[{package.json}]
+[package.json]
 indent_size = 2
 
 # TypoScript
@@ -52,4 +48,8 @@ indent_size = 2
 
 # .htaccess
 [{_.htaccess,.htaccess}]
+indent_style = tab
+
+# Makefile
+[Makefile]
 indent_style = tab

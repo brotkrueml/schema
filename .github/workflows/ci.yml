@@ -89,9 +89,9 @@ jobs:
         run: |
           composer --version
           composer update --no-progress --prefer-dist --optimize-autoloader
-      - name: Run unit tests
+      - name: Generate code coverage
         run: |
-          .Build/bin/phpunit -c Tests/phpunit.xml.dist --log-junit .Build/logs/phpunit.xml --coverage-text --coverage-clover .Build/logs/clover.xml
+          make code-coverage
       - name: Send code coverage report to coveralls.io
         run: .Build/bin/php-coveralls -v
         env:
@@ -99,10 +99,10 @@ jobs:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       - name: Run psalm
         run: |
-          .Build/bin/psalm --no-progress --monochrome
+          make psalm
       - name: Run rector
         run: |
-          .Build/bin/rector --dry-run --no-progress-bar
+          make rector-dry
   xliff-validation:
     name: XLIFF validation
     runs-on: ubuntu-latest
