@@ -43,7 +43,10 @@ class NodeIdentifierTest extends TestCase
         self::assertSame('some-id', $subject->getId());
     }
 
-    public function toStringReturnsBlankIdentifier(): void
+    /**
+     * @test
+     */
+    public function toStringReturnsIdentifier(): void
     {
         $subject = new NodeIdentifier('some-id');
 

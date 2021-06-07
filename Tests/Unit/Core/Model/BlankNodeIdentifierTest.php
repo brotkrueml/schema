@@ -68,6 +68,9 @@ class BlankNodeIdentifierTest extends TestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @test
+     */
     public function toStringReturnsBlankIdentifier(): void
     {
         $subject = new BlankNodeIdentifier();
