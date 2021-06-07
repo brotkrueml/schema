@@ -89,6 +89,9 @@ jobs:
         run: |
           composer --version
           composer update --no-progress --prefer-dist --optimize-autoloader
+      - name: Normalize composer.json
+        run: |
+          composer normalize --dry-run
       - name: Generate code coverage
         run: |
           make code-coverage

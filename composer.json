@@ -2,19 +2,6 @@
 	"name": "brotkrueml/schema",
 	"type": "typo3-cms-extension",
 	"description": "API and view helpers for schema.org markup",
-	"license": "GPL-2.0-or-later",
-	"authors": [
-		{
-			"name": "Chris Müller",
-			"role": "Developer"
-		}
-	],
-	"support": {
-		"chat": "https://typo3.slack.com/archives/CV36M73D5",
-		"docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/",
-		"issues": "https://github.com/brotkrueml/schema/issues",
-		"source": "https://github.com/brotkrueml/schema"
-	},
 	"keywords": [
 		"TYPO3 CMS",
 		"TYPO3 extension",
@@ -23,14 +10,25 @@
 		"SEO",
 		"schema.org"
 	],
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Chris Müller",
+			"role": "Developer"
+		}
+	],
 	"require": {
 		"php": ">=7.4",
 		"ext-json": "*",
 		"symfony/polyfill-php80": "^1.17",
 		"typo3/cms-core": "^10.4.11 || ^11.0"
 	},
+	"conflict": {
+		"brotkrueml/sdbreadcrumb": "*"
+	},
 	"require-dev": {
 		"dg/bypass-finals": "^1.3",
+		"ergebnis/composer-normalize": "^2.14",
 		"friendsofphp/php-cs-fixer": "^2.18",
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.4",
@@ -41,16 +39,28 @@
 		"vimeo/psalm": "^4.6"
 	},
 	"suggest": {
-		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
 		"brotkrueml/schema-auto": "Provides additional terms related to auto",
 		"brotkrueml/schema-bib": "Provides additional terms related to bibliography",
 		"brotkrueml/schema-health": "Provides additional terms related to health and lifesciences",
 		"brotkrueml/schema-pending": "Provides pending terms which have yet to be accepted into the core vocabulary",
 		"brotkrueml/schema-rector": "Instant upgrade and refactoring for the TYPO3 schema extension code by using Rector",
-		"brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events"
+		"brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events",
+		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel"
 	},
-	"conflict": {
-		"brotkrueml/sdbreadcrumb": "*"
+	"config": {
+		"bin-dir": ".Build/bin",
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.0.x-dev"
+		},
+		"typo3/cms": {
+			"app-dir": ".Build",
+			"extension-key": "schema",
+			"web-dir": ".Build/web"
+		}
 	},
 	"autoload": {
 		"psr-4": {
@@ -62,19 +72,10 @@
 			"Brotkrueml\\Schema\\Tests\\": "Tests/"
 		}
 	},
-	"config": {
-		"sort-packages": true,
-		"vendor-dir": ".Build/vendor",
-		"bin-dir": ".Build/bin"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "2.0.x-dev"
-		},
-		"typo3/cms": {
-			"extension-key": "schema",
-			"app-dir": ".Build",
-			"web-dir": ".Build/web"
-		}
+	"support": {
+		"issues": "https://github.com/brotkrueml/schema/issues",
+		"chat": "https://typo3.slack.com/archives/CV36M73D5",
+		"source": "https://github.com/brotkrueml/schema",
+		"docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/"
 	}
 }
