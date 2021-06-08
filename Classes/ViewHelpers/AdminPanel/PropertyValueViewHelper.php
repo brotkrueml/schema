@@ -176,7 +176,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
     private static function renderIconLink(TypeLink $typeLink): string
     {
         return \sprintf(
-            '<a href="%s" title="%s" target="_blank" rel="noopener">%s</a>',
+            '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
             \htmlspecialchars($typeLink->getLink()),
             \htmlspecialchars($typeLink->getTitle()),
             self::getIconFactory()->getIcon($typeLink->getIconIdentifier(), Icon::SIZE_SMALL)->render()

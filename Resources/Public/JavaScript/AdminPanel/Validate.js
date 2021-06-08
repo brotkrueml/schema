@@ -57,7 +57,7 @@
       form.setAttribute('method', 'post');
       form.setAttribute('action', actionUrl);
       form.setAttribute('target', 'sd-validate-' + Math.random().toString(36).substr(2, 6));
-      form.setAttribute('rel', 'noopener');
+      form.setAttribute('rel', 'noreferrer');
       form.style = 'display:none';
 
       const codeField = document.createElement('textarea');
