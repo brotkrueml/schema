@@ -233,6 +233,63 @@ which results in the output:
 
 
 .. index::
+   single: Multiple type view helper
+
+.. _schema-multipleType-view-helper:
+
+:html:`<schema:multipleType>` view helper
+===========================================
+
+You can also add a :ref:`multiple type <multiple-types>` node:
+
+.. code-block:: html
+
+   <schema:multipleType
+      -id="https://example.org/#my-product-and-service"
+      types="Product,Service"
+      properties="{
+         name: 'My product and service',
+         manufacturer: 'Acme Ltd.',
+         provider: 'Acme Ltd.'
+      }"
+   />
+
+Define in the :html:`types` argument the types delimited by commas and in the
+:html:`properties` argument the name/value pairs of the according properties.
+The special properties :html:`-as`, :html:`-id` and
+:html:`-isMainEntityOfWebPage` can also be used as :ref:`described above
+<view-helpers-special-attributes>`.
+
+
+The example results in the following JSON-LD:
+
+.. code-block:: json
+
+   {
+      "@context": "https://schema.org/",
+      "@type": ["Product", "Service"],
+      "@id": "https://example.org/#my-product-and-service",
+      "manufacturer": "Acme Ltd.",
+      "name": "My product and service",
+      "provider": "Acme Ltd."
+   }
+
+You can also use the :ref:`PropertyViewHelper <schema-property-view-helper>` to
+add properties to a multiple type instead the :html:`properties` argument:
+
+.. code-block:: html
+
+   <schema:multipleType
+      -id="https://example.org/#my-product-and-service"
+      types="Product,Service"
+   >
+      <schema:property -as="name" value="My product and service"/>
+      <schema:property -as="manufacturer" value="Acme Ltd."/>
+      <schema:property -as="provider" value="Acme Ltd."/>
+   </schema:multipleType>
+
+
+.. index::
    single: Node identifier view helper
 
 .. _schema-nodeIdentifier-view-helper:
@@ -336,6 +393,8 @@ You can find more information in the :ref:`Blank node identifier API section
 
 
 .. index:: property view helper
+
+.. _schema-property-view-helper:
 
 :html:`<schema:property>` view helper
 =====================================
