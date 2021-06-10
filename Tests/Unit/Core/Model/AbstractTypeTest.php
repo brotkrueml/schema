@@ -277,15 +277,18 @@ class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsValidDataTypesAsValue(): void
     {
         $this->subject->setProperty('name', 'Pi');
-        $this->subject->setProperty('description', ['The answert for everything']);
+        $this->subject->setProperty('description', ['The answer for everything']);
         $this->subject->addProperty('identifier', 42);
         $this->subject->addProperty('isAccessibleForFree', true);
         $this->subject->addProperty('alternateName', 3.141592653);
-
-        $anotherType = new class() extends AbstractType {
-        };
-
-        $this->subject->addProperty('image', $anotherType);
+        $this->subject->addProperty('image', new class() extends AbstractType {
+        });
+        $this->subject->addProperty('subjectOf', new class() implements NodeIdentifierInterface {
+            public function getId(): ?string
+            {
+                return 'some-node-identifier';
+            }
+        });
 
         // Assertion is valid, when no exception above is thrown
         self::assertTrue(true);
