@@ -248,7 +248,7 @@ abstract class AbstractType implements TypeInterface
         }
 
         if (\is_array($this->properties[$propertyName])) {
-            if (\is_string($propertyValue) || \is_bool($propertyValue) || $propertyValue instanceof TypeInterface) {
+            if (!\is_array($propertyValue)) {
                 $propertyValue = [$propertyValue];
             }
 
