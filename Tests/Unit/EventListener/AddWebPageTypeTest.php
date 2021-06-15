@@ -142,7 +142,7 @@ class AddWebPageTypeTest extends TestCase
     /**
      * @test
      */
-    public function wegPageTypeHasExpiresSetIfEndTimePagePropertiesIsDefined(): void
+    public function webPageTypeHasExpiresSetIfEndTimePagePropertiesIsDefined(): void
     {
         $this->extensionConfigurationStub
             ->method('get')
