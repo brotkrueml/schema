@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Move from Structured Data Testing Tool to Schema Markup Validator in Admin Panel (#66)
 
+### Fixed
+- PHP 8.0 issues
+
 ## [1.11.1] - 2021-04-06
 
 ### Fixed
