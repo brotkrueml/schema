@@ -301,7 +301,7 @@ Example
                - name: event.listener
                  identifier: 'myLogicForEmbeddingMarkup'
                  event: Brotkrueml\Schema\Event\ShouldEmbedMarkupEvent
-
+                 after: 'ext-schema/embedMarkupDependingOnNoIndexPageField'
 
 Signal/slot (for TYPO3 v9/v10/v11)
 ----------------------------------
