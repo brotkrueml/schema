@@ -169,6 +169,41 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
             'Show image',
         ];
 
+        yield 'value is a gif image with uppercase extension and returned with a link' => [
+            '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.GIF"/>',
+            '<a href="http://example.org/image.GIF" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.GIF',
+            'showImage',
+            'Show image',
+        ];
+
+        yield 'value is a jpg image with uppercase extension and returned with a link' => [
+            '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.JPG"/>',
+            '<a href="http://example.org/image.JPG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.JPG',
+            'showImage',
+            'Show image',
+        ];
+
+        yield 'value is a jpeg image with uppercase extension and returned with a link' => [
+            '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.JPEG"/>',
+            '<a href="http://example.org/image.JPEG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.JPEG',
+            'showImage',
+            'Show image',
+        ];
+
+        yield 'value is a png image with uppercase extension and returned with a link' => [
+            '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.PNG"/>',
+            '<a href="http://example.org/image.PNG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.PNG',
+            'showImage',
+            'Show image',
+        ];
+
+        yield 'value is a svg image with uppercase extension and returned with a link' => [
+            '<schema:adminPanel.propertyValue name="some-name" value="https://example.org/image.SVG"/>',
+            '<a href="https://example.org/image.SVG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> https://example.org/image.SVG',
+            'showImage',
+            'Show image',
+        ];
+
         yield 'value is a URL with http' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/page.html"/>',
             '<a href="http://example.org/page.html" title="Go to website" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/page.html',
