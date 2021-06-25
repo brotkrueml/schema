@@ -95,7 +95,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             $iconIdentifier = 'ext-schema-documentation-schema';
         }
 
-        if (\in_array(strtolower(\pathinfo($value, \PATHINFO_EXTENSION)), self::IMAGE_EXTENSIONS)) {
+        if (\in_array(\strtolower(\pathinfo($value, \PATHINFO_EXTENSION)), self::IMAGE_EXTENSIONS)) {
             $linkTitle = self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
             $iconIdentifier = 'actions-image';
         }
