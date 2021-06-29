@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - PHP 8.0 issues
 - Link images with extension in uppercase in Admin Panel (#69)
+- Ignore an empty array for a property value when rendering JSON-LD
 
 ## [1.11.1] - 2021-04-06
 

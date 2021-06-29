@@ -97,6 +97,9 @@ final class Renderer implements RendererInterface
             if ($propertyValue === '') {
                 continue;
             }
+            if ($propertyValue === []) {
+                continue;
+            }
 
             if (\is_array($propertyValue)) {
                 $this->typeResult[$propertyName] = [];

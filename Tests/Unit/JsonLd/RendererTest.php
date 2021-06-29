@@ -54,7 +54,6 @@ class RendererTest extends TestCase
             null,
             [
                 'null-property' => null,
-                'empty-string-property' => '',
             ],
             '{"@context":"https://schema.org/","@type":"GenericStub"}',
         ];
@@ -65,6 +64,14 @@ class RendererTest extends TestCase
             '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-id"}',
         ];
 
+        yield 'Value is an empty string' => [
+            null,
+            [
+                'empty-string' => '',
+            ],
+            '{"@context":"https://schema.org/","@type":"GenericStub"}',
+        ];
+
         yield 'Value is a string' => [
             null,
             [
@@ -73,7 +80,7 @@ class RendererTest extends TestCase
             '{"@context":"https://schema.org/","@type":"GenericStub","some-string":"some string value"}',
         ];
 
-        yield 'Value is a number as integer' => [
+        yield 'Value is the number 1 as integer' => [
             null,
             [
                 'some-number' => 1,
@@ -119,6 +126,14 @@ class RendererTest extends TestCase
                 'some-boolean-false' => false,
             ],
             '{"@context":"https://schema.org/","@type":"GenericStub","some-boolean-false":"https://schema.org/False"}',
+        ];
+
+        yield 'Value is an empty array' => [
+            null,
+            [
+                'empty-array' => [],
+            ],
+            '{"@context":"https://schema.org/","@type":"GenericStub"}',
         ];
 
         yield 'Value is an array of strings' => [
