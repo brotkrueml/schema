@@ -28,6 +28,7 @@ final class SomeProducts extends AbstractType
         'brand',
         'category',
         'color',
+        'countryOfOrigin',
         'depth',
         'description',
         'disambiguatingDescription',

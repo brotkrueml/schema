@@ -53,6 +53,7 @@ final class WebApplication extends AbstractType
         'copyrightYear',
         'countriesNotSupported',
         'countriesSupported',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

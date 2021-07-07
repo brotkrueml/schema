@@ -47,6 +47,7 @@ final class WPHeader extends AbstractType implements WebPageElementTypeInterface
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'cssSelector',
         'dateCreated',

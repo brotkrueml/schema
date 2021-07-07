@@ -28,6 +28,7 @@ final class IndividualProduct extends AbstractType
         'brand',
         'category',
         'color',
+        'countryOfOrigin',
         'depth',
         'description',
         'disambiguatingDescription',

@@ -48,6 +48,7 @@ final class SearchResultsPage extends AbstractType implements WebPageTypeInterfa
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

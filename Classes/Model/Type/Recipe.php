@@ -48,6 +48,7 @@ final class Recipe extends AbstractType
         'cookingMethod',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

@@ -47,6 +47,7 @@ final class WebPageElement extends AbstractType implements WebPageElementTypeInt
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'cssSelector',
         'dateCreated',

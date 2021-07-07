@@ -46,6 +46,7 @@ final class Course extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'courseCode',
         'coursePrerequisites',
         'creator',

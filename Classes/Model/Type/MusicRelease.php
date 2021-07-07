@@ -47,6 +47,7 @@ final class MusicRelease extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'creditedTo',
         'dateCreated',

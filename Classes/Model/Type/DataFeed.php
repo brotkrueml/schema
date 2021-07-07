@@ -46,6 +46,7 @@ final class DataFeed extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dataFeedElement',
         'dateCreated',

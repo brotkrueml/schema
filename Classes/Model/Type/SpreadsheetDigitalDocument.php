@@ -46,6 +46,7 @@ final class SpreadsheetDigitalDocument extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

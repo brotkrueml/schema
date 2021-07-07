@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
+ * A LiveBlogPosting is a BlogPosting intended to provide a rolling textual coverage of an ongoing event through continuous updates.
  */
 final class LiveBlogPostingViewHelper extends AbstractTypeViewHelper
 {

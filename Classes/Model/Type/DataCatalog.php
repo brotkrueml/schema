@@ -46,6 +46,7 @@ final class DataCatalog extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dataset',
         'dateCreated',
