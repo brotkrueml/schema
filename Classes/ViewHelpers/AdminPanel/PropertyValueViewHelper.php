@@ -50,7 +50,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     private static ?IconFactory $iconFactory = null;
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
 

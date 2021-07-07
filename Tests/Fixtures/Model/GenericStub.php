@@ -32,7 +32,7 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId($id): void
     {
     }
 
@@ -46,19 +46,19 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
         return $this->properties[$propertyName];
     }
 
-    public function setProperty(string $propertyName, $propertyValue)
+    public function setProperty(string $propertyName, $propertyValue): void
     {
     }
 
-    public function addProperty(string $propertyName, $propertyValue)
+    public function addProperty(string $propertyName, $propertyValue): void
     {
     }
 
-    public function setProperties(array $properties)
+    public function setProperties(array $properties): void
     {
     }
 
-    public function clearProperty(string $propertyName)
+    public function clearProperty(string $propertyName): void
     {
     }
 

@@ -19,7 +19,7 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
 {
     private array $types = [];
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('types', 'string', 'The different types delimited by a comma', true);

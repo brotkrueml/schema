@@ -58,7 +58,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
     private const ARGUMENT_RENDER_FIRST_ITEM = 'renderFirstItem';
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
 
@@ -83,7 +83,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ) {
+    ): void {
         if ($arguments[static::ARGUMENT_RENDER_FIRST_ITEM] === false) {
             \array_shift($arguments[static::ARGUMENT_BREADCRUMB]);
         }

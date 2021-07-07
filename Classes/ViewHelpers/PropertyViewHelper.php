@@ -41,7 +41,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         $this->typeStack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
     }
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
 
