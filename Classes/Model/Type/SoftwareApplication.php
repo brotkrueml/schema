@@ -52,6 +52,7 @@ final class SoftwareApplication extends AbstractType
         'copyrightYear',
         'countriesNotSupported',
         'countriesSupported',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

@@ -47,6 +47,7 @@ final class RadioSeason extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

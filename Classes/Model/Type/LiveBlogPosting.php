@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
+ * A LiveBlogPosting is a BlogPosting intended to provide a rolling textual coverage of an ongoing event through continuous updates.
  */
 final class LiveBlogPosting extends AbstractType
 {
@@ -48,6 +48,7 @@ final class LiveBlogPosting extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'coverageEndTime',
         'coverageStartTime',
         'creator',

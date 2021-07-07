@@ -50,6 +50,7 @@ final class NewsArticle extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

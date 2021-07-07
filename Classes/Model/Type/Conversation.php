@@ -46,6 +46,7 @@ final class Conversation extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

@@ -48,6 +48,7 @@ final class Book extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

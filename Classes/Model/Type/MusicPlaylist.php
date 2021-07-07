@@ -46,6 +46,7 @@ final class MusicPlaylist extends AbstractType
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A blog.
+ * A [blog](https://en.wikipedia.org/wiki/Blog), sometimes known as a "weblog". Note that the individual posts (BlogPostings) in a Blog are often colloqually referred to by the same term.
  */
 final class BlogViewHelper extends AbstractTypeViewHelper
 {

@@ -47,6 +47,7 @@ final class SiteNavigationElement extends AbstractType implements WebPageElement
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'cssSelector',
         'dateCreated',

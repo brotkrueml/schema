@@ -27,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.12.0] - Planned
 
+### Updated
+- Schema definition to version 13.0
+
 ### Changed
 - Move from Structured Data Testing Tool to Schema Markup Validator in Admin Panel (#66)
 

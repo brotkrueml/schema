@@ -53,6 +53,7 @@ final class MobileApplication extends AbstractType
         'copyrightYear',
         'countriesNotSupported',
         'countriesSupported',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

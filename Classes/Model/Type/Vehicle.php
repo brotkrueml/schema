@@ -29,6 +29,7 @@ final class Vehicle extends AbstractType
         'cargoVolume',
         'category',
         'color',
+        'countryOfOrigin',
         'dateVehicleFirstRegistered',
         'depth',
         'description',

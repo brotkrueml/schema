@@ -55,6 +55,7 @@ final class VideoGame extends AbstractType
         'copyrightYear',
         'countriesNotSupported',
         'countriesSupported',
+        'countryOfOrigin',
         'creator',
         'dateCreated',
         'dateModified',

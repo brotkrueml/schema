@@ -28,6 +28,7 @@ final class Product extends AbstractType
         'brand',
         'category',
         'color',
+        'countryOfOrigin',
         'depth',
         'description',
         'disambiguatingDescription',

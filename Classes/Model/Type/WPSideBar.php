@@ -47,6 +47,7 @@ final class WPSideBar extends AbstractType implements WebPageElementTypeInterfac
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'cssSelector',
         'dateCreated',

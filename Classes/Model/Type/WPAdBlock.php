@@ -47,6 +47,7 @@ final class WPAdBlock extends AbstractType implements WebPageElementTypeInterfac
         'contributor',
         'copyrightHolder',
         'copyrightYear',
+        'countryOfOrigin',
         'creator',
         'cssSelector',
         'dateCreated',
