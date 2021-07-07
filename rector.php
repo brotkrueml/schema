@@ -7,10 +7,12 @@ use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector;
+use Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -61,6 +63,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
+        ],
+        ReturnTypeDeclarationRector::class => [
+            // because psalm complaints about different return types for getType()
+            __DIR__ . '/Classes/Core/Model/AbstractType.php',
+            __DIR__ . '/Classes/Core/Model/MultipleType.php',
+        ],
+        TypedPropertyRector::class => [
+            // because $propertyNames must not be typed to be compatible with schema_* extensions
+            __DIR__ . '/Classes/Core/Model/AbstractType.php',
         ],
     ]);
 };
