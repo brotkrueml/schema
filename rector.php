@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Rector\Core\Configuration\Option;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
@@ -64,6 +65,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
         ],
+        RemoveUnusedPromotedPropertyRector::class, // to avoid rector warning on PHP8.0 with codebase compatible with PHP7.4
         ReturnTypeDeclarationRector::class => [
             // because psalm complaints about different return types for getType()
             __DIR__ . '/Classes/Core/Model/AbstractType.php',
