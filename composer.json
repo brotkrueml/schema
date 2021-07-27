@@ -21,7 +21,7 @@
 		"php": ">=7.4",
 		"ext-json": "*",
 		"symfony/polyfill-php80": "^1.17",
-		"typo3/cms-core": "^10.4.11 || ^11.0"
+		"typo3/cms-core": "^10.4.11 || ^11.3"
 	},
 	"conflict": {
 		"brotkrueml/sdbreadcrumb": "*"
@@ -34,7 +34,7 @@
 		"php-coveralls/php-coveralls": "^2.4",
 		"phpunit/phpunit": "^9.5",
 		"rector/rector": "^0.11",
-		"typo3/cms-adminpanel": "*",
+		"typo3/cms-adminpanel": "^10.4.11 || ^11.3",
 		"typo3/coding-standards": "^0.3",
 		"vimeo/psalm": "^4.6"
 	},
