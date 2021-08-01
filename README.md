@@ -7,7 +7,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
 
-The upcoming version 2 of the extension supports TYPO3 v10 LTS and TYPO3 v11
+Version 2 of the extension supports TYPO3 v10 LTS and TYPO3 v11.3+
 and needs at least PHP 7.4.
 
 Version 1.x supports TYPO3 v9 LTS, TYPO3 v10 LTS, TYPO3 v11 and PHP 7.2+.

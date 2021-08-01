@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2021-08-01
+
 ### Added
 - Node identifier and blank node identifier (#65, #67)
 - Multiple types for a node (#64, #68)
@@ -264,7 +266,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.11.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/brotkrueml/schema/compare/v1.12.0...v2.0.0
 [1.12.0]: https://github.com/brotkrueml/schema/compare/v1.11.1...v1.12.0
 [1.11.1]: https://github.com/brotkrueml/schema/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/brotkrueml/schema/compare/v1.10.0...v1.11.0
