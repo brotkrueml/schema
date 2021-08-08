@@ -44,15 +44,20 @@
 
     invokeRichResultTest(event) {
       event.preventDefault();
-      this.submitForm(this.options.tools.rtt.actionUrl, 'code_snippet');
+      this.submitForm('rtt', this.options.tools.rtt.actionUrl, 'code_snippet');
     }
 
     invokeSchemaMarkupValidator(event) {
       event.preventDefault();
-      this.submitForm(this.options.tools.smv.actionUrl, 'code');
+      this.submitForm('smv', this.options.tools.smv.actionUrl, 'code');
     }
 
-    submitForm(actionUrl, codeFieldName) {
+    submitForm(type, actionUrl, codeFieldName) {
+      let code = JSON.stringify(this.jsonLd, null, '\t');
+      if (type === 'rtt') {
+        code = '<script type="application/ld+json">\n' + code + '\n</script>';
+      }
+
       const form = document.createElement('form');
       form.setAttribute('method', 'post');
       form.setAttribute('action', actionUrl);
@@ -62,7 +67,7 @@
 
       const codeField = document.createElement('textarea');
       codeField.setAttribute('name', codeFieldName);
-      codeField.textContent = JSON.stringify(this.jsonLd, null, '\t');
+      codeField.textContent = code;
       form.appendChild(codeField);
       document.body.appendChild(form);
 
