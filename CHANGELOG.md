@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2021-08-09
+
 ### Fixed
 - Avoid error in Rich Result Test when validating JSON-LD via Admin Panel
 
@@ -29,6 +31,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Signal/slots in favour of PSR-14 events (#43)
 - Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 - Deprecated class TypesProvider (#44)
+
+## [1.12.1] - 2021-08-09
+
+### Fixed
+- Avoid error in Rich Result Test when validating JSON-LD via Admin Panel
 
 ## [1.12.0] - 2021-07-07
 
@@ -269,8 +276,10 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/brotkrueml/schema/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/brotkrueml/schema/compare/v1.12.0...v2.0.0
+[1.12.1]: https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/brotkrueml/schema/compare/v1.11.1...v1.12.0
 [1.11.1]: https://github.com/brotkrueml/schema/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/brotkrueml/schema/compare/v1.10.0...v1.11.0
