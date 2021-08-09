@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Avoid error in Rich Result Test when validating JSON-LD via Admin Panel
+
 ## [1.12.0] - 2021-07-07
 
 ### Updated

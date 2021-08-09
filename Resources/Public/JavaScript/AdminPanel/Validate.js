@@ -38,15 +38,20 @@
 
   var invokeRichResultTest = function(event) {
     event.preventDefault();
-    submitForm(options.tools.rtt.actionUrl, 'code_snippet');
+    submitForm('rtt', options.tools.rtt.actionUrl, 'code_snippet');
   }
 
   var invokeSchemaMarkupValidator = function(event) {
     event.preventDefault();
-    submitForm(options.tools.smv.actionUrl, 'code');
+    submitForm('smv', options.tools.smv.actionUrl, 'code');
   }
 
-  var submitForm = function(actionUrl, codeFieldName) {
+  var submitForm = function(type, actionUrl, codeFieldName) {
+    var code = JSON.stringify(jsonLdObject, null, '\t');
+    if (type === 'rtt') {
+      code = '<script type="application/ld+json">\n' + code + '\n</script>';
+    }
+
     var form = document.createElement('form');
     form.setAttribute('method', 'post');
     form.setAttribute('action', actionUrl);
@@ -56,7 +61,7 @@
 
     var codeField = document.createElement('textarea');
     codeField.setAttribute('name', codeFieldName);
-    codeField.textContent = JSON.stringify(jsonLdObject, null, '\t');
+    codeField.textContent = code;
     form.appendChild(codeField);
     document.body.appendChild(form);
 
