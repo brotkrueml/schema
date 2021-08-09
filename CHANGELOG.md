@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.1] - 2021-08-09
+
 ### Fixed
 - Avoid error in Rich Result Test when validating JSON-LD via Admin Panel
 
@@ -248,7 +250,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.12.0...1.x
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.12.1...1.x
+[1.12.1]: https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/brotkrueml/schema/compare/v1.11.1...v1.12.0
 [1.11.1]: https://github.com/brotkrueml/schema/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/brotkrueml/schema/compare/v1.10.0...v1.11.0
