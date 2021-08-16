@@ -14,6 +14,9 @@ namespace Brotkrueml\Schema\Adapter;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\ApplicationType as CoreApplicationType;
 
+/**
+ * @internal
+ */
 class ApplicationType
 {
     private ?CoreApplicationType $applicationType = null;
