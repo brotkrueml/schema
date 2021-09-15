@@ -15,7 +15,7 @@
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => \Brotkrueml\Schema\Provider\WebPageTypeProvider::getTypesForTcaSelect(),
+                'items' => Brotkrueml\Schema\Provider\WebPageTypeProvider::getTypesForTcaSelect(),
                 'size' => 1,
                 'maxitems' => 1,
                 'behaviour' => [
@@ -25,13 +25,9 @@
         ],
     ];
 
-    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('seo')) {
-        $fields['tx_schema_webpagetype']['displayCond'] = 'FIELD:no_index:=:0';
-    }
+    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $fields);
 
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $fields);
-
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
+    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
         'pages',
         'tx_schema_structureddata',
         'tx_schema_webpagetype'
