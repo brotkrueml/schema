@@ -1,0 +1,29 @@
+name: XLIFF
+
+on:
+  push:
+    branches-ignore:
+      - l10n_master
+    paths:
+      - '**.xlf'
+  pull_request:
+    branches-ignore:
+      - l10n_master
+    paths:
+      - '**.xlf'
+
+jobs:
+  xliff-validation:
+    name: XLIFF validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Install package
+        run: |
+          sudo apt-get -y install libxml2-utils
+      - name: Validate XLIFF files
+        run: |
+          make xlf-lint
