@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.2] - 2021-09-15
+
 ### Fixed
 - Display field "Type of web page" in page properties for noindex pages
 
@@ -279,7 +281,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.0.2...HEAD
+[2.0.2]: https://github.com/brotkrueml/schema/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/brotkrueml/schema/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/brotkrueml/schema/compare/v1.12.0...v2.0.0
 [1.12.1]: https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1
