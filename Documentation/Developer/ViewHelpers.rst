@@ -41,9 +41,9 @@ There are currently over 600 view helpers available.
 ==================================
 
 Let's start with a simple example. It's the same markup about John Smith as in
-the API reference, so you can compare the differences.
+the :ref:`API reference <types>`, so you can compare the differences.
 
-Imagine you describe a `person <https://schema.org/Person>`__ on a plugin's
+Imagine you describe a `person <https://schema.org/Person>`_ on a plugin's
 detail page that you want to enrich with structured markup::
 
    <schema:type.person
@@ -217,7 +217,7 @@ This argument defines the type as the
 which results in the output:
 
 .. code-block:: json
-   :emphasize-lines: 3-4,9
+   :emphasize-lines: 4,10
 
    {
       "@context": "https://schema.org/",
@@ -254,8 +254,9 @@ You can also add a :ref:`multiple type <multiple-types>` node:
       }"
    />
 
-Define in the :html:`types` argument the types delimited by commas and in the
+In the :html:`types` argument the types are delimited by commas. Add in the
 :html:`properties` argument the name/value pairs of the according properties.
+Here you can mix the properties from the defined types.
 The special properties :html:`-as`, :html:`-id` and
 :html:`-isMainEntityOfWebPage` can also be used as :ref:`described above
 <view-helpers-special-attributes>`.

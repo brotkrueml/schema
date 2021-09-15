@@ -54,7 +54,7 @@ how to register additional properties in detail.
 
 .. note::
 
-   Approximately every 2-3 months a new version of the Schema.org definition
+   Approximately every 3-4 months a new version of the Schema.org definition
    is `released <https://schema.org/docs/releases.html>`_. The extension adopts
    these changes in future releases. If you register a pending property for
    a type, this property can be included in the core vocabulary in a later

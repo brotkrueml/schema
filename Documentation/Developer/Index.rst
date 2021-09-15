@@ -43,16 +43,6 @@ Attention should be paid to the following points:
 * The :ref:`main entity <main-entity-of-web-page>` of a web page indicates the
   primary entity. It can be set separately from a ``WebPage``.
 
-.. note::
-
-   Please keep in mind: If the seo system extension is installed and the
-   checkbox :guilabel:`no_index` on a page is activated, no schema markup is
-   shown at all on that page. This makes no sense as the page is ignored by
-   search engines and so the markup is also ignored.
-
-   But: If you like to add markup to non-indexed pages, you can use a
-   :ref:`PSR-14 <event-de-activate-embedding-of-markup>` event listener.
-
 
 Quick dive-in
 =============

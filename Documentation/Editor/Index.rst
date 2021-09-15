@@ -73,12 +73,14 @@ Available web page types
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
 | | ItemPage          | Page about a single item, e.g. a blog posting, a photograph, a product            |
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | MedicalWebPage    | Page that provides medical information (with installed extension "schema_health") |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
 | | ProfilePage       | Page for user profiles                                                            |
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
 | | QAPage            | A page with a question and one or more answers to this question                   |
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
+| | RealEstateListing | Page listing that describes one or more real-estate offers (with installed        |
+| |                   | extension "schema_pending")                                                       |
++-+-+-+---------------+-----------------------------------------------------------------------------------+
 | | SearchResultsPage | Page for the result pages of the search function                                  |
 +-+-+-+---------------+-----------------------------------------------------------------------------------+
-
-Depending on :ref:`other sections of the schema.org vocabulary <vocabulary>`
-there might be some more web page types available.

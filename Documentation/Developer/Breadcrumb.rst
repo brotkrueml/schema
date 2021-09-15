@@ -184,7 +184,7 @@ iterating over the structure? So, let's use the breadcrumb view helper for that:
 That's it.
 
 The best place to use this view helper is in the template where you generate
-your visual representation of the breadcrumb for your users.
+the visual representation of the breadcrumb for your users.
 
 Normally the home page is part of the generated breadcrumb, but this is not
 necessary for the schema markup - so the home page is omitted. But if you really

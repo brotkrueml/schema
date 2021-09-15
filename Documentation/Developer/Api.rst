@@ -48,7 +48,7 @@ to enrich with structured markup. First you have to create the schema model::
 The schema type ``Person`` maps to the model :php:`Person`. You can
 use every accepted type from the core vocabulary from `schema.org
 <https://schema.org/docs/full.html>`_. Also have a look into the
-:file:`Classes\Model\Type` folder of this extension to get a general idea of the
+:file:`Classes\\Model\\Type` folder of this extension to get a general idea of the
 available types.
 
 If the type is not available a :php:`\DomainException` is thrown.
