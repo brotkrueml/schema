@@ -1,5 +1,5 @@
 .PHONY: qa
-qa: coding-standards tests psalm rector-dry
+qa: coding-standards tests psalm rector-dry yaml-lint
 
 .PHONY: code-coverage
 code-coverage: vendor
@@ -33,6 +33,10 @@ vendor: composer.json composer.lock
 .PHONY: xlf-lint
 xlf-lint:
 	xmllint --schema Resources/Private/Language/xliff-core-1.2-strict.xsd --noout Resources/Private/Language/*.xlf
+
+.PHONY: yaml-lint
+yaml-lint: vendor
+	find -regex '.*\.ya?ml' ! -path "./.Build/*" -exec .Build/bin/yaml-lint -v {} \;
 
 .PHONY: zip
 zip:

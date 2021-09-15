@@ -1,0 +1,42 @@
+name: YAML
+
+on:
+  push:
+    paths:
+      - '**.yaml'
+      - '**.yml'
+  pull_request:
+    paths:
+      - '**.yaml'
+      - '**.yml'
+
+jobs:
+  yaml-validation:
+    name: YAML validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: mbstring
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install composer dependencies
+        run: |
+          composer update --no-progress --prefer-dist --optimize-autoloader
+      - name: Lint yaml files
+        run: |
+          make yaml-lint
