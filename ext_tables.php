@@ -1,7 +1,12 @@
 <?php
 defined('TYPO3') or die();
 
-(function () {
+(static function () {
+    // Since TYPO3 v11.4 icons can be registered in Configuration/Icons.php
+    if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() > 10) {
+        return;
+    }
+
     if (!TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('adminpanel')) {
         return;
     }
