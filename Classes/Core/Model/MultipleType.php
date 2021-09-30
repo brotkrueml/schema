@@ -73,6 +73,10 @@ final class MultipleType extends AbstractType
         // not necessary
     }
 
+    /**
+     * @return string[]
+     * @psalm-suppress ImplementedReturnTypeMismatch
+     */
     public function getType()
     {
         return $this->typeNames;

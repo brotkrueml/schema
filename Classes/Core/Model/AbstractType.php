@@ -147,6 +147,9 @@ abstract class AbstractType implements TypeInterface
     {
         if (! \array_key_exists($propertyName, $this->properties)) {
             $type = $this->getType();
+            /**
+             * @psalm-suppress DocblockTypeContradiction
+             */
             throw new \DomainException(
                 \sprintf(
                     'Property "%s" is unknown for type "%s"',
@@ -266,11 +269,17 @@ abstract class AbstractType implements TypeInterface
         return $this;
     }
 
+    /**
+     * @return string[]
+     */
     public function getPropertyNames(): array
     {
         return \array_keys($this->properties);
     }
 
+    /**
+     * @return string
+     */
     public function getType()
     {
         $type = \substr(\strrchr(static::class, '\\') ?: '', 1);
