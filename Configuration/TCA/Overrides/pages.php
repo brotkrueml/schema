@@ -8,7 +8,7 @@
  */
 
 (static function () {
-    $fields = [
+    $tca = [
         'tx_schema_webpagetype' => [
             'exclude' => true,
             'label' => Brotkrueml\Schema\Extension::LANGUAGE_PATH_DATABASE . ':pages.tx_schema_webpagetype',
@@ -25,11 +25,21 @@
         ],
     ];
 
-    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $fields);
+    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tca);
 
     TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
         'pages',
         'tx_schema_structureddata',
         'tx_schema_webpagetype'
+    );
+
+    $position = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('seo')
+        ? 'after:canonical_link'
+        : 'after:description';
+    TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+        'pages',
+        '--palette--;' . Brotkrueml\Schema\Extension::LANGUAGE_PATH_DATABASE . ':pages.palette.structuredData;tx_schema_structureddata',
+        '',
+        $position
     );
 })();
