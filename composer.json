@@ -33,7 +33,7 @@
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.4",
 		"phpunit/phpunit": "^9.5",
-		"rector/rector": "^0.11",
+		"rector/rector": "^0.11.56",
 		"symfony/yaml": "^5.3",
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.3",
 		"vimeo/psalm": "^4.6"
