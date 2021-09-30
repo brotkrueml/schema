@@ -534,22 +534,19 @@ class AbstractTypeTest extends TestCase
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
 
-        if (\class_exists(EventDispatcher::class)) {
-            // Only TYPO3 v10+
-            $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
+        $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
 
-            /** @var MockObject|EventDispatcher $eventDispatcherMock */
-            $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
-                ->disableOriginalConstructor()
-                ->getMock();
-            $eventDispatcherMock
-                ->expects(self::once())
-                ->method('dispatch')
-                ->with($event)
-                ->willReturn($event);
+        /** @var MockObject|EventDispatcher $eventDispatcherMock */
+        $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $eventDispatcherMock
+            ->expects(self::once())
+            ->method('dispatch')
+            ->with($event)
+            ->willReturn($event);
 
-            GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
-        }
+        GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
 
         new Thing();
     }
@@ -561,10 +558,6 @@ class AbstractTypeTest extends TestCase
      */
     public function cacheForAdditionalPropertiesReturnsFalseAndEventDispatcherIsCalled(): void
     {
-        if (! \class_exists(EventDispatcher::class)) {
-            self::markTestSkipped('Only TYPO3 v10+');
-        }
-
         $cacheFrontendMock = $this->createStub(FrontendInterface::class);
         $cacheFrontendMock
             ->expects(self::once())
