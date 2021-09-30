@@ -98,6 +98,9 @@ jobs:
       - name: Normalize composer.json
         run: |
           composer normalize --dry-run
+      - name: Check coding standards
+        run: |
+          .Build/bin/ecs check --no-progress-bar
       - name: Generate code coverage
         run: |
           make code-coverage
