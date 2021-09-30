@@ -22,10 +22,14 @@ class PagesCacheServiceTest extends TestCase
 {
     private PagesCacheService $subject;
 
-    /** @var MockObject|FrontendInterface */
+    /**
+     * @var MockObject|FrontendInterface
+     */
     private $cacheFrontendMock;
 
-    /** @var Stub|TypoScriptFrontendController */
+    /**
+     * @var Stub|TypoScriptFrontendController
+     */
     private $controllerStub;
 
     protected function setUp(): void
@@ -37,7 +41,9 @@ class PagesCacheServiceTest extends TestCase
             ->method('get_cache_timeout')
             ->willReturn(3600);
         $this->controllerStub->newHash = 'some-hash';
-        $this->controllerStub->page = ['uid' => 42];
+        $this->controllerStub->page = [
+            'uid' => 42,
+        ];
 
         $this->subject = new PagesCacheService($this->cacheFrontendMock);
         $this->subject->setTypoScriptFrontendController($this->controllerStub);

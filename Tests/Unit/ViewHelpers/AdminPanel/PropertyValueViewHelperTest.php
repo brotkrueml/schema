@@ -21,10 +21,14 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 
 class PropertyValueViewHelperTest extends ViewHelperTestCase
 {
-    /** @var Stub|LanguageService */
+    /**
+     * @var Stub|LanguageService
+     */
     protected $languageServiceStub;
 
-    /** @var Stub|Icon */
+    /**
+     * @var Stub|Icon
+     */
     protected $iconStub;
 
     protected function setUp(): void
@@ -273,7 +277,7 @@ class PropertyValueViewHelperTest extends ViewHelperTestCase
 
         PropertyValueViewHelper::setAdditionalManuals([
             'Foo' => [
-                'like' => 'Bar'
+                'like' => 'Bar',
             ],
             'Bar' => [
                 [

@@ -22,7 +22,9 @@ use Brotkrueml\Schema\Model\Type;
  */
 class RegisterTypePropertiesMovedFromOfficialToPending
 {
-    /** @var array<class-string> */
+    /**
+     * @var array<class-string>
+     */
     private array $hasEnergyConsumptionDetails = [
         Type\Car::class,
         Type\IndividualProduct::class,
@@ -32,7 +34,9 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         Type\Vehicle::class,
     ];
 
-    /** @var array<class-string> */
+    /**
+     * @var array<class-string>
+     */
     private array $ineligibleRegionTypes = [
         Type\ActionAccessSpecification::class,
         Type\AggregateOffer::class,
@@ -41,20 +45,26 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         Type\Offer::class,
     ];
 
-    /** @var array<class-string> */
+    /**
+     * @var array<class-string>
+     */
     private array $occupationalCategoryTypes = [
         Type\JobPosting::class,
         Type\Occupation::class,
     ];
 
-    /** @var array<class-string> */
+    /**
+     * @var array<class-string>
+     */
     private array $sportTypes = [
         Type\SportsEvent::class,
         Type\SportsOrganization::class,
         Type\SportsTeam::class,
     ];
 
-    /** @var array<class-string> */
+    /**
+     * @var array<class-string>
+     */
     private array $subtitleLanguageTypes = [
         Type\BroadcastEvent::class,
         Type\Movie::class,
@@ -67,34 +77,34 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         $type = $event->getType();
 
         if ($type === Type\Person::class) {
-            /* @see https://github.com/schemaorg/schemaorg/issues/2499 */
+            // @see https://github.com/schemaorg/schemaorg/issues/2499
             $event->registerAdditionalProperty('gender');
 
-            /* from official to pending in schema version 3.7 */
+            // from official to pending in schema version 3.7
             $event->registerAdditionalProperty('jobTitle');
         }
 
-        if (\in_array($type, $this->hasEnergyConsumptionDetails)) {
-            /* from official to pending in schema version 11.0 */
+        if (\in_array($type, $this->hasEnergyConsumptionDetails, true)) {
+            // from official to pending in schema version 11.0
             $event->registerAdditionalProperty('hasEnergyConsumptionDetails');
         }
-        if (\in_array($type, $this->ineligibleRegionTypes)) {
-            /* from official to pending in schema version 4.0 */
+        if (\in_array($type, $this->ineligibleRegionTypes, true)) {
+            // from official to pending in schema version 4.0
             $event->registerAdditionalProperty('ineligibleRegion');
         }
 
-        if (\in_array($type, $this->occupationalCategoryTypes)) {
-            /* from official to pending in schema version 7.0 */
+        if (\in_array($type, $this->occupationalCategoryTypes, true)) {
+            // from official to pending in schema version 7.0
             $event->registerAdditionalProperty('occupationalCategory');
         }
 
-        if (\in_array($type, $this->sportTypes)) {
-            /* from official to pending in schema version 5.0 */
+        if (\in_array($type, $this->sportTypes, true)) {
+            // from official to pending in schema version 5.0
             $event->registerAdditionalProperty('sport');
         }
 
-        if (\in_array($type, $this->subtitleLanguageTypes)) {
-            /* from official to pending in schema version 4.0 */
+        if (\in_array($type, $this->subtitleLanguageTypes, true)) {
+            // from official to pending in schema version 4.0
             $event->registerAdditionalProperty('subtitleLanguage');
         }
     }

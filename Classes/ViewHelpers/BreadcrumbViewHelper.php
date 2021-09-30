@@ -78,7 +78,9 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         );
     }
 
-    /** @psalm-suppress InvalidReturnType */
+    /**
+     * @psalm-suppress InvalidReturnType
+     */
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
@@ -100,7 +102,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $itemsCount = \count($arguments[static::ARGUMENT_BREADCRUMB]);
         for ($i = 0; $i < $itemsCount; $i++) {
             $id = $arguments[static::ARGUMENT_BREADCRUMB][$i]['link'];
-            if (!\str_starts_with($id, $siteUrl)) {
+            if (! \str_starts_with($id, $siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }
 
@@ -130,14 +132,14 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
     private static function checkBreadcrumbStructure(array $breadcrumb): void
     {
         foreach ($breadcrumb as $item) {
-            if (!isset($item['title'])) {
+            if (! isset($item['title'])) {
                 throw new ViewHelper\Exception(
                     'An item in the given breadcrumb structure does not have the "title" key.',
                     1561890280
                 );
             }
 
-            if (!isset($item['link'])) {
+            if (! isset($item['link'])) {
                 throw new ViewHelper\Exception(
                     'An item in the given breadcrumb structure does not have the "link" key.',
                     1561890281

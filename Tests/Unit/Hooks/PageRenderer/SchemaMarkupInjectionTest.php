@@ -74,7 +74,10 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
         $this->controllerMock->newHash = 'somehash';
-        $this->controllerMock->page = ['no_index' => 0, 'uid' => 42];
+        $this->controllerMock->page = [
+            'no_index' => 0,
+            'uid' => 42,
+        ];
 
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
         $this->schemaManager = new SchemaManager();
@@ -155,7 +158,9 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupInBodySection' => '0']);
+            ->willReturn([
+                'embedMarkupInBodySection' => '0',
+            ]);
 
         $this->pageRendererMock
             ->expects(self::once())
@@ -202,7 +207,9 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupInBodySection' => '1']);
+            ->willReturn([
+                'embedMarkupInBodySection' => '1',
+            ]);
 
         $this->pageRendererMock
             ->expects(self::never())
@@ -246,13 +253,17 @@ class SchemaMarkupInjectionTest extends TestCase
         $this->schemaManager->addType(new GenericStub('some-type'));
 
         $controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $controllerMock->page = ['uid' => 42];
+        $controllerMock->page = [
+            'uid' => 42,
+        ];
 
         $this->extensionConfigurationMock
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupInBodySection' => '0']);
+            ->willReturn([
+                'embedMarkupInBodySection' => '0',
+            ]);
 
         $this->applicationTypeStub
             ->method('isBackend')
@@ -410,7 +421,10 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
 
-        $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
+        $this->controllerMock->page = [
+            'no_index' => 1,
+            'uid' => 42,
+        ];
 
         $this->extensionConfigurationMock
             ->expects(self::once())
@@ -459,13 +473,18 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
 
-        $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
+        $this->controllerMock->page = [
+            'no_index' => 1,
+            'uid' => 42,
+        ];
 
         $this->extensionConfigurationMock
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupOnNoindexPages' => '1']);
+            ->willReturn([
+                'embedMarkupOnNoindexPages' => '1',
+            ]);
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -508,13 +527,18 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
 
-        $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
+        $this->controllerMock->page = [
+            'no_index' => 1,
+            'uid' => 42,
+        ];
 
         $this->extensionConfigurationMock
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupOnNoindexPages' => '0']);
+            ->willReturn([
+                'embedMarkupOnNoindexPages' => '0',
+            ]);
 
         $this->pagesCacheServiceMock
             ->expects(self::never())
@@ -549,13 +573,18 @@ class SchemaMarkupInjectionTest extends TestCase
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
 
-        $this->controllerMock->page = ['no_index' => 1, 'uid' => 42];
+        $this->controllerMock->page = [
+            'no_index' => 1,
+            'uid' => 42,
+        ];
 
         $this->extensionConfigurationMock
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupOnNoindexPages' => '0']);
+            ->willReturn([
+                'embedMarkupOnNoindexPages' => '0',
+            ]);
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -607,7 +636,9 @@ class SchemaMarkupInjectionTest extends TestCase
             ->expects(self::once())
             ->method('get')
             ->with('schema')
-            ->willReturn(['embedMarkupOnNoindexPages' => '0']);
+            ->willReturn([
+                'embedMarkupOnNoindexPages' => '0',
+            ]);
 
         $this->pagesCacheServiceMock
             ->expects(self::once())

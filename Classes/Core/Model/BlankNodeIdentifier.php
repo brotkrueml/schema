@@ -18,8 +18,6 @@ class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
 {
     /**
      * The ID of the type (mapped to @id in result)
-     *
-     * @var string
      */
     private string $id;
 
@@ -30,9 +28,6 @@ class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
         $counter++;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getId(): string
     {
         return $this->id;

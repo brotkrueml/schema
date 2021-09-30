@@ -38,13 +38,19 @@ final class TypeRegistry implements SingletonInterface
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES = 'webpage_types';
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES = 'webpageelement_types';
 
-    /** @var array<string,class-string> */
+    /**
+     * @var array<string,class-string>
+     */
     private array $types = [];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $webPageTypes = [];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $webPageElementTypes = [];
 
     private ?FrontendInterface $cache = null;
@@ -94,7 +100,8 @@ final class TypeRegistry implements SingletonInterface
      */
     private function loadConfiguration(): array
     {
-        if (($cacheEntry = $this->requireCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES)) !== null) {
+        $cacheEntry = $this->requireCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES);
+        if ($cacheEntry !== null) {
             return $cacheEntry;
         }
 
@@ -120,10 +127,10 @@ final class TypeRegistry implements SingletonInterface
 
     private function requireCacheEntry(string $identifier): ?array
     {
-        if (!$this->cache instanceof PhpFrontend) {
+        if (! $this->cache instanceof PhpFrontend) {
             return null;
         }
-        if (!$this->cache->has($identifier)) {
+        if (! $this->cache->has($identifier)) {
             return null;
         }
 
@@ -178,7 +185,8 @@ final class TypeRegistry implements SingletonInterface
      */
     private function loadSpecialTypes(string $cacheEntryIdentifier, string $typeInterface): array
     {
-        if (($cacheEntry = $this->requireCacheEntry($cacheEntryIdentifier)) !== null) {
+        $cacheEntry = $this->requireCacheEntry($cacheEntryIdentifier);
+        if ($cacheEntry !== null) {
             return $cacheEntry;
         }
 

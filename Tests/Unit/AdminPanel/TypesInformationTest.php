@@ -23,13 +23,19 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class TypesInformationTest extends TestCase
 {
-    /** @var Stub|PagesCacheService */
+    /**
+     * @var Stub|PagesCacheService
+     */
     private $pagesCacheServiceStub;
 
-    /** @var MockObject|StandaloneView */
+    /**
+     * @var MockObject|StandaloneView
+     */
     private $viewMock;
 
-    /** @var Stub|LanguageService */
+    /**
+     * @var Stub|LanguageService
+     */
     private $languageServiceStub;
 
     private TypesInformation $subject;

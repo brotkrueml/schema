@@ -73,9 +73,6 @@ final class MultipleType extends AbstractType
         // not necessary
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getType()
     {
         return $this->typeNames;

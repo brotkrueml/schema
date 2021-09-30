@@ -23,10 +23,14 @@ final class Renderer implements RendererInterface
 {
     private const CONTEXT = 'https://schema.org/';
 
-    /** @var TypeInterface[] */
+    /**
+     * @var TypeInterface[]
+     */
     private array $types = [];
 
-    /** @var array<string,scalar|array> */
+    /**
+     * @var array<string,scalar|array>
+     */
     private array $typeResult = [];
 
     public function addType(TypeInterface ...$type): void
@@ -50,9 +54,13 @@ final class Renderer implements RendererInterface
             return '';
         }
 
-        $result = \count($renderedTypes) === 1 ? $renderedTypes[0] : ['@graph' => $renderedTypes];
+        $result = \count($renderedTypes) === 1 ? $renderedTypes[0] : [
+            '@graph' => $renderedTypes,
+        ];
 
-        $result = \array_merge(['@context' => static::CONTEXT], $result);
+        $result = \array_merge([
+            '@context' => static::CONTEXT,
+        ], $result);
 
         return \sprintf(
             Extension::JSONLD_TEMPLATE,
@@ -124,7 +132,9 @@ final class Renderer implements RendererInterface
         }
 
         if ($value instanceof NodeIdentifierInterface) {
-            return ['@id' => $value->getId()];
+            return [
+                '@id' => $value->getId(),
+            ];
         }
 
         if (\is_bool($value)) {

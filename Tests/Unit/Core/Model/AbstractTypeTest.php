@@ -535,7 +535,7 @@ class AbstractTypeTest extends TestCase
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
 
         if (\class_exists(EventDispatcher::class)) {
-            /* Only TYPO3 v10+ */
+            // Only TYPO3 v10+
             $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
 
             /** @var MockObject|EventDispatcher $eventDispatcherMock */
@@ -561,7 +561,7 @@ class AbstractTypeTest extends TestCase
      */
     public function cacheForAdditionalPropertiesReturnsFalseAndEventDispatcherIsCalled(): void
     {
-        if (!\class_exists(EventDispatcher::class)) {
+        if (! \class_exists(EventDispatcher::class)) {
             self::markTestSkipped('Only TYPO3 v10+');
         }
 

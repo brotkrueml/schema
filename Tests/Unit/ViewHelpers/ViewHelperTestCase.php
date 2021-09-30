@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the "schema" extension for TYPO3 CMS.
  *
@@ -36,7 +38,7 @@ class ViewHelperTestCase extends TestCase
 
         $this->view->getTemplatePaths()->setTemplatePathAndFilename(vfsStream::url('test-dir') . '/template.html');
 
-        if (!empty($variables)) {
+        if (! empty($variables)) {
             $this->view->assignMultiple($variables);
         }
 

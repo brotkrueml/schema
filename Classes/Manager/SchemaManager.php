@@ -25,15 +25,21 @@ final class SchemaManager implements SingletonInterface
 
     private RendererInterface $renderer;
 
-    /** @var TypeInterface[] */
+    /**
+     * @var TypeInterface[]
+     */
     private array $types = [];
 
     private ?TypeInterface $webPage = null;
 
-    /** @var BreadcrumbList[] */
+    /**
+     * @var BreadcrumbList[]
+     */
     private array $breadcrumbLists = [];
 
-    /** @var TypeInterface[] */
+    /**
+     * @var TypeInterface[]
+     */
     private array $mainEntitiesOfWebPage = [];
 
     public function __construct(RendererInterface $renderer = null)
@@ -154,7 +160,9 @@ final class SchemaManager implements SingletonInterface
         return $this->renderer->render();
     }
 
-    /** @psalm-suppress PossiblyNullReference */
+    /**
+     * @psalm-suppress PossiblyNullReference
+     */
     private function preparePropertiesForWebPage(): void
     {
         if ($this->breadcrumbLists !== []) {

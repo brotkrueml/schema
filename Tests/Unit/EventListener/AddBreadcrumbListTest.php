@@ -393,10 +393,34 @@ class AddBreadcrumbListTest extends TestCase
     {
         $this->setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(true);
         $typoLinkMap = [
-            [['parameter' => '2', 'forceAbsoluteUrl' => true], 'https://example.org/level-1/'],
-            [['parameter' => '33', 'forceAbsoluteUrl' => true], 'https://example.org/level-2/'],
-            [['parameter' => '22', 'forceAbsoluteUrl' => true], 'https://example.org/level-3/'],
-            [['parameter' => '111', 'forceAbsoluteUrl' => true], 'https://example.org/level-4/'],
+            [
+                [
+                    'parameter' => '2',
+                    'forceAbsoluteUrl' => true,
+                ],
+                'https://example.org/level-1/',
+            ],
+            [
+                [
+                    'parameter' => '33',
+                    'forceAbsoluteUrl' => true,
+                ],
+                'https://example.org/level-2/',
+            ],
+            [
+                [
+                    'parameter' => '22',
+                    'forceAbsoluteUrl' => true,
+                ],
+                'https://example.org/level-3/',
+            ],
+            [
+                [
+                    'parameter' => '111',
+                    'forceAbsoluteUrl' => true,
+                ],
+                'https://example.org/level-4/',
+            ],
         ];
         $this->contentObjectRendererStub
             ->method('typoLink_URL')

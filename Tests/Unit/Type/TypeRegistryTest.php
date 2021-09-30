@@ -28,7 +28,9 @@ class TypeRegistryTest extends TestCase
 {
     private TypeRegistry $subject;
 
-    /** @var MockObject|PhpFrontend */
+    /**
+     * @var MockObject|PhpFrontend
+     */
     private $cacheMock;
 
     protected function setUp(): void

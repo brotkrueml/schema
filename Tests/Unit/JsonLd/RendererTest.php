@@ -152,7 +152,9 @@ class RendererTest extends TestCase
             [
                 'some-type' => new GenericStub(
                     'from-type-property',
-                    ['some-property' => 'some-value'],
+                    [
+                        'some-property' => 'some-value',
+                    ],
                     'SomeSubTypeStub'
                 ),
             ],
@@ -165,12 +167,16 @@ class RendererTest extends TestCase
                 'some-type' => [
                     new GenericStub(
                         'from-type-property',
-                        ['some-property' => 'some-value'],
+                        [
+                            'some-property' => 'some-value',
+                        ],
                         'SomeSubTypeStub'
                     ),
                     new GenericStub(
                         'from-another-type-property',
-                        ['another-property' => 'another-value'],
+                        [
+                            'another-property' => 'another-value',
+                        ],
                         'AnotherSubTypeStub'
                     ),
                 ],

@@ -7,7 +7,7 @@
  * LICENSE.txt file that was distributed with this source code.
  */
 
-(function () {
+(static function () {
     $fields = [
         'tx_schema_webpagetype' => [
             'exclude' => true,

@@ -22,7 +22,9 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
 
     private TypeInterface $modelTemplate;
 
-    /** @psalm-suppress PropertyTypeCoercion */
+    /**
+     * @psalm-suppress PropertyTypeCoercion
+     */
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
         parent::__construct($typeStack, $schemaManager);

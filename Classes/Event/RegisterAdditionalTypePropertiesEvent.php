@@ -40,7 +40,7 @@ final class RegisterAdditionalTypePropertiesEvent
 
     public function registerAdditionalProperty(string $propertyName): void
     {
-        if (!\in_array($propertyName, $this->additionalProperties)) {
+        if (! \in_array($propertyName, $this->additionalProperties, true)) {
             $this->additionalProperties[] = $propertyName;
         }
     }

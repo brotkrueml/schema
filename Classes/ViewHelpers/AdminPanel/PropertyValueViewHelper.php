@@ -66,7 +66,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         $name = $arguments['name'];
         $value = $arguments['value'];
 
-        if (!\is_string($value)) {
+        if (! \is_string($value)) {
             return '';
         }
 
@@ -95,7 +95,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             $iconIdentifier = 'ext-schema-documentation-schema';
         }
 
-        if (\in_array(\strtolower(\pathinfo($value, \PATHINFO_EXTENSION)), self::IMAGE_EXTENSIONS)) {
+        if (\in_array(\strtolower(\pathinfo($value, \PATHINFO_EXTENSION)), self::IMAGE_EXTENSIONS, true)) {
             $linkTitle = self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
             $iconIdentifier = 'actions-image';
         }
@@ -106,7 +106,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
                     $value,
                     $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
                     $iconIdentifier ?: 'actions-link'
-                )
+                ),
             ],
             $value
         );
@@ -123,10 +123,10 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         $manualType = $additionalManuals[$type]['like'] ?? $type;
         foreach ($additionalManuals[$manualType] ?? [] as $manual) {
             $provider = $manual['provider'] ?? '';
-            if (!$provider) {
+            if (! $provider) {
                 continue;
             }
-            if (!\array_key_exists($provider, self::MANUAL_PROVIDERS)) {
+            if (! \array_key_exists($provider, self::MANUAL_PROVIDERS)) {
                 continue;
             }
 

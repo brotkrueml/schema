@@ -33,7 +33,9 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     private TypeStack $stack;
     private SchemaManager $schemaManager;
 
-    /** @psalm-suppress PropertyTypeCoercion */
+    /**
+     * @psalm-suppress PropertyTypeCoercion
+     */
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
         $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);
@@ -83,7 +85,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     private function checkAsAttribute(): void
     {
-        if (!$this->stack->isEmpty()) {
+        if (! $this->stack->isEmpty()) {
             $parentPropertyNameFromArgument = $this->arguments[static::ARGUMENT_AS];
 
             if ($parentPropertyNameFromArgument === '') {
@@ -107,7 +109,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     {
         $this->isMainEntityOfWebPage = (bool)($this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? false);
 
-        if ($this->isMainEntityOfWebPage && !$this->stack->isEmpty()) {
+        if ($this->isMainEntityOfWebPage && ! $this->stack->isEmpty()) {
             throw new ViewHelper\Exception(
                 \sprintf(
                     'The argument "%s" must not be used in the child type "%s", only the main type is allowed',
@@ -160,7 +162,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
             return;
         }
 
-        if (!\is_string($id) && !$id instanceof NodeIdentifierInterface) {
+        if (! \is_string($id) && ! $id instanceof NodeIdentifierInterface) {
             throw new ViewHelper\Exception(
                 \sprintf(
                     'The %s argument has to be either a string or an instance of %s, %s given',

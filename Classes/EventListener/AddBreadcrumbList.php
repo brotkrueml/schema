@@ -48,7 +48,7 @@ final class AddBreadcrumbList
     {
         $shouldEmbedBreadcrumbMarkup = (bool)$this->configuration->get('schema', 'automaticBreadcrumbSchemaGeneration');
 
-        if (!$shouldEmbedBreadcrumbMarkup) {
+        if (! $shouldEmbedBreadcrumbMarkup) {
             return;
         }
 

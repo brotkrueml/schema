@@ -27,7 +27,9 @@ final class SchemaMarkupInjection
     private ApplicationType $applicationType;
     private TypoScriptFrontendController $controller;
 
-    /** @var array<string, mixed> */
+    /**
+     * @var array<string, mixed>
+     */
     private array $configuration;
 
     private SchemaManager $schemaManager;
@@ -35,7 +37,9 @@ final class SchemaMarkupInjection
     private ExtensionAvailability $extensionAvailability;
     private EventDispatcher $eventDispatcher;
 
-    /** @psalm-suppress PropertyTypeCoercion */
+    /**
+     * @psalm-suppress PropertyTypeCoercion
+     */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
@@ -46,7 +50,7 @@ final class SchemaMarkupInjection
         EventDispatcher $eventDispatcher = null
     ) {
         $this->applicationType = $applicationType ?? new ApplicationType();
-        if (!$this->applicationType->isBackend()) {
+        if (! $this->applicationType->isBackend()) {
             $this->controller = $controller ?? $GLOBALS['TSFE'];
             $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
             $this->configuration = $extensionConfiguration->get('schema') ?? [];
@@ -57,14 +61,16 @@ final class SchemaMarkupInjection
         }
     }
 
-    /** @noinspection PhpUnusedParameterInspection */
+    /**
+     * @noinspection PhpUnusedParameterInspection
+     */
     public function execute(?array &$params, PageRenderer &$pageRenderer): void
     {
         if ($this->applicationType->isBackend()) {
             return;
         }
 
-        if (!$this->isMarkupToBeEmbedded()) {
+        if (! $this->isMarkupToBeEmbedded()) {
             return;
         }
 
@@ -76,7 +82,8 @@ final class SchemaMarkupInjection
                 $this->schemaManager->addType($additionalType);
             }
 
-            if (($result = $this->schemaManager->renderJsonLd()) !== '') {
+            $result = $this->schemaManager->renderJsonLd();
+            if ($result !== '') {
                 $this->pagesCacheService->storeMarkupInCache($result);
             }
         }
@@ -94,11 +101,11 @@ final class SchemaMarkupInjection
 
     private function isMarkupToBeEmbedded(): bool
     {
-        if (!$this->extensionAvailability->isSeoAvailable()) {
+        if (! $this->extensionAvailability->isSeoAvailable()) {
             return true;
         }
 
-        if (!($this->controller->page['no_index'] ?? false)) {
+        if (! ($this->controller->page['no_index'] ?? false)) {
             return true;
         }
 

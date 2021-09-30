@@ -26,9 +26,6 @@ class NodeIdentifier implements NodeIdentifierInterface, \Stringable
         $this->id = $id;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getId(): string
     {
         return $this->id;

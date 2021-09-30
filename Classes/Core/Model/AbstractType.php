@@ -61,7 +61,8 @@ abstract class AbstractType implements TypeInterface
     {
         $cacheEntryIdentifier = 'additionalTypeProperties-' . \str_replace('\\', '_', static::class);
         $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(Extension::CACHE_IDENTIFIER);
-        if (($additionalProperties = $cache->get($cacheEntryIdentifier)) === false) {
+        $additionalProperties = $cache->get($cacheEntryIdentifier);
+        if ($additionalProperties === false) {
             $event = new RegisterAdditionalTypePropertiesEvent(static::class);
 
             /** @var EventDispatcherInterface $eventDispatcher */
@@ -84,20 +85,14 @@ abstract class AbstractType implements TypeInterface
         \ksort($this->properties);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getId(): ?string
     {
         return $this->id instanceof NodeIdentifierInterface ? $this->id->getId() : null;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function setId($id): self
     {
-        if (!$this->isValidDataTypeForId($id)) {
+        if (! $this->isValidDataTypeForId($id)) {
             throw new \InvalidArgumentException(
                 \sprintf(
                     'Value for id has not a valid data type (given: "%s"). Valid types are: null, string, instanceof NodeIdentifierInterface',
@@ -130,9 +125,6 @@ abstract class AbstractType implements TypeInterface
             || $id instanceof NodeIdentifierInterface;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function hasProperty(string $propertyName): bool
     {
         try {
@@ -144,9 +136,6 @@ abstract class AbstractType implements TypeInterface
         return true;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getProperty(string $propertyName)
     {
         $this->checkPropertyExists($propertyName);
@@ -156,7 +145,7 @@ abstract class AbstractType implements TypeInterface
 
     private function checkPropertyExists(string $propertyName): void
     {
-        if (!\array_key_exists($propertyName, $this->properties)) {
+        if (! \array_key_exists($propertyName, $this->properties)) {
             $type = $this->getType();
             throw new \DomainException(
                 \sprintf(
@@ -169,9 +158,6 @@ abstract class AbstractType implements TypeInterface
         }
     }
 
-    /**
-     * @inheritDoc
-     */
     public function setProperty(string $propertyName, $propertyValue): self
     {
         $propertyValue = $this->stringifyNumericValue($propertyValue);
@@ -206,7 +192,7 @@ abstract class AbstractType implements TypeInterface
     {
         $this->checkPropertyExists($propertyName);
 
-        if (!$this->isValidDataTypeForPropertyValue($propertyValue)) {
+        if (! $this->isValidDataTypeForPropertyValue($propertyValue)) {
             throw new \InvalidArgumentException(
                 \sprintf(
                     'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface, instanceof NodeIdentifierInterface',
@@ -233,9 +219,6 @@ abstract class AbstractType implements TypeInterface
             || $propertyValue instanceof TypeInterface;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function addProperty(string $propertyName, $propertyValue): self
     {
         $propertyValue = $this->stringifyNumericValue($propertyValue);
@@ -248,7 +231,7 @@ abstract class AbstractType implements TypeInterface
         }
 
         if (\is_array($this->properties[$propertyName])) {
-            if (!\is_array($propertyValue)) {
+            if (! \is_array($propertyValue)) {
                 $propertyValue = [$propertyValue];
             }
 
@@ -265,9 +248,6 @@ abstract class AbstractType implements TypeInterface
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function setProperties(array $properties): self
     {
         foreach ($properties as $propertyName => $propertyValue) {
@@ -277,9 +257,6 @@ abstract class AbstractType implements TypeInterface
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function clearProperty(string $propertyName): self
     {
         $this->checkPropertyExists($propertyName);
@@ -289,17 +266,11 @@ abstract class AbstractType implements TypeInterface
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getPropertyNames(): array
     {
         return \array_keys($this->properties);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getType()
     {
         $type = \substr(\strrchr(static::class, '\\') ?: '', 1);

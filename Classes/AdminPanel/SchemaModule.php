@@ -39,25 +39,16 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
         return 'ext-schema-module-adminpanel';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getIdentifier(): string
     {
         return 'ext-schema';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getLabel(): string
     {
         return 'Schema';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getShortInfo(): string
     {
         $jsonLd = $this->pagesCacheService->getMarkupFromCache() ?? '';

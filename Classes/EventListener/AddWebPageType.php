@@ -42,7 +42,7 @@ final class AddWebPageType
             'automaticWebPageSchemaGeneration'
         );
 
-        if (!$shouldGenerateWebPageSchema) {
+        if (! $shouldGenerateWebPageSchema) {
             return;
         }
 
