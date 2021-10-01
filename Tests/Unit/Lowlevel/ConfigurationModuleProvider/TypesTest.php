@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -32,6 +33,12 @@ final class TypesTest extends TestCase
 
     protected function setUp(): void
     {
+        if ((new Typo3Version())->getMajorVersion() === 10) {
+            self::markTestSkipped(
+                'Feature only available in TYPO3 v11+'
+            );
+        }
+
         $this->typeRegistryStub = $this->createStub(TypeRegistry::class);
         $this->subject = new Types($this->typeRegistryStub);
 
