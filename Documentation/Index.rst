@@ -93,6 +93,7 @@ on the top right to submit your change request.
    Developer/MainEntity
    Developer/Events
    Developer/ExtendingVocabulary
+   Developer/AvailableTypes
    Developer/Deprecations
 
 .. toctree::

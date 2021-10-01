@@ -36,6 +36,7 @@
 		"rector/rector": "^0.11.56",
 		"symfony/yaml": "^5.3",
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.4",
+		"typo3/cms-lowlevel": "^10.4.11 || ^11.4",
 		"vimeo/psalm": "^4.6"
 	},
 	"suggest": {
@@ -45,7 +46,8 @@
 		"brotkrueml/schema-pending": "Provides pending terms which have yet to be accepted into the core vocabulary",
 		"brotkrueml/schema-rector": "Instant upgrade and refactoring for the TYPO3 schema extension code by using Rector",
 		"brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events",
-		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel"
+		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
+		"typo3/cms-lowlevel": "Display available schema.org types in the Configuration module"
 	},
 	"config": {
 		"bin-dir": ".Build/bin",

@@ -43,3 +43,9 @@ services:
       - name: event.listener
         identifier: 'ext-schema/registerTypePropertiesMovedFromOfficialToPending'
         event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
+
+  brotkrueml.schema.configuration.module.provider.types:
+    class: 'Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types'
+    tags:
+      - name: 'lowlevel.configuration.module.provider'
+        identifier: 'ext-schema/types'

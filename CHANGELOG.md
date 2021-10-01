@@ -1,19 +1,26 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres
+to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+
+- List of available schema.org types in Configuration module (only TYPO3 v11+) (#74)
 
 ## [2.0.2] - 2021-09-15
 
 ### Fixed
+
 - Display field "Type of web page" in page properties for noindex pages
 
 ## [2.0.1] - 2021-08-09
 
 ### Fixed
+
 - Avoid error in Rich Result Test when validating JSON-LD via Admin Panel
 
 ## [2.0.0] - 2021-08-01
