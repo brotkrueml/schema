@@ -97,8 +97,9 @@ on the top right to submit your change request.
    Developer/Deprecations
 
 .. toctree::
-   :caption: Upgrade
+   :caption: Update
 
+   Changelog/Index
    Migration/Index
 
 
