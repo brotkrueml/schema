@@ -49,20 +49,6 @@
 						]
 					}
 				]
-			},
-			{
-				"action": "make changelog",
-				"options": [],
-				"conditions": [
-					{
-						"exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\Any",
-						"args": [
-							[
-								"CHANGELOG.md"
-							]
-						]
-					}
-				]
 			}
 		]
 	},
