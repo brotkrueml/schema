@@ -28,6 +28,7 @@
 	},
 	"require-dev": {
 		"brotkrueml/coding-standards": "~1.1.0",
+		"captainhook/captainhook": "^5.10",
 		"dg/bypass-finals": "^1.3",
 		"ergebnis/composer-normalize": "^2.14",
 		"mikey179/vfsstream": "^1.6",
@@ -80,6 +81,9 @@
 			"url": "https://github.com/brotkrueml/coding-standards"
 		}
 	],
+	"scripts": {
+		"post-autoload-dump": ".Build/bin/captainhook install -f -s"
+	},
 	"support": {
 		"issues": "https://github.com/brotkrueml/schema/issues",
 		"chat": "https://typo3.slack.com/archives/CV36M73D5",

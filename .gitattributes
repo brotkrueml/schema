@@ -5,6 +5,7 @@
 /.gitattributes export-ignore
 /.github export-ignore
 /.gitignore export-ignore
+/captainhook.json export-ignore
 /CHANGELOG.md export-ignore
 /ecs.php export-ignore
 /Makefile export-ignore

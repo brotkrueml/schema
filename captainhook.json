@@ -1,0 +1,93 @@
+{
+	"config": {
+		"bootstrap": ".Build/vendor/autoload.php"
+	},
+	"commit-msg": {
+		"enabled": true,
+		"actions": [
+			{
+				"action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Beams",
+				"options": {
+					"subjectLength": 72,
+					"bodyLineLength": 80
+				},
+				"conditions": []
+			}
+		]
+	},
+	"pre-push": {
+		"enabled": false,
+		"actions": []
+	},
+	"pre-commit": {
+		"enabled": true,
+		"actions": [
+			{
+				"action": "\\CaptainHook\\App\\Hook\\PHP\\Action\\Linting",
+				"options": [],
+				"conditions": [
+					{
+						"exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+						"args": [
+							"php"
+						]
+					}
+				]
+			},
+			{
+				"action": "make tests",
+				"options": [],
+				"conditions": [
+					{
+						"exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\Any",
+						"args": [
+							[
+								"*.php",
+								"composer.json",
+								"phpunit.xml.dist"
+							]
+						]
+					}
+				]
+			},
+			{
+				"action": "make changelog",
+				"options": [],
+				"conditions": [
+					{
+						"exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\Any",
+						"args": [
+							[
+								"CHANGELOG.md"
+							]
+						]
+					}
+				]
+			}
+		]
+	},
+	"prepare-commit-msg": {
+		"enabled": false,
+		"actions": []
+	},
+	"post-commit": {
+		"enabled": false,
+		"actions": []
+	},
+	"post-merge": {
+		"enabled": false,
+		"actions": []
+	},
+	"post-checkout": {
+		"enabled": false,
+		"actions": []
+	},
+	"post-rewrite": {
+		"enabled": false,
+		"actions": []
+	},
+	"post-change": {
+		"enabled": false,
+		"actions": []
+	}
+}
