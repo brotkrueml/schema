@@ -65,9 +65,8 @@ removed:
 - :php:`Brotkrueml\Schema\Provider\TypesProvider`
 
 For the migration of the :php:`SchemaManager->setMainEntityOfWebPage()` method
-call a `Rector <https://github.com/brotkrueml/schema-rector>`_ exists. For the
-other two follow the instructions on the :ref:`deprecations <api-deprecations>`
-chapter.
+call a `Rector`_ exists. For the other two follow the instructions on the
+:ref:`deprecations <api-deprecations>` chapter.
 
 
 Markup is embedded by default on "noindex" pages
@@ -84,3 +83,6 @@ Also in version 1.x a PSR-14 event
 the default behaviour of not embedding the markup on "noindex" pages. With the
 new configuration option this is not necessary anymore and event listeners for
 this event must be removed.
+
+
+.. _Rector: https://github.com/brotkrueml/schema-rector

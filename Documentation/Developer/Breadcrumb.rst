@@ -26,7 +26,7 @@ snippet if structured markup for the breadcrumb is available.
 
 There can also be more than one breadcrumb on a page, Google gives an example in
 his guidelines for a
-`breadcrumb <https://developers.google.com/search/docs/data-types/breadcrumb>`__.
+`breadcrumb <https://developers.google.com/search/docs/data-types/breadcrumb>`_.
 
 .. index:: Breadcrumb via API
 
@@ -243,4 +243,7 @@ Remarks
 * It is intended that the breadcrumb is not automatically rendered out of the
   page structure of your TYPO3 installation, because it is possible to extend
   the breadcrumb with own MenuProcessors like in the
-  `news extension <https://docs.typo3.org/typo3cms/extensions/news/7.2.0/Misc/Changelog/7-2-0.html#custom-menu-processor>`__.
+  `news extension`_.
+
+
+.. _news extension: https://docs.typo3.org/typo3cms/extensions/news/7.2.0/Misc/Changelog/7-2-0.html#custom-menu-processor

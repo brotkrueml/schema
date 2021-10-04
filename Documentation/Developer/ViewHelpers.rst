@@ -43,8 +43,8 @@ There are currently over 600 view helpers available.
 Let's start with a simple example. It's the same markup about John Smith as in
 the :ref:`API reference <types>`, so you can compare the differences.
 
-Imagine you describe a `person <https://schema.org/Person>`_ on a plugin's
-detail page that you want to enrich with structured markup::
+Imagine you describe a `person`_ on a plugin's detail page that you want to
+enrich with structured markup::
 
    <schema:type.person
       -id="https://example.org/#person-42"
@@ -69,7 +69,7 @@ is the lower camel case variant of the schema.org type name.
 
 The according properties (like ``givenName`` and ``familyName``) are attributes.
 You can find a list of all available properties for a specific type on the
-schema.org page, e.g. for the `Person <https://schema.org/Person>`_.
+schema.org page, e.g. for the `person`_.
 
 In the example, there are two attributes that begin with a :html:`-`. They are
 explained in detail in the chapter :ref:`view-helpers-special-attributes`.
@@ -487,3 +487,6 @@ definition.
 You can also import the XSD file into your favorite IDE after downloading it
 from the following URL:
 `https://brot.krue.ml/schemas/schema-1.9.0.xsd <https://brot.krue.ml/schemas/schema-1.9.0.xsd>`_.
+
+
+.. _person: https://schema.org/Person

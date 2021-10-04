@@ -39,17 +39,16 @@ Starting with examples
 Types
 -----
 
-Let's start with a simple example. Imagine you describe a
-`person <https://schema.org/Person>`_ on a plugin's detail page that you want
-to enrich with structured markup. First you have to create the schema model::
+Let's start with a simple example. Imagine you describe a `person`_ on a
+plugin's detail page that you want to enrich with structured markup. First you
+have to create the schema model::
 
    $person = \Brotkrueml\Schema\Type\TypeFactory::createType('Person')
 
-The schema type ``Person`` maps to the model :php:`Person`. You can
-use every accepted type from the core vocabulary from `schema.org
-<https://schema.org/docs/full.html>`_. Also have a look into the
-:file:`Classes\\Model\\Type` folder of this extension to get a general idea of the
-available types.
+The schema type ``Person`` maps to the model :php:`Person`. You can use every
+accepted type from the core vocabulary from `schema.org`_. Also have a look into
+the :file:`Classes\\Model\\Type` folder of this extension to get a general idea
+of the available types.
 
 If the type is not available a :php:`\DomainException` is thrown.
 
@@ -211,8 +210,7 @@ Blank node identifiers
 ----------------------
 
 Sometimes it is not necessary (or possible) to define a globally unique ID
-with an IRI. For these cases you can use a `blank node identifier
-<https://www.w3.org/TR/json-ld11/#example-95-referencing-an-unidentified-node>`_.
+with an IRI. For these cases you can use a `blank node identifier`_.
 
 The above example can also be used with a blank node identifier::
 
@@ -271,7 +269,7 @@ a "special type" and don't require the implementation of additional methods:
 - :php:`Brotkrueml\Schema\Core\Model\WebPageTypeInterface` for a
   :ref:`web page type <webpage-types>`.
 - :php:`Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface` for a
-  `web page element type <https://schema.org/WebPageElement>`_.
+  `web page element type`_.
 
 These interfaces can be useful when you want to :ref:`extend the
 vocabulary <extending-vocabulary>`.
@@ -318,11 +316,10 @@ The method sets the unique ID of the model. With the ID, you can cross-reference
 types on the same page or between different pages (and even between different
 web sites) without repeating all the properties.
 
-It is common to use an
-`IRI <https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier>`_ as
-ID like in the above example. Please keep in mind that the ID should be
-consistent between changes of the properties, e.g. if a person marries and the
-name is changed. The person is still the same, so the IRI should be.
+It is common to use an `IRI`_ as ID like in the above example. Please keep in
+mind that the ID should be consistent between changes of the properties, e.g. if
+a person marries and the name is changed. The person is still the same, so the
+IRI should be.
 
 The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you
 call it in a browser.
@@ -614,7 +611,7 @@ Return value
 
 .. option:: getWebPageTypes()
 
-Get the `WebPage <https://schema.org/WebPage>`__ type and its descendants.
+Get the `WebPage`_ type and its descendants.
 
 Parameter
    none
@@ -625,8 +622,7 @@ Return value
 
 .. option:: getWebPageElementTypes()
 
-Get the `WebPageElement <https://schema.org/WebPageElement>`__ type and its
-descendants.
+Get the `WebPageElement`_ type and its descendants.
 
 Parameter
    none
@@ -651,3 +647,12 @@ Parameter
 
 Return value
    Array, sorted alphabetically by type name.
+
+
+.. _blank node identifier: https://www.w3.org/TR/json-ld11/#example-95-referencing-an-unidentified-node
+.. _person: https://schema.org/Person
+.. _IRI: https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier
+.. _schema.org: https://schema.org/docs/full.html
+.. _web page element type: https://schema.org/WebPageElement
+.. _WebPage: https://schema.org/WebPage
+.. _WebPageElement: https://schema.org/WebPageElement

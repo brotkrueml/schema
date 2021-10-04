@@ -22,10 +22,8 @@ There are several web page types available to characterise the content of a web
 page. A list of the types can be found in the section
 :ref:`Available Web Page Types <webpage-types-list>`.
 
-The ``WebPage`` type and its descendants (like
-`AboutPage <https://schema.org/AboutPage>`__ or
-`ImageGallery <https://schema.org/ImageGallery>`__) can only appear once on a
-web page – as opposed to the other types.
+The ``WebPage`` type and its descendants (like `AboutPage`_ or `ImageGallery`_)
+can only appear once on a web page – as opposed to the other types.
 
 This extension defines a :ref:`new field <for-editors>`
 :guilabel:`Type of web page` in the page properties. Choose the appropriate type
@@ -144,3 +142,7 @@ As mentioned above, only one web page type can exist on a page. But what happens
 if you set more than one web page type? Well, the last call wins the race. So
 you can define it in your Extbase action and set it in a Fluid template – the
 template wins.
+
+
+.. _AboutPage: https://schema.org/AboutPage
+.. _ImageGallery: https://schema.org/ImageGallery

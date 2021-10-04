@@ -24,9 +24,8 @@ retrieving and setting dedicated properties.
 .. seealso::
 
    You can find more information about PSR-14 events in the blog article
-   `PSR-14 Events in TYPO3 <https://usetypo3.com/psr-14-events.html>`_
-   and the official `TYPO3 documentation
-   <https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/Hooks/EventDispatcher/Index.html>`_.
+   `PSR-14 Events in TYPO3`_ and the official :ref:`TYPO3 documentation
+   <t3coreapi:EventDispatcher>`.
 
 
 .. _event-register-additional-properties:
@@ -35,8 +34,7 @@ Register additional properties for a type
 =========================================
 
 Sometimes it can be necessary to use properties which are not standardised or
-`pending <https://pending.schema.org/>`_, or to add `property annotations
-<https://schema.org/docs/actions.html#part-4>`_. Therefore an PSR-14 event is
+`pending`_, or to add `property annotations`_. Therefore an PSR-14 event is
 available which can be used in an event listener.
 
 These additional properties are not only available in the :ref:`API <api>` but
@@ -103,3 +101,9 @@ Example
                - name: event.listener
                  identifier: 'myAdditionalPropertiesForPerson'
                  event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
+
+
+.. _pending: https://pending.schema.org/
+.. _property annotations: https://schema.org/docs/actions.html#part-4
+.. _PSR-14 Events in TYPO3: https://usetypo3.com/psr-14-events.html
+.. _TYPO3 documentation: https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/Hooks/EventDispatcher/Index.html

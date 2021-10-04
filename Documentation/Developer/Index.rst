@@ -21,11 +21,9 @@ The structured markup can be generated in two ways:
 * using the :ref:`API <api>`
 * with :ref:`view helpers <view-helpers>` in Fluid templates
 
-Each type in the
-`schema.org vocabulary <https://schema.org/docs/schemas.html>`__ corresponds to
-a **PHP model** that provides the available properties. There is also a
-**view helper** for each type that makes it easy to integrate the data into your
-website via a Fluid template.
+Each type in the `schema.org vocabulary`_ corresponds to a **PHP model** that
+provides the available properties. There is also a **view helper** for each type
+that makes it easy to integrate the data into your website via a Fluid template.
 
 Attention should be paid to the following points:
 
@@ -47,9 +45,9 @@ Attention should be paid to the following points:
 Quick dive-in
 =============
 
-The `schema.org vocabulary <https://schema.org/docs/schemas.html>`__ consists of
-many **types**, like ``Person``, ``Organization``, ``Product``, and so on. They
-are written with an upper letter at the beginning of the term.
+The `schema.org vocabulary`_ consists of many **types**, like ``Person``,
+``Organization``, ``Product``, and so on. They are written with an upper letter
+at the beginning of the term.
 
 Each type has several **properties** which characterise the specific type, like
 ``givenName`` or ``lastName`` for a ``Person``. The properties start with a
@@ -116,3 +114,6 @@ the view helpers in detail.
 .. note::
    The view helpers were generated from the schema.org definition and will be
    updated as the standard evolves.
+
+
+.. _schema.org vocabulary: https://schema.org/docs/schemas.html

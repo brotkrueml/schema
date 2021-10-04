@@ -114,7 +114,5 @@ For example, place the following snippet in the :file:`ext_localconf.php` file
 of your site package extension to use the file backend (which stored the data
 in the file system) instead::
 
-   if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'])) {
-      $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] = \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;
-   }
+   $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] ??= \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;
 

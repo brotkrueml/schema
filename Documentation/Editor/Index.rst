@@ -23,10 +23,8 @@ page for the schema markup. The default value is the most generic one:
 ``WebPage``.
 
 You'll find the field in the page properties under the :guilabel:`SEO` tab
-(with installed
-`seo system extension <https://docs.typo3.org/c/typo3/cms-seo/master/en-us/>`__)
-or under the :guilabel:`Metadata` tab (if the seo system extension is not
-installed):
+(with installed :ref:`seo system extension <t3seo:introduction>`) or under the
+:guilabel:`Metadata` tab (if the seo system extension is not installed):
 
 .. figure:: /Images/Editor/TypeOfWebPage.png
    :alt: Field in the page properties

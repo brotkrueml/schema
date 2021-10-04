@@ -25,9 +25,8 @@ make sense (e.g. a breadcrumb cannot be the primary content).
 
 .. note::
    Technically, there can be more than one main entity at a time. For example,
-   if you have a ``FAQPage`` you will usually assign `more than one question
-   <https://developers.google.com/search/docs/data-types/faqpage>`__ as
-   ``mainEntity``.
+   if you have a ``FAQPage`` you will usually assign `more than one question`_
+   as ``mainEntity``.
 
 
 Using the API
@@ -113,3 +112,6 @@ Remark
 
 You can set the view helper argument :html:`-isMainEntityOfWebPage` only in the
 main type view helper, not in a child type view helper.
+
+
+.. _more than one question: https://developers.google.com/search/docs/data-types/faqpage

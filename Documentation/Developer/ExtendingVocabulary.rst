@@ -18,11 +18,10 @@ Introduction
 
 The TYPO3 schema extension ships :ref:`type models <api>` and :ref:`view helpers
 <view-helpers>` with their properties from the core vocabulary of the Schema.org
-definitions. However, there are several extensions, like `Health and lifesciences
-<https://schema.org/docs/meddocs.html>`_ or `Autos
-<https://schema.org/docs/automotive.html>`_. There are also `pending types and
-properties <https://pending.schema.org/docs/pending.home.html>`_ available that
-enable Schema.org to introduce terms on an experimental basis.
+definitions. However, there are several extensions, like
+`Health and lifesciences`_ or `Autos`_. There are also `pending types and
+properties`_ available that enable schema.org to introduce terms on an
+experimental basis.
 
 The embedding of these vocabulary extensions goes beyond the scope of this TYPO3
 extension, as it will considerably increase the number of terms – while most of
@@ -55,11 +54,10 @@ how to register additional properties in detail.
 .. note::
 
    Approximately every 3-4 months a new version of the Schema.org definition
-   is `released <https://schema.org/docs/releases.html>`_. The extension adopts
-   these changes in future releases. If you register a pending property for
-   a type, this property can be included in the core vocabulary in a later
-   version of this extension. However, it doesn't do any harm to register a
-   property that already exists.
+   is `released`_. The extension adopts these changes in future releases. If you
+   register a pending property for a type, this property can be included in the
+   core vocabulary in a later version of this extension. However, it doesn't do
+   any harm to register a property that already exists.
 
 
 .. _extending-adding-types:
@@ -69,10 +67,9 @@ Adding types
 
 You can add additional types for use in the :ref:`API <api>` or as a
 :ref:`WebPage type <webpage-types>`. As an example, in March 2020, Schema.org
-introduces a new `VirtualLocation <https://schema.org/VirtualLocation>`_ type
-related to the corona crisis, which also was also quickly adopted by Google.
-The type can be used as `location <https://schema.org/location>`_ in the
-`Event <https://schema.org/Event>`_ type. So let's start with this example.
+introduces a new `VirtualLocation`_ type related to the corona crisis, which
+also was also quickly adopted by Google. The type can be used as `location`_ in
+the `Event`_ type. So let's start with this example.
 
 .. rst-class:: bignums-xxl
 
@@ -178,17 +175,16 @@ The type can be used as `location <https://schema.org/location>`_ in the
    into the core vocabulary but some properties aren't.
 
 .. tip::
-   Have a look into the
-   `schema_virtuallocation <https://github.com/brotkrueml/schema-virtuallocation>`_
-   extension. It serves as a blueprint for adding own types and view helpers.
+   Have a look into the `schema_virtuallocation`_ extension. It serves as a
+   blueprint for adding own types and view helpers.
 
 
 Add a new WebPage type
 ======================
 
 If you are responsible for a medical website, the chances are high that you need
-the `MedicalWebPage <https://schema.org/MedicalWebPage>`_ web page type, which is
-part of the Health Schema.org extension.
+the `MedicalWebPage`_ web page type, which is part of the Health schema.org
+extension.
 
 Register this web page type so that it is available in the :ref:`web page type
 list <webpage-types-list>` in the page properties. Simply follow the steps in
@@ -262,3 +258,14 @@ Now you can use the view helper in a Fluid template (for example, when using the
 
 Every property name defined in the type model class is available as argument
 in the view helper.
+
+
+.. _Autos: https://schema.org/docs/automotive.html
+.. _Event: https://schema.org/Event
+.. _Health and lifesciences: https://schema.org/docs/meddocs.html
+.. _location: https://schema.org/location
+.. _MedicalWebPage: https://schema.org/MedicalWebPage
+.. _pending types and properties: https://pending.schema.org/docs/pending.home.html
+.. _released: https://schema.org/docs/releases.html
+.. _schema_virtuallocation: https://github.com/brotkrueml/schema-virtuallocation
+.. _VirtualLocation: https://schema.org/VirtualLocation
