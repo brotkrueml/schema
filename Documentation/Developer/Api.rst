@@ -119,6 +119,8 @@ automatically into the head section:
 Multiple types
 --------------
 
+.. versionadded:: 2.0.0
+
 JSON-LD allows multiple types for a node. The rendered `@type` property is then
 an array, the properties of the single types are merged. This way, a node can
 be, e.g., a `Product` and a `Service` at the same time - which can be useful
@@ -162,6 +164,8 @@ This results in the following JSON-LD:
 
 Node identifiers
 ----------------
+
+.. versionadded:: 2.0.0
 
 JSON-LD supports the usage of `@id` as reference without giving a type. This is
 useful when using circular references, e.g.:
@@ -208,6 +212,8 @@ argument for :php:`->setId()` instead of a string.
 
 Blank node identifiers
 ----------------------
+
+.. versionadded:: 2.0.0
 
 Sometimes it is not necessary (or possible) to define a globally unique ID
 with an IRI. For these cases you can use a `blank node identifier`_.
@@ -508,6 +514,8 @@ Return value
 Node Identifier
 ===============
 
+.. versionadded:: 2.0.0
+
 A NodeIdentifier (class :php:`Brotkrueml\Schema\Core\Model\NodeIdentifier`)
 holds the ID for a type or a reference.
 
@@ -531,6 +539,8 @@ Return value
 
 Blank Node Identifier
 =====================
+
+.. versionadded:: 2.0.0
 
 A BlankNodeIdentifier (class :php:`Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`)
 holds the ID for a type or a reference.
@@ -560,6 +570,8 @@ Other useful APIs
 Boolean data type
 -----------------
 
+.. versionadded:: 1.6.0
+
 Boolean property values are mapped to the according schema terms
 ``https://schema.org/True`` or ``https://schema.org/False``. You can also use
 the :php:`Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
@@ -588,6 +600,8 @@ This method returns the according schema term.
 
 List of types
 -------------
+
+.. versionadded:: 1.7.0
 
 If you need a list of the available types or a subset of them, you can call
 methods on the :php:`Brotkrueml\Schema\Type\TypeRegistry` class. As this is

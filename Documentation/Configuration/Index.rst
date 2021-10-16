@@ -52,6 +52,8 @@ Default value
 Automatic embedding of the breadcrumb markup into the page
 ----------------------------------------------------------
 
+.. versionadded:: 1.3.0
+
 If this option is enabled, the breadcrumb is automatically generated from the
 rootline of the current page.
 
@@ -73,6 +75,8 @@ Default value
 Embed markup in the body section
 --------------------------------
 
+.. versionadded:: 1.3.0
+
 If this option is enabled, the schema markup is embedded at the end of the
 :html:`<body>` section. If it is disabled, it is embedded in the :html:`<head>`
 section of the page.
@@ -88,6 +92,8 @@ Default value
 Embed markup on "noindex" pages
 -------------------------------
 
+.. versionadded:: 2.0.0
+
 If this option is enabled, the schema markup is embedded also on "noindex"
 pages.
 
@@ -102,6 +108,8 @@ Default value
 
 Cache configuration
 ===================
+
+.. versionadded:: 1.6.0
 
 The extension stores some data temporarily, e.g. :ref:`additional type
 properties <event-register-additional-properties>`. They are cached for better

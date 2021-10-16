@@ -240,6 +240,8 @@ which results in the output:
 :html:`<schema:multipleType>` view helper
 ===========================================
 
+.. versionadded:: 2.0.0
+
 You can also add a :ref:`multiple type <multiple-types>` node:
 
 .. code-block:: html
@@ -298,6 +300,8 @@ add properties to a multiple type instead the :html:`properties` argument:
 :html:`<schema:nodeIdentifier>` view helper
 ===========================================
 
+.. versionadded:: 2.0.0
+
 Sometimes it is useful to reference a node with just the ID. For this case the
 :html:`<schema:nodeIdentifier>` view helper is available:
 
@@ -349,6 +353,8 @@ This attribute defines the id and is mapped in JSON-LD to the ``@id`` property.
 
 :html:`<schema:blankNodeIdentifier>` view helper
 ================================================
+
+.. versionadded:: 2.0.0
 
 Sometimes it is not necessary (or possible) to define a globally unique ID
 with an IRI. For these cases you can use a blank node identifier:
