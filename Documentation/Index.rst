@@ -78,6 +78,7 @@ on the top right to submit your change request.
    Configuration/Index
    Developer/ViewHelpers
    AdminPanel/Index
+   Translation/Index
    KnownProblems/Index
 
 .. toctree::
