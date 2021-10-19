@@ -11,6 +11,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - List of available schema.org types in Configuration module (only TYPO3 v11+) (#74)
 
+### Fixed
+
+- Type error in PaddingViewHelper with activated Admin Panel (#76)
+
 ## [2.0.2] - 2021-09-15
 
 ### Fixed

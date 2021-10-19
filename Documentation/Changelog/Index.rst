@@ -17,6 +17,12 @@ Added
 
 * List of available schema.org types in Configuration module (only TYPO3 v11+) (#74)
 
+Fixed
+^^^^^
+
+
+* Type error in PaddingViewHelper with activated Admin Panel (#76)
+
 `2.0.2 <https://github.com/brotkrueml/schema/compare/v2.0.1...v2.0.2>`_ - 2021-09-15
 ----------------------------------------------------------------------------------------
 
