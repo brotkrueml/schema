@@ -27,7 +27,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected const ARGUMENT_ID = '-id';
     protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
 
-    private bool $isMainEntityOfWebPage = false;
+    private int $isMainEntityOfWebPage = 0;
     private string $parentPropertyName = '';
     private ?TypeInterface $model = null;
     private TypeStack $stack;
@@ -47,7 +47,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         parent::initializeArguments();
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node', false, '');
         $this->registerArgument(static::ARGUMENT_ID, 'mixed', 'IRI or a node identifier to identify the node', false, '');
-        $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'bool', 'Set to true, if the type is the primary content of the web page', false, false);
+        $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'int', 'Set to true, if the type is the primary content of the web page', false, false);
     }
 
     protected function addTypeToSchemaManager(TypeInterface $model): void
@@ -75,8 +75,8 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
 
         if ($this->stack->isEmpty()) {
-            if ($this->isMainEntityOfWebPage) {
-                $this->schemaManager->addMainEntityOfWebPage($recent);
+            if ($this->isMainEntityOfWebPage > 0) {
+                $this->schemaManager->addMainEntityOfWebPage($recent, $this->isMainEntityOfWebPage === 2);
             } else {
                 $this->schemaManager->addType($recent);
             }
@@ -107,9 +107,21 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
 
     private function checkIsMainEntityOfWebPage(): void
     {
-        $this->isMainEntityOfWebPage = (bool)($this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? false);
+        $isMainEntityOfWebPage = $this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? 0;
+        $this->isMainEntityOfWebPage = $isMainEntityOfWebPage === 'true' ? 1 : (int)$isMainEntityOfWebPage;
 
-        if ($this->isMainEntityOfWebPage && ! $this->stack->isEmpty()) {
+        if ($this->isMainEntityOfWebPage < 0 || $this->isMainEntityOfWebPage > 2) {
+            throw new ViewHelper\Exception(
+                \sprintf(
+                    'The value of argument "%s" must be between 0 and 2, "%d" given (allowed: 0 = not a main entity, 1 = main entity, 2 = prioritised main entity',
+                    static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
+                    $this->isMainEntityOfWebPage
+                ),
+                1636570950
+            );
+        }
+
+        if ($this->isMainEntityOfWebPage > 0 && ! $this->stack->isEmpty()) {
             throw new ViewHelper\Exception(
                 \sprintf(
                     'The argument "%s" must not be used in the child type "%s", only the main type is allowed',

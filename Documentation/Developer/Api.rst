@@ -497,13 +497,18 @@ Return value
 
 .. _api-schema-manager-addmainentityofwebpage:
 
-.. option:: addMainEntityOfWebPage($mainEntity)
+.. option:: addMainEntityOfWebPage($mainEntity, $isPrioritised = false)
 
 Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
 
-Parameter
+Parameters
    :php:`TypeInterface $mainEntity`
       The type model to be added.
+
+   :php:`bool $isPrioritised`
+      .. versionadded:: 2.2.0
+         Set to :php:`true` to :ref:`prioritise <main-entity-prioritisation>` a
+         main entity.
 
 Return value
    Reference to itself.

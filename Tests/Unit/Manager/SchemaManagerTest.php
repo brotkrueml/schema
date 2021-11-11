@@ -225,7 +225,7 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function renderJsonLdWithWebPageAndTwoMainEntitiedDefinedOneIsInvalid(): void
+    public function renderJsonLdWithWebPageAndTwoMainEntitiesDefinedOneIsInvalid(): void
     {
         $thing = new Thing();
 
@@ -243,7 +243,7 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function addTypeWithWebPageSetTwiceThanTheSecondOneOverridesTheFirstOne(): void
+    public function addTypeWithWebPageSetTwiceThenTheSecondOneOverridesTheFirstOne(): void
     {
         $webPage = new WebPage();
         $itemPage = new ItemPage();
@@ -276,7 +276,7 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
-    public function addMainEntityOfWebPageCalledMultipleTimes(): void
+    public function addMainEntityOfWebPageCalledMultipleTimesWithNotPrioritisedTypes(): void
     {
         $thing = new Thing();
         $person = new Person();
@@ -290,6 +290,32 @@ class SchemaManagerTest extends Testcase
 
         self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
         self::assertSame([$thing, $person], $webPage->getProperty('mainEntity'));
+    }
+
+    /**
+     * @test
+     */
+    public function addMainEntityOfWebPageCalledMultipleTimesWithMixedPrioritisedAndNotPrioritisedTypes(): void
+    {
+        $person1 = new Person();
+        $person2 = new Person();
+        $person3 = new Person();
+        $person4 = new Person();
+        $webPage = new WebPage();
+
+        $subject = new SchemaManager($this->renderer);
+        $subject->addMainEntityOfWebPage($person1, false);
+        $subject->addMainEntityOfWebPage($person2, true);
+        $subject->addMainEntityOfWebPage($person3, false);
+        $subject->addMainEntityOfWebPage($person4, true);
+        $subject->addType($webPage);
+        $subject->renderJsonLd();
+
+        self::assertContains($webPage, $this->rendererTypes->getValue($this->renderer));
+        self::assertContains($person1, $this->rendererTypes->getValue($this->renderer));
+        self::assertContains($person3, $this->rendererTypes->getValue($this->renderer));
+        self::assertContains($person2, $webPage->getProperty('mainEntity'));
+        self::assertContains($person4, $webPage->getProperty('mainEntity'));
     }
 
     /**

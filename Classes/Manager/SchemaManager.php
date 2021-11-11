@@ -37,14 +37,12 @@ final class SchemaManager implements SingletonInterface
      */
     private array $breadcrumbLists = [];
 
-    /**
-     * @var TypeInterface[]
-     */
-    private array $mainEntitiesOfWebPage = [];
+    private MainEntityOfWebPageBag $mainEntityOfWebPageBag;
 
     public function __construct(RendererInterface $renderer = null)
     {
         $this->renderer = $renderer ?? new Renderer();
+        $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
     }
 
     /**
@@ -82,8 +80,8 @@ final class SchemaManager implements SingletonInterface
 
     private function setWebPage(TypeInterface $webPage): void
     {
-        $breadcrumb = $webPage->getProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
-        $webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
+        $breadcrumb = $webPage->getProperty(self::WEBPAGE_PROPERTY_BREADCRUMB);
+        $webPage->clearProperty(self::WEBPAGE_PROPERTY_BREADCRUMB);
 
         if ($breadcrumb instanceof BreadcrumbList) {
             $this->addBreadcrumbList($breadcrumb);
@@ -95,8 +93,8 @@ final class SchemaManager implements SingletonInterface
             }
         }
 
-        $mainEntity = $webPage->getProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
-        $webPage->clearProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY);
+        $mainEntity = $webPage->getProperty(self::WEBPAGE_PROPERTY_MAIN_ENTITY);
+        $webPage->clearProperty(self::WEBPAGE_PROPERTY_MAIN_ENTITY);
 
         if ($mainEntity instanceof TypeInterface) {
             $this->addMainEntityOfWebPage($mainEntity);
@@ -132,9 +130,12 @@ final class SchemaManager implements SingletonInterface
     /**
      * Add a main entity of the WebPage
      */
-    public function addMainEntityOfWebPage(TypeInterface $mainEntity): self
+    public function addMainEntityOfWebPage(TypeInterface $mainEntity, bool $isPrioritised = false): self
     {
-        $this->mainEntitiesOfWebPage[] = $mainEntity;
+        $notPrioritisedTypes = $this->mainEntityOfWebPageBag->add($mainEntity, $isPrioritised);
+        foreach ($notPrioritisedTypes as $type) {
+            $this->addType($type);
+        }
 
         return $this;
     }
@@ -152,7 +153,7 @@ final class SchemaManager implements SingletonInterface
             $this->preparePropertiesForWebPage();
             $this->renderer->addType($this->webPage);
         } else {
-            $this->renderer->addType(...$this->breadcrumbLists, ...$this->mainEntitiesOfWebPage);
+            $this->renderer->addType(...$this->breadcrumbLists, ...$this->mainEntityOfWebPageBag->getTypes());
         }
 
         $this->renderer->addType(...$this->types);
@@ -166,18 +167,18 @@ final class SchemaManager implements SingletonInterface
     private function preparePropertiesForWebPage(): void
     {
         if ($this->breadcrumbLists !== []) {
-            $this->webPage->clearProperty(static::WEBPAGE_PROPERTY_BREADCRUMB);
+            $this->webPage->clearProperty(self::WEBPAGE_PROPERTY_BREADCRUMB);
 
             foreach ($this->breadcrumbLists as $breadcrumb) {
-                $this->webPage->addProperty(static::WEBPAGE_PROPERTY_BREADCRUMB, $breadcrumb);
+                $this->webPage->addProperty(self::WEBPAGE_PROPERTY_BREADCRUMB, $breadcrumb);
             }
         }
 
-        $numberOfMainEntities = \count($this->mainEntitiesOfWebPage);
+        $numberOfMainEntities = \count($this->mainEntityOfWebPageBag);
         if ($numberOfMainEntities === 1) {
-            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntitiesOfWebPage[0]);
+            $this->webPage->addProperty(self::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPageBag->getTypes()[0]);
         } elseif ($numberOfMainEntities > 1) {
-            $this->webPage->addProperty(static::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntitiesOfWebPage);
+            $this->webPage->addProperty(self::WEBPAGE_PROPERTY_MAIN_ENTITY, $this->mainEntityOfWebPageBag->getTypes());
         }
     }
 }

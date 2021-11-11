@@ -199,9 +199,8 @@ argument:
 
 .. option:: -isMainEntityOfWebPage
 
-This argument defines the type as the
-:ref:`main entity <main-entity-of-web-page>` of a
-:ref:`web page <web-page-type>`:
+This argument defines the type as a :ref:`main entity <main-entity-of-web-page>`
+of a :ref:`web page <web-page-type>`:
 
 .. code-block:: html
    :emphasize-lines: 3
@@ -230,6 +229,10 @@ which results in the output:
          "gender": "https://schema.org/Male"
       }
    }
+
+.. versionadded:: 2.2.0
+   Main entities can be prioritised, please have a look into the
+   :ref:`main-entity-prioritisation` section.
 
 
 .. index::

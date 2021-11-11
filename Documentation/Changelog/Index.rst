@@ -8,6 +8,15 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.1.0...HEAD>`_
+------------------------------------------------------------------------------
+
+Added
+^^^^^
+
+
+* Prioritisation of main entities (#77)
+
 `2.1.0 <https://github.com/brotkrueml/schema/compare/v2.0.2...v2.1.0>`_ - 2021-10-19
 ----------------------------------------------------------------------------------------
 

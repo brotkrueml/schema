@@ -152,10 +152,20 @@ class ThingViewHelperTest extends ViewHelperTestCase
             '{"@context":"https://schema.org/","@graph":[{"@type":"Thing","identifier":"1","name":"foo"},{"@type":"Thing","identifier":"2","name":"bar"},{"@type":"Thing","identifier":"3","name":"qux"}]}',
         ];
 
-        yield 'Type with -isMainEntityOfWebPage set to true without a WebPage' => [
+        yield 'Type with -isMainEntityOfWebPage set to "false" without a WebPage' => [
             '<schema:type.thing
                 -id="parentThing"
-                -isMainEntityOfWebPage="1"
+                -isMainEntityOfWebPage="false"
+                name="parent name"
+                url="http://example.org/"
+            />',
+            '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","url":"http://example.org/"}',
+        ];
+
+        yield 'Type with -isMainEntityOfWebPage set to "true" without a WebPage' => [
+            '<schema:type.thing
+                -id="parentThing"
+                -isMainEntityOfWebPage="true"
                 name="parent name"
                 url="http://example.org/">
                 <schema:type.person
@@ -168,11 +178,45 @@ class ThingViewHelperTest extends ViewHelperTestCase
             '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}',
         ];
 
+        yield 'Type with -isMainEntityOfWebPage set to "true" with a WebPage' => [
+            '<schema:type.webPage/>
+            <schema:type.thing
+                -id="parentThing"
+                -isMainEntityOfWebPage="true"
+                name="parent name"
+                url="http://example.org/">
+                <schema:type.person
+                    -as="subjectOf"
+                    -id="childThing"
+                    name="child name"
+                    url="https://example.org/child"
+                />
+            </schema:type.thing>',
+            '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
+        ];
+
         yield 'Type with -isMainEntityOfWebPage set to "1" with a WebPage' => [
             '<schema:type.webPage/>
             <schema:type.thing
                 -id="parentThing"
                 -isMainEntityOfWebPage="1"
+                name="parent name"
+                url="http://example.org/">
+                <schema:type.person
+                    -as="subjectOf"
+                    -id="childThing"
+                    name="child name"
+                    url="https://example.org/child"
+                />
+            </schema:type.thing>',
+            '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
+        ];
+
+        yield 'Type with -isMainEntityOfWebPage set to "2" with a WebPage' => [
+            '<schema:type.webPage/>
+            <schema:type.thing
+                -id="parentThing"
+                -isMainEntityOfWebPage="2"
                 name="parent name"
                 url="http://example.org/">
                 <schema:type.person
@@ -200,21 +244,19 @@ class ThingViewHelperTest extends ViewHelperTestCase
             '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":[{"@type":"Thing","@id":"parentThing#1","name":"parent name #1"},{"@type":"Thing","@id":"parentThing#2","name":"parent name #2"}]}',
         ];
 
-        yield 'Type with -isMainEntityOfWebPage set to "true" with a WebPage' => [
+        yield 'More than on type with -isMainEntityOfWebPage set, one with to "1" and one with "2" with a WebPage' => [
             '<schema:type.webPage/>
-            <schema:type.thing
-                -id="parentThing"
-                -isMainEntityOfWebPage="true"
-                name="parent name"
-                url="http://example.org/">
-                <schema:type.person
-                    -as="subjectOf"
-                    -id="childThing"
-                    name="child name"
-                    url="https://example.org/child"
+                <schema:type.thing
+                    -id="parentThing#1"
+                    -isMainEntityOfWebPage="1"
+                    name="parent name #1"
                 />
-            </schema:type.thing>',
-            '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
+                <schema:type.thing
+                    -id="parentThing#2"
+                    -isMainEntityOfWebPage="2"
+                    name="parent name #2"
+                 />',
+            '{"@context":"https://schema.org/","@graph":[{"@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing#2","name":"parent name #2"}},{"@type":"Thing","@id":"parentThing#1","name":"parent name #1"}]}',
         ];
 
         yield 'Type with -isMainEntityOfWebPage set to "0" with a WebPage' => [
@@ -273,9 +315,6 @@ class ThingViewHelperTest extends ViewHelperTestCase
     /**
      * @test
      * @dataProvider fluidTemplatesProvider
-     *
-     * @param string $template The Fluid template
-     * @param string $expected The expected output
      */
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, string $expected): void
     {
@@ -318,6 +357,18 @@ class ThingViewHelperTest extends ViewHelperTestCase
             '<schema:type.thing><schema:type.creativeWork -as="name" -isMainEntityOfWebPage="1"/></schema:type.thing>',
             1562517051,
             'The argument "-isMainEntityOfWebPage" must not be used in the child type "CreativeWork", only the main type is allowed',
+        ];
+
+        yield 'With -isMainEntityOfWebPage is set to a negative value' => [
+            '<schema:type.thing><schema:type.creativeWork -as="name" -isMainEntityOfWebPage="-1"/></schema:type.thing>',
+            1636570950,
+            'The value of argument "-isMainEntityOfWebPage" must be between 0 and 2, "-1" given (allowed: 0 = not a main entity, 1 = main entity, 2 = prioritised main entity',
+        ];
+
+        yield 'With -isMainEntityOfWebPage is set to a value greater 2' => [
+            '<schema:type.thing><schema:type.creativeWork -as="name" -isMainEntityOfWebPage="3"/></schema:type.thing>',
+            1636570950,
+            'The value of argument "-isMainEntityOfWebPage" must be between 0 and 2, "3" given (allowed: 0 = not a main entity, 1 = main entity, 2 = prioritised main entity',
         ];
     }
 
