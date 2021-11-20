@@ -8,14 +8,17 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v2.2.0...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.2.1...HEAD>`_
 ------------------------------------------------------------------------------
+
+`2.2.1 <https://github.com/brotkrueml/schema/compare/v2.2.0...v2.2.1>`_ - 2021-11-20
+----------------------------------------------------------------------------------------
 
 Fixed
 ^^^^^
 
 
-* Error in Admin Panel when a property has a URL without path
+* Error in Admin Panel when a property has a URL as value without path
 
 `2.2.0 <https://github.com/brotkrueml/schema/compare/v2.1.0...v2.2.0>`_ - 2021-11-17
 ----------------------------------------------------------------------------------------
