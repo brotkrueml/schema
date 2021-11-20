@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.2.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Error in Admin Panel when a property has a URL without path
+
 `2.2.0 <https://github.com/brotkrueml/schema/compare/v2.1.0...v2.2.0>`_ - 2021-11-17
 ----------------------------------------------------------------------------------------
 

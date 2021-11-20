@@ -31,7 +31,7 @@ final class TypeLink
 
     private function checkLink(string $link): void
     {
-        if (\filter_var($link, \FILTER_VALIDATE_URL, \FILTER_FLAG_PATH_REQUIRED) === false) {
+        if (\filter_var($link, \FILTER_VALIDATE_URL) === false) {
             throw new \InvalidArgumentException(
                 \sprintf('The given link "%s" ist not a valid URL!', $link),
                 1620237735

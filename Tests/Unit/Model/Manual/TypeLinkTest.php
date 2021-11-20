@@ -18,18 +18,30 @@ class TypeLinkTest extends TestCase
 {
     /**
      * @test
+     * @dataProvider dataProviderWithValidUrls
      */
-    public function getterReturnCorrectValues(): void
+    public function getterReturnCorrectValues(string $link, string $title, string $iconIdentifier): void
     {
-        $subject = new TypeLink(
-            'https://example.org/SomeType',
-            'Some title',
-            'some-icon-identifier'
-        );
+        $subject = new TypeLink($link, $title, $iconIdentifier);
 
-        self::assertSame('https://example.org/SomeType', $subject->getLink());
-        self::assertSame('Some title', $subject->getTitle());
-        self::assertSame('some-icon-identifier', $subject->getIconIdentifier());
+        self::assertSame($link, $subject->getLink());
+        self::assertSame($title, $subject->getTitle());
+        self::assertSame($iconIdentifier, $subject->getIconIdentifier());
+    }
+
+    public function dataProviderWithValidUrls(): iterable
+    {
+        yield [
+            'link' => 'https://example.org/SomeType',
+            'title' => 'Some title',
+            'iconIdentifier' => 'some-icon-identifier',
+        ];
+
+        yield [
+            'link' => 'https://example.org',
+            'title' => 'Another title',
+            'iconIdentifier' => 'another-icon-identifier',
+        ];
     }
 
     /**
@@ -48,11 +60,15 @@ class TypeLinkTest extends TestCase
         new TypeLink($link, '', '');
     }
 
-    public function dataProviderWithInvalidUrls(): \Iterator
+    public function dataProviderWithInvalidUrls(): iterable
     {
-        yield ['no-link'];
-        yield ['http://example.org'];
-        yield ['https://example.org/Some Type'];
+        yield [
+            'no-link',
+        ];
+
+        yield [
+            'https://example.org/Some Type',
+        ];
     }
 
     /**

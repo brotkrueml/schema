@@ -7,32 +7,30 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Error in Admin Panel when a property has a URL as value without path
+
 ## [2.2.0] - 2021-11-17
 
 ### Added
-
 - Prioritisation of main entities (#77)
 
 ## [2.1.0] - 2021-10-19
 
 ### Added
-
 - List of available schema.org types in Configuration module (only TYPO3 v11+) (#74)
 
 ### Fixed
-
 - Type error in PaddingViewHelper with activated Admin Panel (#76)
 
 ## [2.0.2] - 2021-09-15
 
 ### Fixed
-
 - Display field "Type of web page" in page properties for noindex pages
 
 ## [2.0.1] - 2021-08-09
 
 ### Fixed
-
 - Avoid error in Rich Result Test when validating JSON-LD via Admin Panel
 
 ## [2.0.0] - 2021-08-01
