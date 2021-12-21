@@ -86,7 +86,7 @@
 	},
 	"support": {
 		"issues": "https://github.com/brotkrueml/schema/issues",
-		"chat": "https://typo3.slack.com/archives/CV36M73D5",
+		"forum": "https://github.com/brotkrueml/schema/discussions",
 		"source": "https://github.com/brotkrueml/schema",
 		"docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/"
 	}

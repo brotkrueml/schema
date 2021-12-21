@@ -26,8 +26,8 @@ Structured data with the schema extension
 :Email:
    typo3 (at) krue (dot) ml
 
-:Slack:
-   Channel `#ext-schema`_ on `typo3.slack.com`_
+:Forum:
+   `GitHub Discussions`_
 
 :Twitter:
    `@brotkrueml`_
@@ -110,8 +110,8 @@ on the top right to submit your change request.
 .. _@brotkrueml: https://twitter.com/brotkrueml
 .. _#ext-schema: https://typo3.slack.com/archives/CV36M73D5
 .. _CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
+.. _GitHub Discussions: https://github.com/brotkrueml/schema/discussions
 .. _Report a Problem: https://github.com/brotkrueml/schema/issues
 .. _schema.org vocabulary: https://schema.org/
 .. _typo3.org: https://typo3.org/
-.. _typo3.slack.com: https://typo3.slack.com/
 .. _Understand how structured data works: https://developers.google.com/search/docs/guides/intro-structured-data

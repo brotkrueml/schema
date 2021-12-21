@@ -15,4 +15,4 @@ Latest version 1.x supports TYPO3 v9 LTS, TYPO3 v10 LTS, TYPO3 v11 and PHP 7.2+.
 [Translation](https://crowdin.com/project/typo3-extension-schema) |
 [Changelog](https://github.com/brotkrueml/schema/blob/master/CHANGELOG.md) |
 [TYPO3 Extension Repository](https://extensions.typo3.org/extension/schema/) |
-[Slack #ext-schema](https://typo3.slack.com/)
+[Forum](https://github.com/brotkrueml/schema/discussions)
