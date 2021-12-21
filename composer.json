@@ -1,7 +1,8 @@
 {
 	"name": "brotkrueml/schema",
-	"type": "typo3-cms-extension",
 	"description": "API and view helpers for schema.org markup",
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
 	"keywords": [
 		"TYPO3 CMS",
 		"TYPO3 extension",
@@ -10,27 +11,29 @@
 		"SEO",
 		"schema.org"
 	],
-	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Chris Müller",
 			"role": "Developer"
 		}
 	],
+	"support": {
+		"issues": "https://github.com/brotkrueml/schema/issues",
+		"forum": "https://github.com/brotkrueml/schema/discussions",
+		"source": "https://github.com/brotkrueml/schema",
+		"docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/"
+	},
 	"require": {
 		"php": ">=7.4",
 		"ext-json": "*",
 		"symfony/polyfill-php80": "^1.17",
 		"typo3/cms-core": "^10.4.11 || ^11.5"
 	},
-	"conflict": {
-		"brotkrueml/sdbreadcrumb": "*"
-	},
 	"require-dev": {
 		"brotkrueml/coding-standards": "~1.1.0",
 		"captainhook/captainhook": "^5.10",
 		"dg/bypass-finals": "^1.3",
-		"ergebnis/composer-normalize": "^2.14",
+		"ergebnis/composer-normalize": "^2.18",
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.4",
 		"phpunit/phpunit": "^9.5",
@@ -39,6 +42,9 @@
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.5",
 		"typo3/cms-lowlevel": "^10.4.11 || ^11.5",
 		"vimeo/psalm": "^4.6"
+	},
+	"conflict": {
+		"brotkrueml/sdbreadcrumb": "*"
 	},
 	"suggest": {
 		"brotkrueml/schema-auto": "Provides additional terms related to auto",
@@ -49,6 +55,22 @@
 		"brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events",
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
 		"typo3/cms-lowlevel": "Display available schema.org types in the Configuration module"
+	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/brotkrueml/coding-standards"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Brotkrueml\\Schema\\": "Classes/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Brotkrueml\\Schema\\Tests\\": "Tests/"
+		}
 	},
 	"config": {
 		"bin-dir": ".Build/bin",
@@ -65,29 +87,7 @@
 			"web-dir": ".Build/web"
 		}
 	},
-	"autoload": {
-		"psr-4": {
-			"Brotkrueml\\Schema\\": "Classes/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Brotkrueml\\Schema\\Tests\\": "Tests/"
-		}
-	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/brotkrueml/coding-standards"
-		}
-	],
 	"scripts": {
 		"post-autoload-dump": ".Build/bin/captainhook install -f -s"
-	},
-	"support": {
-		"issues": "https://github.com/brotkrueml/schema/issues",
-		"forum": "https://github.com/brotkrueml/schema/discussions",
-		"source": "https://github.com/brotkrueml/schema",
-		"docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/"
 	}
 }
