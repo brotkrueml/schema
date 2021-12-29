@@ -49,5 +49,9 @@ final class JobPosting extends AbstractType
         'url',
         'validThrough',
         'workHours',
+        'applicationContact',
+        'employmentUnit',
+        'jobStartDate',
+        'qualifications',
     ];
 }
