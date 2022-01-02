@@ -21,9 +21,9 @@
             <h2 class="typo3-adminPanel-headline">
                 <f:if condition="{type.{typeKey}.0}">
                     <f:then>
-                        <f:for each="{type.{typeKey}}" as="typeKey" iteration="i">
+                        <f:for each="{type.{typeKey}}" as="multipleTypePart" iteration="i">
                             <f:if condition="!{i.isFirst}">/</f:if>
-                            {typeKey}
+                            {multipleTypePart}
                         </f:for>
                     </f:then>
                     <f:else>

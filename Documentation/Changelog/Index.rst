@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.2.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Empty property values in Admin Panel for multiple types
+
 `2.2.1 <https://github.com/brotkrueml/schema/compare/v2.2.0...v2.2.1>`_ - 2021-11-20
 ----------------------------------------------------------------------------------------
 

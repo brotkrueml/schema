@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Empty property values in Admin Panel for multiple types
+
 ## [2.2.1] - 2021-11-20
 
 ### Fixed
