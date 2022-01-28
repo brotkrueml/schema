@@ -27,7 +27,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class AddBreadcrumbListTest extends TestCase
+final class AddBreadcrumbListTest extends TestCase
 {
     use SchemaCacheTrait;
 
@@ -89,18 +89,21 @@ class AddBreadcrumbListTest extends TestCase
      */
     public function noBreadcrumbIsAddedWhenItShouldNotBeEmbeddedViaConfiguration(): void
     {
-        $this->setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(false);
+        $this->setExtensionConfiguration(false);
         $this->subject->__invoke($this->event);
 
         self::assertSame([], $this->event->getAdditionalTypes());
     }
 
-    private function setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(bool $value): void
+    private function setExtensionConfiguration(bool $automaticGeneration, string $excludeAdditionalDoktypes = ''): void
     {
         $this->extensionConfigurationStub
             ->method('get')
-            ->with(Extension::KEY, 'automaticBreadcrumbSchemaGeneration')
-            ->willReturn($value);
+            ->with(Extension::KEY)
+            ->willReturn([
+                'automaticBreadcrumbSchemaGeneration' => $automaticGeneration ? '1' : '0',
+                'automaticBreadcrumbExcludeAdditionalDoktypes' => $excludeAdditionalDoktypes,
+            ]);
     }
 
     /**
@@ -108,7 +111,7 @@ class AddBreadcrumbListTest extends TestCase
      */
     public function withEmptyRootLineNoBreadcrumbIsAdded(): void
     {
-        $this->setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(true);
+        $this->setExtensionConfiguration(true);
         $this->typoScriptFrontendControllerStub->rootLine = [];
         $this->subject->__invoke($this->event);
 
@@ -121,7 +124,7 @@ class AddBreadcrumbListTest extends TestCase
      */
     public function breadcrumbIsAddedCorrectly(array $rootLine, string $expected): void
     {
-        $this->setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(true);
+        $this->setExtensionConfiguration(true, '42,43');
         $this->typoScriptFrontendControllerStub->rootLine = $rootLine;
         $this->contentObjectRendererStub
             ->method('typoLink_URL')
@@ -384,6 +387,48 @@ class AddBreadcrumbListTest extends TestCase
             ],
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
+
+        yield 'Doktype 43 (which is excluded via extension configuration) should not be rendered' => [
+            [
+                4 => [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page on level 3',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                3 => [
+                    'uid' => 2,
+                    'doktype' => 43,
+                    'title' => 'A page on level 2',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                2 => [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page on level 1',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page on level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page on level 3","position":"2"}]}',
+        ];
     }
 
     /**
@@ -391,7 +436,7 @@ class AddBreadcrumbListTest extends TestCase
      */
     public function breadcrumbIsSortedCorrectly(): void
     {
-        $this->setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(true);
+        $this->setExtensionConfiguration(true);
         $typoLinkMap = [
             [
                 [
@@ -485,7 +530,7 @@ class AddBreadcrumbListTest extends TestCase
      */
     public function rootLineWithDifferentWebPageTypeSet(): void
     {
-        $this->setAutomaticBreadcrumbSchemaGenerationConfigurationSetting(true);
+        $this->setExtensionConfiguration(true);
         $this->typoScriptFrontendControllerStub->rootLine = [
             2 => [
                 'uid' => 2,

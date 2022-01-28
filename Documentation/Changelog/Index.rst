@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.2.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Configuration to exclude custom doktypes when automatically generating the breadcrumb (#84)
+
 [2.2.2] - 2022-01-02
 --------------------
 

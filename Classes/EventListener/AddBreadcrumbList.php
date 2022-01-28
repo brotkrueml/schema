@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -24,14 +25,14 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 final class AddBreadcrumbList
 {
-    private const DOKTYPES_TO_EXCLUDE = [
+    private const DEFAULT_DOKTYPES_TO_EXCLUDE = [
         PageRepository::DOKTYPE_RECYCLER,
         PageRepository::DOKTYPE_SPACER,
         PageRepository::DOKTYPE_SYSFOLDER,
     ];
 
     private TypoScriptFrontendController $controller;
-    private ExtensionConfiguration $configuration;
+    private ExtensionConfiguration $extensionConfiguration;
     private ContentObjectRenderer $contentObjectRenderer;
 
     public function __construct(
@@ -40,18 +41,24 @@ final class AddBreadcrumbList
         TypoScriptFrontendController $controller
     ) {
         $this->contentObjectRenderer = $contentObjectRenderer;
-        $this->configuration = $configuration;
+        $this->extensionConfiguration = $configuration;
         $this->controller = $controller;
     }
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {
-        $shouldEmbedBreadcrumbMarkup = (bool)$this->configuration->get('schema', 'automaticBreadcrumbSchemaGeneration');
-
+        $configuration = $this->extensionConfiguration->get('schema');
+        $shouldEmbedBreadcrumbMarkup = (bool)$configuration['automaticBreadcrumbSchemaGeneration'];
         if (! $shouldEmbedBreadcrumbMarkup) {
             return;
         }
 
+        $additionalDoktypesToExclude = GeneralUtility::intExplode(
+            ',',
+            $configuration['automaticBreadcrumbExcludeAdditionalDoktypes'],
+            true
+        );
+        $doktypesToExclude = \array_merge(self::DEFAULT_DOKTYPES_TO_EXCLUDE, $additionalDoktypesToExclude);
         $rootLine = [];
         foreach ($this->controller->rootLine as $page) {
             if ($page['is_siteroot'] ?? false) {
@@ -62,7 +69,7 @@ final class AddBreadcrumbList
                 continue;
             }
 
-            if (\in_array($page['doktype'] ?? PageRepository::DOKTYPE_DEFAULT, self::DOKTYPES_TO_EXCLUDE, true)) {
+            if (\in_array($page['doktype'] ?? PageRepository::DOKTYPE_DEFAULT, $doktypesToExclude, true)) {
                 continue;
             }
 

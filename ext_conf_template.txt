@@ -4,6 +4,9 @@ automaticWebPageSchemaGeneration = 1
 # cat=Basic; type=boolean; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.automaticBreadcrumbSchemaGeneration
 automaticBreadcrumbSchemaGeneration = 0
 
+# cat=Basic; type=string; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.automaticBreadcrumbExcludeAdditionalDoktypes
+automaticBreadcrumbExcludeAdditionalDoktypes =
+
 # cat=Basic; type=boolean; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.embedMarkupInBodySection
 embedMarkupInBodySection = 0
 

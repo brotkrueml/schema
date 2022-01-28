@@ -68,6 +68,21 @@ Default value
    :ref:`view helpers <breadcrumb-viewhelpers>`).
 
 
+Automatic embedding of the breadcrumb markup into the page - Exclude additional doktypes
+----------------------------------------------------------------------------------------
+
+.. versionadded:: 2.3.0
+
+If the option :ref:`configuration-automaticBreadcrumbSchemaGeneration` is
+enabled, you can define additional doktypes, which will be excluded from the
+breadcrumb. Separate multiple doktypes with commas.
+
+The doktypes 199 (spacer), 254 (folder) and 255 (recycler) are always excluded.
+
+Default value
+   (empty)
+
+
 .. index:: Markup in body section
 
 .. _configuration-embedMarkupInBodySection:
