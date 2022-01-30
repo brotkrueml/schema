@@ -33,9 +33,6 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     private TypeStack $stack;
     private SchemaManager $schemaManager;
 
-    /**
-     * @psalm-suppress PropertyTypeCoercion
-     */
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
         $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);
@@ -161,9 +158,6 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
             $value = true;
         }
 
-        /**
-         * @psalm-suppress PossiblyNullReference
-         */
         $this->model->setProperty($name, $value);
     }
 
@@ -185,9 +179,6 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
             );
         }
 
-        /**
-         * @psalm-suppress PossiblyNullReference
-         */
         $this->model->setId($this->arguments[static::ARGUMENT_ID]);
     }
 }

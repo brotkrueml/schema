@@ -59,10 +59,7 @@ final class SchemaManager implements SingletonInterface
         }
 
         if ($this->isBreadCrumbList($type)) {
-            /**
-             * @var BreadcrumbList $type
-             * @psalm-suppress ArgumentTypeCoercion
-             */
+            /** @var BreadcrumbList $type */
             $this->addBreadcrumbList($type);
 
             return $this;
@@ -161,9 +158,6 @@ final class SchemaManager implements SingletonInterface
         return $this->renderer->render();
     }
 
-    /**
-     * @psalm-suppress PossiblyNullReference
-     */
     private function preparePropertiesForWebPage(): void
     {
         if ($this->breadcrumbLists !== []) {

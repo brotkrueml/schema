@@ -36,12 +36,15 @@
 		"ergebnis/composer-normalize": "~2.23.0",
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.5",
+		"phpstan/extension-installer": "^1.1",
+		"phpstan/phpstan": "^1.4",
 		"phpunit/phpunit": "^9.5",
 		"rector/rector": "0.12.15",
+		"saschaegerer/phpstan-typo3": "^1.0",
 		"symfony/yaml": "^5.4 || ^6.0",
+		"symplify/phpstan-rules": "^10.0",
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.5",
-		"typo3/cms-lowlevel": "^10.4.11 || ^11.5",
-		"vimeo/psalm": "^4.19"
+		"typo3/cms-lowlevel": "^10.4.11 || ^11.5"
 	},
 	"conflict": {
 		"brotkrueml/sdbreadcrumb": "*"
@@ -76,6 +79,7 @@
 		"allow-plugins": {
 			"composer/package-versions-deprecated": true,
 			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		},

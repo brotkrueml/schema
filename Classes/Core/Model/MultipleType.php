@@ -29,7 +29,6 @@ final class MultipleType extends AbstractType
 
     private function storeTypeNames(array $types): void
     {
-        /** @psalm-suppress InvalidReturnType,InvalidReturnStatement */
         $this->typeNames = \array_map(
             static fn (TypeInterface $type): string => $type->getType(),
             $types
@@ -75,7 +74,6 @@ final class MultipleType extends AbstractType
 
     /**
      * @return string[]
-     * @psalm-suppress ImplementedReturnTypeMismatch
      */
     public function getType()
     {

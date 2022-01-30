@@ -24,9 +24,6 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
     private PagesCacheService $pagesCacheService;
 
-    /**
-     * @psalm-suppress PropertyTypeCoercion
-     */
     public function __construct(PagesCacheService $pagesCacheService = null)
     {
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);

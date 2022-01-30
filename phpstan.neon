@@ -1,0 +1,40 @@
+includes:
+    - phpstan.baseline.neon
+    - .Build/vendor/symplify/phpstan-rules/config/array-rules.neon
+    - .Build/vendor/symplify/phpstan-rules/config/forbidden-static-rules.neon
+    - .Build/vendor/symplify/phpstan-rules/config/regex-rules.neon
+    - .Build/vendor/symplify/phpstan-rules/config/size-rules.neon
+
+parameters:
+    phpVersion: 80000
+    level: 8
+    paths:
+        - Classes
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        - '#\Class has a static method must so must contains "Static" in its name#'
+
+services:
+    -
+        class: Symplify\PHPStanRules\CognitiveComplexity\Rules\ClassLikeCognitiveComplexityRule
+        tags: [phpstan.rules.rule]
+        arguments:
+            maxClassCognitiveComplexity: 15
+    -
+        class: Symplify\PHPStanRules\Rules\ForbiddenFuncCallRule
+        tags: [phpstan.rules.rule]
+        arguments:
+            forbiddenFunctions:
+                - eval
+                - dump
+                - die
+                - compact
+                - var_dump
+    -
+        class: Symplify\PHPStanRules\Rules\ForbiddenNodeRule
+        tags: [phpstan.rules.rule]
+        arguments:
+            forbiddenNodes:
+                - PhpParser\Node\Expr\Empty_
+                - PhpParser\Node\Stmt\Switch_
+                - PhpParser\Node\Expr\ErrorSuppress

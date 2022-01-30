@@ -37,7 +37,6 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 
     public function __construct(TypeStack $typeStack = null)
     {
-        /** @psalm-suppress PropertyTypeCoercion */
         $this->typeStack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
     }
 
@@ -62,7 +61,6 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 
         /** @var TypeInterface $type */
         $type = $this->typeStack->pop();
-        /** @psalm-suppress MixedArgument */
         $type->addProperty($this->arguments[static::ARGUMENT_AS], $this->arguments[static::ARGUMENT_VALUE]);
         $this->typeStack->push($type);
     }

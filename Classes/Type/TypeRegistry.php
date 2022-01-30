@@ -69,7 +69,6 @@ final class TypeRegistry implements SingletonInterface
             $this->cache = $cache;
         }
 
-        /** @psalm-suppress PropertyTypeCoercion */
         $this->packageManager = $packageManager ?? GeneralUtility::makeInstance(PackageManager::class);
     }
 
@@ -116,7 +115,6 @@ final class TypeRegistry implements SingletonInterface
                 }
             }
         }
-        /** @psalm-suppress TooFewArguments */
         $typeModels = \array_replace_recursive(...$allTypeModels);
         \ksort($typeModels);
 

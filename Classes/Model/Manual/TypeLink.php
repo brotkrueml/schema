@@ -38,7 +38,6 @@ final class TypeLink
             );
         }
 
-        /** @psalm-suppress ImpureFunctionCall */
         if (! \str_starts_with($link, 'http')) {
             throw new \InvalidArgumentException(
                 \sprintf('The given link "%s" ist not a valid web URL!', $link),

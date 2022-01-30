@@ -66,7 +66,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
         RemoveUnusedPromotedPropertyRector::class, // to avoid rector warning on PHP8.0 with codebase compatible with PHP7.4
         ReturnTypeDeclarationRector::class => [
-            // because psalm complaints about different return types for getType()
             __DIR__ . '/Classes/Core/Model/AbstractType.php',
             __DIR__ . '/Classes/Core/Model/MultipleType.php',
         ],

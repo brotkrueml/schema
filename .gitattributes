@@ -11,7 +11,8 @@
 /Makefile export-ignore
 /README.md export-ignore
 /infection.json.dist export-ignore
-/psalm.xml export-ignore
+/phpstan.baseline.neon export-ignore
+/phpstan.neon export-ignore
 /rector.php export-ignore
 /sonar-project.properties export-ignore
 *.xsd export-ignore

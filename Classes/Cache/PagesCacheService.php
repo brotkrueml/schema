@@ -36,7 +36,6 @@ class PagesCacheService
 
     private function getCacheIdentifier(): string
     {
-        /** @psalm-suppress PossiblyNullPropertyFetch */
         return $this->controller->newHash . '-tx-schema';
     }
 

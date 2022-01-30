@@ -1,0 +1,237 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method assign\\(\\) on TYPO3\\\\CMS\\\\Fluid\\\\View\\\\StandaloneView\\|null\\.$#"
+			count: 1
+			path: Classes/AdminPanel/TypesInformation.php
+
+		-
+			message: "#^Cannot call method render\\(\\) on TYPO3\\\\CMS\\\\Fluid\\\\View\\\\StandaloneView\\|null\\.$#"
+			count: 1
+			path: Classes/AdminPanel/TypesInformation.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\AdminPanel\\\\TypesInformation\\:\\:getContent\\(\\) has parameter \\$data with no value type specified in iterable type TYPO3\\\\CMS\\\\Adminpanel\\\\ModuleApi\\\\ModuleData\\.$#"
+			count: 1
+			path: Classes/AdminPanel/TypesInformation.php
+
+		-
+			message: "#^Cannot access property \\$newHash on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
+			count: 1
+			path: Classes/Cache/PagesCacheService.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getAdditionalProperties\\(\\)\\.$#"
+			count: 1
+			path: Classes/Core/Model/AbstractType.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with string will always evaluate to false\\.$#"
+			count: 1
+			path: Classes/Core/Model/AbstractType.php
+
+		-
+			message: "#^Class cognitive complexity is 19, keep it under 15$#"
+			count: 1
+			path: Classes/Core/Model/AbstractType.php
+
+		-
+			message: "#^Do not use static property$#"
+			count: 1
+			path: Classes/Core/Model/AbstractType.php
+
+		-
+			message: "#^Instanceof between mixed and Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface will always evaluate to false\\.$#"
+			count: 1
+			path: Classes/Core/Model/AbstractType.php
+
+		-
+			message: "#^Anonymous function should return string but returns array\\<string\\>\\|string\\.$#"
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: "#^Do not use static property$#"
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:mergePropertyNamesFromSingleTypes\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:storeTypeNames\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: "#^Return type \\(array\\<string\\>\\) of method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:getType\\(\\) should be compatible with return type \\(string\\) of method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\AbstractType\\:\\:getType\\(\\)$#"
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: "#^Class Brotkrueml\\\\Schema\\\\Core\\\\TypeStack extends generic class SplStack but does not specify its types\\: TValue$#"
+			count: 1
+			path: Classes/Core/TypeStack.php
+
+		-
+			message: "#^Cannot call method setId\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			count: 1
+			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
+
+		-
+			message: "#^Cannot call method setProperty\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			count: 1
+			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
+
+		-
+			message: "#^Class cognitive complexity is 19, keep it under 15$#"
+			count: 1
+			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\ViewHelpers\\\\AbstractBaseTypeViewHelper\\:\\:__construct\\(\\) has parameter \\$typeStack with no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
+			count: 1
+			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
+
+		-
+			message: "#^Property Brotkrueml\\\\Schema\\\\Core\\\\ViewHelpers\\\\AbstractBaseTypeViewHelper\\:\\:\\$stack type has no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
+			count: 1
+			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\ViewHelpers\\\\AbstractTypeViewHelper\\:\\:__construct\\(\\) has parameter \\$typeStack with no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
+			count: 1
+			path: Classes/Core/ViewHelpers/AbstractTypeViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\EventListener\\\\AddBreadcrumbList\\:\\:buildBreadCrumbList\\(\\) has parameter \\$rootLine with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/EventListener/AddBreadcrumbList.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Hooks\\\\PageRenderer\\\\SchemaMarkupInjection\\:\\:execute\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Hooks/PageRenderer/SchemaMarkupInjection.php
+
+		-
+			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
+			count: 2
+			path: Classes/JsonLd/Renderer.php
+
+		-
+			message: "#^Class cognitive complexity is 17, keep it under 15$#"
+			count: 1
+			path: Classes/JsonLd/Renderer.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\JsonLd\\\\Renderer\\:\\:getPropertyValueForResult\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/JsonLd/Renderer.php
+
+		-
+			message: "#^Property Brotkrueml\\\\Schema\\\\JsonLd\\\\Renderer\\:\\:\\$typeResult type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/JsonLd/Renderer.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Lowlevel\\\\ConfigurationModuleProvider\\\\Types\\:\\:__invoke\\(\\) has parameter \\$attributes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Lowlevel/ConfigurationModuleProvider/Types.php
+
+		-
+			message: "#^Cannot call method addProperty\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			count: 3
+			path: Classes/Manager/SchemaManager.php
+
+		-
+			message: "#^Cannot call method clearProperty\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			count: 1
+			path: Classes/Manager/SchemaManager.php
+
+		-
+			message: "#^Class cognitive complexity is 24, keep it under 15$#"
+			count: 1
+			path: Classes/Manager/SchemaManager.php
+
+		-
+			message: "#^Parameter \\#1 \\.\\.\\.\\$type of method Brotkrueml\\\\Schema\\\\JsonLd\\\\RendererInterface\\:\\:addType\\(\\) expects Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface, Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null given\\.$#"
+			count: 1
+			path: Classes/Manager/SchemaManager.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeFactory\\:\\:createMultipleType\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Type/TypeFactory.php
+
+		-
+			message: "#^Class cognitive complexity is 29, keep it under 15$#"
+			count: 1
+			path: Classes/Type/TypeRegistry.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:enrichTypeModelsArrayWithTypeKey\\(\\) has parameter \\$typeModels with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Type/TypeRegistry.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:requireCacheEntry\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Type/TypeRegistry.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:setCacheEntry\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Type/TypeRegistry.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between string and false will always evaluate to false\\.$#"
+			count: 1
+			path: Classes/Type/TypeRegistry.php
+
+		-
+			message: "#^Do not use static property$#"
+			count: 4
+			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\AdminPanel\\\\PropertyValueViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\BlankNodeIdentifierViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/BlankNodeIdentifierViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\BreadcrumbViewHelper\\:\\:checkBreadcrumbStructure\\(\\) has parameter \\$breadcrumb with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\BreadcrumbViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
+
+		-
+			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\MultipleTypeViewHelper\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/MultipleTypeViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\NodeIdentifierViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/NodeIdentifierViewHelper.php
+
+		-
+			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\PropertyViewHelper\\:\\:__construct\\(\\) has parameter \\$typeStack with no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/PropertyViewHelper.php
+
+		-
+			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\PropertyViewHelper\\:\\:\\$typeStack type has no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/PropertyViewHelper.php
+

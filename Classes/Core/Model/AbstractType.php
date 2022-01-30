@@ -147,9 +147,6 @@ abstract class AbstractType implements TypeInterface
     {
         if (! \array_key_exists($propertyName, $this->properties)) {
             $type = $this->getType();
-            /**
-             * @psalm-suppress DocblockTypeContradiction
-             */
             throw new \DomainException(
                 \sprintf(
                     'Property "%s" is unknown for type "%s"',

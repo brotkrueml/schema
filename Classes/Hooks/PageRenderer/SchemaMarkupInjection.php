@@ -37,9 +37,6 @@ final class SchemaMarkupInjection
     private ExtensionAvailability $extensionAvailability;
     private EventDispatcher $eventDispatcher;
 
-    /**
-     * @psalm-suppress PropertyTypeCoercion
-     */
     public function __construct(
         TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,

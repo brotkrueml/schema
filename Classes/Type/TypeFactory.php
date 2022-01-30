@@ -38,9 +38,6 @@ final class TypeFactory
         return self::createMultipleType($type);
     }
 
-    /**
-     * @psalm-suppress InvalidStringClass
-     */
     private static function createSingleType(string $type): TypeInterface
     {
         /** @var TypeRegistry $typeRegistry */

@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-/**
- * @psalm-immutable
- */
 class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
 {
     /**

@@ -29,9 +29,6 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     private PagesCacheService $pagesCacheService;
     private ?StandaloneView $view = null;
 
-    /**
-     * @psalm-suppress PropertyTypeCoercion
-     */
     public function __construct(PagesCacheService $pagesCacheService = null)
     {
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
@@ -60,7 +57,6 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         }
 
         $this->initialiseView();
-        /** @psalm-suppress PossiblyNullReference */
         $this->view->assign('types', $types);
 
         return $this->view->render();

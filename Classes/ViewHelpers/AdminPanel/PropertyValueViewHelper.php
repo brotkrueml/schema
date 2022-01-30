@@ -183,12 +183,8 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         );
     }
 
-    /**
-     * @psalm-suppress MoreSpecificReturnType
-     */
     private static function getIconFactory(): IconFactory
     {
-        /** @psalm-suppress LessSpecificReturnStatement */
         return self::$iconFactory ?? GeneralUtility::makeInstance(IconFactory::class);
     }
 
