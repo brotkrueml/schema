@@ -123,6 +123,9 @@ final class TypeRegistry implements SingletonInterface
         return $typeModels;
     }
 
+    /**
+     * @return array<string, class-string>|list<string>|null
+     */
     private function requireCacheEntry(string $identifier): ?array
     {
         if (! $this->cache instanceof PhpFrontend) {
@@ -135,6 +138,9 @@ final class TypeRegistry implements SingletonInterface
         return $this->cache->require($identifier);
     }
 
+    /**
+     * @param array<string, class-string>|list<string> $data
+     */
     private function setCacheEntry(string $identifier, array $data): void
     {
         if ($this->cache instanceof PhpFrontend) {
@@ -143,14 +149,20 @@ final class TypeRegistry implements SingletonInterface
     }
 
     /**
-     * @return array<string, string>
+     * @param list<class-string> $typeModels
+     * @return array<string, class-string>
      */
     private function enrichTypeModelsArrayWithTypeKey(array $typeModels): array
     {
         $typeModelsWithTypeKey = [];
         foreach ($typeModels as $typeModel) {
             $type = \substr(\strrchr($typeModel, '\\') ?: '', 1);
-            if ($type === false) {
+            // In PHP < 8.0 substr('', 1) returns false, in PHP >= 8.0 an empty string is returned, see: https://3v4l.org/Zk6kK
+            // An empty string should not be used, here is something wrong with the type
+            if ($type === false) { // @phpstan-ignore-line
+                continue;
+            }
+            if ($type === '') {
                 continue;
             }
             $typeModelsWithTypeKey[$type] = $typeModel;

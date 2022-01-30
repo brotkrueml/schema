@@ -156,27 +156,12 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Class cognitive complexity is 29, keep it under 15$#"
+			message: "#^Class cognitive complexity is 30, keep it under 15$#"
 			count: 1
 			path: Classes/Type/TypeRegistry.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:enrichTypeModelsArrayWithTypeKey\\(\\) has parameter \\$typeModels with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/Type/TypeRegistry.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:requireCacheEntry\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/Type/TypeRegistry.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:setCacheEntry\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/Type/TypeRegistry.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between string and false will always evaluate to false\\.$#"
+			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:loadConfiguration\\(\\) should return array\\<string, class\\-string\\> but returns array\\<int\\|string, string\\>\\.$#"
 			count: 1
 			path: Classes/Type/TypeRegistry.php
 
