@@ -21,9 +21,9 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class AbstractTypeTest extends TestCase
@@ -536,17 +536,15 @@ class AbstractTypeTest extends TestCase
 
         $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
 
-        /** @var MockObject|EventDispatcher $eventDispatcherMock */
-        $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        /** @var MockObject|EventDispatcherInterface $eventDispatcherMock */
+        $eventDispatcherMock = $this->createMock(EventDispatcherInterface::class);
         $eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
             ->with($event)
             ->willReturn($event);
 
-        GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
+        GeneralUtility::addInstance(EventDispatcherInterface::class, $eventDispatcherMock);
 
         new Thing();
     }
@@ -587,17 +585,15 @@ class AbstractTypeTest extends TestCase
         $outEvent = new RegisterAdditionalTypePropertiesEvent(Thing::class);
         $outEvent->registerAdditionalProperty('someAdditionalProperty');
 
-        /** @var MockObject|EventDispatcher $eventDispatcherMock */
-        $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        /** @var MockObject|EventDispatcherInterface $eventDispatcherMock */
+        $eventDispatcherMock = $this->createMock(EventDispatcherInterface::class);
         $eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
             ->with($inEvent)
             ->willReturn($outEvent);
 
-        GeneralUtility::setSingletonInstance(EventDispatcher::class, $eventDispatcherMock);
+        GeneralUtility::addInstance(EventDispatcherInterface::class, $eventDispatcherMock);
 
         new Thing();
     }

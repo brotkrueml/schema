@@ -16,8 +16,8 @@ use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -35,7 +35,7 @@ final class SchemaMarkupInjection
     private SchemaManager $schemaManager;
     private PagesCacheService $pagesCacheService;
     private ExtensionAvailability $extensionAvailability;
-    private EventDispatcher $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
         TypoScriptFrontendController $controller = null,
@@ -44,7 +44,7 @@ final class SchemaMarkupInjection
         PagesCacheService $pagesCacheService = null,
         ApplicationType $applicationType = null,
         ExtensionAvailability $extensionAvailability = null,
-        EventDispatcher $eventDispatcher = null
+        EventDispatcherInterface $eventDispatcher = null
     ) {
         $this->applicationType = $applicationType ?? new ApplicationType();
         if (! $this->applicationType->isBackend()) {
@@ -54,7 +54,7 @@ final class SchemaMarkupInjection
             $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
             $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
             $this->extensionAvailability = $extensionAvailability ?? new ExtensionAvailability();
-            $this->eventDispatcher = $eventDispatcher ?? GeneralUtility::makeInstance(EventDispatcher::class);
+            $this->eventDispatcher = $eventDispatcher ?? GeneralUtility::makeInstance(EventDispatcherInterface::class);
         }
     }
 

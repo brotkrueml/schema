@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 abstract class AbstractType implements TypeInterface
@@ -66,7 +65,7 @@ abstract class AbstractType implements TypeInterface
             $event = new RegisterAdditionalTypePropertiesEvent(static::class);
 
             /** @var EventDispatcherInterface $eventDispatcher */
-            $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
+            $eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
             $event = $eventDispatcher->dispatch($event);
 
             $additionalProperties = $event->getAdditionalProperties();
