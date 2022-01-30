@@ -108,4 +108,3 @@ Example
 .. _pending: https://pending.schema.org/
 .. _property annotations: https://schema.org/docs/actions.html#part-4
 .. _PSR-14 Events in TYPO3: https://usetypo3.com/psr-14-events.html
-.. _TYPO3 documentation: https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/Hooks/EventDispatcher/Index.html
