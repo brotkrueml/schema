@@ -176,11 +176,6 @@ parameters:
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\BlankNodeIdentifierViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/BlankNodeIdentifierViewHelper.php
-
-		-
 			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\BreadcrumbViewHelper\\:\\:checkBreadcrumbStructure\\(\\) has parameter \\$breadcrumb with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/ViewHelpers/BreadcrumbViewHelper.php

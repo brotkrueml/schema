@@ -32,6 +32,9 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 final class BlankNodeIdentifierViewHelper extends AbstractViewHelper
 {
+    /**
+     * @param array{} $arguments
+     */
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
