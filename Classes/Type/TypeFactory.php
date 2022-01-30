@@ -57,6 +57,9 @@ final class TypeFactory
         return $type;
     }
 
+    /**
+     * @param string[] $types
+     */
     private static function createMultipleType(array $types): MultipleType
     {
         return new MultipleType(...\array_map(

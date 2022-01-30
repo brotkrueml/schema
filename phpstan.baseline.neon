@@ -156,11 +156,6 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeFactory\\:\\:createMultipleType\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/Type/TypeFactory.php
-
-		-
 			message: "#^Class cognitive complexity is 29, keep it under 15$#"
 			count: 1
 			path: Classes/Type/TypeRegistry.php
