@@ -3,12 +3,12 @@ name: XLIFF
 on:
   push:
     branches-ignore:
-      - l10n_master
+      - l10n_main
     paths:
       - '**.xlf'
   pull_request:
     branches-ignore:
-      - l10n_master
+      - l10n_main
     paths:
       - '**.xlf'
 

@@ -21,7 +21,7 @@
 		"issues": "https://github.com/brotkrueml/schema/issues",
 		"forum": "https://github.com/brotkrueml/schema/discussions",
 		"source": "https://github.com/brotkrueml/schema",
-		"docs": "https://docs.typo3.org/p/brotkrueml/schema/master/en-us/"
+		"docs": "https://docs.typo3.org/p/brotkrueml/schema/main/en-us/"
 	},
 	"require": {
 		"php": ">=7.4",
@@ -85,7 +85,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.3.x-dev"
+			"dev-main": "2.3.x-dev"
 		},
 		"typo3/cms": {
 			"app-dir": ".Build",
