@@ -84,6 +84,9 @@ final class AddBreadcrumbList
         $event->addType($this->buildBreadCrumbList($rootLine));
     }
 
+    /**
+     * @param list<array{uid: int, nav_title: string, title: string, tx_schema_webpagetype?: string}> $rootLine
+     */
     private function buildBreadCrumbList(array $rootLine): TypeInterface
     {
         $breadcrumbList = TypeFactory::createType('BreadcrumbList');

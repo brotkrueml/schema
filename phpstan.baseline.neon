@@ -106,11 +106,6 @@ parameters:
 			path: Classes/Core/ViewHelpers/AbstractTypeViewHelper.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\EventListener\\\\AddBreadcrumbList\\:\\:buildBreadCrumbList\\(\\) has parameter \\$rootLine with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/EventListener/AddBreadcrumbList.php
-
-		-
 			message: "#^Method Brotkrueml\\\\Schema\\\\Hooks\\\\PageRenderer\\\\SchemaMarkupInjection\\:\\:execute\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/Hooks/PageRenderer/SchemaMarkupInjection.php
