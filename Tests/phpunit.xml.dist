@@ -20,7 +20,6 @@
         </testsuite>
     </testsuites>
     <extensions>
-        <extension class="Brotkrueml\Schema\Tests\Hooks\BypassFinalHook"/>
         <extension class="Brotkrueml\Schema\Tests\Hooks\Typo3ConstantsHook"/>
     </extensions>
 </phpunit>

@@ -32,7 +32,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @api
  */
-final class TypeRegistry implements SingletonInterface
+class TypeRegistry implements SingletonInterface
 {
     private const CACHE_ENTRY_IDENTIFIER_TYPES = 'types';
     private const CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES = 'webpage_types';
