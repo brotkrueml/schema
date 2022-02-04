@@ -99,7 +99,7 @@ class TypeRegistry implements SingletonInterface
      */
     private function loadConfiguration(): array
     {
-        $cacheEntry = $this->requireCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES);
+        $cacheEntry = $this->requireCacheEntry(self::CACHE_ENTRY_IDENTIFIER_TYPES);
         if ($cacheEntry !== null) {
             return $cacheEntry;
         }
@@ -118,7 +118,7 @@ class TypeRegistry implements SingletonInterface
         $typeModels = \array_replace_recursive(...$allTypeModels);
         \ksort($typeModels);
 
-        $this->setCacheEntry(static::CACHE_ENTRY_IDENTIFIER_TYPES, $typeModels);
+        $this->setCacheEntry(self::CACHE_ENTRY_IDENTIFIER_TYPES, $typeModels);
 
         return $typeModels;
     }
@@ -182,7 +182,7 @@ class TypeRegistry implements SingletonInterface
     {
         if ($this->webPageTypes === []) {
             $this->webPageTypes = $this->loadSpecialTypes(
-                static::CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES,
+                self::CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES,
                 WebPageTypeInterface::class
             );
         }
@@ -228,7 +228,7 @@ class TypeRegistry implements SingletonInterface
     {
         if ($this->webPageElementTypes === []) {
             $this->webPageElementTypes = $this->loadSpecialTypes(
-                static::CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES,
+                self::CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES,
                 WebPageElementTypeInterface::class
             );
         }
