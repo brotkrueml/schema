@@ -33,6 +33,7 @@
 		"brotkrueml/coding-standards": "~1.2.0",
 		"captainhook/captainhook": "^5.10",
 		"ergebnis/composer-normalize": "~2.23.0",
+		"infection/infection": "^0.26",
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.5",
 		"phpstan/extension-installer": "^1.1",
@@ -80,7 +81,8 @@
 			"ergebnis/composer-normalize": true,
 			"phpstan/extension-installer": true,
 			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true
+			"typo3/cms-composer-installers": true,
+			"infection/extension-installer": true
 		},
 		"bin-dir": ".Build/bin",
 		"sort-packages": true,

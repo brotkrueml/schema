@@ -15,9 +15,6 @@ use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @runTestsInSeparateProcesses
- */
 class BlankNodeIdentifierTest extends TestCase
 {
     /**
@@ -41,7 +38,7 @@ class BlankNodeIdentifierTest extends TestCase
      */
     public function getIdReturnsBlankIdentifier(): void
     {
-        $subject = new BlankNodeIdentifier();
+        $subject = new BlankNodeIdentifier(true);
 
         self::assertSame('_:b0', $subject->getId());
     }
@@ -52,7 +49,7 @@ class BlankNodeIdentifierTest extends TestCase
     public function getIdOnConsecutiveInstantiationsReturnsAscendingBlankIdentifiers(): void
     {
         $actual = [
-            (new BlankNodeIdentifier())->getId(),
+            (new BlankNodeIdentifier(true))->getId(),
             (new BlankNodeIdentifier())->getId(),
             (new BlankNodeIdentifier())->getId(),
             (new BlankNodeIdentifier())->getId(),
@@ -73,7 +70,7 @@ class BlankNodeIdentifierTest extends TestCase
      */
     public function toStringReturnsBlankIdentifier(): void
     {
-        $subject = new BlankNodeIdentifier();
+        $subject = new BlankNodeIdentifier(true);
 
         self::assertSame('_:b0', $subject->__toString());
     }

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
 
+use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
@@ -35,6 +36,9 @@ class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
             ->willReturnMap($map);
 
         GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+
+        // For every test case reset the counter. In a test case itself the counter starts now with 1.
+        new BlankNodeIdentifier(true);
     }
 
     protected function tearDown(): void
@@ -50,7 +54,7 @@ class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
     {
         $actual = $this->renderTemplate('<schema:blankNodeIdentifier/>', []);
 
-        self::assertSame('_:b0', $actual);
+        self::assertSame('_:b1', $actual);
     }
 
     /**
@@ -79,7 +83,7 @@ EOF
         $this->renderTemplate($template, []);
         $actual = $this->schemaManager->renderJsonLd();
 
-        $expected = '{"@context":"https://schema.org/","@graph":[{"@type":"Person","@id":"_:b3","name":"John Smith","knows":{"@id":"_:b4"}},{"@type":"Person","@id":"_:b4","name":"Sarah Jane Smith","knows":{"@id":"_:b3"}}]}';
+        $expected = '{"@context":"https://schema.org/","@graph":[{"@type":"Person","@id":"_:b1","name":"John Smith","knows":{"@id":"_:b2"}},{"@type":"Person","@id":"_:b2","name":"Sarah Jane Smith","knows":{"@id":"_:b1"}}]}';
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
     }
 }

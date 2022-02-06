@@ -10,7 +10,7 @@
 /ecs.php export-ignore
 /Makefile export-ignore
 /README.md export-ignore
-/infection.json.dist export-ignore
+/infection.json export-ignore
 /phpstan.baseline.neon export-ignore
 /phpstan.neon export-ignore
 /rector.php export-ignore

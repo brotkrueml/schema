@@ -18,11 +18,16 @@ class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
      */
     private string $id;
 
-    public function __construct()
+    /**
+     * @param bool $resetCounter This argument is internal and for testing purposes only and may be removed at any time!
+     */
+    public function __construct(bool $resetCounter = false)
     {
         static $counter = 0;
-        $this->id = '_:b' . $counter;
-        $counter++;
+        if ($resetCounter) {
+            $counter = 0;
+        }
+        $this->id = '_:b' . $counter++;
     }
 
     public function getId(): string
