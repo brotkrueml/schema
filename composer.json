@@ -59,12 +59,6 @@
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
 		"typo3/cms-lowlevel": "Display available schema.org types in the Configuration module"
 	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/brotkrueml/coding-standards"
-		}
-	],
 	"autoload": {
 		"psr-4": {
 			"Brotkrueml\\Schema\\": "Classes/"
