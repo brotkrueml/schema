@@ -4,10 +4,7 @@
     "source": {
         "directories": [
             "Classes"
-        ],
-		"excludes": [
-			"Classes/ViewHelpers/BlankNodeIdentifierViewHelper.php"
-		]
+        ]
     },
     "phpUnit": {
         "configDir": "Tests"
