@@ -14,6 +14,7 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 Added
 ^^^^^
 
+* New cObject ``SCHEMA`` to add Types to Schema via TypoScript (#88)
 
 * Configuration to exclude custom doktypes when automatically generating the breadcrumb (#84)
 
