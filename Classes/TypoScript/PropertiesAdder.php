@@ -47,12 +47,10 @@ class PropertiesAdder
         $this->cObj = $cObj;
 
         foreach (array_keys($properties) as $name) {
-            $propertyName = rtrim($name, '.');
-
             try {
-                $this->addProperty($type, $propertyName, $name, $properties);
+                $this->addProperty($type, $name, $properties);
             } catch (DomainException $e) {
-                $this->logger->error('Tried to set unkown property "' . $propertyName . '".');
+                $this->logger->error('Tried to set unkown property "' . $this->getPropertyNameFromName($name) . '".');
                 continue;
             }
         }
@@ -63,29 +61,18 @@ class PropertiesAdder
      */
     private function addProperty(
         TypeInterface $type,
-        string $propertyName,
         string $name,
         array $properties
     ): void {
+        $propertyName = $this->getPropertyNameFromName($name);
+
         if ($this->isFullType($name, $properties)) {
-            $subType = $this->typeBuilder->build(
-                $this->cObj,
-                $properties[$name . '.']
-            );
-            if ($subType instanceof TypeInterface) {
-                $this->add($this->cObj, $subType, $properties[$name . '.']['properties.'] ?? []);
-                $type->setProperty($propertyName, $subType);
-            }
+            $this->addFullType($name, $properties, $type);
             return;
         }
 
         if ($this->isIdOnly($name, $properties)) {
-            $type->setProperty(
-                $propertyName,
-                [
-                    'id' => $this->cObj->stdWrapValue('id', $properties[$name . '.']),
-                ],
-            );
+            $this->addIdOnly($name, $properties, $type);
             return;
         }
 
@@ -96,6 +83,39 @@ class PropertiesAdder
         $type->setProperty(
             $propertyName,
             $this->cObj->stdWrapValue($propertyName, $properties)
+        );
+    }
+
+    private function addIdOnly(
+        string $name,
+        array $properties,
+        TypeInterface $type
+    ): void {
+        $type->setProperty(
+            $this->getPropertyNameFromName($name),
+            [
+                'id' => $this->cObj->stdWrapValue('id', $properties[$name . '.']),
+            ],
+        );
+    }
+
+    private function addFullType(
+        string $name,
+        array $properties,
+        TypeInterface $type
+    ): void {
+        $subType = $this->typeBuilder->build(
+            $this->cObj,
+            $properties[$name . '.']
+        );
+        if (!$subType instanceof TypeInterface) {
+            return;
+        }
+
+        $this->add($this->cObj, $subType, $properties[$name . '.']['properties.'] ?? []);
+        $type->setProperty(
+            $this->getPropertyNameFromName($name),
+            $subType
         );
     }
 
@@ -119,10 +139,8 @@ class PropertiesAdder
     private function isIdOnly(string $name, array $properties): bool
     {
         $configuration = $properties[$name . '.'] ?? [];
-
         $hasId = isset($configuration['id']) || isset($configuration['id.']);
         $hasFurtherProperties = array_diff(array_keys($configuration), ['id', 'id.']) !== [];
-
         return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
             && $hasId
             && ! $hasFurtherProperties
@@ -136,5 +154,10 @@ class PropertiesAdder
     {
         return ($properties[$name] ?? '') !== ''
             && isset($properties[$name . '.']);
+    }
+
+    private function getPropertyNameFromName(string $name): string
+    {
+        return rtrim($name, '.');
     }
 }
