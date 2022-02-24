@@ -87,6 +87,9 @@ class PropertiesAdder
         );
     }
 
+    /**
+     * @param mixed[] $properties
+     */
     private function addIdOnly(
         string $name,
         array $properties,
@@ -96,10 +99,13 @@ class PropertiesAdder
 
         $type->setProperty(
             $this->getPropertyNameFromName($name),
-            new NodeIdentifier($id)
+            new NodeIdentifier((string)$id)
         );
     }
 
+    /**
+     * @param mixed[] $properties
+     */
     private function addFullType(
         string $name,
         array $properties,
@@ -109,7 +115,7 @@ class PropertiesAdder
             $this->cObj,
             $properties[$name . '.']
         );
-        if (!$subType instanceof TypeInterface) {
+        if (! $subType instanceof TypeInterface) {
             return;
         }
 
