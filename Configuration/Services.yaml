@@ -11,7 +11,7 @@ services:
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
 
-  Brotkrueml\Schema\Frontend\TypoScriptToSchema:
+  Brotkrueml\Schema\TypoScript\TypoScriptToSchema:
     public: true
 
 # Deactivated because of https://forge.typo3.org/issues/90962

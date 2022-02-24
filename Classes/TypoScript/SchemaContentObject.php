@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Frontend;
+namespace Brotkrueml\Schema\TypoScript;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
@@ -23,10 +23,9 @@ class SchemaContentObject extends AbstractContentObject
     /**
      * Renders the content object.
      *
-     * @param array $configuration
-     * @return string
+     * @param mixed[] $configuration
      */
-    public function render($configuration = [])
+    public function render(array $configuration = []): string
     {
         $service = GeneralUtility::makeInstance(TypoScriptToSchema::class);
         $service->convert(
@@ -35,10 +34,5 @@ class SchemaContentObject extends AbstractContentObject
         );
 
         return '';
-    }
-
-    public static function register(): void
-    {
-        $GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']['SCHEMA'] = static::class;
     }
 }

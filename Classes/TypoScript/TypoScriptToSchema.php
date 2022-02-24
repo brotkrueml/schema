@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Frontend;
+namespace Brotkrueml\Schema\TypoScript;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -33,19 +33,25 @@ class TypoScriptToSchema
         $this->schemaManager = $schemaManager;
     }
 
+    /**
+     * @param mixed[] $configuration
+     */
     public function convert(
         ContentObjectRenderer $cObj,
         array $configuration
     ): void {
         $this->cObj = $cObj;
 
-        $type = $this->getType($configuration);
+        $type = $this->buildType($configuration);
         if ($type instanceof TypeInterface) {
             $this->schemaManager->addType($type);
         }
     }
 
-    private function getType(array $configuration): ?TypeInterface
+    /**
+     * @param mixed[] $configuration
+     */
+    private function buildType(array $configuration): ?TypeInterface
     {
         if ($this->hasFalsyIf($configuration)) {
             return null;
@@ -53,27 +59,30 @@ class TypoScriptToSchema
         unset($configuration['if.']);
 
         try {
-            $type = TypeFactory::createType($this->cObj->stdWrapValue('type', $configuration, ''));
+            $type = TypeFactory::createType($this->cObj->stdWrapValue('type', $configuration));
         } catch (DomainException $e) {
             // Do not break production sites, catch exception and return nothing.
             return null;
         }
 
-        $type->setId($this->cObj->stdWrapValue('id', $configuration, ''));
+        $type->setId($this->cObj->stdWrapValue('id', $configuration));
         $this->addProperties($type, $configuration['properties.'] ?? []);
 
         return $type;
     }
 
+    /**
+     * @param mixed[] $properties
+     */
     private function addProperties(TypeInterface $type, array $properties): void
     {
-        foreach ($properties as $name => $configuration) {
+        foreach (array_keys($properties) as $name) {
             $propertyName = rtrim($name, '.');
 
             if ($this->isFullType($name, $properties)) {
                 $type->setProperty(
                     $propertyName,
-                    $this->getType($properties[$name . '.'])
+                    $this->buildType($properties[$name . '.'])
                 );
                 continue;
             }
@@ -99,6 +108,9 @@ class TypoScriptToSchema
         }
     }
 
+    /**
+     * @param mixed[] $properties
+     */
     private function isFullType(string $name, array $properties): bool
     {
         return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
@@ -110,6 +122,9 @@ class TypoScriptToSchema
             ;
     }
 
+    /**
+     * @param mixed[] $properties
+     */
     private function isIdOnly(string $name, array $properties): bool
     {
         $configuration = $properties[$name . '.'] ?? [];
@@ -119,17 +134,23 @@ class TypoScriptToSchema
 
         return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
             && $hasId
-            && $hasFurtherProperties === false
+            && !$hasFurtherProperties
             ;
     }
 
+    /**
+     * @param mixed[] $configuration
+     */
     private function hasFalsyIf(array $configuration): bool
     {
         return isset($configuration['if.'])
-            && $this->cObj->checkIf($configuration['if.']) === false
+            && !$this->cObj->checkIf($configuration['if.'])
             ;
     }
 
+    /**
+     * @param mixed[] $properties
+     */
     private function hasCObjectDefinition(string $name, array $properties): bool
     {
         return ($properties[$name] ?? '') !== ''

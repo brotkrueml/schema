@@ -19,18 +19,27 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class TypoScriptToSchemaTest extends FunctionalTestCase
 {
+    /**
+     * @var string[]
+     */
     protected $testExtensionsToLoad = [
         'typo3conf/ext/schema',
     ];
 
+    /**
+     * @var array<string, string>
+     */
     protected $pathsToLinkInTestInstance = [
         'typo3conf/ext/schema/Tests/Functional/Fixtures/Sites/' => 'typo3conf/sites',
     ];
 
+    /**
+     * @var array<string, array<string, array<string, string>>>
+     */
     protected $configurationToUseInTestInstance = [
         'EXTENSIONS' => [
             'schema' => [
-                'automaticBreadcrumbSchemaGeneration' => '1',
+                'automaticBreadcrumbSchemaGeneration' => '0',
                 'automaticWebPageSchemaGeneration' => '0',
                 'embedMarkupInBodySection' => '1',
                 'embedMarkupOnNoindexPages' => '0',
@@ -43,7 +52,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
      */
     public function returnsNoSchemaByDefault(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
@@ -66,7 +75,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
      */
     public function returnsNoSchemaForFalsyCondition(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
@@ -91,9 +100,9 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function returnsNoSchemaForUnkownType(): void
+    public function returnsNoSchemaForUnknownType(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
@@ -101,7 +110,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                 'config' => implode(PHP_EOL, [
                     'page = PAGE',
                     'page.10 = SCHEMA',
-                    'page.10.type = Unkown',
+                    'page.10.type = Unknown',
                 ]) . PHP_EOL,
             ]
         );
@@ -114,105 +123,74 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
 
     /**
      * @test
+     * @dataProvider possibleTypoScriptConfigurations
      */
-    public function returnsSchemaWithTypeAndId(): void
-    {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
+    public function returnsExpectedSchemaInHtml(
+        array $typoScriptSetup,
+        array $expectedJsonLd
+    ): void {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
             [
-                'config' => implode(PHP_EOL, [
+                'config' => implode(PHP_EOL, $typoScriptSetup) . PHP_EOL,
+            ]
+        );
+
+        $request = new InternalRequest();
+        $content = (string)$this->executeFrontendRequest($request)->getBody();
+
+        $this->assertHasJsonLd($expectedJsonLd, $content);
+    }
+
+    public function possibleTypoScriptConfigurations(): array
+    {
+        return [
+            'Type And ID' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebPage',
                     'page.10.id = https://example.com/test#id',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        $this->assertHasJsonLd([
-            '@context' => 'https://schema.org/',
-            '@type' => 'WebPage',
-            '@id' => 'https://example.com/test#id',
-        ], $content);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsSchemaWithPlainPropertyValue(): void
-    {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+                ],
+                'expectedJsonLd' => [
+                    '@context' => 'https://schema.org/',
+                    '@type' => 'WebPage',
+                    '@id' => 'https://example.com/test#id',
+                ],
+            ],
+            'Plain Property Value' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebPage',
                     'page.10.properties.url = https://example.com/url.html',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        $this->assertHasJsonLd([
-            '@context' => 'https://schema.org/',
-            '@type' => 'WebPage',
-            'url' => 'https://example.com/url.html',
-        ], $content);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsSchemaWithIdOnlyProperty(): void
-    {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+                ],
+                'expectedJsonLd' => [
+                    '@context' => 'https://schema.org/',
+                    '@type' => 'WebPage',
+                    'url' => 'https://example.com/url.html',
+                ],
+            ],
+            'ID Only Property' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebSite',
                     'page.10.properties.publisher = SCHEMA',
                     'page.10.properties.publisher.id = https://example.com/publisher',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        $this->assertHasJsonLd([
-            '@context' => 'https://schema.org/',
-            '@type' => 'WebSite',
-            'publisher' => [
-                'https://example.com/publisher',
+                ],
+                'expectedJsonLd' => [
+                    '@context' => 'https://schema.org/',
+                    '@type' => 'WebSite',
+                    'publisher' => [
+                        'https://example.com/publisher',
+                    ],
+                ],
             ],
-        ], $content);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsSchemaWithTypeProperty(): void
-    {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+            'Type Property' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = Organization',
@@ -222,68 +200,36 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                     'page.10.properties.logo.properties.url = https://example.com/logo.png',
                     'page.10.properties.logo.properties.contentUrl = https://example.com/logo.png',
                     'page.10.properties.logo.properties.caption = Some Caption',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        $this->assertHasJsonLd([
-            '@context' => 'https://schema.org/',
-            '@type' => 'Organization',
-            'logo' => [
-                '@type' => 'ImageObject',
-                '@id' => 'https://example.com/logo.png',
-                'caption' => 'Some Caption',
-                'contentUrl' => 'https://example.com/logo.png',
-                'url' => 'https://example.com/logo.png',
+                ],
+                'expectedJsonLd' => [
+                    '@context' => 'https://schema.org/',
+                    '@type' => 'Organization',
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        '@id' => 'https://example.com/logo.png',
+                        'caption' => 'Some Caption',
+                        'contentUrl' => 'https://example.com/logo.png',
+                        'url' => 'https://example.com/logo.png',
+                    ],
+                ],
             ],
-        ], $content);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsSchemaWithEvaluatedId(): void
-    {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+            'Evaluated ID' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebPage',
                     'page.10.id.typolink.parameter = t3://page?uid=1',
                     'page.10.id.typolink.forceAbsoluteUrl = 1',
                     'page.10.id.typolink.returnLast = url',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        $this->assertHasJsonLd([
-            '@context' => 'https://schema.org/',
-            '@type' => 'WebPage',
-            '@id' => 'http://localhost/index.html',
-        ], $content);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsSchemaWithEvaluatedProperty(): void
-    {
-        $this->importDataSet(__DIR__ . '/Fixtures/Database.xml');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+                ],
+                'expectedJsonLd' => [
+                    '@context' => 'https://schema.org/',
+                    '@type' => 'WebPage',
+                    '@id' => 'http://localhost/index.html',
+                ],
+            ],
+            'Evaluated Property' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebSite',
@@ -291,20 +237,16 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                     'page.10.properties.publisher.id.typolink.parameter = t3://page?uid=1',
                     'page.10.properties.publisher.id.typolink.forceAbsoluteUrl = 1',
                     'page.10.properties.publisher.id.typolink.returnLast = url',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        $this->assertHasJsonLd([
-            '@context' => 'https://schema.org/',
-            '@type' => 'WebSite',
-            'publisher' => [
-                'http://localhost/index.html',
+                ],
+                'expectedJsonLd' => [
+                    '@context' => 'https://schema.org/',
+                    '@type' => 'WebSite',
+                    'publisher' => [
+                        'http://localhost/index.html',
+                    ],
+                ],
             ],
-        ], $content);
+        ];
     }
 
     private function assertHasJsonLd(array $expectedJsonLd, string $content): void
