@@ -107,7 +107,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                 'expectedLogEntries' => [
                     [
                         'type' => 'ERROR',
-                        'component' => 'Brotkrueml.Schema.TypoScript.TypoScriptToSchema',
+                        'component' => 'Brotkrueml.Schema.TypoScript.TypeBuilder',
                         'message' => 'Tried to create unkown Schema type "Unknown".',
                     ],
                 ],
@@ -273,7 +273,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         $this->assertHasLogEntries([
             [
                 'type' => 'ERROR',
-                'component' => 'Brotkrueml.Schema.TypoScript.TypoScriptToSchema',
+                'component' => 'Brotkrueml.Schema.TypoScript.PropertiesAdder',
                 'message' => 'Tried to set unkown property "unkownProperty".',
             ],
         ]);
