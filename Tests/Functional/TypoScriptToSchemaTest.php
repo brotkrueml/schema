@@ -180,7 +180,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                     '@context' => 'https://schema.org/',
                     '@type' => 'WebSite',
                     'publisher' => [
-                        'https://example.com/publisher',
+                        '@id' => 'https://example.com/publisher',
                     ],
                 ],
             ],
@@ -228,17 +228,14 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebSite',
-                    'page.10.properties.publisher = SCHEMA',
-                    'page.10.properties.publisher.id.typolink.parameter = t3://page?uid=1',
-                    'page.10.properties.publisher.id.typolink.forceAbsoluteUrl = 1',
-                    'page.10.properties.publisher.id.typolink.returnLast = url',
+                    'page.10.properties.url.typolink.parameter = t3://page?uid=1',
+                    'page.10.properties.url.typolink.forceAbsoluteUrl = 1',
+                    'page.10.properties.url.typolink.returnLast = url',
                 ],
                 'expectedJsonLd' => [
                     '@context' => 'https://schema.org/',
                     '@type' => 'WebSite',
-                    'publisher' => [
-                        'http://localhost/index.html',
-                    ],
+                    'url' => 'http://localhost/index.html',
                 ],
             ],
         ];

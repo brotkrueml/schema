@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\TypoScript;
 
+use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use DomainException;
 use TYPO3\CMS\Core\Log\Logger;
@@ -66,13 +67,13 @@ class PropertiesAdder
     ): void {
         $propertyName = $this->getPropertyNameFromName($name);
 
-        if ($this->isFullType($name, $properties)) {
-            $this->addFullType($name, $properties, $type);
+        if ($this->isIdOnly($name, $properties)) {
+            $this->addIdOnly($name, $properties, $type);
             return;
         }
 
-        if ($this->isIdOnly($name, $properties)) {
-            $this->addIdOnly($name, $properties, $type);
+        if ($this->isFullType($name, $properties)) {
+            $this->addFullType($name, $properties, $type);
             return;
         }
 
@@ -91,11 +92,11 @@ class PropertiesAdder
         array $properties,
         TypeInterface $type
     ): void {
+        $id = $this->cObj->stdWrapValue('id', $properties[$name . '.']);
+
         $type->setProperty(
             $this->getPropertyNameFromName($name),
-            [
-                'id' => $this->cObj->stdWrapValue('id', $properties[$name . '.']),
-            ],
+            new NodeIdentifier($id)
         );
     }
 
