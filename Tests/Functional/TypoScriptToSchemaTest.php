@@ -47,20 +47,26 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         ],
     ];
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        file_put_contents($this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log', '');
+    }
+
     /**
      * @test
+     * @dataProvider possibleTypoScriptConfigurationsWithNoResult
      */
-    public function returnsNoSchemaByDefault(): void
-    {
+    public function returnsNoSchema(
+        array $typoScriptSetup,
+        array $expectedLogEntries
+    ): void {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
             [
-                'config' => implode(PHP_EOL, [
-                    'page = PAGE',
-                    'page.10 = TEXT',
-                ]) . PHP_EOL,
+                'config' => implode(PHP_EOL, $typoScriptSetup) . PHP_EOL,
             ]
         );
 
@@ -68,57 +74,45 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         $content = (string)$this->executeFrontendRequest($request)->getBody();
 
         self::assertStringNotContainsString('ext-schema-jsonld', $content);
+        $this->assertHasLogEntries($expectedLogEntries);
     }
 
-    /**
-     * @test
-     */
-    public function returnsNoSchemaForFalsyCondition(): void
+    public function possibleTypoScriptConfigurationsWithNoResult(): array
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+        return [
+            'Default' => [
+                'typoScriptSetup' => [
+                    'page = PAGE',
+                    'page.10 = TEXT',
+                ],
+                'expectedLogEntries' => [],
+            ],
+            'Falsy Condition' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10 {',
                     'if.isTrue = 0',
                     'type = WebPage',
                     '}',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        self::assertStringNotContainsString('ext-schema-jsonld', $content);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsNoSchemaForUnknownType(): void
-    {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
-        $this->setUpFrontendRootPage(
-            1,
-            [],
-            [
-                'config' => implode(PHP_EOL, [
+                ],
+                'expectedLogEntries' => [],
+            ],
+            'Unkown Type' => [
+                'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = Unknown',
-                ]) . PHP_EOL,
-            ]
-        );
-
-        $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
-
-        self::assertStringNotContainsString('ext-schema-jsonld', $content);
+                ],
+                'expectedLogEntries' => [
+                    [
+                        'type' => 'ERROR',
+                        'component' => 'Brotkrueml.Schema.TypoScript.TypoScriptToSchema',
+                        'message' => 'Tried to create unkown Schema type "Unknown".',
+                    ],
+                ],
+            ],
+        ];
     }
 
     /**
@@ -142,6 +136,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         $content = (string)$this->executeFrontendRequest($request)->getBody();
 
         $this->assertHasJsonLd($expectedJsonLd, $content);
+        $this->assertHasLogEntries([]);
     }
 
     public function possibleTypoScriptConfigurations(): array
@@ -249,6 +244,41 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         ];
     }
 
+    /**
+     * @test
+     */
+    public function returnsSchemaAndAddsErrorForUnkownProperty(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
+        $this->setUpFrontendRootPage(
+            1,
+            [],
+            [
+                'config' => implode(PHP_EOL, [
+                    'page = PAGE',
+                    'page.10 = SCHEMA',
+                    'page.10.type = WebPage',
+                    'page.10.properties.unkownProperty = some value',
+                ]) . PHP_EOL,
+            ]
+        );
+
+        $request = new InternalRequest();
+        $content = (string)$this->executeFrontendRequest($request)->getBody();
+
+        $this->assertHasJsonLd([
+            '@context' => 'https://schema.org/',
+            '@type' => 'WebPage',
+        ], $content);
+        $this->assertHasLogEntries([
+            [
+                'type' => 'ERROR',
+                'component' => 'Brotkrueml.Schema.TypoScript.TypoScriptToSchema',
+                'message' => 'Tried to set unkown property "unkownProperty".',
+            ],
+        ]);
+    }
+
     private function assertHasJsonLd(array $expectedJsonLd, string $content): void
     {
         $jsonLd = json_encode($expectedJsonLd, JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
@@ -257,5 +287,23 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
             $content,
             'Content did not include expected JSON LD'
         );
+    }
+
+    /**
+     * @param array<array<type: string, component: string, message: string>> $entries
+     */
+    private function assertHasLogEntries(array $entries): void
+    {
+        $logFileContent = file_get_contents(
+            $this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log'
+        );
+        $logEntries = array_filter(explode("\n", $logFileContent));
+
+        self::assertCount(count($entries), $logEntries, 'Number of expected log entries did not match.');
+        foreach ($logEntries as $index => $logEntry) {
+            self::assertStringContainsString('[' . $entries[$index]['type'] . ']', $logEntry, 'Type of log entry does not match.');
+            self::assertStringContainsString('component="' . $entries[$index]['component'] . '"', $logEntry, 'Component of log entry does not match.');
+            self::assertStringEndsWith($entries[$index]['message'], trim($logEntry), 'Message of log entry does not match.');
+        }
     }
 }

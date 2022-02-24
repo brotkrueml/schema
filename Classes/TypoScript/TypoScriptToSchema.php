@@ -15,6 +15,8 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use DomainException;
+use TYPO3\CMS\Core\Log\Logger;
+use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -25,12 +27,16 @@ class TypoScriptToSchema
 {
     private SchemaManager $schemaManager;
 
+    private Logger $logger;
+
     private ContentObjectRenderer $cObj;
 
     public function __construct(
-        SchemaManager $schemaManager
+        SchemaManager $schemaManager,
+        LogManager $logManager
     ) {
         $this->schemaManager = $schemaManager;
+        $this->logger = $logManager->getLogger(__CLASS__);
     }
 
     /**
@@ -58,10 +64,12 @@ class TypoScriptToSchema
         }
         unset($configuration['if.']);
 
+        $configuredType = $this->cObj->stdWrapValue('type', $configuration);
         try {
-            $type = TypeFactory::createType($this->cObj->stdWrapValue('type', $configuration));
+            $type = TypeFactory::createType($configuredType);
         } catch (DomainException $e) {
             // Do not break production sites, catch exception and return nothing.
+            $this->logger->error('Tried to create unkown Schema type "' . $configuredType . '".');
             return null;
         }
 
@@ -79,33 +87,50 @@ class TypoScriptToSchema
         foreach (array_keys($properties) as $name) {
             $propertyName = rtrim($name, '.');
 
-            if ($this->isFullType($name, $properties)) {
-                $type->setProperty(
-                    $propertyName,
-                    $this->buildType($properties[$name . '.'])
-                );
+            try {
+                $this->addProperty($type, $propertyName, $name, $properties);
+            } catch (DomainException $e) {
+                $this->logger->error('Tried to set unkown property "' . $propertyName . '".');
                 continue;
             }
+        }
+    }
 
-            if ($this->isIdOnly($name, $properties)) {
-                $type->setProperty(
-                    $propertyName,
-                    [
-                        'id' => $this->cObj->stdWrapValue('id', $properties[$name . '.']),
-                    ],
-                );
-                continue;
-            }
-
-            if ($this->hasCObjectDefinition($propertyName, $properties)) {
-                continue;
-            }
-
+    /**
+     * @param mixed[] $properties
+     */
+    private function addProperty(
+        TypeInterface $type,
+        string $propertyName,
+        string $name,
+        array $properties
+    ): void {
+        if ($this->isFullType($name, $properties)) {
             $type->setProperty(
                 $propertyName,
-                $this->cObj->stdWrapValue($propertyName, $properties)
+                $this->buildType($properties[$name . '.'])
             );
+            return;
         }
+
+        if ($this->isIdOnly($name, $properties)) {
+            $type->setProperty(
+                $propertyName,
+                [
+                    'id' => $this->cObj->stdWrapValue('id', $properties[$name . '.']),
+                ],
+            );
+            return;
+        }
+
+        if ($this->hasCObjectDefinition($propertyName, $properties)) {
+            return;
+        }
+
+        $type->setProperty(
+            $propertyName,
+            $this->cObj->stdWrapValue($propertyName, $properties)
+        );
     }
 
     /**
@@ -134,7 +159,7 @@ class TypoScriptToSchema
 
         return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
             && $hasId
-            && !$hasFurtherProperties
+            && ! $hasFurtherProperties
             ;
     }
 
@@ -144,7 +169,7 @@ class TypoScriptToSchema
     private function hasFalsyIf(array $configuration): bool
     {
         return isset($configuration['if.'])
-            && !$this->cObj->checkIf($configuration['if.'])
+            && ! $this->cObj->checkIf($configuration['if.'])
             ;
     }
 
