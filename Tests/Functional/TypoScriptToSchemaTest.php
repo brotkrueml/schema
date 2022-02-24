@@ -296,7 +296,12 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         );
         $logEntries = array_filter(explode("\n", $logFileContent));
 
-        self::assertCount(count($entries), $logEntries, 'Number of expected log entries did not match.');
+        self::assertCount(
+            count($entries),
+            $logEntries,
+            'Number of expected log entries did not match. Got the following: ' . PHP_EOL . $logFileContent
+        );
+
         foreach ($logEntries as $index => $logEntry) {
             self::assertStringContainsString('[' . $entries[$index]['type'] . ']', $logEntry, 'Type of log entry does not match.');
             self::assertStringContainsString('component="' . $entries[$index]['component'] . '"', $logEntry, 'Component of log entry does not match.');
