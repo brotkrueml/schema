@@ -36,7 +36,7 @@ class TypoScriptToSchema
         LogManager $logManager
     ) {
         $this->schemaManager = $schemaManager;
-        $this->logger = $logManager->getLogger(__CLASS__);
+        $this->logger = $logManager->getLogger(self::class);
     }
 
     /**
