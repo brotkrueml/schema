@@ -81,7 +81,9 @@ class TypoScriptToSchema
             if ($this->isIdOnly($name, $properties)) {
                 $type->setProperty(
                     $propertyName,
-                    ['id' => $this->cObj->stdWrapValue('id', $properties[$name . '.'])],
+                    [
+                        'id' => $this->cObj->stdWrapValue('id', $properties[$name . '.']),
+                    ],
                 );
                 continue;
             }
