@@ -1,22 +1,9 @@
 base: 'http://localhost/'
 languages:
   -
-    title: 'Deutsch (de-DE)'
-    enabled: true
-    base: /
-    typo3Language: de
-    locale: de_DE.utf8
-    iso-639-1: de
-    websiteTitle: ''
-    navigationTitle: 'Deutsch'
-    hreflang: de
-    direction: ''
-    flag: de
-    languageId: 0
-  -
     title: 'Englisch'
     enabled: true
-    base: /en
+    base: /
     typo3Language: default
     locale: en_US.utf8
     iso-639-1: en
@@ -27,7 +14,7 @@ languages:
     fallbackType: strict
     fallbacks: ''
     flag: en
-    languageId: 1
+    languageId: 0
 rootPageId: 1
 routeEnhancers:
   PageTypeSuffix:
