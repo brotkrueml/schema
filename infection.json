@@ -1,22 +1,23 @@
 {
-    "$schema": ".Build/vendor/infection/infection/resources/schema.json",
-    "timeout": 10,
-    "source": {
-        "directories": [
-            "Classes"
-        ]
-    },
-    "phpUnit": {
-        "configDir": "Tests"
-    },
-    "logs": {
-        "stryker": {
-            "report": "main"
-        },
-        "html": ".Build/logs/infection.html",
-        "text": ".Build/logs/infection.log"
-    },
-    "mutators": {
-        "@default": true
-    }
+	"$schema": ".Build/vendor/infection/infection/resources/schema.json",
+	"timeout": 10,
+	"bootstrap": "./infection-bootstrap.php",
+	"source": {
+		"directories": [
+			"Classes"
+		]
+	},
+	"phpUnit": {
+		"configDir": "Tests"
+	},
+	"logs": {
+		"stryker": {
+			"report": "main"
+		},
+		"html": ".Build/logs/infection.html",
+		"text": ".Build/logs/infection.log"
+	},
+	"mutators": {
+		"@default": true
+	}
 }
