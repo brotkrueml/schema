@@ -154,7 +154,7 @@ TYPOSCRIPT,
 
     public function possibleTypoScriptConfigurationsProvider(): iterable
     {
-        yield 'Type and ID' => [
+        yield 'type and id' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
 page = PAGE
 page.10 = SCHEMA
@@ -165,6 +165,19 @@ TYPOSCRIPT,
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
                 '@id' => 'https://example.com/test#id',
+            ],
+        ];
+
+        yield 'type and empty id' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.id =
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebPage',
             ],
         ];
 
@@ -182,7 +195,33 @@ TYPOSCRIPT,
             ],
         ];
 
-        yield 'ID only property' => [
+        yield 'type and empty property' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.properties.publisher =
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebPage',
+            ],
+        ];
+
+        yield 'type and property which is evaluated to empty' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.properties.publisher.if.isTrue = 0
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebPage',
+            ],
+        ];
+
+        yield 'Only id in a sub-property' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
 page = PAGE
 page.10 = SCHEMA
@@ -201,7 +240,39 @@ TYPOSCRIPT,
             ],
         ];
 
-        yield 'Type property' => [
+        yield 'Only id in a sub-property (which is empty)' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.publisher = SCHEMA
+    properties.publisher.id =
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+            ],
+        ];
+
+        yield 'Only id in a sub-property (which is evaluated to empty)' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.publisher = SCHEMA
+    properties.publisher.id.if.isTrue = 0
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+            ],
+        ];
+
+        yield 'type with nested sub properties' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
 page = PAGE
 page.10 = SCHEMA
@@ -234,7 +305,7 @@ TYPOSCRIPT,
             ],
         ];
 
-        yield 'Evaluated ID' => [
+        yield 'id with a typolink for evaluation' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
 page = PAGE
 page.10 = SCHEMA
@@ -254,7 +325,7 @@ TYPOSCRIPT,
             ],
         ];
 
-        yield 'Evaluated property' => [
+        yield 'property with a typolink for evaluation' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
 page = PAGE
 page.10 = SCHEMA

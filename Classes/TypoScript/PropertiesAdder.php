@@ -96,11 +96,15 @@ final class PropertiesAdder
         array $properties,
         TypeInterface $type
     ): void {
-        $id = $this->cObj->stdWrapValue('id', $properties[$name . '.']);
+        $id = (string)$this->cObj->stdWrapValue('id', $properties[$name . '.']);
+
+        if ($id === '') {
+            return;
+        }
 
         $type->setProperty(
             $this->getPropertyNameFromName($name),
-            new NodeIdentifier((string)$id)
+            new NodeIdentifier($id)
         );
     }
 
