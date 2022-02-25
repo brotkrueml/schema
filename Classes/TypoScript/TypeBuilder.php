@@ -63,7 +63,7 @@ final class TypeBuilder implements LoggerAwareInterface
             return TypeFactory::createType($configuredType);
         } catch (DomainException $e) {
             // Do not break production sites, catch exception and return nothing.
-            $this->logger->error('Tried to create unknown Schema type "' . $configuredType . '".');
+            $this->logger->error(\sprintf('Use of unknown type "%s"', $configuredType));
         }
 
         return null;
@@ -75,7 +75,6 @@ final class TypeBuilder implements LoggerAwareInterface
     private function hasFalsyIf(array $configuration): bool
     {
         return isset($configuration['if.'])
-            && ! $this->cObj->checkIf($configuration['if.'])
-            ;
+            && ! $this->cObj->checkIf($configuration['if.']);
     }
 }

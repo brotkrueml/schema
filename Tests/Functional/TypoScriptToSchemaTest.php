@@ -109,7 +109,7 @@ TYPOSCRIPT,
                 [
                     'type' => 'ERROR',
                     'component' => 'Brotkrueml.Schema.TypoScript.TypeBuilder',
-                    'message' => 'Tried to create unknown Schema type "Unknown".',
+                    'message' => 'Use of unknown type "Unknown"',
                 ],
             ],
         ];
@@ -376,7 +376,7 @@ TYPOSCRIPT
             [
                 'type' => 'ERROR',
                 'component' => 'Brotkrueml.Schema.TypoScript.PropertiesAdder',
-                'message' => 'Tried to set unknown property "unknownProperty".',
+                'message' => 'Use of unknown property "unknownProperty" for type "WebPage"',
             ],
         ]);
     }

@@ -49,7 +49,11 @@ final class PropertiesAdder implements LoggerAwareInterface
             try {
                 $this->addProperty($type, $name, $properties);
             } catch (DomainException $e) {
-                $this->logger->error('Tried to set unknown property "' . $this->getPropertyNameFromName($name) . '".');
+                $this->logger->error(\sprintf(
+                    'Use of unknown property "%s" for type "%s"',
+                    $this->getPropertyNameFromName($name),
+                    $type->getType() // @phpstan-ignore-line It can only be a string (no array) as the cObject does not support multiple types
+                ));
                 continue;
             }
         }
@@ -138,8 +142,7 @@ final class PropertiesAdder implements LoggerAwareInterface
             && (
                 isset($properties[$name . '.']['type'])
                 || isset($properties[$name . '.']['type.'])
-            )
-            ;
+            );
     }
 
     /**
@@ -152,8 +155,7 @@ final class PropertiesAdder implements LoggerAwareInterface
         $hasFurtherProperties = array_diff(array_keys($configuration), ['id', 'id.']) !== [];
         return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
             && $hasId
-            && ! $hasFurtherProperties
-            ;
+            && ! $hasFurtherProperties;
     }
 
     /**
