@@ -47,6 +47,19 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         ],
     ];
 
+    public static function setUpBeforeClass(): void
+    {
+        if (! isset($GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects'])) {
+            // This fixes an error when running infection on GitHub actions
+            $GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects'] = [];
+        }
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        unset($GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']);
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
