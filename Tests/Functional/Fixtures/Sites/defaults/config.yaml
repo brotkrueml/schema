@@ -9,7 +9,7 @@ languages:
     iso-639-1: en
     websiteTitle: ''
     navigationTitle: 'English'
-    hreflang: en-DE
+    hreflang: en-US
     direction: ''
     fallbackType: strict
     fallbacks: ''
