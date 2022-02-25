@@ -18,13 +18,12 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 /**
  * Convert any given TypoScript to proper schema types.
  * The result will be added as single (nested) type to the SchemaManager.
+ * @internal
  */
-class TypoScriptToSchema
+final class TypoScriptToSchema
 {
     private TypeBuilder $typeBuilder;
-
     private PropertiesAdder $propertiesAdder;
-
     private SchemaManager $schemaManager;
 
     public function __construct(

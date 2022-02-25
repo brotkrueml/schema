@@ -17,8 +17,9 @@ use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
 /**
  * Provides cObject SCHEMA.
  * This will be converted to JSON LD via TypoScriptToSchema.
+ * @internal
  */
-class SchemaContentObject extends AbstractContentObject
+final class SchemaContentObject extends AbstractContentObject
 {
     /**
      * Renders the content object.

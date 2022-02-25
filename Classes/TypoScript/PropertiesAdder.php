@@ -19,9 +19,10 @@ use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
- * Adds properties defined bu TypoScript configuration to given Type.
+ * Adds properties defined by TypoScript configuration to given type.
+ * @internal
  */
-class PropertiesAdder
+final class PropertiesAdder
 {
     private TypeBuilder $typeBuilder;
 
@@ -51,7 +52,7 @@ class PropertiesAdder
             try {
                 $this->addProperty($type, $name, $properties);
             } catch (DomainException $e) {
-                $this->logger->error('Tried to set unkown property "' . $this->getPropertyNameFromName($name) . '".');
+                $this->logger->error('Tried to set unknown property "' . $this->getPropertyNameFromName($name) . '".');
                 continue;
             }
         }

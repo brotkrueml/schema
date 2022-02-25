@@ -98,7 +98,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                 ],
                 'expectedLogEntries' => [],
             ],
-            'Unkown Type' => [
+            'Unknown Type' => [
                 'typoScriptSetup' => [
                     'page = PAGE',
                     'page.10 = SCHEMA',
@@ -108,7 +108,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                     [
                         'type' => 'ERROR',
                         'component' => 'Brotkrueml.Schema.TypoScript.TypeBuilder',
-                        'message' => 'Tried to create unkown Schema type "Unknown".',
+                        'message' => 'Tried to create unknown Schema type "Unknown".',
                     ],
                 ],
             ],
@@ -244,7 +244,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function returnsSchemaAndAddsErrorForUnkownProperty(): void
+    public function returnsSchemaAndAddsErrorForUnknownProperty(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
@@ -255,7 +255,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
                     'page = PAGE',
                     'page.10 = SCHEMA',
                     'page.10.type = WebPage',
-                    'page.10.properties.unkownProperty = some value',
+                    'page.10.properties.unknownProperty = some value',
                 ]) . PHP_EOL,
             ]
         );
@@ -271,7 +271,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
             [
                 'type' => 'ERROR',
                 'component' => 'Brotkrueml.Schema.TypoScript.PropertiesAdder',
-                'message' => 'Tried to set unkown property "unkownProperty".',
+                'message' => 'Tried to set unknown property "unknownProperty".',
             ],
         ]);
     }

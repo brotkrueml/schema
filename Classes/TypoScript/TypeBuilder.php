@@ -20,11 +20,11 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Creates new Type from given TypoScript configuration.
+ * @internal
  */
-class TypeBuilder
+final class TypeBuilder
 {
     private Logger $logger;
-
     private ContentObjectRenderer $cObj;
 
     public function __construct(
@@ -68,7 +68,7 @@ class TypeBuilder
             return TypeFactory::createType($configuredType);
         } catch (DomainException $e) {
             // Do not break production sites, catch exception and return nothing.
-            $this->logger->error('Tried to create unkown Schema type "' . $configuredType . '".');
+            $this->logger->error('Tried to create unknown Schema type "' . $configuredType . '".');
         }
 
         return null;
