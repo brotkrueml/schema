@@ -14,24 +14,19 @@ namespace Brotkrueml\Schema\TypoScript;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Type\TypeFactory;
 use DomainException;
-use TYPO3\CMS\Core\Log\Logger;
-use TYPO3\CMS\Core\Log\LogManager;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Creates new Type from given TypoScript configuration.
  * @internal
  */
-final class TypeBuilder
+final class TypeBuilder implements LoggerAwareInterface
 {
-    private Logger $logger;
-    private ContentObjectRenderer $cObj;
+    use LoggerAwareTrait;
 
-    public function __construct(
-        LogManager $logManager
-    ) {
-        $this->logger = $logManager->getLogger(self::class);
-    }
+    private ContentObjectRenderer $cObj;
 
     /**
      * @param mixed[] $configuration

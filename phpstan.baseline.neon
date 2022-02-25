@@ -166,6 +166,16 @@ parameters:
 			path: Classes/Type/TypeRegistry.php
 
 		-
+			message: "#^Cannot call method error\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: Classes/TypoScript/PropertiesAdder.php
+
+		-
+			message: "#^Cannot call method error\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: Classes/TypoScript/TypeBuilder.php
+
+		-
 			message: "#^Do not use static property$#"
 			count: 4
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
