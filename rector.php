@@ -55,7 +55,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
         ],
         ParamTypeDeclarationRector::class => [
-            // because signature would not match anymore
+            // because signature would not match anymore with parent class
             __DIR__ . '/Classes/TypoScript/SchemaContentObject.php',
         ],
         RecastingRemovalRector::class => [
@@ -65,8 +65,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ReturnTypeDeclarationRector::class => [
             __DIR__ . '/Classes/Core/Model/AbstractType.php',
             __DIR__ . '/Classes/Core/Model/MultipleType.php',
-            // because signature would not match anymore
-            __DIR__ . '/Classes/TypoScript/SchemaContentObject.php',
         ],
         TypedPropertyRector::class => [
             // because $propertyNames must not be typed to be compatible with schema_* extensions

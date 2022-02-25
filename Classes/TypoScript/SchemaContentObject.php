@@ -25,9 +25,8 @@ final class SchemaContentObject extends AbstractContentObject
      * Renders the content object.
      *
      * @param mixed[] $configuration
-     * @return string
      */
-    public function render($configuration = [])
+    public function render($configuration = []): string
     {
         $service = GeneralUtility::makeInstance(TypoScriptToSchema::class);
         $service->convert(
