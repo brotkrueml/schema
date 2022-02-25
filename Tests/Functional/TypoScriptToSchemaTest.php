@@ -155,6 +155,19 @@ TYPOSCRIPT,
             ],
         ];
 
+        yield 'stdWrap can be used on type' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.type.override = ItemPage
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'ItemPage',
+            ],
+        ];
+
         yield 'type and empty id' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
 page = PAGE
