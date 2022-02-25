@@ -103,8 +103,23 @@ jobs:
         run: |
           composer normalize --dry-run
       - name: Check coding standards
+        if: always()
         run: |
           .Build/bin/ecs check --no-progress-bar
+      - name: Run phpstan
+        if: always()
+        run: |
+          make phpstan
+      - name: Run rector
+        if: always()
+        run: |
+          make rector-dry
+      - name: Run mutation tests
+        if: always()
+        env:
+          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
+        run: |
+          make mutation
       - name: Generate code coverage
         run: |
           make code-coverage
@@ -114,14 +129,3 @@ jobs:
         env:
           COVERALLS_RUN_LOCALLY: 1
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-      - name: Run mutation tests
-        env:
-          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
-        run: |
-          make mutation
-      - name: Run phpstan
-        run: |
-          make phpstan
-      - name: Run rector
-        run: |
-          make rector-dry
