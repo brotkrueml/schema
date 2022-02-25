@@ -55,10 +55,10 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
 
     /**
      * @test
-     * @dataProvider possibleTypoScriptConfigurationsWithNoResult
+     * @dataProvider possibleTypoScriptConfigurationsWithNoResultProvider
      */
     public function returnsNoSchema(
-        array $typoScriptSetup,
+        string $typoScriptSetup,
         array $expectedLogEntries
     ): void {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
@@ -66,7 +66,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
             1,
             [],
             [
-                'config' => implode(PHP_EOL, $typoScriptSetup) . PHP_EOL,
+                'config' => $typoScriptSetup,
             ]
         );
 
@@ -77,39 +77,39 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         $this->assertHasLogEntries($expectedLogEntries);
     }
 
-    public function possibleTypoScriptConfigurationsWithNoResult(): array
+    public function possibleTypoScriptConfigurationsWithNoResultProvider(): iterable
     {
-        return [
-            'Default' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = TEXT',
-                ],
-                'expectedLogEntries' => [],
-            ],
-            'Falsy Condition' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10 {',
-                    'if.isTrue = 0',
-                    'type = WebPage',
-                    '}',
-                ],
-                'expectedLogEntries' => [],
-            ],
-            'Unknown Type' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = Unknown',
-                ],
-                'expectedLogEntries' => [
-                    [
-                        'type' => 'ERROR',
-                        'component' => 'Brotkrueml.Schema.TypoScript.TypeBuilder',
-                        'message' => 'Tried to create unknown Schema type "Unknown".',
-                    ],
+        yield 'Without SCHEMA content object no JSON-LD is embedded' => [
+            'typoScriptSetup' => <<< TYPOSCRIPT
+page = PAGE
+page.10 = TEXT
+TYPOSCRIPT,
+            'expectedLogEntries' => [],
+        ];
+
+        yield 'With a falsy condition no JSON-LD is embedded' => [
+            'typoScriptSetup' => <<< TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    if.isTrue = 0
+    type = WebPage
+}
+TYPOSCRIPT,
+            'expectedLogEntries' => [],
+        ];
+
+        yield 'Unknown type is given no JSON-LD is embedded and an error is logged' => [
+            'typoScriptSetup' => <<< TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = Unknown
+TYPOSCRIPT,
+            'expectedLogEntries' => [
+                [
+                    'type' => 'ERROR',
+                    'component' => 'Brotkrueml.Schema.TypoScript.TypeBuilder',
+                    'message' => 'Tried to create unknown Schema type "Unknown".',
                 ],
             ],
         ];
@@ -117,10 +117,10 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
 
     /**
      * @test
-     * @dataProvider possibleTypoScriptConfigurations
+     * @dataProvider possibleTypoScriptConfigurationsProvider
      */
     public function returnsExpectedSchemaInHtml(
-        array $typoScriptSetup,
+        string $typoScriptSetup,
         array $expectedJsonLd
     ): void {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
@@ -128,7 +128,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
             1,
             [],
             [
-                'config' => implode(PHP_EOL, $typoScriptSetup) . PHP_EOL,
+                'config' => $typoScriptSetup,
             ]
         );
 
@@ -139,104 +139,125 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         $this->assertHasLogEntries([]);
     }
 
-    public function possibleTypoScriptConfigurations(): array
+    public function possibleTypoScriptConfigurationsProvider(): iterable
     {
-        return [
-            'Type And ID' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = WebPage',
-                    'page.10.id = https://example.com/test#id',
-                ],
-                'expectedJsonLd' => [
-                    '@context' => 'https://schema.org/',
-                    '@type' => 'WebPage',
-                    '@id' => 'https://example.com/test#id',
+        yield 'Type and ID' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.id = https://example.com/test#id
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebPage',
+                '@id' => 'https://example.com/test#id',
+            ],
+        ];
+
+        yield 'Plain property value' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.properties.url = https://example.com/url.html
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebPage',
+                'url' => 'https://example.com/url.html',
+            ],
+        ];
+
+        yield 'ID only property' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.publisher = SCHEMA
+    properties.publisher.id = https://example.com/publisher
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+                'publisher' => [
+                    '@id' => 'https://example.com/publisher',
                 ],
             ],
-            'Plain Property Value' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = WebPage',
-                    'page.10.properties.url = https://example.com/url.html',
-                ],
-                'expectedJsonLd' => [
-                    '@context' => 'https://schema.org/',
-                    '@type' => 'WebPage',
-                    'url' => 'https://example.com/url.html',
-                ],
-            ],
-            'ID Only Property' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = WebSite',
-                    'page.10.properties.publisher = SCHEMA',
-                    'page.10.properties.publisher.id = https://example.com/publisher',
-                ],
-                'expectedJsonLd' => [
-                    '@context' => 'https://schema.org/',
-                    '@type' => 'WebSite',
-                    'publisher' => [
-                        '@id' => 'https://example.com/publisher',
-                    ],
-                ],
-            ],
-            'Type Property' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = Organization',
-                    'page.10.properties.logo = SCHEMA',
-                    'page.10.properties.logo.type = ImageObject',
-                    'page.10.properties.logo.id = https://example.com/logo.png',
-                    'page.10.properties.logo.properties.url = https://example.com/logo.png',
-                    'page.10.properties.logo.properties.contentUrl = https://example.com/logo.png',
-                    'page.10.properties.logo.properties.caption = Some Caption',
-                ],
-                'expectedJsonLd' => [
-                    '@context' => 'https://schema.org/',
-                    '@type' => 'Organization',
-                    'logo' => [
-                        '@type' => 'ImageObject',
-                        '@id' => 'https://example.com/logo.png',
-                        'caption' => 'Some Caption',
-                        'contentUrl' => 'https://example.com/logo.png',
-                        'url' => 'https://example.com/logo.png',
-                    ],
+        ];
+
+        yield 'Type property' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = Organization
+    properties {
+        logo = SCHEMA
+        logo {
+            type = ImageObject
+            id = https://example.com/logo.png
+            properties {
+                url = https://example.com/logo.png
+                contentUrl = https://example.com/logo.png
+                caption = Some Caption
+            }
+        }
+    }
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'Organization',
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    '@id' => 'https://example.com/logo.png',
+                    'caption' => 'Some Caption',
+                    'contentUrl' => 'https://example.com/logo.png',
+                    'url' => 'https://example.com/logo.png',
                 ],
             ],
-            'Evaluated ID' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = WebPage',
-                    'page.10.id.typolink.parameter = t3://page?uid=1',
-                    'page.10.id.typolink.forceAbsoluteUrl = 1',
-                    'page.10.id.typolink.returnLast = url',
-                ],
-                'expectedJsonLd' => [
-                    '@context' => 'https://schema.org/',
-                    '@type' => 'WebPage',
-                    '@id' => 'http://localhost/index.html',
-                ],
+        ];
+
+        yield 'Evaluated ID' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebPage
+    id.typolink {
+        parameter = t3://page?uid=1
+        forceAbsoluteUrl = 1
+        returnLast = url
+    }
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebPage',
+                '@id' => 'http://localhost/index.html',
             ],
-            'Evaluated Property' => [
-                'typoScriptSetup' => [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = WebSite',
-                    'page.10.properties.url.typolink.parameter = t3://page?uid=1',
-                    'page.10.properties.url.typolink.forceAbsoluteUrl = 1',
-                    'page.10.properties.url.typolink.returnLast = url',
-                ],
-                'expectedJsonLd' => [
-                    '@context' => 'https://schema.org/',
-                    '@type' => 'WebSite',
-                    'url' => 'http://localhost/index.html',
-                ],
+        ];
+
+        yield 'Evaluated property' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.url.typolink {
+        parameter = t3://page?uid=1
+        forceAbsoluteUrl = 1
+        returnLast = url
+    }
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+                'url' => 'http://localhost/index.html',
             ],
         ];
     }
@@ -251,12 +272,12 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
             1,
             [],
             [
-                'config' => implode(PHP_EOL, [
-                    'page = PAGE',
-                    'page.10 = SCHEMA',
-                    'page.10.type = WebPage',
-                    'page.10.properties.unknownProperty = some value',
-                ]) . PHP_EOL,
+                'config' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10.type = WebPage
+page.10.properties.unknownProperty = some value
+TYPOSCRIPT
             ]
         );
 
