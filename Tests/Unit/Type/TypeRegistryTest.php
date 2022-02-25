@@ -35,6 +35,9 @@ class TypeRegistryTest extends TestCase
 
     protected function setUp(): void
     {
+        // This initialisation is not need anymore when compatibility with TYPO3 v11 is removed -->
+        $GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects'] ??= [];
+
         $this->cacheMock = $this->createMock(PhpFrontend::class);
 
         $packageStub1 = $this->createStub(PackageInterface::class);

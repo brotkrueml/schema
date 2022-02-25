@@ -24,6 +24,8 @@
         </testsuite>
     </testsuites>
     <extensions>
+        <!-- The ContentObjectsInitialisationHook is not need anymore when compatibility with TYPO3 v11 is removed -->
+        <extension class="Brotkrueml\Schema\Tests\Hooks\ContentObjectsInitialisationHook"/>
         <extension class="Brotkrueml\Schema\Tests\Hooks\Typo3ConstantsHook"/>
     </extensions>
     <php>
