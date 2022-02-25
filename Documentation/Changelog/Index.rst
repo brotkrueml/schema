@@ -1,5 +1,3 @@
-.. include:: /Includes.rst.txt
-
 .. _changelog:
 
 Changelog
@@ -16,10 +14,10 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 Added
 ^^^^^
 
-* Content Object (cObject) :ts:`SCHEMA` to add Types to Schema via TypoScript (#88)
-  Thanks to `Daniel Siepmann <https://daniel-siepmann.de/about-me.html>`_
 
 * Configuration to exclude custom doktypes when automatically generating the breadcrumb (#84)
+* Content Object (cObject) ``SCHEMA`` to add types via TypoScript (#88)
+  Thanks to `Daniel Siepmann <https://daniel-siepmann.de/about-me.html>`_
 
 [2.2.2] - 2022-01-02
 --------------------
