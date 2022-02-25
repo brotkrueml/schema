@@ -11,6 +11,8 @@ TypoScript
 
 Target group: **Integrators**
 
+.. index:: Content object SCHEMA
+
 Content Object (cObject) :ts:`SCHEMA`
 =====================================
 
@@ -49,14 +51,14 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       type
 
    Data type
-      string /:ref:`stdWrap <t3ts:stdwrap>`
+      string / :ref:`stdWrap <t3ts:stdwrap>`
 
    Description
       Defines the schema type to use, see: :ref:`available-types`.
 
       **Example:**
 
-      .. code-block:: typoscript
+      ::
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -67,14 +69,14 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       id
 
    Data type
-      string /:ref:`stdWrap <t3ts:stdwrap>`
+      string / :ref:`stdWrap <t3ts:stdwrap>`
 
    Description
       The id added as ``@id`` to the type if defined.
 
       **Example:**
 
-      .. code-block:: typoscript
+      ::
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -97,11 +99,12 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
    Description
       The key will be used as property name.
-      The value is evaluated as TypoScript.
+      The value can be a static text, a content object, a
+      :ref:`stdWrap <t3ts:stdwrap>` property or an :ref:`if <t3ts:if>` condition.
 
       **Example:**
 
-      .. code-block:: typoscript
+      ::
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -115,7 +118,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
       **Example:**
 
-      .. code-block:: typoscript
+      ::
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -146,7 +149,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
       **Example:**
 
-      .. code-block:: typoscript
+      ::
 
          page.10 = SCHEMA
          page.10 {
