@@ -6,9 +6,9 @@
 
 .. _view-helpers:
 
-======================
-Using the view helpers
-======================
+============
+View helpers
+============
 
 Target group: **Developers, Integrators**
 
