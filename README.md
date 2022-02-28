@@ -8,6 +8,8 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
 
+[![Verified TYPO3 Extension](Documentation/Images/verified.svg) Verified TYPO3 Extension](https://typo3.com/typo3-cms/verified-extensions-integrations-for-typo3/extensions/embedding-schemaorg-vocabulary-in-typo3)
+
 Version 2 of the extension supports TYPO3 v10 LTS and TYPO3 v11 LTS and needs at least PHP 7.4.
 
 Latest version 1.x supports TYPO3 v9 LTS, TYPO3 v10 LTS, TYPO3 v11 and PHP 7.2+.
