@@ -27,9 +27,11 @@
 		"php": ">=7.4",
 		"ext-json": "*",
 		"symfony/polyfill-php80": "^1.17",
-		"typo3/cms-core": "^10.4.11 || ^11.5"
+		"typo3/cms-core": "^10.4.11 || ^11.5",
+		"typo3/cms-frontend": "^10.4.11 || ^11.5"
 	},
 	"require-dev": {
+		"ext-sqlite3": "*",
 		"brotkrueml/coding-standards": "~1.2.0",
 		"captainhook/captainhook": "^5.10",
 		"ergebnis/composer-normalize": "~2.23.0",
@@ -44,7 +46,8 @@
 		"symfony/yaml": "^5.4 || ^6.0",
 		"symplify/phpstan-rules": "^10.0",
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.5",
-		"typo3/cms-lowlevel": "^10.4.11 || ^11.5"
+		"typo3/cms-lowlevel": "^10.4.11 || ^11.5",
+		"typo3/testing-framework": "^6.15"
 	},
 	"conflict": {
 		"brotkrueml/sdbreadcrumb": "*"

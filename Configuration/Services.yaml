@@ -11,6 +11,9 @@ services:
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
 
+  Brotkrueml\Schema\TypoScript\TypoScriptToSchema:
+    public: true
+
 # Deactivated because of https://forge.typo3.org/issues/90962
 #  cache.tx_schema_core:
 #    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface

@@ -16,6 +16,8 @@ Added
 
 
 * Configuration to exclude custom doktypes when automatically generating the breadcrumb (#84)
+* Content Object (cObject) ``SCHEMA`` to add types via TypoScript (#88)
+  Thanks to `Daniel Siepmann <https://daniel-siepmann.de/about-me.html>`_
 
 [2.2.2] - 2022-01-02
 --------------------

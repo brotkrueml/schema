@@ -14,6 +14,8 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['backend'] ??= TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class;
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_CORE_IDENTIFIER]['options'] ??= ['defaultLifetime' => 0];
 
+$GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']['SCHEMA'] = \Brotkrueml\Schema\TypoScript\SchemaContentObject::class;
+
 if (TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('adminpanel')) {
     $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['ext-schema'] = [
         'module' => Brotkrueml\Schema\AdminPanel\SchemaModule::class,

@@ -33,8 +33,12 @@ rector: vendor
 rector-dry: vendor
 	.Build/bin/rector --dry-run
 
+.Build/web/typo3conf/ext/schema:
+	mkdir -p .Build/web/typo3conf/ext
+	ln -s ../../../../. .Build/web/typo3conf/ext/schema
+
 .PHONY: tests
-tests: vendor
+tests: vendor .Build/web/typo3conf/ext/schema
 	.Build/bin/phpunit --configuration=Tests/phpunit.xml.dist
 
 vendor: composer.json composer.lock

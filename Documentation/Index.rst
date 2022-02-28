@@ -76,6 +76,7 @@ on the top right to submit your change request.
 
    Installation/Index
    Configuration/Index
+   TypoScript/Index
    Developer/ViewHelpers
    AdminPanel/Index
    Translation/Index

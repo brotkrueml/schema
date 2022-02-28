@@ -61,6 +61,7 @@ jobs:
           make tests
   sonar-cloud:
     name: SonarCloud Analysis
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -102,24 +103,29 @@ jobs:
         run: |
           composer normalize --dry-run
       - name: Check coding standards
+        if: always()
         run: |
           .Build/bin/ecs check --no-progress-bar
-      - name: Generate code coverage
+      - name: Run phpstan
+        if: always()
         run: |
-          make code-coverage
-      - name: Send code coverage report to coveralls.io
-        run: .Build/bin/php-coveralls -v
-        env:
-          COVERALLS_RUN_LOCALLY: 1
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          make phpstan
+      - name: Run rector
+        if: always()
+        run: |
+          make rector-dry
       - name: Run mutation tests
+        if: always()
         env:
           INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
         run: |
           make mutation
-      - name: Run phpstan
+      - name: Generate code coverage
         run: |
-          make phpstan
-      - name: Run rector
-        run: |
-          make rector-dry
+          make code-coverage
+      - name: Send code coverage report to coveralls.io
+        if: github.event_name != 'pull_request'
+        run: .Build/bin/php-coveralls -v
+        env:
+          COVERALLS_RUN_LOCALLY: 1
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

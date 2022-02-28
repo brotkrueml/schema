@@ -1,0 +1,25 @@
+base: 'http://localhost/'
+languages:
+  -
+    title: 'Englisch'
+    enabled: true
+    base: /
+    typo3Language: default
+    locale: en_US.utf8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: 'English'
+    hreflang: en-US
+    direction: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: en
+    languageId: 0
+rootPageId: 1
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    default: .html
+    map:
+      .html: 0
+websiteTitle: tests
