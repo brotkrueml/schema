@@ -8,19 +8,22 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v2.2.1...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.3.0...HEAD>`_
 ------------------------------------------------------------------------------
+
+`2.3.0 <https://github.com/brotkrueml/schema/compare/v2.2.2...v2.3.0>`_ - 2022-02-28
+----------------------------------------------------------------------------------------
 
 Added
 ^^^^^
 
 
-* Configuration to exclude custom doktypes when automatically generating the breadcrumb (#84)
+* Configuration option to exclude custom doktypes when automatically generating the breadcrumb (#84)
 * Content Object (cObject) ``SCHEMA`` to add types via TypoScript (#88)
   Thanks to `Daniel Siepmann <https://daniel-siepmann.de/about-me.html>`_
 
-[2.2.2] - 2022-01-02
---------------------
+`2.2.2 <https://github.com/brotkrueml/schema/compare/v2.2.1...v2.2.2>`_ - 2022-01-02
+----------------------------------------------------------------------------------------
 
 Fixed
 ^^^^^

@@ -7,8 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.3.0] - 2022-02-28
+
 ### Added
-- Configuration to exclude custom doktypes when automatically generating the breadcrumb (#84)
+- Configuration option to exclude custom doktypes when automatically generating the breadcrumb (#84)
 - Content Object (cObject) `SCHEMA` to add types via TypoScript (#88)
   Thanks to [Daniel Siepmann](<https://daniel-siepmann.de/about-me.html>)
 
@@ -310,7 +312,9 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.2.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/brotkrueml/schema/compare/v2.2.2...v2.3.0
+[2.2.2]: https://github.com/brotkrueml/schema/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/brotkrueml/schema/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/brotkrueml/schema/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/brotkrueml/schema/compare/v2.0.2...v2.1.0
