@@ -3,7 +3,6 @@ includes:
     - .Build/vendor/symplify/phpstan-rules/config/array-rules.neon
     - .Build/vendor/symplify/phpstan-rules/config/forbidden-static-rules.neon
     - .Build/vendor/symplify/phpstan-rules/config/regex-rules.neon
-    - .Build/vendor/symplify/phpstan-rules/config/size-rules.neon
 
 parameters:
     phpVersion: 80000

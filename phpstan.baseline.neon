@@ -11,11 +11,6 @@ parameters:
 			path: Classes/AdminPanel/TypesInformation.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\AdminPanel\\\\TypesInformation\\:\\:getContent\\(\\) has parameter \\$data with no value type specified in iterable type TYPO3\\\\CMS\\\\Adminpanel\\\\ModuleApi\\\\ModuleData\\.$#"
-			count: 1
-			path: Classes/AdminPanel/TypesInformation.php
-
-		-
 			message: "#^Cannot access property \\$newHash on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
 			count: 1
 			path: Classes/Cache/PagesCacheService.php
@@ -89,21 +84,6 @@ parameters:
 			message: "#^Class cognitive complexity is 19, keep it under 15$#"
 			count: 1
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\ViewHelpers\\\\AbstractBaseTypeViewHelper\\:\\:__construct\\(\\) has parameter \\$typeStack with no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
-			message: "#^Property Brotkrueml\\\\Schema\\\\Core\\\\ViewHelpers\\\\AbstractBaseTypeViewHelper\\:\\:\\$stack type has no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\ViewHelpers\\\\AbstractTypeViewHelper\\:\\:__construct\\(\\) has parameter \\$typeStack with no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractTypeViewHelper.php
 
 		-
 			message: "#^Method Brotkrueml\\\\Schema\\\\Hooks\\\\PageRenderer\\\\SchemaMarkupInjection\\:\\:execute\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
@@ -186,6 +166,16 @@ parameters:
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
 
 		-
+			message: "#^Binary operation \"\\.\" between array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null and string results in an error\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
+
+		-
+			message: "#^Parameter \\#2 \\$needle of function str_starts_with expects string, array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null given\\.$#"
+			count: 1
+			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
+
+		-
 			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\MultipleTypeViewHelper\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/ViewHelpers/MultipleTypeViewHelper.php
@@ -194,14 +184,4 @@ parameters:
 			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\NodeIdentifierViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/ViewHelpers/NodeIdentifierViewHelper.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\PropertyViewHelper\\:\\:__construct\\(\\) has parameter \\$typeStack with no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/PropertyViewHelper.php
-
-		-
-			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\PropertyViewHelper\\:\\:\\$typeStack type has no value type specified in iterable type Brotkrueml\\\\Schema\\\\Core\\\\TypeStack\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/PropertyViewHelper.php
 
