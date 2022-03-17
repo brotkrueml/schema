@@ -10,9 +10,15 @@ Structured data with the schema extension
 
 - :ref:`api`
 - :ref:`view-helpers`
-- :ref:`events`
+- :ref:`Content object <content-object>`
 - :ref:`extending-vocabulary`
 
+
+:Extension key:
+   schema
+
+:Package name:
+   brotkrueml/schema
 
 :Version:
    |release|
@@ -23,55 +29,43 @@ Structured data with the schema extension
 :Author:
    Chris Müller
 
-:Email:
-   typo3 (at) krue (dot) ml
-
-:Forum:
-   `GitHub Discussions`_
-
-:Twitter:
-   `@brotkrueml`_
-
 :License:
-   This extension documentation is published under the `CC BY-NC-SA 4.0`_
-   (Creative Commons) license
+   This document is published under the `Creative Commons BY 4.0`_ license.
 
-.. rst-class:: horizbuttons-tip-xxl
+:Rendered:
+   |today|
 
-- :ref:`Sitemap`
+----
 
 Structured data is essential for search engine optimisation nowadays. This
 extension allows the easy integration of structured data based on the
 `schema.org vocabulary`_ on a TYPO3 website. A good introduction to the topic is
 provided by Google: `Understand how structured data works`_.
 
-**TYPO3**
+----
 
-The content of this document is related to TYPO3 CMS,
-a GNU/GPL CMS/Framework available from `typo3.org`_.
+.. rst-class:: horizbuttons-tip-xxl
 
-**Extension Manual**
-
-This documentation is for the TYPO3 extension schema.
-
-If you find an error or something is missing, please: `Report a Problem`_.
-
-**For Contributors**
-
-You are welcome to help improve this manual. Just click on "Edit on GitHub"
-on the top right to submit your change request.
+- :ref:`Sitemap`
 
 **Table of Contents**
 
 .. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
    Introduction/Index
 
 .. toctree::
+   :maxdepth: 2
+   :titlesonly:
    :caption: For Editors
 
    Editor/Index
 
 .. toctree::
+   :maxdepth: 2
+   :titlesonly:
    :caption: For Integrators
 
    Installation/Index
@@ -83,6 +77,8 @@ on the top right to submit your change request.
    KnownProblems/Index
 
 .. toctree::
+   :maxdepth: 2
+   :titlesonly:
    :caption: Developer Corner
 
    Developer/Index
@@ -96,6 +92,8 @@ on the top right to submit your change request.
    Developer/Deprecations
 
 .. toctree::
+   :maxdepth: 2
+   :titlesonly:
    :caption: Update
 
    Changelog/Index
@@ -103,16 +101,12 @@ on the top right to submit your change request.
 
 
 .. toctree::
+   :hidden:
 
-   genindex
    Sitemap
+   genindex
 
 
-.. _@brotkrueml: https://twitter.com/brotkrueml
-.. _#ext-schema: https://typo3.slack.com/archives/CV36M73D5
-.. _CC BY-NC-SA 4.0: https://creativecommons.org/licenses/by-nc-sa/4.0/
-.. _GitHub Discussions: https://github.com/brotkrueml/schema/discussions
-.. _Report a Problem: https://github.com/brotkrueml/schema/issues
+.. _Creative Commons BY 4.0: https://creativecommons.org/licenses/by/4.0/
 .. _schema.org vocabulary: https://schema.org/
-.. _typo3.org: https://typo3.org/
 .. _Understand how structured data works: https://developers.google.com/search/docs/guides/intro-structured-data

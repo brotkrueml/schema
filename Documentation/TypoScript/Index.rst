@@ -13,6 +13,8 @@ Target group: **Integrators**
 
 .. index:: Content object SCHEMA
 
+.. _content-object:
+
 Content Object (cObject) :ts:`SCHEMA`
 =====================================
 
@@ -51,7 +53,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       type
 
    Data type
-      string / :ref:`stdWrap <t3ts:stdwrap>`
+      string / :ref:`stdWrap <t3tsref:stdwrap>`
 
    Description
       Defines the schema type to use, see: :ref:`available-types`.
@@ -69,7 +71,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       id
 
    Data type
-      string / :ref:`stdWrap <t3ts:stdwrap>`
+      string / :ref:`stdWrap <t3tsref:stdwrap>`
 
    Description
       The id added as ``@id`` to the type if defined.
@@ -100,7 +102,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
    Description
       The key will be used as property name.
       The value can be a static text, a content object, a
-      :ref:`stdWrap <t3ts:stdwrap>` property or an :ref:`if <t3ts:if>` condition.
+      :ref:`stdWrap <t3tsref:stdwrap>` property or an :ref:`if <t3tsref:if>` condition.
 
       **Example:**
 
@@ -142,7 +144,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       if
 
    Data type
-      :ref:`if <t3ts:if>`
+      :ref:`if <t3tsref:if>`
 
    Description
       Prevents processing of the whole cObject if it evaluates to ``false``.

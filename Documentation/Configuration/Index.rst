@@ -117,7 +117,7 @@ Default value
 
 .. note::
    The option is considered only if the :ref:`SEO system extension
-   <t3seo:introduction>` is installed. If this is not the case, the markup is
+   <ext_seo:introduction>` is installed. If this is not the case, the markup is
    always embedded.
 
 
