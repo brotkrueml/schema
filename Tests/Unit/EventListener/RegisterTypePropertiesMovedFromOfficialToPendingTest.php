@@ -81,6 +81,19 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
     }
 
     /**
+     * We test here only one type from the amount of types, just to verify that the
+     * property is added correctly
+     * @test
+     */
+    public function additionalPropertyProviderIsRegisteredCorrectly(): void
+    {
+        $event = new RegisterAdditionalTypePropertiesEvent(Type\AboutPage::class);
+        ($this->subject)($event);
+
+        self::assertContains('provider', $event->getAdditionalProperties());
+    }
+
+    /**
      * @test
      * @dataProvider dataProviderForSport
      */

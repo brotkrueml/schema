@@ -97,7 +97,6 @@ final class RadioSeries extends AbstractType
         'potentialAction',
         'producer',
         'productionCompany',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

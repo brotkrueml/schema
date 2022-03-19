@@ -90,7 +90,6 @@ final class HowTo extends AbstractType
         'potentialAction',
         'prepTime',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

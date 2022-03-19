@@ -67,6 +67,7 @@ final class Florist extends AbstractType
         'interactionStatistic',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'legalName',
         'leiCode',

@@ -90,7 +90,6 @@ final class HowToTip extends AbstractType
         'potentialAction',
         'previousItem',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

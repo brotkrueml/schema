@@ -94,7 +94,6 @@ final class Clip extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

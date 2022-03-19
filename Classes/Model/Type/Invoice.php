@@ -39,7 +39,6 @@ final class Invoice extends AbstractType
         'paymentMethodId',
         'paymentStatus',
         'potentialAction',
-        'provider',
         'referencesOrder',
         'sameAs',
         'scheduledPaymentDate',

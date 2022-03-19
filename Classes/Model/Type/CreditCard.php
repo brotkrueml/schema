@@ -56,7 +56,6 @@ final class CreditCard extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'providerMobility',
         'requiredCollateral',
         'review',

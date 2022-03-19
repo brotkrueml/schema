@@ -89,7 +89,6 @@ final class WPSideBar extends AbstractType implements WebPageElementTypeInterfac
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

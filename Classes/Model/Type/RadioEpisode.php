@@ -95,7 +95,6 @@ final class RadioEpisode extends AbstractType
         'potentialAction',
         'producer',
         'productionCompany',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

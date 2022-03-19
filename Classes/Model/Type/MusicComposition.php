@@ -96,7 +96,6 @@ final class MusicComposition extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

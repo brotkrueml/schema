@@ -51,6 +51,7 @@ final class Airport extends AbstractType
         'image',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'logo',
         'longitude',

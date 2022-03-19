@@ -45,7 +45,6 @@ final class PaymentService extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'providerMobility',
         'review',
         'sameAs',

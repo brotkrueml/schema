@@ -92,7 +92,6 @@ final class SearchResultsPage extends AbstractType implements WebPageTypeInterfa
         'potentialAction',
         'primaryImageOfPage',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

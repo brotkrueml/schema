@@ -95,7 +95,6 @@ final class TVEpisode extends AbstractType
         'potentialAction',
         'producer',
         'productionCompany',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

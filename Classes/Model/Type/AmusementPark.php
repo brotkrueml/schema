@@ -67,6 +67,7 @@ final class AmusementPark extends AbstractType
         'interactionStatistic',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'legalName',
         'leiCode',

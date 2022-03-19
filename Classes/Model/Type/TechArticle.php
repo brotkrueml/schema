@@ -94,7 +94,6 @@ final class TechArticle extends AbstractType
         'potentialAction',
         'producer',
         'proficiencyLevel',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

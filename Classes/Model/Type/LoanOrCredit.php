@@ -48,7 +48,6 @@ final class LoanOrCredit extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'providerMobility',
         'requiredCollateral',
         'review',

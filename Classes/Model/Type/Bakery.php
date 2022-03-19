@@ -69,6 +69,7 @@ final class Bakery extends AbstractType
         'interactionStatistic',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'legalName',
         'leiCode',

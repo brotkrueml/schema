@@ -67,6 +67,7 @@ final class FurnitureStore extends AbstractType
         'interactionStatistic',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'legalName',
         'leiCode',

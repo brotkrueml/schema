@@ -48,6 +48,7 @@ final class DanceGroup extends AbstractType
         'image',
         'interactionStatistic',
         'isicV4',
+        'keywords',
         'legalName',
         'leiCode',
         'location',

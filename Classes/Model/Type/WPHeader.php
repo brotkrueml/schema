@@ -89,7 +89,6 @@ final class WPHeader extends AbstractType implements WebPageElementTypeInterface
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

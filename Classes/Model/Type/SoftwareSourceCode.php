@@ -90,7 +90,6 @@ final class SoftwareSourceCode extends AbstractType
         'potentialAction',
         'producer',
         'programmingLanguage',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',
