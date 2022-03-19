@@ -68,7 +68,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "1.12.x-dev"
+			"dev-master": "1.13.x-dev"
 		},
 		"typo3/cms": {
 			"extension-key": "schema",
