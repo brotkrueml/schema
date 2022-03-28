@@ -88,7 +88,6 @@ final class DigitalDocument extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

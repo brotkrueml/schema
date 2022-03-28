@@ -100,7 +100,6 @@ final class ImageObject extends AbstractType
         'potentialAction',
         'producer',
         'productionCompany',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

@@ -36,7 +36,6 @@ final class ParcelDelivery extends AbstractType
         'originAddress',
         'partOfOrder',
         'potentialAction',
-        'provider',
         'sameAs',
         'subjectOf',
         'trackingNumber',

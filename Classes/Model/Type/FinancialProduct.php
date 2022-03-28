@@ -45,7 +45,6 @@ final class FinancialProduct extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'providerMobility',
         'review',
         'sameAs',

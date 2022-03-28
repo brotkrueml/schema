@@ -88,7 +88,6 @@ final class TextDigitalDocument extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

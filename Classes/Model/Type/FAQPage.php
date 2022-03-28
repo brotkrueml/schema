@@ -92,7 +92,6 @@ final class FAQPage extends AbstractType implements WebPageTypeInterface
         'potentialAction',
         'primaryImageOfPage',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

@@ -102,7 +102,6 @@ final class MobileApplication extends AbstractType
         'potentialAction',
         'processorRequirements',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

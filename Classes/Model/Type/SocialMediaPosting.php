@@ -92,7 +92,6 @@ final class SocialMediaPosting extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

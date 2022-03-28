@@ -40,6 +40,7 @@ final class OnDemandEvent extends AbstractType
         'image',
         'inLanguage',
         'isAccessibleForFree',
+        'keywords',
         'location',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',

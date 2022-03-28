@@ -52,6 +52,7 @@ final class AggregateOffer extends AbstractType
         'image',
         'includesObject',
         'inventoryLevel',
+        'isFamilyFriendly',
         'itemCondition',
         'itemOffered',
         'lowPrice',

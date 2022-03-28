@@ -49,6 +49,7 @@ final class LandmarksOrHistoricalBuildings extends AbstractType
         'image',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'logo',
         'longitude',

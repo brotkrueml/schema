@@ -42,7 +42,6 @@ final class Service extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'providerMobility',
         'review',
         'sameAs',

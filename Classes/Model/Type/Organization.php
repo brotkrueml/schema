@@ -48,6 +48,7 @@ final class Organization extends AbstractType
         'image',
         'interactionStatistic',
         'isicV4',
+        'keywords',
         'legalName',
         'leiCode',
         'location',

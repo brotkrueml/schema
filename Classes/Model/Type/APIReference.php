@@ -97,7 +97,6 @@ final class APIReference extends AbstractType
         'producer',
         'proficiencyLevel',
         'programmingModel',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

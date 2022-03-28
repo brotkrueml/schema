@@ -39,7 +39,6 @@ final class RentalCarReservation extends AbstractType
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',
-        'provider',
         'reservationFor',
         'reservationId',
         'reservationStatus',

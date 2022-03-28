@@ -40,6 +40,7 @@ final class BusinessEvent extends AbstractType
         'image',
         'inLanguage',
         'isAccessibleForFree',
+        'keywords',
         'location',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',

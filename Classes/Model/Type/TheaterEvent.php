@@ -40,6 +40,7 @@ final class TheaterEvent extends AbstractType
         'image',
         'inLanguage',
         'isAccessibleForFree',
+        'keywords',
         'location',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',

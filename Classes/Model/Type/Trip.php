@@ -31,7 +31,6 @@ final class Trip extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'sameAs',
         'subjectOf',
         'url',

@@ -50,6 +50,7 @@ final class SingleFamilyResidence extends AbstractType
         'image',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'logo',
         'longitude',

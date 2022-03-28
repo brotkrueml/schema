@@ -99,7 +99,6 @@ final class NewsArticle extends AbstractType
         'printPage',
         'printSection',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

@@ -89,7 +89,6 @@ final class WebPageElement extends AbstractType implements WebPageElementTypeInt
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

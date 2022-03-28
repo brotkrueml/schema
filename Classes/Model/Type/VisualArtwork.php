@@ -93,7 +93,6 @@ final class VisualArtwork extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

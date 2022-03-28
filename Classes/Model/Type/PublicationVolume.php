@@ -92,7 +92,6 @@ final class PublicationVolume extends AbstractType
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

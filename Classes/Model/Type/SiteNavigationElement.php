@@ -89,7 +89,6 @@ final class SiteNavigationElement extends AbstractType implements WebPageElement
         'position',
         'potentialAction',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

@@ -38,7 +38,6 @@ final class TaxiReservation extends AbstractType
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',
-        'provider',
         'reservationFor',
         'reservationId',
         'reservationStatus',

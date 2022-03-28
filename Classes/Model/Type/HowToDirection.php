@@ -95,7 +95,6 @@ final class HowToDirection extends AbstractType
         'prepTime',
         'previousItem',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

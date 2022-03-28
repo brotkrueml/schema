@@ -33,7 +33,6 @@ final class ReservationPackage extends AbstractType
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',
-        'provider',
         'reservationFor',
         'reservationId',
         'reservationStatus',

@@ -93,7 +93,6 @@ final class Recipe extends AbstractType
         'potentialAction',
         'prepTime',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

@@ -42,7 +42,6 @@ final class GovernmentService extends AbstractType
         'name',
         'offers',
         'potentialAction',
-        'provider',
         'providerMobility',
         'review',
         'sameAs',

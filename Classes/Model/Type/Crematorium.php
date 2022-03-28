@@ -49,6 +49,7 @@ final class Crematorium extends AbstractType
         'image',
         'isAccessibleForFree',
         'isicV4',
+        'keywords',
         'latitude',
         'logo',
         'longitude',

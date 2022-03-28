@@ -42,6 +42,7 @@ final class BroadcastEvent extends AbstractType
         'inLanguage',
         'isAccessibleForFree',
         'isLiveBroadcast',
+        'keywords',
         'location',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',

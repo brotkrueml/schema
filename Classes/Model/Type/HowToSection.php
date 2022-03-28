@@ -93,7 +93,6 @@ final class HowToSection extends AbstractType
         'potentialAction',
         'previousItem',
         'producer',
-        'provider',
         'publication',
         'publisher',
         'publishingPrinciples',

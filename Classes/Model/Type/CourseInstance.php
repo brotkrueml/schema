@@ -42,6 +42,7 @@ final class CourseInstance extends AbstractType
         'inLanguage',
         'instructor',
         'isAccessibleForFree',
+        'keywords',
         'location',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',

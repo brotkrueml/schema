@@ -50,7 +50,6 @@ final class BroadcastService extends AbstractType
         'offers',
         'parentService',
         'potentialAction',
-        'provider',
         'providerMobility',
         'review',
         'sameAs',
