@@ -15,5 +15,4 @@
 /phpstan.baseline.neon export-ignore
 /phpstan.neon export-ignore
 /rector.php export-ignore
-/sonar-project.properties export-ignore
 *.xsd export-ignore
