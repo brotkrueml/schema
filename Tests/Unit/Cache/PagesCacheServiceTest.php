@@ -23,12 +23,12 @@ class PagesCacheServiceTest extends TestCase
     private PagesCacheService $subject;
 
     /**
-     * @var MockObject|FrontendInterface
+     * @var MockObject&FrontendInterface
      */
     private $cacheFrontendMock;
 
     /**
-     * @var Stub|TypoScriptFrontendController
+     * @var Stub&TypoScriptFrontendController
      */
     private $controllerStub;
 

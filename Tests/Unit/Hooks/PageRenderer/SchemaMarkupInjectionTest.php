@@ -51,22 +51,22 @@ class SchemaMarkupInjectionTest extends TestCase
     protected $controllerMock;
 
     /**
-     * @var PagesCacheService|MockObject
+     * @var PagesCacheService&MockObject
      */
     private $pagesCacheServiceMock;
 
     /**
-     * @var Stub|ApplicationType
+     * @var Stub&ApplicationType
      */
     private $applicationTypeStub;
 
     /**
-     * @var Stub|ExtensionAvailability
+     * @var Stub&ExtensionAvailability
      */
     private $extensionAvailabilityStub;
 
     /**
-     * @var Stub|EventDispatcher
+     * @var Stub&EventDispatcher
      */
     private $eventDispatcherStub;
 

@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 class ExtensionAvailabilityTest extends TestCase
 {
     /**
-     * @var Stub|PackageManager
+     * @var Stub&PackageManager
      */
     private $packageManagerStub;
 

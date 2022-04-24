@@ -28,12 +28,12 @@ class AddWebPageTypeTest extends TestCase
     use SchemaCacheTrait;
 
     /**
-     * @var Stub|ExtensionConfiguration
+     * @var Stub&ExtensionConfiguration
      */
     private $extensionConfigurationStub;
 
     /**
-     * @var Stub|TypoScriptFrontendController
+     * @var Stub&TypoScriptFrontendController
      */
     private $typoScriptFrontendControllerStub;
 

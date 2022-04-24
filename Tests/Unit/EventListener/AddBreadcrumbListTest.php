@@ -32,17 +32,17 @@ final class AddBreadcrumbListTest extends TestCase
     use SchemaCacheTrait;
 
     /**
-     * @var Stub|ContentObjectRenderer
+     * @var Stub&ContentObjectRenderer
      */
     private $contentObjectRendererStub;
 
     /**
-     * @var Stub|ExtensionConfiguration
+     * @var Stub&ExtensionConfiguration
      */
     private $extensionConfigurationStub;
 
     /**
-     * @var Stub|TypoScriptFrontendController
+     * @var Stub&TypoScriptFrontendController
      */
     private $typoScriptFrontendControllerStub;
 

@@ -26,7 +26,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 final class TypesTest extends TestCase
 {
     /**
-     * @var TypeRegistry|Stub
+     * @var TypeRegistry&Stub
      */
     private $typeRegistryStub;
     private Types $subject;

@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class TypeFactoryTest extends TestCase
 {
     /**
-     * @var TypeRegistry|Stub
+     * @var TypeRegistry&Stub
      */
     private $typeRegistryStub;
 
