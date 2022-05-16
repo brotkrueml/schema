@@ -34,7 +34,7 @@
 		"ext-sqlite3": "*",
 		"brotkrueml/coding-standards": "~2.0.0",
 		"captainhook/captainhook": "^5.10",
-		"ergebnis/composer-normalize": "~2.25.2",
+		"ergebnis/composer-normalize": "~2.26.0",
 		"infection/infection": "^0.26",
 		"mikey179/vfsstream": "^1.6",
 		"php-coveralls/php-coveralls": "^2.5",
