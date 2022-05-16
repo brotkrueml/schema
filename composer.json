@@ -32,7 +32,7 @@
 	},
 	"require-dev": {
 		"ext-sqlite3": "*",
-		"brotkrueml/coding-standards": "~1.2.0",
+		"brotkrueml/coding-standards": "~2.0.0",
 		"captainhook/captainhook": "^5.10",
 		"ergebnis/composer-normalize": "~2.25.2",
 		"infection/infection": "^0.26",
