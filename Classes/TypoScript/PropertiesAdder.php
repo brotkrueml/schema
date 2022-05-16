@@ -27,12 +27,15 @@ final class PropertiesAdder implements LoggerAwareInterface
     use LoggerAwareTrait;
 
     private TypeBuilder $typeBuilder;
+    private TypoScriptConverter $typoScriptConverter;
     private ContentObjectRenderer $cObj;
 
     public function __construct(
-        TypeBuilder $typeBuilder
+        TypeBuilder $typeBuilder,
+        TypoScriptConverter $typoScriptConverter
     ) {
         $this->typeBuilder = $typeBuilder;
+        $this->typoScriptConverter = $typoScriptConverter;
     }
 
     /**
@@ -45,13 +48,14 @@ final class PropertiesAdder implements LoggerAwareInterface
     ): void {
         $this->cObj = $cObj;
 
-        foreach (array_keys($properties) as $name) {
+        $properties = $this->typoScriptConverter->convertTypoScriptArrayToPlainArray($properties);
+        foreach (\array_keys($properties) as $name) {
             try {
                 $this->addProperty($type, $name, $properties);
             } catch (DomainException $e) {
                 $this->logger->error(\sprintf(
                     'Use of unknown property "%s" for type "%s"',
-                    $this->getPropertyNameFromName($name),
+                    $name,
                     $type->getType() // @phpstan-ignore-line It can only be a string (no array) as the cObject does not support multiple types
                 ));
                 continue;
@@ -62,113 +66,80 @@ final class PropertiesAdder implements LoggerAwareInterface
     /**
      * @param mixed[] $properties
      */
-    private function addProperty(
-        TypeInterface $type,
-        string $name,
-        array $properties
-    ): void {
-        $propertyName = $this->getPropertyNameFromName($name);
-
-        if ($this->isIdOnly($name, $properties)) {
-            $this->addIdOnly($name, $properties, $type);
+    private function addProperty(TypeInterface $type, string $name, array $properties): void
+    {
+        if (\is_string($properties[$name])) {
+            $type->setProperty($name, $properties[$name]);
             return;
         }
 
-        if ($this->isFullType($name, $properties)) {
-            $this->addFullType($name, $properties, $type);
+        if ($this->isIdOnly($properties[$name])) {
+            $this->addIdOnly($name, $properties[$name], $type);
             return;
         }
 
-        if ($this->hasCObjectDefinition($propertyName, $properties)) {
+        if ($this->isFullType($properties[$name])) {
+            $this->addFullType($name, $properties[$name], $type);
             return;
         }
 
-        $type->setProperty(
-            $propertyName,
-            $this->cObj->stdWrapValue($propertyName, $properties)
-        );
+        $type->setProperty($name, $this->cObj->stdWrapValue($name, $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($properties)));
     }
 
     /**
-     * @param mixed[] $properties
+     * @param mixed[] $configuration
      */
-    private function addIdOnly(
-        string $name,
-        array $properties,
-        TypeInterface $type
-    ): void {
-        $id = (string)$this->cObj->stdWrapValue('id', $properties[$name . '.']);
+    private function addIdOnly(string $name, array $configuration, TypeInterface $type): void
+    {
+        if (\is_string($configuration['id'])) {
+            $id = $configuration['id'];
+        } else {
+            $id = (string)$this->cObj->stdWrapValue(
+                'id',
+                $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration)
+            );
+        }
 
         if ($id === '') {
             return;
         }
 
-        $type->setProperty(
-            $this->getPropertyNameFromName($name),
-            new NodeIdentifier($id)
-        );
+        $type->setProperty($name, new NodeIdentifier($id));
     }
 
     /**
-     * @param mixed[] $properties
+     * @param mixed[] $configuration
      */
-    private function addFullType(
-        string $name,
-        array $properties,
-        TypeInterface $type
-    ): void {
+    private function addFullType(string $name, array $configuration, TypeInterface $type): void
+    {
         $subType = $this->typeBuilder->build(
             $this->cObj,
-            $properties[$name . '.']
+            $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration)
         );
         if (! $subType instanceof TypeInterface) {
             return;
         }
 
-        $this->add($this->cObj, $subType, $properties[$name . '.']['properties.'] ?? []);
-        $type->setProperty(
-            $this->getPropertyNameFromName($name),
-            $subType
-        );
+        $this->add($this->cObj, $subType, $configuration['properties'] ?? []);
+        $type->setProperty($name, $subType);
     }
 
     /**
-     * @param mixed[] $properties
+     * @param mixed[] $configuration
      */
-    private function isFullType(string $name, array $properties): bool
+    private function isFullType(array $configuration): bool
     {
-        return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
-            && isset($properties[$name . '.'])
-            && (
-                isset($properties[$name . '.']['type'])
-                || isset($properties[$name . '.']['type.'])
-            );
+        return ($configuration['_typoScriptNodeValue'] ?? '') === 'SCHEMA'
+            && ($configuration['type'] ?? '') !== '';
     }
 
     /**
-     * @param mixed[] $properties
+     * @param mixed[] $configuration
      */
-    private function isIdOnly(string $name, array $properties): bool
+    private function isIdOnly(array $configuration): bool
     {
-        $configuration = $properties[$name . '.'] ?? [];
-        $hasId = isset($configuration['id']) || isset($configuration['id.']);
-        $hasFurtherProperties = array_diff(array_keys($configuration), ['id', 'id.']) !== [];
-        return isset($properties[$name]) && $properties[$name] === 'SCHEMA'
-            && $hasId
-            && ! $hasFurtherProperties;
-    }
-
-    /**
-     * @param mixed[] $properties
-     */
-    private function hasCObjectDefinition(string $name, array $properties): bool
-    {
-        return ($properties[$name] ?? '') !== ''
-            && isset($properties[$name . '.']);
-    }
-
-    private function getPropertyNameFromName(string $name): string
-    {
-        return rtrim($name, '.');
+        return ($configuration['_typoScriptNodeValue'] ?? '') === 'SCHEMA'
+            && isset($configuration['id'])
+            && \count($configuration) === 2;
     }
 }
