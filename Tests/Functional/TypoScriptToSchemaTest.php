@@ -344,6 +344,23 @@ TYPOSCRIPT,
                 'url' => 'http://localhost/index.html',
             ],
         ];
+
+        yield 'property with string value and stdWrap applied' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.sameAs = HTTPS://EXAMPLE.COM/
+    properties.sameAs.case = lower
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+                'sameAs' => 'https://example.com/',
+            ],
+        ];
     }
 
     /**
@@ -392,7 +409,7 @@ TYPOSCRIPT
     }
 
     /**
-     * @param array<array<type: string, component: string, message: string>> $entries
+     * @param array<array{type: string, component: string, message: string}> $entries
      */
     private function assertHasLogEntries(array $entries): void
     {

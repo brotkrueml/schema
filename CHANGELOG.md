@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Usage of stdWrap with property string value in TypoScript configuration
+
 ## [2.4.0] - 2022-03-28
 
 ### Updated
