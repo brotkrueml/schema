@@ -26,11 +26,6 @@ parameters:
 			path: Classes/Core/Model/AbstractType.php
 
 		-
-			message: "#^Class cognitive complexity is 19, keep it under 15$#"
-			count: 1
-			path: Classes/Core/Model/AbstractType.php
-
-		-
 			message: "#^Do not use static property$#"
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
@@ -81,11 +76,6 @@ parameters:
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
-			message: "#^Class cognitive complexity is 19, keep it under 15$#"
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
 			message: "#^Method Brotkrueml\\\\Schema\\\\Hooks\\\\PageRenderer\\\\SchemaMarkupInjection\\:\\:execute\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/Hooks/PageRenderer/SchemaMarkupInjection.php
@@ -93,11 +83,6 @@ parameters:
 		-
 			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
 			count: 2
-			path: Classes/JsonLd/Renderer.php
-
-		-
-			message: "#^Class cognitive complexity is 17, keep it under 15$#"
-			count: 1
 			path: Classes/JsonLd/Renderer.php
 
 		-
@@ -126,7 +111,7 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Class cognitive complexity is 24, keep it under 15$#"
+			message: "#^Class cognitive complexity is 24, keep it under 20$#"
 			count: 1
 			path: Classes/Manager/SchemaManager.php
 
@@ -136,7 +121,7 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Class cognitive complexity is 30, keep it under 15$#"
+			message: "#^Class cognitive complexity is 30, keep it under 20$#"
 			count: 1
 			path: Classes/Type/TypeRegistry.php
 

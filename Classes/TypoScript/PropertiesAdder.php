@@ -69,8 +69,17 @@ final class PropertiesAdder implements LoggerAwareInterface
     private function addProperty(TypeInterface $type, string $name, array $properties): void
     {
         if (\is_string($properties[$name])) {
-            $type->setProperty($name, $properties[$name]);
+            $type->addProperty($name, $properties[$name]);
             return;
+        }
+
+        if ($this->hasMultipleValues($properties[$name])) {
+            foreach ($properties[$name] as $property) {
+                $subProperty = [
+                    $name => $property,
+                ];
+                $this->addProperty($type, $name, $subProperty);
+            }
         }
 
         if ($this->isIdOnly($properties[$name])) {
@@ -83,7 +92,26 @@ final class PropertiesAdder implements LoggerAwareInterface
             return;
         }
 
-        $type->setProperty($name, $this->cObj->stdWrapValue($name, $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($properties)));
+        $value = (string)$this->cObj->stdWrapValue($name, $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($properties));
+        if ($value === '') {
+            return;
+        }
+
+        $type->addProperty($name, $value);
+    }
+
+    /**
+     * @param mixed[] $configuration
+     */
+    private function hasMultipleValues(array $configuration): bool
+    {
+        foreach (\array_keys($configuration) as $index) {
+            if (! \is_int($index)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**

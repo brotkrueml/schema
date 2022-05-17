@@ -361,6 +361,51 @@ TYPOSCRIPT,
                 'sameAs' => 'https://example.com/',
             ],
         ];
+
+        yield 'multiple values for a property with static values' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.sameAs.10 = https://example.net/
+    properties.sameAs.20 = https://example.com/
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+                'sameAs' => ['https://example.net/', 'https://example.com/'],
+            ],
+        ];
+
+        yield 'multiple values for a property with stdWrap' => [
+            'typoScriptSetup' => <<<TYPOSCRIPT
+page = PAGE
+page.10 = SCHEMA
+page.10 {
+    type = WebSite
+    properties.sameAs {
+	    10 = static string
+
+        20 = via stdWrap strPad
+        20.strPad {
+            length = 30
+            padWith = %
+            type = both
+        }
+
+        30.cObject = TEXT
+        30.cObject.value = via TEXT cObject
+    }
+}
+TYPOSCRIPT,
+            'expectedJsonLd' => [
+                '@context' => 'https://schema.org/',
+                '@type' => 'WebSite',
+                'sameAs' => ['static string', '%%%%%%via stdWrap strPad%%%%%%', 'via TEXT cObject'],
+            ],
+        ];
     }
 
     /**

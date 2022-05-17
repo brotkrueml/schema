@@ -101,7 +101,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
    Description
       The key will be used as property name.
-      The value can be a static text, a content object, a
+      The value can be a static text, an array, a content object, a
       :ref:`stdWrap <t3tsref:stdwrap>` property or an :ref:`if <t3tsref:if>` condition.
 
       **Example:**
@@ -120,23 +120,49 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
       **Example:**
 
-      ::
+      .. code-block:: typoscript
+         :emphasize-lines: 4-14
 
          page.10 = SCHEMA
          page.10.type = WebSite
          page.10.properties {
-           publisher = SCHEMA
-           publisher {
-               id {
-                   typolink {
-                       parameter = t3://page?uid={site : rootPageId}#organization
-                       parameter.insertData = 1
-                       forceAbsoluteUrl = 1
-                       returnLast = url
-                   }
-               }
-           }
-       }
+             publisher = SCHEMA
+             publisher {
+                 id {
+                     typolink {
+                         parameter = t3://page?uid={site : rootPageId}#organization
+                         parameter.insertData = 1
+                         forceAbsoluteUrl = 1
+                         returnLast = url
+                     }
+                 }
+             }
+         }
+
+      Multiple values can also be assigned to one property using numeric keys.
+
+      .. versionadded:: 2.5.0
+
+      **Example:**
+
+      .. code-block:: typoscript
+         :emphasize-lines: 6-13
+
+         page.10 = SCHEMA
+         page.10 {
+             type = Organization
+             properties {
+                 name = My Company
+                 sameAs {
+                     10 = https://example.org/
+                     20.typolink {
+                         parameter = t3://page?uid=42
+                         forceAbsoluteUrl = 1
+                         returnLast = url
+                     }
+                 }
+             }
+         }
 
 .. container:: table-row
 

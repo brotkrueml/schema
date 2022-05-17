@@ -7,8 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Assign multiple values to one property via TypoScript
+
 ### Fixed
-- Usage of stdWrap with property string value in TypoScript configuration
+- Usage of stdWrap in combination with a string value in TypoScript configuration
 
 ## [2.4.0] - 2022-03-28
 

@@ -11,11 +11,17 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.4.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Assign multiple values to one property via TypoScript
+
 Fixed
 ^^^^^
 
 
-* Usage of stdWrap with property string value in TypoScript configuration
+* Usage of stdWrap in combination with a string value in TypoScript configuration
 
 `2.4.0 <https://github.com/brotkrueml/schema/compare/v2.3.0...v2.4.0>`_ - 2022-03-28
 ----------------------------------------------------------------------------------------
