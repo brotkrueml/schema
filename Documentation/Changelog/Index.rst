@@ -8,8 +8,11 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v2.4.0...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.5.0...HEAD>`_
 ------------------------------------------------------------------------------
+
+`2.5.0 <https://github.com/brotkrueml/schema/compare/v2.4.0...v2.5.0>`_ - 2022-05-18
+----------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -21,7 +24,7 @@ Fixed
 ^^^^^
 
 
-* Usage of stdWrap in combination with a string value in TypoScript configuration
+* Usage of stdWrap in combination with a string property value in TypoScript configuration
 
 `2.4.0 <https://github.com/brotkrueml/schema/compare/v2.3.0...v2.4.0>`_ - 2022-03-28
 ----------------------------------------------------------------------------------------
