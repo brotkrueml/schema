@@ -55,7 +55,7 @@ final class Renderer implements RendererInterface
 
         return \sprintf(
             Extension::JSONLD_TEMPLATE,
-            \json_encode($result, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE)
+            \json_encode($result, \JSON_HEX_TAG | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE)
         );
     }
 

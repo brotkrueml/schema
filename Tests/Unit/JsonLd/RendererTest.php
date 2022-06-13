@@ -174,6 +174,14 @@ class RendererTest extends TestCase
             ],
             '{"@context":"http://schema.org","@type":"StubType","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
         ];
+
+        yield 'Value is a string provoking XSS' => [
+            null,
+            [
+                'some-string' => '</script><svg/onload=prompt(document.domain)>',
+            ],
+            '{"@context":"http://schema.org","@type":"StubType","some-string":"\u003C/script\u003E\u003Csvg/onload=prompt(document.domain)\u003E"}',
+        ];
     }
 
     private function createTypeStub(
