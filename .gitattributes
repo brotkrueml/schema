@@ -11,4 +11,3 @@
 /infection.json.dist export-ignore
 /psalm.xml export-ignore
 /rector.php export-ignore
-/sonar-project.properties export-ignore
