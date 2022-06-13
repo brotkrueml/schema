@@ -8,8 +8,11 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v2.5.0...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.5.1...HEAD>`_
 ------------------------------------------------------------------------------
+
+`2.5.1 <https://github.com/brotkrueml/schema/compare/v2.5.0...v2.5.1>`_ - 2022-06-13
+----------------------------------------------------------------------------------------
 
 Security
 ^^^^^^^^
@@ -145,6 +148,15 @@ Removed
 * Signal/slots in favour of PSR-14 events (#43)
 * Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 * Deprecated class TypesProvider (#44)
+
+`1.13.1 <https://github.com/brotkrueml/schema/compare/v1.13.0...v1.13.1>`_ - 2022-06-13
+-------------------------------------------------------------------------------------------
+
+Security
+^^^^^^^^
+
+
+* Properly escape content
 
 `1.13.0 <https://github.com/brotkrueml/schema/compare/v1.12.1...v1.13.0>`_ - 2022-03-28
 -------------------------------------------------------------------------------------------

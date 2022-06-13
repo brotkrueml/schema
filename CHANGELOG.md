@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.5.1] - 2022-06-13
+
 ### Security
 - Properly escape content
 
@@ -83,6 +85,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Signal/slots in favour of PSR-14 events (#43)
 - Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 - Deprecated class TypesProvider (#44)
+
+## [1.13.1] - 2022-06-13
+
+### Security
+- Properly escape content
 
 ## [1.13.0] - 2022-03-28
 
@@ -333,7 +340,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.5.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.5.1...HEAD
+[2.5.1]: https://github.com/brotkrueml/schema/compare/v2.5.0...v2.5.1
 [2.5.0]: https://github.com/brotkrueml/schema/compare/v2.4.0...v2.5.0
 [2.4.0]: https://github.com/brotkrueml/schema/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/brotkrueml/schema/compare/v2.2.2...v2.3.0
@@ -344,6 +352,7 @@ Initial release
 [2.0.2]: https://github.com/brotkrueml/schema/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/brotkrueml/schema/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/brotkrueml/schema/compare/v1.12.0...v2.0.0
+[1.13.1]: https://github.com/brotkrueml/schema/compare/v1.13.0...v1.13.1
 [1.13.0]: https://github.com/brotkrueml/schema/compare/v1.12.1...v1.13.0
 [1.12.1]: https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/brotkrueml/schema/compare/v1.11.1...v1.12.0
