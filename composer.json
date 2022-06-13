@@ -33,7 +33,6 @@
 	"require-dev": {
 		"ext-sqlite3": "*",
 		"brotkrueml/coding-standards": "~2.0.0",
-		"captainhook/captainhook": "^5.10",
 		"ergebnis/composer-normalize": "~2.26.0",
 		"infection/infection": "^0.26",
 		"mikey179/vfsstream": "^1.6",
@@ -93,8 +92,5 @@
 			"extension-key": "schema",
 			"web-dir": ".Build/web"
 		}
-	},
-	"scripts": {
-		"post-autoload-dump": ".Build/bin/captainhook install -f -s"
 	}
 }
