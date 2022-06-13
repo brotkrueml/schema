@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Security
+- Properly escape content
+
 ## [2.5.0] - 2022-05-18
 
 ### Added

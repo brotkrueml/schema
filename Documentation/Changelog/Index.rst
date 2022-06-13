@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.5.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Security
+^^^^^^^^
+
+
+* Properly escape content
+
 `2.5.0 <https://github.com/brotkrueml/schema/compare/v2.4.0...v2.5.0>`_ - 2022-05-18
 ----------------------------------------------------------------------------------------
 

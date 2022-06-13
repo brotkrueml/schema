@@ -191,6 +191,14 @@ class RendererTest extends TestCase
             ],
             '{"@context":"https://schema.org/","@type":"GenericStub","some-property":{"@id":"some-node-identifier-id"}}',
         ];
+
+        yield 'Value is a string provoking XSS' => [
+            null,
+            [
+                'some-string' => '</script><svg/onload=prompt(document.domain)>',
+            ],
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-string":"\u003C/script\u003E\u003Csvg/onload=prompt(document.domain)\u003E"}',
+        ];
     }
 
     /**
