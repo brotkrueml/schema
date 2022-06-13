@@ -185,7 +185,6 @@ class RegisterTypePropertiesMovedFromOfficialToPending
         Type\WPSideBar::class,
     ];
 
-
     /** @var array<class-string> */
     private $sportTypes = [
         Type\SportsEvent::class,
