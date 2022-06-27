@@ -21,6 +21,7 @@ final class JobPosting extends AbstractType
     protected static $propertyNames = [
         'additionalType',
         'alternateName',
+        'applicationContact',
         'baseSalary',
         'datePosted',
         'description',
@@ -34,6 +35,7 @@ final class JobPosting extends AbstractType
         'incentiveCompensation',
         'industry',
         'jobBenefits',
+        'jobImmediateStart',
         'jobLocation',
         'mainEntityOfPage',
         'name',
