@@ -28,7 +28,7 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
         $this->modelTemplate = TypeFactory::createType($this->getType());
     }
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid', false, '');

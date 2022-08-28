@@ -39,7 +39,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
     }
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node', false, '');
