@@ -74,10 +74,11 @@
 	"config": {
 		"allow-plugins": {
 			"ergebnis/composer-normalize": true,
+			"infection/extension-installer": true,
 			"phpstan/extension-installer": true,
+			"rector/rector-installer": true,
 			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true,
-			"infection/extension-installer": true
+			"typo3/cms-composer-installers": true
 		},
 		"bin-dir": ".Build/bin",
 		"sort-packages": true,
