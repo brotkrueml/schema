@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Property with only @id as value not displayed in AdminPanel (#98)
+
 ## [2.5.1] - 2022-06-13
 
 ### Security

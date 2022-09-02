@@ -83,7 +83,7 @@
     </tr>
     <f:if condition="{hasSubType}">
         <f:for each="{value}" as="subValue" key="subName">
-            <f:render section="ShowProperty" arguments="{name: subName, value: subValue, typeKey: typeKey, indent: '{indent + 1}'}"/>
+            <f:render section="ShowProperty" arguments="{name: subName, value: subValue, typeKey: typeKey, idKey: idKey, indent: '{indent + 1}'}"/>
         </f:for>
     </f:if>
 </f:section>

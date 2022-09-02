@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.5.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Property with only @id as value not displayed in AdminPanel (#98)
+
 `2.5.1 <https://github.com/brotkrueml/schema/compare/v2.5.0...v2.5.1>`_ - 2022-06-13
 ----------------------------------------------------------------------------------------
 
