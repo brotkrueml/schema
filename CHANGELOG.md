@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.5.2] - 2022-09-02
+
 ### Fixed
 - Property with only @id as value not displayed in AdminPanel (#98)
 
@@ -343,7 +345,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.5.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.5.2...HEAD
+[2.5.2]: https://github.com/brotkrueml/schema/compare/v2.5.1...v2.5.2
 [2.5.1]: https://github.com/brotkrueml/schema/compare/v2.5.0...v2.5.1
 [2.5.0]: https://github.com/brotkrueml/schema/compare/v2.4.0...v2.5.0
 [2.4.0]: https://github.com/brotkrueml/schema/compare/v2.3.0...v2.4.0
