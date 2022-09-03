@@ -9,9 +9,12 @@
 
 [![Verified TYPO3 Extension](Documentation/Images/verified.svg) Verified TYPO3 Extension](https://typo3.com/typo3-cms/verified-extensions-integrations-for-typo3/extensions/embedding-schemaorg-vocabulary-in-typo3)
 
-Version 2 of the extension supports TYPO3 v10 LTS and TYPO3 v11 LTS and needs at least PHP 7.4.
+## Versions and support
 
-Latest version 1.x supports TYPO3 v9 LTS, TYPO3 v10 LTS, TYPO3 v11 and PHP 7.2+.
+| Release | TYPO3       | PHP       | Updates will contain                                 |
+|---------|-------------|-----------|------------------------------------------------------|
+| 2.x     | 10.4 - 11.5 | 7.4 - 8.1 | Features, schema.org updates, security and bug fixes |
+| 1.x     | 9.5 - 11.5  | 7.2 - 8.0 | Security fixes (EOL expected April 2023)             |
 
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/main/en-us/) |
 [Translation](https://crowdin.com/project/typo3-extension-schema) |
