@@ -121,7 +121,7 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Class cognitive complexity is 30, keep it under 20$#"
+			message: "#^Class cognitive complexity is 29, keep it under 20$#"
 			count: 1
 			path: Classes/Type/TypeRegistry.php
 

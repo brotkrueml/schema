@@ -53,22 +53,12 @@ class TypeRegistry implements SingletonInterface
      */
     private array $webPageElementTypes = [];
 
-    private ?FrontendInterface $cache = null;
+    private ?FrontendInterface $cache;
     private PackageManager $packageManager;
 
-    public function __construct(FrontendInterface $cache = null, PackageManager $packageManager = null)
+    public function __construct(?FrontendInterface $cache = null, ?PackageManager $packageManager = null)
     {
-        if ($cache === null) {
-            $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-            try {
-                $this->cache = $cacheManager->getCache(Extension::CACHE_CORE_IDENTIFIER);
-            } catch (NoSuchCacheException $e) {
-                // Ignore
-            }
-        } else {
-            $this->cache = $cache;
-        }
-
+        $this->cache = $cache;
         $this->packageManager = $packageManager ?? GeneralUtility::makeInstance(PackageManager::class);
     }
 
@@ -123,19 +113,47 @@ class TypeRegistry implements SingletonInterface
         return $typeModels;
     }
 
+    private function getCache(): ?FrontendInterface
+    {
+        if ($this->cache instanceof FrontendInterface) {
+            return $this->cache;
+        }
+
+        try {
+            $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
+        } catch (\LogicException $e) {
+            // The exception is thrown in TYPO3 v12 when the boot state is not completed:
+            // "TYPO3\CMS\Core\Cache\CacheManager can not be injected/instantiated during ext_localconf.php or TCA
+            // loading. Use lazy loading instead."
+            // This is due to the initialisation of the page field "tx_schema_webpagetype" in TCA - which is not
+            // needed at build time and the exception can be ignored safely.
+            // See: TYPO3\CMS\Core\ServiceProvider::getCacheManager()
+            return null;
+        }
+
+        try {
+            $this->cache = $cacheManager->getCache(Extension::CACHE_CORE_IDENTIFIER);
+        } catch (NoSuchCacheException $e) {
+            // Ignore: This should not happen
+        }
+
+        return $this->cache;
+    }
+
     /**
      * @return array<string, class-string>|list<string>|null
      */
     private function requireCacheEntry(string $identifier): ?array
     {
-        if (! $this->cache instanceof PhpFrontend) {
+        $cache = $this->getCache();
+        if (! $cache instanceof PhpFrontend) {
             return null;
         }
-        if (! $this->cache->has($identifier)) {
+        if (! $cache->has($identifier)) {
             return null;
         }
 
-        return $this->cache->require($identifier);
+        return $cache->require($identifier);
     }
 
     /**
@@ -143,8 +161,9 @@ class TypeRegistry implements SingletonInterface
      */
     private function setCacheEntry(string $identifier, array $data): void
     {
-        if ($this->cache instanceof PhpFrontend) {
-            $this->cache->set($identifier, 'return ' . \var_export($data, true) . ';');
+        $cache = $this->getCache();
+        if ($cache instanceof PhpFrontend) {
+            $cache->set($identifier, 'return ' . \var_export($data, true) . ';');
         }
     }
 
