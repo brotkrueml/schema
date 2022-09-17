@@ -25,14 +25,10 @@ final class AddWebPageType
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
     private ExtensionConfiguration $configuration;
-    private TypoScriptFrontendController $controller;
 
-    public function __construct(
-        ExtensionConfiguration $configuration,
-        TypoScriptFrontendController $controller
-    ) {
+    public function __construct(ExtensionConfiguration $configuration)
+    {
         $this->configuration = $configuration;
-        $this->controller = $controller;
     }
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
@@ -50,12 +46,17 @@ final class AddWebPageType
             return;
         }
 
-        $webPageType = ($this->controller->page['tx_schema_webpagetype'] ?? '') ?: static::DEFAULT_WEBPAGE_TYPE;
-
+        $tsfe = $this->getTypoScriptFrontendController();
+        $webPageType = ($tsfe->page['tx_schema_webpagetype'] ?? '') ?: self::DEFAULT_WEBPAGE_TYPE;
         $webPageModel = TypeFactory::createType($webPageType);
-        if ($this->controller->page['endtime'] ?? 0) {
-            $webPageModel->setProperty('expires', \date('c', $this->controller->page['endtime']));
+        if ($tsfe->page['endtime'] ?? 0) {
+            $webPageModel->setProperty('expires', \date('c', $tsfe->page['endtime']));
         }
         $event->addType($webPageModel);
+    }
+
+    private function getTypoScriptFrontendController(): TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'];
     }
 }

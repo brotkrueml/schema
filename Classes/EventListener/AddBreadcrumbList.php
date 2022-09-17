@@ -31,18 +31,15 @@ final class AddBreadcrumbList
         PageRepository::DOKTYPE_SYSFOLDER,
     ];
 
-    private TypoScriptFrontendController $controller;
     private ExtensionConfiguration $extensionConfiguration;
     private ContentObjectRenderer $contentObjectRenderer;
 
     public function __construct(
         ContentObjectRenderer $contentObjectRenderer,
-        ExtensionConfiguration $configuration,
-        TypoScriptFrontendController $controller
+        ExtensionConfiguration $configuration
     ) {
         $this->contentObjectRenderer = $contentObjectRenderer;
         $this->extensionConfiguration = $configuration;
-        $this->controller = $controller;
     }
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
@@ -60,7 +57,7 @@ final class AddBreadcrumbList
         );
         $doktypesToExclude = \array_merge(self::DEFAULT_DOKTYPES_TO_EXCLUDE, $additionalDoktypesToExclude);
         $rootLine = [];
-        foreach ($this->controller->rootLine as $page) {
+        foreach ($this->getTypoScriptFrontendController()->rootLine as $page) {
             if ($page['is_siteroot'] ?? false) {
                 break;
             }
@@ -111,5 +108,10 @@ final class AddBreadcrumbList
         }
 
         return $breadcrumbList;
+    }
+
+    private function getTypoScriptFrontendController(): TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'];
     }
 }

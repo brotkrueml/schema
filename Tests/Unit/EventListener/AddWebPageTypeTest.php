@@ -47,10 +47,9 @@ class AddWebPageTypeTest extends TestCase
         $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
         $this->typoScriptFrontendControllerStub = $this->createStub(TypoScriptFrontendController::class);
 
-        $this->subject = new AddWebPageType(
-            $this->extensionConfigurationStub,
-            $this->typoScriptFrontendControllerStub
-        );
+        $this->subject = new AddWebPageType($this->extensionConfigurationStub);
+
+        $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
 
         $this->event = new RenderAdditionalTypesEvent(false);
 
@@ -69,6 +68,8 @@ class AddWebPageTypeTest extends TestCase
     protected function tearDown(): void
     {
         GeneralUtility::purgeInstances();
+
+        unset($GLOBALS['TSFE']);
     }
 
     /**

@@ -72,9 +72,10 @@ final class AddBreadcrumbListTest extends TestCase
 
         $this->subject = new AddBreadcrumbList(
             $this->contentObjectRendererStub,
-            $this->extensionConfigurationStub,
-            $this->typoScriptFrontendControllerStub
+            $this->extensionConfigurationStub
         );
+
+        $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
 
         $this->event = new RenderAdditionalTypesEvent(false);
     }
@@ -82,6 +83,8 @@ final class AddBreadcrumbListTest extends TestCase
     protected function tearDown(): void
     {
         GeneralUtility::purgeInstances();
+
+        unset($GLOBALS['TSFE']);
     }
 
     /**
