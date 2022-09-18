@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.5.2...HEAD>`_
 ------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Compatibility with TYPO3 v12 (#99)
+
 `2.5.2 <https://github.com/brotkrueml/schema/compare/v2.5.1...v2.5.2>`_ - 2022-09-02
 ----------------------------------------------------------------------------------------
 

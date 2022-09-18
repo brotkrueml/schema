@@ -47,6 +47,11 @@ services:
         identifier: 'ext-schema/registerTypePropertiesMovedFromOfficialToPending'
         event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
 
+  Brotkrueml\Schema\TypoScript\SchemaContentObject:
+    tags:
+      - name: frontend.contentobject
+        identifier: 'SCHEMA'
+
   brotkrueml.schema.configuration.module.provider.types:
     class: 'Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types'
     tags:

@@ -13,13 +13,14 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'php' => '7.4.0-0.0.0',
-            'typo3' => '10.4.11-11.5.99',
+            'typo3' => '10.4.11-12.4.99',
         ],
         'conflicts' => [
             'sdbreadcrumb' => '',
         ],
         'suggests' => [
             'adminpanel' => '',
+            'lowlevel' => '',
             'schema_auto' => '',
             'schema_bib' => '',
             'schema_health' => '',
