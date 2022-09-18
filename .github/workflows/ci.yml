@@ -102,12 +102,12 @@ jobs:
         if: always()
         run: |
           make rector-dry
-      - name: Run mutation tests
-        if: always()
-        env:
-          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
-        run: |
-          make mutation
+#      - name: Run mutation tests
+#        if: always()
+#        env:
+#          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
+#        run: |
+#          make mutation
       - name: Generate code coverage
         run: |
           make code-coverage
