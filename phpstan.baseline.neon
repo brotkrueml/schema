@@ -86,6 +86,11 @@ parameters:
 			path: Classes/JsonLd/Renderer.php
 
 		-
+			message: "#^Cannot access an offset on array\\|bool\\|float\\|int\\|string\\.$#"
+			count: 1
+			path: Classes/JsonLd/Renderer.php
+
+		-
 			message: "#^Method Brotkrueml\\\\Schema\\\\JsonLd\\\\Renderer\\:\\:getPropertyValueForResult\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/JsonLd/Renderer.php
