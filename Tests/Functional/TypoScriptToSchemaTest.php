@@ -22,21 +22,21 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
     /**
      * @var string[]
      */
-    protected $testExtensionsToLoad = [
+    protected array $testExtensionsToLoad = [
         'typo3conf/ext/schema',
     ];
 
     /**
      * @var array<string, string>
      */
-    protected $pathsToLinkInTestInstance = [
+    protected array $pathsToLinkInTestInstance = [
         'typo3conf/ext/schema/Tests/Functional/Fixtures/Sites/' => 'typo3conf/sites',
     ];
 
     /**
      * @var array<string, array<string, array<string, string>>>
      */
-    protected $configurationToUseInTestInstance = [
+    protected array $configurationToUseInTestInstance = [
         'EXTENSIONS' => [
             'schema' => [
                 'automaticBreadcrumbSchemaGeneration' => '0',

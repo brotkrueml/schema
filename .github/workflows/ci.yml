@@ -29,6 +29,8 @@ jobs:
             typo3-versions: '^11'
           - php-versions: '8.1'
             typo3-versions: '^11'
+          - php-versions: '8.1'
+            typo3-versions: '^12'
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -49,17 +51,29 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
-      - name: Install composer dependencies
+      - name: Install composer dependencies for TYPO3 v10
+        if: matrix.typo3-versions == '^10'
         run: |
-          composer remove symplify/phpstan-rules --dev --no-update
+          composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules typo3/testing-framework --dev --no-update
+          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
+      - name: Install composer dependencies for TYPO3 v11+
+        if: matrix.typo3-versions != '^10'
+        run: |
+          composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules --dev --no-update
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
           find . -name \*.php  ! -path "./.Build/*" -exec php -l {} \;
-      - name: Run unit tests
+      - name: Run unit tests for TYPO3 v10
+        if: matrix.typo3-versions == '^10'
+        run: |
+          .Build/bin/phpunit -c Tests/phpunit-v10.xml.dist --testsuite Unit
+      - name: Run unit tests for TYPO3 v11+
+        if: matrix.typo3-versions != '^10'
         run: |
           .Build/bin/phpunit -c Tests/phpunit.xml.dist --testsuite Unit
-      - name: Run functional tests
+      - name: Run functional tests for TYPO3 v11 only
+        if: matrix.typo3-versions == '^11'
         run: |
           .Build/bin/phpunit -c Tests/phpunit.xml.dist --testsuite Functional
   code-quality:
