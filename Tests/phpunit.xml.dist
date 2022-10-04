@@ -16,10 +16,10 @@
         </exclude>
     </coverage>
     <testsuites>
-        <testsuite name="Unit tests">
+        <testsuite name="Unit">
             <directory>Unit/</directory>
         </testsuite>
-        <testsuite name="Functional tests">
+        <testsuite name="Functional">
             <directory>Functional/</directory>
         </testsuite>
     </testsuites>

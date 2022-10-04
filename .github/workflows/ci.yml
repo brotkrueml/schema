@@ -58,7 +58,10 @@ jobs:
           find . -name \*.php  ! -path "./.Build/*" -exec php -l {} \;
       - name: Run unit tests
         run: |
-          make tests
+          .Build/bin/phpunit -c Tests/phpunit.xml.dist --testsuite Unit
+      - name: Run functional tests
+        run: |
+          .Build/bin/phpunit -c Tests/phpunit.xml.dist --testsuite Functional
   code-quality:
     name: Code Quality
     runs-on: ubuntu-latest
