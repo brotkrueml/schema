@@ -31,7 +31,7 @@ class TypesInformationTest extends TestCase
     /**
      * @var MockObject&StandaloneView
      */
-    private $viewMock;
+    private MockObject $viewMock;
 
     /**
      * @var Stub&LanguageService

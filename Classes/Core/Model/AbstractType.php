@@ -282,7 +282,7 @@ abstract class AbstractType implements TypeInterface
         if (\str_starts_with($type, '_')) {
             // As a class cannot start with a number an underscore prefixes the type class name
             // which is now removed (e.g. _3DModel => 3DModel)
-            $type = \substr($type, 1);
+            return \substr($type, 1);
         }
 
         return $type;

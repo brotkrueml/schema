@@ -53,7 +53,7 @@ class SchemaMarkupInjectionTest extends TestCase
     /**
      * @var PagesCacheService&MockObject
      */
-    private $pagesCacheServiceMock;
+    private MockObject $pagesCacheServiceMock;
 
     /**
      * @var Stub&ApplicationType
