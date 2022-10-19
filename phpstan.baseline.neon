@@ -81,11 +81,6 @@ parameters:
 			path: Classes/Hooks/PageRenderer/SchemaMarkupInjection.php
 
 		-
-			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
-			count: 2
-			path: Classes/JsonLd/Renderer.php
-
-		-
 			message: "#^Cannot access an offset on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
 			path: Classes/JsonLd/Renderer.php

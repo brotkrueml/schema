@@ -30,7 +30,7 @@ final class SchemaContentObject extends AbstractContentObject
     {
         $service = GeneralUtility::makeInstance(TypoScriptToSchema::class);
         $service->convert(
-            $this->cObj,
+            $this->getContentObjectRenderer(),
             $configuration
         );
 

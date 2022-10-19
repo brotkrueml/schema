@@ -82,7 +82,7 @@ final class AddBreadcrumbList
     }
 
     /**
-     * @param list<array{uid: int, nav_title: string, title: string, tx_schema_webpagetype?: string}> $rootLine
+     * @param non-empty-array<int, array<string, mixed>> $rootLine
      */
     private function buildBreadCrumbList(array $rootLine): TypeInterface
     {

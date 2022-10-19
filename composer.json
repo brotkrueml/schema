@@ -38,7 +38,7 @@
 		"mikey179/vfsstream": "^1.6.11",
 		"php-coveralls/php-coveralls": "^2.5",
 		"phpstan/extension-installer": "^1.1",
-		"phpstan/phpstan": "1.8.7",
+		"phpstan/phpstan": "1.8.10",
 		"phpunit/phpunit": "^9.5.23",
 		"rector/rector": "0.14.5",
 		"saschaegerer/phpstan-typo3": "^1.1",
