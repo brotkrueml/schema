@@ -42,6 +42,7 @@
 		"phpunit/phpunit": "^9.5.23",
 		"rector/rector": "0.14.5",
 		"saschaegerer/phpstan-typo3": "^1.1",
+		"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.0.1",
 		"symfony/yaml": "^5.4 || ^6.1",
 		"symplify/phpstan-rules": "^10.1",
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.5 || ^12.0",
@@ -78,7 +79,8 @@
 			"phpstan/extension-installer": true,
 			"rector/rector-installer": true,
 			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true
+			"typo3/cms-composer-installers": true,
+			"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": true
 		},
 		"bin-dir": ".Build/bin",
 		"sort-packages": true,

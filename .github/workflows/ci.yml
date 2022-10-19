@@ -58,7 +58,7 @@ jobs:
       - name: Install composer dependencies for TYPO3 v10
         if: matrix.typo3-versions == '^10'
         run: |
-          composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules typo3/testing-framework --dev --no-update
+          composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules typo3/testing-framework sbuerk/typo3-cmscomposerinstallers-testingframework-bridge --dev --no-update
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Install composer dependencies for TYPO3 v11+
         if: matrix.typo3-versions != '^10'
