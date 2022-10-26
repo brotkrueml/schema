@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * An item used as either a tool or supply when performing the instructions for how to to achieve a result.
+ * An item used as either a tool or supply when performing the instructions for how to achieve a result.
  */
 final class HowToItem extends AbstractType
 {

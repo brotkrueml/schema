@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A media season e.g. tv, radio, video game etc.
+ * A media season, e.g. TV, radio, video game etc.
  */
 final class CreativeWorkSeason extends AbstractType
 {

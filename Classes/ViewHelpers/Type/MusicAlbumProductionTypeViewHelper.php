@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
+ * Classification of the album by its type of content: soundtrack, live album, studio album, etc.
  */
 final class MusicAlbumProductionTypeViewHelper extends AbstractTypeViewHelper
 {

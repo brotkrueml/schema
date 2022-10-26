@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A business that provide Heating, Ventilation and Air Conditioning services.
+ * A business that provides Heating, Ventilation and Air Conditioning services.
  */
 final class HVACBusiness extends AbstractType
 {

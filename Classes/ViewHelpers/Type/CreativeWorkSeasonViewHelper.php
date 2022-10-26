@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A media season e.g. tv, radio, video game etc.
+ * A media season, e.g. TV, radio, video game etc.
  */
 final class CreativeWorkSeasonViewHelper extends AbstractTypeViewHelper
 {

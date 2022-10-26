@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A volcano, like Fuji san.
+ * A volcano, like Fujisan.
  */
 final class Volcano extends AbstractType
 {

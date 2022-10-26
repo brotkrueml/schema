@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
+ * Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.).
  */
 final class MusicReleaseFormatTypeViewHelper extends AbstractTypeViewHelper
 {

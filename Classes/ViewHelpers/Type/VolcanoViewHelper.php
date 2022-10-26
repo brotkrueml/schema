@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A volcano, like Fuji san.
+ * A volcano, like Fujisan.
  */
 final class VolcanoViewHelper extends AbstractTypeViewHelper
 {

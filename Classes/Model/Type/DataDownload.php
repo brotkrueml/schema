@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A dataset in downloadable form.
+ * All or part of a Dataset in downloadable form.
  */
 final class DataDownload extends AbstractType
 {

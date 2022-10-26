@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A set of requirements that a must be fulfilled in order to perform an Action.
+ * A set of requirements that must be fulfilled in order to perform an Action.
  */
 final class ActionAccessSpecification extends AbstractType
 {

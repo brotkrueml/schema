@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * Related actions:
  * SendAction: The reciprocal of ReceiveAction.
- * TakeAction: Unlike TakeAction, ReceiveAction does not imply that the ownership has been transfered (e.g. I can receive a package, but it does not mean the package is now mine).
+ * TakeAction: Unlike TakeAction, ReceiveAction does not imply that the ownership has been transferred (e.g. I can receive a package, but it does not mean the package is now mine).
  */
 final class ReceiveAction extends AbstractType
 {

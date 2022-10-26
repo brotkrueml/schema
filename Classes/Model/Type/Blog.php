@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * A [blog](https://en.wikipedia.org/wiki/Blog), sometimes known as a "weblog". Note that the individual posts (BlogPostings) in a Blog are often colloqually referred to by the same term.
+ * A [blog](https://en.wikipedia.org/wiki/Blog), sometimes known as a "weblog". Note that the individual posts (BlogPostings) in a Blog are often colloquially referred to by the same term.
  */
 final class Blog extends AbstractType
 {

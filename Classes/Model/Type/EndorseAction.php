@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * An agent approves/certifies/likes/supports/sanction an object.
+ * An agent approves/certifies/likes/supports/sanctions an object.
  */
 final class EndorseAction extends AbstractType
 {

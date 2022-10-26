@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 /**
- * Web page type: Media gallery page. A mixed-media page that can contains media such as images, videos, and other multimedia.
+ * Web page type: Media gallery page. A mixed-media page that can contain media such as images, videos, and other multimedia.
  */
 final class MediaGallery extends AbstractType implements WebPageTypeInterface
 {

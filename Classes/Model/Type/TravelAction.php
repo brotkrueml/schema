@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
+ * The act of traveling from a fromLocation to a destination by a specified mode of transport, optionally with participants.
  */
 final class TravelAction extends AbstractType
 {

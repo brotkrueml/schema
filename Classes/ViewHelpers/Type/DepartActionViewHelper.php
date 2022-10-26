@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * The act of  departing from a place. An agent departs from an fromLocation for a destination, optionally with participants.
+ * The act of  departing from a place. An agent departs from a fromLocation for a destination, optionally with participants.
  */
 final class DepartActionViewHelper extends AbstractTypeViewHelper
 {

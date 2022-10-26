@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.
+ * A publication event, e.g. catch-up TV or radio podcast, during which a program is available on-demand.
  */
 final class OnDemandEventViewHelper extends AbstractTypeViewHelper
 {

@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  *
  * Related actions:
  * GiveAction: The reciprocal of TakeAction.
- * ReceiveAction: Unlike ReceiveAction, TakeAction implies that ownership has been transfered.
+ * ReceiveAction: Unlike ReceiveAction, TakeAction implies that ownership has been transferred.
  */
 final class TakeActionViewHelper extends AbstractTypeViewHelper
 {

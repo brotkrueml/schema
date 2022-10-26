@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * Web page type: Media gallery page. A mixed-media page that can contains media such as images, videos, and other multimedia.
+ * Web page type: Media gallery page. A mixed-media page that can contain media such as images, videos, and other multimedia.
  */
 final class MediaGalleryViewHelper extends AbstractTypeViewHelper
 {

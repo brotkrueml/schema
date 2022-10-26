@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * A dataset in downloadable form.
+ * All or part of a Dataset in downloadable form.
  */
 final class DataDownloadViewHelper extends AbstractTypeViewHelper
 {

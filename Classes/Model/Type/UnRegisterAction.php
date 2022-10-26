@@ -18,7 +18,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * Related actions:
  * RegisterAction: antonym of UnRegisterAction.
- * LeaveAction: Unlike LeaveAction, UnRegisterAction implies that you are unregistering from a service you werer previously registered, rather than leaving a team/group of people.
+ * LeaveAction: Unlike LeaveAction, UnRegisterAction implies that you are unregistering from a service you were previously registered, rather than leaving a team/group of people.
  */
 final class UnRegisterAction extends AbstractType
 {
