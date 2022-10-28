@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Rich Snippet Tool interprets FAQPage in breadcrumb wrong (#101)
+
 ## [1.13.1] - 2022-06-13
 
 ### Security

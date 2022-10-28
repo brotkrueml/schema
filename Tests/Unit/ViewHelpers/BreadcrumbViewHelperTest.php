@@ -174,6 +174,8 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
      */
     public function breadcrumbWithMultiplePagesAndWebPageTypesGiven(): void
     {
+        self::markTestSkipped('Skipped, see https://github.com/brotkrueml/schema/issues/101');
+
         /** @noinspection PhpInternalEntityUsedInspection */
         GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
 
