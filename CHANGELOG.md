@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.13.2] - 2022-10-28
+
 ### Fixed
 - Rich Snippet Tool interprets FAQPage in breadcrumb wrong (#101)
 
@@ -263,7 +265,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.13.1...1.x
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v1.13.2...1.x
+[1.13.2]: https://github.com/brotkrueml/schema/compare/v1.13.1...v1.13.2
 [1.13.1]: https://github.com/brotkrueml/schema/compare/v1.13.0...v1.13.1
 [1.13.0]: https://github.com/brotkrueml/schema/compare/v1.12.1...v1.13.0
 [1.12.1]: https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1
