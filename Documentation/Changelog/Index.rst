@@ -176,6 +176,15 @@ Removed
 * Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 * Deprecated class TypesProvider (#44)
 
+`1.13.2 <https://github.com/brotkrueml/schema/compare/v1.13.1...v1.13.2>`_ - 2022-10-28
+-------------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Rich Snippet Tool interprets FAQPage in breadcrumb wrong (#101)
+
 `1.13.1 <https://github.com/brotkrueml/schema/compare/v1.13.0...v1.13.1>`_ - 2022-06-13
 -------------------------------------------------------------------------------------------
 

@@ -101,6 +101,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Deprecated methods AbstractType->isEmpty() and SchemaManager->setMainEntityOfWebPage() (#44)
 - Deprecated class TypesProvider (#44)
 
+## [1.13.2] - 2022-10-28
+
+### Fixed
+- Rich Snippet Tool interprets FAQPage in breadcrumb wrong (#101)
+
 ## [1.13.1] - 2022-06-13
 
 ### Security
@@ -370,6 +375,7 @@ Initial release
 [2.0.2]: https://github.com/brotkrueml/schema/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/brotkrueml/schema/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/brotkrueml/schema/compare/v1.12.0...v2.0.0
+[1.13.2]: https://github.com/brotkrueml/schema/compare/v1.13.1...v1.13.2
 [1.13.1]: https://github.com/brotkrueml/schema/compare/v1.13.0...v1.13.1
 [1.13.0]: https://github.com/brotkrueml/schema/compare/v1.12.1...v1.13.0
 [1.12.1]: https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1
