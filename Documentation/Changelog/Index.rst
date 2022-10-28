@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.6.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Rich Snippet Tool interprets FAQPage in breadcrumb wrong (#101)
+
 `2.6.0 <https://github.com/brotkrueml/schema/compare/v2.5.2...v2.6.0>`_ - 2022-10-04
 ----------------------------------------------------------------------------------------
 
