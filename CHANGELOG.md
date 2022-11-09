@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- "CacheManager can not be injected" error when using testing framework (#102)
+
 ## [2.6.1] - 2022-10-28
 
 ### Fixed
