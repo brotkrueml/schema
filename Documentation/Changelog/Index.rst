@@ -8,14 +8,17 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v2.6.1...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.6.2...HEAD>`_
 ------------------------------------------------------------------------------
+
+`2.6.2 <https://github.com/brotkrueml/schema/compare/v2.6.1...v2.6.2>`_ - 2022-11-15
+----------------------------------------------------------------------------------------
 
 Fixed
 ^^^^^
 
 
-* "CacheManager can not be injected" error when using testing framework (#102)
+* "CacheManager can not be injected" error in custom functional tests when using typo3/testing-framework (#102)
 
 `2.6.1 <https://github.com/brotkrueml/schema/compare/v2.6.0...v2.6.1>`_ - 2022-10-28
 ----------------------------------------------------------------------------------------
