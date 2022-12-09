@@ -38,7 +38,7 @@ class ViewHelperTestCase extends TestCase
 
         $this->view->getTemplatePaths()->setTemplatePathAndFilename(vfsStream::url('test-dir') . '/template.html');
 
-        if (! empty($variables)) {
+        if ($variables !== []) {
             $this->view->assignMultiple($variables);
         }
 

@@ -169,6 +169,7 @@ class BreadcrumbViewHelperTest extends ViewHelperTestCase
 
     /**
      * @test
+     * @return never
      */
     public function breadcrumbWithMultiplePagesAndWebPageTypesGiven(): void
     {

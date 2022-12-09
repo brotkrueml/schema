@@ -9,14 +9,11 @@ use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
-use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector;
-use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector;
-use Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector;
-use Rector\TypeDeclaration\Rector\FunctionLike\ParamTypeDeclarationRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector;
+use Rector\TypeDeclaration\Rector\FunctionLike\AddReturnTypeDeclarationFromYieldsRector;
 
 return static function (RectorConfig $config): void {
     $config->import(LevelSetList::UP_TO_PHP_74);
@@ -41,19 +38,12 @@ return static function (RectorConfig $config): void {
     $config->skip([
         __DIR__ . '/Classes/Model/Type/*',
         __DIR__ . '/Classes/ViewHelpers/Type/*',
-        AddArrayParamDocTypeRector::class => [
-            __DIR__ . '/Tests/*',
-        ],
-        AddArrayReturnDocTypeRector::class => [
-            __DIR__ . '/Tests/*',
-        ],
         AddLiteralSeparatorToNumberRector::class,
+        AddReturnTypeDeclarationFromYieldsRector::class => [
+            __DIR__ . '/Tests/*',
+        ],
         CountOnNullRector::class => [
             __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
-        ],
-        ParamTypeDeclarationRector::class => [
-            // because signature would not match anymore with parent class
-            __DIR__ . '/Classes/TypoScript/SchemaContentObject.php',
         ],
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
@@ -62,13 +52,9 @@ return static function (RectorConfig $config): void {
             __DIR__ . '/Classes/AdminPanel/SchemaModule', // can be removed with minimum compatibility to TYPO3 v12 LTS
         ],
         RemoveUnusedPromotedPropertyRector::class, // to avoid rector warning on PHP8.0 with codebase compatible with PHP7.4
-        ReturnTypeDeclarationRector::class => [
+        ReturnTypeFromStrictTypedPropertyRector::class => [
             __DIR__ . '/Classes/Core/Model/AbstractType.php',
             __DIR__ . '/Classes/Core/Model/MultipleType.php',
-        ],
-        TypedPropertyRector::class => [
-            // because $propertyNames must not be typed to be compatible with schema_* extensions
-            __DIR__ . '/Classes/Core/Model/AbstractType.php',
         ],
     ]);
 };
