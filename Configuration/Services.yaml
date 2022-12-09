@@ -29,6 +29,9 @@ services:
     arguments:
       $cache: '@cache.pages'
 
+  Brotkrueml\Schema\AdminPanel\SchemaModule:
+    public: true
+
   Brotkrueml\Schema\EventListener\AddBreadcrumbList:
     tags:
       - name: event.listener

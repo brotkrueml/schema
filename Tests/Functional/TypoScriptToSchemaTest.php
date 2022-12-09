@@ -19,6 +19,10 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class TypoScriptToSchemaTest extends FunctionalTestCase
 {
+    protected array $coreExtensionsToLoad = [
+        'adminpanel',
+    ];
+
     /**
      * @var string[]
      */

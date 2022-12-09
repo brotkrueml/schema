@@ -6,6 +6,7 @@ use Rector\Config\RectorConfig;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
+use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
@@ -56,6 +57,9 @@ return static function (RectorConfig $config): void {
         ],
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
+        ],
+        RemoveParentCallWithoutParentRector::class => [
+            __DIR__ . '/Classes/AdminPanel/SchemaModule', // can be removed with minimum compatibility to TYPO3 v12 LTS
         ],
         RemoveUnusedPromotedPropertyRector::class, // to avoid rector warning on PHP8.0 with codebase compatible with PHP7.4
         ReturnTypeDeclarationRector::class => [

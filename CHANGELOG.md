@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- "Cannot call constructor" error in admin panel with TYPO3 v12.1
+
 ## [2.6.2] - 2022-11-15
 
 ### Fixed
