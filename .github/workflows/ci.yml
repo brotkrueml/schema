@@ -67,7 +67,7 @@ jobs:
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
-          find . -name \*.php  ! -path "./.Build/*" -exec php -l {} \;
+          find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
       - name: Run unit tests for TYPO3 v10
         if: matrix.typo3-versions == '^10'
         run: |
