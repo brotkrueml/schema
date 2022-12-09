@@ -64,7 +64,7 @@ class NodeIdentifierViewHelperTest extends ViewHelperTestCase
 <schema:type.person name="John Smith" -id="{identifier1}" knows="{identifier2}"/>
 <schema:type.person name="Sarah Jane Smith" -id="{identifier2}" knows="{identifier1}"/>
 EOF
-;
+        ;
 
         $this->renderTemplate($template, []);
         $actual = $this->schemaManager->renderJsonLd();

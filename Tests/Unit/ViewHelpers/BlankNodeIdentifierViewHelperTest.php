@@ -78,7 +78,7 @@ class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
 <schema:type.person name="John Smith" -id="{blankIdentifier1}" knows="{blankIdentifier2}"/>
 <schema:type.person name="Sarah Jane Smith" -id="{blankIdentifier2}" knows="{blankIdentifier1}"/>
 EOF
-;
+        ;
 
         $this->renderTemplate($template, []);
         $actual = $this->schemaManager->renderJsonLd();
