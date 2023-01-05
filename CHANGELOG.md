@@ -7,10 +7,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Avoid deprecation in admin panel for PHP 8.2
+
 ## [2.6.3] - 2022-12-09
 
 ### Fixed
-- "Cannot call constructor" error in admin panel with TYPO3 v12.1
+- "Cannot call constructor" error in admin panel with TYPO3 v12.1 (#103)
 
 ## [2.6.2] - 2022-11-15
 

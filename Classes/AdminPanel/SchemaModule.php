@@ -28,7 +28,7 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
     {
         $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
 
-        if (\is_callable('parent::__construct')) {
+        if (\is_callable(\get_parent_class($this) . '::__construct')) {
             // @phpstan-ignore-next-line Call to an undefined static method TYPO3\CMS\Adminpanel\ModuleApi\AbstractModule::__construct()
             parent::__construct();
         }
