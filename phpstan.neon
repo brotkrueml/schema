@@ -10,15 +10,13 @@ parameters:
     paths:
         - Classes
     treatPhpDocTypesAsCertain: false
+    cognitive_complexity:
+        class: 20
+        function: 10
     ignoreErrors:
         - '#\Class has a static method must so must contains "Static" in its name#'
 
 services:
-    -
-        class: Symplify\PHPStanRules\CognitiveComplexity\Rules\ClassLikeCognitiveComplexityRule
-        tags: [phpstan.rules.rule]
-        arguments:
-            maxClassCognitiveComplexity: 20
     -
         class: Symplify\PHPStanRules\Rules\ForbiddenFuncCallRule
         tags: [phpstan.rules.rule]

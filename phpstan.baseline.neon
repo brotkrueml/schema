@@ -116,9 +116,19 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
+			message: "#^Cognitive complexity for \"Brotkrueml\\\\Schema\\\\Manager\\\\SchemaManager\\:\\:setWebPage\\(\\)\" is 14, keep it under 10$#"
+			count: 1
+			path: Classes/Manager/SchemaManager.php
+
+		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$type of method Brotkrueml\\\\Schema\\\\JsonLd\\\\RendererInterface\\:\\:addType\\(\\) expects Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface, Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null given\\.$#"
 			count: 1
 			path: Classes/Manager/SchemaManager.php
+
+		-
+			message: "#^Cognitive complexity for \"Brotkrueml\\\\Schema\\\\Provider\\\\WebPageTypeProvider\\:\\:getTypesForTcaSelect\\(\\)\" is 15, keep it under 10$#"
+			count: 1
+			path: Classes/Provider/WebPageTypeProvider.php
 
 		-
 			message: "#^Class cognitive complexity is 29, keep it under 20$#"
