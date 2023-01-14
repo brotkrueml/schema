@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\EventListener;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
+use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
@@ -33,20 +34,23 @@ final class AddBreadcrumbList
 
     private ExtensionConfiguration $extensionConfiguration;
     private ContentObjectRenderer $contentObjectRenderer;
+    private SchemaManager $schemaManager;
 
     public function __construct(
         ContentObjectRenderer $contentObjectRenderer,
-        ExtensionConfiguration $configuration
+        ExtensionConfiguration $configuration,
+        SchemaManager $schemaManager
     ) {
         $this->contentObjectRenderer = $contentObjectRenderer;
         $this->extensionConfiguration = $configuration;
+        $this->schemaManager = $schemaManager;
     }
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {
         $configuration = $this->extensionConfiguration->get('schema');
         $shouldEmbedBreadcrumbMarkup = (bool)$configuration['automaticBreadcrumbSchemaGeneration'];
-        if (! $shouldEmbedBreadcrumbMarkup) {
+        if (! $shouldEmbedBreadcrumbMarkup || $this->schemaManager->hasBreadcrumbList()) {
             return;
         }
 

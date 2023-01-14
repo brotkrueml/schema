@@ -70,6 +70,20 @@ final class SchemaManager implements SingletonInterface
         return $this;
     }
 
+    /**
+     * @param class-string $className
+     * @return bool
+     */
+    public function hasType(string $className): bool
+    {
+        foreach ($this->types as $type) {
+            if (is_a($type, $className)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private function isWebPageType(TypeInterface $type): bool
     {
         return $type instanceof WebPageTypeInterface;
@@ -104,6 +118,11 @@ final class SchemaManager implements SingletonInterface
         }
 
         $this->webPage = $webPage;
+    }
+
+    public function hasBreadcrumbList(): bool
+    {
+        return $this->breadcrumbLists !== [];
     }
 
     private function isBreadCrumbList(TypeInterface $type): bool
