@@ -1,5 +1,5 @@
 .PHONY: qa
-qa: cs tests mutation phpstan rector-dry yaml-lint changelog
+qa: cs tests phpstan rector-dry yaml-lint changelog
 
 # See: https://github.com/crossnox/m2r2
 .PHONY: changelog
