@@ -9,17 +9,17 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers\Type;
+namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers\Type;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Model\Type;
+use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers\ViewHelperTestCase;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Tests\Unit\ViewHelpers\ViewHelperTestCase;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
-class ThingViewHelperTest extends ViewHelperTestCase
+final class ThingViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
 

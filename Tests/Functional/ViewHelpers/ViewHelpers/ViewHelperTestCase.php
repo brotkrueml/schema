@@ -9,15 +9,15 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
+namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers;
 
 use Brotkrueml\Schema\Manager\SchemaManager;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
 
-class ViewHelperTestCase extends TestCase
+abstract class ViewHelperTestCase extends FunctionalTestCase
 {
     protected const VIEWHELPER_NAMESPACE = '{namespace schema=Brotkrueml\Schema\ViewHelpers}';
 
@@ -27,6 +27,7 @@ class ViewHelperTestCase extends TestCase
 
     protected function setUp(): void
     {
+        parent::setup();
         vfsStream::setup('test-dir');
         $this->view = new TemplateView();
         $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);

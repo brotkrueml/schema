@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
+namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
-class PropertyViewHelperTest extends ViewHelperTestCase
+final class PropertyViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
 

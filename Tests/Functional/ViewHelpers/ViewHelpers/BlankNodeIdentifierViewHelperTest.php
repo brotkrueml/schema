@@ -9,15 +9,16 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\ViewHelpers;
+namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers;
 
+use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class NodeIdentifierViewHelperTest extends ViewHelperTestCase
+final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
 
@@ -35,6 +36,9 @@ class NodeIdentifierViewHelperTest extends ViewHelperTestCase
             ->willReturnMap($map);
 
         GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+
+        // For every test case reset the counter. In a test case itself the counter starts now with 1.
+        new BlankNodeIdentifier(true);
     }
 
     protected function tearDown(): void
@@ -46,11 +50,21 @@ class NodeIdentifierViewHelperTest extends ViewHelperTestCase
     /**
      * @test
      */
-    public function viewHelperPrintsNodeIdentifiersCorrectly(): void
+    public function viewHelperUsedOncePrintsBlankNodeIdentifierCorrectly(): void
     {
-        $actual = $this->renderTemplate('<schema:nodeIdentifier id="some-id"/>', []);
+        $actual = $this->renderTemplate('<schema:blankNodeIdentifier/>', []);
 
-        self::assertSame('some-id', $actual);
+        self::assertSame('_:b1', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function viewHelperUsedTwicePrintsBlankNodeIdentifiersCorrectly(): void
+    {
+        $actual = $this->renderTemplate('<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>', []);
+
+        self::assertSame('_:b1 _:b2', $actual);
     }
 
     /**
@@ -59,17 +73,17 @@ class NodeIdentifierViewHelperTest extends ViewHelperTestCase
     public function usingVariablesAndThenAssignedToTypePropertiesBuildsSchemaCorrectly(): void
     {
         $template = <<<EOF
-<f:variable name="identifier1" value="{schema:nodeIdentifier(id: 'https://example.org/#john-smith')}"/>
-<f:variable name="identifier2" value="{schema:nodeIdentifier(id: 'https://example.org/#sarah-jane-smith')}"/>
-<schema:type.person name="John Smith" -id="{identifier1}" knows="{identifier2}"/>
-<schema:type.person name="Sarah Jane Smith" -id="{identifier2}" knows="{identifier1}"/>
+<f:variable name="blankIdentifier1" value="{schema:blankNodeIdentifier()}"/>
+<f:variable name="blankIdentifier2" value="{schema:blankNodeIdentifier()}"/>
+<schema:type.person name="John Smith" -id="{blankIdentifier1}" knows="{blankIdentifier2}"/>
+<schema:type.person name="Sarah Jane Smith" -id="{blankIdentifier2}" knows="{blankIdentifier1}"/>
 EOF
         ;
 
         $this->renderTemplate($template, []);
         $actual = $this->schemaManager->renderJsonLd();
 
-        $expected = '{"@context":"https://schema.org/","@graph":[{"@type":"Person","@id":"https://example.org/#john-smith","name":"John Smith","knows":{"@id":"https://example.org/#sarah-jane-smith"}},{"@type":"Person","@id":"https://example.org/#sarah-jane-smith","name":"Sarah Jane Smith","knows":{"@id":"https://example.org/#john-smith"}}]}';
+        $expected = '{"@context":"https://schema.org/","@graph":[{"@type":"Person","@id":"_:b1","name":"John Smith","knows":{"@id":"_:b2"}},{"@type":"Person","@id":"_:b2","name":"Sarah Jane Smith","knows":{"@id":"_:b1"}}]}';
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
     }
 }
