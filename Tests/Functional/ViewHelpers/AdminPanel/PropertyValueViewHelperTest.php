@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers\AdminPanel;
+namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers\ViewHelperTestCase;
+use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelperTestCase;
 use Brotkrueml\Schema\ViewHelpers\AdminPanel\PropertyValueViewHelper;
 use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Imaging\Icon;

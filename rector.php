@@ -46,7 +46,7 @@ return static function (RectorConfig $config): void {
             __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
         ],
         RecastingRemovalRector::class => [
-            __DIR__ . '/Tests/Unit/ViewHelpers/ViewHelperTestCase.php',
+            __DIR__ . '/Tests/Functional/ViewHelpers/ViewHelperTestCase.php',
         ],
         RemoveParentCallWithoutParentRector::class => [
             __DIR__ . '/Classes/AdminPanel/SchemaModule', // can be removed with minimum compatibility to TYPO3 v12 LTS

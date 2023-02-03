@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelpers;
+namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
