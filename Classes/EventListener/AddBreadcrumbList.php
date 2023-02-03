@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\EventListener;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
+use Brotkrueml\Schema\Event\InitialiseTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
@@ -42,7 +42,7 @@ final class AddBreadcrumbList
         $this->extensionConfiguration = $configuration;
     }
 
-    public function __invoke(RenderAdditionalTypesEvent $event): void
+    public function __invoke(InitialiseTypesEvent $event): void
     {
         $configuration = $this->extensionConfiguration->get('schema');
         $shouldEmbedBreadcrumbMarkup = (bool)$configuration['automaticBreadcrumbSchemaGeneration'];

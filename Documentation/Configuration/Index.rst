@@ -83,6 +83,17 @@ Default value
    (empty)
 
 
+Allow only one breadcrumb list
+------------------------------
+
+.. versionadded:: 2.7.0
+
+With enabled option only one breadcrumb list will be rendered. This may be
+helpful, if the option :ref:`configuration-automaticBreadcrumbSchemaGeneration`
+is enabled and you want to overwrite the generated breadcrumb list on a
+dedicated page with a custom one.
+
+
 .. index:: Markup in body section
 
 .. _configuration-embedMarkupInBodySection:

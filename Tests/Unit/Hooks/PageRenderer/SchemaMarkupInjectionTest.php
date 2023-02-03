@@ -17,8 +17,10 @@ use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
+use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use Brotkrueml\Schema\Tests\Helper\NoopEventDispatcher;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -29,26 +31,26 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class SchemaMarkupInjectionTest extends TestCase
+final class SchemaMarkupInjectionTest extends TestCase
 {
     protected SchemaMarkupInjection $subject;
 
     /**
-     * @var MockObject|PageRenderer
+     * @var MockObject&PageRenderer
      */
-    protected $pageRendererMock;
+    protected MockObject $pageRendererMock;
 
     /**
-     * @var MockObject|ExtensionConfiguration
+     * @var MockObject&ExtensionConfiguration
      */
-    protected $extensionConfigurationMock;
+    protected MockObject $extensionConfigurationMock;
 
     private SchemaManager $schemaManager;
 
     /**
-     * @var MockObject|TypoScriptFrontendController
+     * @var MockObject&TypoScriptFrontendController
      */
-    protected $controllerMock;
+    protected MockObject $controllerMock;
 
     /**
      * @var PagesCacheService&MockObject
@@ -58,17 +60,17 @@ class SchemaMarkupInjectionTest extends TestCase
     /**
      * @var Stub&ApplicationType
      */
-    private $applicationTypeStub;
+    private Stub $applicationTypeStub;
 
     /**
      * @var Stub&ExtensionAvailability
      */
-    private $extensionAvailabilityStub;
+    private Stub $extensionAvailabilityStub;
 
     /**
      * @var Stub&EventDispatcher
      */
-    private $eventDispatcherStub;
+    private Stub $eventDispatcherStub;
 
     protected function setUp(): void
     {
@@ -80,7 +82,11 @@ class SchemaMarkupInjectionTest extends TestCase
         ];
 
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
-        $this->schemaManager = new SchemaManager();
+        $this->schemaManager = new SchemaManager(
+            new NoopEventDispatcher(),
+            $this->extensionConfigurationMock,
+            new Renderer()
+        );
         $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
         $this->applicationTypeStub = $this->createStub(ApplicationType::class);
         $this->extensionAvailabilityStub = $this->createStub(ExtensionAvailability::class);

@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\EventListener;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
+use Brotkrueml\Schema\Event\InitialiseTypesEvent;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
@@ -47,7 +47,7 @@ final class AddBreadcrumbListTest extends TestCase
     private $typoScriptFrontendControllerStub;
 
     private AddBreadcrumbList $subject;
-    private RenderAdditionalTypesEvent $event;
+    private InitialiseTypesEvent $event;
 
     protected function setUp(): void
     {
@@ -77,7 +77,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
 
-        $this->event = new RenderAdditionalTypesEvent(false);
+        $this->event = new InitialiseTypesEvent();
     }
 
     protected function tearDown(): void
@@ -95,7 +95,7 @@ final class AddBreadcrumbListTest extends TestCase
         $this->setExtensionConfiguration(false);
         $this->subject->__invoke($this->event);
 
-        self::assertSame([], $this->event->getAdditionalTypes());
+        self::assertSame([], $this->event->getTypes());
     }
 
     private function setExtensionConfiguration(bool $automaticGeneration, string $excludeAdditionalDoktypes = ''): void
@@ -118,7 +118,7 @@ final class AddBreadcrumbListTest extends TestCase
         $this->typoScriptFrontendControllerStub->rootLine = [];
         $this->subject->__invoke($this->event);
 
-        self::assertSame([], $this->event->getAdditionalTypes());
+        self::assertSame([], $this->event->getTypes());
     }
 
     /**
@@ -138,8 +138,10 @@ final class AddBreadcrumbListTest extends TestCase
             ->willReturn('https://example.org/the-page/');
         $this->subject->__invoke($this->event);
 
-        self::assertCount(1, $this->event->getAdditionalTypes());
-        self::assertSame($expected, $this->renderJsonLd($this->event->getAdditionalTypes()[0]));
+        $actual = $this->event->getTypes();
+
+        self::assertCount(1, $actual);
+        self::assertSame($expected, $this->renderJsonLd($actual[0]));
     }
 
     private function renderJsonLd(TypeInterface $type): string
@@ -523,9 +525,10 @@ final class AddBreadcrumbListTest extends TestCase
 
         $this->subject->__invoke($this->event);
 
+        $actual = $this->event->getTypes();
         $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}';
-        self::assertCount(1, $this->event->getAdditionalTypes());
-        self::assertSame($expected, $this->renderJsonLd($this->event->getAdditionalTypes()[0]));
+        self::assertCount(1, $actual);
+        self::assertSame($expected, $this->renderJsonLd($actual[0]));
     }
 
     /**
@@ -565,8 +568,9 @@ final class AddBreadcrumbListTest extends TestCase
 
         $this->subject->__invoke($this->event);
 
+        $actual = $this->event->getTypes();
         $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}';
-        self::assertCount(1, $this->event->getAdditionalTypes());
-        self::assertSame($expected, $this->renderJsonLd($this->event->getAdditionalTypes()[0]));
+        self::assertCount(1, $actual);
+        self::assertSame($expected, $this->renderJsonLd($actual[0]));
     }
 }

@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Configuration option to allow only one breadcrumb list (#104)
+
 ## [2.6.4] - 2023-01-05
 
 ### Fixed

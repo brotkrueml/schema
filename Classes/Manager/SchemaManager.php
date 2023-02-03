@@ -13,16 +13,22 @@ namespace Brotkrueml\Schema\Manager;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
+use Brotkrueml\Schema\Event\InitialiseTypesEvent;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SchemaManager implements SingletonInterface
 {
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
+    private ExtensionConfiguration $extensionConfiguration;
     private RendererInterface $renderer;
 
     /**
@@ -39,10 +45,19 @@ final class SchemaManager implements SingletonInterface
 
     private MainEntityOfWebPageBag $mainEntityOfWebPageBag;
 
-    public function __construct(RendererInterface $renderer = null)
-    {
+    public function __construct(
+        ?EventDispatcherInterface $eventDispatcher = null,
+        ?ExtensionConfiguration $extensionConfiguration = null,
+        ?RendererInterface $renderer = null
+    ) {
+        $this->extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->renderer = $renderer ?? new Renderer();
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
+
+        $eventDispatcher ??= GeneralUtility::makeInstance(EventDispatcherInterface::class);
+        /** @var InitialiseTypesEvent $event */
+        $event = $eventDispatcher->dispatch(new InitialiseTypesEvent());
+        \array_map(fn (TypeInterface $type): SchemaManager => $this->addType($type), $event->getTypes());
     }
 
     /**
@@ -113,6 +128,11 @@ final class SchemaManager implements SingletonInterface
 
     private function addBreadcrumbList(BreadcrumbList $breadcrumbList): void
     {
+        if ($this->extensionConfiguration->get(Extension::KEY, 'allowOnlyOneBreadcrumbList')) {
+            $this->breadcrumbLists = [$breadcrumbList];
+            return;
+        }
+
         $this->breadcrumbLists[] = $breadcrumbList;
     }
 

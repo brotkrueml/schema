@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
@@ -18,18 +19,21 @@ use Brotkrueml\Schema\Model\Type\ItemPage;
 use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
+use Brotkrueml\Schema\Tests\Helper\NoopEventDispatcher;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\TestCase;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class SchemaManagerTest extends Testcase
+final class SchemaManagerTest extends Testcase
 {
     use SchemaCacheTrait;
 
-    protected SchemaManager $subject;
-
+    private SchemaManager $subject;
     private \ReflectionProperty $rendererTypes;
-
     private Renderer $renderer;
 
     protected function setUp(): void
@@ -41,8 +45,11 @@ class SchemaManagerTest extends Testcase
         $this->rendererTypes->setAccessible(true);
 
         $this->renderer = new Renderer();
-
-        $this->subject = new SchemaManager($this->renderer);
+        $this->subject = new SchemaManager(
+            new NoopEventDispatcher(),
+            $this->createStub(ExtensionConfiguration::class),
+            $this->renderer
+        );
     }
 
     protected function tearDown(): void
@@ -75,11 +82,12 @@ class SchemaManagerTest extends Testcase
     {
         $breadcrumbList = new BreadcrumbList();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($breadcrumbList);
-        $subject->renderJsonLd();
+        $this->subject->addType($breadcrumbList);
+        $this->subject->renderJsonLd();
 
-        self::assertSame([$breadcrumbList], $this->rendererTypes->getValue($this->renderer));
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertSame([$breadcrumbList], $actual);
     }
 
     /**
@@ -90,12 +98,13 @@ class SchemaManagerTest extends Testcase
         $breadcrumbList1 = new BreadcrumbList();
         $breadcrumbList2 = new BreadcrumbList();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($breadcrumbList1);
-        $subject->addType($breadcrumbList2);
-        $subject->renderJsonLd();
+        $this->subject->addType($breadcrumbList1);
+        $this->subject->addType($breadcrumbList2);
+        $this->subject->renderJsonLd();
 
-        self::assertSame([$breadcrumbList1, $breadcrumbList2], $this->rendererTypes->getValue($this->renderer));
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertSame([$breadcrumbList1, $breadcrumbList2], $actual);
     }
 
     /**
@@ -106,10 +115,9 @@ class SchemaManagerTest extends Testcase
         $webPage = new WebPage();
         $breadcrumbList = new BreadcrumbList();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($breadcrumbList);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($breadcrumbList);
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
         self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
         self::assertSame($breadcrumbList, $webPage->getProperty('breadcrumb'));
@@ -126,14 +134,13 @@ class SchemaManagerTest extends Testcase
         $webPage = new WebPage();
         $webPage->setProperty('breadcrumb', $breadcrumbList2);
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($breadcrumbList1);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($breadcrumbList1);
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        $this->rendererTypes->getValue($this->renderer);
+        $actual = $webPage->getProperty('breadcrumb');
 
-        self::assertSame([$breadcrumbList1, $breadcrumbList2], $webPage->getProperty('breadcrumb'));
+        self::assertSame([$breadcrumbList1, $breadcrumbList2], $actual);
     }
 
     /**
@@ -146,11 +153,12 @@ class SchemaManagerTest extends Testcase
         $webPage = new WebPage();
         $webPage->setProperty('breadcrumb', $breadcrumbLists);
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        self::assertSame($breadcrumbLists, $webPage->getProperty('breadcrumb'));
+        $actual = $webPage->getProperty('breadcrumb');
+
+        self::assertSame($breadcrumbLists, $actual);
     }
 
     /**
@@ -164,11 +172,12 @@ class SchemaManagerTest extends Testcase
         $webPage->setProperty('breadcrumb', $breadcrumbList);
         $webPage->addProperty('breadcrumb', new Thing());
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        self::assertSame($breadcrumbList, $webPage->getProperty('breadcrumb'));
+        $actual = $webPage->getProperty('breadcrumb');
+
+        self::assertSame($breadcrumbList, $actual);
     }
 
     /**
@@ -181,11 +190,12 @@ class SchemaManagerTest extends Testcase
         $webPage = new WebPage();
         $webPage->setProperty('mainEntity', $thing);
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        self::assertSame($thing, $webPage->getProperty('mainEntity'));
+        $actual = $webPage->getProperty('mainEntity');
+
+        self::assertSame($thing, $actual);
     }
 
     /**
@@ -196,11 +206,12 @@ class SchemaManagerTest extends Testcase
         $webPage = new WebPage();
         $webPage->setProperty('mainEntity', 'some string');
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        self::assertNull($webPage->getProperty('mainEntity'));
+        $actual = $webPage->getProperty('mainEntity');
+
+        self::assertNull($actual);
     }
 
     /**
@@ -215,11 +226,12 @@ class SchemaManagerTest extends Testcase
         $webPage->setProperty('mainEntity', $thing1);
         $webPage->addProperty('mainEntity', $thing2);
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        self::assertSame([$thing1, $thing2], $webPage->getProperty('mainEntity'));
+        $actual = $webPage->getProperty('mainEntity');
+
+        self::assertSame([$thing1, $thing2], $actual);
     }
 
     /**
@@ -233,11 +245,12 @@ class SchemaManagerTest extends Testcase
         $webPage->setProperty('mainEntity', $thing);
         $webPage->addProperty('mainEntity', 'some string');
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
-        self::assertSame($thing, $webPage->getProperty('mainEntity'));
+        $actual = $webPage->getProperty('mainEntity');
+
+        self::assertSame($thing, $actual);
     }
 
     /**
@@ -248,13 +261,13 @@ class SchemaManagerTest extends Testcase
         $webPage = new WebPage();
         $itemPage = new ItemPage();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($webPage);
-        $subject->addType($itemPage);
+        $this->subject->addType($webPage);
+        $this->subject->addType($itemPage);
+        $this->subject->renderJsonLd();
 
-        $subject->renderJsonLd();
+        $actual = $this->rendererTypes->getValue($this->renderer);
 
-        self::assertSame([$itemPage], $this->rendererTypes->getValue($this->renderer));
+        self::assertSame([$itemPage], $actual);
     }
 
     /**
@@ -265,12 +278,13 @@ class SchemaManagerTest extends Testcase
         $thing = new Thing();
         $person = new Person();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType($thing);
-        $subject->addType($person);
-        $subject->renderJsonLd();
+        $this->subject->addType($thing);
+        $this->subject->addType($person);
+        $this->subject->renderJsonLd();
 
-        self::assertSame([$thing, $person], $this->rendererTypes->getValue($this->renderer));
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertSame([$thing, $person], $actual);
     }
 
     /**
@@ -282,11 +296,10 @@ class SchemaManagerTest extends Testcase
         $person = new Person();
         $webPage = new WebPage();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addMainEntityOfWebPage($thing);
-        $subject->addMainEntityOfWebPage($person);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addMainEntityOfWebPage($thing);
+        $this->subject->addMainEntityOfWebPage($person);
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
         self::assertSame([$webPage], $this->rendererTypes->getValue($this->renderer));
         self::assertSame([$thing, $person], $webPage->getProperty('mainEntity'));
@@ -303,13 +316,12 @@ class SchemaManagerTest extends Testcase
         $person4 = new Person();
         $webPage = new WebPage();
 
-        $subject = new SchemaManager($this->renderer);
-        $subject->addMainEntityOfWebPage($person1, false);
-        $subject->addMainEntityOfWebPage($person2, true);
-        $subject->addMainEntityOfWebPage($person3, false);
-        $subject->addMainEntityOfWebPage($person4, true);
-        $subject->addType($webPage);
-        $subject->renderJsonLd();
+        $this->subject->addMainEntityOfWebPage($person1, false);
+        $this->subject->addMainEntityOfWebPage($person2, true);
+        $this->subject->addMainEntityOfWebPage($person3, false);
+        $this->subject->addMainEntityOfWebPage($person4, true);
+        $this->subject->addType($webPage);
+        $this->subject->renderJsonLd();
 
         self::assertContains($webPage, $this->rendererTypes->getValue($this->renderer));
         self::assertContains($person1, $this->rendererTypes->getValue($this->renderer));
@@ -321,11 +333,114 @@ class SchemaManagerTest extends Testcase
     /**
      * @test
      */
+    public function typesFromInitialiseTypesEventIsAdded(): void
+    {
+        $type1 = new ProductStub();
+        $type2 = new ServiceStub();
+
+        $eventDispatcherStub = new class($type1, $type2) implements EventDispatcherInterface {
+            /**
+             * @var TypeInterface[]
+             */
+            private array $types;
+
+            public function __construct(TypeInterface ...$types)
+            {
+                $this->types = $types;
+            }
+
+            public function dispatch(object $event)
+            {
+                \array_map([$event, 'addType'], $this->types);
+
+                return $event;
+            }
+        };
+
+        $subject = new SchemaManager(
+            $eventDispatcherStub,
+            $this->createStub(ExtensionConfiguration::class),
+            $this->renderer
+        );
+
+        $subject->renderJsonLd();
+
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertCount(2, $actual);
+        self::assertContains($type1, $actual);
+        self::assertContains($type2, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function onlyOneBreadCrumbListIsRenderedIfExtensionConfigurationIsEnabled(): void
+    {
+        $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
+        $extensionConfigurationStub
+            ->method('get')
+            ->with('schema', 'allowOnlyOneBreadcrumbList')
+            ->willReturn('1');
+
+        $subject = new SchemaManager(
+            new NoopEventDispatcher(),
+            $extensionConfigurationStub,
+            $this->renderer
+        );
+
+        $breadcrumbList1 = new BreadcrumbList();
+        $breadcrumbList2 = new BreadcrumbList();
+
+        $subject->addType($breadcrumbList1);
+        $subject->addType($breadcrumbList2);
+
+        $subject->renderJsonLd();
+
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertCount(1, $actual);
+        self::assertSame($breadcrumbList2, $actual[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function allBreadCrumbListsAreRenderedIfExtensionConfigurationIsDisabled(): void
+    {
+        $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
+        $extensionConfigurationStub
+            ->method('get')
+            ->with('schema', 'allowOnlyOneBreadcrumbList')
+            ->willReturn('0');
+
+        $subject = new SchemaManager(
+            new NoopEventDispatcher(),
+            $extensionConfigurationStub,
+            $this->renderer
+        );
+
+        $breadcrumbList1 = new BreadcrumbList();
+        $breadcrumbList2 = new BreadcrumbList();
+
+        $subject->addType($breadcrumbList1);
+        $subject->addType($breadcrumbList2);
+
+        $subject->renderJsonLd();
+
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertCount(2, $actual);
+        self::assertContains($breadcrumbList1, $actual);
+        self::assertContains($breadcrumbList2, $actual);
+    }
+
+    /**
+     * @test
+     */
     public function addTypeReturnsInstanceOfSelf(): void
     {
-        $subject = new SchemaManager($this->renderer);
-
-        self::assertSame($subject, $subject->addType(new Thing()));
+        self::assertSame($this->subject, $this->subject->addType(new Thing()));
     }
 
     /**
@@ -333,9 +448,7 @@ class SchemaManagerTest extends Testcase
      */
     public function addMainEntityOfWebPageReturnsInstanceOfSelf(): void
     {
-        $subject = new SchemaManager($this->renderer);
-
-        self::assertSame($subject, $subject->addMainEntityOfWebPage(new Thing()));
+        self::assertSame($this->subject, $this->subject->addMainEntityOfWebPage(new Thing()));
     }
 
     /**
@@ -343,13 +456,12 @@ class SchemaManagerTest extends Testcase
      */
     public function multipleCallsOfRenderJsonLd(): void
     {
-        $subject = new SchemaManager($this->renderer);
-        $subject->addType(new Thing());
+        $this->subject->addType(new Thing());
 
-        $subject->renderJsonLd();
+        $this->subject->renderJsonLd();
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
 
-        $subject->renderJsonLd();
+        $this->subject->renderJsonLd();
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
     }
 }

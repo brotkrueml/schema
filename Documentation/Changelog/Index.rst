@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.6.4...HEAD>`_
 ------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Configuration option to allow only one breadcrumb list (#104)
+
 `2.6.4 <https://github.com/brotkrueml/schema/compare/v2.6.3...v2.6.4>`_ - 2023-01-05
 ----------------------------------------------------------------------------------------
 

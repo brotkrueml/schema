@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2022-01-28T15:07:16Z" product-name="schema">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2023-02-03T16:15:54Z" product-name="schema">
 		<body>
 			<trans-unit id="adminPanel.goToWebsite" resname="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
@@ -34,6 +34,9 @@
 			</trans-unit>
 			<trans-unit id="adminPanel.validateInRichResultTest" resname="adminPanel.validateInRichResultTest">
 				<source><![CDATA[Validate in Rich Result Test]]></source>
+			</trans-unit>
+			<trans-unit id="config.allowOnlyOneBreadcrumbList" resname="config.allowOnlyOneBreadcrumbList">
+				<source><![CDATA[Allow only one breadcrumb list]]></source>
 			</trans-unit>
 			<trans-unit id="config.automaticBreadcrumbExcludeAdditionalDoktypes" resname="config.automaticBreadcrumbExcludeAdditionalDoktypes">
 				<source><![CDATA[Automatic embedding of the breadcrumb markup into the page - Exclude additional doktypes: Separate multiple doktypes by commas (199, 254 and 255 are always excluded)]]></source>

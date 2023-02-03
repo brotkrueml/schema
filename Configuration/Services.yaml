@@ -36,7 +36,7 @@ services:
     tags:
       - name: event.listener
         identifier: 'ext-schema/addBreadcrumbList'
-        event: Brotkrueml\Schema\Event\RenderAdditionalTypesEvent
+        event: Brotkrueml\Schema\Event\InitialiseTypesEvent
 
   Brotkrueml\Schema\EventListener\AddWebPageType:
     tags:
