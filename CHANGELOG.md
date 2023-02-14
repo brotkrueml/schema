@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.7.0] - 2023-02-14
+
 ### Added
 - Configuration option to allow only one breadcrumb list (#104)
 
@@ -378,7 +380,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.6.4...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.7.0...HEAD
+[2.7.0]: https://github.com/brotkrueml/schema/compare/v2.6.4...v2.7.0
 [2.6.4]: https://github.com/brotkrueml/schema/compare/v2.6.3...v2.6.4
 [2.6.3]: https://github.com/brotkrueml/schema/compare/v2.6.2...v2.6.3
 [2.6.2]: https://github.com/brotkrueml/schema/compare/v2.6.1...v2.6.2
