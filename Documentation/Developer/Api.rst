@@ -318,144 +318,144 @@ expose the following methods:
 
 .. option:: setId($id)
 
-The method sets the unique ID of the model. With the ID, you can cross-reference
-types on the same page or between different pages (and even between different
-web sites) without repeating all the properties.
+   The method sets the unique ID of the model. With the ID, you can
+   cross-reference types on the same page or between different pages (and even
+   between different web sites) without repeating all the properties.
 
-It is common to use an `IRI`_ as ID like in the above example. Please keep in
-mind that the ID should be consistent between changes of the properties, e.g. if
-a person marries and the name is changed. The person is still the same, so the
-IRI should be.
+   It is common to use an `IRI`_ as ID like in the above example. Please keep in
+   mind that the ID should be consistent between changes of the properties, for
+   example, if a person marries and the name is changed. The person is still the
+   same, so the IRI should be.
 
-The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you
-call it in a browser.
+   The IRI is no URL, so it is acceptable to give a "404 Not Found" back if you
+   call it in a browser.
 
-Parameter
-   :php:`NodeIdentifierInterface|string|null $id`: The unique id to set.
+   Parameter
+      :php:`NodeIdentifierInterface|string|null $id`: The unique id to set.
 
-Return value
-   Reference to the model itself.
+   Return value
+      Reference to the model itself.
 
 
 .. option:: getId(): string|null
 
-Gets the id of the type model.
+   Gets the id of the type model.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   A previously set id or null (if not defined).
+   Return value
+      A previously set id or null (if not defined).
 
 
 .. option:: setProperty($propertyName, $propertyValue)
 
-Call this method to set a property or overwrite a previously one.
+   Call this method to set a property or overwrite a previously one.
 
-Parameters
-   :php:`string $propertyName`
-      The property name to set. If the property does not exist in the model,
-      an exception is thrown.
-   :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|null $propertyValue`
-      The value of the property to set. This can be a string, a boolean, another
-      model, a node identifier or an array of strings, booleans or models. Also
-      null is possible to clear the property value.
+   Parameters
+      :php:`string $propertyName`
+         The property name to set. If the property does not exist in the model,
+         an exception is thrown.
+      :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|null $propertyValue`
+         The value of the property to set. This can be a string, a boolean,
+         another model, a node identifier or an array of strings, booleans or
+         models. Also null is possible to clear the property value.
 
-Return value
-   Reference to the model itself.
+   Return value
+      Reference to the model itself.
 
 
 .. option:: addProperty($propertyName, $propertyValue)
 
-Call this method if you want to add a value to an existing one. In the example
-above, you can see that :php:`addProperty()` is used to add a second value to
-the :php:`sameAs` property.
+   Call this method if you want to add a value to an existing one. In the
+   example above, you can see that :php:`addProperty()` is used to add a second
+   value to the :php:`sameAs` property.
 
-Calling the :php:`addProperty()` method on a property that has no value assigned
-has the same effect as calling :php:`setProperty()`. So you can safely use it,
-e.g. in a loop, to set some values on a property.
+   Calling the :php:`addProperty()` method on a property that has no value
+   assigned has the same effect as calling :php:`setProperty()`. So you can
+   safely use it, for example, in a loop, to set some values on a property.
 
-Parameters
-   :php:`string $propertyName`
-      The property name to set. If the property does not exist in the model, an
-      exception is thrown.
-   :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|null $propertyValue`
-      The value of the property to set. This can be a string, a boolean, another
-      model, a node identifier or an array of strings, booleans or models. Also
-      null is possible to clear the property value.
+   Parameters
+      :php:`string $propertyName`
+         The property name to set. If the property does not exist in the model,
+         an exception is thrown.
+      :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|null $propertyValue`
+         The value of the property to set. This can be a string, a boolean,
+         another model, a node identifier or an array of strings, booleans or
+         models. Also null is possible to clear the property value.
 
-Return value
-   Reference to the model itself.
+   Return value
+      Reference to the model itself.
 
 
 .. option:: setProperties($properties)
 
-Set multiple properties at once.
+   Set multiple properties at once.
 
-Parameter
-   :php:`array $properties`
-      The properties to set. The key of the array is the property name, the
-      value is the property value. Allowed as values are the same as with the
-      method :php:`->setProperty()`.
+   Parameter
+      :php:`array $properties`
+         The properties to set. The key of the array is the property name, the
+         value is the property value. Allowed as values are the same as with the
+         method :php:`->setProperty()`.
 
-Return value
-   Reference to the model itself.
+   Return value
+      Reference to the model itself.
 
 
 .. option:: getProperty($propertyName)
 
-Get the value of a property.
+   Get the value of a property.
 
-Parameter
-   :php:`string $propertyName`
-      The property name to get the value from. If the property name does not
-      exist in the model, an exception is thrown.
+   Parameter
+      :php:`string $propertyName`
+         The property name to get the value from. If the property name does not
+         exist in the model, an exception is thrown.
 
-Return value
-   The value of the property (string, bool, model, node identifier, array of
-   strings, array of models, null).
+   Return value
+      The value of the property (string, bool, model, node identifier, array of
+      strings, array of models, null).
 
 
 .. option:: hasProperty($propertyName)
 
-Check whether the property name exists in a particular model.
+   Check whether the property name exists in a particular model.
 
-Parameter
-   :php:`string $propertyName`
-      The property name to check.
+   Parameter
+      :php:`string $propertyName`
+         The property name to check.
 
-Return value
-   :php:`true`, if the property exists and :php:`false`, otherwise.
+   Return value
+      :php:`true`, if the property exists and :php:`false`, otherwise.
 
 
 .. option:: clearProperty($propertyName)
 
-Resets the value of the property (set it to :php:`null`).
+   Resets the value of the property (set it to :php:`null`).
 
-Parameter
-   :php:`string $propertyName`
-      The property name to set. If the property does not exist in the model, an
-      exception is thrown.
+   Parameter
+      :php:`string $propertyName`
+         The property name to set. If the property does not exist in the model,
+         an exception is thrown.
 
-Return value
-   Reference to the model itself.
+   Return value
+      Reference to the model itself.
 
 
 .. option:: getPropertyNames()
 
-Get the names of all properties of the model.
+   Get the names of all properties of the model.
 
-Return value
-   Array of all property names of the model.
+   Return value
+      Array of all property names of the model.
 
 
 .. option:: getType()
 
-Get the type of the model.
+   Get the type of the model.
 
-Return value
-   A string (if it is a single type) or an array of strings (if it is a multiple
-   type).
+   Return value
+      A string (if it is a single type) or an array of strings (if it is a
+      :ref:`multiple type <multiple-types>`).
 
 
 .. index:: Schema Manager
@@ -473,45 +473,46 @@ The class exposes the following methods:
 
 .. option:: addType($type)
 
-Adds the given type model to the Schema Manager for inclusion on the web page.
+   Adds the given type model to the Schema Manager for inclusion on the web
+   page.
 
-Parameter
-   :php:`TypeInterface $type`
-      The type model class with the set properties. This can be also
-      "special" types, like a `WebPage` or a `BreadcrumbList`.
+   Parameter
+      :php:`TypeInterface $type`
+         The type model class with the set properties. This can be also
+         "special" types, like a `WebPage` or a `BreadcrumbList`.
 
-Return value
-   Reference to itself.
+   Return value
+      Reference to itself.
 
 
 .. option:: hasWebPage()
 
-Checks, if a :ref:`web page type <webpage-types>` is already available.
+   Checks, if a :ref:`web page type <webpage-types>` is already available.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   :php:`true`, if a web page type is available, otherwise :php:`false`
+   Return value
+      :php:`true`, if a web page type is available, otherwise :php:`false`.
 
 
 .. _api-schema-manager-addmainentityofwebpage:
 
 .. option:: addMainEntityOfWebPage($mainEntity, $isPrioritised = false)
 
-Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
+   Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
 
-Parameters
-   :php:`TypeInterface $mainEntity`
-      The type model to be added.
+   Parameters
+      :php:`TypeInterface $mainEntity`
+         The type model to be added.
 
-   :php:`bool $isPrioritised`
-      .. versionadded:: 2.2.0
-         Set to :php:`true` to :ref:`prioritise <main-entity-prioritisation>` a
-         main entity.
+      :php:`bool $isPrioritised`
+         .. versionadded:: 2.2.0
+            Set to :php:`true` to :ref:`prioritise <main-entity-prioritisation>`
+            a main entity.
 
-Return value
-   Reference to itself.
+   Return value
+      Reference to itself.
 
 
 .. _api-node-identifier:
@@ -531,13 +532,13 @@ The class exposes the following method:
 
 .. option:: getId()
 
-Returns the id.
+   Returns the id.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   The id as a string.
+   Return value
+      The id as a string.
 
 
 .. _api-blank-node-identifier:
@@ -557,13 +558,13 @@ The class exposes the following method:
 
 .. option:: getId()
 
-Returns the id.
+   Returns the id.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   The id as a string.
+   Return value
+      The id as a string.
 
 
 
@@ -584,17 +585,17 @@ two public constants:
 
 .. option:: FALSE
 
-Provides the value ``https://schema.org/False``.
+   Provides the value ``https://schema.org/False``.
 
 .. option:: TRUE
 
-Provides the value ``https://schema.org/True``.
+   Provides the value ``https://schema.org/True``.
 
 and one static method:
 
 .. option:: convertToTerm(bool $value): string
 
-This method returns the according schema term.
+   This method returns the according schema term.
 
 
 .. index::
@@ -619,53 +620,54 @@ or use dependency injection.
 
 .. option:: getTypes()
 
-Get all available type names.
+   Get all available type names.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   Array, sorted alphabetically by type name.
+   Return value
+      Array, sorted alphabetically by type name.
 
 
 .. option:: getWebPageTypes()
 
-Get the `WebPage`_ type and its descendants.
+   Get the `WebPage`_ type and its descendants.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   Array, sorted alphabetically by type name.
+   Return value
+      Array, sorted alphabetically by type name.
 
 
 .. option:: getWebPageElementTypes()
 
-Get the `WebPageElement`_ type and its descendants.
+   Get the `WebPageElement`_ type and its descendants.
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   Array, sorted alphabetically by type name.
+   Return value
+      Array, sorted alphabetically by type name.
 
 
 .. option:: getContentTypes()
 
-The types useful for an editor are returned as an array, sorted alphabetically.
+   The types useful for an editor are returned as an array, sorted
+   alphabetically.
 
-The following types are filtered out:
+   The following types are filtered out:
 
-- ``BreadcrumbList``
-- ``WebPage`` and descendants
-- ``WebPageElement`` and descendants
-- ``WebSite``
+   *  ``BreadcrumbList``
+   *  ``WebPage`` and descendants
+   *  ``WebPageElement`` and descendants
+   *  ``WebSite``
 
-Parameter
-   none
+   Parameter
+      none
 
-Return value
-   Array, sorted alphabetically by type name.
+   Return value
+      Array, sorted alphabetically by type name.
 
 
 .. _blank node identifier: https://www.w3.org/TR/json-ld11/#example-95-referencing-an-unidentified-node

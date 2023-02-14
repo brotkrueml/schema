@@ -47,17 +47,17 @@ provides the following methods:
 
 .. option:: getType(): string
 
-Returns the class name of the type. You can use this to add a property only
-to one type.
+   Returns the class name of the type. You can use this to add a property only
+   to one type.
 
 .. option:: getAdditionalProperties(): array
 
-Retrieve the already defined additionalProperties for this type, e.g. by other
-event listeners.
+   Retrieve the already defined additionalProperties for this type, for example,
+   by other event listeners.
 
 .. option:: registerAdditionalProperty(string $propertyName): void
 
-This method registers an additional property for one or more types.
+   This method registers an additional property for one or more types.
 
 
 Example

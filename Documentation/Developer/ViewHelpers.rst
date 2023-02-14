@@ -100,7 +100,7 @@ You can also use the default Fluid view helpers::
 Special attributes
 ------------------
 
-The special attributes are starting with a dash (:html:`-`) to separate them
+The special attributes start with a dash (:html:`-`) to separate them
 from the common properties of the schema.org specification and to avoid
 collisions. Let's have a deeper look on them.
 
@@ -109,130 +109,127 @@ collisions. Let's have a deeper look on them.
 
 .. option:: -id
 
-This attribute sets a unique id for the type and is mapped in JSON-LD to the
-``@id`` property. The LD in JSON-LD means "linked data". With an ``@id`` you can
-define a type on one page (e.g. ``Event``):
+   This attribute sets a unique id for the type and is mapped in JSON-LD to the
+   ``@id`` property. The LD in JSON-LD means "linked data". With an ``@id`` you
+   can define a type on one page (e.g. ``Event``):
 
-.. code-block:: json
-   :emphasize-lines: 4
+   .. code-block:: json
+      :emphasize-lines: 4
 
-   {
-      "@context": "https://schema.org/",
-      "@type": "Event",
-      "@id": "https://example.org/#event-1",
-      "name": "Fancy Event",
-      "image": "https://example.org/event.png",
-      "url": "https://example.org",
-      "isAccessibleForFree": "https://schema.org/True",
-      "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
-   }
-
-and reference it on the same or another page (e.g. ``Person``):
-
-.. code-block:: json
-   :emphasize-lines: 10
-
-   {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "@id": "https://example.org/#person-42",
-      "givenName": "John",
-      "familyName": "Smith",
-      "gender": "https://schema.org/Male",
-      "performerIn": {
+      {
+         "@context": "https://schema.org/",
          "@type": "Event",
          "@id": "https://example.org/#event-1",
-         "name": "Fancy Event"
+         "name": "Fancy Event",
+         "image": "https://example.org/event.png",
+         "url": "https://example.org",
+         "isAccessibleForFree": "https://schema.org/True",
+         "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
       }
-   }
 
-.. tip::
+   and reference it on the same or another page (e.g. ``Person``):
 
-   You can also cross-reference the types between different websites. The
-   ``@id`` is globally unique, so a best practise is to use an
-   :abbr:`IRI (Internationalised Resource Identifier)` for it. It is also
-   good practise to add the :html:`name` property as attribute.
+   .. code-block:: json
+      :emphasize-lines: 10
+
+      {
+         "@context": "https://schema.org/",
+         "@type": "Person",
+         "@id": "https://example.org/#person-42",
+         "givenName": "John",
+         "familyName": "Smith",
+         "gender": "https://schema.org/Male",
+         "performerIn": {
+            "@type": "Event",
+            "@id": "https://example.org/#event-1",
+            "name": "Fancy Event"
+         }
+      }
+
+   .. tip::
+      You can also cross-reference the types between different websites. The
+      ``@id`` is globally unique, so a best practise is to use an
+      :abbr:`IRI (Internationalised Resource Identifier)` for it. It is also
+      good practise to add the :html:`name` property as attribute.
 
 
 .. _view-helpers-as:
 
 .. option:: -as
 
-This attribute is used to connect a type to its parent. In the above example,
-you can see that the event type view helper uses :html:`-as` to connect to the
-``performerIn`` property of the person type view helper.
+   This attribute is used to connect a type to its parent. In the above example,
+   you can see that the event type view helper uses :html:`-as` to connect to
+   the ``performerIn`` property of the person type view helper.
 
-.. note::
-
-   The usage of the attribute makes only sense in a child. If it is used in a
-   parent type the view helper is ignored.
+   .. note::
+      The usage of the attribute makes only sense in a child. If it is used in a
+      parent type the view helper is ignored.
 
 
 .. _view-helpers-specific-type:
 
 .. option:: -specificType
 
-Sometimes it can may be helpful to set a specific type. Imagine you have records
-of places in the backend where you can select which type of specific place a
-record has: e.g. ``Museum``, ``Airport``, ``Park`` or ``Zoo``. In a Fluid
-template you can loop over these records when they are on the same page. But it
-is not very convenient to use a :html:`<f:switch>` or :html:`<f:if>` view helper
-to choose the correct type. For this scenario you can benefit from this
-argument:
+   Sometimes it can may be helpful to set a specific type. Imagine you have
+   records of places in the backend where you can select which type of specific
+   place a record has: e.g. ``Museum``, ``Airport``, ``Park`` or ``Zoo``. In a
+   Fluid template you can loop over these records when they are on the same
+   page. But it is not very convenient to use a :html:`<f:switch>` or
+   :html:`<f:if>` view helper to choose the correct type. For this scenario you
+   can benefit from this argument:
 
-.. code-block:: html
-   :emphasize-lines: 4
+   .. code-block:: html
+      :emphasize-lines: 4
 
-   <f:for each="{places}" as="place">
-      <schema:type.place
-         name="{place.name}"
-         -specificType="{place.type}"
-      />
-   </f:for>
+      <f:for each="{places}" as="place">
+         <schema:type.place
+            name="{place.name}"
+            -specificType="{place.type}"
+         />
+      </f:for>
 
-.. important::
-
-   When using the :html:`-specificType` attribute you can only set the
-   properties of the original type view helper (here: place), no additional ones
-   from the specific type.
+   .. note::
+      When using the :html:`-specificType` attribute you can only set the
+      properties of the original type view helper (here: place), no additional
+      ones from the specific type.
 
 
 .. option:: -isMainEntityOfWebPage
 
-This argument defines the type as a :ref:`main entity <main-entity-of-web-page>`
-of a :ref:`web page <web-page-type>`:
+   This argument defines the type as a :ref:`main entity <main-entity-of-web-page>`
+   of a :ref:`web page <web-page-type>`:
 
-.. code-block:: html
-   :emphasize-lines: 3
+   .. code-block:: html
+      :emphasize-lines: 3
 
-   <schema:type.person
-      -id="https://example.org/#person-42"
-      -isMainEntityOfWebPage="1"
-      givenName="John"
-      familyName="Smith"
-      gender="https://schema.org/Male"
-   />
+      <schema:type.person
+         -id="https://example.org/#person-42"
+         -isMainEntityOfWebPage="1"
+         givenName="John"
+         familyName="Smith"
+         gender="https://schema.org/Male"
+      />
 
-which results in the output:
+   which results in the output:
 
-.. code-block:: json
-   :emphasize-lines: 4,10
+   .. code-block:: json
+      :emphasize-lines: 4,10
 
-   {
-      "@context": "https://schema.org/",
-      "@type": "WebPage",
-      "mainEntity": {
-         "@type": "Person",
-         "@id": "https://example.org/#person-42",
-         "givenName": "John",
-         "familyName": "Smith",
-         "gender": "https://schema.org/Male"
+      {
+         "@context": "https://schema.org/",
+         "@type": "WebPage",
+         "mainEntity": {
+            "@type": "Person",
+            "@id": "https://example.org/#person-42",
+            "givenName": "John",
+            "familyName": "Smith",
+            "gender": "https://schema.org/Male"
+         }
       }
-   }
 
-.. versionadded:: 2.2.0
-   Main entities can be prioritised, please have a look into the
-   :ref:`main-entity-prioritisation` section.
+   .. versionadded:: 2.2.0
+      Main entities can be prioritised, please have a look into the
+      :ref:`main-entity-prioritisation` section.
 
 
 .. index::
@@ -241,7 +238,7 @@ which results in the output:
 .. _schema-multipleType-view-helper:
 
 :html:`<schema:multipleType>` view helper
-===========================================
+=========================================
 
 .. versionadded:: 2.0.0
 
@@ -346,7 +343,8 @@ The view helper has only one attribute which is required:
 
 .. option:: id
 
-This attribute defines the id and is mapped in JSON-LD to the ``@id`` property.
+   This attribute defines the id and is mapped in JSON-LD to the ``@id``
+   property.
 
 
 .. index::
@@ -443,15 +441,15 @@ required.
 
 .. option:: -as
 
-You know already the :html:`-as` attribute from the :ref:`type view helpers
-<schema-type-view-helpers>`. Its purpose is the same, it references the property
-in the parent :html:`<schema:type>` view helper.
+   You know already the :html:`-as` attribute from the :ref:`type view helpers
+   <schema-type-view-helpers>`. Its purpose is the same, it references the
+   property in the parent :html:`<schema:type>` view helper.
 
 
 .. option:: value
 
-The :html:`value` argument sets the value of the property, as you guessed
-already.
+   The :html:`value` argument sets the value of the property, as you guessed
+   already.
 
 
 :html:`<schema:breadcrumb>` View Helper
