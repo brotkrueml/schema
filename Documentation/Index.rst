@@ -46,8 +46,6 @@ provided by Google: `Understand how structured data works`_.
 
 .. rst-class:: horizbuttons-tip-xxl
 
-- :ref:`Sitemap`
-
 **Table of Contents**
 
 .. toctree::
