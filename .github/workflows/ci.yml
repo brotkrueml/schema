@@ -22,7 +22,6 @@ jobs:
         php-versions:
           - '7.4'
         typo3-versions:
-          - '^10'
           - '^11'
         include:
           - php-versions: '8.0'
@@ -55,29 +54,17 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
-      - name: Install composer dependencies for TYPO3 v10
-        if: matrix.typo3-versions == '^10'
-        run: |
-          composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules typo3/testing-framework sbuerk/typo3-cmscomposerinstallers-testingframework-bridge --dev --no-update
-          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
-      - name: Install composer dependencies for TYPO3 v11+
-        if: matrix.typo3-versions != '^10'
+      - name: Install composer dependencies
         run: |
           composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules --dev --no-update
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
           find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
-      - name: Run unit tests for TYPO3 v10
-        if: matrix.typo3-versions == '^10'
-        run: |
-          .Build/bin/phpunit -c Tests/phpunit-v10.xml.dist --testsuite Unit
-      - name: Run unit tests for TYPO3 v11+
-        if: matrix.typo3-versions != '^10'
+      - name: Run unit tests
         run: |
           .Build/bin/phpunit -c Tests/phpunit.xml.dist --testsuite Unit
-      - name: Run functional tests for TYPO3 v11 only
-        if: matrix.typo3-versions == '^11'
+      - name: Run functional tests
         run: |
           .Build/bin/phpunit -c Tests/phpunit.xml.dist --testsuite Functional
   code-quality:

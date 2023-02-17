@@ -102,7 +102,6 @@ Example
             tags:
                - name: event.listener
                  identifier: 'myAdditionalPropertiesForPerson'
-                 event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
 
 
 .. _pending: https://pending.schema.org/
