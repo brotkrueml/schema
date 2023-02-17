@@ -52,7 +52,7 @@ xlf-lint:
 
 .PHONY: yaml-lint
 yaml-lint: vendor
-	find -regex '.*\.ya?ml' ! -path "./.Build/*" -exec .Build/bin/yaml-lint -v {} \;
+	find -regex '.*\.ya?ml' ! -path "./.Build/*" -exec .Build/bin/yaml-lint --parse-tags -v {} \;
 
 .PHONY: zip
 zip:

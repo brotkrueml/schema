@@ -24,6 +24,8 @@ use Brotkrueml\Schema\Tests\Helper\NoopEventDispatcher;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -42,6 +44,7 @@ final class SchemaMarkupInjectionTest extends TestCase
     private ExtensionAvailability&Stub $extensionAvailabilityStub;
     private EventDispatcher&Stub $eventDispatcherStub;
     private SchemaManager $schemaManager;
+    private ContainerInterface $locator;
 
     protected function setUp(): void
     {
@@ -60,13 +63,17 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('dispatch')
             ->willReturn(new RenderAdditionalTypesEvent(false));
 
-        $this->subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
-            $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
+        $this->locator = $this->buildLocator(
             $this->eventDispatcherStub,
+            $this->extensionAvailabilityStub,
+            $this->extensionConfigurationMock,
+            $this->pagesCacheServiceMock,
+            $this->schemaManager,
+        );
+
+        $this->subject = new SchemaMarkupInjection(
+            $this->applicationTypeStub,
+            $this->locator,
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
@@ -165,12 +172,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $params = [];
@@ -213,12 +216,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $params = [];
@@ -253,12 +252,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $this->pageRendererMock
@@ -401,12 +396,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(true);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $params = [];
@@ -454,12 +445,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(true);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $params = [];
@@ -499,12 +486,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(true);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $params = [];
@@ -552,12 +535,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
+            $this->locator,
         );
 
         $packageManagerStub = $this->createStub(PackageManager::class);
@@ -611,13 +590,17 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('dispatch')
             ->willReturn($event);
 
-        $subject = new SchemaMarkupInjection(
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
-            $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
+        $locator = $this->buildLocator(
             $eventDispatcherStub,
+            $this->extensionAvailabilityStub,
+            $this->extensionConfigurationMock,
+            $this->pagesCacheServiceMock,
+            $this->schemaManager,
+        );
+
+        $subject = new SchemaMarkupInjection(
+            $this->applicationTypeStub,
+            $locator,
         );
 
         $packageManagerStub = $this->createStub(PackageManager::class);
@@ -629,5 +612,41 @@ final class SchemaMarkupInjectionTest extends TestCase
 
         $params = [];
         $subject->execute($params, $this->pageRendererMock);
+    }
+
+    private function buildLocator(
+        EventDispatcherInterface $eventDispatcher,
+        ExtensionAvailability $extensionAvailability,
+        ExtensionConfiguration $extensionConfiguration,
+        PagesCacheService $pagesCacheService,
+        SchemaManager $schemaManager,
+    ): ContainerInterface {
+        return new class($eventDispatcher, $extensionAvailability, $extensionConfiguration, $pagesCacheService, $schemaManager) implements ContainerInterface {
+            public function __construct(
+                private readonly EventDispatcherInterface $eventDispatcher,
+                private readonly ExtensionAvailability $extensionAvailability,
+                private readonly ExtensionConfiguration $extensionConfiguration,
+                private readonly PagesCacheService $pagesCacheService,
+                private readonly SchemaManager $schemaManager,
+            ) {
+            }
+
+            public function get(string $id)
+            {
+                return match ($id) {
+                    EventDispatcherInterface::class => $this->eventDispatcher,
+                    ExtensionAvailability::class => $this->extensionAvailability,
+                    ExtensionConfiguration::class => $this->extensionConfiguration,
+                    PagesCacheService::class => $this->pagesCacheService,
+                    SchemaManager::class => $this->schemaManager,
+                };
+            }
+
+            public function has(string $id): bool
+            {
+                // Not used
+                return true;
+            }
+        };
     }
 }

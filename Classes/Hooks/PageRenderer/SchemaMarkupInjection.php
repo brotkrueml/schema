@@ -15,54 +15,42 @@ use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
+use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
 {
-    private readonly ApplicationType $applicationType;
-
     /**
-     * @var array<string, mixed>
+     * @var array<string, string>
      */
     private array $configuration;
-
-    private SchemaManager $schemaManager;
-    private PagesCacheService $pagesCacheService;
-    private ExtensionAvailability $extensionAvailability;
     private EventDispatcherInterface $eventDispatcher;
+    private ExtensionAvailability $extensionAvailability;
+    private PagesCacheService $pagesCacheService;
+    private SchemaManager $schemaManager;
 
     public function __construct(
-        ExtensionConfiguration $extensionConfiguration = null,
-        SchemaManager $schemaManager = null,
-        PagesCacheService $pagesCacheService = null,
-        ApplicationType $applicationType = null,
-        ExtensionAvailability $extensionAvailability = null,
-        EventDispatcherInterface $eventDispatcher = null,
+        private readonly ApplicationType $applicationType,
+        private readonly ContainerInterface $locator,
     ) {
-        $this->applicationType = $applicationType ?? new ApplicationType();
-        if (! $this->applicationType->isBackend()) {
-            $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
-            $this->configuration = $extensionConfiguration->get('schema') ?? [];
-            $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
-            $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
-            $this->extensionAvailability = $extensionAvailability ?? new ExtensionAvailability();
-            $this->eventDispatcher = $eventDispatcher ?? GeneralUtility::makeInstance(EventDispatcherInterface::class);
-        }
     }
 
-    /**
-     * @noinspection PhpUnusedParameterInspection
-     */
-    public function execute(?array &$params, PageRenderer &$pageRenderer): void
+    public function execute(?array &$params, PageRenderer $pageRenderer): void
     {
         if ($this->applicationType->isBackend()) {
             return;
         }
+
+        $this->configuration = $this->locator->get(ExtensionConfiguration::class)->get(Extension::KEY) ?? [];
+        $this->eventDispatcher = $this->locator->get(EventDispatcherInterface::class);
+        $this->extensionAvailability = $this->locator->get(ExtensionAvailability::class);
+        $this->pagesCacheService = $this->locator->get(PagesCacheService::class);
+        $this->schemaManager = $this->locator->get(SchemaManager::class);
 
         if (! $this->isMarkupToBeEmbedded()) {
             return;

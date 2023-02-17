@@ -11,6 +11,17 @@ services:
   Brotkrueml\Schema\AdminPanel\TypesInformation:
     public: true
 
+  Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
+    public: true
+    arguments:
+      - '@Brotkrueml\Schema\Adapter\ApplicationType'
+      - !service_locator
+          Psr\EventDispatcher\EventDispatcherInterface: '@Psr\EventDispatcher\EventDispatcherInterface'
+          Brotkrueml\Schema\Adapter\ExtensionAvailability: '@Brotkrueml\Schema\Adapter\ExtensionAvailability'
+          TYPO3\CMS\Core\Configuration\ExtensionConfiguration: '@TYPO3\CMS\Core\Configuration\ExtensionConfiguration'
+          Brotkrueml\Schema\Cache\PagesCacheService: '@Brotkrueml\Schema\Cache\PagesCacheService'
+          Brotkrueml\Schema\Manager\SchemaManager: '@Brotkrueml\Schema\Manager\SchemaManager'
+
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
 
