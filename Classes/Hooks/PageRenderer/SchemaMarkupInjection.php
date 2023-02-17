@@ -25,7 +25,6 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 final class SchemaMarkupInjection
 {
     private readonly ApplicationType $applicationType;
-    private TypoScriptFrontendController $controller;
 
     /**
      * @var array<string, mixed>
@@ -38,7 +37,6 @@ final class SchemaMarkupInjection
     private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
-        TypoScriptFrontendController $controller = null,
         ExtensionConfiguration $extensionConfiguration = null,
         SchemaManager $schemaManager = null,
         PagesCacheService $pagesCacheService = null,
@@ -48,7 +46,6 @@ final class SchemaMarkupInjection
     ) {
         $this->applicationType = $applicationType ?? new ApplicationType();
         if (! $this->applicationType->isBackend()) {
-            $this->controller = $controller ?? $GLOBALS['TSFE'];
             $extensionConfiguration ??= GeneralUtility::makeInstance(ExtensionConfiguration::class);
             $this->configuration = $extensionConfiguration->get('schema') ?? [];
             $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
@@ -102,10 +99,15 @@ final class SchemaMarkupInjection
             return true;
         }
 
-        if (! ($this->controller->page['no_index'] ?? false)) {
+        if (! ($this->getTypoScriptFrontendController()->page['no_index'] ?? false)) {
             return true;
         }
 
         return (bool)($this->configuration['embedMarkupOnNoindexPages'] ?? true);
+    }
+
+    private function getTypoScriptFrontendController(): TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'];
     }
 }

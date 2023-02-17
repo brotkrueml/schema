@@ -45,13 +45,6 @@ final class SchemaMarkupInjectionTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $this->controllerMock->newHash = 'somehash';
-        $this->controllerMock->page = [
-            'no_index' => 0,
-            'uid' => 42,
-        ];
-
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
         $this->schemaManager = new SchemaManager(
             new NoopEventDispatcher(),
@@ -68,7 +61,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(new RenderAdditionalTypesEvent(false));
 
         $this->subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -78,6 +70,19 @@ final class SchemaMarkupInjectionTest extends TestCase
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
+
+        $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
+        $this->controllerMock->newHash = 'somehash';
+        $this->controllerMock->page = [
+            'no_index' => 0,
+            'uid' => 42,
+        ];
+        $GLOBALS['TSFE'] = $this->controllerMock;
+    }
+
+    protected function tearDown(): void
+    {
+        unset($GLOBALS['TSFE']);
     }
 
     /**
@@ -160,7 +165,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -209,7 +213,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -229,8 +232,7 @@ final class SchemaMarkupInjectionTest extends TestCase
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
 
-        $controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $controllerMock->page = [
+        $this->controllerMock->page = [
             'uid' => 42,
         ];
 
@@ -251,7 +253,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -295,18 +296,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(false);
 
-        $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
-            $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
-        );
-
         $params = [];
-        $subject->execute($params, $this->pageRendererMock);
+        $this->subject->execute($params, $this->pageRendererMock);
     }
 
     /**
@@ -336,18 +327,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(false);
 
-        $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
-            $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
-        );
-
         $params = [];
-        $subject->execute($params, $this->pageRendererMock);
+        $this->subject->execute($params, $this->pageRendererMock);
     }
 
     /**
@@ -377,18 +358,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(true);
 
-        $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
-            $this->extensionConfigurationMock,
-            $this->schemaManager,
-            $this->pagesCacheServiceMock,
-            $this->applicationTypeStub,
-            $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub,
-        );
-
         $params = [];
-        $subject->execute($params, $this->pageRendererMock);
+        $this->subject->execute($params, $this->pageRendererMock);
     }
 
     /**
@@ -430,7 +401,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(true);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -484,7 +454,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(true);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -530,7 +499,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(true);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -584,7 +552,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn(false);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
@@ -645,7 +612,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->willReturn($event);
 
         $subject = new SchemaMarkupInjection(
-            $this->controllerMock,
             $this->extensionConfigurationMock,
             $this->schemaManager,
             $this->pagesCacheServiceMock,
