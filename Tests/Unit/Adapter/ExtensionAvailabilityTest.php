@@ -20,13 +20,9 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 /**
  * @runInSeparateProcess
  */
-class ExtensionAvailabilityTest extends TestCase
+final class ExtensionAvailabilityTest extends TestCase
 {
-    /**
-     * @var Stub&PackageManager
-     */
-    private $packageManagerStub;
-
+    private PackageManager&Stub $packageManagerStub;
     private ExtensionAvailability $subject;
 
     protected function setUp(): void

@@ -22,11 +22,10 @@ final class RenderAdditionalTypesEvent
      * @var TypeInterface[]
      */
     private array $types = [];
-    private bool $webPageTypeAlreadyDefined;
 
-    public function __construct(bool $webPageTypeAlreadyDefined)
-    {
-        $this->webPageTypeAlreadyDefined = $webPageTypeAlreadyDefined;
+    public function __construct(
+        private readonly bool $webPageTypeAlreadyDefined
+    ) {
     }
 
     public function isWebPageTypeAlreadyDefined(): bool

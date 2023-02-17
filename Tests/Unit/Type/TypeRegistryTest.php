@@ -24,14 +24,10 @@ use TYPO3\CMS\Core\Package\PackageManager;
 /**
  * @runTestsInSeparateProcesses
  */
-class TypeRegistryTest extends TestCase
+final class TypeRegistryTest extends TestCase
 {
     private TypeRegistry $subject;
-
-    /**
-     * @var MockObject&PhpFrontend
-     */
-    private MockObject $cacheMock;
+    private PhpFrontend&MockObject $cacheMock;
 
     protected function setUp(): void
     {

@@ -24,7 +24,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
 {
-    private ApplicationType $applicationType;
+    private readonly ApplicationType $applicationType;
     private TypoScriptFrontendController $controller;
 
     /**

@@ -18,19 +18,12 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class PagesCacheServiceTest extends TestCase
+final class PagesCacheServiceTest extends TestCase
 {
     private PagesCacheService $subject;
+    private FrontendInterface&MockObject $cacheFrontendMock;
 
-    /**
-     * @var MockObject&FrontendInterface
-     */
-    private MockObject $cacheFrontendMock;
-
-    /**
-     * @var Stub&TypoScriptFrontendController
-     */
-    private $controllerStub;
+    private TypoScriptFrontendController&Stub $controllerStub;
 
     protected function setUp(): void
     {

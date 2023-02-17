@@ -87,5 +87,5 @@ interface TypeInterface extends NodeIdentifierInterface
      *
      * @return string|string[]
      */
-    public function getType();
+    public function getType(): string|array;
 }

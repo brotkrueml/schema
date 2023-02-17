@@ -80,7 +80,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         if (\filter_var($value, \FILTER_VALIDATE_URL) === false) {
             return \htmlspecialchars($value);
         }
-        if (\strpos($value, 'http') !== 0) {
+        if (! str_starts_with($value, 'http')) {
             return \htmlspecialchars($value);
         }
 

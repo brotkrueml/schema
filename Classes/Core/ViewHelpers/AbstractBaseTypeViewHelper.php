@@ -30,8 +30,8 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     private int $isMainEntityOfWebPage = 0;
     private string $parentPropertyName = '';
     private ?TypeInterface $model = null;
-    private TypeStack $stack;
-    private SchemaManager $schemaManager;
+    private readonly TypeStack $stack;
+    private readonly SchemaManager $schemaManager;
 
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {
@@ -141,10 +141,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
     }
 
-    /**
-     * @param mixed $value
-     */
-    protected function assignPropertyToType(string $name, $value): void
+    protected function assignPropertyToType(string $name, mixed $value): void
     {
         if ($value === null) {
             return;

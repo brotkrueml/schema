@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
-    private PagesCacheService $pagesCacheService;
+    private readonly PagesCacheService $pagesCacheService;
 
     public function __construct(PagesCacheService $pagesCacheService = null)
     {

@@ -16,17 +16,16 @@ namespace Brotkrueml\Schema\Model\Manual;
  */
 final class TypeLink
 {
-    private string $link = '';
-    private string $title = '';
-    private string $iconIdentifier = '';
+    private readonly string $link;
 
-    public function __construct(string $link, string $title, string $iconIdentifier)
-    {
+    public function __construct(
+        string $link,
+        private readonly string $title,
+        private readonly string $iconIdentifier
+    ) {
         $this->checkLink($link);
 
         $this->link = $link;
-        $this->title = $title;
-        $this->iconIdentifier = $iconIdentifier;
     }
 
     private function checkLink(string $link): void

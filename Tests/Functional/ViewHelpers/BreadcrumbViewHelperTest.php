@@ -169,9 +169,8 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
 
     /**
      * @test
-     * @return never
      */
-    public function breadcrumbWithMultiplePagesAndWebPageTypesGiven(): void
+    public function breadcrumbWithMultiplePagesAndWebPageTypesGiven(): never
     {
         self::markTestSkipped('Skipped, see https://github.com/brotkrueml/schema/issues/101');
 

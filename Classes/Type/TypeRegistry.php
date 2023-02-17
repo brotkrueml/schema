@@ -52,13 +52,12 @@ class TypeRegistry implements SingletonInterface
      * @var string[]
      */
     private array $webPageElementTypes = [];
+    private readonly PackageManager $packageManager;
 
-    private ?FrontendInterface $cache;
-    private PackageManager $packageManager;
-
-    public function __construct(?FrontendInterface $cache = null, ?PackageManager $packageManager = null)
-    {
-        $this->cache = $cache;
+    public function __construct(
+        private ?FrontendInterface $cache = null,
+        ?PackageManager $packageManager = null
+    ) {
         $this->packageManager = $packageManager ?? GeneralUtility::makeInstance(PackageManager::class);
     }
 
@@ -121,7 +120,7 @@ class TypeRegistry implements SingletonInterface
 
         try {
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-        } catch (\LogicException $e) {
+        } catch (\LogicException) {
             // The exception is thrown in TYPO3 v12 when the boot state is not completed:
             // "TYPO3\CMS\Core\Cache\CacheManager can not be injected/instantiated during ext_localconf.php or TCA
             // loading. Use lazy loading instead."
@@ -133,7 +132,7 @@ class TypeRegistry implements SingletonInterface
 
         try {
             $this->cache = $cacheManager->getCache(Extension::CACHE_CORE_IDENTIFIER);
-        } catch (NoSuchCacheException $e) {
+        } catch (NoSuchCacheException) {
             // Ignore: This should not happen
         }
 
@@ -225,7 +224,7 @@ class TypeRegistry implements SingletonInterface
                 if (array_key_exists($typeInterface, (new \ReflectionClass($typeModel))->getInterfaces())) {
                     $specialTypes[] = $type;
                 }
-            } catch (\ReflectionException $e) {
+            } catch (\ReflectionException) {
                 // Ignore
             }
         }

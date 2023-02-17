@@ -31,15 +31,10 @@ final class AddBreadcrumbList
         PageRepository::DOKTYPE_SYSFOLDER,
     ];
 
-    private ExtensionConfiguration $extensionConfiguration;
-    private ContentObjectRenderer $contentObjectRenderer;
-
     public function __construct(
-        ContentObjectRenderer $contentObjectRenderer,
-        ExtensionConfiguration $configuration
+        private readonly ContentObjectRenderer $contentObjectRenderer,
+        private readonly ExtensionConfiguration $extensionConfiguration
     ) {
-        $this->contentObjectRenderer = $contentObjectRenderer;
-        $this->extensionConfiguration = $configuration;
     }
 
     public function __invoke(InitialiseTypesEvent $event): void

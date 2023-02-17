@@ -20,7 +20,7 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
 {
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
 
-    private TypeInterface $modelTemplate;
+    private readonly TypeInterface $modelTemplate;
 
     public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
     {

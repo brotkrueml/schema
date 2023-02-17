@@ -22,18 +22,11 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 final class TypoScriptToSchema
 {
-    private TypeBuilder $typeBuilder;
-    private PropertiesAdder $propertiesAdder;
-    private SchemaManager $schemaManager;
-
     public function __construct(
-        TypeBuilder $typeBuilder,
-        PropertiesAdder $propertiesAdder,
-        SchemaManager $schemaManager
+        private readonly TypeBuilder $typeBuilder,
+        private readonly PropertiesAdder $propertiesAdder,
+        private readonly SchemaManager $schemaManager
     ) {
-        $this->typeBuilder = $typeBuilder;
-        $this->propertiesAdder = $propertiesAdder;
-        $this->schemaManager = $schemaManager;
     }
 
     /**

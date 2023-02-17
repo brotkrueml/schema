@@ -28,8 +28,7 @@ final class SchemaManager implements SingletonInterface
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
-    private ExtensionConfiguration $extensionConfiguration;
-    private RendererInterface $renderer;
+    private readonly ExtensionConfiguration $extensionConfiguration;
 
     /**
      * @var TypeInterface[]
@@ -43,15 +42,14 @@ final class SchemaManager implements SingletonInterface
      */
     private array $breadcrumbLists = [];
 
-    private MainEntityOfWebPageBag $mainEntityOfWebPageBag;
+    private readonly MainEntityOfWebPageBag $mainEntityOfWebPageBag;
 
     public function __construct(
         ?EventDispatcherInterface $eventDispatcher = null,
         ?ExtensionConfiguration $extensionConfiguration = null,
-        ?RendererInterface $renderer = null
+        private readonly RendererInterface $renderer = new Renderer()
     ) {
         $this->extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $this->renderer = $renderer ?? new Renderer();
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
 
         $eventDispatcher ??= GeneralUtility::makeInstance(EventDispatcherInterface::class);

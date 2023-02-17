@@ -21,23 +21,11 @@ use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class TypesInformationTest extends TestCase
+final class TypesInformationTest extends TestCase
 {
-    /**
-     * @var Stub&PagesCacheService
-     */
-    private $pagesCacheServiceStub;
-
-    /**
-     * @var MockObject&StandaloneView
-     */
-    private MockObject $viewMock;
-
-    /**
-     * @var Stub&LanguageService
-     */
-    private $languageServiceStub;
-
+    private PagesCacheService&Stub $pagesCacheServiceStub;
+    private StandaloneView&MockObject $viewMock;
+    private LanguageService&Stub $languageServiceStub;
     private TypesInformation $subject;
 
     protected function setUp(): void

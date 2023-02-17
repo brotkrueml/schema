@@ -16,7 +16,7 @@ class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
     /**
      * The ID of the type (mapped to @id in result)
      */
-    private string $id;
+    private readonly string $id;
 
     /**
      * @param bool $resetCounter This argument is internal and for testing purposes only and may be removed at any time!

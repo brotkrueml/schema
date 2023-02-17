@@ -33,44 +33,15 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjectionTest extends TestCase
 {
-    protected SchemaMarkupInjection $subject;
-
-    /**
-     * @var MockObject&PageRenderer
-     */
-    protected MockObject $pageRendererMock;
-
-    /**
-     * @var MockObject&ExtensionConfiguration
-     */
-    protected MockObject $extensionConfigurationMock;
-
+    private SchemaMarkupInjection $subject;
+    private PageRenderer&MockObject $pageRendererMock;
+    private ExtensionConfiguration&MockObject $extensionConfigurationMock;
+    private TypoScriptFrontendController&MockObject $controllerMock;
+    private PagesCacheService&MockObject $pagesCacheServiceMock;
+    private ApplicationType&Stub $applicationTypeStub;
+    private ExtensionAvailability&Stub $extensionAvailabilityStub;
+    private EventDispatcher&Stub $eventDispatcherStub;
     private SchemaManager $schemaManager;
-
-    /**
-     * @var MockObject&TypoScriptFrontendController
-     */
-    protected MockObject $controllerMock;
-
-    /**
-     * @var PagesCacheService&MockObject
-     */
-    private MockObject $pagesCacheServiceMock;
-
-    /**
-     * @var Stub&ApplicationType
-     */
-    private Stub $applicationTypeStub;
-
-    /**
-     * @var Stub&ExtensionAvailability
-     */
-    private Stub $extensionAvailabilityStub;
-
-    /**
-     * @var Stub&EventDispatcher
-     */
-    private Stub $eventDispatcherStub;
 
     protected function setUp(): void
     {

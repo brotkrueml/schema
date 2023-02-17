@@ -121,11 +121,7 @@ final class Renderer implements RendererInterface
         }
     }
 
-    /**
-     * @param TypeInterface|bool|string|int|float $value
-     * @return array|string
-     */
-    private function getPropertyValueForResult($value)
+    private function getPropertyValueForResult(NodeIdentifierInterface|TypeInterface|bool|string|int|float $value): array|string
     {
         if ($value instanceof TypeInterface) {
             return (new self())->prepare($value);

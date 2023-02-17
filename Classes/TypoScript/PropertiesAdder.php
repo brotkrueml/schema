@@ -26,16 +26,12 @@ final class PropertiesAdder implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    private TypeBuilder $typeBuilder;
-    private TypoScriptConverter $typoScriptConverter;
     private ContentObjectRenderer $cObj;
 
     public function __construct(
-        TypeBuilder $typeBuilder,
-        TypoScriptConverter $typoScriptConverter
+        private readonly TypeBuilder $typeBuilder,
+        private readonly TypoScriptConverter $typoScriptConverter
     ) {
-        $this->typeBuilder = $typeBuilder;
-        $this->typoScriptConverter = $typoScriptConverter;
     }
 
     /**
@@ -52,7 +48,7 @@ final class PropertiesAdder implements LoggerAwareInterface
         foreach (\array_keys($properties) as $name) {
             try {
                 $this->addProperty($type, $name, $properties);
-            } catch (DomainException $e) {
+            } catch (DomainException) {
                 $this->logger->error(\sprintf(
                     'Use of unknown property "%s" for type "%s"',
                     $name,

@@ -342,7 +342,7 @@ final class SchemaManagerTest extends Testcase
             /**
              * @var TypeInterface[]
              */
-            private array $types;
+            private readonly array $types;
 
             public function __construct(TypeInterface ...$types)
             {

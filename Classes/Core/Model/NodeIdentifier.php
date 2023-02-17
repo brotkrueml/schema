@@ -13,14 +13,12 @@ namespace Brotkrueml\Schema\Core\Model;
 
 class NodeIdentifier implements NodeIdentifierInterface, \Stringable
 {
-    /**
-     * The ID of the type (mapped to @id in result)
-     */
-    private string $id;
-
-    public function __construct(string $id)
-    {
-        $this->id = $id;
+    public function __construct(
+        /**
+         * The ID of the type (mapped to @id in result)
+         */
+        private readonly string $id
+    ) {
     }
 
     public function getId(): string

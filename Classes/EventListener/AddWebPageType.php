@@ -24,11 +24,9 @@ final class AddWebPageType
 {
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
-    private ExtensionConfiguration $configuration;
-
-    public function __construct(ExtensionConfiguration $configuration)
-    {
-        $this->configuration = $configuration;
+    public function __construct(
+        private readonly ExtensionConfiguration $configuration
+    ) {
     }
 
     public function __invoke(RenderAdditionalTypesEvent $event): void

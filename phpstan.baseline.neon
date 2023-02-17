@@ -21,11 +21,6 @@ parameters:
 			path: Classes/Core/Model/AbstractType.php
 
 		-
-			message: "#^Call to function is_array\\(\\) with string will always evaluate to false\\.$#"
-			count: 1
-			path: Classes/Core/Model/AbstractType.php
-
-		-
 			message: "#^Do not use static property$#"
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
@@ -52,11 +47,6 @@ parameters:
 
 		-
 			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:storeTypeNames\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/Core/Model/MultipleType.php
-
-		-
-			message: "#^Return type \\(array\\<string\\>\\) of method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:getType\\(\\) should be compatible with return type \\(string\\) of method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\AbstractType\\:\\:getType\\(\\)$#"
 			count: 1
 			path: Classes/Core/Model/MultipleType.php
 

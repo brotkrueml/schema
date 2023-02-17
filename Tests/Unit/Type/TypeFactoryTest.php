@@ -21,12 +21,9 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class TypeFactoryTest extends TestCase
+final class TypeFactoryTest extends TestCase
 {
-    /**
-     * @var TypeRegistry&Stub
-     */
-    private $typeRegistryStub;
+    private TypeRegistry&Stub $typeRegistryStub;
 
     protected function setUp(): void
     {

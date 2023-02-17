@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Rector\Config\RectorConfig;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
-use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
@@ -16,7 +15,7 @@ use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyR
 use Rector\TypeDeclaration\Rector\FunctionLike\AddReturnTypeDeclarationFromYieldsRector;
 
 return static function (RectorConfig $config): void {
-    $config->import(LevelSetList::UP_TO_PHP_74);
+    $config->import(LevelSetList::UP_TO_PHP_81);
     $config->import(SetList::CODE_QUALITY);
     $config->import(SetList::DEAD_CODE);
     $config->import(SetList::EARLY_RETURN);
@@ -26,7 +25,7 @@ return static function (RectorConfig $config): void {
     $config->import(PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD);
     $config->import(PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER);
 
-    $config->phpVersion(PhpVersion::PHP_74);
+    $config->phpVersion(PhpVersion::PHP_81);
 
     $config->autoloadPaths([
         __DIR__ . '/.Build/vendor/autoload.php',
@@ -51,7 +50,6 @@ return static function (RectorConfig $config): void {
         RemoveParentCallWithoutParentRector::class => [
             __DIR__ . '/Classes/AdminPanel/SchemaModule', // can be removed with minimum compatibility to TYPO3 v12 LTS
         ],
-        RemoveUnusedPromotedPropertyRector::class, // to avoid rector warning on PHP8.0 with codebase compatible with PHP7.4
         ReturnTypeFromStrictTypedPropertyRector::class => [
             __DIR__ . '/Classes/Core/Model/AbstractType.php',
             __DIR__ . '/Classes/Core/Model/MultipleType.php',

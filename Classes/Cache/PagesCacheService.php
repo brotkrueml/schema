@@ -20,11 +20,10 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class PagesCacheService
 {
     private ?TypoScriptFrontendController $controller = null;
-    private FrontendInterface $cache;
 
-    public function __construct(FrontendInterface $cache)
-    {
-        $this->cache = $cache;
+    public function __construct(
+        private readonly FrontendInterface $cache
+    ) {
     }
 
     public function getMarkupFromCache(): ?string

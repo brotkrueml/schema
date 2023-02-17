@@ -128,7 +128,7 @@ abstract class AbstractType implements TypeInterface
     {
         try {
             $this->checkPropertyExists($propertyName);
-        } catch (\DomainException $e) {
+        } catch (\DomainException) {
             return false;
         }
 
@@ -170,10 +170,9 @@ abstract class AbstractType implements TypeInterface
     /**
      * If the value is a numeric one, stringify it
      *
-     * @param mixed $value
      * @return string|mixed
      */
-    private function stringifyNumericValue($value)
+    private function stringifyNumericValue(mixed $value)
     {
         return \is_numeric($value) ? (string)$value : $value;
     }
@@ -187,7 +186,7 @@ abstract class AbstractType implements TypeInterface
      * @throws \DomainException
      * @throws \InvalidArgumentException
      */
-    private function checkProperty(string $propertyName, $propertyValue): void
+    private function checkProperty(string $propertyName, mixed $propertyValue): void
     {
         $this->checkPropertyExists($propertyName);
 
@@ -205,10 +204,8 @@ abstract class AbstractType implements TypeInterface
 
     /**
      * Returns true, if data type of property value is allowed
-     *
-     * @param mixed $propertyValue
      */
-    private function isValidDataTypeForPropertyValue($propertyValue): bool
+    private function isValidDataTypeForPropertyValue(mixed $propertyValue): bool
     {
         return $propertyValue === null
             || \is_string($propertyValue)
@@ -273,10 +270,7 @@ abstract class AbstractType implements TypeInterface
         return \array_keys($this->properties);
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string|array
     {
         $type = \substr(\strrchr(static::class, '\\') ?: '', 1);
         if (\str_starts_with($type, '_')) {

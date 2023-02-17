@@ -101,7 +101,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $breadcrumbList = TypeFactory::createType('BreadcrumbList');
         $itemsCount = \count($arguments[self::ARGUMENT_BREADCRUMB]);
         for ($i = 0; $i < $itemsCount; $i++) {
-            $id = $arguments[self::ARGUMENT_BREADCRUMB][$i]['link'];
+            $id = (string)$arguments[self::ARGUMENT_BREADCRUMB][$i]['link'];
             if (! \str_starts_with($id, $siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }

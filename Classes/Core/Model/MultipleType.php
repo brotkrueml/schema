@@ -75,7 +75,7 @@ final class MultipleType extends AbstractType
     /**
      * @return string[]
      */
-    public function getType()
+    public function getType(): string|array
     {
         return $this->typeNames;
     }

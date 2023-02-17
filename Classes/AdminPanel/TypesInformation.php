@@ -26,7 +26,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
-    private PagesCacheService $pagesCacheService;
+    private readonly PagesCacheService $pagesCacheService;
     private ?StandaloneView $view = null;
 
     public function __construct(PagesCacheService $pagesCacheService = null)

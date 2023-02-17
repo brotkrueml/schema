@@ -23,20 +23,12 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class AddWebPageTypeTest extends TestCase
+final class AddWebPageTypeTest extends TestCase
 {
     use SchemaCacheTrait;
 
-    /**
-     * @var Stub&ExtensionConfiguration
-     */
-    private $extensionConfigurationStub;
-
-    /**
-     * @var Stub&TypoScriptFrontendController
-     */
-    private $typoScriptFrontendControllerStub;
-
+    private ExtensionConfiguration&Stub $extensionConfigurationStub;
+    private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
     private AddWebPageType $subject;
     private RenderAdditionalTypesEvent $event;
 

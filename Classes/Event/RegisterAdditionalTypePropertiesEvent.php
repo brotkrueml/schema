@@ -13,16 +13,14 @@ namespace Brotkrueml\Schema\Event;
 
 final class RegisterAdditionalTypePropertiesEvent
 {
-    private string $type;
-
     /**
      * @var list<string>
      */
     private array $additionalProperties = [];
 
-    public function __construct(string $type)
-    {
-        $this->type = $type;
+    public function __construct(
+        private readonly string $type
+    ) {
     }
 
     public function getType(): string

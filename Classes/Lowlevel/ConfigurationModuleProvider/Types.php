@@ -21,12 +21,11 @@ use TYPO3\CMS\Lowlevel\ConfigurationModuleProvider\ProviderInterface;
  */
 final class Types implements ProviderInterface
 {
-    private TypeRegistry $typeRegistry;
     private string $identifier;
 
-    public function __construct(TypeRegistry $typeRegistry)
-    {
-        $this->typeRegistry = $typeRegistry;
+    public function __construct(
+        private readonly TypeRegistry $typeRegistry
+    ) {
     }
 
     public function __invoke(array $attributes): ProviderInterface
