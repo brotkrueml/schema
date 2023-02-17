@@ -15,20 +15,17 @@ use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Adminpanel\ModuleApi\AbstractModule;
 use TYPO3\CMS\Adminpanel\ModuleApi\ShortInfoProviderInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * @internal
  */
-class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
+final class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
-    private readonly PagesCacheService $pagesCacheService;
-
-    public function __construct(PagesCacheService $pagesCacheService = null)
-    {
-        $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
-
+    public function __construct(
+        private readonly PagesCacheService $pagesCacheService,
+    ) {
         if (\is_callable(\get_parent_class($this) . '::__construct')) {
+            // Call to parent constructor can be removed when minimum TYPO3 version is set to v12 LTS
             // @phpstan-ignore-next-line Call to an undefined static method TYPO3\CMS\Adminpanel\ModuleApi\AbstractModule::__construct()
             parent::__construct();
         }
