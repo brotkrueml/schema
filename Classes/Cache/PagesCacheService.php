@@ -54,7 +54,6 @@ class PagesCacheService
     private function initialiseTypoScriptFrontendController(): void
     {
         if ($this->controller === null) {
-            // Cannot be done in constructor as an empty TSFE is injected via DI in TYPO3 v10
             $this->controller = $GLOBALS['TSFE'];
         }
     }
