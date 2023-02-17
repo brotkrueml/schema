@@ -14,21 +14,19 @@ namespace Brotkrueml\Schema\TypoScript;
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use DomainException;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Adds properties defined by TypoScript configuration to given type.
  * @internal
  */
-final class PropertiesAdder implements LoggerAwareInterface
+final class PropertiesAdder
 {
-    use LoggerAwareTrait;
-
     private ContentObjectRenderer $cObj;
 
     public function __construct(
+        private readonly LoggerInterface $logger,
         private readonly TypeBuilder $typeBuilder,
         private readonly TypoScriptConverter $typoScriptConverter,
     ) {
