@@ -60,7 +60,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $this->subject = new AddBreadcrumbList(
             $this->contentObjectRendererStub,
-            $this->extensionConfigurationStub
+            $this->extensionConfigurationStub,
         );
 
         $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;

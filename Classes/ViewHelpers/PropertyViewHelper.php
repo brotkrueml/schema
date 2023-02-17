@@ -55,7 +55,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         if ($this->typeStack->isEmpty()) {
             throw new ViewHelper\Exception(
                 'The property view helper can only be used as a child of a type view helper',
-                1561838013
+                1561838013,
             );
         }
 
@@ -72,14 +72,14 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         if ($this->arguments[static::ARGUMENT_AS] === '') {
             throw new ViewHelper\Exception(
                 \sprintf($emptyMessage, static::ARGUMENT_AS),
-                1561838834
+                1561838834,
             );
         }
 
         if ($this->arguments[static::ARGUMENT_VALUE] === '') {
             throw new ViewHelper\Exception(
                 \sprintf($emptyMessage, static::ARGUMENT_VALUE),
-                1561838999
+                1561838999,
             );
         }
     }

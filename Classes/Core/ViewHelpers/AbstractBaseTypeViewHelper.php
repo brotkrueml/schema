@@ -90,9 +90,9 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
                     \sprintf(
                         'The child view helper of schema type "%s" must have an "%s" argument for embedding into the parent type',
                         $this->getType(),
-                        static::ARGUMENT_AS
+                        static::ARGUMENT_AS,
                     ),
-                    1561829951
+                    1561829951,
                 );
             }
 
@@ -112,9 +112,9 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
                 \sprintf(
                     'The value of argument "%s" must be between 0 and 2, "%d" given (allowed: 0 = not a main entity, 1 = main entity, 2 = prioritised main entity',
                     static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
-                    $this->isMainEntityOfWebPage
+                    $this->isMainEntityOfWebPage,
                 ),
-                1636570950
+                1636570950,
             );
         }
 
@@ -123,9 +123,9 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
                 \sprintf(
                     'The argument "%s" must not be used in the child type "%s", only the main type is allowed',
                     static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
-                    $this->getType()
+                    $this->getType(),
                 ),
-                1562517051
+                1562517051,
             );
         }
 
@@ -171,8 +171,8 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
                     'The %s argument has to be either a string or an instance of %s, %s given',
                     static::ARGUMENT_ID,
                     NodeIdentifierInterface::class,
-                    \get_debug_type($id)
-                )
+                    \get_debug_type($id),
+                ),
             );
         }
 

@@ -30,7 +30,7 @@
     TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
         'pages',
         'tx_schema_structureddata',
-        'tx_schema_webpagetype'
+        'tx_schema_webpagetype',
     );
 
     $position = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('seo')
@@ -40,6 +40,6 @@
         'pages',
         '--palette--;' . Brotkrueml\Schema\Extension::LANGUAGE_PATH_DATABASE . ':pages.palette.structuredData;tx_schema_structureddata',
         '',
-        $position
+        $position,
     );
 })();

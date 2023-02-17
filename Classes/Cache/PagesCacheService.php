@@ -22,7 +22,7 @@ class PagesCacheService
     private ?TypoScriptFrontendController $controller = null;
 
     public function __construct(
-        private readonly FrontendInterface $cache
+        private readonly FrontendInterface $cache,
     ) {
     }
 
@@ -46,7 +46,7 @@ class PagesCacheService
                 $this->getCacheIdentifier(),
                 $markup,
                 ['pageId_' . $this->controller->page['uid']],
-                $this->controller->get_cache_timeout()
+                $this->controller->get_cache_timeout(),
             );
         }
     }

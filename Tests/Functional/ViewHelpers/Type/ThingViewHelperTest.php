@@ -383,7 +383,7 @@ final class ThingViewHelperTest extends ViewHelperTestCase
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
         string $template,
         int $expectedExceptionCode,
-        string $expectedExceptionMessage
+        string $expectedExceptionMessage,
     ): void {
         $this->expectException(ViewHelper\Exception::class);
         $this->expectExceptionCode($expectedExceptionCode);

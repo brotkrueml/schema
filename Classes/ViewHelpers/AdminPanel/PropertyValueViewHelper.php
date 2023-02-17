@@ -61,7 +61,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
+        RenderingContextInterface $renderingContext,
     ): string {
         $name = $arguments['name'];
         $value = $arguments['value'];
@@ -80,7 +80,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         if (\filter_var($value, \FILTER_VALIDATE_URL) === false) {
             return \htmlspecialchars($value);
         }
-        if (! str_starts_with($value, 'http')) {
+        if (! \str_starts_with($value, 'http')) {
             return \htmlspecialchars($value);
         }
 
@@ -90,7 +90,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         if (\str_starts_with($value, 'http://schema.org/') || \str_starts_with($value, 'https://schema.org/')) {
             $linkTitle = \sprintf(
                 self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
-                $value
+                $value,
             );
             $iconIdentifier = 'ext-schema-documentation-schema';
         }
@@ -105,10 +105,10 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
                 new TypeLink(
                     $value,
                     $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
-                    $iconIdentifier ?: 'actions-link'
+                    $iconIdentifier ?: 'actions-link',
                 ),
             ],
-            $value
+            $value,
         );
     }
 
@@ -133,7 +133,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             $links[] = new TypeLink(
                 $manual['link'],
                 \sprintf(self::getLanguageService()->sL(self::MANUAL_PROVIDERS[$provider]['title']), $manualType),
-                self::MANUAL_PROVIDERS[$provider]['iconIdentifier']
+                self::MANUAL_PROVIDERS[$provider]['iconIdentifier'],
             );
         }
 
@@ -146,9 +146,9 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             'https://schema.org/' . $type,
             \sprintf(
                 self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
-                $type
+                $type,
             ),
-            'ext-schema-documentation-schema'
+            'ext-schema-documentation-schema',
         );
     }
 
@@ -179,7 +179,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
             '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
             \htmlspecialchars($typeLink->getLink()),
             \htmlspecialchars($typeLink->getTitle()),
-            self::getIconFactory()->getIcon($typeLink->getIconIdentifier(), Icon::SIZE_SMALL)->render()
+            self::getIconFactory()->getIcon($typeLink->getIconIdentifier(), Icon::SIZE_SMALL)->render(),
         );
     }
 

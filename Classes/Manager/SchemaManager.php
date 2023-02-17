@@ -47,7 +47,7 @@ final class SchemaManager implements SingletonInterface
     public function __construct(
         ?EventDispatcherInterface $eventDispatcher = null,
         ?ExtensionConfiguration $extensionConfiguration = null,
-        private readonly RendererInterface $renderer = new Renderer()
+        private readonly RendererInterface $renderer = new Renderer(),
     ) {
         $this->extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();

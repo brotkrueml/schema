@@ -44,7 +44,7 @@ final class SchemaMarkupInjection
         PagesCacheService $pagesCacheService = null,
         ApplicationType $applicationType = null,
         ExtensionAvailability $extensionAvailability = null,
-        EventDispatcherInterface $eventDispatcher = null
+        EventDispatcherInterface $eventDispatcher = null,
     ) {
         $this->applicationType = $applicationType ?? new ApplicationType();
         if (! $this->applicationType->isBackend()) {

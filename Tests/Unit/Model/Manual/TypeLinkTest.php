@@ -54,7 +54,7 @@ class TypeLinkTest extends TestCase
         $this->expectExceptionCode(1620237735);
         $this->expectExceptionMessage(\sprintf(
             'The given link "%s" ist not a valid URL!',
-            $link
+            $link,
         ));
 
         new TypeLink($link, '', '');
@@ -82,7 +82,7 @@ class TypeLinkTest extends TestCase
         $this->expectExceptionCode(1620237736);
         $this->expectExceptionMessage(\sprintf(
             'The given link "%s" ist not a valid web URL!',
-            $link
+            $link,
         ));
 
         new TypeLink($link, '', '');

@@ -25,7 +25,7 @@ final class TypoScriptToSchema
     public function __construct(
         private readonly TypeBuilder $typeBuilder,
         private readonly PropertiesAdder $propertiesAdder,
-        private readonly SchemaManager $schemaManager
+        private readonly SchemaManager $schemaManager,
     ) {
     }
 
@@ -34,7 +34,7 @@ final class TypoScriptToSchema
      */
     public function convert(
         ContentObjectRenderer $cObj,
-        array $configuration
+        array $configuration,
     ): void {
         $type = $this->typeBuilder->build($cObj, $configuration);
 

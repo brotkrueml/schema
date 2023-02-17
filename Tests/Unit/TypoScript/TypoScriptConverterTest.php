@@ -147,7 +147,7 @@ final class TypoScriptConverterTest extends TestCase
      */
     public function convertTypoScriptArrayToPlainArrayRemovesTrailingDotsWithChangedOrderInTheTypoScriptArray(
         array $typoScriptSettings,
-        array $expectedSettings
+        array $expectedSettings,
     ): void {
         $typoScriptService = new TypoScriptConverter();
         $processedSettings = $typoScriptService->convertTypoScriptArrayToPlainArray($typoScriptSettings);

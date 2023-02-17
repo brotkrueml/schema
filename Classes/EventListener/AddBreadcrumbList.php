@@ -33,7 +33,7 @@ final class AddBreadcrumbList
 
     public function __construct(
         private readonly ContentObjectRenderer $contentObjectRenderer,
-        private readonly ExtensionConfiguration $extensionConfiguration
+        private readonly ExtensionConfiguration $extensionConfiguration,
     ) {
     }
 
@@ -48,7 +48,7 @@ final class AddBreadcrumbList
         $additionalDoktypesToExclude = GeneralUtility::intExplode(
             ',',
             $configuration['automaticBreadcrumbExcludeAdditionalDoktypes'],
-            true
+            true,
         );
         $doktypesToExclude = \array_merge(self::DEFAULT_DOKTYPES_TO_EXCLUDE, $additionalDoktypesToExclude);
         $rootLine = [];

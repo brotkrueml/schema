@@ -31,7 +31,7 @@ final class MultipleType extends AbstractType
     {
         $this->typeNames = \array_map(
             static fn (TypeInterface $type): string => $type->getType(),
-            $types
+            $types,
         );
         \sort($this->typeNames);
     }
@@ -42,7 +42,7 @@ final class MultipleType extends AbstractType
         if (\count($this->typeNames) !== \count($uniqueTypeNames)) {
             throw new \DomainException(
                 \sprintf('Only different types can be used as arguments for a multiple type, "%s" given', \implode(', ', $this->typeNames)),
-                1621871950
+                1621871950,
             );
         }
     }
@@ -52,7 +52,7 @@ final class MultipleType extends AbstractType
         if (\count($this->typeNames) < 2) {
             throw new \DomainException(
                 \sprintf('At least two types have to be assigned, %d given', \count($this->typeNames)),
-                1621871446
+                1621871446,
             );
         }
     }

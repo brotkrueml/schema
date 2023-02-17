@@ -78,7 +78,7 @@ abstract class AbstractType implements TypeInterface
 
         $this->properties = \array_merge(
             $this->properties,
-            \array_fill_keys($additionalProperties, null)
+            \array_fill_keys($additionalProperties, null),
         );
 
         \ksort($this->properties);
@@ -95,9 +95,9 @@ abstract class AbstractType implements TypeInterface
             throw new \InvalidArgumentException(
                 \sprintf(
                     'Value for id has not a valid data type (given: "%s"). Valid types are: null, string, instanceof NodeIdentifierInterface',
-                    \get_debug_type($id)
+                    \get_debug_type($id),
                 ),
-                1620654936
+                1620654936,
             );
         }
 
@@ -150,9 +150,9 @@ abstract class AbstractType implements TypeInterface
                 \sprintf(
                     'Property "%s" is unknown for type "%s"',
                     $propertyName,
-                    \is_array($type) ? \implode(' / ', $type) : $type
+                    \is_array($type) ? \implode(' / ', $type) : $type,
                 ),
-                1561829996
+                1561829996,
             );
         }
     }
@@ -195,9 +195,9 @@ abstract class AbstractType implements TypeInterface
                 \sprintf(
                     'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface, instanceof NodeIdentifierInterface',
                     $propertyName,
-                    \get_debug_type($propertyValue)
+                    \get_debug_type($propertyValue),
                 ),
-                1561830012
+                1561830012,
             );
         }
     }

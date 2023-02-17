@@ -25,7 +25,7 @@ final class AddWebPageType
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
     public function __construct(
-        private readonly ExtensionConfiguration $configuration
+        private readonly ExtensionConfiguration $configuration,
     ) {
     }
 
@@ -33,7 +33,7 @@ final class AddWebPageType
     {
         $shouldGenerateWebPageSchema = $this->configuration->get(
             Extension::KEY,
-            'automaticWebPageSchemaGeneration'
+            'automaticWebPageSchemaGeneration',
         );
 
         if (! $shouldGenerateWebPageSchema) {

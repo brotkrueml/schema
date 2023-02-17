@@ -21,7 +21,7 @@ class ServiceStub extends GenericStub
                 'name' => null,
                 'serviceType' => null,
             ],
-            'ServiceStub'
+            'ServiceStub',
         );
     }
 }

@@ -56,7 +56,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $this->schemaManager = new SchemaManager(
             new NoopEventDispatcher(),
             $this->extensionConfigurationMock,
-            new Renderer()
+            new Renderer(),
         );
         $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
         $this->applicationTypeStub = $this->createStub(ApplicationType::class);
@@ -74,7 +74,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
@@ -144,7 +144,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->pageRendererMock
@@ -166,7 +166,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -197,7 +197,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('addFooterData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->applicationTypeStub
@@ -215,7 +215,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -257,7 +257,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $this->pageRendererMock
@@ -265,7 +265,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('addHeaderData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $params = [];
@@ -302,7 +302,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -325,7 +325,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->applicationTypeStub
@@ -343,7 +343,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -366,7 +366,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->applicationTypeStub
@@ -384,7 +384,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -418,7 +418,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->applicationTypeStub
@@ -436,7 +436,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -472,7 +472,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->applicationTypeStub
@@ -490,7 +490,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -536,7 +536,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $params = [];
@@ -572,7 +572,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
             ));
 
         $this->applicationTypeStub
@@ -590,7 +590,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $this->eventDispatcherStub
+            $this->eventDispatcherStub,
         );
 
         $packageManagerStub = $this->createStub(PackageManager::class);
@@ -626,7 +626,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('storeMarkupInCache')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"from-event"}'
+                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"from-event"}',
             ));
 
         $this->applicationTypeStub
@@ -651,7 +651,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $this->pagesCacheServiceMock,
             $this->applicationTypeStub,
             $this->extensionAvailabilityStub,
-            $eventDispatcherStub
+            $eventDispatcherStub,
         );
 
         $packageManagerStub = $this->createStub(PackageManager::class);

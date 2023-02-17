@@ -61,7 +61,7 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
         return \str_replace(
             'ViewHelper',
             '',
-            \substr(\strrchr(static::class, '\\') ?: '', 1)
+            \substr(\strrchr(static::class, '\\') ?: '', 1),
         );
     }
 }

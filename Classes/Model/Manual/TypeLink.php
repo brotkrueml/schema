@@ -21,7 +21,7 @@ final class TypeLink
     public function __construct(
         string $link,
         private readonly string $title,
-        private readonly string $iconIdentifier
+        private readonly string $iconIdentifier,
     ) {
         $this->checkLink($link);
 
@@ -33,14 +33,14 @@ final class TypeLink
         if (\filter_var($link, \FILTER_VALIDATE_URL) === false) {
             throw new \InvalidArgumentException(
                 \sprintf('The given link "%s" ist not a valid URL!', $link),
-                1620237735
+                1620237735,
             );
         }
 
         if (! \str_starts_with($link, 'http')) {
             throw new \InvalidArgumentException(
                 \sprintf('The given link "%s" ist not a valid web URL!', $link),
-                1620237736
+                1620237736,
             );
         }
     }

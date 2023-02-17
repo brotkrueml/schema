@@ -19,7 +19,7 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
     public function __construct(
         private readonly ?string $id = null,
         private readonly array $properties = [],
-        private readonly string $type = 'GenericStub'
+        private readonly string $type = 'GenericStub',
     ) {
     }
 

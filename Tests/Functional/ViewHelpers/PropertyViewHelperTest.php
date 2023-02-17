@@ -142,7 +142,7 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
         string $template,
         string $exceptionClass,
-        int $expectedExceptionCode
+        int $expectedExceptionCode,
     ): void {
         $this->expectException($exceptionClass);
         $this->expectExceptionCode($expectedExceptionCode);

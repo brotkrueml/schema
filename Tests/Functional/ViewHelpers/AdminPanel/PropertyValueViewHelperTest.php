@@ -64,7 +64,7 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         string $template,
         string $expected,
         string $localisedInput = '',
-        string $localisedOutput = ''
+        string $localisedOutput = '',
     ): void {
         if ($localisedInput !== '') {
             $this->languageServiceStub
@@ -252,12 +252,12 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         ]);
 
         $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>'
+            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
         );
 
         self::assertSame(
             '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.com/Thing" title="Open Yandex reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            $actual
+            $actual,
         );
     }
 
@@ -288,12 +288,12 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         ]);
 
         $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Foo"/>'
+            '<schema:adminPanel.propertyValue name="@type" value="Foo"/>',
         );
 
         self::assertSame(
             '<a href="https://schema.org/Foo" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Bar" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> Foo',
-            $actual
+            $actual,
         );
     }
 
@@ -316,12 +316,12 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         ]);
 
         $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>'
+            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
         );
 
         self::assertSame(
             '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            $actual
+            $actual,
         );
     }
 
@@ -345,12 +345,12 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         ]);
 
         $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>'
+            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
         );
 
         self::assertSame(
             '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            $actual
+            $actual,
         );
     }
 }

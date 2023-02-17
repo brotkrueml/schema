@@ -56,7 +56,7 @@ class TypeRegistry implements SingletonInterface
 
     public function __construct(
         private ?FrontendInterface $cache = null,
-        ?PackageManager $packageManager = null
+        ?PackageManager $packageManager = null,
     ) {
         $this->packageManager = $packageManager ?? GeneralUtility::makeInstance(PackageManager::class);
     }
@@ -201,7 +201,7 @@ class TypeRegistry implements SingletonInterface
         if ($this->webPageTypes === []) {
             $this->webPageTypes = $this->loadSpecialTypes(
                 self::CACHE_ENTRY_IDENTIFIER_WEBPAGE_TYPES,
-                WebPageTypeInterface::class
+                WebPageTypeInterface::class,
             );
         }
 
@@ -221,7 +221,7 @@ class TypeRegistry implements SingletonInterface
         $specialTypes = [];
         foreach ($this->getTypesWithModels() as $type => $typeModel) {
             try {
-                if (array_key_exists($typeInterface, (new \ReflectionClass($typeModel))->getInterfaces())) {
+                if (\array_key_exists($typeInterface, (new \ReflectionClass($typeModel))->getInterfaces())) {
                     $specialTypes[] = $type;
                 }
             } catch (\ReflectionException) {
@@ -247,7 +247,7 @@ class TypeRegistry implements SingletonInterface
         if ($this->webPageElementTypes === []) {
             $this->webPageElementTypes = $this->loadSpecialTypes(
                 self::CACHE_ENTRY_IDENTIFIER_WEBPAGEELEMENT_TYPES,
-                WebPageElementTypeInterface::class
+                WebPageElementTypeInterface::class,
             );
         }
 
@@ -270,8 +270,8 @@ class TypeRegistry implements SingletonInterface
                 [
                     'BreadcrumbList',
                     'WebSite',
-                ]
-            )
+                ],
+            ),
         );
     }
 

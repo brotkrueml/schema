@@ -155,7 +155,7 @@ class RendererTest extends TestCase
                     [
                         'some-property' => 'some-value',
                     ],
-                    'SomeSubTypeStub'
+                    'SomeSubTypeStub',
                 ),
             ],
             '{"@context":"https://schema.org/","@type":"GenericStub","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
@@ -170,14 +170,14 @@ class RendererTest extends TestCase
                         [
                             'some-property' => 'some-value',
                         ],
-                        'SomeSubTypeStub'
+                        'SomeSubTypeStub',
                     ),
                     new GenericStub(
                         'from-another-type-property',
                         [
                             'another-property' => 'another-value',
                         ],
-                        'AnotherSubTypeStub'
+                        'AnotherSubTypeStub',
                     ),
                 ],
             ],
@@ -212,9 +212,9 @@ class RendererTest extends TestCase
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}'
+                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
             ),
-            $this->subject->render()
+            $this->subject->render(),
         );
     }
 
@@ -233,9 +233,9 @@ class RendererTest extends TestCase
         self::assertSame(
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}'
+                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
             ),
-            $this->subject->render()
+            $this->subject->render(),
         );
     }
 

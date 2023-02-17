@@ -19,7 +19,7 @@ final class RegisterAdditionalTypePropertiesEvent
     private array $additionalProperties = [];
 
     public function __construct(
-        private readonly string $type
+        private readonly string $type,
     ) {
     }
 

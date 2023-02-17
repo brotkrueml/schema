@@ -47,7 +47,7 @@ final class WebPageTypeProvider
 
         $webPageTypes = [];
         foreach ($allTypeModels as $typeModel) {
-            if (array_key_exists(WebPageTypeInterface::class, (new \ReflectionClass($typeModel))->getInterfaces())) {
+            if (\array_key_exists(WebPageTypeInterface::class, (new \ReflectionClass($typeModel))->getInterfaces())) {
                 $type = \substr(\strrchr((string)$typeModel, '\\') ?: '', 1);
                 // In PHP < 8.0 substr('', 1) returns false, in PHP >= 8.0 an empty string is returned, see: https://3v4l.org/Zk6kK
                 // An empty string should not be used, here is something wrong with the type

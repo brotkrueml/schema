@@ -42,7 +42,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     public function getLabel(): string
     {
         return $this->getLanguageService()->sL(
-            Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.types'
+            Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.types',
         );
     }
 
@@ -86,7 +86,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
         $this->view->setTemplatePathAndFilename(\sprintf(
             'EXT:%s/Resources/Private/Templates/AdminPanel/TypesInformation.html',
-            Extension::KEY
+            Extension::KEY,
         ));
     }
 

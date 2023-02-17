@@ -48,7 +48,7 @@ final class SchemaManagerTest extends Testcase
         $this->subject = new SchemaManager(
             new NoopEventDispatcher(),
             $this->createStub(ExtensionConfiguration::class),
-            $this->renderer
+            $this->renderer,
         );
     }
 
@@ -360,7 +360,7 @@ final class SchemaManagerTest extends Testcase
         $subject = new SchemaManager(
             $eventDispatcherStub,
             $this->createStub(ExtensionConfiguration::class),
-            $this->renderer
+            $this->renderer,
         );
 
         $subject->renderJsonLd();
@@ -386,7 +386,7 @@ final class SchemaManagerTest extends Testcase
         $subject = new SchemaManager(
             new NoopEventDispatcher(),
             $extensionConfigurationStub,
-            $this->renderer
+            $this->renderer,
         );
 
         $breadcrumbList1 = new BreadcrumbList();
@@ -417,7 +417,7 @@ final class SchemaManagerTest extends Testcase
         $subject = new SchemaManager(
             new NoopEventDispatcher(),
             $extensionConfigurationStub,
-            $this->renderer
+            $this->renderer,
         );
 
         $breadcrumbList1 = new BreadcrumbList();

@@ -239,7 +239,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
         $actual = $this->schemaManager->renderJsonLd();
         $expected = \sprintf(
             Extension::JSONLD_TEMPLATE,
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}'
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"VideoGallery","@id":"https://example.org/videos/"},"name":"Video overview","position":"1"},{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}',
         );
 
         self::assertSame($expected, $actual);
@@ -299,7 +299,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
         string $template,
         array $variables,
         string $exceptionClass,
-        int $expectedExceptionCode
+        int $expectedExceptionCode,
     ): void {
         $this->expectException($exceptionClass);
         $this->expectExceptionCode($expectedExceptionCode);

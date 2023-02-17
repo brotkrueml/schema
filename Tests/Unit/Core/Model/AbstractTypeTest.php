@@ -132,7 +132,7 @@ class AbstractTypeTest extends TestCase
     public function hasPropertyReturnsTrueIfPropertyExists(): void
     {
         self::assertTrue(
-            $this->subject->hasProperty('name')
+            $this->subject->hasProperty('name'),
         );
     }
 
@@ -142,7 +142,7 @@ class AbstractTypeTest extends TestCase
     public function hasPropertyReturnsFalseIfPropertyDoesNotExists(): void
     {
         self::assertFalse(
-            $this->subject->hasProperty('propertyDoesNotExist')
+            $this->subject->hasProperty('propertyDoesNotExist'),
         );
     }
 
@@ -460,7 +460,7 @@ class AbstractTypeTest extends TestCase
                 'subjectOf',
                 'url',
             ],
-            $actual
+            $actual,
         );
     }
 
@@ -499,7 +499,7 @@ class AbstractTypeTest extends TestCase
                 'subjectOf',
                 'url',
             ],
-            $subject->getPropertyNames()
+            $subject->getPropertyNames(),
         );
     }
 
@@ -523,7 +523,7 @@ class AbstractTypeTest extends TestCase
                 'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing',
                 [],
                 [],
-                0
+                0,
             );
 
         $cacheManagerStub = $this->createStub(CacheManager::class);
@@ -569,7 +569,7 @@ class AbstractTypeTest extends TestCase
                 'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing',
                 ['someAdditionalProperty'],
                 [],
-                0
+                0,
             );
 
         $cacheManagerStub = $this->createStub(CacheManager::class);

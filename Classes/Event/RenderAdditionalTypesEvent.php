@@ -24,7 +24,7 @@ final class RenderAdditionalTypesEvent
     private array $types = [];
 
     public function __construct(
-        private readonly bool $webPageTypeAlreadyDefined
+        private readonly bool $webPageTypeAlreadyDefined,
     ) {
     }
 

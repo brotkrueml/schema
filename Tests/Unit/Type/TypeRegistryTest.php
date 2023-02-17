@@ -108,7 +108,7 @@ final class TypeRegistryTest extends TestCase
   'Thing' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\Thing',
   'WebPage' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\WebPage',
   'WebSite' => 'Brotkrueml\\\\Schema\\\\Tests\\\\Fixtures\\\\Model\\\\Type\\\\WebSite',
-);"
+);",
             );
 
         $actual = $this->subject->getTypes();

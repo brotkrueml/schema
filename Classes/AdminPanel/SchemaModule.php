@@ -64,8 +64,8 @@ class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
             '(%s %s)',
             $numberOfTypes,
             $this->getLanguageService()->sL(
-                Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.type' . ($numberOfTypes !== 1 ? 's' : '')
-            )
+                Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.type' . ($numberOfTypes !== 1 ? 's' : ''),
+            ),
         );
     }
 }

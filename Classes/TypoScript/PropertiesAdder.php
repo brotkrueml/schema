@@ -30,7 +30,7 @@ final class PropertiesAdder implements LoggerAwareInterface
 
     public function __construct(
         private readonly TypeBuilder $typeBuilder,
-        private readonly TypoScriptConverter $typoScriptConverter
+        private readonly TypoScriptConverter $typoScriptConverter,
     ) {
     }
 
@@ -40,7 +40,7 @@ final class PropertiesAdder implements LoggerAwareInterface
     public function add(
         ContentObjectRenderer $cObj,
         TypeInterface $type,
-        array $properties
+        array $properties,
     ): void {
         $this->cObj = $cObj;
 
@@ -52,7 +52,7 @@ final class PropertiesAdder implements LoggerAwareInterface
                 $this->logger->error(\sprintf(
                     'Use of unknown property "%s" for type "%s"',
                     $name,
-                    $type->getType() // @phpstan-ignore-line It can only be a string (no array) as the cObject does not support multiple types
+                    $type->getType(), // @phpstan-ignore-line It can only be a string (no array) as the cObject does not support multiple types
                 ));
                 continue;
             }
@@ -120,7 +120,7 @@ final class PropertiesAdder implements LoggerAwareInterface
         } else {
             $id = (string)$this->cObj->stdWrapValue(
                 'id',
-                $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration)
+                $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration),
             );
         }
 
@@ -138,7 +138,7 @@ final class PropertiesAdder implements LoggerAwareInterface
     {
         $subType = $this->typeBuilder->build(
             $this->cObj,
-            $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration)
+            $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration),
         );
         if (! $subType instanceof TypeInterface) {
             return;

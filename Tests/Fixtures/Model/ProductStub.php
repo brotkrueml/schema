@@ -21,7 +21,7 @@ class ProductStub extends GenericStub
                 'name' => null,
                 'sku' => null,
             ],
-            'ProductStub'
+            'ProductStub',
         );
     }
 }

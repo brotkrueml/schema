@@ -26,7 +26,7 @@ final class TypeFactory
         if ($type === []) {
             throw new \DomainException(
                 'At least one type has to be given as argument',
-                1621787452
+                1621787452,
             );
         }
 
@@ -47,7 +47,7 @@ final class TypeFactory
         if ($typeClass === null) {
             throw new \DomainException(
                 \sprintf('No model class for type "%s" available!', $type),
-                1586590157
+                1586590157,
             );
         }
 
@@ -64,7 +64,7 @@ final class TypeFactory
     {
         return new MultipleType(...\array_map(
             static fn (string $type): TypeInterface => self::createSingleType($type),
-            $types
+            $types,
         ));
     }
 }

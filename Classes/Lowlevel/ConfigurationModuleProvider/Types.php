@@ -24,7 +24,7 @@ final class Types implements ProviderInterface
     private string $identifier;
 
     public function __construct(
-        private readonly TypeRegistry $typeRegistry
+        private readonly TypeRegistry $typeRegistry,
     ) {
     }
 
@@ -66,7 +66,7 @@ final class Types implements ProviderInterface
         $sortedTypes = [];
         foreach ($types as $type) {
             $type = \str_starts_with($type, '_') ? \substr($type, 1) : $type;
-            $sortedTypes[substr($type, 0, 1)][] = $type;
+            $sortedTypes[\substr($type, 0, 1)][] = $type;
         }
         \ksort($sortedTypes);
 

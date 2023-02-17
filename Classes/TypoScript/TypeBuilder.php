@@ -33,7 +33,7 @@ final class TypeBuilder implements LoggerAwareInterface
      */
     public function build(
         ContentObjectRenderer $cObj,
-        array $configuration
+        array $configuration,
     ): ?TypeInterface {
         $this->cObj = $cObj;
 

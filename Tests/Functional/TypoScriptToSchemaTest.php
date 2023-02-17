@@ -54,7 +54,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        file_put_contents($this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log', '');
+        \file_put_contents($this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log', '');
     }
 
     /**
@@ -63,7 +63,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
      */
     public function returnsNoSchema(
         string $typoScriptSetup,
-        array $expectedLogEntries
+        array $expectedLogEntries,
     ): void {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
@@ -71,7 +71,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
             [],
             [
                 'config' => $typoScriptSetup,
-            ]
+            ],
         );
 
         $request = new InternalRequest();
@@ -125,7 +125,7 @@ TYPOSCRIPT,
      */
     public function returnsExpectedSchemaInHtml(
         string $typoScriptSetup,
-        array $expectedJsonLd
+        array $expectedJsonLd,
     ): void {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
@@ -133,7 +133,7 @@ TYPOSCRIPT,
             [],
             [
                 'config' => $typoScriptSetup,
-            ]
+            ],
         );
 
         $request = new InternalRequest();
@@ -427,8 +427,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.properties.unknownProperty = some value
-TYPOSCRIPT
-            ]
+TYPOSCRIPT,
+            ],
         );
 
         $request = new InternalRequest();
@@ -449,11 +449,11 @@ TYPOSCRIPT
 
     private function assertHasJsonLd(array $expectedJsonLd, string $content): void
     {
-        $jsonLd = json_encode($expectedJsonLd, JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
+        $jsonLd = \json_encode($expectedJsonLd, \JSON_UNESCAPED_SLASHES | \JSON_THROW_ON_ERROR);
         self::assertStringContainsString(
             '<script type="application/ld+json" id="ext-schema-jsonld">' . $jsonLd . '</script>',
             $content,
-            'Content did not include expected JSON LD'
+            'Content did not include expected JSON LD',
         );
     }
 
@@ -462,21 +462,21 @@ TYPOSCRIPT
      */
     private function assertHasLogEntries(array $entries): void
     {
-        $logFileContent = file_get_contents(
-            $this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log'
+        $logFileContent = \file_get_contents(
+            $this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log',
         );
-        $logEntries = array_filter(explode("\n", $logFileContent));
+        $logEntries = \array_filter(\explode("\n", $logFileContent));
 
         self::assertCount(
-            count($entries),
+            \count($entries),
             $logEntries,
-            'Number of expected log entries did not match. Got the following: ' . PHP_EOL . $logFileContent
+            'Number of expected log entries did not match. Got the following: ' . \PHP_EOL . $logFileContent,
         );
 
         foreach ($logEntries as $index => $logEntry) {
             self::assertStringContainsString('[' . $entries[$index]['type'] . ']', $logEntry, 'Type of log entry does not match.');
             self::assertStringContainsString('component="' . $entries[$index]['component'] . '"', $logEntry, 'Component of log entry does not match.');
-            self::assertStringEndsWith($entries[$index]['message'], trim($logEntry), 'Message of log entry does not match.');
+            self::assertStringEndsWith($entries[$index]['message'], \trim($logEntry), 'Message of log entry does not match.');
         }
     }
 }
