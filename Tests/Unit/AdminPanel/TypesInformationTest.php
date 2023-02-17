@@ -19,6 +19,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 final class TypesInformationTest extends TestCase
@@ -31,13 +32,14 @@ final class TypesInformationTest extends TestCase
     protected function setUp(): void
     {
         $this->pagesCacheServiceStub = $this->createStub(PagesCacheService::class);
+
+        $this->subject = new TypesInformation($this->pagesCacheServiceStub);
+
         $this->viewMock = $this->createMock(StandaloneView::class);
         $this->viewMock
             ->method('render')
             ->willReturn('');
-
-        $this->subject = new TypesInformation($this->pagesCacheServiceStub);
-        $this->subject->setView($this->viewMock);
+        GeneralUtility::addInstance(StandaloneView::class, $this->viewMock);
 
         $this->languageServiceStub = $this->createStub(LanguageService::class);
         $GLOBALS['LANG'] = $this->languageServiceStub;
@@ -46,6 +48,7 @@ final class TypesInformationTest extends TestCase
     protected function tearDown(): void
     {
         unset($GLOBALS['LANG']);
+        GeneralUtility::purgeInstances();
     }
 
     /**

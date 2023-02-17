@@ -1,16 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot call method assign\\(\\) on TYPO3\\\\CMS\\\\Fluid\\\\View\\\\StandaloneView\\|null\\.$#"
-			count: 1
-			path: Classes/AdminPanel/TypesInformation.php
-
-		-
-			message: "#^Cannot call method render\\(\\) on TYPO3\\\\CMS\\\\Fluid\\\\View\\\\StandaloneView\\|null\\.$#"
-			count: 1
-			path: Classes/AdminPanel/TypesInformation.php
-
-		-
 			message: "#^Cannot access property \\$newHash on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
 			count: 1
 			path: Classes/Cache/PagesCacheService.php

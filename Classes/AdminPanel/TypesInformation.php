@@ -26,12 +26,9 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
-    private readonly PagesCacheService $pagesCacheService;
-    private ?StandaloneView $view = null;
-
-    public function __construct(PagesCacheService $pagesCacheService = null)
-    {
-        $this->pagesCacheService = $pagesCacheService ?? GeneralUtility::makeInstance(PagesCacheService::class);
+    public function __construct(
+        private readonly PagesCacheService $pagesCacheService,
+    ) {
     }
 
     public function getIdentifier(): string
@@ -56,10 +53,10 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
             \usort($types, static fn (array $a, array $b): int => $a['@type'] <=> $b['@type']);
         }
 
-        $this->initialiseView();
-        $this->view->assign('types', $types);
+        $view = $this->initialiseView();
+        $view->assign('types', $types);
 
-        return $this->view->render();
+        return $view->render();
     }
 
     /**
@@ -68,26 +65,21 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     private function convertJsonLdToArray(string $jsonLd): array
     {
         $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
-        $decodedJsonLd = \json_decode($jsonLd, true, 512, \JSON_THROW_ON_ERROR);
+        $decodedJsonLd = \json_decode($jsonLd, true, flags: \JSON_THROW_ON_ERROR);
         unset($decodedJsonLd['@context']);
 
         return $decodedJsonLd['@graph'] ?? [$decodedJsonLd];
     }
 
-    private function initialiseView(): void
+    private function initialiseView(): StandaloneView
     {
-        // The StandaloneView cannot be injected via DI in the constructor, because then the error
-        // "TypoScriptFrontendController was tried to be injected before initial creation" occurs!
-        if ($this->view === null) {
-            /** @var StandaloneView $view */
-            $view = GeneralUtility::makeInstance(StandaloneView::class);
-            $this->view = $view;
-        }
+        /** @var StandaloneView $view */
+        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $view->setTemplatePathAndFilename(
+            'EXT:' . Extension::KEY . '/Resources/Private/Templates/AdminPanel/TypesInformation.html',
+        );
 
-        $this->view->setTemplatePathAndFilename(\sprintf(
-            'EXT:%s/Resources/Private/Templates/AdminPanel/TypesInformation.html',
-            Extension::KEY,
-        ));
+        return $view;
     }
 
     private function getLanguageService(): LanguageService
@@ -104,18 +96,10 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     }
 
     /**
-     * @return mixed[]
+     * @return array{}
      */
     public function getCssFiles(): array
     {
         return [];
-    }
-
-    /**
-     * For testing purposes only!
-     */
-    public function setView(StandaloneView $view): void
-    {
-        $this->view = $view;
     }
 }
