@@ -47,11 +47,13 @@ final class PropertiesAdder
             try {
                 $this->addProperty($type, $name, $properties);
             } catch (DomainException) {
-                $this->logger->error(\sprintf(
-                    'Use of unknown property "%s" for type "%s"',
-                    $name,
-                    $type->getType(), // @phpstan-ignore-line It can only be a string (no array) as the cObject does not support multiple types
-                ));
+                $this->logger->error(
+                    'Use of unknown property "{property}" for type "{type}"',
+                    [
+                        'property' => $name,
+                        'type' => $type->getType(),
+                    ],
+                );
                 continue;
             }
         }

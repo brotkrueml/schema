@@ -476,7 +476,7 @@ TYPOSCRIPT,
         foreach ($logEntries as $index => $logEntry) {
             self::assertStringContainsString('[' . $entries[$index]['type'] . ']', $logEntry, 'Type of log entry does not match.');
             self::assertStringContainsString('component="' . $entries[$index]['component'] . '"', $logEntry, 'Component of log entry does not match.');
-            self::assertStringEndsWith($entries[$index]['message'], \trim($logEntry), 'Message of log entry does not match.');
+            self::assertStringContainsString($entries[$index]['message'], \trim($logEntry), 'Message of log entry does not match.');
         }
     }
 }

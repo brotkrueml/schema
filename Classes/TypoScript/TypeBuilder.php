@@ -65,7 +65,12 @@ final class TypeBuilder
             return TypeFactory::createType($configuredType);
         } catch (DomainException) {
             // Do not break production sites, catch exception and return nothing.
-            $this->logger->error(\sprintf('Use of unknown type "%s"', $configuredType));
+            $this->logger->error(
+                'Use of unknown type "{type}"',
+                [
+                    'type' => $configuredType,
+                ],
+            );
         }
 
         return null;
