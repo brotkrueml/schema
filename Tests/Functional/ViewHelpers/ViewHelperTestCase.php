@@ -11,7 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
+use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Tests\Helper\NoopEventDispatcher;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
@@ -28,7 +31,20 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
     {
         parent::setup();
         $this->view = new TemplateView();
-        $this->schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
+        $this->schemaManager = new SchemaManager(
+            new NoopEventDispatcher(),
+            $this->createStub(ExtensionConfiguration::class),
+            new Renderer(),
+        );
+
+        // This is needed for the *TypeViewHelper tests which derive from this class and use GU:makeInstance()
+        GeneralUtility::setSingletonInstance(SchemaManager::class, $this->schemaManager);
+    }
+
+    protected function tearDown(): void
+    {
+        GeneralUtility::purgeInstances();
+        parent::tearDown();
     }
 
     protected function renderTemplate(string $template, array $variables = []): string

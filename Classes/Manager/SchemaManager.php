@@ -15,46 +15,37 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Event\InitialiseTypesEvent;
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SchemaManager implements SingletonInterface
 {
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';
 
-    private readonly ExtensionConfiguration $extensionConfiguration;
-
+    private readonly MainEntityOfWebPageBag $mainEntityOfWebPageBag;
     /**
      * @var TypeInterface[]
      */
     private array $types = [];
-
     private ?TypeInterface $webPage = null;
-
     /**
      * @var BreadcrumbList[]
      */
     private array $breadcrumbLists = [];
 
-    private readonly MainEntityOfWebPageBag $mainEntityOfWebPageBag;
-
     public function __construct(
-        ?EventDispatcherInterface $eventDispatcher = null,
-        ?ExtensionConfiguration $extensionConfiguration = null,
-        private readonly RendererInterface $renderer = new Renderer(),
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly ExtensionConfiguration $extensionConfiguration,
+        private readonly RendererInterface $renderer,
     ) {
-        $this->extensionConfiguration = $extensionConfiguration ?? GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
 
-        $eventDispatcher ??= GeneralUtility::makeInstance(EventDispatcherInterface::class);
         /** @var InitialiseTypesEvent $event */
-        $event = $eventDispatcher->dispatch(new InitialiseTypesEvent());
+        $event = $this->eventDispatcher->dispatch(new InitialiseTypesEvent());
         \array_map(fn (TypeInterface $type): SchemaManager => $this->addType($type), $event->getTypes());
     }
 
