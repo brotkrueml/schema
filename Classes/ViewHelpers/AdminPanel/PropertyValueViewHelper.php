@@ -177,9 +177,9 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
     {
         return \sprintf(
             '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
-            \htmlspecialchars($typeLink->getLink()),
-            \htmlspecialchars($typeLink->getTitle()),
-            self::getIconFactory()->getIcon($typeLink->getIconIdentifier(), Icon::SIZE_SMALL)->render(),
+            \htmlspecialchars($typeLink->link),
+            \htmlspecialchars($typeLink->title),
+            self::getIconFactory()->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL)->render(),
         );
     }
 

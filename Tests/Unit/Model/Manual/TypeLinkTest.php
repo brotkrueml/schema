@@ -14,36 +14,8 @@ namespace Brotkrueml\Schema\Tests\Unit\Model\Manual;
 use Brotkrueml\Schema\Model\Manual\TypeLink;
 use PHPUnit\Framework\TestCase;
 
-class TypeLinkTest extends TestCase
+final class TypeLinkTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider dataProviderWithValidUrls
-     */
-    public function getterReturnCorrectValues(string $link, string $title, string $iconIdentifier): void
-    {
-        $subject = new TypeLink($link, $title, $iconIdentifier);
-
-        self::assertSame($link, $subject->getLink());
-        self::assertSame($title, $subject->getTitle());
-        self::assertSame($iconIdentifier, $subject->getIconIdentifier());
-    }
-
-    public function dataProviderWithValidUrls(): iterable
-    {
-        yield [
-            'link' => 'https://example.org/SomeType',
-            'title' => 'Some title',
-            'iconIdentifier' => 'some-icon-identifier',
-        ];
-
-        yield [
-            'link' => 'https://example.org',
-            'title' => 'Another title',
-            'iconIdentifier' => 'another-icon-identifier',
-        ];
-    }
-
     /**
      * @test
      * @dataProvider dataProviderWithInvalidUrls
