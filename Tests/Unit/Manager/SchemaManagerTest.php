@@ -21,11 +21,11 @@ use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
-use Brotkrueml\Schema\Tests\Helper\NoopEventDispatcher;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SchemaManagerTest extends Testcase

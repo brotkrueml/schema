@@ -13,8 +13,8 @@ namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Tests\Helper\NoopEventDispatcher;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
