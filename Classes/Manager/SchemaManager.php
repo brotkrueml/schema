@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Manager;
 
+use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Event\InitialiseTypesEvent;
@@ -41,8 +42,13 @@ final class SchemaManager implements SingletonInterface
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ExtensionConfiguration $extensionConfiguration,
         private readonly RendererInterface $renderer,
+        private readonly ApplicationType $applicationType,
     ) {
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
+
+        if ($this->applicationType->isBackend()) {
+            return;
+        }
 
         /** @var InitialiseTypesEvent $event */
         $event = $this->eventDispatcher->dispatch(new InitialiseTypesEvent());
