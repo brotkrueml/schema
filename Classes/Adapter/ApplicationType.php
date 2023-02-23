@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Adapter;
 
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\ApplicationType as CoreApplicationType;
 
 /**
@@ -23,6 +24,11 @@ class ApplicationType
 
     public function isBackend(): bool
     {
+        if (Environment::isCli()) {
+            // This is helpful in functional tests
+            return false;
+        }
+
         if ($this->applicationType === null) {
             $this->applicationType = CoreApplicationType::fromRequest($this->getRequest());
         }
