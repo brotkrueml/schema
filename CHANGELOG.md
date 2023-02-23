@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Avoid error when SchemaManager is called via view helpers in backend context (#108)
+
 ### Removed
 - Compatibility with TYPO3 v10 (#73)
 - Compatibility with PHP 7.4 and PHP 8.0

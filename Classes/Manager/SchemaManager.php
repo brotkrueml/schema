@@ -39,10 +39,10 @@ final class SchemaManager implements SingletonInterface
     private array $breadcrumbLists = [];
 
     public function __construct(
+        private readonly ApplicationType $applicationType,
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ExtensionConfiguration $extensionConfiguration,
         private readonly RendererInterface $renderer,
-        private readonly ApplicationType $applicationType,
     ) {
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
 

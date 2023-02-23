@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
+use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -29,9 +30,15 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
 
     protected function setUp(): void
     {
+        $applicationType = $this->createStub(ApplicationType::class);
+        $applicationType
+            ->method('isBackend')
+            ->willReturn(false);
+
         parent::setup();
         $this->view = new TemplateView();
         $this->schemaManager = new SchemaManager(
+            $applicationType,
             new NoopEventDispatcher(),
             $this->createStub(ExtensionConfiguration::class),
             new Renderer(),
