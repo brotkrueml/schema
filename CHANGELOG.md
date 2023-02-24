@@ -7,6 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.7.1] - 2023-02-24
+
+### Fixed
+- Avoid error when SchemaManager is called via view helpers in backend context (#108)
+
 ### Removed
 - Compatibility with TYPO3 v10 (#73)
 - Compatibility with PHP 7.4 and PHP 8.0
@@ -384,7 +389,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.7.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.7.1...HEAD
+[2.7.1]: https://github.com/brotkrueml/schema/compare/v2.7.0...v2.7.1
 [2.7.0]: https://github.com/brotkrueml/schema/compare/v2.6.4...v2.7.0
 [2.6.4]: https://github.com/brotkrueml/schema/compare/v2.6.3...v2.6.4
 [2.6.3]: https://github.com/brotkrueml/schema/compare/v2.6.2...v2.6.3

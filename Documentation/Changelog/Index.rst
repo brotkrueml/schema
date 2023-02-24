@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.7.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Avoid error when SchemaManager is called via view helpers in backend context (#108)
+
 Removed
 ^^^^^^^
 

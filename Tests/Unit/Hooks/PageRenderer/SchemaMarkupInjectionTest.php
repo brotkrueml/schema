@@ -48,8 +48,14 @@ final class SchemaMarkupInjectionTest extends TestCase
 
     protected function setUp(): void
     {
+        $applicationTypeStub = $this->createStub(ApplicationType::class);
+        $applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
         $this->schemaManager = new SchemaManager(
+            $applicationTypeStub,
             new NoopEventDispatcher(),
             $this->extensionConfigurationMock,
             new Renderer(),

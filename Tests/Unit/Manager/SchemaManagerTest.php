@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
+use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -22,6 +23,7 @@ use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -35,6 +37,10 @@ final class SchemaManagerTest extends Testcase
     private SchemaManager $subject;
     private \ReflectionProperty $rendererTypes;
     private Renderer $renderer;
+    /**
+     * @var ApplicationType&Stub
+     */
+    private Stub $applicationTypeStub;
 
     protected function setUp(): void
     {
@@ -44,8 +50,14 @@ final class SchemaManagerTest extends Testcase
         $this->rendererTypes = $reflector->getProperty('types');
         $this->rendererTypes->setAccessible(true);
 
+        $this->applicationTypeStub = $this->createStub(ApplicationType::class);
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
         $this->renderer = new Renderer();
         $this->subject = new SchemaManager(
+            $this->applicationTypeStub,
             new NoopEventDispatcher(),
             $this->createStub(ExtensionConfiguration::class),
             $this->renderer,
@@ -358,6 +370,7 @@ final class SchemaManagerTest extends Testcase
         };
 
         $subject = new SchemaManager(
+            $this->applicationTypeStub,
             $eventDispatcherStub,
             $this->createStub(ExtensionConfiguration::class),
             $this->renderer,
@@ -384,6 +397,7 @@ final class SchemaManagerTest extends Testcase
             ->willReturn('1');
 
         $subject = new SchemaManager(
+            $this->applicationTypeStub,
             new NoopEventDispatcher(),
             $extensionConfigurationStub,
             $this->renderer,
@@ -415,6 +429,7 @@ final class SchemaManagerTest extends Testcase
             ->willReturn('0');
 
         $subject = new SchemaManager(
+            $this->applicationTypeStub,
             new NoopEventDispatcher(),
             $extensionConfigurationStub,
             $this->renderer,
@@ -463,5 +478,32 @@ final class SchemaManagerTest extends Testcase
 
         $this->subject->renderJsonLd();
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
+    }
+
+    /**
+     * @test
+     */
+    public function inBackendContextTheEventDispatcherIsNotCalled(): void
+    {
+        self::expectNotToPerformAssertions();
+
+        $applicationTypeStub = $this->createStub(ApplicationType::class);
+        $applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(true);
+
+        $eventDispatcherStub = new class() implements EventDispatcherInterface {
+            public function dispatch(object $event)
+            {
+                throw new \Exception('dispatch() method must not be called');
+            }
+        };
+
+        new SchemaManager(
+            $applicationTypeStub,
+            $eventDispatcherStub,
+            $this->createStub(ExtensionConfiguration::class),
+            $this->renderer,
+        );
     }
 }
