@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Avoid error when SchemaManager is called via view helpers in backend context (#108)
+
 ## [2.7.0] - 2023-02-14
 
 ### Added
