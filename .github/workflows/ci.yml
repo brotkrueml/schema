@@ -92,6 +92,9 @@ jobs:
       - name: Normalize composer.json
         run: |
           composer normalize --dry-run
+      - name: Verify PSR-4 namespace correctness
+        run: |
+          composer dumpautoload --optimize --strict-psr
       - name: Check coding standards
         if: always()
         run: |
