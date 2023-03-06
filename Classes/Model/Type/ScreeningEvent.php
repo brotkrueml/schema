@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A screening of a movie or other video.
  */
+#[Type('ScreeningEvent')]
 final class ScreeningEvent extends AbstractType
 {
     protected static $propertyNames = [

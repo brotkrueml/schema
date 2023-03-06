@@ -40,16 +40,9 @@ final class TypeFactory
 
     private static function createSingleType(string $type): TypeInterface
     {
-        /** @var TypeRegistry $typeRegistry */
-        $typeRegistry = GeneralUtility::makeInstance(TypeRegistry::class);
-        $typeClass = $typeRegistry->resolveModelClassFromType($type);
-
-        if ($typeClass === null) {
-            throw new \DomainException(
-                \sprintf('No model class for type "%s" available!', $type),
-                1586590157,
-            );
-        }
+        /** @var TypeProvider $typeProvider */
+        $typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
+        $typeClass = $typeProvider->getModelClassNameForType($type);
 
         /** @var TypeInterface $type */
         $type = new $typeClass();

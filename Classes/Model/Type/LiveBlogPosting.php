@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A LiveBlogPosting is a BlogPosting intended to provide a rolling textual coverage of an ongoing event through continuous updates.
  */
+#[Type('LiveBlogPosting')]
 final class LiveBlogPosting extends AbstractType
 {
     protected static $propertyNames = [

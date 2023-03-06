@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
  */
+#[Type('WebSite')]
 final class WebSite extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A file containing slides or used for a presentation.
  */
+#[Type('PresentationDigitalDocument')]
 final class PresentationDigitalDocument extends AbstractType
 {
     protected static $propertyNames = [

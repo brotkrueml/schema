@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -27,6 +28,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#PayPal
  * http://purl.org/goodrelations/v1#PaySwarm
  */
+#[Type('PaymentMethod')]
 final class PaymentMethod extends AbstractType
 {
     protected static $propertyNames = [

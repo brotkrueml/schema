@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
  */
+#[Type('ParcelDelivery')]
 final class ParcelDelivery extends AbstractType
 {
     protected static $propertyNames = [

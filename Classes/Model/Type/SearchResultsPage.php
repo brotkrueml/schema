@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 /**
  * Web page type: Search results page.
  */
+#[Type('SearchResultsPage')]
 final class SearchResultsPage extends AbstractType implements WebPageTypeInterface
 {
     protected static $propertyNames = [

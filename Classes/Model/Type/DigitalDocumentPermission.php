@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A permission for a particular person or group to access a particular file.
  */
+#[Type('DigitalDocumentPermission')]
 final class DigitalDocumentPermission extends AbstractType
 {
     protected static $propertyNames = [

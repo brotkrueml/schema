@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
  */
+#[Type('TheaterGroup')]
 final class TheaterGroup extends AbstractType
 {
     protected static $propertyNames = [

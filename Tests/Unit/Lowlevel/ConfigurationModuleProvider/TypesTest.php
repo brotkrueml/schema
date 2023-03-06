@@ -13,8 +13,8 @@ namespace Brotkrueml\Schema\Tests\Unit\Lowlevel\ConfigurationModuleProvider;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
-use Brotkrueml\Schema\Type\TypeRegistry;
-use PHPUnit\Framework\MockObject\Stub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
+use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -24,13 +24,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class TypesTest extends TestCase
 {
-    private TypeRegistry&Stub $typeRegistryStub;
+    private TypeProvider $typeProvider;
     private Types $subject;
 
     protected function setUp(): void
     {
-        $this->typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $this->subject = new Types($this->typeRegistryStub);
+        $this->typeProvider = new TypeProvider();
+        $this->subject = new Types($this->typeProvider);
 
         $languageServiceMap = [
             [
@@ -88,51 +88,34 @@ final class TypesTest extends TestCase
      */
     public function getConfigurationReturnsCorrectConfiguration(): void
     {
-        $this->typeRegistryStub
-            ->method('getTypes')
-            ->willReturn([
-                'A type',
-                'X type',
-                'C type',
-                'E1 type',
-                'E2 type',
-            ]);
-        $this->typeRegistryStub
-            ->method('getWebPageTypes')
-            ->willReturn([
-                'A type',
-                'E1 type',
-            ]);
-        $this->typeRegistryStub
-            ->method('getWebPageElementTypes')
-            ->willReturn([
-                'C type',
-                'X type',
-            ]);
+        $this->typeProvider->addType('ItemPage', FixtureType\ItemPage::class);
+        $this->typeProvider->addType('Person', FixtureType\Person::class);
+        $this->typeProvider->addType('Table', FixtureType\Table::class);
+        $this->typeProvider->addType('Thing', FixtureType\Thing::class);
+        $this->typeProvider->addType('WebPage', FixtureType\WebPage::class);
 
         $expected = [
             'All types' => [
-                'A' => [
-                    'A type',
+                'I' => [
+                    'ItemPage',
                 ],
-                'C' => [
-                    'C type',
+                'P' => [
+                    'Person',
                 ],
-                'E' => [
-                    'E1 type',
-                    'E2 type',
+                'T' => [
+                    'Table',
+                    'Thing',
                 ],
-                'X' => [
-                    'X type',
+                'W' => [
+                    'WebPage',
                 ],
             ],
             'Web page types' => [
-                'A type',
-                'E1 type',
+                'ItemPage',
+                'WebPage',
             ],
             'Web page element types' => [
-                'C type',
-                'X type',
+                'Table',
             ],
         ];
 

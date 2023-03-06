@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * This type is deprecated - LegalService is more inclusive and less ambiguous.
  */
+#[Type('Attorney')]
 final class Attorney extends AbstractType
 {
     protected static $propertyNames = [

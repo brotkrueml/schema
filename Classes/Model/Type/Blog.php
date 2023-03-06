@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A [blog](https://en.wikipedia.org/wiki/Blog), sometimes known as a "weblog". Note that the individual posts (BlogPostings) in a Blog are often colloquially referred to by the same term.
  */
+#[Type('Blog')]
 final class Blog extends AbstractType
 {
     protected static $propertyNames = [

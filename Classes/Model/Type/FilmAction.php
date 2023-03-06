@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of capturing sound and moving images on film, video, or digitally.
  */
+#[Type('FilmAction')]
 final class FilmAction extends AbstractType
 {
     protected static $propertyNames = [

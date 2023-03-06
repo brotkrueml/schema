@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of expressing a negative sentiment about the object. An agent dislikes an object (a proposition, topic or theme) with participants.
  */
+#[Type('DislikeAction')]
 final class DislikeAction extends AbstractType
 {
     protected static $propertyNames = [

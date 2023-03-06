@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * See also [blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).
  */
+#[Type('PublicationVolume')]
 final class PublicationVolume extends AbstractType
 {
     protected static $propertyNames = [

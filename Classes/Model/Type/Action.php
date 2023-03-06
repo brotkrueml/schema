@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * See also [blog post](http://blog.schema.org/2014/04/announcing-schemaorg-actions.html) and [Actions overview document](https://schema.org/docs/actions.html).
  */
+#[Type('Action')]
 final class Action extends AbstractType
 {
     protected static $propertyNames = [

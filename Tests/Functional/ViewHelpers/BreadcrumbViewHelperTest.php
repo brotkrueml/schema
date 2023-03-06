@@ -14,7 +14,8 @@ namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -22,34 +23,25 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
+/**
+ * @covers \Brotkrueml\Schema\ViewHelpers\BreadcrumbViewHelper
+ */
 final class BreadcrumbViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
+    use TypeProviderWithFixturesTrait;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['BreadcrumbList', FixtureType\BreadcrumbList::class],
-            ['ItemPage', FixtureType\ItemPage::class],
-            ['ListItem', FixtureType\ListItem::class],
-            ['VideoGallery', FixtureType\VideoGallery::class],
-            ['WebPage', FixtureType\WebPage::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
-
         GeneralUtility::purgeInstances();
     }
 

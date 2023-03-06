@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated status values for Reservation.
  */
+#[Type('ReservationStatusType')]
 final class ReservationStatusType extends AbstractType
 {
     protected static $propertyNames = [

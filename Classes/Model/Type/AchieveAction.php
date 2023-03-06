@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of accomplishing something via previous efforts. It is an instantaneous action rather than an ongoing process.
  */
+#[Type('AchieveAction')]
 final class AchieveAction extends AbstractType
 {
     protected static $propertyNames = [

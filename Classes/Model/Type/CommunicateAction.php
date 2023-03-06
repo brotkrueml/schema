@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.
  */
+#[Type('CommunicateAction')]
 final class CommunicateAction extends AbstractType
 {
     protected static $propertyNames = [

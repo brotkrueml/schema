@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+- Type model classes need to be marked with the "Type" attribute (#107)
+
 ### Removed
 - Compatibility with TYPO3 v10 (#73)
 - Compatibility with PHP 7.4 and PHP 8.0

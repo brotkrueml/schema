@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of ingesting information/resources/food.
  */
+#[Type('ConsumeAction')]
 final class ConsumeAction extends AbstractType
 {
     protected static $propertyNames = [

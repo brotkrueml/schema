@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A person (alive, dead, undead, or fictional).
  */
+#[Type('Person')]
 final class Person extends AbstractType
 {
     protected static $propertyNames = [

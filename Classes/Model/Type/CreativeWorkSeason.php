@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A media season, e.g. TV, radio, video game etc.
  */
+#[Type('CreativeWorkSeason')]
 final class CreativeWorkSeason extends AbstractType
 {
     protected static $propertyNames = [

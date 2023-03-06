@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Organization: A business corporation.
  */
+#[Type('Corporation')]
 final class Corporation extends AbstractType
 {
     protected static $propertyNames = [

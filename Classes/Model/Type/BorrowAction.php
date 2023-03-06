@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * LendAction: Reciprocal of BorrowAction.
  */
+#[Type('BorrowAction')]
 final class BorrowAction extends AbstractType
 {
     protected static $propertyNames = [

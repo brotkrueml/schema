@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A permit issued by an organization, e.g. a parking pass.
  */
+#[Type('Permit')]
 final class Permit extends AbstractType
 {
     protected static $propertyNames = [

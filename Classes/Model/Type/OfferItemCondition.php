@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A list of possible conditions for the item.
  */
+#[Type('OfferItemCondition')]
 final class OfferItemCondition extends AbstractType
 {
     protected static $propertyNames = [

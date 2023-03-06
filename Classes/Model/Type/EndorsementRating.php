@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -21,6 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * An EndorsementRating may be part of a numeric scale or organized system, but this is not required: having an explicit type for indicating a positive,
  * endorsement rating is particularly useful in the absence of numeric scales as it helps consumers understand that the rating is broadly positive.
  */
+#[Type('EndorsementRating')]
 final class EndorsementRating extends AbstractType
 {
     protected static $propertyNames = [

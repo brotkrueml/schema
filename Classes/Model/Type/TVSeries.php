@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * CreativeWorkSeries dedicated to TV broadcast and associated online delivery.
  */
+#[Type('TVSeries')]
 final class TVSeries extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -21,6 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#PartsAndLabor-BringIn
  * http://purl.org/goodrelations/v1#PartsAndLabor-PickUp
  */
+#[Type('WarrantyScope')]
 final class WarrantyScope extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A medical organization (physical or not), such as hospital, institution or clinic.
  */
+#[Type('MedicalOrganization')]
 final class MedicalOrganization extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
  */
+#[Type('PaymentStatusType')]
 final class PaymentStatusType extends AbstractType
 {
     protected static $propertyNames = [

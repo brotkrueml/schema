@@ -15,7 +15,10 @@
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => Brotkrueml\Schema\Provider\WebPageTypeProvider::getTypesForTcaSelect(),
+                'items' => [
+                    ['', ''],
+                ],
+                'itemsProcFunc' => Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes::class . '->get',
                 'size' => 1,
                 'maxitems' => 1,
                 'behaviour' => [

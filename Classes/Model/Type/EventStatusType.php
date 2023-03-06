@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
  */
+#[Type('EventStatusType')]
 final class EventStatusType extends AbstractType
 {
     protected static $propertyNames = [

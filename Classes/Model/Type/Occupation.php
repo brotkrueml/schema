@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A profession, may involve prolonged training and/or a formal qualification.
  */
+#[Type('Occupation')]
 final class Occupation extends AbstractType
 {
     protected static $propertyNames = [

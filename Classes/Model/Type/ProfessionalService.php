@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -20,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * AccountingService, Attorney, Notary, as well as types for several kinds of HomeAndConstructionBusiness: Electrician, GeneralContractor,
  * HousePainter, Locksmith, Plumber, RoofingContractor. LegalService was introduced as a more inclusive supertype of Attorney.
  */
+#[Type('ProfessionalService')]
 final class ProfessionalService extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A media episode (e.g. TV, radio, video game) which can be part of a series or season.
  */
+#[Type('Episode')]
 final class Episode extends AbstractType
 {
     protected static $propertyNames = [

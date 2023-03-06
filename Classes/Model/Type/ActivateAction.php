@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of starting or activating a device or application (e.g. starting a timer or turning on a flashlight).
  */
+#[Type('ActivateAction')]
 final class ActivateAction extends AbstractType
 {
     protected static $propertyNames = [

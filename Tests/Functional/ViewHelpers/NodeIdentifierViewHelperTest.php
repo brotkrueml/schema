@@ -12,29 +12,25 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+/**
+ * @covers \Brotkrueml\Schema\ViewHelpers\NodeIdentifierViewHelper
+ */
 final class NodeIdentifierViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
+    use TypeProviderWithFixturesTrait;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['Person', FixtureType\Person::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
     }
 
     protected function tearDown(): void

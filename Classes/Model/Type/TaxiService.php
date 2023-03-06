@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A service for a vehicle for hire with a driver for local travel. Fares are usually calculated based on distance traveled.
  */
+#[Type('TaxiService')]
 final class TaxiService extends AbstractType
 {
     protected static $propertyNames = [

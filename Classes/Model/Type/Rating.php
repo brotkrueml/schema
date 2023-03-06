@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
  */
+#[Type('Rating')]
 final class Rating extends AbstractType
 {
     protected static $propertyNames = [

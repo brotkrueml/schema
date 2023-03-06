@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A short TV program or a segment/part of a TV program.
  */
+#[Type('TVClip')]
 final class TVClip extends AbstractType
 {
     protected static $propertyNames = [

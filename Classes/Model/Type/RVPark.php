@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
  */
+#[Type('RVPark')]
 final class RVPark extends AbstractType
 {
     protected static $propertyNames = [

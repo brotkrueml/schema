@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
  */
+#[Type('Audience')]
 final class Audience extends AbstractType
 {
     protected static $propertyNames = [

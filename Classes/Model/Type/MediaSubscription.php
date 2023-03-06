@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A subscription which allows a user to access media including audio, video, books, etc.
  */
+#[Type('MediaSubscription')]
 final class MediaSubscription extends AbstractType
 {
     protected static $propertyNames = [

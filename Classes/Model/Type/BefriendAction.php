@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * FollowAction: Unlike FollowAction, BefriendAction implies that the connection is reciprocal.
  */
+#[Type('BefriendAction')]
 final class BefriendAction extends AbstractType
 {
     protected static $propertyNames = [

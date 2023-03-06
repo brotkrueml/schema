@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A river (for example, the broad majestic Shannon).
  */
+#[Type('RiverBodyOfWater')]
 final class RiverBodyOfWater extends AbstractType
 {
     protected static $propertyNames = [

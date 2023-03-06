@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -22,6 +23,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#PublicInstitution
  * http://purl.org/goodrelations/v1#Reseller
  */
+#[Type('BusinessEntityType')]
 final class BusinessEntityType extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An agent orders an object/product/service to be delivered/sent.
  */
+#[Type('OrderAction')]
 final class OrderAction extends AbstractType
 {
     protected static $propertyNames = [

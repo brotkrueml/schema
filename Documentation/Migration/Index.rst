@@ -10,6 +10,21 @@ Migration
    :depth: 2
    :local:
 
+From version 2.x to version 3.0
+===============================
+
+In version 3.0 the compatibility with TYPO3 v10 LTS was removed. Also PHP 8.1
+or higher is necessary.
+
+Type model classes
+------------------
+
+The type models classes were previously registered via a
+:file:`Configuration/TxSchema/TypeModels.php` file. This file is not recognised
+anymore, you have to mark a type model class with the attribute
+:php:`\Brotkrueml\Schema\Attributes\Type` now. See the
+:ref:`extending-adding-types` section for more information.
+
 
 From version 1.x to version 2.0
 ===============================

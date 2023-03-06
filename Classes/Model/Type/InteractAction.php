@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of interacting with another person or organization.
  */
+#[Type('InteractAction')]
 final class InteractAction extends AbstractType
 {
     protected static $propertyNames = [

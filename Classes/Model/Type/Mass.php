@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Properties that take Mass as values are of the form '<Number> <Mass unit of measure>'. E.g., '7 kg'.
  */
+#[Type('Mass')]
 final class Mass extends AbstractType
 {
     protected static $propertyNames = [

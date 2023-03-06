@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The average rating based on multiple ratings or reviews.
  */
+#[Type('AggregateRating')]
 final class AggregateRating extends AbstractType
 {
     protected static $propertyNames = [

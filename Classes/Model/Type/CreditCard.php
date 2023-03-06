@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -24,6 +25,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#MasterCard
  * http://purl.org/goodrelations/v1#VISA
  */
+#[Type('CreditCard')]
 final class CreditCard extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
  */
+#[Type('Specialty')]
 final class Specialty extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A public structure, such as a town hall or concert hall.
  */
+#[Type('CivicStructure')]
 final class CivicStructure extends AbstractType
 {
     protected static $propertyNames = [

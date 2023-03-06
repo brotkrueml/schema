@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A set of requirements that must be fulfilled in order to perform an Action.
  */
+#[Type('ActionAccessSpecification')]
 final class ActionAccessSpecification extends AbstractType
 {
     protected static $propertyNames = [

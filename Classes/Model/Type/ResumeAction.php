@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
  */
+#[Type('ResumeAction')]
 final class ResumeAction extends AbstractType
 {
     protected static $propertyNames = [

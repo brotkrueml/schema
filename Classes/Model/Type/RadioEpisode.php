@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A radio episode which can be part of a series or season.
  */
+#[Type('RadioEpisode')]
 final class RadioEpisode extends AbstractType
 {
     protected static $propertyNames = [

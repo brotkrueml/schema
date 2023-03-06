@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 /**
  * A page devoted to a single item, such as a particular product or hotel.
  */
+#[Type('ItemPage')]
 final class ItemPage extends AbstractType implements WebPageTypeInterface
 {
     protected static $propertyNames = [

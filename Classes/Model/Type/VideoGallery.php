@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 /**
  * Web page type: Video gallery page.
  */
+#[Type('VideoGallery')]
 final class VideoGallery extends AbstractType implements WebPageTypeInterface
 {
     protected static $propertyNames = [

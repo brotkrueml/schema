@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
  */
+#[Type('ServiceChannel')]
 final class ServiceChannel extends AbstractType
 {
     protected static $propertyNames = [

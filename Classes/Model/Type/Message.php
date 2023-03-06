@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A single message from a sender to one or more organizations or people.
  */
+#[Type('Message')]
 final class Message extends AbstractType
 {
     protected static $propertyNames = [

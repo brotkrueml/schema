@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).
  */
+#[Type('IndividualProduct')]
 final class IndividualProduct extends AbstractType
 {
     protected static $propertyNames = [

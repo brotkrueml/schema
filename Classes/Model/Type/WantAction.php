@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of expressing a desire about the object. An agent wants an object.
  */
+#[Type('WantAction')]
 final class WantAction extends AbstractType
 {
     protected static $propertyNames = [

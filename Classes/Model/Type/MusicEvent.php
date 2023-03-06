@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Event type: Music event.
  */
+#[Type('MusicEvent')]
 final class MusicEvent extends AbstractType
 {
     protected static $propertyNames = [

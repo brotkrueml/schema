@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated options related to a ContactPoint.
  */
+#[Type('ContactPointOption')]
 final class ContactPointOption extends AbstractType
 {
     protected static $propertyNames = [

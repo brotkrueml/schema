@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of capturing still images of objects using a camera.
  */
+#[Type('PhotographAction')]
 final class PhotographAction extends AbstractType
 {
     protected static $propertyNames = [

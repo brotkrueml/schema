@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A short segment/part of a movie.
  */
+#[Type('MovieClip')]
 final class MovieClip extends AbstractType
 {
     protected static $propertyNames = [

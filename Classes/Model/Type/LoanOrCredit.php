@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A financial product for the loaning of an amount of money, or line of credit, under agreed terms and charges.
  */
+#[Type('LoanOrCredit')]
 final class LoanOrCredit extends AbstractType
 {
     protected static $propertyNames = [

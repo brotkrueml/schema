@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of intentionally disregarding the object. An agent ignores an object.
  */
+#[Type('IgnoreAction')]
 final class IgnoreAction extends AbstractType
 {
     protected static $propertyNames = [

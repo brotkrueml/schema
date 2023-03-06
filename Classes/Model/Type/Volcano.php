@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A volcano, like Fujisan.
  */
+#[Type('Volcano')]
 final class Volcano extends AbstractType
 {
     protected static $propertyNames = [

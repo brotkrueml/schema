@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Entities that have a somewhat fixed, physical extension.
  */
+#[Type('Place')]
 final class Place extends AbstractType
 {
     protected static $propertyNames = [

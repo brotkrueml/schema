@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A file containing a note, primarily for the author.
  */
+#[Type('NoteDigitalDocument')]
 final class NoteDigitalDocument extends AbstractType
 {
     protected static $propertyNames = [

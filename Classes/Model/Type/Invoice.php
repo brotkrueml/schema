@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A statement of the money due for goods or services; a bill.
  */
+#[Type('Invoice')]
 final class Invoice extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An agent quotes/estimates/appraises an object/product/service with a price at a location/store.
  */
+#[Type('QuoteAction')]
 final class QuoteAction extends AbstractType
 {
     protected static $propertyNames = [

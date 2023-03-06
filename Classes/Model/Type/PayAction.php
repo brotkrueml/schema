@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An agent pays a price to a participant.
  */
+#[Type('PayAction')]
 final class PayAction extends AbstractType
 {
     protected static $propertyNames = [

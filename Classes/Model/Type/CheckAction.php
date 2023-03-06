@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An agent inspects, determines, investigates, inquires, or examines an object's accuracy, quality, condition, or state.
  */
+#[Type('CheckAction')]
 final class CheckAction extends AbstractType
 {
     protected static $propertyNames = [

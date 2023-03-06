@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of notifying someone of information pertinent to them, with no expectation of a response.
  */
+#[Type('InformAction')]
 final class InformAction extends AbstractType
 {
     protected static $propertyNames = [

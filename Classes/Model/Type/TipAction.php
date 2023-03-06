@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
  */
+#[Type('TipAction')]
 final class TipAction extends AbstractType
 {
     protected static $propertyNames = [

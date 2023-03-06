@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of achieving victory in a competitive activity.
  */
+#[Type('WinAction')]
 final class WinAction extends AbstractType
 {
     protected static $propertyNames = [

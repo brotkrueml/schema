@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An over the air or online broadcast event.
  */
+#[Type('BroadcastEvent')]
 final class BroadcastEvent extends AbstractType
 {
     protected static $propertyNames = [

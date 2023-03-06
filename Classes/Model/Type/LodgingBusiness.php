@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A lodging business, such as a motel, hotel, or inn.
  */
+#[Type('LodgingBusiness')]
 final class LodgingBusiness extends AbstractType
 {
     protected static $propertyNames = [

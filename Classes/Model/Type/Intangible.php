@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
  */
+#[Type('Intangible')]
 final class Intangible extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of planning the execution of an event/task/action/reservation/plan to a future date.
  */
+#[Type('PlanAction')]
 final class PlanAction extends AbstractType
 {
     protected static $propertyNames = [

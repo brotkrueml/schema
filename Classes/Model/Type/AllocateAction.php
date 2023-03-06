@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of organizing tasks/objects/events by associating resources to it.
  */
+#[Type('AllocateAction')]
 final class AllocateAction extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -21,6 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * RegisterAction: Unlike RegisterAction, SubscribeAction implies that the agent is interested in continuing receiving updates from the object.
  * JoinAction: Unlike JoinAction, SubscribeAction implies that the agent is interested in continuing receiving updates from the object.
  */
+#[Type('SubscribeAction')]
 final class SubscribeAction extends AbstractType
 {
     protected static $propertyNames = [

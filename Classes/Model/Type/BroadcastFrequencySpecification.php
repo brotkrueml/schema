@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The frequency in MHz and the modulation used for a particular BroadcastService.
  */
+#[Type('BroadcastFrequencySpecification')]
 final class BroadcastFrequencySpecification extends AbstractType
 {
     protected static $propertyNames = [

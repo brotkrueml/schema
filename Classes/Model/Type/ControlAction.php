@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An agent controls a device or application.
  */
+#[Type('ControlAction')]
 final class ControlAction extends AbstractType
 {
     protected static $propertyNames = [

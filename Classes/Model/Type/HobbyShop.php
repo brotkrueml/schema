@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A store that sells materials useful or necessary for various hobbies.
  */
+#[Type('HobbyShop')]
 final class HobbyShop extends AbstractType
 {
     protected static $propertyNames = [

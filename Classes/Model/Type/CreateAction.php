@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of deliberately creating/producing/generating/building a result out of the agent.
  */
+#[Type('CreateAction')]
 final class CreateAction extends AbstractType
 {
     protected static $propertyNames = [

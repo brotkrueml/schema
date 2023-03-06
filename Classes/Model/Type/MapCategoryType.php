@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An enumeration of several kinds of Map.
  */
+#[Type('MapCategoryType')]
 final class MapCategoryType extends AbstractType
 {
     protected static $propertyNames = [

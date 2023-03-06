@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
  */
+#[Type('EmployeeRole')]
 final class EmployeeRole extends AbstractType
 {
     protected static $propertyNames = [

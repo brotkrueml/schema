@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
  */
+#[Type('ItemListOrderType')]
 final class ItemListOrderType extends AbstractType
 {
     protected static $propertyNames = [

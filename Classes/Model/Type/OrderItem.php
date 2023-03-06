@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
  */
+#[Type('OrderItem')]
 final class OrderItem extends AbstractType
 {
     protected static $propertyNames = [

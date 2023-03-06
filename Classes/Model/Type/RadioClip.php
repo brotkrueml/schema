@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A short radio program or a segment/part of a radio program.
  */
+#[Type('RadioClip')]
 final class RadioClip extends AbstractType
 {
     protected static $propertyNames = [

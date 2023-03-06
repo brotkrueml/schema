@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -20,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * RegisterAction: antonym of UnRegisterAction.
  * LeaveAction: Unlike LeaveAction, UnRegisterAction implies that you are unregistering from a service you were previously registered, rather than leaving a team/group of people.
  */
+#[Type('UnRegisterAction')]
 final class UnRegisterAction extends AbstractType
 {
     protected static $propertyNames = [

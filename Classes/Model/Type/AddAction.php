@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of editing by adding an object to a collection.
  */
+#[Type('AddAction')]
 final class AddAction extends AbstractType
 {
     protected static $propertyNames = [

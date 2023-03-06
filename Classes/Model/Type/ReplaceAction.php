@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of editing a recipient by replacing an old object with a new object.
  */
+#[Type('ReplaceAction')]
 final class ReplaceAction extends AbstractType
 {
     protected static $propertyNames = [

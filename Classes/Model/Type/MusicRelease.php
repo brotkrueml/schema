@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A MusicRelease is a specific release of a music album.
  */
+#[Type('MusicRelease')]
 final class MusicRelease extends AbstractType
 {
     protected static $propertyNames = [

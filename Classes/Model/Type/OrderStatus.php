@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated status values for Order.
  */
+#[Type('OrderStatus')]
 final class OrderStatus extends AbstractType
 {
     protected static $propertyNames = [

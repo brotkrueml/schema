@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Server that provides game interaction in a multiplayer game.
  */
+#[Type('GameServer')]
 final class GameServer extends AbstractType
 {
     protected static $propertyNames = [

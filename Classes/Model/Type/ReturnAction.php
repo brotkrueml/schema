@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).
  */
+#[Type('ReturnAction')]
 final class ReturnAction extends AbstractType
 {
     protected static $propertyNames = [

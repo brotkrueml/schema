@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of adding at a specific location in an ordered collection.
  */
+#[Type('InsertAction')]
 final class InsertAction extends AbstractType
 {
     protected static $propertyNames = [

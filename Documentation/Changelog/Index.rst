@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.7.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Changed
+^^^^^^^
+
+
+* Type model classes need to be marked with the "Type" attribute (#107)
+
 Removed
 ^^^^^^^
 

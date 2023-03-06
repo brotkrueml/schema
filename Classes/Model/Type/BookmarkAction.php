@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An agent bookmarks/flags/labels/tags/marks an object.
  */
+#[Type('BookmarkAction')]
 final class BookmarkAction extends AbstractType
 {
     protected static $propertyNames = [

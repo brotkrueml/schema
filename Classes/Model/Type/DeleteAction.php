@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of editing a recipient by removing one of its objects.
  */
+#[Type('DeleteAction')]
 final class DeleteAction extends AbstractType
 {
     protected static $propertyNames = [

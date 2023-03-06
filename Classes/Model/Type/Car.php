@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.
  */
+#[Type('Car')]
 final class Car extends AbstractType
 {
     protected static $propertyNames = [

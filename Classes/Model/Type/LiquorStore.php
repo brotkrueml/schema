@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
  */
+#[Type('LiquorStore')]
 final class LiquorStore extends AbstractType
 {
     protected static $propertyNames = [

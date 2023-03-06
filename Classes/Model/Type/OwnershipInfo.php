@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A structured value providing information about when a certain organization or person owned a certain product.
  */
+#[Type('OwnershipInfo')]
 final class OwnershipInfo extends AbstractType
 {
     protected static $propertyNames = [

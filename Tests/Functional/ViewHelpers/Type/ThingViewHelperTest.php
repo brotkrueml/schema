@@ -15,10 +15,13 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelperTestCase;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
+/**
+ * @covers \Brotkrueml\Schema\ViewHelpers\Type\ThingViewHelper
+ */
 final class ThingViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -28,24 +31,18 @@ final class ThingViewHelperTest extends ViewHelperTestCase
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['Action', Type\Action::class],
-            ['ContactPoint', Type\ContactPoint::class],
-            ['Corporation', Type\Corporation::class],
-            ['CreativeWork', Type\CreativeWork::class],
-            ['Event', Type\Event::class],
-            ['Offer', Type\Offer::class],
-            ['Organization', Type\Organization::class],
-            ['Person', Type\Person::class],
-            ['Thing', Type\Thing::class],
-            ['WebPage', Type\WebPage::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        $typeProvider = new TypeProvider();
+        $typeProvider->addType('Action', Type\Action::class);
+        $typeProvider->addType('ContactPoint', Type\ContactPoint::class);
+        $typeProvider->addType('Corporation', Type\Corporation::class);
+        $typeProvider->addType('CreativeWork', Type\CreativeWork::class);
+        $typeProvider->addType('Event', Type\Event::class);
+        $typeProvider->addType('Offer', Type\Offer::class);
+        $typeProvider->addType('Organization', Type\Organization::class);
+        $typeProvider->addType('Person', Type\Person::class);
+        $typeProvider->addType('Thing', Type\Thing::class);
+        $typeProvider->addType('WebPage', Type\WebPage::class);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $typeProvider);
     }
 
     protected function tearDown(): void

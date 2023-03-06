@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A set of characteristics belonging to people, e.g. who compose an item's target audience.
  */
+#[Type('PeopleAudience')]
 final class PeopleAudience extends AbstractType
 {
     protected static $propertyNames = [

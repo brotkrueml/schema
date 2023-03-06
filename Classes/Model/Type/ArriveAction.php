@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of arriving at a place. An agent arrives at a destination from a fromLocation, optionally with participants.
  */
+#[Type('ArriveAction')]
 final class ArriveAction extends AbstractType
 {
     protected static $propertyNames = [

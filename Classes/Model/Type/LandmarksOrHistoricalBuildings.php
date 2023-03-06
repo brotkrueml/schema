@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An historical landmark or building.
  */
+#[Type('LandmarksOrHistoricalBuildings')]
 final class LandmarksOrHistoricalBuildings extends AbstractType
 {
     protected static $propertyNames = [

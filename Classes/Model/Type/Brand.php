@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A brand is a name used by an organization or business person for labeling a product, product group, or similar.
  */
+#[Type('Brand')]
 final class Brand extends AbstractType
 {
     protected static $propertyNames = [

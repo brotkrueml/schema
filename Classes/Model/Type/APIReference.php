@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Reference documentation for application programming interfaces (APIs).
  */
+#[Type('APIReference')]
 final class APIReference extends AbstractType
 {
     protected static $propertyNames = [

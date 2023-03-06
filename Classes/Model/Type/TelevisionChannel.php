@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
  */
+#[Type('TelevisionChannel')]
 final class TelevisionChannel extends AbstractType
 {
     protected static $propertyNames = [

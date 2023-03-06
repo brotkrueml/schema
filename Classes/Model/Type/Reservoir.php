@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
  */
+#[Type('Reservoir')]
 final class Reservoir extends AbstractType
 {
     protected static $propertyNames = [

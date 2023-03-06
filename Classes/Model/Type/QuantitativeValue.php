@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A point value or interval for product characteristics and other purposes.
  */
+#[Type('QuantitativeValue')]
 final class QuantitativeValue extends AbstractType
 {
     protected static $propertyNames = [

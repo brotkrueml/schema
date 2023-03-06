@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -20,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * As a LocalBusiness it can be described as a provider of one or more Service\(s).
  */
+#[Type('HomeAndConstructionBusiness')]
 final class HomeAndConstructionBusiness extends AbstractType
 {
     protected static $propertyNames = [

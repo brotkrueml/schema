@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An answer offered to a question; perhaps correct, perhaps opinionated or wrong.
  */
+#[Type('Answer')]
 final class Answer extends AbstractType
 {
     protected static $propertyNames = [

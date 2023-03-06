@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Place of worship, such as a church, synagogue, or mosque.
  */
+#[Type('PlaceOfWorship')]
 final class PlaceOfWorship extends AbstractType
 {
     protected static $propertyNames = [

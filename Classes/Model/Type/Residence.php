@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The place where a person lives.
  */
+#[Type('Residence')]
 final class Residence extends AbstractType
 {
     protected static $propertyNames = [

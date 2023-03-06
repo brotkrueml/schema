@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of traveling from a fromLocation to a destination by a specified mode of transport, optionally with participants.
  */
+#[Type('TravelAction')]
 final class TravelAction extends AbstractType
 {
     protected static $propertyNames = [

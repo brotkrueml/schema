@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A subway station.
  */
+#[Type('SubwayStation')]
 final class SubwayStation extends AbstractType
 {
     protected static $propertyNames = [

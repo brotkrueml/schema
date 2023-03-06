@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Nutritional information about the recipe.
  */
+#[Type('NutritionInformation')]
 final class NutritionInformation extends AbstractType
 {
     protected static $propertyNames = [

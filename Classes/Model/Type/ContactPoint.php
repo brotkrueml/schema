@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A contact point - for example, a Customer Complaints department.
  */
+#[Type('ContactPoint')]
 final class ContactPoint extends AbstractType
 {
     protected static $propertyNames = [

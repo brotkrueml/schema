@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An ocean (for example, the Pacific).
  */
+#[Type('OceanBodyOfWater')]
 final class OceanBodyOfWater extends AbstractType
 {
     protected static $propertyNames = [

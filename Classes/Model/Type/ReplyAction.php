@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * AskAction: Appears generally as an origin of a ReplyAction.
  */
+#[Type('ReplyAction')]
 final class ReplyAction extends AbstractType
 {
     protected static $propertyNames = [

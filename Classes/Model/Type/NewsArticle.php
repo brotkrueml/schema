@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * A more detailed overview of [schema.org News markup](/docs/news.html) is also available.
  */
+#[Type('NewsArticle')]
 final class NewsArticle extends AbstractType
 {
     protected static $propertyNames = [

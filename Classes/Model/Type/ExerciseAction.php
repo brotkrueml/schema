@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
  */
+#[Type('ExerciseAction')]
 final class ExerciseAction extends AbstractType
 {
     protected static $propertyNames = [

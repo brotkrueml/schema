@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -21,6 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * SubscribeAction: Unlike SubscribeAction, JoinAction does not imply that you'll be receiving updates.
  * FollowAction: Unlike FollowAction, JoinAction does not imply that you'll be polling for updates.
  */
+#[Type('JoinAction')]
 final class JoinAction extends AbstractType
 {
     protected static $propertyNames = [

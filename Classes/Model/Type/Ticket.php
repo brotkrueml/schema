@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
  */
+#[Type('Ticket')]
 final class Ticket extends AbstractType
 {
     protected static $propertyNames = [

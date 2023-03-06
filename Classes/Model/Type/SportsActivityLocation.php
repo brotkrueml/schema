@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A sports location, such as a playing field.
  */
+#[Type('SportsActivityLocation')]
 final class SportsActivityLocation extends AbstractType
 {
     protected static $propertyNames = [

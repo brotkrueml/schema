@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An list item, e.g. a step in a checklist or how-to description.
  */
+#[Type('ListItem')]
 final class ListItem extends AbstractType
 {
     protected static $propertyNames = [

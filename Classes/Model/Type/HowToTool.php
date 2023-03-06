@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A tool used (but not consumed) when performing instructions for how to achieve a result.
  */
+#[Type('HowToTool')]
 final class HowToTool extends AbstractType
 {
     protected static $propertyNames = [

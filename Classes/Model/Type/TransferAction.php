@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
  */
+#[Type('TransferAction')]
 final class TransferAction extends AbstractType
 {
     protected static $propertyNames = [

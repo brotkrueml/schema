@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -22,6 +23,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * See also the dedicated [document on the use of schema.org for marking up hotels and other forms of accommodations](/docs/hotels.html).
  */
+#[Type('CampingPitch')]
 final class CampingPitch extends AbstractType
 {
     protected static $propertyNames = [

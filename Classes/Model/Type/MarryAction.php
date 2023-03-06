@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of marrying a person.
  */
+#[Type('MarryAction')]
 final class MarryAction extends AbstractType
 {
     protected static $propertyNames = [

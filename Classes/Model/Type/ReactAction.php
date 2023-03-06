@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of responding instinctively and emotionally to an object, expressing a sentiment.
  */
+#[Type('ReactAction')]
 final class ReactAction extends AbstractType
 {
     protected static $propertyNames = [

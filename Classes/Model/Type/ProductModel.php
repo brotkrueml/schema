@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A datasheet or vendor specification of a product (in the sense of a prototypical description).
  */
+#[Type('ProductModel')]
 final class ProductModel extends AbstractType
 {
     protected static $propertyNames = [

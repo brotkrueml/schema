@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A series of books. Included books can be indicated with the hasPart property.
  */
+#[Type('BookSeries')]
 final class BookSeries extends AbstractType
 {
     protected static $propertyNames = [

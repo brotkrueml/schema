@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
  */
+#[Type('MusicGroup')]
 final class MusicGroup extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A middle school (typically for children aged around 11-14, although this varies somewhat).
  */
+#[Type('MiddleSchool')]
 final class MiddleSchool extends AbstractType
 {
     protected static $propertyNames = [

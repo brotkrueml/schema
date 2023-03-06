@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * Note: AggregateOffers are normally expected to associate multiple offers that all share the same defined businessFunction value, or default to http://purl.org/goodrelations/v1#Sell if businessFunction is not explicitly defined.
  */
+#[Type('AggregateOffer')]
 final class AggregateOffer extends AbstractType
 {
     protected static $propertyNames = [

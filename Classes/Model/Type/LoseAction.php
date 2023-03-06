@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of being defeated in a competitive activity.
  */
+#[Type('LoseAction')]
 final class LoseAction extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
  */
+#[Type('TypeAndQuantityNode')]
 final class TypeAndQuantityNode extends AbstractType
 {
     protected static $propertyNames = [

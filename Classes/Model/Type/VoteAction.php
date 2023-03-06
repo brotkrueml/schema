@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of expressing a preference from a fixed/finite/structured set of choices/options.
  */
+#[Type('VoteAction')]
 final class VoteAction extends AbstractType
 {
     protected static $propertyNames = [

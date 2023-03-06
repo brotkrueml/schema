@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
  */
+#[Type('LikeAction')]
 final class LikeAction extends AbstractType
 {
     protected static $propertyNames = [

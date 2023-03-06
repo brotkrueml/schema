@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Properties that take Energy as values are of the form '<Number> <Energy unit of measure>'.
  */
+#[Type('Energy')]
 final class Energy extends AbstractType
 {
     protected static $propertyNames = [

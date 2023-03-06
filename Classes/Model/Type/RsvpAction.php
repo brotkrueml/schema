@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
  */
+#[Type('RsvpAction')]
 final class RsvpAction extends AbstractType
 {
     protected static $propertyNames = [

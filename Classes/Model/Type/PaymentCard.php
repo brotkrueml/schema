@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A payment method using a credit, debit, store or other card to associate the payment with an account.
  */
+#[Type('PaymentCard')]
 final class PaymentCard extends AbstractType
 {
     protected static $propertyNames = [

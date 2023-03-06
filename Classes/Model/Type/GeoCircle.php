@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * it provides the simple textual property 'circle', but also allows the combination of postalCode alongside geoRadius.
  * The center of the circle can be indicated via the 'geoMidpoint' property, or more approximately using 'address', 'postalCode'.
  */
+#[Type('GeoCircle')]
 final class GeoCircle extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.).
  */
+#[Type('MusicReleaseFormatType')]
 final class MusicReleaseFormatType extends AbstractType
 {
     protected static $propertyNames = [

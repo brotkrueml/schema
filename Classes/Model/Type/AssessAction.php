@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of forming one's opinion, reaction or sentiment.
  */
+#[Type('AssessAction')]
 final class AssessAction extends AbstractType
 {
     protected static $propertyNames = [

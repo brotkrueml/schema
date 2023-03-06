@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 /**
  * Web page type: Media gallery page. A mixed-media page that can contain media such as images, videos, and other multimedia.
  */
+#[Type('MediaGallery')]
 final class MediaGallery extends AbstractType implements WebPageTypeInterface
 {
     protected static $propertyNames = [

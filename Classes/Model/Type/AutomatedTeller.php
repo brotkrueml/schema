@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * ATM/cash machine.
  */
+#[Type('AutomatedTeller')]
 final class AutomatedTeller extends AbstractType
 {
     protected static $propertyNames = [

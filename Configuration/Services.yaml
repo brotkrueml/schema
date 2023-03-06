@@ -6,7 +6,7 @@ services:
 
   Brotkrueml\Schema\:
     resource: '../Classes/*'
-    exclude: '../Classes/{AdminPanel,Hooks,Model,Extension.php}'
+    exclude: '../Classes/{AdminPanel,Hooks,Extension.php}'
 
   Brotkrueml\Schema\AdminPanel\TypesInformation:
     public: true
@@ -27,16 +27,6 @@ services:
 
   Brotkrueml\Schema\TypoScript\TypoScriptToSchema:
     public: true
-
-# Deactivated because of https://forge.typo3.org/issues/90962
-#  cache.tx_schema_core:
-#    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-#    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
-#    arguments: ['tx_schema_core']
-#
-#  Brotkrueml\Schema\Type\TypeRegistry:
-#    arguments:
-#      $cache: '@cache.tx_schema_core'
 
   Brotkrueml\Schema\Cache\PagesCacheService:
     public: true
@@ -65,6 +55,9 @@ services:
     tags:
       - name: frontend.contentobject
         identifier: 'SCHEMA'
+
+  Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes:
+    public: true
 
   brotkrueml.schema.configuration.module.provider.types:
     class: 'Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types'

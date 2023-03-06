@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The most generic type of item.
  */
+#[Type('Thing')]
 final class Thing extends AbstractType
 {
     protected static $propertyNames = [

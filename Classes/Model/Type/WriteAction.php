@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of authoring written creative content.
  */
+#[Type('WriteAction')]
 final class WriteAction extends AbstractType
 {
     protected static $propertyNames = [

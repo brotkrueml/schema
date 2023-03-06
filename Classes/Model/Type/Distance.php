@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Properties that take Distances as values are of the form '<Number> <Length unit of measure>'. E.g., '7 ft'.
  */
+#[Type('Distance')]
 final class Distance extends AbstractType
 {
     protected static $propertyNames = [

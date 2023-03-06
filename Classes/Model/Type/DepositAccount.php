@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.
  */
+#[Type('DepositAccount')]
 final class DepositAccount extends AbstractType
 {
     protected static $propertyNames = [

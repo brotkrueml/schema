@@ -16,9 +16,9 @@ use Brotkrueml\Schema\Event\InitialiseTypesEvent;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -27,9 +27,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
+/**
+ * @covers \Brotkrueml\Schema\EventListener\AddBreadcrumbList
+ */
 final class AddBreadcrumbListTest extends TestCase
 {
     use SchemaCacheTrait;
+    use TypeProviderWithFixturesTrait;
 
     private ContentObjectRenderer&Stub $contentObjectRendererStub;
     private ExtensionConfiguration&Stub $extensionConfigurationStub;
@@ -41,18 +45,7 @@ final class AddBreadcrumbListTest extends TestCase
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['BreadcrumbList', FixtureType\BreadcrumbList::class],
-            ['ItemPage', FixtureType\ItemPage::class],
-            ['ListItem', FixtureType\ListItem::class],
-            ['WebPage', FixtureType\WebPage::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
 
         $this->contentObjectRendererStub = $this->createStub(ContentObjectRenderer::class);
         $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
@@ -71,7 +64,6 @@ final class AddBreadcrumbListTest extends TestCase
     protected function tearDown(): void
     {
         GeneralUtility::purgeInstances();
-
         unset($GLOBALS['TSFE']);
     }
 

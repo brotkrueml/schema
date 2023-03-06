@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An image of a visual machine-readable code such as a barcode or QR code.
  */
+#[Type('Barcode')]
 final class Barcode extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 /**
  * Web page type: Profile page.
  */
+#[Type('ProfilePage')]
 final class ProfilePage extends AbstractType implements WebPageTypeInterface
 {
     protected static $propertyNames = [

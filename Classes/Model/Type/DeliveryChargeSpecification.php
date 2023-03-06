@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The price for the delivery of an offer using a particular delivery method.
  */
+#[Type('DeliveryChargeSpecification')]
 final class DeliveryChargeSpecification extends AbstractType
 {
     protected static $propertyNames = [

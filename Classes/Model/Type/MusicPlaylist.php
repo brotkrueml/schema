@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A collection of music tracks in playlist form.
  */
+#[Type('MusicPlaylist')]
 final class MusicPlaylist extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A trip or journey. An itinerary of visits to one or more places.
  */
+#[Type('Trip')]
 final class Trip extends AbstractType
 {
     protected static $propertyNames = [

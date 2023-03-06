@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -20,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * FollowAction: Unlike FollowAction, TrackAction refers to the interest on the location of innanimates objects.
  * SubscribeAction: Unlike SubscribeAction, TrackAction refers to  the interest on the location of innanimate objects.
  */
+#[Type('TrackAction')]
 final class TrackAction extends AbstractType
 {
     protected static $propertyNames = [

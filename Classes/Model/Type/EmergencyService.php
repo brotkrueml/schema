@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An emergency service, such as a fire station or ER.
  */
+#[Type('EmergencyService')]
 final class EmergencyService extends AbstractType
 {
     protected static $propertyNames = [

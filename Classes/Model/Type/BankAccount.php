@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A product or service offered by a bank whereby one may deposit, withdraw or transfer money and in some cases be paid interest.
  */
+#[Type('BankAccount')]
 final class BankAccount extends AbstractType
 {
     protected static $propertyNames = [

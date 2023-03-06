@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A service provided by an organization, e.g. delivery service, print services, etc.
  */
+#[Type('Service')]
 final class Service extends AbstractType
 {
     protected static $propertyNames = [

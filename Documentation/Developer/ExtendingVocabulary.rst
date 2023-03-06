@@ -53,8 +53,8 @@ how to register additional properties in detail.
 
 .. note::
 
-   Approximately every 3-4 months a new version of the Schema.org definition
-   is `released`_. The extension adopts these changes in future releases. If you
+   About 1-2 times a year a new version of the Schema.org definition is
+   `released`_. The extension adopts these changes in future releases. If you
    register a pending property for a type, this property can be included in the
    core vocabulary in a later version of this extension. However, it doesn't do
    any harm to register a property that already exists.
@@ -65,26 +65,33 @@ how to register additional properties in detail.
 Adding types
 ============
 
+.. versionchanged:: 3.0.0
+
 You can add additional types for use in the :ref:`API <api>` or as a
 :ref:`WebPage type <webpage-types>`. As an example, in March 2020, Schema.org
 introduces a new `VirtualLocation`_ type related to the corona crisis, which
-also was also quickly adopted by Google. The type can be used as `location`_ in
-the `Event`_ type. So let's start with this example.
+was quickly adopted by Google. The type can be used as `location`_ in the
+`Event`_ type. So let's start with this example.
 
 .. rst-class:: bignums-xxl
 
 #. Create the type model class
 
    The model class for a type defines the available properties. The model class
-   for the `VirtualLocation` type may look like the following::
+   for the `VirtualLocation` type may look like the following:
+
+   .. code-block:: php
+      :caption: EXT:my_extension/Classes/Schema/Type/VirtualLocation.php
 
       <?php
       declare(strict_types=1);
 
-      namespace Acme\LooneyTunes\Domain\Schema\Type;
+      namespace MyVendor\MyExtension\Schema\Type;
 
+      use Brotkrueml\Schema\Attributes\Type;
       use Brotkrueml\Schema\Core\Model\AbstractType;
 
+      #[Type('VirtualLocation')]
       final class VirtualLocation extends AbstractType
       {
          protected static $propertyNames = [
@@ -103,52 +110,37 @@ the `Event`_ type. So let's start with this example.
          ];
       }
 
-   That's it. In the example, the class is stored in
-   :file:`Classes/Domain/Schema/Type` but you can choose any namespace. The
-   protected static property :php:`$propertyNames` contains the available
-   Schema.org properties.
+   In the example, the class is stored in :file:`Classes/Schema/Type` of your
+   extension, but you can choose any namespace. The class must have the
+   :php:`\Brotkrueml\Schema\Attributes\Type` attribute assigned. It has one
+   mandatory parameter: the type name. The protected static property
+   :php:`$propertyNames` contains the available Schema.org properties.
 
-   Now you can use the `VirtualLocation` in your PHP code::
+   Now you can use the `VirtualLocation` in your PHP code:
+
+   .. code-block:: php
 
       $location = \Brotkrueml\Schema\Type\TypeFactory::createType('VirtualLocation');
-      $location->setProperty('url', 'https://example.com/looney-tunes-webinar-12345/register');
-
-   .. important::
-      The class name must be named after the type name of Schema.org. In this
-      example, the type is called `VirtualLocation`, so the class name is
-      :php:`VirtualLocation`.
-
-#. Register the type model
-
-   Now register the new type in the configuration file
-   :file:`Configuration/TxSchema/TypeModels.php`::
-
-      <?php
-      return [
-         \Acme\LooneyTunes\Domain\Schema\Type\VirtualLocation::class,
-      ];
-
-   As it is not mandatory to register the class for usage in the API only, the
-   registry is utilised in various places (like view helpers). Please also note
-   that this may be mandatory in future versions of the TYPO3 schema extension.
-
-   After changes to the :file:`TypeModels.php` file the cache must be cleared.
+      $location->setProperty('url', 'https://example.com/my-webinar-12345/register');
 
    .. note::
-      You can intentionally "override" a class model, e.g. the delivered
-      `Person` class model with a customised one, but it is not recommended to
-      do so. Instead, use the option to :ref:`register additional properties
-      <extending-register-additional-properties>`.
+      With the :php:`\Brotkrueml\Schema\Attributes\Type` attribute the class
+      is recognised as a type model class. All types are collected on compile
+      time: When you add/change/remove a class, you have to flush the cache via
+      :guilabel:`Admin Tools > Maintenance` or the :bash:`flush:cache` command
+      on CLI.
 
-#. Create the view helper
+#. Create the view helper (optional)
 
-   If you have the need for a view helper with that type, you can create one
-   easily::
+   If you have the need for a view helper with that type, you can create one:
+
+   .. codel-block:: php
+      :caption: EXT:my_extension/Classes/ViewHelpers/Schema/Type/VirtualLocationViewHelper.php
 
       <?php
       declare(strict_types=1);
 
-      namespace Acme\LooneyTunes\ViewHelpers\Type;
+      namespace MyVendor\MyExtension\ViewHelpers\Schema\Type;
 
       use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
@@ -156,21 +148,24 @@ the `Event`_ type. So let's start with this example.
       {
       }
 
-   To use the ``schema`` namespace in Fluid templates also with your own
+   To use the ``schema`` namespace in Fluid templates also with your custom
    view helpers add the following snippet to the :file:`ext_localconf.php` file
-   of your extension::
+   of your extension:
+
+   .. code-block:: php
+      :caption: EXT:my_extension/ext_localconf.php
 
       $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['schema'][]
-         = 'Acme\\LooneyTunes\\ViewHelpers';
+         = 'MyVendor\\MyExtension\\ViewHelpers\\Schema';
 
    This way you don't have to think about which namespace to use. And if the
    pending type is moved to the core vocabulary you have no need to touch your
    Fluid templates. Of course, feel free to use another namespace.
 
-.. important::
+.. attention::
    Add the schema extension as a dependency to your extension. This ensures that
    your class models take precedence over the delivered models from the schema
-   extension. This may be necessary if you define a pending type with pending
+   extension. This may be necessary, if you define a pending type with pending
    properties (which you also use) to avoid breaks when the type is included
    into the core vocabulary but some properties aren't.
 
@@ -182,26 +177,32 @@ the `Event`_ type. So let's start with this example.
 Add a new WebPage type
 ======================
 
+.. versionchanged:: 3.0.0
+
 If you are responsible for a medical website, the chances are high that you need
 the `MedicalWebPage`_ web page type, which is part of the Health schema.org
 extension.
 
 Register this web page type so that it is available in the :ref:`web page type
 list <webpage-types-list>` in the page properties. Simply follow the steps in
-the :ref:`extending-adding-types` section. Registration of the type model is
-mandatory here.
+the :ref:`extending-adding-types` section.
 
-Then mark your class as a WebPage type with the interface
-:php:`Brotkrueml\Schema\Core\Model\WebPageTypeInterface`::
+Mark your class as a WebPage type with the interface
+:php:`\Brotkrueml\Schema\Core\Model\WebPageTypeInterface`:
+
+.. code-block:: php
+   :caption: EXT:my_extension/Classes/Schema/Type/MedicalWebPage.php
 
    <?php
    declare(strict_types=1);
 
-   namespace Acme\LooneyTunes\Domain\Schema\Type;
+   namespace MyVendor\MyExtension\Schema\Type;
 
+   use Brotkrueml\Schema\Attributes\Type;
    use Brotkrueml\Schema\Core\Model\AbstractType;
    use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
+   #[Type('MedicalWebPage')]
    final class MedicalWebPage extends AbstractType implements WebPageTypeInterface
    {
       protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A Property value specification.
  */
+#[Type('PropertyValueSpecification')]
 final class PropertyValueSpecification extends AbstractType
 {
     protected static $propertyNames = [

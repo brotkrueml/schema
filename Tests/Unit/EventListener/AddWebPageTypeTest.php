@@ -16,16 +16,21 @@ use Brotkrueml\Schema\EventListener\AddWebPageType;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
+/**
+ * @covers \Brotkrueml\Schema\EventListener\AddWebPageType
+ */
 final class AddWebPageTypeTest extends TestCase
 {
     use SchemaCacheTrait;
+    use TypeProviderWithFixturesTrait;
 
     private ExtensionConfiguration&Stub $extensionConfigurationStub;
     private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
@@ -45,22 +50,12 @@ final class AddWebPageTypeTest extends TestCase
 
         $this->event = new RenderAdditionalTypesEvent(false);
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['ItemPage', FixtureType\ItemPage::class],
-            ['WebPage', FixtureType\WebPage::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
     }
 
     protected function tearDown(): void
     {
         GeneralUtility::purgeInstances();
-
         unset($GLOBALS['TSFE']);
     }
 

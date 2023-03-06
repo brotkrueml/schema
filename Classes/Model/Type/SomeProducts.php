@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A placeholder for multiple similar products of the same kind.
  */
+#[Type('SomeProducts')]
 final class SomeProducts extends AbstractType
 {
     protected static $propertyNames = [

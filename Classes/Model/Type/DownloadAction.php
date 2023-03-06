@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of downloading an object.
  */
+#[Type('DownloadAction')]
 final class DownloadAction extends AbstractType
 {
     protected static $propertyNames = [

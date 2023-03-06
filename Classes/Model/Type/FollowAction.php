@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -23,6 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * JoinAction: Unlike JoinAction, FollowAction implies that the agent is interested in getting updates from the object.
  * TrackAction: Unlike TrackAction, FollowAction refers to the polling of updates of all aspects of animate objects rather than the location of inanimate objects (e.g. you track a package, but you don't follow it).
  */
+#[Type('FollowAction')]
 final class FollowAction extends AbstractType
 {
     protected static $propertyNames = [

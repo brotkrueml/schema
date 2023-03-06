@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * SearchAction: FindAction is generally lead by a SearchAction, but not necessarily.
  */
+#[Type('FindAction')]
 final class FindAction extends AbstractType
 {
     protected static $propertyNames = [

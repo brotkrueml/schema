@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Lowlevel\ConfigurationModuleProvider\ProviderInterface;
 
@@ -24,7 +24,7 @@ final class Types implements ProviderInterface
     private string $identifier;
 
     public function __construct(
-        private readonly TypeRegistry $typeRegistry,
+        private readonly TypeProvider $typeProvider,
     ) {
     }
 
@@ -50,10 +50,15 @@ final class Types implements ProviderInterface
      */
     public function getConfiguration(): array
     {
+        $webPageTypes = $this->typeProvider->getWebPageTypes();
+        \sort($webPageTypes);
+        $webPageElementTypes = $this->typeProvider->getWebPageElementTypes();
+        \sort($webPageElementTypes);
+
         return [
             $this->translate('allTypes') => $this->getAllTypes(),
-            $this->translate('webPageTypes') => $this->typeRegistry->getWebPageTypes(),
-            $this->translate('webPageElementTypes') => $this->typeRegistry->getWebPageElementTypes(),
+            $this->translate('webPageTypes') => $webPageTypes,
+            $this->translate('webPageElementTypes') => $webPageElementTypes,
         ];
     }
 
@@ -62,10 +67,10 @@ final class Types implements ProviderInterface
      */
     private function getAllTypes(): array
     {
-        $types = $this->typeRegistry->getTypes();
+        $types = $this->typeProvider->getTypes();
+        \usort($types, static fn (string $a, string $b): int => \strtolower($a) <=> \strtolower($b));
         $sortedTypes = [];
         foreach ($types as $type) {
-            $type = \str_starts_with($type, '_') ? \substr($type, 1) : $type;
             $sortedTypes[\substr($type, 0, 1)][] = $type;
         }
         \ksort($sortedTypes);

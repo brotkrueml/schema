@@ -106,21 +106,6 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Cognitive complexity for \"Brotkrueml\\\\Schema\\\\Provider\\\\WebPageTypeProvider\\:\\:getTypesForTcaSelect\\(\\)\" is 15, keep it under 10$#"
-			count: 1
-			path: Classes/Provider/WebPageTypeProvider.php
-
-		-
-			message: "#^Class cognitive complexity is 29, keep it under 20$#"
-			count: 1
-			path: Classes/Type/TypeRegistry.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Type\\\\TypeRegistry\\:\\:loadConfiguration\\(\\) should return array\\<string, class\\-string\\> but returns array\\<int\\|string, string\\>\\.$#"
-			count: 1
-			path: Classes/Type/TypeRegistry.php
-
-		-
 			message: "#^Do not use static property$#"
 			count: 4
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php

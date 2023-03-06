@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
  */
+#[Type('GovernmentService')]
 final class GovernmentService extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A legislative building - for example, the state capitol.
  */
+#[Type('LegislativeBuilding')]
 final class LegislativeBuilding extends AbstractType
 {
     protected static $propertyNames = [

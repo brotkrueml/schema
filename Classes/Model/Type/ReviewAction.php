@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review.
  */
+#[Type('ReviewAction')]
 final class ReviewAction extends AbstractType
 {
     protected static $propertyNames = [

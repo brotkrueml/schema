@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
  */
+#[Type('DeactivateAction')]
 final class DeactivateAction extends AbstractType
 {
     protected static $propertyNames = [

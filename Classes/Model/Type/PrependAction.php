@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of inserting at the beginning if an ordered collection.
  */
+#[Type('PrependAction')]
 final class PrependAction extends AbstractType
 {
     protected static $propertyNames = [

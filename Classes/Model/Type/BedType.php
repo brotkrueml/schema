@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A type of bed. This is used for indicating the bed or beds available in an accommodation.
  */
+#[Type('BedType')]
 final class BedType extends AbstractType
 {
     protected static $propertyNames = [

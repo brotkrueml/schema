@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A review of an item - for example, of a restaurant, movie, or store.
  */
+#[Type('Review')]
 final class Review extends AbstractType
 {
     protected static $propertyNames = [

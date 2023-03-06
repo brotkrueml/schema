@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A supply consumed when performing the instructions for how to achieve a result.
  */
+#[Type('HowToSupply')]
 final class HowToSupply extends AbstractType
 {
     protected static $propertyNames = [

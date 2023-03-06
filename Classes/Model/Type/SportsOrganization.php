@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
  */
+#[Type('SportsOrganization')]
 final class SportsOrganization extends AbstractType
 {
     protected static $propertyNames = [

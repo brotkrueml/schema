@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
  */
+#[Type('Seat')]
 final class Seat extends AbstractType
 {
     protected static $propertyNames = [

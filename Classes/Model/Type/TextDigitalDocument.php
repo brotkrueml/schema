@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A file composed primarily of text.
  */
+#[Type('TextDigitalDocument')]
 final class TextDigitalDocument extends AbstractType
 {
     protected static $propertyNames = [

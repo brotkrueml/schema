@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
  */
+#[Type('SuspendAction')]
 final class SuspendAction extends AbstractType
 {
     protected static $propertyNames = [

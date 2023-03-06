@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A business that provides Heating, Ventilation and Air Conditioning services.
  */
+#[Type('HVACBusiness')]
 final class HVACBusiness extends AbstractType
 {
     protected static $propertyNames = [

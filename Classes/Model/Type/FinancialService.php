@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Financial services business.
  */
+#[Type('FinancialService')]
 final class FinancialService extends AbstractType
 {
     protected static $propertyNames = [

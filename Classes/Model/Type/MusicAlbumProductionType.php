@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Classification of the album by its type of content: soundtrack, live album, studio album, etc.
  */
+#[Type('MusicAlbumProductionType')]
 final class MusicAlbumProductionType extends AbstractType
 {
     protected static $propertyNames = [

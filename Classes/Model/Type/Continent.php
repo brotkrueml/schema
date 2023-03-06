@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * One of the continents (for example, Europe or Africa).
  */
+#[Type('Continent')]
 final class Continent extends AbstractType
 {
     protected static $propertyNames = [

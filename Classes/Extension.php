@@ -22,7 +22,6 @@ final class Extension
     public const LANGUAGE_PATH_DEFAULT = 'LLL:EXT:' . self::KEY . '/Resources/Private/Language/locallang.xlf';
 
     public const CACHE_IDENTIFIER = 'tx_' . self::KEY;
-    public const CACHE_CORE_IDENTIFIER = 'tx_' . self::KEY . '_core';
 
     public const JSONLD_TEMPLATE = '<script type="application/ld+json" id="ext-schema-jsonld">%s</script>';
 }

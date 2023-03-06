@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -18,6 +19,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * Should not be used where the nature of the alignment can be described using a simple property, for example to express that a resource teaches or assesses a competency.
  */
+#[Type('AlignmentObject')]
 final class AlignmentObject extends AbstractType
 {
     protected static $propertyNames = [

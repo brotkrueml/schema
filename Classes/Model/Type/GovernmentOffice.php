@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A government office - for example, an IRS or DMV office.
  */
+#[Type('GovernmentOffice')]
 final class GovernmentOffice extends AbstractType
 {
     protected static $propertyNames = [

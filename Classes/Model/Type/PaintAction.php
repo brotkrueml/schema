@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of producing a painting, typically with paint and canvas as instruments.
  */
+#[Type('PaintAction')]
 final class PaintAction extends AbstractType
 {
     protected static $propertyNames = [

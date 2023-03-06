@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -20,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  *
  * If the value for the closes property is less than the value for the opens property then the hour range is assumed to span over the next day.
  */
+#[Type('OpeningHoursSpecification')]
 final class OpeningHoursSpecification extends AbstractType
 {
     protected static $propertyNames = [

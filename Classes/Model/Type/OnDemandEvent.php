@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A publication event, e.g. catch-up TV or radio podcast, during which a program is available on-demand.
  */
+#[Type('OnDemandEvent')]
 final class OnDemandEvent extends AbstractType
 {
     protected static $propertyNames = [

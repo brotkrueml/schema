@@ -13,29 +13,25 @@ namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+/**
+ * @covers \Brotkrueml\Schema\ViewHelpers\BlankNodeIdentifierViewHelper
+ */
 final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
+    use TypeProviderWithFixturesTrait;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['Person', FixtureType\Person::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
 
         // For every test case reset the counter. In a test case itself the counter starts now with 1.
         new BlankNodeIdentifier(true);

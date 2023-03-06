@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 
 /**
  * The header section of the page.
  */
+#[Type('WPHeader')]
 final class WPHeader extends AbstractType implements WebPageElementTypeInterface
 {
     protected static $propertyNames = [

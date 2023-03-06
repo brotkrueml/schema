@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
  */
+#[Type('SocialMediaPosting')]
 final class SocialMediaPosting extends AbstractType
 {
     protected static $propertyNames = [

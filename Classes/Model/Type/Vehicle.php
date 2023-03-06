@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
  */
+#[Type('Vehicle')]
 final class Vehicle extends AbstractType
 {
     protected static $propertyNames = [

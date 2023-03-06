@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The price asked for a given offer by the respective organization or person.
  */
+#[Type('UnitPriceSpecification')]
 final class UnitPriceSpecification extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * TransferAction: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object.
  */
+#[Type('MoveAction')]
 final class MoveAction extends AbstractType
 {
     protected static $propertyNames = [

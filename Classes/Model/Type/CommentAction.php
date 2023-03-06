@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of generating a comment about a subject.
  */
+#[Type('CommentAction')]
 final class CommentAction extends AbstractType
 {
     protected static $propertyNames = [

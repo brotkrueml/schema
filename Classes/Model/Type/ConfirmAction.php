@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * CancelAction: The antonym of ConfirmAction.
  */
+#[Type('ConfirmAction')]
 final class ConfirmAction extends AbstractType
 {
     protected static $propertyNames = [

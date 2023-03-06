@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
  */
+#[Type('DrawAction')]
 final class DrawAction extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -26,6 +27,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#FederalExpress
  * http://purl.org/goodrelations/v1#UPS
  */
+#[Type('DeliveryMethod')]
 final class DeliveryMethod extends AbstractType
 {
     protected static $propertyNames = [

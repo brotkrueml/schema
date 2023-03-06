@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A college, university, or other third-level educational institution.
  */
+#[Type('CollegeOrUniversity')]
 final class CollegeOrUniversity extends AbstractType
 {
     protected static $propertyNames = [

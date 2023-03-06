@@ -12,36 +12,26 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
-use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
-use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Type\TypeRegistry;
+use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
+/**
+ * @covers \Brotkrueml\Schema\ViewHelpers\MultipleTypeViewHelper
+ */
 final class MultipleTypeViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
+    use TypeProviderWithFixturesTrait;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $typeRegistryStub = $this->createStub(TypeRegistry::class);
-        $map = [
-            ['ProductStub', ProductStub::class],
-            ['ServiceStub', ServiceStub::class],
-            ['Thing', Thing::class],
-            ['WebPage', WebPage::class],
-        ];
-        $typeRegistryStub
-            ->method('resolveModelClassFromType')
-            ->willReturnMap($map);
-
-        GeneralUtility::setSingletonInstance(TypeRegistry::class, $typeRegistryStub);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
     }
 
     protected function tearDown(): void

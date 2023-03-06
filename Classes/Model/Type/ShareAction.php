@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of distributing content to people for their amusement or edification.
  */
+#[Type('ShareAction')]
 final class ShareAction extends AbstractType
 {
     protected static $propertyNames = [

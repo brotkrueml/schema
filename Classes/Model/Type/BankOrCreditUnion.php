@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Bank or credit union.
  */
+#[Type('BankOrCreditUnion')]
 final class BankOrCreditUnion extends AbstractType
 {
     protected static $propertyNames = [

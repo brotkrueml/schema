@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The costs of settling the payment using a particular payment method.
  */
+#[Type('PaymentChargeSpecification')]
 final class PaymentChargeSpecification extends AbstractType
 {
     protected static $propertyNames = [

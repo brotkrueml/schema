@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
  */
+#[Type('RestrictedDiet')]
 final class RestrictedDiet extends AbstractType
 {
     protected static $propertyNames = [

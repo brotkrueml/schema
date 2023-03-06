@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -20,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * GiveAction: The reciprocal of TakeAction.
  * ReceiveAction: Unlike ReceiveAction, TakeAction implies that ownership has been transferred.
  */
+#[Type('TakeAction')]
 final class TakeAction extends AbstractType
 {
     protected static $propertyNames = [

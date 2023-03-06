@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A structured representation of food or drink items available from a FoodEstablishment.
  */
+#[Type('Menu')]
 final class Menu extends AbstractType
 {
     protected static $propertyNames = [

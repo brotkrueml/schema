@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The publication format of the book.
  */
+#[Type('BookFormatType')]
 final class BookFormatType extends AbstractType
 {
     protected static $propertyNames = [

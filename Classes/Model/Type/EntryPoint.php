@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An entry point, within some Web-based protocol.
  */
+#[Type('EntryPoint')]
 final class EntryPoint extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
  */
+#[Type('MobileApplication')]
 final class MobileApplication extends AbstractType
 {
     protected static $propertyNames = [

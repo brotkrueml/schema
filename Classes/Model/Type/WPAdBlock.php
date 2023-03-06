@@ -11,12 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 
 /**
  * An advertising section of the page.
  */
+#[Type('WPAdBlock')]
 final class WPAdBlock extends AbstractType implements WebPageElementTypeInterface
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The act of  departing from a place. An agent departs from a fromLocation for a destination, optionally with participants.
  */
+#[Type('DepartAction')]
 final class DepartAction extends AbstractType
 {
     protected static $propertyNames = [

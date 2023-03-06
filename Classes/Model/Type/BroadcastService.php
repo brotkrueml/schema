@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
  */
+#[Type('BroadcastService')]
 final class BroadcastService extends AbstractType
 {
     protected static $propertyNames = [

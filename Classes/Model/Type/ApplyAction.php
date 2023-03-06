@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
@@ -19,6 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Related actions:
  * RegisterAction: Unlike RegisterAction, ApplyAction has no guarantees that the application will be accepted.
  */
+#[Type('ApplyAction')]
 final class ApplyAction extends AbstractType
 {
     protected static $propertyNames = [

@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A series of movies. Included movies can be indicated with the hasPart property.
  */
+#[Type('MovieSeries')]
 final class MovieSeries extends AbstractType
 {
     protected static $propertyNames = [
