@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('ProgramMembership')]
 final class ProgramMembership extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'description',

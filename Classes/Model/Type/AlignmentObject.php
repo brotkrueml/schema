@@ -22,7 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('AlignmentObject')]
 final class AlignmentObject extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alignmentType',
         'alternateName',

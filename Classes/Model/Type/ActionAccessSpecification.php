@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('ActionAccessSpecification')]
 final class ActionAccessSpecification extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'availabilityEnds',

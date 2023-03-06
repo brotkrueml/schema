@@ -25,7 +25,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('SubscribeAction')]
 final class SubscribeAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

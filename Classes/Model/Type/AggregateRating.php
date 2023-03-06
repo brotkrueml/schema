@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('AggregateRating')]
 final class AggregateRating extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'author',

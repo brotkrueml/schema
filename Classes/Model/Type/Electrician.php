@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('Electrician')]
 final class Electrician extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalProperty',
         'additionalType',
         'address',

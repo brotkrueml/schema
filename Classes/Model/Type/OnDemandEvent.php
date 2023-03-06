@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('OnDemandEvent')]
 final class OnDemandEvent extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'actor',
         'additionalType',

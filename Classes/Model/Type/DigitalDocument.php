@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('DigitalDocument')]
 final class DigitalDocument extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

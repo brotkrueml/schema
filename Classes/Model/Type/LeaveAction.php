@@ -24,7 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('LeaveAction')]
 final class LeaveAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

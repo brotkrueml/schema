@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('DisagreeAction')]
 final class DisagreeAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

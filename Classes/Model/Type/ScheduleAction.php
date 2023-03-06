@@ -23,7 +23,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('ScheduleAction')]
 final class ScheduleAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

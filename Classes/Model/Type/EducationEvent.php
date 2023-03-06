@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('EducationEvent')]
 final class EducationEvent extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'actor',
         'additionalType',

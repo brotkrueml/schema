@@ -26,7 +26,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('BusinessEntityType')]
 final class BusinessEntityType extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'description',

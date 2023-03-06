@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('EatAction')]
 final class EatAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionAccessibilityRequirement',
         'actionStatus',
         'additionalType',

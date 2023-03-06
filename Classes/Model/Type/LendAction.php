@@ -23,7 +23,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('LendAction')]
 final class LendAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

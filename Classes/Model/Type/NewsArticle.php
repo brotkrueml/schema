@@ -22,7 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('NewsArticle')]
 final class NewsArticle extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

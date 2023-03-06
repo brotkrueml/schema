@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('FastFoodRestaurant')]
 final class FastFoodRestaurant extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'acceptsReservations',
         'additionalProperty',
         'additionalType',

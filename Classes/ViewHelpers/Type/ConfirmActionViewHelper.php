@@ -15,8 +15,9 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of notifying someone that a future event/action is going to happen as expected.
- *
- * Related actions:
+
+Related actions:
+
  * CancelAction: The antonym of ConfirmAction.
  */
 final class ConfirmActionViewHelper extends AbstractTypeViewHelper

@@ -18,7 +18,7 @@ class _3DModel extends AbstractType
     /**
      * @var string[]
      */
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'name',
     ];
 }

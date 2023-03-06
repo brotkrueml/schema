@@ -24,7 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('ProfessionalService')]
 final class ProfessionalService extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalProperty',
         'additionalType',
         'address',

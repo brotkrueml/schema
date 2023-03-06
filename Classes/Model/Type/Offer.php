@@ -24,7 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('Offer')]
 final class Offer extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'acceptedPaymentMethod',
         'addOn',
         'additionalType',

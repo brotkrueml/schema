@@ -15,8 +15,9 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates polled from.
- *
- * Related actions:
+
+Related actions:
+
  * BefriendAction: Unlike BefriendAction, FollowAction implies that the connection is *not* necessarily reciprocal.
  * SubscribeAction: Unlike SubscribeAction, FollowAction implies that the follower acts as an active agent constantly/actively polling for updates.
  * RegisterAction: Unlike RegisterAction, FollowAction implies that the agent is interested in continuing receiving updates from the object.

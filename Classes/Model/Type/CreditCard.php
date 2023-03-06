@@ -28,7 +28,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('CreditCard')]
 final class CreditCard extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'aggregateRating',
         'alternateName',

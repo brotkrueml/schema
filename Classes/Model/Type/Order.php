@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('Order')]
 final class Order extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'acceptedOffer',
         'additionalType',
         'alternateName',

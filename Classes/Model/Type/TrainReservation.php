@@ -22,7 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('TrainReservation')]
 final class TrainReservation extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'bookingTime',

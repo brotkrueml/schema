@@ -19,7 +19,7 @@ final class WebPage extends AbstractType implements WebPageTypeInterface
     /**
      * @var string[]
      */
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'breadcrumb',
         'expires',
         'mainEntity',

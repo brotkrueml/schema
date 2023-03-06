@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 #[Type('WPHeader')]
 final class WPHeader extends AbstractType implements WebPageElementTypeInterface
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

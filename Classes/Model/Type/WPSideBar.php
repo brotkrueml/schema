@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 #[Type('WPSideBar')]
 final class WPSideBar extends AbstractType implements WebPageElementTypeInterface
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

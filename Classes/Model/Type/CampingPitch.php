@@ -26,7 +26,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('CampingPitch')]
 final class CampingPitch extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalProperty',
         'additionalType',
         'address',

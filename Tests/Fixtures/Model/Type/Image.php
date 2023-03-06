@@ -18,7 +18,7 @@ class Image extends AbstractType
     /**
      * @var string[]
      */
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'name',
         'description',
         'image',

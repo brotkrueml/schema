@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 #[Type('ProfilePage')]
 final class ProfilePage extends AbstractType implements WebPageTypeInterface
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

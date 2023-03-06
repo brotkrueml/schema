@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 #[Type('CheckoutPage')]
 final class CheckoutPage extends AbstractType implements WebPageTypeInterface
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

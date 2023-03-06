@@ -25,7 +25,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('RegisterAction')]
 final class RegisterAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

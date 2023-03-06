@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('WearAction')]
 final class WearAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionAccessibilityRequirement',
         'actionStatus',
         'additionalType',

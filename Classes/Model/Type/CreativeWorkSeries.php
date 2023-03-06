@@ -24,7 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('CreativeWorkSeries')]
 final class CreativeWorkSeries extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

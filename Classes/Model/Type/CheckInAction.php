@@ -25,7 +25,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('CheckInAction')]
 final class CheckInAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'actionStatus',
         'additionalType',

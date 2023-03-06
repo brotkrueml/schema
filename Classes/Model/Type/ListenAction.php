@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('ListenAction')]
 final class ListenAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionAccessibilityRequirement',
         'actionStatus',
         'additionalType',

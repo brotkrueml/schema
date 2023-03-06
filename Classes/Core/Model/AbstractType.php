@@ -23,10 +23,10 @@ abstract class AbstractType implements TypeInterface
      * The properties of a specific type
      * These are defined in the concrete type model class
      *
-     * @var array<string>
+     * @var list<string>
      * @api
      */
-    protected static $propertyNames = [];
+    protected static array $propertyNames = [];
 
     /**
      * The ID of the type (mapped to @id in result)

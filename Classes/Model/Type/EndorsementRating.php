@@ -25,7 +25,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('EndorsementRating')]
 final class EndorsementRating extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'author',

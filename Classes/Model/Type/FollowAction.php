@@ -27,7 +27,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('FollowAction')]
 final class FollowAction extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionStatus',
         'additionalType',
         'agent',

@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('OwnershipInfo')]
 final class OwnershipInfo extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'acquiredFrom',
         'additionalType',
         'alternateName',

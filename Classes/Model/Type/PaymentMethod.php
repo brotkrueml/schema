@@ -31,7 +31,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('PaymentMethod')]
 final class PaymentMethod extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'description',

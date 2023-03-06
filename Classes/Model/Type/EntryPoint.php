@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('EntryPoint')]
 final class EntryPoint extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'actionApplication',
         'actionPlatform',
         'additionalType',

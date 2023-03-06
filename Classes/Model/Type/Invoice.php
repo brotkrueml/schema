@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('Invoice')]
 final class Invoice extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'accountId',
         'additionalType',
         'alternateName',

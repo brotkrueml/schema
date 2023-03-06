@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 #[Type('SiteNavigationElement')]
 final class SiteNavigationElement extends AbstractType implements WebPageElementTypeInterface
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'about',
         'accessMode',
         'accessModeSufficient',

@@ -18,7 +18,7 @@ final class BreadcrumbList extends AbstractType
     /**
      * @var string[]
      */
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'breadcrumb',
         'itemListElement',
         'mainEntity',

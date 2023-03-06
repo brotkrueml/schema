@@ -30,7 +30,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('DeliveryMethod')]
 final class DeliveryMethod extends AbstractType
 {
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'description',

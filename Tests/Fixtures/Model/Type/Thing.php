@@ -18,7 +18,7 @@ class Thing extends AbstractType
     /**
      * @var string[]
      */
-    protected static $propertyNames = [
+    protected static array $propertyNames = [
         'alternateName',
         'description',
         'identifier',
