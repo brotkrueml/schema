@@ -92,7 +92,7 @@ The changes between the different versions can be found in the
 :ref:`changelog <changelog>`.
 
 
-.. _#ext-schema: https://typo3.slack.com/archives/CV36M73D5
+.. _#ext-schema: https://typo3.slack.com/app_redirect?channel=CV36M73D5
 .. _auto: https://schema.org/docs/auto.home.html
 .. _bibliography: https://schema.org/docs/bib.home.html
 .. _health and lifesciences: https://schema.org/docs/health-lifesci.home.html
