@@ -11,6 +11,7 @@ use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\TypeDeclaration\Rector\ClassMethod\AddMethodCallBasedStrictParamTypeRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector;
 use Rector\TypeDeclaration\Rector\FunctionLike\AddReturnTypeDeclarationFromYieldsRector;
 
@@ -38,11 +39,11 @@ return static function (RectorConfig $config): void {
         __DIR__ . '/Classes/Model/Type/*',
         __DIR__ . '/Classes/ViewHelpers/Type/*',
         AddLiteralSeparatorToNumberRector::class,
-        AddReturnTypeDeclarationFromYieldsRector::class => [
+        AddMethodCallBasedStrictParamTypeRector::class => [
             __DIR__ . '/Tests/*',
         ],
-        CountOnNullRector::class => [
-            __DIR__ . '/Classes/ViewHelpers/BreadcrumbViewHelper.php',
+        AddReturnTypeDeclarationFromYieldsRector::class => [
+            __DIR__ . '/Tests/*',
         ],
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Functional/ViewHelpers/ViewHelperTestCase.php',
