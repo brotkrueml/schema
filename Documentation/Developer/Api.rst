@@ -625,17 +625,6 @@ or use dependency injection.
       Array, sorted alphabetically by type name.
 
 
-.. option:: getWebPageElementTypes()
-
-   Get the `WebPageElement`_ type and its descendants.
-
-   Parameter
-      none
-
-   Return value
-      Array, sorted alphabetically by type name.
-
-
 .. option:: getContentTypes()
 
    The types useful for an editor are returned as an array, sorted

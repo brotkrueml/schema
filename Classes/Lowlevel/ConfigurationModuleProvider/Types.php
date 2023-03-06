@@ -52,13 +52,10 @@ final class Types implements ProviderInterface
     {
         $webPageTypes = $this->typeProvider->getWebPageTypes();
         \sort($webPageTypes);
-        $webPageElementTypes = $this->typeProvider->getWebPageElementTypes();
-        \sort($webPageElementTypes);
 
         return [
             $this->translate('allTypes') => $this->getAllTypes(),
             $this->translate('webPageTypes') => $webPageTypes,
-            $this->translate('webPageElementTypes') => $webPageElementTypes,
         ];
     }
 

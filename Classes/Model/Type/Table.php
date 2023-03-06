@@ -13,13 +13,12 @@ namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 
 /**
  * A table on a Web page.
  */
 #[Type('Table')]
-final class Table extends AbstractType implements WebPageElementTypeInterface
+final class Table extends AbstractType
 {
     protected static array $propertyNames = [
         'about',

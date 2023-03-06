@@ -13,13 +13,12 @@ namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 
 /**
  * A sidebar section of the page.
  */
 #[Type('WPSideBar')]
-final class WPSideBar extends AbstractType implements WebPageElementTypeInterface
+final class WPSideBar extends AbstractType
 {
     protected static array $propertyNames = [
         'about',

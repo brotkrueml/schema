@@ -13,6 +13,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Removed
 - Compatibility with TYPO3 v10 (#73)
 - Compatibility with PHP 7.4 and PHP 8.0
+- Interface WebPageElementTypeInterface for marking web page element types
 
 ## [2.7.1] - 2023-02-24
 

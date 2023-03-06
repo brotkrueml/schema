@@ -15,9 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of posing a question / favor to someone.
-
-Related actions:
-
+ *
+ * Related actions:
  * ReplyAction: Appears generally as a response to AskAction.
  */
 final class AskActionViewHelper extends AbstractTypeViewHelper

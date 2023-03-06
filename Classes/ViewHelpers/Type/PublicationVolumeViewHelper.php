@@ -15,8 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.
-
-See also [blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).
+ *
+ * See also [blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).
  */
 final class PublicationVolumeViewHelper extends AbstractTypeViewHelper
 {

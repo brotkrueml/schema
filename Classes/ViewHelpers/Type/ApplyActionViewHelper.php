@@ -15,9 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of registering to an organization/service without the guarantee to receive it.
-
-Related actions:
-
+ *
+ * Related actions:
  * RegisterAction: Unlike RegisterAction, ApplyAction has no guarantees that the application will be accepted.
  */
 final class ApplyActionViewHelper extends AbstractTypeViewHelper

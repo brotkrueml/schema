@@ -23,6 +23,7 @@ Removed
 
 * Compatibility with TYPO3 v10 (#73)
 * Compatibility with PHP 7.4 and PHP 8.0
+* Interface WebPageElementTypeInterface for marking web page element types
 
 `2.7.1 <https://github.com/brotkrueml/schema/compare/v2.7.0...v2.7.1>`_ - 2023-02-24
 ----------------------------------------------------------------------------------------

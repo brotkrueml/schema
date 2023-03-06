@@ -89,22 +89,6 @@ final class TypeProviderTest extends TestCase
     /**
      * @test
      */
-    public function getWebPageElementTypesWhenTypesAreAdded(): void
-    {
-        $this->subject->addType('Table', FixtureType\Table::class);
-        $this->subject->addType('Thing', FixtureType\Thing::class);
-        $this->subject->addType('WebPage', FixtureType\WebPage::class);
-
-        $actual = $this->subject->getWebPageElementTypes();
-
-        self::assertCount(1, $actual);
-        self::assertTrue(\array_is_list($actual));
-        self::assertContains('Table', $actual);
-    }
-
-    /**
-     * @test
-     */
     public function getModelClassNameForTypeReturnTypeCorrectly(): void
     {
         $this->subject->addType('Thing', FixtureType\Thing::class);

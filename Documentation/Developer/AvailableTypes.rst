@@ -19,19 +19,19 @@ are extended with ongoing versions of the schema.org standard. The
 vocabulary can also be :ref:`extended independently <extending-vocabulary>` or
 by installing :ref:`additional vocabulary sections <vocabulary>`.
 
-An overview of the available types can be found in the :guilabel:`System` >
-:guilabel:`Configuration` module.
+An overview of the available types can be found in the
+:guilabel:`System > Configuration` module.
 
 .. note::
-   The :guilabel:`System` > :guilabel:`Configuration` module is available when
-   the `lowlevel` system extension is installed.
+   The :guilabel:`System > Configuration` module is available when the
+   "lowlevel" system extension is installed.
 
 
-Configuration overview
-======================
+Types overview
+==============
 
-To open the Configuration module, navigate to the :guilabel:`System` >
-:guilabel:`Configuration` module. In the upper menu bar, select
+To open the types overview, navigate to the
+:guilabel:`System > Configuration` module. In the upper menu bar, select
 :guilabel:`Schema: Types`.
 
 .. figure:: /Images/Developer/ConfigurationModule.png
@@ -39,11 +39,10 @@ To open the Configuration module, navigate to the :guilabel:`System` >
 
    Available types in the *Configuration* module
 
-There are three groups available:
+There are two groups available:
 
 - All types: The available types are listed alphabetically.
 - Web page types: The available web page types used in the
   :ref:`page properties <webpage-types>`.
-- Web page element types: The available web page element types.
 
 You can quickly look up the available types using the search box.

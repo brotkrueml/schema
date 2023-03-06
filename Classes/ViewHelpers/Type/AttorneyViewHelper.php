@@ -15,8 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * Professional service: Attorney.
-
-This type is deprecated - LegalService is more inclusive and less ambiguous.
+ *
+ * This type is deprecated - LegalService is more inclusive and less ambiguous.
  */
 final class AttorneyViewHelper extends AbstractTypeViewHelper
 {

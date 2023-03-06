@@ -15,9 +15,8 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * The act of finding an object.
-
-Related actions:
-
+ *
+ * Related actions:
  * SearchAction: FindAction is generally lead by a SearchAction, but not necessarily.
  */
 final class FindActionViewHelper extends AbstractTypeViewHelper

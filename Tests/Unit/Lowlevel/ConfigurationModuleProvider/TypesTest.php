@@ -45,10 +45,6 @@ final class TypesTest extends TestCase
                 Extension::LANGUAGE_PATH_DEFAULT . ':lowlevel.configuration.webPageTypes',
                 'Web page types',
             ],
-            [
-                Extension::LANGUAGE_PATH_DEFAULT . ':lowlevel.configuration.webPageElementTypes',
-                'Web page element types',
-            ],
         ];
         $languageServiceStub = $this->createStub(LanguageService::class);
         $languageServiceStub
@@ -113,9 +109,6 @@ final class TypesTest extends TestCase
             'Web page types' => [
                 'ItemPage',
                 'WebPage',
-            ],
-            'Web page element types' => [
-                'Table',
             ],
         ];
 

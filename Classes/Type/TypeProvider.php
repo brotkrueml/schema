@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Type;
 
-use Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use TYPO3\CMS\Core\SingletonInterface;
 
@@ -31,11 +30,6 @@ final class TypeProvider implements SingletonInterface
     private array $webPageTypes = [];
 
     /**
-     * @var list<string>
-     */
-    private array $webPageElementTypes = [];
-
-    /**
      * @param non-empty-string $type
      * @param class-string $className
      */
@@ -49,9 +43,6 @@ final class TypeProvider implements SingletonInterface
         }
         if (\in_array(WebPageTypeInterface::class, $interfaces, true)) {
             $this->webPageTypes[] = $type;
-        }
-        if (\in_array(WebPageElementTypeInterface::class, $interfaces, true)) {
-            $this->webPageElementTypes[] = $type;
         }
     }
 
@@ -69,14 +60,6 @@ final class TypeProvider implements SingletonInterface
     public function getWebPageTypes(): array
     {
         return $this->webPageTypes;
-    }
-
-    /**
-     * @return list<string>
-     */
-    public function getWebPageElementTypes(): array
-    {
-        return $this->webPageElementTypes;
     }
 
     /**
