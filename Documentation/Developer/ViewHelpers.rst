@@ -227,9 +227,8 @@ collisions. Let's have a deeper look on them.
          }
       }
 
-   .. versionadded:: 2.2.0
-      Main entities can be prioritised, please have a look into the
-      :ref:`main-entity-prioritisation` section.
+   Main entities can be prioritised, please have a look into the
+   :ref:`main-entity-prioritisation` section.
 
 
 .. index::
@@ -239,8 +238,6 @@ collisions. Let's have a deeper look on them.
 
 :html:`<schema:multipleType>` view helper
 =========================================
-
-.. versionadded:: 2.0.0
 
 You can also add a :ref:`multiple type <multiple-types>` node:
 
@@ -300,8 +297,6 @@ add properties to a multiple type instead the :html:`properties` argument:
 :html:`<schema:nodeIdentifier>` view helper
 ===========================================
 
-.. versionadded:: 2.0.0
-
 Sometimes it is useful to reference a node with just the ID. For this case the
 :html:`<schema:nodeIdentifier>` view helper is available:
 
@@ -354,8 +349,6 @@ The view helper has only one attribute which is required:
 
 :html:`<schema:blankNodeIdentifier>` view helper
 ================================================
-
-.. versionadded:: 2.0.0
 
 Sometimes it is not necessary (or possible) to define a globally unique ID
 with an IRI. For these cases you can use a blank node identifier:

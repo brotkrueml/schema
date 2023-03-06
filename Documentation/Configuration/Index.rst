@@ -52,8 +52,6 @@ Default value
 Automatic embedding of the breadcrumb markup into the page
 ----------------------------------------------------------
 
-.. versionadded:: 1.3.0
-
 If this option is enabled, the breadcrumb is automatically generated from the
 rootline of the current page.
 
@@ -71,8 +69,6 @@ Default value
 Automatic embedding of the breadcrumb markup into the page - Exclude additional doktypes
 ----------------------------------------------------------------------------------------
 
-.. versionadded:: 2.3.0
-
 If the option :ref:`configuration-automaticBreadcrumbSchemaGeneration` is
 enabled, you can define additional doktypes, which will be excluded from the
 breadcrumb. Separate multiple doktypes with commas.
@@ -86,8 +82,6 @@ Default value
 Allow only one breadcrumb list
 ------------------------------
 
-.. versionadded:: 2.7.0
-
 With enabled option only one breadcrumb list will be rendered. This may be
 helpful, if the option :ref:`configuration-automaticBreadcrumbSchemaGeneration`
 is enabled and you want to overwrite the generated breadcrumb list on a
@@ -100,8 +94,6 @@ dedicated page with a custom one.
 
 Embed markup in the body section
 --------------------------------
-
-.. versionadded:: 1.3.0
 
 If this option is enabled, the schema markup is embedded at the end of the
 :html:`<body>` section. If it is disabled, it is embedded in the :html:`<head>`
@@ -118,8 +110,6 @@ Default value
 Embed markup on "noindex" pages
 -------------------------------
 
-.. versionadded:: 2.0.0
-
 If this option is enabled, the schema markup is embedded also on "noindex"
 pages.
 
@@ -134,8 +124,6 @@ Default value
 
 Cache configuration
 ===================
-
-.. versionadded:: 1.6.0
 
 The extension stores some data temporarily, e.g. :ref:`additional type
 properties <event-register-additional-properties>`. They are cached for better

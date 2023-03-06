@@ -14,8 +14,6 @@ Target group: **Developers**, **Integrators**
 Introduction
 ============
 
-.. versionadded:: 2.1.0
-
 The available schema.org types (like `Person`, `Organization` or `BlogPosting`)
 are extended with ongoing versions of the schema.org standard. The
 vocabulary can also be :ref:`extended independently <extending-vocabulary>` or

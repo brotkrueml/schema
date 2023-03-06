@@ -18,8 +18,6 @@ Target group: **Integrators**
 Content Object (cObject) :ts:`SCHEMA`
 =====================================
 
-.. versionadded:: 2.3.0
-
 The extension provides the cObject :ts:`SCHEMA`.
 The cObject itself will not display anything.
 Instead it will add configured types to the global schema output.
@@ -140,8 +138,6 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
          }
 
       Multiple values can also be assigned to one property using numeric keys.
-
-      .. versionadded:: 2.5.0
 
       **Example:**
 

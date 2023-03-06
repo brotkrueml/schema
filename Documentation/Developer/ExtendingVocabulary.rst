@@ -47,8 +47,6 @@ properties to existing types or to introduce new types on your website.
 Register additional properties
 ==============================
 
-.. versionadded:: 1.6.0
-
 You can use a PSR-14 event listener to add one ore more properties to one or
 more types. The chapter :ref:`event-register-additional-properties` describes
 how to register additional properties in detail.
@@ -66,8 +64,6 @@ how to register additional properties in detail.
 
 Adding types
 ============
-
-.. versionadded:: 1.7.0
 
 You can add additional types for use in the :ref:`API <api>` or as a
 :ref:`WebPage type <webpage-types>`. As an example, in March 2020, Schema.org
@@ -186,8 +182,6 @@ the `Event`_ type. So let's start with this example.
 Add a new WebPage type
 ======================
 
-.. versionadded:: 1.7.0
-
 If you are responsible for a medical website, the chances are high that you need
 the `MedicalWebPage`_ web page type, which is part of the Health schema.org
 extension.
@@ -225,8 +219,6 @@ The new web page type can now be selected in the page properties:
 
 Add a new view helper
 =====================
-
-.. versionadded:: 1.7.0
 
 As the API and thus the :ref:`defined model class <extending-adding-types>`
 can be accessed in PHP, the use as a view helper in Fluid templates would also
