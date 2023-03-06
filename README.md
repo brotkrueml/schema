@@ -20,4 +20,4 @@
 [Translation](https://crowdin.com/project/typo3-extension-schema) |
 [Changelog](https://github.com/brotkrueml/schema/blob/main/CHANGELOG.md) |
 [TYPO3 Extension Repository](https://extensions.typo3.org/extension/schema) |
-[Forum](https://github.com/brotkrueml/schema/discussions)
+[Slack](https://typo3.slack.com/app_redirect?channel=CV36M73D5)
