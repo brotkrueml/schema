@@ -50,7 +50,9 @@ Deprecations
    Alternative
       Use :php:`Brotkrueml\Schema\Type\TypeRegistry` which is a singleton
       and can be instantiated with :php:`GeneralUtility::makeInstance()` or
-      injected with dependency injection. See section :ref:`api-list-of-types`.
+      injected with dependency injection.
+
+      Since version 3.0 there is no alternative available.
 
 
 .. _brotkrueml/schema-rector: https://github.com/brotkrueml/schema-rector

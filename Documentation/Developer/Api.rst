@@ -257,19 +257,17 @@ The model in-depth
 ==================
 
 Each type model, like `Thing`, `Person` or `Event`, must implement the
-interfaces :php:`Brotkrueml\Schema\Core\Model\NodeIdentifierInterface` and
-:php:`Brotkrueml\Schema\Core\Model\TypeInterface`. For convenience, a type
+interfaces :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifierInterface` and
+:php:`\Brotkrueml\Schema\Core\Model\TypeInterface`. For convenience, a type
 model can also extend the abstract class
-:php:`Brotkrueml\Schema\Core\Model\AbstractType` which implements every needed
+:php:`\Brotkrueml\Schema\Core\Model\AbstractType` which implements every needed
 method.
 
-Two other interfaces are available, they are used to "mark" a type model class as
-a "special type" and don't require the implementation of additional methods:
+One interface is availableto "mark" a type model class as a "special type". It
+does not require the implementation of additional methods:
 
-- :php:`Brotkrueml\Schema\Core\Model\WebPageTypeInterface` for a
-  :ref:`web page type <webpage-types>`.
-- :php:`Brotkrueml\Schema\Core\Model\WebPageElementTypeInterface` for a
-  `web page element type`_.
+*  :php:`\Brotkrueml\Schema\Core\Model\WebPageTypeInterface` for a
+   :ref:`web page type <webpage-types>`.
 
 These interfaces can be useful when you want to :ref:`extend the
 vocabulary <extending-vocabulary>`.
@@ -277,26 +275,22 @@ vocabulary <extending-vocabulary>`.
 .. uml::
    :caption: Inheritance of the type models (namespaces are omitted for better readability)
 
-   interface NodeIdentifierInterface
-   interface TypeInterface
-   interface WebPageElementTypeInterface
-   interface WebPageTypeInterface
-   abstract AbstractType
-   object WebPageElement
    object Thing
    object Event
    object OtherTypes
    object WebPage
+   abstract AbstractType
+   interface NodeIdentifierInterface
+   interface TypeInterface
+   interface WebPageTypeInterface
 
-   WebPageElementTypeInterface <|-- WebPageElement
-   WebPageTypeInterface <|-- WebPage
-   NodeIdentifierInterface <|-- AbstractType
-   TypeInterface <|-- AbstractType
-   AbstractType <|-- WebPageElement
-   AbstractType <|-- Thing
-   AbstractType <|-- Event
-   AbstractType <|-- OtherTypes
-   AbstractType <|-- WebPage
+   Thing --|> AbstractType
+   Event --|> AbstractType
+   OtherTypes --|> AbstractType
+   WebPage --|> AbstractType
+   AbstractType --|> TypeInterface
+   AbstractType --|> NodeIdentifierInterface
+   WebPage --|> WebPageTypeInterface
 
 Each type model delivered with this extension extends the :php:`AbstractType`
 class.
@@ -307,7 +301,7 @@ class.
 Available type model methods
 ----------------------------
 
-The type models which extend :php:`Brotkrueml\Schema\Core\Model\AbstractType`
+The type models which extend :php:`\Brotkrueml\Schema\Core\Model\AbstractType`
 expose the following methods:
 
 .. option:: setId($id)
@@ -583,65 +577,6 @@ and one static method:
 .. option:: convertToTerm(bool $value): string
 
    This method returns the according schema term.
-
-
-.. index::
-   single: Type list
-   seealso: Type list; API
-
-.. _api-list-of-types:
-
-List of types
--------------
-
-If you need a list of the available types or a subset of them, you can call
-methods on the :php:`Brotkrueml\Schema\Type\TypeRegistry` class. As this is
-a singleton, instantiate the class with::
-
-   $typeRegistry = GeneralUtility::makeInstance(\Brotkrueml\Schema\Type\TypeRegistry::class);
-
-or use dependency injection.
-
-
-.. option:: getTypes()
-
-   Get all available type names.
-
-   Parameter
-      none
-
-   Return value
-      Array, sorted alphabetically by type name.
-
-
-.. option:: getWebPageTypes()
-
-   Get the `WebPage`_ type and its descendants.
-
-   Parameter
-      none
-
-   Return value
-      Array, sorted alphabetically by type name.
-
-
-.. option:: getContentTypes()
-
-   The types useful for an editor are returned as an array, sorted
-   alphabetically.
-
-   The following types are filtered out:
-
-   *  ``BreadcrumbList``
-   *  ``WebPage`` and descendants
-   *  ``WebPageElement`` and descendants
-   *  ``WebSite``
-
-   Parameter
-      none
-
-   Return value
-      Array, sorted alphabetically by type name.
 
 
 .. _blank node identifier: https://www.w3.org/TR/json-ld11/#example-95-referencing-an-unidentified-node
