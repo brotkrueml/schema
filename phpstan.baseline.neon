@@ -111,11 +111,6 @@ parameters:
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\AdminPanel\\\\PropertyValueViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
-
-		-
 			message: "#^Binary operation \"\\.\" between array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null and string results in an error\\.$#"
 			count: 1
 			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
@@ -129,9 +124,4 @@ parameters:
 			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\MultipleTypeViewHelper\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/ViewHelpers/MultipleTypeViewHelper.php
-
-		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\ViewHelpers\\\\NodeIdentifierViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/NodeIdentifierViewHelper.php
 
