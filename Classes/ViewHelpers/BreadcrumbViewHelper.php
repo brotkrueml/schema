@@ -86,7 +86,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext,
     ): void {
-        if (($arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false) === false) {
+        if (! ($arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false)) {
             \array_shift($arguments[self::ARGUMENT_BREADCRUMB]);
         }
 
