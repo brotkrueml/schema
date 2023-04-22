@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news.
@@ -20,6 +22,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * A more detailed overview of [schema.org News markup](/docs/news.html) is also available.
  */
 #[Type('NewsArticle')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/article')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/paywalled-content')]
 final class NewsArticle extends AbstractType
 {
     protected static array $propertyNames = [

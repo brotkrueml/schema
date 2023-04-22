@@ -11,13 +11,17 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via suitableForDiet. The keywords property can also be used to add more detail.
  */
 #[Type('Recipe')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/recipe')]
+#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/recipe.html')]
 final class Recipe extends AbstractType
 {
     protected static array $propertyNames = [

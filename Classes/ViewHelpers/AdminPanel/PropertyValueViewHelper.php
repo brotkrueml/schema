@@ -12,7 +12,8 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Model\Manual\TypeLink;
+use Brotkrueml\Schema\Manual\Link;
+use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
@@ -27,12 +28,12 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 {
     private const IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'svg'];
 
-    private const MANUAL_PROVIDERS = [
-        'google' => [
+    private const MANUAL_PUBLISHERS = [
+        'Google' => [
             'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
             'iconIdentifier' => 'ext-schema-documentation-google',
         ],
-        'yandex' => [
+        'Yandex' => [
             'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference',
             'iconIdentifier' => 'ext-schema-documentation-yandex',
         ],
@@ -43,12 +44,8 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    /**
-     * @var TypeLink[]|null
-     */
-    private static ?array $additionalManuals = null;
-
     private static ?IconFactory $iconFactory = null;
+    private static ?TypeProvider $typeProvider = null;
 
     public function initializeArguments(): void
     {
@@ -102,7 +99,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
         return self::renderValue(
             [
-                new TypeLink(
+                new Link(
                     $value,
                     $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
                     $iconIdentifier ?: 'actions-link',
@@ -113,36 +110,27 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
     }
 
     /**
-     * @return TypeLink[]
+     * @return Link[]
      */
     private static function buildLinksForType(string $type): array
     {
         $links = [self::buildLinkForSchemaOrgType($type)];
 
-        $additionalManuals = self::getAdditionalManuals();
-        $manualType = $additionalManuals[$type]['like'] ?? $type;
-        foreach ($additionalManuals[$manualType] ?? [] as $manual) {
-            $provider = $manual['provider'] ?? '';
-            if (! $provider) {
-                continue;
-            }
-            if (! \array_key_exists($provider, self::MANUAL_PROVIDERS)) {
-                continue;
-            }
-
-            $links[] = new TypeLink(
-                $manual['link'],
-                \sprintf(self::getLanguageService()->sL(self::MANUAL_PROVIDERS[$provider]['title']), $manualType),
-                self::MANUAL_PROVIDERS[$provider]['iconIdentifier'],
+        $manuals = self::getTypeProvider()->getManualsForType($type);
+        foreach ($manuals as $manual) {
+            $links[] = new Link(
+                $manual->link,
+                \sprintf(self::getLanguageService()->sL(self::MANUAL_PUBLISHERS[$manual->publisher->name]['title']), $type),
+                self::MANUAL_PUBLISHERS[$manual->publisher->name]['iconIdentifier'],
             );
         }
 
         return $links;
     }
 
-    private static function buildLinkForSchemaOrgType(string $type): TypeLink
+    private static function buildLinkForSchemaOrgType(string $type): Link
     {
-        return new TypeLink(
+        return new Link(
             'https://schema.org/' . $type,
             \sprintf(
                 self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
@@ -153,15 +141,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
     }
 
     /**
-     * @return array<string, mixed>
-     */
-    private static function getAdditionalManuals(): array
-    {
-        return self::$additionalManuals ?? require __DIR__ . '/../../../Configuration/TxSchema/AdditionalManuals.php';
-    }
-
-    /**
-     * @param TypeLink[] $typeLinks
+     * @param Link[] $typeLinks
      */
     private static function renderValue(array $typeLinks, string $value): string
     {
@@ -173,7 +153,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
         return \trim(\implode(' ', $iconLinks) . ' ' . \htmlspecialchars($value));
     }
 
-    private static function renderIconLink(TypeLink $typeLink): string
+    private static function renderIconLink(Link $typeLink): string
     {
         return \sprintf(
             '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
@@ -185,7 +165,20 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     private static function getIconFactory(): IconFactory
     {
-        return self::$iconFactory ?? GeneralUtility::makeInstance(IconFactory::class);
+        if (! self::$iconFactory instanceof \TYPO3\CMS\Core\Imaging\IconFactory) {
+            self::$iconFactory = GeneralUtility::makeInstance(IconFactory::class);
+        }
+
+        return self::$iconFactory;
+    }
+
+    private static function getTypeProvider(): TypeProvider
+    {
+        if (! self::$typeProvider instanceof \Brotkrueml\Schema\Type\TypeProvider) {
+            self::$typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
+        }
+
+        return self::$typeProvider;
     }
 
     private static function getLanguageService(): LanguageService
@@ -195,18 +188,17 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     /**
      * For testing purposes only!
-     * @param array<string, mixed> $additionalManuals
      */
-    public static function setAdditionalManuals(array $additionalManuals): void
+    public static function setIconFactory(IconFactory $iconFactory): void
     {
-        self::$additionalManuals = $additionalManuals;
+        self::$iconFactory = $iconFactory;
     }
 
     /**
      * For testing purposes only!
      */
-    public static function setIconFactory(IconFactory $iconFactory): void
+    public static function setTypeProvider(TypeProvider $typeProvider): void
     {
-        self::$iconFactory = $iconFactory;
+        self::$typeProvider = $typeProvider;
     }
 }

@@ -9,12 +9,15 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\Model\Manual;
+namespace Brotkrueml\Schema\Tests\Unit\Manual;
 
-use Brotkrueml\Schema\Model\Manual\TypeLink;
+use Brotkrueml\Schema\Manual\Link;
 use PHPUnit\Framework\TestCase;
 
-final class TypeLinkTest extends TestCase
+/**
+ * @covers \Brotkrueml\Schema\Manual\Link
+ */
+final class LinkTest extends TestCase
 {
     /**
      * @test
@@ -29,7 +32,7 @@ final class TypeLinkTest extends TestCase
             $link,
         ));
 
-        new TypeLink($link, '', '');
+        new Link($link, '', '');
     }
 
     public function dataProviderWithInvalidUrls(): iterable
@@ -57,6 +60,6 @@ final class TypeLinkTest extends TestCase
             $link,
         ));
 
-        new TypeLink($link, '', '');
+        new Link($link, '', '');
     }
 }

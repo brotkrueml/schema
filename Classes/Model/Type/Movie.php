@@ -11,13 +11,17 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A movie.
  */
 #[Type('Movie')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/movie')]
+#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/movie-description.html')]
 final class Movie extends AbstractType
 {
     protected static array $propertyNames = [

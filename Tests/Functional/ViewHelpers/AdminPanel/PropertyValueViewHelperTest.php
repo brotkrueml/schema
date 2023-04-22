@@ -12,13 +12,19 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Extension;
+use Brotkrueml\Schema\Manual\Publisher;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelperTestCase;
+use Brotkrueml\Schema\Type\TypeProvider;
 use Brotkrueml\Schema\ViewHelpers\AdminPanel\PropertyValueViewHelper;
 use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
+/**
+ * @covers \Brotkrueml\Schema\ViewHelpers\AdminPanel\PropertyValueViewHelper
+ */
 final class PropertyValueViewHelperTest extends ViewHelperTestCase
 {
     /**
@@ -233,23 +239,15 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
             [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference', 'Open Google reference'],
             [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference', 'Open Yandex reference'],
         ];
-
         $this->languageServiceStub
             ->method('sL')
             ->willReturnMap($languageMap);
 
-        PropertyValueViewHelper::setAdditionalManuals([
-            'Thing' => [
-                [
-                    'provider' => 'google',
-                    'link' => 'https://example.org/Thing',
-                ],
-                [
-                    'provider' => 'yandex',
-                    'link' => 'https://example.com/Thing',
-                ],
-            ],
-        ]);
+        $typeProvider = new TypeProvider();
+        $typeProvider->addType('Thing', Thing::class);
+        $typeProvider->addManualForType('Thing', [Publisher::Google, 'https://example.org/Thing']);
+        $typeProvider->addManualForType('Thing', [Publisher::Yandex, 'https://example.com/Thing']);
+        PropertyValueViewHelper::setTypeProvider($typeProvider);
 
         $actual = $this->renderTemplate(
             '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
@@ -257,99 +255,6 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
 
         self::assertSame(
             '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.com/Thing" title="Open Yandex reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            $actual,
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function additionalManualsWithLikeReferenceAreRenderedCorrectly(): void
-    {
-        $languageMap = [
-            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg', 'Open documentation on schema.org'],
-            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference', 'Open Google reference'],
-        ];
-
-        $this->languageServiceStub
-            ->method('sL')
-            ->willReturnMap($languageMap);
-
-        PropertyValueViewHelper::setAdditionalManuals([
-            'Foo' => [
-                'like' => 'Bar',
-            ],
-            'Bar' => [
-                [
-                    'provider' => 'google',
-                    'link' => 'https://example.org/Bar',
-                ],
-            ],
-        ]);
-
-        $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Foo"/>',
-        );
-
-        self::assertSame(
-            '<a href="https://schema.org/Foo" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Bar" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> Foo',
-            $actual,
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function emptyProviderInAdditionalManualsDoesNotShowTheLink(): void
-    {
-        $this->languageServiceStub
-            ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg')
-            ->willReturn('Open documentation on schema.org');
-
-        PropertyValueViewHelper::setAdditionalManuals([
-            'Thing' => [
-                [
-                    'link' => 'https://example.org/Thing',
-                ],
-            ],
-        ]);
-
-        $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
-        );
-
-        self::assertSame(
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            $actual,
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function unknownProviderInAdditionalManualsDoesNotShowTheLink(): void
-    {
-        $this->languageServiceStub
-            ->method('sL')
-            ->with(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg')
-            ->willReturn('Open documentation on schema.org');
-
-        PropertyValueViewHelper::setAdditionalManuals([
-            'Thing' => [
-                [
-                    'provider' => 'unknown',
-                    'link' => 'https://example.org/Thing',
-                ],
-            ],
-        ]);
-
-        $actual = $this->renderTemplate(
-            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
-        );
-
-        self::assertSame(
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
             $actual,
         );
     }

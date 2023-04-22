@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Type;
 
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
 use Brotkrueml\Schema\Type\TypeProvider;
@@ -106,5 +107,32 @@ final class TypeProviderTest extends TestCase
         $this->expectException(ModelClassNotFoundException::class);
 
         $this->subject->getModelClassNameForType('UnknownType');
+    }
+
+    /**
+     * @test
+     */
+    public function getManualsForTypeReturnsManualsCorrectly(): void
+    {
+        $this->subject->addManualForType('Thing', [Publisher::Google, 'https://example.com/thing']);
+        $this->subject->addManualForType('Thing', [Publisher::Yandex, 'https://example.net/thing']);
+
+        $actual = $this->subject->getManualsForType('Thing');
+
+        self::assertCount(2, $actual);
+        self::assertSame(Publisher::Google, $actual[0]->publisher);
+        self::assertSame('https://example.com/thing', $actual[0]->link);
+        self::assertSame(Publisher::Yandex, $actual[1]->publisher);
+        self::assertSame('https://example.net/thing', $actual[1]->link);
+    }
+
+    /**
+     * @test
+     */
+    public function getManualsForTypeReturnsEmptyArrayIfTypeNotAvailable(): void
+    {
+        $actual = $this->subject->getManualsForType('TypeWithNoManuals');
+
+        self::assertSame([], $actual);
     }
 }

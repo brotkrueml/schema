@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An aggregate rating of an Organization related to its role as an employer.
  */
 #[Type('EmployerAggregateRating')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/employer-rating')]
 final class EmployerAggregateRating extends AbstractType
 {
     protected static array $propertyNames = [

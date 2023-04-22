@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An organization such as a school, NGO, corporation, club, etc.
  */
 #[Type('Organization')]
+#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/address-organization.html')]
 final class Organization extends AbstractType
 {
     protected static array $propertyNames = [

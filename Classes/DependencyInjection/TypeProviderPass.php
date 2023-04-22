@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\DependencyInjection;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Type\TypeProvider;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -37,16 +38,24 @@ final class TypeProviderPass implements CompilerPassInterface
         foreach (\array_keys($container->findTaggedServiceIds($this->tagName)) as $serviceName) {
             /** @var class-string $serviceName */
             $reflector = new \ReflectionClass($serviceName);
-            $attribute = $reflector->getAttributes(Type::class)[0] ?? null;
 
-            if (! $attribute instanceof \ReflectionAttribute) {
+            $typeAttribute = $reflector->getAttributes(Type::class)[0] ?? null;
+            if (! $typeAttribute instanceof \ReflectionAttribute) {
                 continue;
             }
-
+            $typeName = $typeAttribute->getArguments()[0];
             $typeProviderDefinition->addMethodCall('addType', [
-                $attribute->getArguments()[0],
+                $typeName,
                 $serviceName,
             ]);
+
+            $manualAttributes = $reflector->getAttributes(Manual::class);
+            foreach ($manualAttributes as $manualAttribute) {
+                $typeProviderDefinition->addMethodCall('addManualForType', [
+                    $typeName,
+                    $manualAttribute->getArguments(),
+                ]);
+            }
         }
     }
 }

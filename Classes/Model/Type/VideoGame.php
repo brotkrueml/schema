@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
  */
 #[Type('VideoGame')]
+#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
 final class VideoGame extends AbstractType
 {
     protected static array $propertyNames = [

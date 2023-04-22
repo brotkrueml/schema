@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A listing that describes a job opening in a certain organization.
  */
 #[Type('JobPosting')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/job-posting')]
 final class JobPosting extends AbstractType
 {
     protected static array $propertyNames = [

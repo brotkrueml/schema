@@ -11,13 +11,17 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * Web applications.
  */
 #[Type('WebApplication')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/software-app')]
+#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
 final class WebApplication extends AbstractType
 {
     protected static array $propertyNames = [

@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A statistical distribution of monetary amounts.
  */
 #[Type('MonetaryAmountDistribution')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/estimated-salary')]
 final class MonetaryAmountDistribution extends AbstractType
 {
     protected static array $propertyNames = [

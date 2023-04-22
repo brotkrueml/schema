@@ -9,12 +9,12 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Model\Manual;
+namespace Brotkrueml\Schema\Manual;
 
 /**
  * @internal
  */
-final class TypeLink
+final class Link
 {
     public readonly string $link;
 

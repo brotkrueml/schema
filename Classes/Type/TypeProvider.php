@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Type;
 
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
+use Brotkrueml\Schema\Manual\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
@@ -30,6 +32,11 @@ final class TypeProvider implements SingletonInterface
     private array $webPageTypes = [];
 
     /**
+     * @var array<string, list<Manual>>
+     */
+    private array $manuals = [];
+
+    /**
      * @param non-empty-string $type
      * @param class-string $className
      */
@@ -44,6 +51,18 @@ final class TypeProvider implements SingletonInterface
         if (\in_array(WebPageTypeInterface::class, $interfaces, true)) {
             $this->webPageTypes[] = $type;
         }
+    }
+
+    /**
+     * @param array{0: Publisher, 1: non-empty-string} $manualProperties
+     */
+    public function addManualForType(string $type, array $manualProperties): void
+    {
+        if (! isset($this->manuals[$type])) {
+            $this->manuals[$type] = [];
+        }
+
+        $this->manuals[$type][] = new Manual($manualProperties[0], $manualProperties[1]);
     }
 
     /**
@@ -72,5 +91,17 @@ final class TypeProvider implements SingletonInterface
         }
 
         throw ModelClassNotFoundException::fromType($type);
+    }
+
+    /**
+     * @return Manual[]
+     */
+    public function getManualsForType(string $type): array
+    {
+        if (! isset($this->manuals[$type])) {
+            return [];
+        }
+
+        return $this->manuals[$type];
     }
 }

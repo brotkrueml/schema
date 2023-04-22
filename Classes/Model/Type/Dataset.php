@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A body of structured information describing some topic(s) of interest.
  */
 #[Type('Dataset')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/dataset')]
 final class Dataset extends AbstractType
 {
     protected static array $propertyNames = [

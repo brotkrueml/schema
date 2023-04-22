@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * The most generic kind of creative work, including books, movies, photographs, software programs, etc.
  */
 #[Type('CreativeWork')]
+#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/essay.html')]
 final class CreativeWork extends AbstractType
 {
     protected static array $propertyNames = [

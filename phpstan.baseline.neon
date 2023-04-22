@@ -107,7 +107,7 @@ parameters:
 
 		-
 			message: "#^Do not use static property$#"
-			count: 4
+			count: 8
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
 
 		-

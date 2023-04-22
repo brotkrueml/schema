@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An image file.
  */
 #[Type('ImageObject')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/image-license-metadata')]
 final class ImageObject extends AbstractType
 {
     protected static array $propertyNames = [

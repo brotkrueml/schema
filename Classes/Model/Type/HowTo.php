@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * Instructions that explain how to achieve a result by performing a sequence of steps.
  */
 #[Type('HowTo')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/how-to')]
 final class HowTo extends AbstractType
 {
     protected static array $propertyNames = [
