@@ -19,8 +19,6 @@ Target group: **Administrators**
 
    Use latest version 2.x for compatibility with TYPO3 v10 LTS or PHP 7.4/8.0.
 
-   Use latest version 1.x for compatibility with TYPO3 v9 LTS or PHP 7.2/7.3.
-
 The recommended way to install this extension is by using Composer. In your
 Composer-based TYPO3 project root, just type::
 
