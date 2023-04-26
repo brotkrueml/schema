@@ -41,13 +41,12 @@
 		"phpunit/phpunit": "^9.6",
 		"rector/rector": "0.15.13",
 		"saschaegerer/phpstan-typo3": "^1.8",
-		"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.2",
 		"symfony/yaml": "^5.4 || ^6.2",
 		"symplify/phpstan-rules": "^11.2",
 		"tomasvotruba/cognitive-complexity": "^0.0.5",
 		"typo3/cms-adminpanel": "^10.4.11 || ^11.5 || ^12.2",
 		"typo3/cms-lowlevel": "^10.4.11 || ^11.5 || ^12.2",
-		"typo3/testing-framework": "7.x-dev"
+		"typo3/testing-framework": "^7.0"
 	},
 	"conflict": {
 		"brotkrueml/sdbreadcrumb": "*"
@@ -79,8 +78,7 @@
 			"phpstan/extension-installer": true,
 			"rector/rector-installer": true,
 			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true,
-			"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": true
+			"typo3/cms-composer-installers": true
 		},
 		"bin-dir": ".Build/bin",
 		"sort-packages": true,
