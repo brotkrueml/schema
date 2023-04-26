@@ -16,7 +16,10 @@
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', ''],
+                    [
+                        'label' => '',
+                        'value' => '',
+                    ],
                 ],
                 'itemsProcFunc' => Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes::class . '->get',
                 'size' => 1,
@@ -27,6 +30,13 @@
             ],
         ],
     ];
+
+    if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 12) {
+        $tca['tx_schema_webpagetype']['config']['items'][0][0] = $tca['tx_schema_webpagetype']['config']['items'][0]['label'];
+        $tca['tx_schema_webpagetype']['config']['items'][0][1] = $tca['tx_schema_webpagetype']['config']['items'][0]['value'];
+        unset($tca['tx_schema_webpagetype']['config']['items'][0]['label']);
+        unset($tca['tx_schema_webpagetype']['config']['items'][0]['value']);
+    }
 
     TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tca);
 

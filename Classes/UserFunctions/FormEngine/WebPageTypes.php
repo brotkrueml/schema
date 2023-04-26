@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\UserFunctions\FormEngine;
 
 use Brotkrueml\Schema\Type\TypeProvider;
+use TYPO3\CMS\Core\Information\Typo3Version;
 
 /**
  * Provides a user function used as itemProcFunc in TCA defintion
@@ -32,8 +33,17 @@ final class WebPageTypes
     {
         $webPageTypes = $this->typeProvider->getWebPageTypes();
         \sort($webPageTypes);
+        $majorTypo3Version = (new Typo3Version())->getMajorVersion();
         foreach ($webPageTypes as $type) {
-            $params['items'][] = [$type, $type];
+            if ($majorTypo3Version < 12) {
+                $params['items'][] = [$type, $type];
+                continue;
+            }
+
+            $params['items'][] = [
+                'label' => $type,
+                'value' => $type,
+            ];
         }
     }
 }
