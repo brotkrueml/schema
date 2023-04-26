@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Deprecation notice for items configuration in TCA select field in TYPO3 v12
+
 ## [2.7.1] - 2023-02-24
 
 ### Fixed

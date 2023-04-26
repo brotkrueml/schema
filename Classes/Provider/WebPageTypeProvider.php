@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Provider;
 
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -31,6 +32,12 @@ final class WebPageTypeProvider
     public static function getTypesForTcaSelect(): array
     {
         $select = [['', '']];
+        if ((new Typo3Version())->getMajorVersion() === 12) {
+            $select = [[
+                'label' => '',
+                'value' => '',
+            ]];
+        }
 
         $packageManager = GeneralUtility::makeInstance(PackageManager::class);
         $packages = $packageManager->getActivePackages();
@@ -63,8 +70,17 @@ final class WebPageTypeProvider
         }
 
         \sort($webPageTypes);
+        $majorTypo3Version = (new Typo3Version())->getMajorVersion();
         foreach ($webPageTypes as $type) {
-            $select[] = [$type, $type];
+            if ($majorTypo3Version < 12) {
+                $select[] = [$type, $type];
+                continue;
+            }
+
+            $select[] = [
+                'label' => $type,
+                'value' => $type,
+            ];
         }
 
         return $select;

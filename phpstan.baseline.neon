@@ -126,7 +126,7 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Cognitive complexity for \"Brotkrueml\\\\Schema\\\\Provider\\\\WebPageTypeProvider\\:\\:getTypesForTcaSelect\\(\\)\" is 15, keep it under 10$#"
+			message: "#^Cognitive complexity for \"Brotkrueml\\\\Schema\\\\Provider\\\\WebPageTypeProvider\\:\\:getTypesForTcaSelect\\(\\)\" is 18, keep it under 10$#"
 			count: 1
 			path: Classes/Provider/WebPageTypeProvider.php
 
