@@ -14,8 +14,8 @@ Target group: **Administrators**
 
 .. note::
 
-   The extension in version |release| supports TYPO3 v11 LTS and TYPO3 v12 and
-   needs at least PHP 8.1.
+   The extension in version |release| supports TYPO3 v11 LTS and TYPO3 v12 LTS
+   and needs at least PHP 8.1.
 
    Use latest version 2.x for compatibility with TYPO3 v10 LTS or PHP 7.4/8.0.
 
