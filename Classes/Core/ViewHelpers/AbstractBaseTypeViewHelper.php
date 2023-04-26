@@ -137,7 +137,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected function assignPropertiesToType(): void
     {
         foreach ($this->arguments as $name => $value) {
-            $this->assignPropertyToType((string)$name, $value);
+            $this->assignPropertyToType($name, $value);
         }
     }
 

@@ -42,7 +42,7 @@ class PagesCacheService
     public function storeMarkupInCache(string $markup): void
     {
         $this->initialiseTypoScriptFrontendController();
-        if ($this->controller !== null) {
+        if ($this->controller instanceof TypoScriptFrontendController) {
             $this->cache->set(
                 $this->getCacheIdentifier(),
                 $markup,
@@ -54,7 +54,7 @@ class PagesCacheService
 
     private function initialiseTypoScriptFrontendController(): void
     {
-        if ($this->controller === null) {
+        if (! $this->controller instanceof TypoScriptFrontendController) {
             // Cannot be done in constructor as an empty TSFE is injected via DI in TYPO3 v10
             $this->controller = $GLOBALS['TSFE'];
         }

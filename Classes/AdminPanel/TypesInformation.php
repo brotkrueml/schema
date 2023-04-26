@@ -78,7 +78,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     {
         // The StandaloneView cannot be injected via DI in the constructor, because then the error
         // "TypoScriptFrontendController was tried to be injected before initial creation" occurs!
-        if ($this->view === null) {
+        if (! $this->view instanceof StandaloneView) {
             /** @var StandaloneView $view */
             $view = GeneralUtility::makeInstance(StandaloneView::class);
             $this->view = $view;

@@ -149,7 +149,7 @@ final class SchemaManager implements SingletonInterface
      */
     public function hasWebPage(): bool
     {
-        return $this->webPage !== null;
+        return $this->webPage instanceof TypeInterface;
     }
 
     /**

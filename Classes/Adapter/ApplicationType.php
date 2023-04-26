@@ -29,7 +29,7 @@ class ApplicationType
             return false;
         }
 
-        if ($this->applicationType === null) {
+        if (! $this->applicationType instanceof CoreApplicationType) {
             $this->applicationType = CoreApplicationType::fromRequest($this->getRequest());
         }
 
