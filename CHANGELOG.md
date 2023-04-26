@@ -15,6 +15,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Compatibility with PHP 7.4 and PHP 8.0
 - Interface WebPageElementTypeInterface for marking web page element types
 
+## [2.7.2] - 2023-04-26
+
+### Fixed
+- Deprecation notice for items configuration in TCA select field in TYPO3 v12
+
 ## [2.7.1] - 2023-02-24
 
 ### Fixed
@@ -393,7 +398,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.7.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.7.2...HEAD
+[2.7.2]: https://github.com/brotkrueml/schema/compare/v2.7.1...v2.7.2
 [2.7.1]: https://github.com/brotkrueml/schema/compare/v2.7.0...v2.7.1
 [2.7.0]: https://github.com/brotkrueml/schema/compare/v2.6.4...v2.7.0
 [2.6.4]: https://github.com/brotkrueml/schema/compare/v2.6.3...v2.6.4

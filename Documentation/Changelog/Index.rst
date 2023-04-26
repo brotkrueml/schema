@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v2.7.1...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v2.7.2...HEAD>`_
 ------------------------------------------------------------------------------
 
 Changed
@@ -24,6 +24,15 @@ Removed
 * Compatibility with TYPO3 v10 (#73)
 * Compatibility with PHP 7.4 and PHP 8.0
 * Interface WebPageElementTypeInterface for marking web page element types
+
+`2.7.2 <https://github.com/brotkrueml/schema/compare/v2.7.1...v2.7.2>`_ - 2023-04-26
+----------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Deprecation notice for items configuration in TCA select field in TYPO3 v12
 
 `2.7.1 <https://github.com/brotkrueml/schema/compare/v2.7.0...v2.7.1>`_ - 2023-02-24
 ----------------------------------------------------------------------------------------
