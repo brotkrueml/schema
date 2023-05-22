@@ -111,16 +111,6 @@ parameters:
 			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
 
 		-
-			message: "#^Binary operation \"\\.\" between array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null and string results in an error\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
-
-		-
-			message: "#^Parameter \\#2 \\$needle of function str_starts_with expects string, array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null given\\.$#"
-			count: 1
-			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
-
-		-
 			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\MultipleTypeViewHelper\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/ViewHelpers/MultipleTypeViewHelper.php
