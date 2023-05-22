@@ -15,6 +15,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Compatibility with PHP 7.4 and PHP 8.0
 - Interface WebPageElementTypeInterface for marking web page element types
 
+## [2.8.0] - 2023-05-22
+
+### Updated
+- Schema definition to version 19.0
+
 ## [2.7.2] - 2023-04-26
 
 ### Fixed
@@ -398,7 +403,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.7.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v2.8.0...HEAD
+[2.8.0]: https://github.com/brotkrueml/schema/compare/v2.7.2...v2.8.0
 [2.7.2]: https://github.com/brotkrueml/schema/compare/v2.7.1...v2.7.2
 [2.7.1]: https://github.com/brotkrueml/schema/compare/v2.7.0...v2.7.1
 [2.7.0]: https://github.com/brotkrueml/schema/compare/v2.6.4...v2.7.0
