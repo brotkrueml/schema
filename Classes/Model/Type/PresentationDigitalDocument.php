@@ -106,6 +106,7 @@ final class PresentationDigitalDocument extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

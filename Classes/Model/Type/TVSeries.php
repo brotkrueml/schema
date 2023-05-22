@@ -116,6 +116,7 @@ final class TVSeries extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'trailer',

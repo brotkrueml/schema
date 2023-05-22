@@ -114,6 +114,7 @@ final class HowToDirection extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'tool',

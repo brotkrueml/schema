@@ -112,6 +112,7 @@ final class MovieSeries extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'trailer',

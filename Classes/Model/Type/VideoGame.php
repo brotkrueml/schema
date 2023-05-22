@@ -144,6 +144,7 @@ final class VideoGame extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'trailer',

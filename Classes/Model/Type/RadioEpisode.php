@@ -113,6 +113,7 @@ final class RadioEpisode extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'trailer',
