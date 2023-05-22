@@ -105,6 +105,7 @@ final class WebPageElement extends AbstractType implements WebPageElementTypeInt
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

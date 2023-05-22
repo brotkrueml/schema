@@ -105,6 +105,7 @@ final class SiteNavigationElement extends AbstractType implements WebPageElement
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

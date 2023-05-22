@@ -118,6 +118,7 @@ final class AudioObject extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'transcript',

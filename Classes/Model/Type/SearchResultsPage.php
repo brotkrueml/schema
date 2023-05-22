@@ -113,6 +113,7 @@ final class SearchResultsPage extends AbstractType implements WebPageTypeInterfa
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

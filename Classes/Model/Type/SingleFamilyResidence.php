@@ -25,6 +25,7 @@ final class SingleFamilyResidence extends AbstractType
         'aggregateRating',
         'alternateName',
         'amenityFeature',
+        'bed',
         'branchCode',
         'containedInPlace',
         'containsPlace',

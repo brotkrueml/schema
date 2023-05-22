@@ -105,6 +105,7 @@ final class WPHeader extends AbstractType implements WebPageElementTypeInterface
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

@@ -113,6 +113,7 @@ final class ProfilePage extends AbstractType implements WebPageTypeInterface
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

@@ -105,6 +105,7 @@ final class WPAdBlock extends AbstractType implements WebPageElementTypeInterfac
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'translator',

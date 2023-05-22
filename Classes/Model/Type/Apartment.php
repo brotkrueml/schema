@@ -25,6 +25,7 @@ final class Apartment extends AbstractType
         'aggregateRating',
         'alternateName',
         'amenityFeature',
+        'bed',
         'branchCode',
         'containedInPlace',
         'containsPlace',

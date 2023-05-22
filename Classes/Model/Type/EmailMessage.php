@@ -111,6 +111,7 @@ final class EmailMessage extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'toRecipient',

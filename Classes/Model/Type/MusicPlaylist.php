@@ -104,6 +104,7 @@ final class MusicPlaylist extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'track',

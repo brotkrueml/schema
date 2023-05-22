@@ -108,6 +108,7 @@ final class MusicAlbum extends AbstractType
         'temporal',
         'temporalCoverage',
         'text',
+        'thumbnail',
         'thumbnailUrl',
         'timeRequired',
         'track',
