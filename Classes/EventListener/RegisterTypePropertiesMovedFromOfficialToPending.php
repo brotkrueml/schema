@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Model\Type;
 
 /**
- * The following properties has be available as official
+ * The following properties has been available as official
  * but were moved because of reasons to pending again.
  * These properties are registered again to avoid
  * breaking changes.
