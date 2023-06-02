@@ -427,6 +427,7 @@ return [
     \Brotkrueml\Schema\Model\Type\Playground::class,
     \Brotkrueml\Schema\Model\Type\Plumber::class,
     \Brotkrueml\Schema\Model\Type\PoliceStation::class,
+    \Brotkrueml\Schema\Model\Type\PoliticalParty::class,
     \Brotkrueml\Schema\Model\Type\Pond::class,
     \Brotkrueml\Schema\Model\Type\PostOffice::class,
     \Brotkrueml\Schema\Model\Type\PostalAddress::class,
