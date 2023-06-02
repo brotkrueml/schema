@@ -11,7 +11,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Schema definition to version 21.0
 
 ### Fixed
-- Disabled pages were referenced in automatic generated breadcrumb (#114)
+- Hidden pages were referenced in automatic generated breadcrumb (#114)
+- Disabled pages in menu were referenced in automatic generated breadcrumb
 
 ## [2.8.0] - 2023-05-22
 

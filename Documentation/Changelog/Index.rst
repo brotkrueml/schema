@@ -21,7 +21,8 @@ Fixed
 ^^^^^
 
 
-* Disabled pages were referenced in automatic generated breadcrumb (#114)
+* Hidden pages were referenced in automatic generated breadcrumb (#114)
+* Disabled pages in menu were referenced in automatic generated breadcrumb
 
 [2.8.0] - 2023-05-22
 --------------------

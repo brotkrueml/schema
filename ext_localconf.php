@@ -1,7 +1,7 @@
 <?php
 defined('TYPO3') or die();
 
-$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',tx_schema_webpagetype';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',nav_hide,tx_schema_webpagetype';
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] =
     Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection::class . '->execute';
