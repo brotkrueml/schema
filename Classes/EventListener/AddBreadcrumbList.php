@@ -57,6 +57,10 @@ final class AddBreadcrumbList
                 break;
             }
 
+            if ($page['hidden'] ?? false) {
+                continue;
+            }
+
             if ($page['nav_hide'] ?? false) {
                 continue;
             }
