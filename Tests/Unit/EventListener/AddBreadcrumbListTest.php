@@ -213,6 +213,40 @@ final class AddBreadcrumbListTest extends TestCase
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
+        yield 'Rootline with a hidden page' => [
+            [
+                3 => [
+                    'uid' => 3,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'hidden' => '1',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                2 => [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                1 => [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
         yield 'Rootline with siteroot not on first level' => [
             [
                 2 => [

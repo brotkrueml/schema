@@ -10,6 +10,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Updated
 - Schema definition to version 21.0
 
+### Fixed
+- Disabled pages were referenced in automatic generated breadcrumb (#114)
+
 ## [2.8.0] - 2023-05-22
 
 ### Updated
