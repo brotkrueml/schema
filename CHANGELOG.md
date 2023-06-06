@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Custom page cache tags for schema page cache not considered (#115)
+
 ## [2.9.0] - 2023-06-02
 
 ### Updated

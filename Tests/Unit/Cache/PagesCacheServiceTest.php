@@ -79,12 +79,33 @@ class PagesCacheServiceTest extends TestCase
     /**
      * @test
      */
-    public function storeMarkupInCacheSetsMarkupCorrectly(): void
+    public function storeMarkupInCacheWithoutAdditionalCacheTagsSetsMarkupCorrectly(): void
     {
+        $this->controllerStub
+            ->method('getPageCacheTags')
+            ->willReturn([]);
+
         $this->cacheFrontendMock
             ->expects(self::once())
             ->method('set')
             ->with('some-hash-tx-schema', 'markup to store', ['pageId_42'], 3600);
+
+        $this->subject->storeMarkupInCache('markup to store');
+    }
+
+    /**
+     * @test
+     */
+    public function storeMarkupInCacheSetsMarkupCorrectlyWithAdditionalCacheTagsSetsMarkupCorrectly(): void
+    {
+        $this->controllerStub
+            ->method('getPageCacheTags')
+            ->willReturn(['some_tag_1', 'some_tag_2']);
+
+        $this->cacheFrontendMock
+            ->expects(self::once())
+            ->method('set')
+            ->with('some-hash-tx-schema', 'markup to store', ['pageId_42', 'some_tag_1', 'some_tag_2'], 3600);
 
         $this->subject->storeMarkupInCache('markup to store');
     }

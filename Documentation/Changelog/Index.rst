@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v2.9.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Custom page cache tags for schema page cache not considered (#115)
+
 `2.9.0 <https://github.com/brotkrueml/schema/compare/v2.8.0...v2.9.0>`_ - 2023-06-02
 ----------------------------------------------------------------------------------------
 
