@@ -44,8 +44,8 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     {
         parent::initializeArguments();
 
-        $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name to merge under the parent node', true);
-        $this->registerArgument(static::ARGUMENT_VALUE, 'string', 'The value of the property', true);
+        $this->registerArgument(self::ARGUMENT_AS, 'string', 'Property name to merge under the parent node', true);
+        $this->registerArgument(self::ARGUMENT_VALUE, 'string', 'The value of the property', true);
     }
 
     public function render(): void
@@ -61,7 +61,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
 
         /** @var TypeInterface $type */
         $type = $this->typeStack->pop();
-        $type->addProperty($this->arguments[static::ARGUMENT_AS], $this->arguments[static::ARGUMENT_VALUE]);
+        $type->addProperty($this->arguments[self::ARGUMENT_AS], $this->arguments[self::ARGUMENT_VALUE]);
         $this->typeStack->push($type);
     }
 
@@ -69,16 +69,16 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
     {
         $emptyMessage = 'The argument "%s" cannot be empty';
 
-        if ($this->arguments[static::ARGUMENT_AS] === '') {
+        if ($this->arguments[self::ARGUMENT_AS] === '') {
             throw new ViewHelper\Exception(
-                \sprintf($emptyMessage, static::ARGUMENT_AS),
+                \sprintf($emptyMessage, self::ARGUMENT_AS),
                 1561838834
             );
         }
 
-        if ($this->arguments[static::ARGUMENT_VALUE] === '') {
+        if ($this->arguments[self::ARGUMENT_VALUE] === '') {
             throw new ViewHelper\Exception(
-                \sprintf($emptyMessage, static::ARGUMENT_VALUE),
+                \sprintf($emptyMessage, self::ARGUMENT_VALUE),
                 1561838999
             );
         }
