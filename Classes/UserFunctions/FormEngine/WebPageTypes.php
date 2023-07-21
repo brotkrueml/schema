@@ -29,7 +29,7 @@ final class WebPageTypes
     /**
      * @param array{items: string[]} $params
      */
-    public function get(&$params): void
+    public function get(array &$params): void
     {
         $webPageTypes = $this->typeProvider->getWebPageTypes();
         \sort($webPageTypes);

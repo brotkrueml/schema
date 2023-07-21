@@ -59,7 +59,7 @@ final class Renderer implements RendererInterface
         ];
 
         $result = \array_merge([
-            '@context' => static::CONTEXT,
+            '@context' => self::CONTEXT,
         ], $result);
 
         return \sprintf(

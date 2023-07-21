@@ -6,8 +6,9 @@ use Rector\Config\RectorConfig;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
-use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
+use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
@@ -22,9 +23,6 @@ return static function (RectorConfig $config): void {
     $config->import(SetList::EARLY_RETURN);
     $config->import(SetList::TYPE_DECLARATION);
     $config->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
-    $config->import(PHPUnitSetList::PHPUNIT_EXCEPTION);
-    $config->import(PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD);
-    $config->import(PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER);
 
     $config->phpVersion(PhpVersion::PHP_81);
 
@@ -45,12 +43,14 @@ return static function (RectorConfig $config): void {
         AddReturnTypeDeclarationFromYieldsRector::class => [
             __DIR__ . '/Tests/*',
         ],
+        PreferPHPUnitThisCallRector::class,
         RecastingRemovalRector::class => [
             __DIR__ . '/Tests/Functional/ViewHelpers/ViewHelperTestCase.php',
         ],
         RemoveParentCallWithoutParentRector::class => [
             __DIR__ . '/Classes/AdminPanel/SchemaModule', // can be removed with minimum compatibility to TYPO3 v12 LTS
         ],
+        ReplaceTestAnnotationWithPrefixedFunctionRector::class,
         ReturnTypeFromStrictTypedPropertyRector::class => [
             __DIR__ . '/Classes/Core/Model/AbstractType.php',
             __DIR__ . '/Classes/Core/Model/MultipleType.php',
