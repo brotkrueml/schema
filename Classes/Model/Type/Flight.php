@@ -48,6 +48,7 @@ final class Flight extends AbstractType
         'sameAs',
         'seller',
         'subjectOf',
+        'tripOrigin',
         'url',
         'webCheckinTime',
     ];
