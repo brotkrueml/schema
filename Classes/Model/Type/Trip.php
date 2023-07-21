@@ -33,6 +33,7 @@ final class Trip extends AbstractType
         'potentialAction',
         'sameAs',
         'subjectOf',
+        'tripOrigin',
         'url',
     ];
 }

@@ -39,6 +39,7 @@ final class TrainTrip extends AbstractType
         'subjectOf',
         'trainName',
         'trainNumber',
+        'tripOrigin',
         'url',
     ];
 }

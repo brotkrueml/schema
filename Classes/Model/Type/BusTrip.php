@@ -37,6 +37,7 @@ final class BusTrip extends AbstractType
         'potentialAction',
         'sameAs',
         'subjectOf',
+        'tripOrigin',
         'url',
     ];
 }
