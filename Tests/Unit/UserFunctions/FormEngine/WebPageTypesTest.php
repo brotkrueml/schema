@@ -14,17 +14,15 @@ namespace Brotkrueml\Schema\Tests\Unit\UserFunctions\FormEngine;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\TypeProvider;
 use Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Information\Typo3Version;
 
-/**
- * @covers \Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes
- */
+#[CoversClass(WebPageTypes::class)]
 final class WebPageTypesTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function getAddsWebPageTypesToItemsArrayForTypo3V11(): void
     {
         if ((new Typo3Version())->getMajorVersion() >= 12) {
@@ -48,9 +46,7 @@ final class WebPageTypesTest extends TestCase
         self::assertSame(['WebPage', 'WebPage'], $params['items'][1]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAddsWebPageTypesToItemsArray(): void
     {
         if ((new Typo3Version())->getMajorVersion() < 12) {

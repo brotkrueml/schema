@@ -14,6 +14,8 @@ namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 use Brotkrueml\Schema\AdminPanel\TypesInformation;
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Extension;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -51,17 +53,13 @@ final class TypesInformationTest extends TestCase
         GeneralUtility::purgeInstances();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdentifierReturnsIdentifierCorrectly(): void
     {
         self::assertSame('ext-schema_types', $this->subject->getIdentifier());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLabelReturnsLabelCorrectly(): void
     {
         $this->languageServiceStub
@@ -72,10 +70,8 @@ final class TypesInformationTest extends TestCase
         self::assertSame('Types', $this->subject->getLabel());
     }
 
-    /**
-     * @test
-     * @dataProvider dataProviderForGetContent
-     */
+    #[Test]
+    #[DataProvider('dataProviderForGetContent')]
     public function getContentWithNoCacheEntryAvailable(?string $markupFromCache, array $expectedTypes): void
     {
         $this->pagesCacheServiceStub
@@ -90,7 +86,7 @@ final class TypesInformationTest extends TestCase
         $this->subject->getContent(new ModuleData());
     }
 
-    public function dataProviderForGetContent(): \Iterator
+    public static function dataProviderForGetContent(): \Iterator
     {
         yield 'No cache entry found, assign empty array to view' => [
             null,

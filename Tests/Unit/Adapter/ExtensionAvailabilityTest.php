@@ -12,14 +12,14 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Adapter;
 
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-/**
- * @runInSeparateProcess
- */
+#[RunTestsInSeparateProcesses]
 final class ExtensionAvailabilityTest extends TestCase
 {
     private PackageManager&Stub $packageManagerStub;
@@ -33,9 +33,7 @@ final class ExtensionAvailabilityTest extends TestCase
         ExtensionManagementUtility::setPackageManager($this->packageManagerStub);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isSeoAvailableCallIsLoadedSeo(): void
     {
         $this->packageManagerStub
@@ -46,9 +44,7 @@ final class ExtensionAvailabilityTest extends TestCase
         self::assertTrue($this->subject->isSeoAvailable());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isSeoAvailableReturnsFalseWhenItsLoaded(): void
     {
         $this->packageManagerStub

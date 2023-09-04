@@ -23,6 +23,7 @@ use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -69,17 +70,13 @@ final class SchemaManagerTest extends Testcase
         GeneralUtility::purgeInstances();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasWebPageReturnsFalseWhenNoWebPageIsSet(): void
     {
         self::assertFalse($this->subject->hasWebPage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasWebPageReturnsTrueWhenWebPageIsSet(): void
     {
         $this->subject->addType(new WebPage());
@@ -87,9 +84,7 @@ final class SchemaManagerTest extends Testcase
         self::assertTrue($this->subject->hasWebPage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithOnBreadcrumbListAndNoWebPageAvailable(): void
     {
         $breadcrumbList = new BreadcrumbList();
@@ -102,9 +97,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$breadcrumbList], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithTwoBreadcrumbListAndNoWebPageAvailable(): void
     {
         $breadcrumbList1 = new BreadcrumbList();
@@ -119,9 +112,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$breadcrumbList1, $breadcrumbList2], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithABreadcrumbListInAWebPage(): void
     {
         $webPage = new WebPage();
@@ -135,9 +126,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame($breadcrumbList, $webPage->getProperty('breadcrumb'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithABreadcrumbListInAWebPageAndAnAdditionalWebPage(): void
     {
         $breadcrumbList1 = new BreadcrumbList();
@@ -155,9 +144,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$breadcrumbList1, $breadcrumbList2], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithTwoBreadcrumbListInAWebPage(): void
     {
         $breadcrumbLists = [new BreadcrumbList(), new BreadcrumbList()];
@@ -173,9 +160,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame($breadcrumbLists, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithAWrongTypeAsBreadcrumbListInWebPageIsIgnored(): void
     {
         $breadcrumbList = new BreadcrumbList();
@@ -192,9 +177,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame($breadcrumbList, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithWebPageAndOneMainEntityDefined(): void
     {
         $thing = new Thing();
@@ -210,9 +193,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame($thing, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithWebPageAndOneInvalidMainEntityDefined(): void
     {
         $webPage = new WebPage();
@@ -226,9 +207,7 @@ final class SchemaManagerTest extends Testcase
         self::assertNull($actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithWebPageAndTwoMainEntitiesDefined(): void
     {
         $thing1 = new Thing();
@@ -246,9 +225,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$thing1, $thing2], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithWebPageAndTwoMainEntitiesDefinedOneIsInvalid(): void
     {
         $thing = new Thing();
@@ -265,9 +242,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame($thing, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addTypeWithWebPageSetTwiceThenTheSecondOneOverridesTheFirstOne(): void
     {
         $webPage = new WebPage();
@@ -282,9 +257,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$itemPage], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderJsonLdWithSomeTypesAreHandledCorrectly(): void
     {
         $thing = new Thing();
@@ -299,9 +272,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$thing, $person], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addMainEntityOfWebPageCalledMultipleTimesWithNotPrioritisedTypes(): void
     {
         $thing = new Thing();
@@ -317,9 +288,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame([$thing, $person], $webPage->getProperty('mainEntity'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addMainEntityOfWebPageCalledMultipleTimesWithMixedPrioritisedAndNotPrioritisedTypes(): void
     {
         $person1 = new Person();
@@ -342,9 +311,7 @@ final class SchemaManagerTest extends Testcase
         self::assertContains($person4, $webPage->getProperty('mainEntity'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function typesFromInitialiseTypesEventIsAdded(): void
     {
         $type1 = new ProductStub();
@@ -385,9 +352,7 @@ final class SchemaManagerTest extends Testcase
         self::assertContains($type2, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function onlyOneBreadCrumbListIsRenderedIfExtensionConfigurationIsEnabled(): void
     {
         $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
@@ -417,9 +382,7 @@ final class SchemaManagerTest extends Testcase
         self::assertSame($breadcrumbList2, $actual[0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allBreadCrumbListsAreRenderedIfExtensionConfigurationIsDisabled(): void
     {
         $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
@@ -450,25 +413,19 @@ final class SchemaManagerTest extends Testcase
         self::assertContains($breadcrumbList2, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addTypeReturnsInstanceOfSelf(): void
     {
         self::assertSame($this->subject, $this->subject->addType(new Thing()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addMainEntityOfWebPageReturnsInstanceOfSelf(): void
     {
         self::assertSame($this->subject, $this->subject->addMainEntityOfWebPage(new Thing()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function multipleCallsOfRenderJsonLd(): void
     {
         $this->subject->addType(new Thing());
@@ -480,9 +437,7 @@ final class SchemaManagerTest extends Testcase
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function inBackendContextTheEventDispatcherIsNotCalled(): void
     {
         self::expectNotToPerformAssertions();

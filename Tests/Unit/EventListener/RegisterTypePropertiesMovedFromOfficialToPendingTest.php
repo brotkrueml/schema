@@ -14,6 +14,8 @@ namespace Brotkrueml\Schema\Tests\Unit\EventListener;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending;
 use Brotkrueml\Schema\Model\Type;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
@@ -25,9 +27,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         $this->subject = new RegisterTypePropertiesMovedFromOfficialToPending();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function additionalPropertiesForPersonTypeAreRegistered(): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent(Type\Person::class);
@@ -37,10 +37,8 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('jobTitle', $event->getAdditionalProperties());
     }
 
-    /**
-     * @test
-     * @dataProvider dataProviderForHasEnergyConsumptionDetails
-     */
+    #[Test]
+    #[DataProvider('dataProviderForHasEnergyConsumptionDetails')]
     public function additionalPropertyHasEnergyConsumptionDetailsIsRegisteredCorrectly(string $type): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent($type);
@@ -49,7 +47,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('hasEnergyConsumptionDetails', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForHasEnergyConsumptionDetails(): \Iterator
+    public static function dataProviderForHasEnergyConsumptionDetails(): \Iterator
     {
         yield [Type\Car::class];
         yield [Type\IndividualProduct::class];
@@ -59,10 +57,8 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         yield [Type\Vehicle::class];
     }
 
-    /**
-     * @test
-     * @dataProvider dataProviderForIneligibleRegion
-     */
+    #[Test]
+    #[DataProvider('dataProviderForIneligibleRegion')]
     public function additionalPropertyIneligibleRegionIsRegisteredCorrectly(string $type): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent($type);
@@ -71,7 +67,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('ineligibleRegion', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForIneligibleRegion(): \Iterator
+    public static function dataProviderForIneligibleRegion(): \Iterator
     {
         yield [Type\ActionAccessSpecification::class];
         yield [Type\AggregateOffer::class];
@@ -83,8 +79,8 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
     /**
      * We test here only one type from the amount of types, just to verify that the
      * property is added correctly
-     * @test
      */
+    #[Test]
     public function additionalPropertyProviderIsRegisteredCorrectly(): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent(Type\AboutPage::class);
@@ -93,10 +89,8 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('provider', $event->getAdditionalProperties());
     }
 
-    /**
-     * @test
-     * @dataProvider dataProviderForSport
-     */
+    #[Test]
+    #[DataProvider('dataProviderForSport')]
     public function additionalPropertySportIsRegisteredCorrectly(string $type): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent($type);
@@ -105,17 +99,15 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('sport', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForSport(): \Iterator
+    public static function dataProviderForSport(): \Iterator
     {
         yield [Type\SportsEvent::class];
         yield [Type\SportsOrganization::class];
         yield [Type\SportsTeam::class];
     }
 
-    /**
-     * @test
-     * @dataProvider dataProviderForSubtitleLanguage
-     */
+    #[Test]
+    #[DataProvider('dataProviderForSubtitleLanguage')]
     public function additionalPropertySubtitleLanguageIsRegisteredCorrectly(string $type): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent($type);
@@ -124,7 +116,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('subtitleLanguage', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForSubtitleLanguage(): \Iterator
+    public static function dataProviderForSubtitleLanguage(): \Iterator
     {
         yield [Type\BroadcastEvent::class];
         yield [Type\Movie::class];
@@ -132,10 +124,8 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         yield [Type\TVEpisode::class];
     }
 
-    /**
-     * @test
-     * @dataProvider dataProviderForOccupationalCategory
-     */
+    #[Test]
+    #[DataProvider('dataProviderForOccupationalCategory')]
     public function additionalPropertyOccupationalCategorIsRegisteredCorrectly(string $type): void
     {
         $event = new RegisterAdditionalTypePropertiesEvent($type);
@@ -144,7 +134,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
         self::assertContains('occupationalCategory', $event->getAdditionalProperties());
     }
 
-    public function dataProviderForOccupationalCategory(): \Iterator
+    public static function dataProviderForOccupationalCategory(): \Iterator
     {
         yield [Type\JobPosting::class];
         yield [Type\Occupation::class];

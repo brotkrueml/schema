@@ -15,13 +15,15 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\ViewHelpers\PropertyViewHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
-/**
- * @covers \Brotkrueml\Schema\ViewHelpers\PropertyViewHelper
- */
+#[CoversClass(PropertyViewHelper::class)]
 final class PropertyViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -46,7 +48,7 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProvider(): iterable
+    public static function fluidTemplatesProvider(): iterable
     {
         yield 'Property with one value' => [
             '<schema:type.thing>
@@ -74,12 +76,11 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
     }
 
     /**
-     * @test
-     * @dataProvider fluidTemplatesProvider
-     *
      * @param string $template The Fluid template
      * @param string $expected The expected output
      */
+    #[Test]
+    #[DataProvider('fluidTemplatesProvider')]
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, string $expected): void
     {
         $this->renderTemplate($template);
@@ -94,7 +95,7 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProviderForExceptions(): iterable
+    public static function fluidTemplatesProviderForExceptions(): iterable
     {
         yield 'View helper is not a child of a type' => [
             '<schema:property -as="someProperty" value="some value"/>',
@@ -128,13 +129,12 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
     }
 
     /**
-     * @test
-     * @dataProvider fluidTemplatesProviderForExceptions
-     *
      * @param string $template The Fluid template
      * @param string $exceptionClass The exception class
      * @param int $expectedExceptionCode The expected exception code
      */
+    #[Test]
+    #[DataProvider('fluidTemplatesProviderForExceptions')]
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
         string $template,
         string $exceptionClass,

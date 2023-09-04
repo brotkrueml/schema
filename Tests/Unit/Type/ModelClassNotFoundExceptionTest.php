@@ -12,16 +12,14 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Type;
 
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Brotkrueml\Schema\Type\ModelClassNotFoundException
- */
+#[CoversClass(ModelClassNotFoundException::class)]
 final class ModelClassNotFoundExceptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function fromType(): void
     {
         $actual = ModelClassNotFoundException::fromType('SomeType');

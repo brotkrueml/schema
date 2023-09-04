@@ -11,12 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\TestDox;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-/**
- * @testdox Conversion of TypoScript to Schema
- */
+#[TestDox('Conversion of TypoScript to Schema')]
 class TypoScriptToSchemaTest extends FunctionalTestCase
 {
     protected array $coreExtensionsToLoad = [
@@ -57,10 +58,8 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         \file_put_contents($this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log', '');
     }
 
-    /**
-     * @test
-     * @dataProvider possibleTypoScriptConfigurationsWithNoResultProvider
-     */
+    #[Test]
+    #[DataProvider('possibleTypoScriptConfigurationsWithNoResultProvider')]
     public function returnsNoSchema(
         string $typoScriptSetup,
         array $expectedLogEntries,
@@ -81,7 +80,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         $this->assertHasLogEntries($expectedLogEntries);
     }
 
-    public function possibleTypoScriptConfigurationsWithNoResultProvider(): iterable
+    public static function possibleTypoScriptConfigurationsWithNoResultProvider(): iterable
     {
         yield 'Without SCHEMA content object no JSON-LD is embedded' => [
             'typoScriptSetup' => <<< TYPOSCRIPT
@@ -119,10 +118,8 @@ TYPOSCRIPT,
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider possibleTypoScriptConfigurationsProvider
-     */
+    #[Test]
+    #[DataProvider('possibleTypoScriptConfigurationsProvider')]
     public function returnsExpectedSchemaInHtml(
         string $typoScriptSetup,
         array $expectedJsonLd,
@@ -143,7 +140,7 @@ TYPOSCRIPT,
         $this->assertHasLogEntries([]);
     }
 
-    public function possibleTypoScriptConfigurationsProvider(): iterable
+    public static function possibleTypoScriptConfigurationsProvider(): iterable
     {
         yield 'type and id' => [
             'typoScriptSetup' => <<<TYPOSCRIPT
@@ -412,9 +409,7 @@ TYPOSCRIPT,
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function returnsSchemaAndAddsErrorForUnknownProperty(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');

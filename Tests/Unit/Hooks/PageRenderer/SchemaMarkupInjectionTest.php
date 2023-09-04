@@ -20,6 +20,7 @@ use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -98,9 +99,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         unset($GLOBALS['TSFE']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function executeInBackendModeDoesNothing(): void
     {
         $this->schemaManager->addType(new GenericStub());
@@ -121,9 +120,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $this->subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function executeWithoutDefinedMarkupAndNoAspectsDoesNotEmbedAnything(): void
     {
         $this->pageRendererMock
@@ -142,9 +139,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $this->subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -186,9 +181,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -230,9 +223,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function seoExtensionIsNotInstalledAddsHeaderData(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -274,9 +265,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenCacheIsDefinedItIsUsedToGetMarkup(): void
     {
         $this->pagesCacheServiceMock
@@ -301,9 +290,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $this->subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -332,9 +319,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $this->subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenPageShouldBeIndexedThenMarkupIsEmbedded(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -363,9 +348,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $this->subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenPageShouldNotBeIndexedAndConfigurationOptionIsNotDefinedThenMarkupIsEmbedded(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -410,9 +393,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenPageShouldNotBeIndexedAndConfigurationOptionIsActivatedThenMarkupIsEmbedded(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -459,9 +440,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenPageShouldNotBeIndexedAndConfigurationOptionIsDeactivatedThenMarkupIsNotEmbedded(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -500,9 +479,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function whenSeoExtensionIsNotLoadedMarkupIsAlwaysEmbedded(): void
     {
         $this->schemaManager->addType(new GenericStub('some-type'));
@@ -556,9 +533,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $subject->execute($params, $this->pageRendererMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function additionalTypeAddedViaEventDispatcherIsAddedCorrectly(): void
     {
         $this->extensionConfigurationMock

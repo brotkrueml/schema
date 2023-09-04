@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class MultipleTypeTest extends TestCase
@@ -27,25 +28,19 @@ class MultipleTypeTest extends TestCase
         $this->subject = new MultipleType(new ProductStub(), new ServiceStub());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectImplementsTypeInterface(): void
     {
         self::assertInstanceOf(TypeInterface::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectImplementsNodeIdentifierInterface(): void
     {
         self::assertInstanceOf(NodeIdentifierInterface::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function instantiatingSubjectWithNoTypeGivenThrowsException(): void
     {
         $this->expectException(\DomainException::class);
@@ -55,9 +50,7 @@ class MultipleTypeTest extends TestCase
         new MultipleType();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function instantiatingSubjectWithOneTypeGivenThrowsException(): void
     {
         $this->expectException(\DomainException::class);
@@ -67,9 +60,7 @@ class MultipleTypeTest extends TestCase
         new MultipleType(new ProductStub());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function instantiatingSubjectWithTwoSameTypesGivenThrowsException(): void
     {
         $this->expectException(\DomainException::class);
@@ -79,9 +70,7 @@ class MultipleTypeTest extends TestCase
         new MultipleType(new ProductStub(), new ProductStub(), new ServiceStub());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypeReturnsTypesSortedAlphabetically(): void
     {
         $subject = new MultipleType(new ServiceStub(), new ProductStub());
@@ -89,25 +78,19 @@ class MultipleTypeTest extends TestCase
         self::assertSame(['ProductStub', 'ServiceStub'], $subject->getType());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function propertiesFromTwoTypesAreMergedCorrectly(): void
     {
         self::assertSame(['name', 'serviceType', 'sku'], $this->subject->getPropertyNames());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypeReturnsArrayOfTypesCorrectly(): void
     {
         self::assertSame(['ProductStub', 'ServiceStub'], $this->subject->getType());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function checkPropertyExistsDisplaysCorrectExceptionMessage(): void
     {
         $this->expectExceptionMessage('Property "notExisting" is unknown for type "ProductStub / ServiceStub"');

@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class RenderAdditionalTypesEventTest extends TestCase
@@ -24,17 +25,13 @@ class RenderAdditionalTypesEventTest extends TestCase
         $this->subject = new RenderAdditionalTypesEvent(false);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isWebPageTypeIsAlreadyDefinedReturnsFalseCorrectly(): void
     {
         self::assertFalse($this->subject->isWebPageTypeAlreadyDefined());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isWebPageTypeIsAlreadyDefinedReturnsTrueCorrectly(): void
     {
         $subject = new RenderAdditionalTypesEvent(true);
@@ -42,17 +39,13 @@ class RenderAdditionalTypesEventTest extends TestCase
         self::assertTrue($subject->isWebPageTypeAlreadyDefined());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAdditionalTypesReturnEmptyArrayWhenNoTypesAreRegistered(): void
     {
         self::assertSame([], $this->subject->getAdditionalTypes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addingOneTypeGetAdditionalTypesReturnsTypeCorrectly(): void
     {
         $type = new GenericStub();
@@ -61,9 +54,7 @@ class RenderAdditionalTypesEventTest extends TestCase
         self::assertSame([$type], $this->subject->getAdditionalTypes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addingTwoTypesGetAdditionalTypesReturnsTypesCorrectly(): void
     {
         $type1 = new GenericStub();

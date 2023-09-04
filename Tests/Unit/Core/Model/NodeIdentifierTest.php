@@ -13,29 +13,24 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class NodeIdentifierTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectIsInstanceOfNodeIdentifierInterface(): void
     {
         self::assertInstanceOf(NodeIdentifierInterface::class, new NodeIdentifier('some-id'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectIsInstanceOfStringableInterface(): void
     {
         self::assertInstanceOf(\Stringable::class, new NodeIdentifier('some-id'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsCorrectId(): void
     {
         $subject = new NodeIdentifier('some-id');
@@ -43,9 +38,7 @@ class NodeIdentifierTest extends TestCase
         self::assertSame('some-id', $subject->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toStringReturnsIdentifier(): void
     {
         $subject = new NodeIdentifier('some-id');

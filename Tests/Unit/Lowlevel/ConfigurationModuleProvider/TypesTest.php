@@ -15,13 +15,13 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\TypeProvider;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * @runInSeparateProcess
- */
+#[RunTestsInSeparateProcesses]
 final class TypesTest extends TestCase
 {
     private TypeProvider $typeProvider;
@@ -59,9 +59,7 @@ final class TypesTest extends TestCase
         unset($GLOBALS['LANG']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdentifierReturnsCorrectIdentifier(): void
     {
         $this->subject->__invoke([
@@ -71,17 +69,13 @@ final class TypesTest extends TestCase
         self::assertSame('some-identifier', $this->subject->getIdentifier());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLabelReturnsCorrectLabel(): void
     {
         self::assertSame('Some label', $this->subject->getLabel());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getConfigurationReturnsCorrectConfiguration(): void
     {
         $this->typeProvider->addType('ItemPage', FixtureType\ItemPage::class);

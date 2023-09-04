@@ -16,11 +16,12 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\ViewHelpers\BlankNodeIdentifierViewHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * @covers \Brotkrueml\Schema\ViewHelpers\BlankNodeIdentifierViewHelper
- */
+#[CoversClass(BlankNodeIdentifierViewHelper::class)]
 final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -43,9 +44,7 @@ final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewHelperUsedOncePrintsBlankNodeIdentifierCorrectly(): void
     {
         $actual = $this->renderTemplate('<schema:blankNodeIdentifier/>', []);
@@ -53,9 +52,7 @@ final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
         self::assertSame('_:b1', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewHelperUsedTwicePrintsBlankNodeIdentifiersCorrectly(): void
     {
         $actual = $this->renderTemplate('<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>', []);
@@ -63,9 +60,7 @@ final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
         self::assertSame('_:b1 _:b2', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function usingVariablesAndThenAssignedToTypePropertiesBuildsSchemaCorrectly(): void
     {
         $template = <<<EOF

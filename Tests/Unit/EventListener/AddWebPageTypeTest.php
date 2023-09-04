@@ -18,15 +18,15 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-/**
- * @covers \Brotkrueml\Schema\EventListener\AddWebPageType
- */
+#[CoversClass(AddWebPageType::class)]
 final class AddWebPageTypeTest extends TestCase
 {
     use SchemaCacheTrait;
@@ -59,9 +59,7 @@ final class AddWebPageTypeTest extends TestCase
         unset($GLOBALS['TSFE']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noWebPageTypeIsAddedWhenItShouldNotBeGeneratedViaConfiguration(): void
     {
         $this->extensionConfigurationStub
@@ -74,9 +72,7 @@ final class AddWebPageTypeTest extends TestCase
         self::assertSame([], $this->event->getAdditionalTypes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noWebPageTypeIsAddedWhenItItIsAlreadyDefined(): void
     {
         $this->extensionConfigurationStub
@@ -90,9 +86,7 @@ final class AddWebPageTypeTest extends TestCase
         self::assertSame([], $event->getAdditionalTypes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function webPageTypeWebPageIsAddedWhenNoTypeIsDefinedInPageProperties(): void
     {
         $this->extensionConfigurationStub
@@ -107,9 +101,7 @@ final class AddWebPageTypeTest extends TestCase
         self::assertNull($this->event->getAdditionalTypes()[0]->getProperty('expires'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function webPageTypeItemPageIsAddedWhenItemPageIsDefinedInPageProperties(): void
     {
         $this->extensionConfigurationStub
@@ -127,9 +119,7 @@ final class AddWebPageTypeTest extends TestCase
         self::assertInstanceOf(FixtureType\ItemPage::class, $this->event->getAdditionalTypes()[0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function webPageTypeHasExpiresSetIfEndTimePagePropertiesIsDefined(): void
     {
         $this->extensionConfigurationStub

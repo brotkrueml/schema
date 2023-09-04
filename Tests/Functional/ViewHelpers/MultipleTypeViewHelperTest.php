@@ -15,12 +15,14 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\ViewHelpers\MultipleTypeViewHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
-/**
- * @covers \Brotkrueml\Schema\ViewHelpers\MultipleTypeViewHelper
- */
+#[CoversClass(MultipleTypeViewHelper::class)]
 final class MultipleTypeViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -40,10 +42,8 @@ final class MultipleTypeViewHelperTest extends ViewHelperTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     * @dataProvider fluidTemplatesProvider
-     */
+    #[Test]
+    #[DataProvider('fluidTemplatesProvider')]
     public function itBuildsSchemaCorrectly(string $template, string $expected): void
     {
         $this->renderTemplate($template, []);
@@ -52,7 +52,7 @@ final class MultipleTypeViewHelperTest extends ViewHelperTestCase
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
     }
 
-    public function fluidTemplatesProvider(): iterable
+    public static function fluidTemplatesProvider(): iterable
     {
         yield 'Using view helper without properties' => [
             'template' => '<schema:multipleType types="ProductStub,ServiceStub"/>',
@@ -134,9 +134,7 @@ final class MultipleTypeViewHelperTest extends ViewHelperTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itThrowsExceptionWhenUsedAsAChildTypeWithoutAsArgument(): void
     {
         $this->expectException(ViewHelper\Exception::class);

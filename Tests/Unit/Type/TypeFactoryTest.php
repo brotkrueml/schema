@@ -18,12 +18,12 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * @covers \Brotkrueml\Schema\Type\TypeFactory
- */
+#[CoversClass(TypeFactory::class)]
 final class TypeFactoryTest extends TestCase
 {
     private TypeProvider $typeProvider;
@@ -39,9 +39,7 @@ final class TypeFactoryTest extends TestCase
         GeneralUtility::purgeInstances();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createTypeWithNoArgumentThrowsException(): void
     {
         $this->expectException(\DomainException::class);
@@ -51,9 +49,7 @@ final class TypeFactoryTest extends TestCase
         TypeFactory::createType();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createTypeWithSingleArgumentReturnsInstanceOfTypeModel(): void
     {
         $this->typeProvider->addType('GenericStub', GenericStub::class);
@@ -63,9 +59,7 @@ final class TypeFactoryTest extends TestCase
         self::assertInstanceOf(GenericStub::class, $type);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createTypeWithSingleArgumentThrowsExceptionOnInvalidType(): void
     {
         $this->expectException(ModelClassNotFoundException::class);
@@ -73,9 +67,7 @@ final class TypeFactoryTest extends TestCase
         TypeFactory::createType('UnavailableType');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createTypeWithTwoArgumentsReturnsInstanceOfMultipleType(): void
     {
         $this->typeProvider->addType('ProductStub', ProductStub::class);
@@ -87,9 +79,7 @@ final class TypeFactoryTest extends TestCase
         self::assertSame(['ProductStub', 'ServiceStub'], $actual->getType());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createTypeWithTwoSameArgumentsReturnsSingleTypeInstance(): void
     {
         $this->typeProvider->addType('GenericStub', GenericStub::class);
@@ -99,9 +89,7 @@ final class TypeFactoryTest extends TestCase
         self::assertInstanceOf(GenericStub::class, $type);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function instantiatingTypeFactoryThrowsError(): void
     {
         $this->expectException(\Error::class);

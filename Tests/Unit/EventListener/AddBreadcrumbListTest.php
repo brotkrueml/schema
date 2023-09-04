@@ -19,6 +19,9 @@ use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -27,9 +30,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-/**
- * @covers \Brotkrueml\Schema\EventListener\AddBreadcrumbList
- */
+#[CoversClass(AddBreadcrumbList::class)]
 final class AddBreadcrumbListTest extends TestCase
 {
     use SchemaCacheTrait;
@@ -67,9 +68,7 @@ final class AddBreadcrumbListTest extends TestCase
         unset($GLOBALS['TSFE']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noBreadcrumbIsAddedWhenItShouldNotBeEmbeddedViaConfiguration(): void
     {
         $this->setExtensionConfiguration(false);
@@ -89,9 +88,7 @@ final class AddBreadcrumbListTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function withEmptyRootLineNoBreadcrumbIsAdded(): void
     {
         $this->setExtensionConfiguration(true);
@@ -101,10 +98,8 @@ final class AddBreadcrumbListTest extends TestCase
         self::assertSame([], $this->event->getTypes());
     }
 
-    /**
-     * @test
-     * @dataProvider rootLineProvider
-     */
+    #[Test]
+    #[DataProvider('rootLineProvider')]
     public function breadcrumbIsAddedCorrectly(array $rootLine, string $expected): void
     {
         $this->setExtensionConfiguration(true, '42,43');
@@ -134,7 +129,7 @@ final class AddBreadcrumbListTest extends TestCase
         return \str_replace($templateParts, '', $jsonLd);
     }
 
-    public function rootLineProvider(): iterable
+    public static function rootLineProvider(): iterable
     {
         yield 'Rootline with nav_title set' => [
             [
@@ -450,9 +445,7 @@ final class AddBreadcrumbListTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function breadcrumbIsSortedCorrectly(): void
     {
         $this->setExtensionConfiguration(true);
@@ -545,9 +538,7 @@ final class AddBreadcrumbListTest extends TestCase
         self::assertSame($expected, $this->renderJsonLd($actual[0]));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rootLineWithDifferentWebPageTypeSet(): void
     {
         $this->setExtensionConfiguration(true);

@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\InitialiseTypesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class InitialiseTypesEventTest extends TestCase
@@ -24,9 +25,7 @@ final class InitialiseTypesEventTest extends TestCase
         $this->subject = new InitialiseTypesEvent();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypesReturnEmptyArrayWhenNoTypeWasAdded(): void
     {
         $actual = $this->subject->getTypes();
@@ -34,9 +33,7 @@ final class InitialiseTypesEventTest extends TestCase
         self::assertSame([], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypesReturnsTheTypeIfOneTypeWasAdded(): void
     {
         $type = new GenericStub();
@@ -48,9 +45,7 @@ final class InitialiseTypesEventTest extends TestCase
         self::assertSame($type, $actual[0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypesReturnsTheTypesIfTwoTypesWereAdded(): void
     {
         $type1 = new GenericStub();

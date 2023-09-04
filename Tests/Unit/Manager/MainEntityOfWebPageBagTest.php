@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
 use Brotkrueml\Schema\Manager\MainEntityOfWebPageBag;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class MainEntityOfWebPageBagTest extends TestCase
@@ -24,18 +25,14 @@ final class MainEntityOfWebPageBagTest extends TestCase
         $this->subject = new MainEntityOfWebPageBag();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagIsEmptyAfterInstantiation(): void
     {
         self::assertCount(0, $this->subject);
         self::assertSame([], $this->subject->getTypes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsOneTypeWhenOneNotPrioritisedTypeIsAdded(): void
     {
         $type = new GenericStub();
@@ -46,9 +43,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
         self::assertSame([], $notPrioritisedTypes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsTwoTypesWhenTwoNotPrioritisedTypesAreAdded(): void
     {
         $type1 = new GenericStub();
@@ -62,9 +57,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
         self::assertSame([], $notPrioritisedTypes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsOneTypeWhenOnePrioritisedTypeIsAdded(): void
     {
         $type = new GenericStub();
@@ -75,9 +68,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
         self::assertSame([], $notPrioritisedTypes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsTwoTypesWhenTwoPrioritisedTypesAreAdded(): void
     {
         $type1 = new GenericStub();
@@ -91,9 +82,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
         self::assertSame([], $notPrioritisedTypes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsOnePrioritisedTypeWhenOneNotPrioritisedTypeAndThenOnePrioritisedTypeIsAdded(): void
     {
         $type1 = new GenericStub();
@@ -106,9 +95,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
         self::assertSame([$type1], $notPrioritisedTypes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsOnePrioritisedTypeWhenOnePrioritisedTypeAndThenOneNotPrioritisedTypeIsAdded(): void
     {
         $type1 = new GenericStub();
@@ -121,9 +108,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
         self::assertSame([$type2], $notPrioritisedTypes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function bagContainsCorrectPrioritisedTypesWhenPrioritisedAndNotPrioritisedTypesAreAdded(): void
     {
         $type1 = new GenericStub();

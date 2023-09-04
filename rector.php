@@ -9,6 +9,7 @@ use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector;
+use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
@@ -22,6 +23,7 @@ return static function (RectorConfig $config): void {
     $config->import(SetList::DEAD_CODE);
     $config->import(SetList::EARLY_RETURN);
     $config->import(SetList::TYPE_DECLARATION);
+    $config->import(PHPUnitLevelSetList::UP_TO_PHPUNIT_100);
     $config->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
 
     $config->phpVersion(PhpVersion::PHP_81);

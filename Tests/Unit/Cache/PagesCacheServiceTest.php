@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Cache;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -42,9 +43,7 @@ final class PagesCacheServiceTest extends TestCase
         $this->subject->setTypoScriptFrontendController($this->controllerStub);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMarkupFromCacheReturnsNullWhenCacheEntryIsNotAvailable(): void
     {
         $this->cacheFrontendMock
@@ -55,9 +54,7 @@ final class PagesCacheServiceTest extends TestCase
         self::assertNull($this->subject->getMarkupFromCache());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMarkupFromCacheReturnsMarkupFromCacheCorrectly(): void
     {
         $this->cacheFrontendMock
@@ -69,9 +66,7 @@ final class PagesCacheServiceTest extends TestCase
         self::assertSame('some markup', $this->subject->getMarkupFromCache());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storeMarkupInCacheWithoutAdditionalCacheTagsSetsMarkupCorrectly(): void
     {
         $this->controllerStub
@@ -86,9 +81,7 @@ final class PagesCacheServiceTest extends TestCase
         $this->subject->storeMarkupInCache('markup to store');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storeMarkupInCacheSetsMarkupCorrectlyWithAdditionalCacheTagsSetsMarkupCorrectly(): void
     {
         $this->controllerStub

@@ -13,29 +13,24 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class BlankNodeIdentifierTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectIsInstanceOfNodeIdentifierInterface(): void
     {
         self::assertInstanceOf(NodeIdentifierInterface::class, new BlankNodeIdentifier());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectIsInstanceOfStringableInterface(): void
     {
         self::assertInstanceOf(\Stringable::class, new BlankNodeIdentifier());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsBlankIdentifier(): void
     {
         $subject = new BlankNodeIdentifier(true);
@@ -43,9 +38,7 @@ class BlankNodeIdentifierTest extends TestCase
         self::assertSame('_:b0', $subject->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdOnConsecutiveInstantiationsReturnsAscendingBlankIdentifiers(): void
     {
         $actual = [
@@ -65,9 +58,7 @@ class BlankNodeIdentifierTest extends TestCase
         self::assertSame($expected, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toStringReturnsBlankIdentifier(): void
     {
         $subject = new BlankNodeIdentifier(true);

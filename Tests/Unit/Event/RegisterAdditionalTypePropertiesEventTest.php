@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class RegisterAdditionalTypePropertiesEventTest extends TestCase
@@ -24,25 +25,19 @@ class RegisterAdditionalTypePropertiesEventTest extends TestCase
         $this->subject = new RegisterAdditionalTypePropertiesEvent(Thing::class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypeReturnsTheTypeCorrectly(): void
     {
         self::assertSame(Thing::class, $this->subject->getType());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function additionalPropertiesIsInitiallyEmpty(): void
     {
         self::assertCount(0, $this->subject->getAdditionalProperties());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function registerAdditionalPropertyAddsPropertyToList(): void
     {
         $this->subject->registerAdditionalProperty('someAdditionalProperty');
@@ -53,9 +48,7 @@ class RegisterAdditionalTypePropertiesEventTest extends TestCase
         self::assertContains('anotherAdditionalProperty', $this->subject->getAdditionalProperties());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function alreadyExistingAdditionalPropertyIsNotRegisteredAgain(): void
     {
         $this->subject->registerAdditionalProperty('someProperty');

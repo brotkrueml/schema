@@ -15,11 +15,12 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @runTestsInSeparateProcesses
- */
+#[RunTestsInSeparateProcesses]
 class RendererTest extends TestCase
 {
     private Renderer $subject;
@@ -29,18 +30,14 @@ class RendererTest extends TestCase
         $this->subject = new Renderer();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderReturnsEmptyStringWhenNoTypeAdded(): void
     {
         self::assertSame('', $this->subject->render());
     }
 
-    /**
-     * @test
-     * @dataProvider dataProvider
-     */
+    #[Test]
+    #[DataProvider('dataProvider')]
     public function renderReturnsCorrectOutputWithOneTypeGiven(?string $id, array $properties, string $expected): void
     {
         $this->subject->addType(new GenericStub($id, $properties));
@@ -48,7 +45,7 @@ class RendererTest extends TestCase
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
     }
 
-    public function dataProvider(): \Iterator
+    public static function dataProvider(): \Iterator
     {
         yield 'No id set and properties are empty' => [
             null,
@@ -201,9 +198,7 @@ class RendererTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedSeparately(): void
     {
         $this->subject->addType(new GenericStub('some-id'));
@@ -218,9 +213,7 @@ class RendererTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedAtOnce(): void
     {
         $types = [
@@ -239,9 +232,7 @@ class RendererTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clearTypesRemovesAllTypes(): void
     {
         $this->subject->addType(new GenericStub('some-id'));

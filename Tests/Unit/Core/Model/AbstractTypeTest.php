@@ -19,6 +19,7 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -59,9 +60,7 @@ class AbstractTypeTest extends TestCase
         self::assertInstanceOf(NodeIdentifierInterface::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsNullAfterInstantiationOfClass(): void
     {
         $actual = $this->subject->getId();
@@ -69,9 +68,7 @@ class AbstractTypeTest extends TestCase
         self::assertNull($actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsTheIdCorrectlyWhenSetPreviouslyWithNull(): void
     {
         $this->subject->setId(null);
@@ -79,9 +76,7 @@ class AbstractTypeTest extends TestCase
         self::assertNull($this->subject->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsNullWhenSetPreviouslyWithEmptyString(): void
     {
         $this->subject->setId('');
@@ -89,9 +84,7 @@ class AbstractTypeTest extends TestCase
         self::assertNull($this->subject->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsTheIdCorrectlyWhenSetPreviouslyWithAString(): void
     {
         $this->subject->setId('concreteTestId');
@@ -99,9 +92,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame('concreteTestId', $this->subject->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIdReturnsTheIdAsStringWhenSetPreviouslyWithANodeIdentifier(): void
     {
         $this->subject->setId(new class() implements NodeIdentifierInterface {
@@ -114,9 +105,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame('someNodeIdentifier', $this->subject->getId());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setIdThrowsExceptionWhenInvalidTypeGiven(): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -126,9 +115,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setId(true);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasPropertyReturnsTrueIfPropertyExists(): void
     {
         self::assertTrue(
@@ -136,9 +123,7 @@ class AbstractTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasPropertyReturnsFalseIfPropertyDoesNotExists(): void
     {
         self::assertFalse(
@@ -146,9 +131,7 @@ class AbstractTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPropertyReturnsInstanceOfAbstractClass(): void
     {
         $actual = $this->subject->setProperty('name', 'the name');
@@ -156,9 +139,7 @@ class AbstractTypeTest extends TestCase
         self::assertInstanceOf(AbstractType::class, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
         // Test is valid, when no exception is thrown
@@ -178,9 +159,7 @@ class AbstractTypeTest extends TestCase
         });
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPropertyThrowsDomainExceptionIfPropertyNameNotValid(): void
     {
         $this->expectException(\DomainException::class);
@@ -189,9 +168,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('invalidProperty', 'some value');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPropertyThrowsInvalidArgumentExceptionIfPropertyNotValid(): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -200,9 +177,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('image', new \stdClass());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getPropertyReturnsNullAfterInstantiationOfClass(): void
     {
         $actual = $this->subject->getProperty('name');
@@ -210,9 +185,7 @@ class AbstractTypeTest extends TestCase
         self::assertNull($actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getPropertyReturnsCorrectValue(): void
     {
         $actual = $this->subject
@@ -222,9 +195,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame(['some image value', 'another image value'], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getPropertyThrowsDomainExceptionIfPropertyNameDoesNotExist(): void
     {
         $this->expectException(\DomainException::class);
@@ -233,9 +204,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->getProperty('invalidPropertyName');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyForNotAlreadySetProperty(): void
     {
         $actual = $this->subject
@@ -245,9 +214,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame('the test name', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyForPropertyWithStringAlreadySet(): void
     {
         $actual = $this->subject
@@ -258,9 +225,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame(['first image element', 'second image element'], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyForPropertyWithArrayAlreadySet(): void
     {
         $actual = $this->subject
@@ -271,9 +236,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame(['some image value', 'other image value'], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsStringsAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -284,9 +247,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('name', 'one more name');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsArraysAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -297,9 +258,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('description', ['one more description']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsIntegerAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -310,9 +269,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->addProperty('identifier', 3);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsBooleanAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -323,9 +280,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->addProperty('isAccessibleForFree', true);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsFloatAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -336,9 +291,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->addProperty('alternateName', 3.3);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsTypeAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -352,9 +305,7 @@ class AbstractTypeTest extends TestCase
         });
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addPropertyAcceptsNodeIdentifierAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -380,9 +331,7 @@ class AbstractTypeTest extends TestCase
         });
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPropertiesReturnsReferenceToItself(): void
     {
         $actual = $this->subject->setProperties([]);
@@ -390,9 +339,7 @@ class AbstractTypeTest extends TestCase
         self::assertInstanceOf(AbstractType::class, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setPropertiesSetsThePropertiesCorrectly(): void
     {
         $this->subject->setProperties([
@@ -414,9 +361,7 @@ class AbstractTypeTest extends TestCase
         self::assertSame(['some image value', 'other image value'], $actualImage);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clearPropertySetsValueToNull(): void
     {
         $resultOfClear = $this->subject
@@ -431,9 +376,7 @@ class AbstractTypeTest extends TestCase
         self::assertNull($resultOfGet);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clearPropertyThrowsDomainExceptionIfPropertyNameDoesNotExist(): void
     {
         $this->expectException(\DomainException::class);
@@ -442,9 +385,7 @@ class AbstractTypeTest extends TestCase
         $this->subject->clearProperty('invalidPropertyName');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getPropertiesReturnsListOfAllProperties(): void
     {
         $actual = $this->subject->getPropertyNames();
@@ -464,11 +405,7 @@ class AbstractTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
-     */
+    #[Test]
     public function cacheForAdditionalPropertiesReturnsPropertiesAndTheseAreAddedSortedIntoPropertiesArray(): void
     {
         $cacheFrontendStub = $this->createStub(FrontendInterface::class);
@@ -503,11 +440,7 @@ class AbstractTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
-     */
+    #[Test]
     public function cacheForAdditionalPropertiesReturnsFalseAndDispatcherIsCalled(): void
     {
         $cacheFrontendMock = $this->createStub(FrontendInterface::class);
@@ -549,11 +482,7 @@ class AbstractTypeTest extends TestCase
         new Thing();
     }
 
-    /**
-     * @test
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::__construct()
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::addAdditionalProperties()
-     */
+    #[Test]
     public function cacheForAdditionalPropertiesReturnsFalseAndEventDispatcherIsCalled(): void
     {
         $cacheFrontendMock = $this->createStub(FrontendInterface::class);
@@ -598,10 +527,7 @@ class AbstractTypeTest extends TestCase
         new Thing();
     }
 
-    /**
-     * @test
-     * @covers \Brotkrueml\Schema\Core\Model\AbstractType::getType()
-     */
+    #[Test]
     public function getTypeReturnsTypeCorrectlyWhenClassNameStartsWithUnderscore(): void
     {
         $type = new _3DModel();

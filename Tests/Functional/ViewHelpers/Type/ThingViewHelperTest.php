@@ -16,12 +16,14 @@ use Brotkrueml\Schema\Model\Type;
 use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelperTestCase;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\ViewHelpers\Type\ThingViewHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
-/**
- * @covers \Brotkrueml\Schema\ViewHelpers\Type\ThingViewHelper
- */
+#[CoversClass(ThingViewHelper::class)]
 final class ThingViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -57,7 +59,7 @@ final class ThingViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProvider(): iterable
+    public static function fluidTemplatesProvider(): iterable
     {
         yield 'No schema view helper used' => [
             '',
@@ -309,10 +311,8 @@ final class ThingViewHelperTest extends ViewHelperTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider fluidTemplatesProvider
-     */
+    #[Test]
+    #[DataProvider('fluidTemplatesProvider')]
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, string $expected): void
     {
         $this->renderTemplate($template);
@@ -322,9 +322,7 @@ final class ThingViewHelperTest extends ViewHelperTestCase
         self::assertSame($expected !== '' ? \sprintf(Extension::JSONLD_TEMPLATE, $expected) : $expected, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itRecognisesAGivenSpecificType(): void
     {
         $template = '<schema:type.organization name="a corporation" -specificType="Corporation"/>';
@@ -342,7 +340,7 @@ final class ThingViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProviderForExceptions(): iterable
+    public static function fluidTemplatesProviderForExceptions(): iterable
     {
         yield 'Missing -as attribute' => [
             '<schema:type.thing><schema:type.creativeWork/></schema:type.thing>',
@@ -370,13 +368,12 @@ final class ThingViewHelperTest extends ViewHelperTestCase
     }
 
     /**
-     * @test
-     * @dataProvider fluidTemplatesProviderForExceptions
-     *
      * @param string $template The Fluid template
      * @param int $expectedExceptionCode The expected exception code
      * @param string $expectedExceptionMessage The expected exception message
      */
+    #[Test]
+    #[DataProvider('fluidTemplatesProviderForExceptions')]
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
         string $template,
         int $expectedExceptionCode,

@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\TypoScript;
 
 use Brotkrueml\Schema\TypoScript\TypoScriptConverter;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class TypoScriptConverterTest extends TestCase
@@ -19,7 +21,7 @@ final class TypoScriptConverterTest extends TestCase
     /**
      * data provider for convertTypoScriptArrayToPlainArray
      */
-    public function convertTypoScriptArrayToPlainArrayTestdata(): \Iterator
+    public static function convertTypoScriptArrayToPlainArrayTestdata(): \Iterator
     {
         yield 'simple typoscript array' => [
             'typoScriptSettings' => [
@@ -140,12 +142,8 @@ final class TypoScriptConverterTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider convertTypoScriptArrayToPlainArrayTestdata
-     * @param mixed $typoScriptSettings
-     * @param mixed $expectedSettings
-     */
+    #[Test]
+    #[DataProvider('convertTypoScriptArrayToPlainArrayTestdata')]
     public function convertTypoScriptArrayToPlainArrayRemovesTrailingDotsWithChangedOrderInTheTypoScriptArray(
         array $typoScriptSettings,
         array $expectedSettings,
@@ -156,9 +154,9 @@ final class TypoScriptConverterTest extends TestCase
     }
 
     /**
-     * Dataprovider for testcase "convertPlainArrayToTypoScriptArray"
+     * Data provider for testcase "convertPlainArrayToTypoScriptArray"
      */
-    public function convertPlainArrayToTypoScriptArrayTestdata(): \Iterator
+    public static function convertPlainArrayToTypoScriptArrayTestdata(): \Iterator
     {
         yield 'simple typoscript' => [
             'extbaseTS' => [
@@ -276,12 +274,8 @@ final class TypoScriptConverterTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider convertPlainArrayToTypoScriptArrayTestdata
-     * @param mixed $plainSettings
-     * @param mixed $expectedSettings
-     */
+    #[Test]
+    #[DataProvider('convertPlainArrayToTypoScriptArrayTestdata')]
     public function convertPlainArrayToTypoScriptArray(array $plainSettings, array $expectedSettings): void
     {
         $typoScriptConverter = new TypoScriptConverter();

@@ -16,6 +16,10 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\ViewHelpers\BreadcrumbViewHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -23,9 +27,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
-/**
- * @covers \Brotkrueml\Schema\ViewHelpers\BreadcrumbViewHelper
- */
+#[CoversClass(BreadcrumbViewHelper::class)]
 final class BreadcrumbViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -48,7 +50,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
     /**
      * Data provider for testing the property view helper in Fluid templates
      */
-    public function fluidTemplatesProvider(): \Iterator
+    public static function fluidTemplatesProvider(): \Iterator
     {
         yield 'Breadcrumb is empty' => [
             '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
@@ -140,13 +142,12 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
     }
 
     /**
-     * @test
-     * @dataProvider fluidTemplatesProvider
-     *
      * @param string $template The Fluid template
      * @param array $variables Variables for the Fluid template
      * @param string $expected The expected output
      */
+    #[Test]
+    #[DataProvider('fluidTemplatesProvider')]
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, array $variables, string $expected): void
     {
         /** @noinspection PhpInternalEntityUsedInspection */
@@ -159,9 +160,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
         self::assertSame($expected === '' ? '' : \sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function breadcrumbWithMultiplePagesAndWebPageTypesGiven(): never
     {
         self::markTestSkipped('Skipped, see https://github.com/brotkrueml/schema/issues/101');
@@ -242,7 +241,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
      *
      * @return array
      */
-    public function fluidTemplatesProviderForExceptions(): iterable
+    public static function fluidTemplatesProviderForExceptions(): iterable
     {
         yield 'Missing breadcrumb attribute' => [
             '<schema:breadcrumb/>',
@@ -279,14 +278,13 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
     }
 
     /**
-     * @test
-     * @dataProvider fluidTemplatesProviderForExceptions
-     *
      * @param string $template The Fluid template
      * @param array $variables Variables for the Fluid template
      * @param string $exceptionClass The exception class
      * @param int $expectedExceptionCode The expected exception code
      */
+    #[Test]
+    #[DataProvider('fluidTemplatesProviderForExceptions')]
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
         string $template,
         array $variables,

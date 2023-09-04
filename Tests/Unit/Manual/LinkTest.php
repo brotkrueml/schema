@@ -12,17 +12,16 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Manual;
 
 use Brotkrueml\Schema\Manual\Link;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Brotkrueml\Schema\Manual\Link
- */
+#[CoversClass(Link::class)]
 final class LinkTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider dataProviderWithInvalidUrls
-     */
+    #[Test]
+    #[DataProvider('dataProviderWithInvalidUrls')]
     public function exceptionThrownOnInvalidUrl(string $link): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -35,7 +34,7 @@ final class LinkTest extends TestCase
         new Link($link, '', '');
     }
 
-    public function dataProviderWithInvalidUrls(): iterable
+    public static function dataProviderWithInvalidUrls(): iterable
     {
         yield [
             'no-link',
@@ -46,9 +45,7 @@ final class LinkTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionThrownOnInvalidWebUrl(): void
     {
         $link = 'ftp://some.host/';

@@ -15,11 +15,12 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\ViewHelpers\NodeIdentifierViewHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * @covers \Brotkrueml\Schema\ViewHelpers\NodeIdentifierViewHelper
- */
+#[CoversClass(NodeIdentifierViewHelper::class)]
 final class NodeIdentifierViewHelperTest extends ViewHelperTestCase
 {
     use SchemaCacheTrait;
@@ -39,9 +40,7 @@ final class NodeIdentifierViewHelperTest extends ViewHelperTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewHelperPrintsNodeIdentifiersCorrectly(): void
     {
         $actual = $this->renderTemplate('<schema:nodeIdentifier id="some-id"/>', []);
@@ -49,9 +48,7 @@ final class NodeIdentifierViewHelperTest extends ViewHelperTestCase
         self::assertSame('some-id', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function usingVariablesAndThenAssignedToTypePropertiesBuildsSchemaCorrectly(): void
     {
         $template = <<<EOF

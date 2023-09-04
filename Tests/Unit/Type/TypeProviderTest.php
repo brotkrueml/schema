@@ -15,11 +15,11 @@ use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
 use Brotkrueml\Schema\Type\TypeProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Brotkrueml\Schema\Type\TypeProvider
- */
+#[CoversClass(TypeProvider::class)]
 final class TypeProviderTest extends TestCase
 {
     private TypeProvider $subject;
@@ -29,9 +29,7 @@ final class TypeProviderTest extends TestCase
         $this->subject = new TypeProvider();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypesReturnsTypesCorrectlyWhenTypesAreAdded(): void
     {
         $this->subject->addType('3DModel', FixtureType\_3DModel::class);
@@ -49,9 +47,7 @@ final class TypeProviderTest extends TestCase
         self::assertContains('VideoGallery', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTypesReturnsTypesCorrectlyWhenNoTypesAreAdded(): void
     {
         $actual = $this->subject->getTypes();
@@ -59,9 +55,7 @@ final class TypeProviderTest extends TestCase
         self::assertSame([], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getWebPageTypesWhenTypesAreAdded(): void
     {
         $this->subject->addType('Table', FixtureType\Table::class);
@@ -77,9 +71,7 @@ final class TypeProviderTest extends TestCase
         self::assertContains('WebPage', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getWebPageTypesReturnsTypesCorrectlyWhenNoTypesAreAdded(): void
     {
         $actual = $this->subject->getWebPageTypes();
@@ -87,9 +79,7 @@ final class TypeProviderTest extends TestCase
         self::assertSame([], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getModelClassNameForTypeReturnTypeCorrectly(): void
     {
         $this->subject->addType('Thing', FixtureType\Thing::class);
@@ -99,9 +89,7 @@ final class TypeProviderTest extends TestCase
         self::assertSame(FixtureType\Thing::class, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getModelClassNameForTypeThrowsExceptionIfTypeIsNotAvailable(): void
     {
         $this->expectException(ModelClassNotFoundException::class);
@@ -109,9 +97,7 @@ final class TypeProviderTest extends TestCase
         $this->subject->getModelClassNameForType('UnknownType');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getManualsForTypeReturnsManualsCorrectly(): void
     {
         $this->subject->addManualForType('Thing', [Publisher::Google, 'https://example.com/thing']);
@@ -126,9 +112,7 @@ final class TypeProviderTest extends TestCase
         self::assertSame('https://example.net/thing', $actual[1]->link);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getManualsForTypeReturnsEmptyArrayIfTypeNotAvailable(): void
     {
         $actual = $this->subject->getManualsForType('TypeWithNoManuals');
