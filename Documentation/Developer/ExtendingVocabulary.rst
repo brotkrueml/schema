@@ -125,10 +125,11 @@ was quickly adopted by Google. The type can be used as `location`_ in the
 
    .. note::
       With the :php:`\Brotkrueml\Schema\Attributes\Type` attribute the class
-      is recognised as a type model class. All types are collected on compile
-      time: When you add/change/remove a class, you have to flush the cache via
+      is recognised as a type model class. All types are collected on
+      :abbr:`DI (dependency injection)` compile time: When you add/change/remove
+      a class, you have to flush the cache via
       :guilabel:`Admin Tools > Maintenance` or the :bash:`flush:cache` command
-      on CLI.
+      on :ref:`CLI <t3coreapi:symfony-console-commands>`.
 
 #. Create the view helper (optional)
 
