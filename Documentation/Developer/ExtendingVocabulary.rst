@@ -94,7 +94,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
       #[Type('VirtualLocation')]
       final class VirtualLocation extends AbstractType
       {
-         protected static $propertyNames = [
+         protected static array $propertyNames = [
             'additionalType',
             'alternateName',
             'description',
@@ -206,7 +206,7 @@ Mark your class as a WebPage type with the interface
    #[Type('MedicalWebPage')]
    final class MedicalWebPage extends AbstractType implements WebPageTypeInterface
    {
-      protected static $propertyNames = [
+      protected static array $propertyNames = [
          // ... the properties ...
       ];
    }

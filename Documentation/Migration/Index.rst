@@ -25,6 +25,18 @@ anymore, you have to mark a type model class with the attribute
 :php:`\Brotkrueml\Schema\Attributes\Type` now. See the
 :ref:`extending-adding-types` section for more information.
 
+Additionally, the static property :php:`$propertyNames` of a type model class is
+now type-hinted as an array:
+
+.. code-block:: diff
+
+     final class MyCustomType extends AbstractType
+     {
+   -     protected static $propertyNames = [
+   +     protected static array $propertyNames = [
+            // ... the properties ...
+         ]
+     }
 
 From version 1.x to version 2.0
 ===============================
