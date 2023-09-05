@@ -108,7 +108,7 @@ You can define the main entity also in a view helper:
 
 
 Remark
-~~~~~~
+------
 
 You can set the view helper argument :html:`-isMainEntityOfWebPage` only in the
 main type view helper, not in a child type view helper.

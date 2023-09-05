@@ -36,7 +36,7 @@ Attention should be paid to the following points:
 * A breadcrumb does not only help the user to recognise the location of a
   particular page on the website. It is also helpful for search engines to
   understand the structure of your website. Google honors the website operator
-  for using the :ref:`breadcrumb schema markup <breadcrumb>` on a page: It will
+  for using the :ref:`breadcrumb schema markup <breadcrumb-start>` on a page: It will
   be shown in the search result snippet.
 * The :ref:`main entity <main-entity-of-web-page>` of a web page indicates the
   primary entity. It can be set separately from a ``WebPage``.

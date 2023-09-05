@@ -2,7 +2,7 @@
 
 .. index:: Breadcrumb
 
-.. _breadcrumb:
+.. _breadcrumb-start:
 
 =====================
 The breadcrumb markup

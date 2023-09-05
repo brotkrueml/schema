@@ -135,7 +135,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
 
    If you have the need for a view helper with that type, you can create one:
 
-   .. codel-block:: php
+   .. code-block:: php
       :caption: EXT:my_extension/Classes/ViewHelpers/Schema/Type/VirtualLocationViewHelper.php
 
       <?php
