@@ -54,7 +54,6 @@
 		"brotkrueml/schema-bib": "Provides additional terms related to bibliography",
 		"brotkrueml/schema-health": "Provides additional terms related to health and lifesciences",
 		"brotkrueml/schema-pending": "Provides pending terms which have yet to be accepted into the core vocabulary",
-		"brotkrueml/schema-rector": "Instant upgrade and refactoring for the TYPO3 schema extension code by using Rector",
 		"brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events",
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
 		"typo3/cms-lowlevel": "Display available schema.org types in the Configuration module"
