@@ -30,7 +30,7 @@
 	},
 	"require-dev": {
 		"ext-sqlite3": "*",
-		"brotkrueml/coding-standards": "~4.0.0",
+		"brotkrueml/coding-standards": "~5.0.0",
 		"ergebnis/composer-normalize": "~2.36.0",
 		"infection/infection": "^0.26",
 		"php-coveralls/php-coveralls": "^2.6",
