@@ -48,27 +48,10 @@ guessed. For example, you have defined a breadcrumb somewhere:
 
 Now you can iterate over the pages:
 
-.. code-block:: php
-
-   $breadcrumbList = (new \Brotkrueml\Schema\Model\Type\BreadcrumbList());
-   $counter = 0;
-   foreach ($breadcrumb as $item) {
-      $counter++;
-
-      $breadcrumbList->addProperty(
-         'itemListElement',
-         (new \Brotkrueml\Schema\Model\Type\ListItem()
-            ->setProperties([
-               'name' => 'Some product category',
-               'item' => 'https://example.org/some-product-category/',
-               'position' => $counter,
-            ])
-         )
-      );
-   }
-
-   $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-   $schemaManager->addType($breadcrumbList);
+.. literalinclude:: _Breadcrumb/_MyController.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 21-37
 
 This results in the following schema markup:
 

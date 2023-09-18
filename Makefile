@@ -16,6 +16,7 @@ code-coverage: vendor
 .PHONY: cs
 cs: vendor
 	.Build/bin/ecs --fix
+	.Build/bin/ecs --fix --config=ecs.docs.php
 
 .PHONY: mutation
 mutation: vendor

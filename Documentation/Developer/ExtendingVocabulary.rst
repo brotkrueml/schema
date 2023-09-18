@@ -79,35 +79,9 @@ was quickly adopted by Google. The type can be used as `location`_ in the
    The model class for a type defines the available properties. The model class
    for the `VirtualLocation` type may look like the following:
 
-   .. code-block:: php
-      :caption: EXT:my_extension/Classes/Schema/Type/VirtualLocation.php
-
-      <?php
-      declare(strict_types=1);
-
-      namespace MyVendor\MyExtension\Schema\Type;
-
-      use Brotkrueml\Schema\Attributes\Type;
-      use Brotkrueml\Schema\Core\Model\AbstractType;
-
-      #[Type('VirtualLocation')]
-      final class VirtualLocation extends AbstractType
-      {
-         protected static array $propertyNames = [
-            'additionalType',
-            'alternateName',
-            'description',
-            'disambiguatingDescription',
-            'identifier',
-            'image',
-            'mainEntityOfPage',
-            'name',
-            'potentialAction',
-            'sameAs',
-            'subjectOf',
-            'url',
-         ];
-      }
+   .. literalinclude:: _ExtendingVocabulary/_VirtualLocation.php
+      :language: php
+      :caption: EXT:my_extension/Classes/EventListener/AdditionalPropertiesForPerson.php
 
    In the example, the class is stored in :file:`Classes/Schema/Type` of your
    extension, but you can choose any namespace. The class must have the
@@ -117,10 +91,10 @@ was quickly adopted by Google. The type can be used as `location`_ in the
 
    Now you can use the `VirtualLocation` in your PHP code:
 
-   .. code-block:: php
-
-      $location = \Brotkrueml\Schema\Type\TypeFactory::createType('VirtualLocation');
-      $location->setProperty('url', 'https://example.com/my-webinar-12345/register');
+   .. literalinclude:: _ExtendingVocabulary/_MyController.php
+      :language: php
+      :caption: EXT:my_extension/Classes/Controller/MyController.php
+      :emphasize-lines: 21-23
 
    .. note::
       With the :php:`\Brotkrueml\Schema\Attributes\Type` attribute the class
@@ -134,19 +108,9 @@ was quickly adopted by Google. The type can be used as `location`_ in the
 
    If you have the need for a view helper with that type, you can create one:
 
-   .. code-block:: php
+   .. literalinclude:: _ExtendingVocabulary/_VirtualLocationViewHelper.php
+      :language: php
       :caption: EXT:my_extension/Classes/ViewHelpers/Schema/Type/VirtualLocationViewHelper.php
-
-      <?php
-      declare(strict_types=1);
-
-      namespace MyVendor\MyExtension\ViewHelpers\Schema\Type;
-
-      use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
-
-      final class VirtualLocationViewHelper extends AbstractTypeViewHelper
-      {
-      }
 
    To use the `schema` namespace in Fluid templates also with your custom
    view helpers add the following snippet to the :file:`ext_localconf.php` file
@@ -190,25 +154,9 @@ the :ref:`extending-adding-types` section.
 Mark your class as a WebPage type with the interface
 :php:`\Brotkrueml\Schema\Core\Model\WebPageTypeInterface`:
 
-.. code-block:: php
+.. literalinclude:: _ExtendingVocabulary/_MedicalWebPage.php
+   :language: php
    :caption: EXT:my_extension/Classes/Schema/Type/MedicalWebPage.php
-
-   <?php
-   declare(strict_types=1);
-
-   namespace MyVendor\MyExtension\Schema\Type;
-
-   use Brotkrueml\Schema\Attributes\Type;
-   use Brotkrueml\Schema\Core\Model\AbstractType;
-   use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
-
-   #[Type('MedicalWebPage')]
-   final class MedicalWebPage extends AbstractType implements WebPageTypeInterface
-   {
-      protected static array $propertyNames = [
-         // ... the properties ...
-      ];
-   }
 
 The new web page type can now be selected in the page properties:
 
@@ -217,49 +165,6 @@ The new web page type can now be selected in the page properties:
    :class: with-border
 
    *MedicalWebPage* in the list of available web page types
-
-
-Add a new view helper
-=====================
-
-As the API and thus the :ref:`defined model class <extending-adding-types>`
-can be accessed in PHP, the use as a view helper in Fluid templates would also
-be nice sometimes. If you have the need for this, simply create a new view
-helper::
-
-   <?php
-   declare(strict_types=1);
-
-   namespace Acme\LooneyTunes\ViewHelpers\Type;
-
-   use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
-
-   final class VirtualLocationViewHelper extends AbstractTypeViewHelper
-   {
-   }
-
-The view helper must extend the
-:php:`\Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper`. The view
-helper must be named after the according type model. In the example the
-:php:`VirtualLocationViewHelper` is connected to the :php:`VirtualLocation`
-type model automatically.
-
-Now you can use the view helper in a Fluid template (for example, when using the
-`acme` namespace):
-
-.. code-block:: html
-
-   <schema:type.event
-      name="Daffy Duck talks about the new movie"
-      startDate="2020-03-23T19:00">
-         <acme:type.virtualLocation
-            -as="location"
-            url="https://example.com/looney-tunes-webinar-12345/register"
-         />
-   </schema:type.event>
-
-Every property name defined in the type model class is available as argument
-in the view helper.
 
 
 .. _Autos: https://schema.org/docs/automotive.html

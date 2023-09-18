@@ -64,26 +64,9 @@ Example
 
 #. Create the event listener
 
-   .. code-block:: php
-
-      <?php
-      declare(strict_types=1);
-
-      namespace YourVender\YourExtension\EventListener;
-
-      use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
-      use Brotkrueml\Schema\Model\Type\Person;
-
-      final class AdditionalPropertiesForPerson
-      {
-         public function __invoke(RegisterAdditionalTypePropertiesEvent $event): void
-         {
-            if ($event->getType() === Person::class) {
-               $event->registerAdditionalProperty('gender');
-               $event->registerAdditionalProperty('jobTitle');
-            }
-         }
-      }
+   .. literalinclude:: _Events/_AdditionalPropertiesForPerson.php
+      :language: php
+      :caption: EXT:my_extension/Classes/EventListener/AdditionalPropertiesForPerson.php
 
    The method :php:`__invoke()` implements the logic for registering additional
    properties for one or more types. It receives the
@@ -97,7 +80,7 @@ Example
       services:
          # Place here the default dependency injection configuration
 
-         YourVendor\YourExtension\EventListener\AdditionalPropertiesForPerson:
+         MyVendor\MyExtension\EventListener\AdditionalPropertiesForPerson:
             tags:
                - name: event.listener
                  identifier: 'myAdditionalPropertiesForPerson'

@@ -50,36 +50,18 @@ As you saw in a previous chapter you can use the :ref:`API <api>` to define the
 schema for a page. The `WebPage` type is no exception to that. Define a
 `WebPage` type for a page via API:
 
-.. code-block:: php
-
-   $itemPage = \Brotkrueml\Schema\Type\TypeFactory::createType('ItemPage')
-   $this->schemaManager->addType($itemPage);
+.. literalinclude:: _WebPage/_MyController1.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 21-22
 
 That is it. But you can add one or more properties to it - let's define a page
 with a product as primary content:
 
-.. code-block:: php
-
-   $aggregateRating = \Brotkrueml\Schema\Type\TypeFactory::createType('AggregateRating')
-      ->setProperty('ratingValue', '4')
-      ->setProperty('reviewCount', '126')
-   ;
-
-   $product = \Brotkrueml\Schema\Type\TypeFactory::createType('Product')
-      ->setProperties([
-         'name' => 'Some fancy product',
-         'color' => 'blue',
-         'material' => 'wood',
-         'image' => 'https://example.org/some-fancy-product.jpg',
-         'aggregateRating' => $aggregateRating,
-      ])
-   ;
-
-   $itemPage = \Brotkrueml\Schema\Type\TypeFactory::createType('ItemPage')
-      ->setProperty('mainEntity', $product)
-   ;
-
-   $schemaManager->addType($itemPage);
+.. literalinclude:: _WebPage/_MyController2.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 21-40
 
 The example is rendered as JSON-LD:
 

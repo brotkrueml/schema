@@ -103,6 +103,10 @@ jobs:
         if: always()
         run: |
           .Build/bin/ecs check --no-progress-bar
+      - name: Check coding standards in documentation
+        if: always()
+        run: |
+          .Build/bin/ecs check --no-progress-bar --config=ecs.docs.php
       - name: Run phpstan
         if: always()
         run: |

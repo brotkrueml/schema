@@ -35,24 +35,10 @@ Using the API
 The main entity of a web page can be defined with the API. Let's start with an
 example that specifies a product as the primary content:
 
-.. code-block:: php
-
-   $aggregateRating = \Brotkrueml\Schema\Type\TypeFactory::createType('AggregateRating');
-      ->setProperty('ratingValue', '4')
-      ->setProperty('reviewCount', '126')
-   ;
-
-   $product = \Brotkrueml\Schema\Type\TypeFactory::createType('Product')
-      ->setProperties([
-         'name' => 'Some fancy product',
-         'color' => 'blue',
-         'material' => 'wood',
-         'image' => 'https://example.org/some-fancy-product.jpg',
-         'aggregateRating' => $aggregateRating,
-      ])
-   ;
-
-   $schemaManager->addMainEntityOfWebPage($product);
+.. literalinclude:: _MainEntity/_MyController.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 21-34
 
 The above example is rendered as JSON-LD. Let's assume the `WebPage` type is
 set to `ItemPage` - either in the page properties or via the API or a view

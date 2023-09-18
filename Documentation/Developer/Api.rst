@@ -41,9 +41,12 @@ Types
 
 Let's start with a simple example. Imagine you describe a `person`_ on a
 plugin's detail page that you want to enrich with structured markup. First you
-have to create the schema model::
+have to create the schema model:
 
-   $person = \Brotkrueml\Schema\Type\TypeFactory::createType('Person')
+.. literalinclude:: _Api/_MyController1.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 15
 
 The schema type `Person` maps to the model
 :php:`\Brotkrueml\Schema\Model\Type\Person`. You can use every accepted type
@@ -59,43 +62,32 @@ You will find a list of the available methods in the section
 
 Surely you will need to add some properties:
 
-.. code-block:: php
-
-   $person
-      ->setId('https://example.org/#person-42')
-      ->setProperty('givenName', 'John')
-      ->setProperty('familyName', 'Smith')
-      ->setProperty('gender', 'https://schema.org/Male');
-   ;
+.. literalinclude:: _Api/_MyController2.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 16-20
 
 That was easy ... let's go on and define an event the person attends:
 
-.. code-block:: php
-
-   $event = \Brotkrueml\Schema\Type\TypeFactory::createType('Event')
-      ->setProperty('name', 'Fancy Event')
-      ->setProperty('image', 'https:/example.org/event.png')
-      ->setProperty('url', 'https://example.org/')
-      ->setProperty('isAccessibleForFree', true)
-      ->setProperty('sameAs', 'https://twitter.com/fancy-event')
-      ->addProperty('sameAs', 'https://facebook.com/fancy-event')
-   ;
+.. literalinclude:: _Api/_MyController3.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 15-22
 
 Now we have to connect the two types together:
 
-.. code-block:: php
-
-   $person->setProperty('performerIn', $event);
+.. literalinclude:: _Api/_MyController4.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 20
 
 The defined models are ready to embed on the web page. The schema manager does
 that for you:
 
-.. code-block:: php
-
-   $schemaManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-      \Brotkrueml\Schema\Manager\SchemaManager::class
-   );
-   $schemaManager->addType($person);
+.. literalinclude:: _Api/_MyController5.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 12-15,25
 
 
 That's it ... if you call the according page the structured markup is embedded
@@ -137,16 +129,10 @@ The technical difference to a single type is only that you call
 :php:`\Brotkrueml\Schema\Type\TypeFactory::createType()` with more than one
 argument:
 
-.. code-block:: php
-
-   $productAndService = \Brotkrueml\Schema\Type\TypeFactory::createType('Product', 'Service');
-   $productAndService
-      ->setId('https://example.org/#my-product-and-service')
-      ->setProperty('name', 'My product and service')
-      ->setProperty('manufacturer', 'Acme Ltd.') // from Product
-      ->setProperty('provider', 'Acme Ltd.') // from Service
-   ;
-   $schemaManager->addType($productAndService);
+.. literalinclude:: _Api/_MyControllerMultiple.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 21-28
 
 The factory method returns an instance of the
 :php:`\Brotkrueml\Schema\Core\Model\MultipleType` class which provides the
@@ -194,21 +180,10 @@ useful when using circular references, for example:
 You can accomplish this with the help of the
 :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifier` class:
 
-.. code-block:: php
-
-   $nodeIdentifier = new \Brotkrueml\Schema\Core\Model\NodeIdentifier(
-      'https://example.org/#john-smith'
-   );
-
-   $person1 = \Brotkrueml\Schema\Type\TypeFactory::createType('Person');
-   $person1->setId($nodeIdentifier);
-   $person1->setProperty('name', 'John Smith');
-
-   $person2 = \Brotkrueml\Schema\Type\TypeFactory::createType('Person');
-   $person2->setProperty('name', 'Sarah Jane Smith');
-   $person2->setProperty('knows', $nodeIdentifier);
-
-   $person1->setProperty('knows', $person2);
+.. literalinclude:: _Api/_MyControllerNodeIdentifier.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 22-36
 
 As you can see in the example, you can also use a node identifier as an
 argument for :php:`->setId()` instead of a string.
@@ -227,19 +202,10 @@ with an IRI. For these cases you can use a `blank node identifier`_.
 
 The above example can also be used with a blank node identifier:
 
-.. code-block:: php
-
-   $nodeIdentifier = new \Brotkrueml\Schema\Core\Model\BlankNodeIdentifier();
-
-   $person1 = \Brotkrueml\Schema\Type\TypeFactory::createType('Person');
-   $person1->setId($nodeIdentifier);
-   $person1->setProperty('name', 'John Smith');
-
-   $person2 = \Brotkrueml\Schema\Type\TypeFactory::createType('Person');
-   $person2->setProperty('name', 'Sarah Jane Smith');
-   $person2->setProperty('knows', $nodeIdentifier);
-
-   $person1->setProperty('knows', $person2);
+.. literalinclude:: _Api/_MyControllerBlankNodeIdentifier.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 22-35
 
 To use a blank node identifier instantiate the class
 :php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`. The identifier is

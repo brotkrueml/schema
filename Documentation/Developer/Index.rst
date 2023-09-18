@@ -75,20 +75,17 @@ to the model :php:`\Brotkrueml\Schema\Model\Type\Thing`, which knows about the
 according schema.org properties. A property value can be set with an according
 method:
 
-.. code-block:: php
+.. literalinclude:: _Index/_MyController1.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 15-16
 
-   $thing = \Brotkrueml\Schema\Type\TypeFactory::createType('Thing');
-   $thing->setProperty('name', 'A thing');
+The schema manager connects the type models to the page:
 
-The schema manager connects the type models to the page and is responsible for
-generating the markup on the web page:
-
-.. code-block:: php
-
-   $schemaManager = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-      \Brotkrueml\Schema\Manager\SchemaManager::class
-   );
-   $schemaManager->addType($thing);
+.. literalinclude:: _Index/_MyController2.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 12-15,24
 
 The chapter :ref:`api` describes in-depth how to use the models
 and the schema manager.
