@@ -448,7 +448,7 @@ final class SchemaManagerTest extends Testcase
             ->willReturn(true);
 
         $eventDispatcherStub = new class() implements EventDispatcherInterface {
-            public function dispatch(object $event)
+            public function dispatch(object $event): void
             {
                 throw new \Exception('dispatch() method must not be called');
             }
