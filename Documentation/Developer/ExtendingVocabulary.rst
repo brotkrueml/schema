@@ -239,7 +239,7 @@ helper::
    }
 
 The view helper must extend the
-:php:`Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper`. The view
+:php:`\Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper`. The view
 helper must be named after the according type model. In the example the
 :php:`VirtualLocationViewHelper` is connected to the :php:`VirtualLocation`
 type model automatically.

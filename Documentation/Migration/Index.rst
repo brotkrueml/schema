@@ -88,9 +88,9 @@ Removed Deprecations
 The following :ref:`deprecated methods and classes <api-deprecations>` were
 removed:
 
-- :php:`Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
-- :php:`Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
-- :php:`Brotkrueml\Schema\Provider\TypesProvider`
+- :php:`\Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
+- :php:`\Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
+- :php:`\Brotkrueml\Schema\Provider\TypesProvider`
 
 For the migration follow the instructions on the
 :ref:`deprecations <api-deprecations>` chapter.

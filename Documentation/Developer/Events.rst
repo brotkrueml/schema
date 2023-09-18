@@ -40,7 +40,7 @@ available which can be used in an event listener.
 These additional properties are not only available in the :ref:`API <api>` but
 also as arguments in the :ref:`view helpers <view-helpers>`.
 
-The event :php:`Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent`
+The event :php:`\Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent`
 provides the following methods:
 
 .. option:: getType(): string

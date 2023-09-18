@@ -22,9 +22,9 @@ With the extension's API you can define the structured markup with PHP. For
 example, create a class which gets an Extbase model as input and defines the
 markup. Then instantiate the class in an action of your controller.
 
-Each type model class in the PHP namespace :php:`Brotkrueml\Schema\Model\Type`
+Each type model class in the PHP namespace :php:`\Brotkrueml\Schema\Model\Type`
 inherits from the abstract class
-:php:`Brotkrueml\Schema\Core\Model\AbstractType` which defines methods to set
+:php:`\Brotkrueml\Schema\Core\Model\AbstractType` which defines methods to set
 and get the properties of a model.
 
 There are currently over 600 models available.
@@ -183,7 +183,7 @@ useful when using circular references, e.g.:
 You can accomplish this with the help of the
 :php:`Brotkrueml\Schema\Core\Model\NodeIdentifier` class::
 
-   $nodeIdentifier = new Brotkrueml\Schema\Core\Model\NodeIdentifier(
+   $nodeIdentifier = new \Brotkrueml\Schema\Core\Model\NodeIdentifier(
       'https://example.org/#john-smith'
    );
 
@@ -214,7 +214,7 @@ with an IRI. For these cases you can use a `blank node identifier`_.
 
 The above example can also be used with a blank node identifier::
 
-   $nodeIdentifier = new Brotkrueml\Schema\Core\Model\BlankNodeIdentifier();
+   $nodeIdentifier = new \Brotkrueml\Schema\Core\Model\BlankNodeIdentifier();
 
    $person1 = \Brotkrueml\Schema\Type\TypeFactory::createType('Person');
    $person1->setId($nodeIdentifier);
@@ -227,7 +227,7 @@ The above example can also be used with a blank node identifier::
    $person1->setProperty('knows', $person2);
 
 To use a blank node identifier just instantiate the class
-:php:`Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`. The identifier is
+:php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`. The identifier is
 generated automatically on instantiation, so you don't have to worry about
 the id itself. A blank node identifier in JSON-LD always starts with `_:`.
 
@@ -453,7 +453,7 @@ expose the following methods:
 Schema Manager
 ==============
 
-The Schema Manager (class :php:`Brotkrueml\Schema\Manager\SchemaManager`) –
+The Schema Manager (class :php:`\Brotkrueml\Schema\Manager\SchemaManager`) –
 well – manages the type models and prepares them for embedding into the web
 page.
 
@@ -507,7 +507,7 @@ The class exposes the following methods:
 Node Identifier
 ===============
 
-A NodeIdentifier (class :php:`Brotkrueml\Schema\Core\Model\NodeIdentifier`)
+A NodeIdentifier (class :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifier`)
 holds the ID for a type or a reference.
 
 On instantiation of a NodeIdentifier the ID is given as a string argument into
@@ -531,7 +531,7 @@ The class exposes the following method:
 Blank Node Identifier
 =====================
 
-A BlankNodeIdentifier (class :php:`Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`)
+A BlankNodeIdentifier (class :php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`)
 holds the ID for a type or a reference.
 
 On instantiation of a BlankNodeIdentifier the ID is auto-generated and unique
@@ -561,7 +561,7 @@ Boolean data type
 
 Boolean property values are mapped to the according schema terms
 ``https://schema.org/True`` or ``https://schema.org/False``. You can also use
-the :php:`Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
+the :php:`\Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
 two public constants:
 
 .. option:: FALSE
