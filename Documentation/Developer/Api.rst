@@ -45,9 +45,10 @@ have to create the schema model::
 
    $person = \Brotkrueml\Schema\Type\TypeFactory::createType('Person')
 
-The schema type ``Person`` maps to the model :php:`Person`. You can use every
-accepted type from the core vocabulary from `schema.org`_. Also have a look into
-the :file:`Classes\\Model\\Type` folder of this extension to get a general idea
+The schema type `Person` maps to the model
+:php:`\Brotkrueml\Schema\Model\Type\Person`. You can use every accepted type
+from the core vocabulary of `schema.org`_. Also have a look into the
+:file:`Classes\\Model\\Type` folder of this extension to get a general idea
 of the available types.
 
 If the type is not available a :php:`\DomainException` is thrown.
@@ -56,7 +57,9 @@ Every type implements the :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`.
 You will find a list of the available methods in the section
 :ref:`Available type model methods <api-type-interface>`.
 
-Surely you will need to add some properties::
+Surely you will need to add some properties:
+
+.. code-block:: php
 
    $person
       ->setId('https://example.org/#person-42')
@@ -65,7 +68,9 @@ Surely you will need to add some properties::
       ->setProperty('gender', 'https://schema.org/Male');
    ;
 
-That was easy ... let's go on and define an event the person attends::
+That was easy ... let's go on and define an event the person attends:
+
+.. code-block:: php
 
    $event = \Brotkrueml\Schema\Type\TypeFactory::createType('Event')
       ->setProperty('name', 'Fancy Event')
@@ -76,12 +81,16 @@ That was easy ... let's go on and define an event the person attends::
       ->addProperty('sameAs', 'https://facebook.com/fancy-event')
    ;
 
-Now we have to connect the two types together::
+Now we have to connect the two types together:
+
+.. code-block:: php
 
    $person->setProperty('performerIn', $event);
 
 The defined models are ready to embed on the web page. The schema manager does
-that for you::
+that for you:
+
+.. code-block:: php
 
    $schemaManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
       \Brotkrueml\Schema\Manager\SchemaManager::class
@@ -121,12 +130,14 @@ Multiple types
 
 JSON-LD allows multiple types for a node. The rendered `@type` property is then
 an array, the properties of the single types are merged. This way, a node can
-be, e.g., a `Product` and a `Service` at the same time - which can be useful
-in some cases.
+be, for example, a `Product` and a `Service` at the same time - which can be
+useful in some cases.
 
-The difference to a single type is only that you call
+The technical difference to a single type is only that you call
 :php:`\Brotkrueml\Schema\Type\TypeFactory::createType()` with more than one
-argument::
+argument:
+
+.. code-block:: php
 
    $productAndService = \Brotkrueml\Schema\Type\TypeFactory::createType('Product', 'Service');
    $productAndService
@@ -164,7 +175,7 @@ Node identifiers
 ----------------
 
 JSON-LD supports the usage of `@id` as reference without giving a type. This is
-useful when using circular references, e.g.:
+useful when using circular references, for example:
 
 .. code-block:: json
 
@@ -181,7 +192,9 @@ useful when using circular references, e.g.:
    }
 
 You can accomplish this with the help of the
-:php:`Brotkrueml\Schema\Core\Model\NodeIdentifier` class::
+:php:`\Brotkrueml\Schema\Core\Model\NodeIdentifier` class:
+
+.. code-block:: php
 
    $nodeIdentifier = new \Brotkrueml\Schema\Core\Model\NodeIdentifier(
       'https://example.org/#john-smith'
@@ -212,7 +225,9 @@ Blank node identifiers
 Sometimes it is not necessary (or possible) to define a globally unique ID
 with an IRI. For these cases you can use a `blank node identifier`_.
 
-The above example can also be used with a blank node identifier::
+The above example can also be used with a blank node identifier:
+
+.. code-block:: php
 
    $nodeIdentifier = new \Brotkrueml\Schema\Core\Model\BlankNodeIdentifier();
 
@@ -226,10 +241,10 @@ The above example can also be used with a blank node identifier::
 
    $person1->setProperty('knows', $person2);
 
-To use a blank node identifier just instantiate the class
+To use a blank node identifier instantiate the class
 :php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`. The identifier is
-generated automatically on instantiation, so you don't have to worry about
-the id itself. A blank node identifier in JSON-LD always starts with `_:`.
+generated automatically on instantiation, so you do not have to worry about
+the ID itself. A blank node identifier in JSON-LD always starts with `_:`.
 
 This results in the following JSON-LD output:
 
@@ -260,17 +275,17 @@ Each type model, like `Thing`, `Person` or `Event`, must implement the
 interfaces :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifierInterface` and
 :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`. For convenience, a type
 model can also extend the abstract class
-:php:`\Brotkrueml\Schema\Core\Model\AbstractType` which implements every needed
-method.
+:php:`\Brotkrueml\Schema\Core\Model\AbstractType` which implements every
+required method.
 
-One interface is availableto "mark" a type model class as a "special type". It
+One interface is available to "mark" a type model class as a "special type". It
 does not require the implementation of additional methods:
 
 *  :php:`\Brotkrueml\Schema\Core\Model\WebPageTypeInterface` for a
    :ref:`web page type <webpage-types>`.
 
-These interfaces can be useful when you want to :ref:`extend the
-vocabulary <extending-vocabulary>`.
+These interfaces can be useful when you want to
+:ref:`extend the vocabulary <extending-vocabulary>`.
 
 .. uml::
    :caption: Inheritance of the type models (namespaces are omitted for better readability)
@@ -319,7 +334,7 @@ expose the following methods:
    call it in a browser.
 
    Parameter
-      :php:`NodeIdentifierInterface|string|null $id`: The unique id to set.
+      :php:`NodeIdentifierInterface|string|null $id`: The unique ID to set.
 
    Return value
       Reference to the model itself.
@@ -327,13 +342,13 @@ expose the following methods:
 
 .. option:: getId(): string|null
 
-   Gets the id of the type model.
+   Gets the ID of the type model.
 
    Parameter
       none
 
    Return value
-      A previously set id or null (if not defined).
+      A previously set ID or null (if not defined).
 
 
 .. option:: setProperty($propertyName, $propertyValue)
@@ -450,12 +465,12 @@ expose the following methods:
 
 .. _api-schema-manager:
 
-Schema Manager
+Schema manager
 ==============
 
-The Schema Manager (class :php:`\Brotkrueml\Schema\Manager\SchemaManager`) –
-well – manages the type models and prepares them for embedding into the web
-page.
+The schema manager (class :php:`\Brotkrueml\Schema\Manager\SchemaManager`)
+manages the concrete type model objects and prepares them for embedding into the
+web page.
 
 The class exposes the following methods:
 
@@ -504,10 +519,10 @@ The class exposes the following methods:
 
 .. _api-node-identifier:
 
-Node Identifier
+Node identifier
 ===============
 
-A NodeIdentifier (class :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifier`)
+A node identifier (class :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifier`)
 holds the ID for a type or a reference.
 
 On instantiation of a NodeIdentifier the ID is given as a string argument into
@@ -517,21 +532,21 @@ The class exposes the following method:
 
 .. option:: getId()
 
-   Returns the id.
+   Returns the ID.
 
    Parameter
       none
 
    Return value
-      The id as a string.
+      The ID as a string.
 
 
 .. _api-blank-node-identifier:
 
-Blank Node Identifier
+Blank node identifier
 =====================
 
-A BlankNodeIdentifier (class :php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`)
+A blank node identifier (class :php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`)
 holds the ID for a type or a reference.
 
 On instantiation of a BlankNodeIdentifier the ID is auto-generated and unique
@@ -541,13 +556,13 @@ The class exposes the following method:
 
 .. option:: getId()
 
-   Returns the id.
+   Returns the ID.
 
    Parameter
       none
 
    Return value
-      The id as a string.
+      The ID as a string.
 
 
 
@@ -560,17 +575,17 @@ Boolean data type
 -----------------
 
 Boolean property values are mapped to the according schema terms
-``https://schema.org/True`` or ``https://schema.org/False``. You can also use
+`https://schema.org/True` or `https://schema.org/False`. You can also use
 the :php:`\Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
 two public constants:
 
 .. option:: FALSE
 
-   Provides the value ``https://schema.org/False``.
+   Provides the value `https://schema.org/False`.
 
 .. option:: TRUE
 
-   Provides the value ``https://schema.org/True``.
+   Provides the value `https://schema.org/True`.
 
 and one static method:
 

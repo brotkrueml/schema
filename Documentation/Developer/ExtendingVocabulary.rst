@@ -17,7 +17,7 @@ Introduction
 ============
 
 The TYPO3 schema extension ships :ref:`type models <api>` and :ref:`view helpers
-<view-helpers>` with their properties from the core vocabulary of the Schema.org
+<view-helpers>` with their properties from the core vocabulary of the schema.org
 definitions. However, there are several extensions, like
 `Health and lifesciences`_ or `Autos`_. There are also `pending types and
 properties`_ available that enable schema.org to introduce terms on an
@@ -52,8 +52,7 @@ more types. The chapter :ref:`event-register-additional-properties` describes
 how to register additional properties in detail.
 
 .. note::
-
-   About 1-2 times a year a new version of the Schema.org definition is
+   About 1-2 times a year a new version of the schema.org definition is
    `released`_. The extension adopts these changes in future releases. If you
    register a pending property for a type, this property can be included in the
    core vocabulary in a later version of this extension. However, it doesn't do
@@ -68,7 +67,7 @@ Adding types
 .. versionchanged:: 3.0.0
 
 You can add additional types for use in the :ref:`API <api>` or as a
-:ref:`WebPage type <webpage-types>`. As an example, in March 2020, Schema.org
+:ref:`WebPage type <webpage-types>`. As an example, in March 2020, schema.org
 introduces a new `VirtualLocation`_ type related to the corona crisis, which
 was quickly adopted by Google. The type can be used as `location`_ in the
 `Event`_ type. So let's start with this example.
@@ -149,7 +148,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
       {
       }
 
-   To use the ``schema`` namespace in Fluid templates also with your custom
+   To use the `schema` namespace in Fluid templates also with your custom
    view helpers add the following snippet to the :file:`ext_localconf.php` file
    of your extension:
 
@@ -215,6 +214,7 @@ The new web page type can now be selected in the page properties:
 
 .. figure:: /Images/Developer/MedicalWebPageTypeSelection.png
    :alt: MedicalWebPage in the list of available web page types
+   :class: with-border
 
    *MedicalWebPage* in the list of available web page types
 

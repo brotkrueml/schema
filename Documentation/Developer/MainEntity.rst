@@ -19,21 +19,23 @@ Target group: **Developers**
 Introduction
 ============
 
-A ``WebPage`` type provides a property ``mainEntity``, which indicates the
-primary content of a page. Every type is allowed - although some types doesn't
-make sense (e.g. a breadcrumb cannot be the primary content).
+A `WebPage` type provides a property `mainEntity`, which indicates the
+primary content of a page. Every type is allowed - although some types does not
+make sense (for example, a breadcrumb cannot be the primary content).
 
 .. note::
    Technically, there can be more than one main entity at a time. For example,
-   if you have a ``FAQPage`` you will usually assign `more than one question`_
-   as ``mainEntity``.
+   if you have a `FAQPage` you will usually assign `more than one question`_
+   as `mainEntity`.
 
 
 Using the API
 =============
 
 The main entity of a web page can be defined with the API. Let's start with an
-example that specifies a product as the primary content::
+example that specifies a product as the primary content:
+
+.. code-block:: php
 
    $aggregateRating = \Brotkrueml\Schema\Type\TypeFactory::createType('AggregateRating');
       ->setProperty('ratingValue', '4')
@@ -52,8 +54,8 @@ example that specifies a product as the primary content::
 
    $schemaManager->addMainEntityOfWebPage($product);
 
-The above example is rendered as JSON-LD. Let's assume the ``WebPage`` type is
-set to ``ItemPage`` - either in the page properties or via the API or a view
+The above example is rendered as JSON-LD. Let's assume the `WebPage` type is
+set to `ItemPage` - either in the page properties or via the API or a view
 helper.
 
 .. code-block:: json
@@ -76,8 +78,7 @@ helper.
    }
 
 .. note::
-
-   If the ``WebPage`` type is not defined because the
+   If the `WebPage` type is not defined because the
    :ref:`appropriate setting<configuration-automaticWebPageSchemaGeneration>`
    is disabled in the extension configuration, the main entity is rendered as
    a root type.
@@ -139,7 +140,9 @@ With the API
 ------------
 
 The main entity of the API example above can be prioritised by setting the
-second argument to :php:`true`::
+second argument to :php:`true`:
+
+.. code-block:: php
 
    $schemaManager->addMainEntityOfWebPage($product, true);
 

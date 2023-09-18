@@ -1,7 +1,6 @@
 .. include:: /Includes.rst.txt
 
 .. index:: TypoScript
-.. highlight:: typoscript
 
 .. _typoscript:
 
@@ -18,11 +17,14 @@ Target group: **Integrators**
 Content Object (cObject) :ts:`SCHEMA`
 =====================================
 
-The extension provides the cObject :ts:`SCHEMA`.
-The cObject itself will not display anything.
-Instead it will add configured types to the global schema output.
+The extension provides the cObject :ts:`SCHEMA`. The cObject itself will not
+display anything. Instead it will add configured types to the global schema
+output.
 
-A small example::
+A small example:
+
+.. code-block:: typoscript
+   :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
    page = PAGE
    page.10 = SCHEMA
@@ -34,9 +36,10 @@ A small example::
        }
    }
 
-That will add an element of type ``WebSite`` to schema.
-It will consist of the property ``name`` as well as ``description``.
-The ``name`` property will be filled from the ``seo_title`` field, falling back to ``title`` field.
+That will add an element of type `WebSite` to schema. It will consist of the
+property `name` as well as `description`.
+The `name` property will be filled from the `seo_title` field, falling back to
+the `title` field.
 
 .. _typoscript-cobjectSchema-topLevelProperties:
 
@@ -58,7 +61,8 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
       **Example:**
 
-      ::
+      .. code-block:: typoscript
+         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -72,11 +76,12 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       string / :ref:`stdWrap <t3tsref:stdwrap>`
 
    Description
-      The id added as ``@id`` to the type if defined.
+      The ID added as `@id` to the type, if defined.
 
       **Example:**
 
-      ::
+      .. code-block:: typoscript
+         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -104,7 +109,8 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
 
       **Example:**
 
-      ::
+      .. code-block:: typoscript
+         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
          page.10 = SCHEMA
          page.10.type = WebSite
@@ -119,6 +125,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       **Example:**
 
       .. code-block:: typoscript
+         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
          :emphasize-lines: 4-14
 
          page.10 = SCHEMA
@@ -142,6 +149,7 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       **Example:**
 
       .. code-block:: typoscript
+         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
          :emphasize-lines: 6-13
 
          page.10 = SCHEMA
@@ -169,11 +177,12 @@ The cObject :ts:`SCHEMA` provides the following top level properties:
       :ref:`if <t3tsref:if>`
 
    Description
-      Prevents processing of the whole cObject if it evaluates to ``false``.
+      Prevents processing of the whole cObject if it evaluates to `false`.
 
       **Example:**
 
-      ::
+      .. code-block:: typoscript
+         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
          page.10 = SCHEMA
          page.10 {

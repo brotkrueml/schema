@@ -22,7 +22,7 @@ There are several web page types available to characterise the content of a web
 page. A list of the types can be found in the section
 :ref:`Available Web Page Types <webpage-types-list>`.
 
-The ``WebPage`` type and its descendants (like `AboutPage`_ or `ImageGallery`_)
+The `WebPage` type and its descendants (like `AboutPage`_ or `ImageGallery`_)
 can only appear once on a web page – as opposed to the other types.
 
 This extension defines a :ref:`new field <for-editors>`
@@ -31,7 +31,7 @@ for the page and the schema markup is added automatically to the page (if the
 corresponding
 :ref:`configuration setting <configuration-automaticWebPageSchemaGeneration>` is
 activated). If the configuration option is set and the according page has an
-expiration date set, the according property ``expires`` will be set in the
+expiration date set, the according property `expires` will be set in the
 markup.
 
 But you have various options to set the web page type on your own. This can be
@@ -47,14 +47,18 @@ Using the API
 =============
 
 As you saw in a previous chapter you can use the :ref:`API <api>` to define the
-schema for a page. The ``WebPage`` type is no exception to that. Define a
-``WebPage`` type for a page via API::
+schema for a page. The `WebPage` type is no exception to that. Define a
+`WebPage` type for a page via API:
+
+.. code-block:: php
 
    $itemPage = \Brotkrueml\Schema\Type\TypeFactory::createType('ItemPage')
    $this->schemaManager->addType($itemPage);
 
-That's it. But you can add one or more properties to it - let's define a page
-with a product as primary content::
+That is it. But you can add one or more properties to it - let's define a page
+with a product as primary content:
+
+.. code-block:: php
 
    $aggregateRating = \Brotkrueml\Schema\Type\TypeFactory::createType('AggregateRating')
       ->setProperty('ratingValue', '4')
@@ -112,7 +116,7 @@ If you define a web page on your own, this overrules the :ref:`page field value
 Using the view helpers
 ======================
 
-But imagine you don't have the possibility to add PHP code to an extension (e.g.
+But imagine you don't have the possibility to add PHP code to an extension (for example,
 it is a third-party extension). So the view helpers come into the game. Let's
 implement the same example as above with view helpers:
 

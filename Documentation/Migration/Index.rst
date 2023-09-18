@@ -50,12 +50,15 @@ Signal/Slots
 
 The signal/slots were removed:
 
-- registerAdditionalTypeProperties
-- shouldEmbedMarkup
+*  registerAdditionalTypeProperties
+*  shouldEmbedMarkup
 
 You can migrate the slots easily to the PSR-14 event listeners:
 
-**Previous slot** (in :file:`ext_localconf.php`)::
+**Previous slot** (in :file:`ext_localconf.php`):
+
+.. code-block:: php
+   :caption: EXT:my_extension/ext_localconf.php
 
    $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
       TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
@@ -63,7 +66,7 @@ You can migrate the slots easily to the PSR-14 event listeners:
    $signalSlotDispatcher->connect(
       \Brotkrueml\Schema\Core\Model\AbstractType::class,
       'registerAdditionalTypeProperties',
-      \YourVendor\YourExtension\EventListener\AdditionalPropertiesForPerson::class,
+      \MyVendor\MyExtension\EventListener\AdditionalPropertiesForPerson::class,
       '__invoke'
    );
 
@@ -72,11 +75,12 @@ You can migrate the slots easily to the PSR-14 event listeners:
 .. code-block:: yaml
 
    services:
-      YourVendor\YourExtension\EventListener\AdditionalPropertiesForPerson:
+      # Place here the default dependency injection configuration
+
+      MyVendor\MyExtension\EventListener\AdditionalPropertiesForPerson:
          tags:
             - name: event.listener
               identifier: 'myAdditionalPropertiesForPerson'
-              event: Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent
 
 You can find more information about the PSR-14 event listeners in the chapter
 :ref:`events`.
@@ -88,9 +92,9 @@ Removed Deprecations
 The following :ref:`deprecated methods and classes <api-deprecations>` were
 removed:
 
-- :php:`\Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
-- :php:`\Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
-- :php:`\Brotkrueml\Schema\Provider\TypesProvider`
+*  :php:`\Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()`
+*  :php:`\Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()`
+*  :php:`\Brotkrueml\Schema\Provider\TypesProvider`
 
 For the migration follow the instructions on the
 :ref:`deprecations <api-deprecations>` chapter.

@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. highlight:: shell
-
 .. index:: Installation
 
 .. _installation:
@@ -13,14 +11,15 @@ Installation
 Target group: **Administrators**
 
 .. note::
-
    The extension in version |release| supports TYPO3 v11 LTS and TYPO3 v12 LTS
    and needs at least PHP 8.1.
 
    Use latest version 2.x for compatibility with TYPO3 v10 LTS or PHP 7.4/8.0.
 
 The recommended way to install this extension is by using Composer. In your
-Composer-based TYPO3 project root, just type::
+Composer-based TYPO3 project root, just type:
+
+.. code-block:: bash
 
    composer req brotkrueml/schema
 

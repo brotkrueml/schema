@@ -36,13 +36,14 @@ To open the types overview, navigate to the
 
 .. figure:: /Images/Developer/ConfigurationModule.png
    :alt: Available types in the Configuration module
+   :class: with-border
 
    Available types in the *Configuration* module
 
 There are two groups available:
 
-- All types: The available types are listed alphabetically.
-- Web page types: The available web page types used in the
-  :ref:`page properties <webpage-types>`.
+*  All types: The available types are listed alphabetically.
+*  Web page types: The available web page types used in the
+   :ref:`page properties <webpage-types>`.
 
 You can quickly look up the available types using the search box.

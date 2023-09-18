@@ -18,8 +18,8 @@ Target group: **Developers, Integrators**
 Extension configuration
 =======================
 
-To configure the extension, go to :guilabel:`Admin Tools` > :guilabel:`Settings`
-> :guilabel:`Extension Configuration` and click on the
+To configure the extension, go to
+:guilabel:`Admin Tools > Settings > Extension Configuration` and click on the
 :guilabel:`Configure extensions` button. Open the :guilabel:`schema`
 configuration:
 
@@ -36,7 +36,7 @@ configuration:
 Automatic embedding of the WebPage schema into the page
 -------------------------------------------------------
 
-If this option is enabled, the ``WebPage`` type schema is automatically embedded
+If this option is enabled, the `WebPage` type schema is automatically embedded
 into the page. The web page type can be defined in the field
 :guilabel:`Specific type of web page` of the :ref:`page properties <for-editors>`
 and defaults to :ref:`WebPage <web-page-type>`.
@@ -59,10 +59,9 @@ Default value
    disabled
 
 .. note::
-
    Since multiple breadcrumbs are allowed for a page, this option adds a
-   breadcrumb to the possibly already existing ones (e.g. defined via the
-   :ref:`API <breadcrumb-api>` or the
+   breadcrumb to the possibly already existing ones (for example, defined via
+   the :ref:`API <breadcrumb-api>` or the
    :ref:`view helpers <breadcrumb-viewhelpers>`).
 
 
@@ -125,16 +124,19 @@ Default value
 Cache configuration
 ===================
 
-The extension stores some data temporarily, e.g. :ref:`additional type
+The extension stores some data temporarily, for example, :ref:`additional type
 properties <event-register-additional-properties>`. They are cached for better
 performance. By default, the cache uses the default database backend cache. You
 can reconfigure it to use a different cache backend. You can find further
-information in the chapter :ref:`t3coreapi:caching` of the
-TYPO3 documentation.
+information in the chapter :ref:`t3coreapi:caching` of TYPO3 Explained.
 
 For example, place the following snippet in the :file:`ext_localconf.php` file
-of your site package extension to use the file backend (which stored the data
-in the file system) instead::
+of your site package extension to use the file backend (which stores the data
+in the file system) instead:
 
-   $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] ??= \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;
+.. code-block:: php
+   :caption: EXT:my_extension/ext_localconf.php
+
+   $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend']
+      ??= \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;
 

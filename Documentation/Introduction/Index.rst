@@ -44,16 +44,16 @@ Schema.org is a set of extensible schemas that enables webmasters to embed
 structured data on their web pages for use by search engines and other
 applications. The vocabulary is divided into different sections:
 
-- The **core** vocabulary provides all default types and properties, like
-  ``Person`` or ``Organization``.
-- The **pending** section is a staging area for work-in-progress terms which
-  have yet to be accepted into the core vocabulary. `Pending terms`_ are subject
-  to change and should be used with caution. On the schema.org website they
-  are displayed in a blue colour.
-- The **auto** section provides additional terms related to `auto`_.
-- The **bib** section provides additional terms related to `bibliography`_.
-- The **health-lifesci** section provides additional terms related to
-  `health and lifesciences`_.
+*  The **core** vocabulary provides all default types and properties, like
+   `Person` or `Organization`.
+*  The **pending** section is a staging area for work-in-progress terms which
+   have yet to be accepted into the core vocabulary. `Pending terms`_ are subject
+   to change and should be used with caution. On the schema.org website they
+   are displayed in a blue colour.
+*  The **auto** section provides additional terms related to `auto`_.
+*  The **bib** section provides additional terms related to `bibliography`_.
+*  The **health-lifesci** section provides additional terms related to
+   `health and lifesciences`_.
 
 .. note::
    This TYPO3 schema extension provides the terms for the core vocabulary. To
@@ -61,10 +61,10 @@ applications. The vocabulary is divided into different sections:
    described in the :ref:`according chapter <extending-vocabulary>` or use one
    of the additional TYPO3 extensions provided by the author of this extension:
 
-   - `schema_auto`_
-   - `schema_bib`_
-   - `schema_health`_
-   - `schema_pending`_
+   *  `schema_auto`_
+   *  `schema_bib`_
+   *  `schema_health`_
+   *  `schema_pending`_
 
 The schema.org vocabulary is evolving, several times a year a new version is
 `released`_. The TYPO3 extensions are updated when relevant changes are made to
@@ -81,12 +81,12 @@ Release management
 
 This extension uses `semantic versioning`_ which basically means for you, that
 
-* Bugfix updates (e.g. 1.0.0 => 1.0.1) just includes small bug fixes or security
-  relevant stuff without breaking changes.
-* Minor updates (e.g. 1.0.0 => 1.1.0) includes new features and smaller tasks
-  without breaking changes.
-* Major updates (e.g. 1.0.0 => 2.0.0) breaking changes which can be
-  refactorings, features or bug fixes.
+*  Bugfix updates (for example, 1.0.0 => 1.0.1) just includes small bug fixes or
+   security relevant stuff without breaking changes.
+*  Minor updates (for example, 1.0.0 => 1.1.0) includes new features and smaller
+   tasks without breaking changes.
+*  Major updates (for example, 1.0.0 => 2.0.0) breaking changes which can be
+   refactorings, features or bug fixes.
 
 The changes between the different versions can be found in the
 :ref:`changelog <changelog>`.

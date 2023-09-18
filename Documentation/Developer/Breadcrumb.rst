@@ -36,7 +36,9 @@ Using the API
 =============
 
 You can define a breadcrumb with the :ref:`API <api>` as you may already
-guessed. For example, you have defined a breadcrumb somewhere::
+guessed. For example, you have defined a breadcrumb somewhere:
+
+.. code-block:: php
 
    $breadcrumb = [
       'Some product category' => 'https://example.org/some-product-category/',
@@ -44,7 +46,9 @@ guessed. For example, you have defined a breadcrumb somewhere::
       'Some fancy product' => 'https://example.org/some-fancy-product/',
    ];
 
-Now you can iterate over the pages::
+Now you can iterate over the pages:
+
+.. code-block:: php
 
    $breadcrumbList = (new \Brotkrueml\Schema\Model\Type\BreadcrumbList());
    $counter = 0;
@@ -98,7 +102,7 @@ This results in the following schema markup:
       }
    }
 
-As you can see, the breadcrumb is embedded in a ``WebPage`` automatically.
+As you can see, the breadcrumb is embedded in a `WebPage` automatically.
 
 .. index:: Breadcrumb via view helpers
 
@@ -127,7 +131,7 @@ The schema markup can also be achieved by a view helper in a Fluid template:
       </f:for>
    </schema:type.breadcrumbList>
 
-It is also possible to use it in combination with one of the ``WebPage`` types:
+It is also possible to use it in combination with one of the `WebPage` types:
 
 .. code-block:: html
 
@@ -156,6 +160,7 @@ But mostly you will have the breadcrumb structure in a Fluid variable created by
 a MenuProcessor in TypoScript:
 
 .. code-block:: typoscript
+   :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
    page = PAGE
    page {
@@ -181,7 +186,7 @@ iterating over the structure? So, let's use the breadcrumb view helper for that:
 
    <schema:breadcrumb breadcrumb="{breadcrumb}"/>
 
-That's it.
+That is it.
 
 The best place to use this view helper is in the template where you generate
 the visual representation of the breadcrumb for your users.
@@ -197,7 +202,9 @@ set it to :html:`1`:
    <schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>
 
 You can build your own breadcrumb array and assign it to the template. It should
-have the following structure::
+have the following structure:
+
+.. code-block:: php
 
    $breadcrumb = [
       [
@@ -230,20 +237,20 @@ have the following structure::
       ],
    ];
 
-If the key :php:`tx_schema_webpagetype` is omitted it defaults to ``WebPage``.
+If the key :php:`tx_schema_webpagetype` is omitted, it defaults to `WebPage`.
 
 Remarks
 -------
 
-* The home page should not be included into the markup.
-* Please keep in mind that according to the Google Structured Data Testing Tool,
-  only the type ``BreadcrumbList`` is allowed for the breadcrumb property -
-  either the schema.org definition allows strings. Other types than the
-  BreadcrumbList are ignored by the schema manager.
-* It is intended that the breadcrumb is not automatically rendered out of the
-  page structure of your TYPO3 installation, because it is possible to extend
-  the breadcrumb with own MenuProcessors like in the
-  `news extension`_.
+*  The home page should not be included into the markup.
+*  Please keep in mind that according to the Google Structured Data Testing Tool,
+   only the type `BreadcrumbList` is allowed for the breadcrumb property -
+   either the schema.org definition allows strings. Other types than the
+   BreadcrumbList are ignored by the schema manager.
+*  It is intended that the breadcrumb is not automatically rendered out of the
+   page structure of your TYPO3 installation, because it is possible to extend
+   the breadcrumb with own MenuProcessors like in the
+   `news extension`_.
 
 
 .. _news extension: https://docs.typo3.org/typo3cms/extensions/news/7.2.0/Misc/Changelog/7-2-0.html#custom-menu-processor

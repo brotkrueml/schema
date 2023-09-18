@@ -22,7 +22,6 @@ listeners. An event listener receives an event that provides methods for
 retrieving and setting dedicated properties.
 
 .. seealso::
-
    You can find more information about PSR-14 events in the blog article
    `PSR-14 Events in TYPO3`_ and the official :ref:`TYPO3 documentation
    <t3coreapi:EventDispatcher>`.
@@ -65,7 +64,7 @@ Example
 
 #. Create the event listener
 
-   ::
+   .. code-block:: php
 
       <?php
       declare(strict_types=1);
@@ -96,6 +95,8 @@ Example
    .. code-block:: yaml
 
       services:
+         # Place here the default dependency injection configuration
+
          YourVendor\YourExtension\EventListener\AdditionalPropertiesForPerson:
             tags:
                - name: event.listener
