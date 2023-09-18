@@ -39,6 +39,13 @@ Starting with examples
 Types
 -----
 
+.. deprecated:: 3.0.0
+   Before version 3.0 a type was created with the static method
+   :php:`TypeFactory::createType()`. This has been
+   :ref:`deprecated <api-deprecations>`, inject the :php:`TypeFactory` into the
+   constructor and use :php:`TypeFactory->create()` instead (like in the example
+   below).
+
 Let's start with a simple example. Imagine you describe a `person`_ on a
 plugin's detail page that you want to enrich with structured markup. First you
 have to create the schema model:
@@ -46,7 +53,7 @@ have to create the schema model:
 .. literalinclude:: _Api/_MyController1.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 15
+   :emphasize-lines: 11-14,20
 
 The schema type `Person` maps to the model
 :php:`\Brotkrueml\Schema\Model\Type\Person`. You can use every accepted type
@@ -65,21 +72,21 @@ Surely you will need to add some properties:
 .. literalinclude:: _Api/_MyController2.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 16-20
+   :emphasize-lines: 20-25
 
 That was easy ... let's go on and define an event the person attends:
 
 .. literalinclude:: _Api/_MyController3.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 15-22
+   :emphasize-lines: 20-27
 
 Now we have to connect the two types together:
 
 .. literalinclude:: _Api/_MyController4.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 20
+   :emphasize-lines: 25
 
 The defined models are ready to embed on the web page. The schema manager does
 that for you:
@@ -87,7 +94,7 @@ that for you:
 .. literalinclude:: _Api/_MyController5.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 12-15,25
+   :emphasize-lines: 13,26
 
 
 That's it ... if you call the according page the structured markup is embedded
@@ -126,13 +133,13 @@ be, for example, a `Product` and a `Service` at the same time - which can be
 useful in some cases.
 
 The technical difference to a single type is only that you call
-:php:`\Brotkrueml\Schema\Type\TypeFactory::createType()` with more than one
+:php:`\Brotkrueml\Schema\Type\TypeFactory->create()` with more than one
 argument:
 
 .. literalinclude:: _Api/_MyControllerMultiple.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 21-28
+   :emphasize-lines: 22-29
 
 The factory method returns an instance of the
 :php:`\Brotkrueml\Schema\Core\Model\MultipleType` class which provides the
@@ -183,7 +190,7 @@ You can accomplish this with the help of the
 .. literalinclude:: _Api/_MyControllerNodeIdentifier.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 22-36
+   :emphasize-lines: 23-37
 
 As you can see in the example, you can also use a node identifier as an
 argument for :php:`->setId()` instead of a string.
@@ -205,7 +212,7 @@ The above example can also be used with a blank node identifier:
 .. literalinclude:: _Api/_MyControllerBlankNodeIdentifier.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 22-35
+   :emphasize-lines: 23-36
 
 To use a blank node identifier instantiate the class
 :php:`\Brotkrueml\Schema\Core\Model\BlankNodeIdentifier`. The identifier is

@@ -11,6 +11,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -18,14 +19,14 @@ final class MyController
     {
         // ...
 
-        $breadcrumbList = TypeFactory::createType('BreadcrumbList');
+        $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         $counter = 0;
         foreach ($breadcrumb as $name => $url) {
             $counter++;
 
             $breadcrumbList->addProperty(
                 'itemListElement',
-                TypeFactory::createType('ListItem')
+                $this->typeFactory->create('ListItem')
                     ->setProperties([
                         'name' => $name,
                         'item' => $url,

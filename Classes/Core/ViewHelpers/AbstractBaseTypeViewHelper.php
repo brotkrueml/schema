@@ -33,7 +33,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     private readonly TypeStack $stack;
     private readonly SchemaManager $schemaManager;
 
-    public function __construct(TypeStack $typeStack = null, SchemaManager $schemaManager = null)
+    public function __construct(?TypeStack $typeStack = null, ?SchemaManager $schemaManager = null)
     {
         $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);
         $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);

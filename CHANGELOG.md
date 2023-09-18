@@ -7,8 +7,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Method TypeFactory->create() which should be used instead of TypeFactory::createType()
+
 ### Changed
 - Type model classes need to be marked with the "Type" attribute (#107)
+
+### Deprecated
+- TypeFactory::createType(), instead inject TypeFactory via DI and call create() method (#83)
 
 ### Removed
 - Compatibility with TYPO3 v10 (#73)

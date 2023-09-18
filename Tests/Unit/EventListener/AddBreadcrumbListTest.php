@@ -18,6 +18,7 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -55,6 +56,7 @@ final class AddBreadcrumbListTest extends TestCase
         $this->subject = new AddBreadcrumbList(
             $this->contentObjectRendererStub,
             $this->extensionConfigurationStub,
+            new TypeFactory(),
         );
 
         $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;

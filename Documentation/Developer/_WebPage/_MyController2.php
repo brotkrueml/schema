@@ -11,6 +11,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -18,12 +19,12 @@ final class MyController
     {
         // ...
 
-        $aggregateRating = TypeFactory::createType('AggregateRating')
+        $aggregateRating = $this->typeFactory->create('AggregateRating')
             ->setProperty('ratingValue', '4')
             ->setProperty('reviewCount', '126')
         ;
 
-        $product = TypeFactory::createType('Product')
+        $product = $this->typeFactory->create('Product')
             ->setProperties([
                 'name' => 'Some fancy product',
                 'color' => 'blue',
@@ -33,7 +34,7 @@ final class MyController
             ])
         ;
 
-        $itemPage = TypeFactory::createType('ItemPage')
+        $itemPage = $this->typeFactory->create('ItemPage')
             ->setProperty('mainEntity', $product)
         ;
 

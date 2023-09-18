@@ -12,6 +12,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -21,11 +22,11 @@ final class MyController
 
         $nodeIdentifier = new NodeIdentifier('https://example.org/#john-smith');
 
-        $person1 = TypeFactory::createType('Person');
+        $person1 = $this->typeFactory->create('Person');
         $person1->setId($nodeIdentifier);
         $person1->setProperty('name', 'John Smith');
 
-        $person2 = TypeFactory::createType('Person');
+        $person2 = $this->typeFactory->create('Person');
         $person2->setProperty('name', 'Sarah Jane Smith');
         $person2->setProperty('knows', $nodeIdentifier);
 

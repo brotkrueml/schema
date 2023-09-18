@@ -26,6 +26,7 @@ final class AddWebPageType
 
     public function __construct(
         private readonly ExtensionConfiguration $configuration,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -46,7 +47,7 @@ final class AddWebPageType
 
         $tsfe = $this->getTypoScriptFrontendController();
         $webPageType = ($tsfe->page['tx_schema_webpagetype'] ?? '') ?: self::DEFAULT_WEBPAGE_TYPE;
-        $webPageModel = TypeFactory::createType($webPageType);
+        $webPageModel = $this->typeFactory->create($webPageType);
         if ($tsfe->page['endtime'] ?? 0) {
             $webPageModel->setProperty('expires', \date('c', $tsfe->page['endtime']));
         }

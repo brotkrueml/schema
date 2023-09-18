@@ -17,11 +17,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class TypeFactory
 {
-    private function __construct()
-    {
-    }
-
-    public static function createType(string ...$type): TypeInterface
+    public function create(string ...$type): TypeInterface
     {
         if ($type === []) {
             throw new \DomainException(
@@ -32,13 +28,26 @@ final class TypeFactory
 
         $type = \array_unique($type);
         if (\count($type) === 1) {
-            return self::createSingleType($type[0]);
+            return $this->createSingle($type[0]);
         }
 
-        return self::createMultipleType($type);
+        return $this->createMultiple($type);
     }
 
-    private static function createSingleType(string $type): TypeInterface
+    /**
+     * @deprecated since 3.0.0, will be removed in 4.0. Inject the TypeFactory into your class and call the method create() on that object.
+     */
+    public static function createType(string ...$type): TypeInterface
+    {
+        \trigger_error(
+            'Calling the static method TypeFactory::createType() is deprecated since version 3.0.0 and will be removed in version 4.0. Inject the TypeFactory into your class and call the method create() on that object.',
+            \E_USER_DEPRECATED,
+        );
+
+        return (new self())->create(...$type);
+    }
+
+    private function createSingle(string $type): TypeInterface
     {
         /** @var TypeProvider $typeProvider */
         $typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
@@ -53,10 +62,10 @@ final class TypeFactory
     /**
      * @param string[] $types
      */
-    private static function createMultipleType(array $types): MultipleType
+    private function createMultiple(array $types): MultipleType
     {
         return new MultipleType(...\array_map(
-            static fn (string $type): TypeInterface => self::createSingleType($type),
+            fn (string $type): TypeInterface => $this->createSingle($type),
             $types,
         ));
     }

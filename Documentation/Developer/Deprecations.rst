@@ -8,6 +8,20 @@
 Deprecations
 ============
 
+.. option:: \Brotkrueml\Schema\Type\TypeFactory::createType()
+
+   Deprecated since version
+      3.0.0
+
+   Will be removed in version
+      4.0.0
+
+   Alternative
+      Inject the :php:`TypeFactory` into the constructor and use the
+      :php:`create()` method.
+      Have a look at the :ref:`migration <migration-type-factory>` section.
+
+
 .. option:: \Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()
 
    Deprecated since version

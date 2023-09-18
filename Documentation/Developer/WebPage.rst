@@ -53,7 +53,7 @@ schema for a page. The `WebPage` type is no exception to that. Define a
 .. literalinclude:: _WebPage/_MyController1.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 21-22
+   :emphasize-lines: 22-23
 
 That is it. But you can add one or more properties to it - let's define a page
 with a product as primary content:
@@ -61,7 +61,7 @@ with a product as primary content:
 .. literalinclude:: _WebPage/_MyController2.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 21-40
+   :emphasize-lines: 22-41
 
 The example is rendered as JSON-LD:
 

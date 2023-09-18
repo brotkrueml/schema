@@ -17,6 +17,7 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
+use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -44,7 +45,7 @@ final class AddWebPageTypeTest extends TestCase
         $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
         $this->typoScriptFrontendControllerStub = $this->createStub(TypoScriptFrontendController::class);
 
-        $this->subject = new AddWebPageType($this->extensionConfigurationStub);
+        $this->subject = new AddWebPageType($this->extensionConfigurationStub, new TypeFactory());
 
         $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
 

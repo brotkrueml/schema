@@ -38,6 +38,45 @@ now type-hinted as an array:
          ]
      }
 
+.. _migration-type-factory:
+
+Type factory
+------------
+
+The call of the static method :php:`\Brotkrueml\Schema\Type\TypeFactory::createType()`
+has been deprecated. Instead, inject the :php:`TypeFactory` into the constructor
+and use the new :php:`create()` method:
+
+.. code-block:: diff
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace MyVendor\MyExtension\Controller;
+
+    use Brotkrueml\Schema\Type\TypeFactory;
+
+    final class MyController
+    {
+   +    public function __construct(
+   +        private readonly TypeFactory $typeFactory,
+   +    ) {
+   +    }
+
+        public function doSomething(): void
+        {
+            // ...
+
+   -        $person = TypeFactory::createType('Person');
+   +        $person = $this->typeFactory->create('Person');
+
+            // ...
+        }
+    }
+
+
+
 From version 1.x to version 2.0
 ===============================
 

@@ -78,14 +78,13 @@ method:
 .. literalinclude:: _Index/_MyController1.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 15-16
 
 The schema manager connects the type models to the page:
 
 .. literalinclude:: _Index/_MyController2.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 12-15,24
+   :emphasize-lines: 13,25
 
 The chapter :ref:`api` describes in-depth how to use the models
 and the schema manager.

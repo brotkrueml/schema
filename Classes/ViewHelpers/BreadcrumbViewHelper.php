@@ -98,7 +98,8 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
 
         $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
-        $breadcrumbList = TypeFactory::createType('BreadcrumbList');
+        $typeFactory = new TypeFactory();
+        $breadcrumbList = $typeFactory->create('BreadcrumbList');
         $itemsCount = \count($arguments[self::ARGUMENT_BREADCRUMB]);
         for ($i = 0; $i < $itemsCount; $i++) {
             $id = (string)$arguments[self::ARGUMENT_BREADCRUMB][$i]['link'];
@@ -114,10 +115,10 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
                 $webPageTypeClass = $arguments[self::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'];
             }
             */
-            $itemType = TypeFactory::createType($webPageTypeClass);
+            $itemType = $typeFactory->create($webPageTypeClass);
             $itemType->setId($id);
 
-            $item = TypeFactory::createType('ListItem')->setProperties([
+            $item = $typeFactory->create('ListItem')->setProperties([
                 'position' => $i + 1,
                 'name' => $arguments[self::ARGUMENT_BREADCRUMB][$i]['title'],
                 'item' => $itemType,

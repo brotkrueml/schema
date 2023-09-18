@@ -11,6 +11,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -18,7 +19,7 @@ final class MyController
     {
         // ...
 
-        $thing = TypeFactory::createType('Thing');
+        $thing = $this->typeFactory->create('Thing');
         $thing->setProperty('name', 'A thing');
 
         $this->schemaManager->addType($thing);

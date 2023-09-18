@@ -11,6 +11,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -18,7 +19,7 @@ final class MyController
     {
         // ...
 
-        $productAndService = TypeFactory::createType('Product', 'Service');
+        $productAndService = $this->typeFactory->create('Product', 'Service');
         $productAndService
             ->setId('https://example.org/#my-product-and-service')
             ->setProperty('name', 'My product and service')

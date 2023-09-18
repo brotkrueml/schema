@@ -51,7 +51,7 @@ Now you can iterate over the pages:
 .. literalinclude:: _Breadcrumb/_MyController.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 21-37
+   :emphasize-lines: 22-38
 
 This results in the following schema markup:
 

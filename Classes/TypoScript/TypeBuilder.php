@@ -27,6 +27,7 @@ final class TypeBuilder
 
     public function __construct(
         private readonly LoggerInterface $logger,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -62,7 +63,7 @@ final class TypeBuilder
         $configuredType = (string)$this->cObj->stdWrapValue('type', $configuration);
 
         try {
-            return TypeFactory::createType($configuredType);
+            return $this->typeFactory->create($configuredType);
         } catch (DomainException) {
             // Do not break production sites, catch exception and return nothing.
             $this->logger->error(

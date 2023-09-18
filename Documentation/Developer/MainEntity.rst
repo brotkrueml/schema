@@ -38,7 +38,7 @@ example that specifies a product as the primary content:
 .. literalinclude:: _MainEntity/_MyController.php
    :language: php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
-   :emphasize-lines: 21-34
+   :emphasize-lines: 22-35
 
 The above example is rendered as JSON-LD. Let's assume the `WebPage` type is
 set to `ItemPage` - either in the page properties or via the API or a view

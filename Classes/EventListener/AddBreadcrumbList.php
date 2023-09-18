@@ -32,8 +32,9 @@ final class AddBreadcrumbList
     ];
 
     public function __construct(
-        private readonly ContentObjectRenderer $contentObjectRenderer,
+        private readonly ContentObjectRenderer  $contentObjectRenderer,
         private readonly ExtensionConfiguration $extensionConfiguration,
+        private readonly TypeFactory            $typeFactory,
     ) {
     }
 
@@ -85,10 +86,10 @@ final class AddBreadcrumbList
      */
     private function buildBreadCrumbList(array $rootLine): TypeInterface
     {
-        $breadcrumbList = TypeFactory::createType('BreadcrumbList');
+        $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         foreach (\array_values($rootLine) as $index => $page) {
             $givenItemType = ($page['tx_schema_webpagetype'] ?? '') ?: 'WebPage';
-            $itemType = TypeFactory::createType($givenItemType);
+            $itemType = $this->typeFactory->create($givenItemType);
 
             $link = $this->contentObjectRenderer->typoLink_URL([
                 'parameter' => (string)$page['uid'],
@@ -97,7 +98,7 @@ final class AddBreadcrumbList
 
             $itemType->setId($link);
 
-            $item = TypeFactory::createType('ListItem')->setProperties([
+            $item = $this->typeFactory->create('ListItem')->setProperties([
                 'position' => $index + 1,
                 'name' => $page['nav_title'] ?: $page['title'],
                 'item' => $itemType,

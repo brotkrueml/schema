@@ -11,6 +11,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -18,7 +19,7 @@ final class MyController
     {
         // ...
 
-        $itemPage = TypeFactory::createType('ItemPage');
+        $itemPage = $this->typeFactory->create('ItemPage');
         $this->schemaManager->addType($itemPage);
 
         // ...

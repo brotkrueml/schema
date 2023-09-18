@@ -26,10 +26,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 #[CoversClass(TypeFactory::class)]
 final class TypeFactoryTest extends TestCase
 {
+    private TypeFactory $subject;
     private TypeProvider $typeProvider;
 
     protected function setUp(): void
     {
+        $this->subject = new TypeFactory();
         $this->typeProvider = new TypeProvider();
         GeneralUtility::setSingletonInstance(TypeProvider::class, $this->typeProvider);
     }
@@ -46,7 +48,7 @@ final class TypeFactoryTest extends TestCase
         $this->expectExceptionCode(1621787452);
         $this->expectExceptionMessage('At least one type has to be given as argument');
 
-        TypeFactory::createType();
+        $this->subject->create();
     }
 
     #[Test]
@@ -54,7 +56,7 @@ final class TypeFactoryTest extends TestCase
     {
         $this->typeProvider->addType('GenericStub', GenericStub::class);
 
-        $type = TypeFactory::createType('GenericStub');
+        $type = $this->subject->create('GenericStub');
 
         self::assertInstanceOf(GenericStub::class, $type);
     }
@@ -64,7 +66,7 @@ final class TypeFactoryTest extends TestCase
     {
         $this->expectException(ModelClassNotFoundException::class);
 
-        TypeFactory::createType('UnavailableType');
+        $this->subject->create('UnavailableType');
     }
 
     #[Test]
@@ -73,7 +75,7 @@ final class TypeFactoryTest extends TestCase
         $this->typeProvider->addType('ProductStub', ProductStub::class);
         $this->typeProvider->addType('ServiceStub', ServiceStub::class);
 
-        $actual = TypeFactory::createType('ProductStub', 'ServiceStub');
+        $actual = $this->subject->create('ProductStub', 'ServiceStub');
 
         self::assertInstanceOf(MultipleType::class, $actual);
         self::assertSame(['ProductStub', 'ServiceStub'], $actual->getType());
@@ -84,16 +86,8 @@ final class TypeFactoryTest extends TestCase
     {
         $this->typeProvider->addType('GenericStub', GenericStub::class);
 
-        $type = TypeFactory::createType('GenericStub', 'GenericStub');
+        $type = $this->subject->create('GenericStub', 'GenericStub');
 
         self::assertInstanceOf(GenericStub::class, $type);
-    }
-
-    #[Test]
-    public function instantiatingTypeFactoryThrowsError(): void
-    {
-        $this->expectException(\Error::class);
-
-        new TypeFactory();
     }
 }

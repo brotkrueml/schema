@@ -8,12 +8,17 @@ use Brotkrueml\Schema\Type\TypeFactory;
 
 final class MyController
 {
+    public function __construct(
+        private readonly TypeFactory $typeFactory,
+    ) {
+    }
+
     public function doSomething(): void
     {
         // ...
 
-        $person = TypeFactory::createType('Person');
-        $event = TypeFactory::createType('Event');
+        $person = $this->typeFactory->create('Person');
+        $event = $this->typeFactory->create('Event');
 
         // ...
 

@@ -29,7 +29,7 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
     public function render(): void
     {
         $this->types = GeneralUtility::trimExplode(',', $this->arguments['types'], true);
-        $model = TypeFactory::createType(...$this->types);
+        $model = (new TypeFactory())->create(...$this->types);
         $this->addTypeToSchemaManager($model);
     }
 
