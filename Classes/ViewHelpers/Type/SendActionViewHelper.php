@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class SendActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'SendAction';
 }

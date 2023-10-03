@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class MuseumViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Museum';
 }

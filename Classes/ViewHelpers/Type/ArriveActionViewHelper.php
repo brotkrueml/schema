@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ArriveActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'ArriveAction';
 }

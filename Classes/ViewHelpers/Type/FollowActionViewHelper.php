@@ -25,4 +25,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class FollowActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'FollowAction';
 }

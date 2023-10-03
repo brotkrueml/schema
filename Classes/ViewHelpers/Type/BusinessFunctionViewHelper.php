@@ -28,4 +28,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class BusinessFunctionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'BusinessFunction';
 }

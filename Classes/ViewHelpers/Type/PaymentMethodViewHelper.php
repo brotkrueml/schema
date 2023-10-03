@@ -29,4 +29,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class PaymentMethodViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'PaymentMethod';
 }

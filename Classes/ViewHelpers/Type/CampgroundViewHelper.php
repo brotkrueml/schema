@@ -24,4 +24,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class CampgroundViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Campground';
 }

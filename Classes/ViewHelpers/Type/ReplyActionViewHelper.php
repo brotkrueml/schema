@@ -21,4 +21,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ReplyActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'ReplyAction';
 }

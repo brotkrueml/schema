@@ -26,4 +26,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class CreditCardViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'CreditCard';
 }

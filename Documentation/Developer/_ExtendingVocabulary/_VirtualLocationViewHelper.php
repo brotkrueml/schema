@@ -8,4 +8,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 final class VirtualLocationViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'VirtualLocation';
 }

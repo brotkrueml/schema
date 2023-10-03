@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class MeetingRoomViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'MeetingRoom';
 }

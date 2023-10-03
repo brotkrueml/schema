@@ -112,6 +112,9 @@ was quickly adopted by Google. The type can be used as `location`_ in the
       :language: php
       :caption: EXT:my_extension/Classes/ViewHelpers/Schema/Type/VirtualLocationViewHelper.php
 
+   .. versionchanged:: 3.0
+      The name of the type must be defined with the :php:`$type` property.
+
    To use the `schema` namespace in Fluid templates also with your custom
    view helpers add the following snippet to the :file:`ext_localconf.php` file
    of your extension:

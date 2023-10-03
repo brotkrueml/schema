@@ -21,4 +21,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class FindActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'FindAction';
 }

@@ -21,4 +21,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ReserveActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'ReserveAction';
 }

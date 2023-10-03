@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class MovingCompanyViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'MovingCompany';
 }

@@ -21,4 +21,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ScheduleActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'ScheduleAction';
 }

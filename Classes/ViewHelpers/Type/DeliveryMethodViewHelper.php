@@ -28,4 +28,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class DeliveryMethodViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'DeliveryMethod';
 }

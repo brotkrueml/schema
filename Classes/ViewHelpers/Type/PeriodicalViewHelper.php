@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class PeriodicalViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Periodical';
 }

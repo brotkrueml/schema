@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class OfferItemConditionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'OfferItemCondition';
 }

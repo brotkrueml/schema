@@ -27,6 +27,8 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
     protected const ARGUMENT_ID = '-id';
     protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
 
+    protected string $type = '';
+
     private int $isMainEntityOfWebPage = 0;
     private string $parentPropertyName = '';
     private ?TypeInterface $model = null;

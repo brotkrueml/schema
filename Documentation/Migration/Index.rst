@@ -38,6 +38,19 @@ now type-hinted as an array:
          ]
      }
 
+View helpers
+------------
+
+Custom view helpers need to specify a property which holds the name of the
+type:
+
+.. code-block:: diff
+
+     final class MyCustomTypeViewHelper extends AbstractTypeViewHelper
+     {
+   +     protected string $type = 'MyCustomType';
+     }
+
 .. _migration-type-factory:
 
 Type factory

@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class AudioObjectViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'AudioObject';
 }

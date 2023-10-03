@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class SteeringPositionValueViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'SteeringPositionValue';
 }

@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class PublicationIssueViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'PublicationIssue';
 }

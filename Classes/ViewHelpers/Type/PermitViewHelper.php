@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class PermitViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Permit';
 }

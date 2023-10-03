@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class PaintingViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Painting';
 }

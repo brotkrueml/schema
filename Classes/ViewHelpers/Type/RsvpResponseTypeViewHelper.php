@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class RsvpResponseTypeViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'RsvpResponseType';
 }

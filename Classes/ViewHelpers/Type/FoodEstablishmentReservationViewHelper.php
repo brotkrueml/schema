@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class FoodEstablishmentReservationViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'FoodEstablishmentReservation';
 }

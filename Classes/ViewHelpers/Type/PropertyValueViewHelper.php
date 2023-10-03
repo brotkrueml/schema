@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class PropertyValueViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'PropertyValue';
 }

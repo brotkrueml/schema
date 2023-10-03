@@ -24,4 +24,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class BusinessEntityTypeViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'BusinessEntityType';
 }

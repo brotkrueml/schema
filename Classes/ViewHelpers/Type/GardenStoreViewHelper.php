@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class GardenStoreViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'GardenStore';
 }

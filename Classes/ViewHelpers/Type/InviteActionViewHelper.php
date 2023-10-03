@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class InviteActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'InviteAction';
 }

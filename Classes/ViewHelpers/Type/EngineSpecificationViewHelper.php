@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class EngineSpecificationViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'EngineSpecification';
 }

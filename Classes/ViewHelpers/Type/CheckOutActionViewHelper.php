@@ -23,4 +23,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class CheckOutActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'CheckOutAction';
 }

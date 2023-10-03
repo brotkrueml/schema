@@ -22,6 +22,7 @@ Changed
 
 
 * Type model classes need to be marked with the "Type" attribute (#107)
+* Type view helpers need to specify a ``$type`` property
 
 Deprecated
 ^^^^^^^^^^

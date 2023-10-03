@@ -20,4 +20,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class MotelViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Motel';
 }

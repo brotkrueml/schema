@@ -18,4 +18,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ProductViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'Product';
 }

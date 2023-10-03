@@ -22,4 +22,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class ProfessionalServiceViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'ProfessionalService';
 }

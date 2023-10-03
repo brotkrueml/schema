@@ -24,9 +24,9 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
     protected readonly TypeFactory $typeFactory;
 
     public function __construct(
-        ?TypeStack     $typeStack = null,
+        ?TypeStack $typeStack = null,
         ?SchemaManager $schemaManager = null,
-        ?TypeFactory   $typeFactory = null,
+        ?TypeFactory $typeFactory = null,
     ) {
         parent::__construct($typeStack, $schemaManager);
         $this->typeFactory = $typeFactory ?? new TypeFactory();
@@ -63,10 +63,6 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
 
     protected function getType(): string
     {
-        return \str_replace(
-            'ViewHelper',
-            '',
-            \substr(\strrchr(static::class, '\\') ?: '', 1),
-        );
+        return $this->type;
     }
 }

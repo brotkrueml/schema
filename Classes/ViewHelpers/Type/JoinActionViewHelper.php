@@ -23,4 +23,5 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  */
 final class JoinActionViewHelper extends AbstractTypeViewHelper
 {
+    protected string $type = 'JoinAction';
 }
