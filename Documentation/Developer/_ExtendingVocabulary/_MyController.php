@@ -11,6 +11,7 @@ final class MyController
 {
     public function __construct(
         private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
     }
 
@@ -18,7 +19,7 @@ final class MyController
     {
         // ...
 
-        $location = TypeFactory::createType('VirtualLocation');
+        $location = $this->typeFactory->create('VirtualLocation');
         $location->setProperty('url', 'https://example.com/my-webinar-12345/register');
         $this->schemaManager->addType($location);
 
