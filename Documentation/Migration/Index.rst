@@ -26,10 +26,13 @@ anymore, you have to mark a type model class with the attribute
 :ref:`extending-adding-types` section for more information.
 
 Additionally, the static property :php:`$propertyNames` of a type model class is
-now type-hinted as an array:
+now type-hinted as an array.
 
 .. code-block:: diff
 
+   + use Brotkrueml\Schema\Attributes\Type;
+
+   + #[Type('MyCustomType')]
      final class MyCustomType extends AbstractType
      {
    -     protected static $propertyNames = [
