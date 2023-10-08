@@ -5,7 +5,6 @@ $EM_CONF[$_EXTKEY] = [
     'description' => 'API and view helpers for schema.org markup',
     'category' => 'fe',
     'state' => 'stable',
-    'createDirs' => '',
     'clearCacheOnLoad' => true,
     'author' => 'Chris Müller',
     'author_email' => 'typo3@krue.ml',
