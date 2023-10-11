@@ -19,6 +19,7 @@ use Brotkrueml\Schema\Type\TypeProvider;
 use Brotkrueml\Schema\ViewHelpers\AdminPanel\PropertyValueViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Imaging\Icon;
@@ -26,6 +27,7 @@ use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
 #[CoversClass(PropertyValueViewHelper::class)]
+#[RunTestsInSeparateProcesses]
 final class PropertyValueViewHelperTest extends ViewHelperTestCase
 {
     /**
