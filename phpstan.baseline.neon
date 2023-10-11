@@ -16,11 +16,6 @@ parameters:
 			path: Classes/Cache/PagesCacheService.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getAdditionalProperties\\(\\)\\.$#"
-			count: 1
-			path: Classes/Core/Model/AbstractType.php
-
-		-
 			message: "#^Do not use static property$#"
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
