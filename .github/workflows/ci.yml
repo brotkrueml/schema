@@ -55,7 +55,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules --dev --no-update
-          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader --ignore-platform-req=php
+          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
           find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
