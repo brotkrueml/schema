@@ -28,7 +28,7 @@ final class TypesTest extends TestCase
     /**
      * @var TypeRegistry&Stub
      */
-    private $typeRegistryStub;
+    private Stub $typeRegistryStub;
     private Types $subject;
 
     protected function setUp(): void

@@ -30,12 +30,12 @@ class AddWebPageTypeTest extends TestCase
     /**
      * @var Stub&ExtensionConfiguration
      */
-    private $extensionConfigurationStub;
+    private Stub $extensionConfigurationStub;
 
     /**
      * @var Stub&TypoScriptFrontendController
      */
-    private $typoScriptFrontendControllerStub;
+    private Stub $typoScriptFrontendControllerStub;
 
     private AddWebPageType $subject;
     private RenderAdditionalTypesEvent $event;

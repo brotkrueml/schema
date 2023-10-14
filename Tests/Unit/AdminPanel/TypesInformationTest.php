@@ -26,7 +26,7 @@ class TypesInformationTest extends TestCase
     /**
      * @var Stub&PagesCacheService
      */
-    private $pagesCacheServiceStub;
+    private Stub $pagesCacheServiceStub;
 
     /**
      * @var MockObject&StandaloneView
@@ -36,7 +36,7 @@ class TypesInformationTest extends TestCase
     /**
      * @var Stub&LanguageService
      */
-    private $languageServiceStub;
+    private Stub $languageServiceStub;
 
     private TypesInformation $subject;
 

@@ -30,7 +30,7 @@ class PagesCacheServiceTest extends TestCase
     /**
      * @var Stub&TypoScriptFrontendController
      */
-    private $controllerStub;
+    private Stub $controllerStub;
 
     protected function setUp(): void
     {

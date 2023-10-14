@@ -34,17 +34,17 @@ final class AddBreadcrumbListTest extends TestCase
     /**
      * @var Stub&ContentObjectRenderer
      */
-    private $contentObjectRendererStub;
+    private Stub $contentObjectRendererStub;
 
     /**
      * @var Stub&ExtensionConfiguration
      */
-    private $extensionConfigurationStub;
+    private Stub $extensionConfigurationStub;
 
     /**
      * @var Stub&TypoScriptFrontendController
      */
-    private $typoScriptFrontendControllerStub;
+    private Stub $typoScriptFrontendControllerStub;
 
     private AddBreadcrumbList $subject;
     private InitialiseTypesEvent $event;

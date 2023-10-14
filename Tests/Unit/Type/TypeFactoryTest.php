@@ -26,7 +26,7 @@ class TypeFactoryTest extends TestCase
     /**
      * @var TypeRegistry&Stub
      */
-    private $typeRegistryStub;
+    private Stub $typeRegistryStub;
 
     protected function setUp(): void
     {

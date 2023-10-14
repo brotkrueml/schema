@@ -25,7 +25,7 @@ class ExtensionAvailabilityTest extends TestCase
     /**
      * @var Stub&PackageManager
      */
-    private $packageManagerStub;
+    private Stub $packageManagerStub;
 
     private ExtensionAvailability $subject;
 
