@@ -13,8 +13,8 @@
 
 | Latest release | TYPO3       | PHP   | Updates will contain                                 |
 |----------------|-------------|-------|------------------------------------------------------|
-| 3.x            | 11.5 - 12.4 | ≥ 8.1 | In development                                       |
-| 2.x            | 10.4 - 12.4 | ≥ 7.4 | Features, schema.org updates, security and bug fixes |
+| 3.x            | 11.5 - 12.4 | ≥ 8.1 | Features, schema.org updates, security and bug fixes |
+| 2.x            | 10.4 - 12.4 | ≥ 7.4 | schema.org updates, security and bug fixes           |
 | 1.x            | 9.5 - 11.5  | ≥ 7.2 | End of life                                          |
 
 [Documentation](https://docs.typo3.org/p/brotkrueml/schema/main/en-us/) |
