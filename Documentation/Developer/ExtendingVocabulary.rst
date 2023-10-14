@@ -87,7 +87,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
    extension, but you can choose any namespace. The class must have the
    :php:`\Brotkrueml\Schema\Attributes\Type` attribute assigned. It has one
    mandatory parameter: the type name. The protected static property
-   :php:`$propertyNames` contains the available Schema.org properties.
+   :php:`$propertyNames` contains the available schema.org properties.
 
    Now you can use the `VirtualLocation` in your PHP code:
 
