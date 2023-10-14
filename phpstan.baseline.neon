@@ -7,7 +7,7 @@ parameters:
 
 		-
 			message: "#^Do not use static property$#"
-			count: 1
+			count: 4
 			path: Classes/Core/Model/AbstractType.php
 
 		-

@@ -11,9 +11,11 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Fixtures\Model;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 
+#[Type('GenericStub')]
 class GenericStub implements NodeIdentifierInterface, TypeInterface
 {
     public function __construct(

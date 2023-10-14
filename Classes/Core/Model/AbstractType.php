@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
+use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -27,6 +28,14 @@ abstract class AbstractType implements TypeInterface
      * @api
      */
     protected static array $propertyNames = [];
+
+    /**
+     * The getType() method resolves the type depending on the "Type" attribute via reflection.
+     * Once a specific type is resolved, it is cached in this variable.
+     * @var array<class-string, string>
+     * @internal
+     */
+    protected static array $resolvedTypes = [];
 
     /**
      * The ID of the type (mapped to @id in result)
@@ -272,13 +281,22 @@ abstract class AbstractType implements TypeInterface
 
     public function getType(): string|array
     {
-        $type = \substr(\strrchr(static::class, '\\') ?: '', 1);
-        if (\str_starts_with($type, '_')) {
-            // As a class cannot start with a number an underscore prefixes the type class name
-            // which is now removed (e.g. _3DModel => 3DModel)
-            return \substr($type, 1);
+        if (! isset(static::$resolvedTypes[static::class])) {
+            $reflector = new \ReflectionClass(static::class);
+            $typeAttribute = $reflector->getAttributes(Type::class)[0] ?? null;
+            if (! $typeAttribute instanceof \ReflectionAttribute) {
+                throw new \DomainException(
+                    \sprintf(
+                        'Type model class "%s" does not define the required attribute "%s".',
+                        static::class,
+                        Type::class,
+                    ),
+                    1697271711,
+                );
+            }
+            static::$resolvedTypes[static::class] = $typeAttribute->getArguments()[0];
         }
 
-        return $type;
+        return static::$resolvedTypes[static::class];
     }
 }

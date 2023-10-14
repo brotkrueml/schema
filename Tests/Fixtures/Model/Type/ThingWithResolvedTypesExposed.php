@@ -14,15 +14,25 @@ namespace Brotkrueml\Schema\Tests\Fixtures\Model\Type;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
-#[Type('ListItem')]
-final class ListItem extends AbstractType
+#[Type('Thing')]
+class ThingWithResolvedTypesExposed extends AbstractType
 {
     /**
      * @var string[]
      */
     protected static array $propertyNames = [
-        'item',
+        'alternateName',
+        'description',
+        'identifier',
+        'image',
+        'isAccessibleForFree',
         'name',
-        'position',
+        'subjectOf',
+        'url',
     ];
+
+    public function getResolvedTypes(): array
+    {
+        return static::$resolvedTypes;
+    }
 }

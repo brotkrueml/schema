@@ -16,9 +16,12 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
+use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ThingWithResolvedTypesExposed;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -528,10 +531,46 @@ class AbstractTypeTest extends TestCase
     }
 
     #[Test]
-    public function getTypeReturnsTypeCorrectlyWhenClassNameStartsWithUnderscore(): void
+    public function getTypeReturnsTypeCorrectly(): void
     {
-        $type = new _3DModel();
+        $type = new GenericStub();
 
-        self::assertSame('3DModel', $type->getType());
+        self::assertSame('GenericStub', $type->getType());
+    }
+
+    #[Test]
+    public function getTypeReturnsTypeCorrectlyWhenClassNameIsDifferentFromTypeDefinedInAttribute(): void
+    {
+        $subject = new _3DModel();
+
+        self::assertSame('3DModel', $subject->getType());
+    }
+
+    #[Test]
+    public function getTypeThrowsExceptionWhenNoTypeAttributeIsDefined(): void
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionCode(1697271711);
+        $this->expectExceptionMessageMatches('/Type model class "Brotkrueml\\\Schema\\\Core\\\Model\\\AbstractType@anonymous.*" does not define the required attribute "Brotkrueml\\\Schema\\\Attributes\\\Type"\./');
+
+        $subject = new class() extends AbstractType {
+        };
+
+        $subject->getType();
+    }
+
+    #[Test]
+    #[RunInSeparateProcess]
+    public function getTypeCachesRepetitiveUsedTypes(): void
+    {
+        $subject = new ThingWithResolvedTypesExposed();
+
+        self::assertSame([], $subject->getResolvedTypes());
+
+        $subject->getType();
+
+        self::assertSame([
+            ThingWithResolvedTypesExposed::class => 'Thing',
+        ], $subject->getResolvedTypes());
     }
 }

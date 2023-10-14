@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Fixtures\Model;
 
+use Brotkrueml\Schema\Attributes\Type;
+
+#[Type('ProductStub')]
 class ProductStub extends GenericStub
 {
     public function __construct()
