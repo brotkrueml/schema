@@ -16,22 +16,12 @@ parameters:
 			path: Classes/Cache/PagesCacheService.php
 
 		-
-			message: "#^Do not use static property$#"
-			count: 1
-			path: Classes/Core/Model/AbstractType.php
-
-		-
 			message: "#^Instanceof between mixed and Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface will always evaluate to false\\.$#"
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
 
 		-
 			message: "#^Anonymous function should return string but returns array\\<string\\>\\|string\\.$#"
-			count: 1
-			path: Classes/Core/Model/MultipleType.php
-
-		-
-			message: "#^Do not use static property$#"
 			count: 1
 			path: Classes/Core/Model/MultipleType.php
 
@@ -139,11 +129,6 @@ parameters:
 			message: "#^Cannot call method error\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
 			count: 1
 			path: Classes/TypoScript/TypeBuilder.php
-
-		-
-			message: "#^Do not use static property$#"
-			count: 4
-			path: Classes/ViewHelpers/AdminPanel/PropertyValueViewHelper.php
 
 		-
 			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\MultipleTypeViewHelper\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
