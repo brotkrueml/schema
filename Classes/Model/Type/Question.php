@@ -99,6 +99,7 @@ final class Question extends AbstractType
         'review',
         'sameAs',
         'schemaVersion',
+        'sharedContent',
         'sourceOrganization',
         'spatial',
         'spatialCoverage',

@@ -97,6 +97,7 @@ final class Answer extends AbstractType
         'review',
         'sameAs',
         'schemaVersion',
+        'sharedContent',
         'sourceOrganization',
         'spatial',
         'spatialCoverage',
