@@ -1,6 +1,5 @@
 includes:
     - phpstan.baseline.neon
-    - .Build/vendor/symplify/phpstan-rules/config/forbidden-static-rules.neon
     - .Build/vendor/symplify/phpstan-rules/config/regex-rules.neon
 
 rules:
