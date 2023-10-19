@@ -40,6 +40,31 @@ That will add an element of type ``WebSite`` to schema.
 It will consist of the property ``name`` as well as ``description``.
 The ``name`` property will be filled from the ``seo_title`` field, falling back to ``title`` field.
 
+.. note::
+   Using the :ts:`SCHEMA` cObject in an array-like structure is **not** possible
+   by now, like the following example:
+
+   .. code-block:: json
+
+      {
+         "@context": "https://schema.org/",
+         "@type": "Event",
+         "offers": [{
+            "@type": "Offer",
+            "name": "Ticket 1",
+            "price": "80",
+            "priceCurrency": "EUR"
+         }, {
+            "@type": "Offer",
+            "name": "Ticket 2",
+            "price": "120",
+            "priceCurrency": "EUR"
+         }]
+      }
+
+   For example, a :ref:`USER <t3tsref:cobj-user>` cObject and the
+   :ref:`PHP API <api>` can be used instead.
+
 .. _typoscript-cobjectSchema-topLevelProperties:
 
 Top Level Properties
