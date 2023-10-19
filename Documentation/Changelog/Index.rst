@@ -45,7 +45,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 23.0
+* schema.org definition to version 23.0
 
 `2.10.0 <https://github.com/brotkrueml/schema/compare/v2.9.1...v2.10.0>`_ - 2023-07-21
 ------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 22.0
+* schema.org definition to version 22.0
 
 `2.9.1 <https://github.com/brotkrueml/schema/compare/v2.9.0...v2.9.1>`_ - 2023-06-06
 ----------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 21.0
+* schema.org definition to version 21.0
 
 Fixed
 ^^^^^
@@ -88,7 +88,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 19.0
+* schema.org definition to version 19.0
 
 `2.7.2 <https://github.com/brotkrueml/schema/compare/v2.7.1...v2.7.2>`_ - 2023-04-26
 ----------------------------------------------------------------------------------------
@@ -202,7 +202,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 14.0
+* schema.org definition to version 14.0
 
 `2.3.0 <https://github.com/brotkrueml/schema/compare/v2.2.2...v2.3.0>`_ - 2022-02-28
 ----------------------------------------------------------------------------------------
@@ -334,7 +334,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 14.0
+* schema.org definition to version 14.0
 
 `1.12.1 <https://github.com/brotkrueml/schema/compare/v1.12.0...v1.12.1>`_ - 2021-08-09
 -------------------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 13.0
+* schema.org definition to version 13.0
 
 Changed
 ^^^^^^^
@@ -385,7 +385,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 12.0 (#3)
+* schema.org definition to version 12.0 (#3)
 
 `1.10.0 <https://github.com/brotkrueml/schema/compare/v1.9.0...v1.10.0>`_ - 2020-12-28
 ------------------------------------------------------------------------------------------
@@ -400,7 +400,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 11.01 (#3)
+* schema.org definition to version 11.01 (#3)
 
 Changed
 ^^^^^^^
@@ -421,7 +421,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 10.0 (#3)
+* schema.org definition to version 10.0 (#3)
 
 `1.8.0 <https://github.com/brotkrueml/schema/compare/v1.7.2...v1.8.0>`_ - 2020-07-08
 ----------------------------------------------------------------------------------------
@@ -465,7 +465,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 7.04 (#3)
+* schema.org definition to version 7.04 (#3)
 
 Changed
 ^^^^^^^
@@ -530,7 +530,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 6.0 (#3)
+* schema.org definition to version 6.0 (#3)
 
 `1.4.2 <https://github.com/brotkrueml/schema/compare/v1.4.1...v1.4.2>`_ - 2019-12-13
 ----------------------------------------------------------------------------------------
@@ -576,7 +576,7 @@ Updated
 ^^^^^^^
 
 
-* Schema definition to version 5.0 (#3)
+* schema.org definition to version 5.0 (#3)
 
 `1.3.1 <https://github.com/brotkrueml/schema/compare/v1.3.0...v1.3.1>`_ - 2019-11-04
 ----------------------------------------------------------------------------------------

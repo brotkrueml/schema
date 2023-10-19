@@ -25,12 +25,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [2.11.0] - 2023-10-19
 
 ### Updated
-- Schema definition to version 23.0
+- schema.org definition to version 23.0
 
 ## [2.10.0] - 2023-07-21
 
 ### Updated
-- Schema definition to version 22.0
+- schema.org definition to version 22.0
 
 ## [2.9.1] - 2023-06-06
 
@@ -40,7 +40,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [2.9.0] - 2023-06-02
 
 ### Updated
-- Schema definition to version 21.0
+- schema.org definition to version 21.0
 
 ### Fixed
 - Hidden pages were referenced in automatic generated breadcrumb (#114)
@@ -49,7 +49,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [2.8.0] - 2023-05-22
 
 ### Updated
-- Schema definition to version 19.0
+- schema.org definition to version 19.0
 
 ## [2.7.2] - 2023-04-26
 
@@ -112,7 +112,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [2.4.0] - 2022-03-28
 
 ### Updated
-- Schema definition to version 14.0
+- schema.org definition to version 14.0
 
 ## [2.3.0] - 2022-02-28
 
@@ -188,7 +188,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.13.0] - 2022-03-28
 
 ### Updated
-- Schema definition to version 14.0
+- schema.org definition to version 14.0
 
 ## [1.12.1] - 2021-08-09
 
@@ -198,7 +198,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.12.0] - 2021-07-07
 
 ### Updated
-- Schema definition to version 13.0
+- schema.org definition to version 13.0
 
 ### Changed
 - Move from Structured Data Testing Tool to Schema Markup Validator in Admin Panel (#66)
@@ -217,7 +217,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.11.0] - 2021-03-10
 
 ### Updated
-- Schema definition to version 12.0 (#3)
+- schema.org definition to version 12.0 (#3)
 
 ## [1.10.0] - 2020-12-28
 
@@ -225,7 +225,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Compatibility with TYPO3 v11
 
 ### Updated
-- Schema definition to version 11.01 (#3)
+- schema.org definition to version 11.01 (#3)
 
 ### Changed
 - Raise minimum required version to TYPO3 9.5.16
@@ -236,7 +236,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Button in Admin Panel to verify structured data in Rich Result Test
 
 ### Updated
-- Schema definition to version 10.0 (#3)
+- schema.org definition to version 10.0 (#3)
 
 ## [1.8.0] - 2020-07-08
 
@@ -261,7 +261,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Introduce a TypeFactory for creating type models (#48)
 
 ### Updated
-- Schema definition to version 7.04 (#3)
+- schema.org definition to version 7.04 (#3)
 
 ### Changed
 - Decouple rendering of JSON-LD from AbstractType and SchemaManager
@@ -298,7 +298,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Add Signal/PSR-14 event to decide about embedding of markup (#29)
 
 ### Updated
-- Schema definition to version 6.0 (#3)
+- schema.org definition to version 6.0 (#3)
 
 ## [1.4.2] - 2019-12-13
 
@@ -323,7 +323,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Multiple items in mainEntity of a WebPage (#25)
 
 ### Updated
-- Schema definition to version 5.0 (#3)
+- schema.org definition to version 5.0 (#3)
 
 ## [1.3.1] - 2019-11-04
 
