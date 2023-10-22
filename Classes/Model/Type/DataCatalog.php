@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A collection of datasets.
  */
 #[Type('DataCatalog')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/dataset')]
 final class DataCatalog extends AbstractType
 {
     protected static array $propertyNames = [

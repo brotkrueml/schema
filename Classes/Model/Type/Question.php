@@ -20,6 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.
  */
 #[Type('Question')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/education-qa')]
 #[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/questions.html')]
 final class Question extends AbstractType
 {

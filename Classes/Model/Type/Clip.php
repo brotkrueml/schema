@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A short TV or radio program or a segment/part of a program.
  */
 #[Type('Clip')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/learning-video')]
 final class Clip extends AbstractType
 {
     protected static array $propertyNames = [
