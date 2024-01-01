@@ -25,8 +25,7 @@ final class RenderAdditionalTypesEvent
 
     public function __construct(
         private readonly bool $webPageTypeAlreadyDefined,
-    ) {
-    }
+    ) {}
 
     public function isWebPageTypeAlreadyDefined(): bool
     {

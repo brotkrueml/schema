@@ -27,8 +27,7 @@ final class AddWebPageType
     public function __construct(
         private readonly ExtensionConfiguration $configuration,
         private readonly TypeFactory $typeFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {

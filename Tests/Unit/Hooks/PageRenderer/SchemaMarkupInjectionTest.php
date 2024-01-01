@@ -609,8 +609,7 @@ final class SchemaMarkupInjectionTest extends TestCase
                 private readonly ExtensionConfiguration $extensionConfiguration,
                 private readonly PagesCacheService $pagesCacheService,
                 private readonly SchemaManager $schemaManager,
-            ) {
-            }
+            ) {}
 
             public function get(string $id)
             {

@@ -13,8 +13,7 @@ final class MyController
     public function __construct(
         private readonly SchemaManager $schemaManager,
         private readonly TypeFactory $typeFactory,
-    ) {
-    }
+    ) {}
 
     public function doSomething(): void
     {

@@ -16,6 +16,4 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 #[Type('ItemPage')]
-final class ItemPage extends AbstractType implements WebPageTypeInterface
-{
-}
+final class ItemPage extends AbstractType implements WebPageTypeInterface {}

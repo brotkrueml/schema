@@ -23,8 +23,7 @@ final class WebPageTypes
 {
     public function __construct(
         private readonly TypeProvider $typeProvider,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array{items: string[]} $params

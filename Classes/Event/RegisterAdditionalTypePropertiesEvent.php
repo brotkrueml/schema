@@ -20,8 +20,7 @@ final class RegisterAdditionalTypePropertiesEvent
 
     public function __construct(
         private readonly string $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): string
     {

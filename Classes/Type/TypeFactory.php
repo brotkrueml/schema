@@ -65,7 +65,7 @@ final class TypeFactory
     private function createMultiple(array $types): MultipleType
     {
         return new MultipleType(...\array_map(
-            fn (string $type): TypeInterface => $this->createSingle($type),
+            fn(string $type): TypeInterface => $this->createSingle($type),
             $types,
         ));
     }

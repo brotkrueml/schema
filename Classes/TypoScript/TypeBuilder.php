@@ -28,8 +28,7 @@ final class TypeBuilder
     public function __construct(
         private readonly LoggerInterface $logger,
         private readonly TypeFactory $typeFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * @param mixed[] $configuration

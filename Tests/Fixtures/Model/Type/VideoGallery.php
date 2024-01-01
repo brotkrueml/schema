@@ -16,6 +16,4 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
 #[Type('VideoGallery')]
-final class VideoGallery extends AbstractType implements WebPageTypeInterface
-{
-}
+final class VideoGallery extends AbstractType implements WebPageTypeInterface {}

@@ -26,8 +26,7 @@ final class TypoScriptToSchema
         private readonly TypeBuilder $typeBuilder,
         private readonly PropertiesAdder $propertiesAdder,
         private readonly SchemaManager $schemaManager,
-    ) {
-    }
+    ) {}
 
     /**
      * @param mixed[] $configuration

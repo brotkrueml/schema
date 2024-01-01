@@ -15,6 +15,4 @@ use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 #[Type('WebSite')]
-final class WebSite extends AbstractType
-{
-}
+final class WebSite extends AbstractType {}

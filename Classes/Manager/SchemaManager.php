@@ -52,7 +52,7 @@ final class SchemaManager implements SingletonInterface
 
         /** @var InitialiseTypesEvent $event */
         $event = $this->eventDispatcher->dispatch(new InitialiseTypesEvent());
-        \array_map(fn (TypeInterface $type): SchemaManager => $this->addType($type), $event->getTypes());
+        \array_map(fn(TypeInterface $type): SchemaManager => $this->addType($type), $event->getTypes());
     }
 
     /**

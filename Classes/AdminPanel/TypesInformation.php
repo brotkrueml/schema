@@ -28,8 +28,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 {
     public function __construct(
         private readonly PagesCacheService $pagesCacheService,
-    ) {
-    }
+    ) {}
 
     public function getIdentifier(): string
     {
@@ -50,7 +49,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         $types = [];
         if ($jsonLd !== '') {
             $types = $this->convertJsonLdToArray($jsonLd);
-            \usort($types, static fn (array $a, array $b): int => $a['@type'] <=> $b['@type']);
+            \usort($types, static fn(array $a, array $b): int => $a['@type'] <=> $b['@type']);
         }
 
         $view = $this->initialiseView();

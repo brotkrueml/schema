@@ -18,8 +18,7 @@ class NodeIdentifier implements NodeIdentifierInterface, \Stringable
          * The ID of the type (mapped to @id in result)
          */
         private readonly string $id,
-    ) {
-    }
+    ) {}
 
     public function getId(): string
     {

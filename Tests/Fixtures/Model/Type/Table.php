@@ -15,6 +15,4 @@ use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 #[Type('Table')]
-final class Table extends AbstractType
-{
-}
+final class Table extends AbstractType {}

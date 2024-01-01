@@ -13,6 +13,4 @@ namespace Brotkrueml\Schema\Core;
 
 use TYPO3\CMS\Core\SingletonInterface;
 
-final class TypeStack extends \SplStack implements SingletonInterface
-{
-}
+final class TypeStack extends \SplStack implements SingletonInterface {}

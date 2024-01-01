@@ -22,17 +22,14 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
         private readonly ?string $id = null,
         private readonly array $properties = [],
         private readonly string $type = 'GenericStub',
-    ) {
-    }
+    ) {}
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId($id): void
-    {
-    }
+    public function setId($id): void {}
 
     public function hasProperty(string $propertyName): bool
     {
@@ -44,21 +41,13 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
         return $this->properties[$propertyName];
     }
 
-    public function setProperty(string $propertyName, $propertyValue): void
-    {
-    }
+    public function setProperty(string $propertyName, $propertyValue): void {}
 
-    public function addProperty(string $propertyName, $propertyValue): void
-    {
-    }
+    public function addProperty(string $propertyName, $propertyValue): void {}
 
-    public function setProperties(array $properties): void
-    {
-    }
+    public function setProperties(array $properties): void {}
 
-    public function clearProperty(string $propertyName): void
-    {
-    }
+    public function clearProperty(string $propertyName): void {}
 
     public function getPropertyNames(): array
     {

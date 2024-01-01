@@ -30,7 +30,7 @@ final class MultipleType extends AbstractType
     private function storeTypeNames(array $types): void
     {
         $this->typeNames = \array_map(
-            static fn (TypeInterface $type): string => $type->getType(),
+            static fn(TypeInterface $type): string => $type->getType(),
             $types,
         );
         \sort($this->typeNames);

@@ -14,6 +14,4 @@ namespace Brotkrueml\Schema\Core\Model;
 /**
  * The interface indicates a WebPage type
  */
-interface WebPageTypeInterface
-{
-}
+interface WebPageTypeInterface {}

@@ -25,8 +25,7 @@ final class Types implements ProviderInterface
 
     public function __construct(
         private readonly TypeProvider $typeProvider,
-    ) {
-    }
+    ) {}
 
     public function __invoke(array $attributes): ProviderInterface
     {
@@ -65,7 +64,7 @@ final class Types implements ProviderInterface
     private function getAllTypes(): array
     {
         $types = $this->typeProvider->getTypes();
-        \usort($types, static fn (string $a, string $b): int => \strtolower($a) <=> \strtolower($b));
+        \usort($types, static fn(string $a, string $b): int => \strtolower($a) <=> \strtolower($b));
         $sortedTypes = [];
         foreach ($types as $type) {
             $sortedTypes[\substr($type, 0, 1)][] = $type;

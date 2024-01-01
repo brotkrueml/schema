@@ -35,8 +35,7 @@ final class AddBreadcrumbList
         private readonly ContentObjectRenderer  $contentObjectRenderer,
         private readonly ExtensionConfiguration $extensionConfiguration,
         private readonly TypeFactory            $typeFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(InitialiseTypesEvent $event): void
     {

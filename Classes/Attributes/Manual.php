@@ -25,6 +25,5 @@ final class Manual
     public function __construct(
         public readonly Publisher $provider,
         public readonly string $link,
-    ) {
-    }
+    ) {}
 }

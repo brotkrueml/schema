@@ -24,8 +24,7 @@ final class TypeProviderPass implements CompilerPassInterface
 {
     public function __construct(
         private readonly string $tagName,
-    ) {
-    }
+    ) {}
 
     public function process(ContainerBuilder $container): void
     {

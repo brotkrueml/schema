@@ -37,8 +37,7 @@ final class SchemaMarkupInjection
     public function __construct(
         private readonly ApplicationType $applicationType,
         private readonly ContainerInterface $locator,
-    ) {
-    }
+    ) {}
 
     public function execute(?array &$params, PageRenderer $pageRenderer): void
     {

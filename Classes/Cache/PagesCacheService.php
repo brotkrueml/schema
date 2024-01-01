@@ -23,8 +23,7 @@ class PagesCacheService
 
     public function __construct(
         private readonly FrontendInterface $cache,
-    ) {
-    }
+    ) {}
 
     public function getMarkupFromCache(): ?string
     {

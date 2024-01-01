@@ -29,8 +29,7 @@ final class PropertiesAdder
         private readonly LoggerInterface $logger,
         private readonly TypeBuilder $typeBuilder,
         private readonly TypoScriptConverter $typoScriptConverter,
-    ) {
-    }
+    ) {}
 
     /**
      * @param mixed[] $properties
