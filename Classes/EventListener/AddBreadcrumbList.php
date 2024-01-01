@@ -26,7 +26,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 final class AddBreadcrumbList
 {
     private const DEFAULT_DOKTYPES_TO_EXCLUDE = [
-        PageRepository::DOKTYPE_RECYCLER,
+        255, // Remove when compatibility with TYPO3 v12 is dropped
         PageRepository::DOKTYPE_SPACER,
         PageRepository::DOKTYPE_SYSFOLDER,
     ];
