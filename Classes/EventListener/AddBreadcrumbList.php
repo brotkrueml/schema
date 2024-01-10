@@ -32,9 +32,9 @@ final class AddBreadcrumbList
     ];
 
     public function __construct(
-        private readonly ContentObjectRenderer  $contentObjectRenderer,
+        private readonly ContentObjectRenderer $contentObjectRenderer,
         private readonly ExtensionConfiguration $extensionConfiguration,
-        private readonly TypeFactory            $typeFactory,
+        private readonly TypeFactory $typeFactory,
     ) {}
 
     public function __invoke(InitialiseTypesEvent $event): void
