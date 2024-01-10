@@ -14,11 +14,9 @@ namespace Brotkrueml\Schema\ViewHelpers\Type;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
- * Original definition: "provider of professional services."
- *
- * HousePainter, Locksmith, Plumber, RoofingContractor. LegalService was introduced as a more inclusive supertype of Attorney.
+ * A doctor's office or clinic.
  */
-final class ProfessionalServiceViewHelper extends AbstractTypeViewHelper
+final class PhysiciansOfficeViewHelper extends AbstractTypeViewHelper
 {
-    protected string $type = 'ProfessionalService';
+    protected string $type = 'PhysiciansOffice';
 }

@@ -51,6 +51,11 @@ services:
       - name: event.listener
         identifier: 'ext-schema/registerTypePropertiesMovedFromOfficialToPending'
 
+  Brotkrueml\Schema\EventListener\RegisterRemovedTypePropertiesForPhysician:
+    tags:
+      - name: event.listener
+        identifier: 'ext-schema/registerRemovedTypePropertiesForPhysician'
+
   Brotkrueml\Schema\TypoScript\SchemaContentObject:
     tags:
       - name: frontend.contentobject
