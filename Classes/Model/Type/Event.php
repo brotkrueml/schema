@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the offers property. Repeated events may be structured as separate Event objects.
  */
 #[Type('Event')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/event')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/event')]
 final class Event extends AbstractType
 {
     protected static array $propertyNames = [

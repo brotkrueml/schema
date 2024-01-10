@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A statistical distribution of monetary amounts.
  */
 #[Type('MonetaryAmountDistribution')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/estimated-salary')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/estimated-salary')]
 final class MonetaryAmountDistribution extends AbstractType
 {
     protected static array $propertyNames = [

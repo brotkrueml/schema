@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * Web applications.
  */
 #[Type('WebApplication')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/software-app')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/software-app')]
 #[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
 final class WebApplication extends AbstractType
 {

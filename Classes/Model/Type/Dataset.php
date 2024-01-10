@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A body of structured information describing some topic(s) of interest.
  */
 #[Type('Dataset')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/dataset')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/dataset')]
 final class Dataset extends AbstractType
 {
     protected static array $propertyNames = [

@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A software application designed specifically to work well on a mobile device such as a telephone.
  */
 #[Type('MobileApplication')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/software-app')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/software-app')]
 #[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
 final class MobileApplication extends AbstractType
 {

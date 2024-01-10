@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * All or part of a Dataset in downloadable form.
  */
 #[Type('DataDownload')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/dataset')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/dataset')]
 final class DataDownload extends AbstractType
 {
     protected static array $propertyNames = [

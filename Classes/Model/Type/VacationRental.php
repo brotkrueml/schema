@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A kind of lodging business that focuses on renting single properties for limited time.
  */
 #[Type('VacationRental')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/vacation-rental')]
 final class VacationRental extends AbstractType
 {
     protected static array $propertyNames = [

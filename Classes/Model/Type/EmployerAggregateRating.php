@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * An aggregate rating of an Organization related to its role as an employer.
  */
 #[Type('EmployerAggregateRating')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/employer-rating')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/employer-rating')]
 final class EmployerAggregateRating extends AbstractType
 {
     protected static array $propertyNames = [

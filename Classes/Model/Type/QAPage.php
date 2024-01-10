@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A QAPage is a WebPage focussed on a specific Question and its Answer(s), e.g. in a question answering site or documenting Frequently Asked Questions (FAQs).
  */
 #[Type('QAPage')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/data-types/qapage')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/qapage')]
 final class QAPage extends AbstractType implements WebPageTypeInterface
 {
     protected static array $propertyNames = [
