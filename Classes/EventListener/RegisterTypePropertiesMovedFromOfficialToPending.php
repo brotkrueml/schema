@@ -19,8 +19,11 @@ use Brotkrueml\Schema\Model\Type;
  * but were moved because of reasons to pending again.
  * These properties are registered again to avoid
  * breaking changes.
+ *
+ * @todo Remove with schema 4.0.0
+ * @internal
  */
-class RegisterTypePropertiesMovedFromOfficialToPending
+final class RegisterTypePropertiesMovedFromOfficialToPending
 {
     /**
      * @var array<class-string>
