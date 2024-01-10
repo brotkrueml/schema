@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.1.0] - 2024-01-10
+
 ### Added
 - Picture formats avif and webp are recognized as image in Admin Panel
 - Link to new Google manuals for various types in Admin Panel
@@ -446,7 +448,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/brotkrueml/schema/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/brotkrueml/schema/compare/v2.11.0...v3.0.0
 [2.11.0]: https://github.com/brotkrueml/schema/compare/v2.10.0...v2.11.0
 [2.10.0]: https://github.com/brotkrueml/schema/compare/v2.9.1...v2.10.0
