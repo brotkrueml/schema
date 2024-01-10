@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Picture formats avif and webp are recognized as image in Admin Panel
+
 ### Updated
 - schema.org definition to version 24.0
 

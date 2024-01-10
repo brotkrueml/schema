@@ -26,8 +26,14 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
  */
 final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 {
-    private const IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'svg'];
+    /**
+     * @var list<string>
+     */
+    private const IMAGE_EXTENSIONS = ['avif', 'gif', 'jpg', 'jpeg', 'png', 'webp', 'svg'];
 
+    /**
+     * @var array<string, array{title: string, iconIdentifier: string}>
+     */
     private const MANUAL_PUBLISHERS = [
         'Google' => [
             'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
