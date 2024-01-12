@@ -56,7 +56,9 @@ final class AddBreadcrumbList
         );
         $doktypesToExclude = \array_merge(self::DEFAULT_DOKTYPES_TO_EXCLUDE, $additionalDoktypesToExclude);
         $rootLine = [];
-        foreach ($this->getTypoScriptFrontendController()->rootLine as $page) {
+        /** @var TypoScriptFrontendController $frontendController */
+        $frontendController = $event->getRequest()->getAttribute('frontend.controller');
+        foreach ($frontendController->rootLine as $page) {
             if ($page['is_siteroot'] ?? false) {
                 break;
             }
@@ -111,10 +113,5 @@ final class AddBreadcrumbList
         }
 
         return $breadcrumbList;
-    }
-
-    private function getTypoScriptFrontendController(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 }

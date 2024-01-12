@@ -61,6 +61,7 @@ final class SchemaMarkupInjection
             $event = $this->eventDispatcher->dispatch(new RenderAdditionalTypesEvent(
                 $this->schemaManager->hasWebPage(),
                 $this->schemaManager->hasBreadcrumbList(),
+                $this->getRequest(),
             ));
             foreach ($event->getAdditionalTypes() as $additionalType) {
                 $this->schemaManager->addType($additionalType);

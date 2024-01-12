@@ -25,6 +25,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -42,6 +43,7 @@ final class AddBreadcrumbListTest extends TestCase
     private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
     private AddBreadcrumbList $subject;
     private RenderAdditionalTypesEvent $event;
+    private ServerRequestInterface&Stub $requestStub;
 
     protected function setUp(): void
     {
@@ -59,15 +61,22 @@ final class AddBreadcrumbListTest extends TestCase
             new TypeFactory(),
         );
 
-        $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
+        $this->requestStub = $this->createStub(ServerRequestInterface::class);
+        $this->requestStub
+            ->method('getAttribute')
+            ->with('frontend.controller')
+            ->willReturn($this->typoScriptFrontendControllerStub);
 
-        $this->event = new RenderAdditionalTypesEvent(false, false);
+        $this->event = new RenderAdditionalTypesEvent(
+            false,
+            false,
+            $this->requestStub,
+        );
     }
 
     protected function tearDown(): void
     {
         GeneralUtility::purgeInstances();
-        unset($GLOBALS['TSFE']);
     }
 
     #[Test]
@@ -141,7 +150,7 @@ final class AddBreadcrumbListTest extends TestCase
             ],
         ];
 
-        $event = new RenderAdditionalTypesEvent(false, true);
+        $event = new RenderAdditionalTypesEvent(false, true, $this->requestStub);
         $this->subject->__invoke($event);
 
         $actual = $this->event->getAdditionalTypes();

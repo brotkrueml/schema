@@ -44,17 +44,13 @@ final class AddWebPageType
             return;
         }
 
-        $tsfe = $this->getTypoScriptFrontendController();
-        $webPageType = ($tsfe->page['tx_schema_webpagetype'] ?? '') ?: self::DEFAULT_WEBPAGE_TYPE;
+        /** @var TypoScriptFrontendController $frontendController */
+        $frontendController = $event->getRequest()->getAttribute('frontend.controller');
+        $webPageType = ($frontendController->page['tx_schema_webpagetype'] ?? '') ?: self::DEFAULT_WEBPAGE_TYPE;
         $webPageModel = $this->typeFactory->create($webPageType);
-        if ($tsfe->page['endtime'] ?? 0) {
-            $webPageModel->setProperty('expires', \date('c', $tsfe->page['endtime']));
+        if ($frontendController->page['endtime'] ?? 0) {
+            $webPageModel->setProperty('expires', \date('c', $frontendController->page['endtime']));
         }
         $event->addType($webPageModel);
-    }
-
-    private function getTypoScriptFrontendController(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 }

@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 
 class RenderAdditionalTypesEventTest extends TestCase
 {
@@ -22,7 +23,11 @@ class RenderAdditionalTypesEventTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->subject = new RenderAdditionalTypesEvent(false, false);
+        $this->subject = new RenderAdditionalTypesEvent(
+            false,
+            false,
+            $this->createStub(ServerRequestInterface::class),
+        );
     }
 
     #[Test]
@@ -34,7 +39,11 @@ class RenderAdditionalTypesEventTest extends TestCase
     #[Test]
     public function isWebPageTypeIsAlreadyDefinedReturnsTrueCorrectly(): void
     {
-        $subject = new RenderAdditionalTypesEvent(true, false);
+        $subject = new RenderAdditionalTypesEvent(
+            true,
+            false,
+            $this->createStub(ServerRequestInterface::class),
+        );
 
         self::assertTrue($subject->isWebPageTypeAlreadyDefined());
     }
@@ -48,9 +57,26 @@ class RenderAdditionalTypesEventTest extends TestCase
     #[Test]
     public function isBreadcrumbListAlreadyDefinedReturnsTrueCorrectly(): void
     {
-        $subject = new RenderAdditionalTypesEvent(false, true);
+        $subject = new RenderAdditionalTypesEvent(
+            false,
+            true,
+            $this->createStub(ServerRequestInterface::class),
+        );
 
         self::assertTrue($subject->isBreadcrumbListAlreadyDefined());
+    }
+
+    public function getRequestReturnsRequestObjectCorrectly(): void
+    {
+        $request = $this->createStub(ServerRequestInterface::class);
+
+        $subject = new RenderAdditionalTypesEvent(
+            false,
+            false,
+            $request,
+        );
+
+        self::assertSame($request, $subject->getRequest());
     }
 
     #[Test]

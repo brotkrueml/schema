@@ -61,7 +61,13 @@ final class SchemaMarkupInjectionTest extends TestCase
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->willReturn(new RenderAdditionalTypesEvent(false, false));
+            ->willReturn(
+                new RenderAdditionalTypesEvent(
+                    false,
+                    false,
+                    $this->createStub(ServerRequestInterface::class),
+                ),
+            );
 
         $this->locator = $this->buildLocator(
             $this->eventDispatcherStub,
@@ -564,7 +570,11 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(false);
 
-        $event = new RenderAdditionalTypesEvent(false, false);
+        $event = new RenderAdditionalTypesEvent(
+            false,
+            false,
+            $this->createStub(ServerRequestInterface::class),
+        );
         $event->addType(new GenericStub('from-event'));
         $eventDispatcherStub = $this->createStub(EventDispatcher::class);
         $eventDispatcherStub

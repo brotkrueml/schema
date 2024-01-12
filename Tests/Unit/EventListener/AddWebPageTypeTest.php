@@ -23,6 +23,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -35,8 +36,9 @@ final class AddWebPageTypeTest extends TestCase
 
     private ExtensionConfiguration&Stub $extensionConfigurationStub;
     private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
-    private AddWebPageType $subject;
     private RenderAdditionalTypesEvent $event;
+    private ServerRequestInterface&Stub $requestStub;
+    private AddWebPageType $subject;
 
     protected function setUp(): void
     {
@@ -44,12 +46,15 @@ final class AddWebPageTypeTest extends TestCase
 
         $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
         $this->typoScriptFrontendControllerStub = $this->createStub(TypoScriptFrontendController::class);
+        $this->requestStub = $this->createStub(ServerRequestInterface::class);
+        $this->requestStub
+            ->method('getAttribute')
+            ->with('frontend.controller')
+            ->willReturn($this->typoScriptFrontendControllerStub);
 
         $this->subject = new AddWebPageType($this->extensionConfigurationStub, new TypeFactory());
 
-        $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
-
-        $this->event = new RenderAdditionalTypesEvent(false, false);
+        $this->event = new RenderAdditionalTypesEvent(false, false, $this->requestStub);
 
         GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
     }
@@ -57,7 +62,6 @@ final class AddWebPageTypeTest extends TestCase
     protected function tearDown(): void
     {
         GeneralUtility::purgeInstances();
-        unset($GLOBALS['TSFE']);
     }
 
     #[Test]
@@ -81,7 +85,7 @@ final class AddWebPageTypeTest extends TestCase
             ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
             ->willReturn(true);
 
-        $event = new RenderAdditionalTypesEvent(true, false);
+        $event = new RenderAdditionalTypesEvent(true, false, $this->requestStub);
         $this->subject->__invoke($event);
 
         self::assertSame([], $event->getAdditionalTypes());
