@@ -19,9 +19,9 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 final class SchemaMarkupInjection
 {
@@ -89,15 +89,15 @@ final class SchemaMarkupInjection
             return true;
         }
 
-        if (! ($this->getTypoScriptFrontendController()->page['no_index'] ?? false)) {
+        if (! ($this->getRequest()->getAttribute('frontend.controller')->page['no_index'] ?? false)) {
             return true;
         }
 
         return (bool)($this->configuration['embedMarkupOnNoindexPages'] ?? true);
     }
 
-    private function getTypoScriptFrontendController(): TypoScriptFrontendController
+    private function getRequest(): ServerRequestInterface
     {
-        return $GLOBALS['TSFE'];
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

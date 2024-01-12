@@ -26,6 +26,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
@@ -83,12 +84,19 @@ final class SchemaMarkupInjectionTest extends TestCase
             'no_index' => 0,
             'uid' => 42,
         ];
-        $GLOBALS['TSFE'] = $this->controllerMock;
+
+        $requestStub = $this->createStub(ServerRequestInterface::class);
+        $requestStub
+            ->method('getAttribute')
+            ->with('frontend.controller')
+            ->willReturn($this->controllerMock);
+
+        $GLOBALS['TYPO3_REQUEST'] = $requestStub;
     }
 
     protected function tearDown(): void
     {
-        unset($GLOBALS['TSFE']);
+        unset($GLOBALS['TYPO3_REQUEST']);
     }
 
     #[Test]
