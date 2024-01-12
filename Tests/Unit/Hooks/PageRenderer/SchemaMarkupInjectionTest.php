@@ -28,7 +28,6 @@ use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
-use TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -49,15 +48,8 @@ final class SchemaMarkupInjectionTest extends TestCase
 
     protected function setUp(): void
     {
-        $applicationTypeStub = $this->createStub(ApplicationType::class);
-        $applicationTypeStub
-            ->method('isBackend')
-            ->willReturn(false);
-
         $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
         $this->schemaManager = new SchemaManager(
-            $applicationTypeStub,
-            new NoopEventDispatcher(),
             $this->extensionConfigurationMock,
             new Renderer(),
         );
@@ -68,7 +60,7 @@ final class SchemaMarkupInjectionTest extends TestCase
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->willReturn(new RenderAdditionalTypesEvent(false));
+            ->willReturn(new RenderAdditionalTypesEvent(false, false));
 
         $this->locator = $this->buildLocator(
             $this->eventDispatcherStub,
@@ -564,7 +556,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(false);
 
-        $event = new RenderAdditionalTypesEvent(false);
+        $event = new RenderAdditionalTypesEvent(false, false);
         $event->addType(new GenericStub('from-event'));
         $eventDispatcherStub = $this->createStub(EventDispatcher::class);
         $eventDispatcherStub

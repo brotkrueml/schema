@@ -49,7 +49,7 @@ final class AddWebPageTypeTest extends TestCase
 
         $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
 
-        $this->event = new RenderAdditionalTypesEvent(false);
+        $this->event = new RenderAdditionalTypesEvent(false, false);
 
         GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
     }
@@ -81,7 +81,7 @@ final class AddWebPageTypeTest extends TestCase
             ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
             ->willReturn(true);
 
-        $event = new RenderAdditionalTypesEvent(true);
+        $event = new RenderAdditionalTypesEvent(true, false);
         $this->subject->__invoke($event);
 
         self::assertSame([], $event->getAdditionalTypes());

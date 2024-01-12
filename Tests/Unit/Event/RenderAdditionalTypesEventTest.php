@@ -22,7 +22,7 @@ class RenderAdditionalTypesEventTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->subject = new RenderAdditionalTypesEvent(false);
+        $this->subject = new RenderAdditionalTypesEvent(false, false);
     }
 
     #[Test]
@@ -34,9 +34,23 @@ class RenderAdditionalTypesEventTest extends TestCase
     #[Test]
     public function isWebPageTypeIsAlreadyDefinedReturnsTrueCorrectly(): void
     {
-        $subject = new RenderAdditionalTypesEvent(true);
+        $subject = new RenderAdditionalTypesEvent(true, false);
 
         self::assertTrue($subject->isWebPageTypeAlreadyDefined());
+    }
+
+    #[Test]
+    public function isBreadcrumbListAlreadyDefinedReturnsFalseCorrectly(): void
+    {
+        self::assertFalse($this->subject->isBreadcrumbListAlreadyDefined());
+    }
+
+    #[Test]
+    public function isBreadcrumbListAlreadyDefinedReturnsTrueCorrectly(): void
+    {
+        $subject = new RenderAdditionalTypesEvent(false, true);
+
+        self::assertTrue($subject->isBreadcrumbListAlreadyDefined());
     }
 
     #[Test]

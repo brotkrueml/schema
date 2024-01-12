@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\EventListener;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Event\InitialiseTypesEvent;
+use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
@@ -41,7 +41,7 @@ final class AddBreadcrumbListTest extends TestCase
     private ExtensionConfiguration&Stub $extensionConfigurationStub;
     private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
     private AddBreadcrumbList $subject;
-    private InitialiseTypesEvent $event;
+    private RenderAdditionalTypesEvent $event;
 
     protected function setUp(): void
     {
@@ -61,7 +61,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $GLOBALS['TSFE'] = $this->typoScriptFrontendControllerStub;
 
-        $this->event = new InitialiseTypesEvent();
+        $this->event = new RenderAdditionalTypesEvent(false, false);
     }
 
     protected function tearDown(): void
@@ -76,17 +76,21 @@ final class AddBreadcrumbListTest extends TestCase
         $this->setExtensionConfiguration(false);
         $this->subject->__invoke($this->event);
 
-        self::assertSame([], $this->event->getTypes());
+        self::assertSame([], $this->event->getAdditionalTypes());
     }
 
-    private function setExtensionConfiguration(bool $automaticGeneration, string $excludeAdditionalDoktypes = ''): void
-    {
+    private function setExtensionConfiguration(
+        bool $automaticGeneration,
+        string $excludeAdditionalDoktypes = '',
+        bool $allowOnlyOneBreadcrumbList = false,
+    ): void {
         $this->extensionConfigurationStub
             ->method('get')
             ->with(Extension::KEY)
             ->willReturn([
                 'automaticBreadcrumbSchemaGeneration' => $automaticGeneration ? '1' : '0',
                 'automaticBreadcrumbExcludeAdditionalDoktypes' => $excludeAdditionalDoktypes,
+                'allowOnlyOneBreadcrumbList' => $allowOnlyOneBreadcrumbList,
             ]);
     }
 
@@ -97,7 +101,7 @@ final class AddBreadcrumbListTest extends TestCase
         $this->typoScriptFrontendControllerStub->rootLine = [];
         $this->subject->__invoke($this->event);
 
-        self::assertSame([], $this->event->getTypes());
+        self::assertSame([], $this->event->getAdditionalTypes());
     }
 
     #[Test]
@@ -115,10 +119,34 @@ final class AddBreadcrumbListTest extends TestCase
             ->willReturn('https://example.org/the-page/');
         $this->subject->__invoke($this->event);
 
-        $actual = $this->event->getTypes();
+        $actual = $this->event->getAdditionalTypes();
 
         self::assertCount(1, $actual);
         self::assertSame($expected, $this->renderJsonLd($actual[0]));
+    }
+
+    #[Test]
+    public function breadcrumbIsAlreadyAvailabledAndAddedWhenOnlyOneIsAllowed(): void
+    {
+        $this->setExtensionConfiguration(true, allowOnlyOneBreadcrumbList: true);
+        $this->typoScriptFrontendControllerStub->rootLine = [
+            1 => [
+                'uid' => 1,
+                'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                'title' => 'Site root page',
+                'nav_title' => '',
+                'nav_hide' => '0',
+                'is_siteroot' => '1',
+                'tx_schema_webpagetype' => '',
+            ],
+        ];
+
+        $event = new RenderAdditionalTypesEvent(false, true);
+        $this->subject->__invoke($event);
+
+        $actual = $this->event->getAdditionalTypes();
+
+        self::assertSame([], $actual);
     }
 
     private function renderJsonLd(TypeInterface $type): string
@@ -534,7 +562,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $this->subject->__invoke($this->event);
 
-        $actual = $this->event->getTypes();
+        $actual = $this->event->getAdditionalTypes();
         $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}';
         self::assertCount(1, $actual);
         self::assertSame($expected, $this->renderJsonLd($actual[0]));
@@ -575,7 +603,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $this->subject->__invoke($this->event);
 
-        $actual = $this->event->getTypes();
+        $actual = $this->event->getAdditionalTypes();
         $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}';
         self::assertCount(1, $actual);
         self::assertSame($expected, $this->renderJsonLd($actual[0]));

@@ -19,17 +19,23 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 final class RenderAdditionalTypesEvent
 {
     /**
-     * @var TypeInterface[]
+     * @var list<TypeInterface>
      */
     private array $types = [];
 
     public function __construct(
         private readonly bool $webPageTypeAlreadyDefined,
+        private readonly bool $breadcrumbListAlreadyDefined,
     ) {}
 
     public function isWebPageTypeAlreadyDefined(): bool
     {
         return $this->webPageTypeAlreadyDefined;
+    }
+
+    public function isBreadcrumbListAlreadyDefined(): bool
+    {
+        return $this->breadcrumbListAlreadyDefined;
     }
 
     public function addType(TypeInterface $type): void
@@ -38,7 +44,7 @@ final class RenderAdditionalTypesEvent
     }
 
     /**
-     * @return TypeInterface[]
+     * @return list<TypeInterface>
      */
     public function getAdditionalTypes(): array
     {

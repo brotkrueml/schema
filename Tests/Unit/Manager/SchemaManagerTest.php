@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
 use Brotkrueml\Schema\Adapter\ApplicationType;
-use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
@@ -20,15 +19,11 @@ use Brotkrueml\Schema\Model\Type\ItemPage;
 use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
-use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
-use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SchemaManagerTest extends Testcase
@@ -58,8 +53,6 @@ final class SchemaManagerTest extends Testcase
 
         $this->renderer = new Renderer();
         $this->subject = new SchemaManager(
-            $this->applicationTypeStub,
-            new NoopEventDispatcher(),
             $this->createStub(ExtensionConfiguration::class),
             $this->renderer,
         );
@@ -82,6 +75,20 @@ final class SchemaManagerTest extends Testcase
         $this->subject->addType(new WebPage());
 
         self::assertTrue($this->subject->hasWebPage());
+    }
+
+    #[Test]
+    public function hasBreadcrumbListReturnsFalseWhenNoBreadcrumbListIsSet(): void
+    {
+        self::assertFalse($this->subject->hasBreadcrumbList());
+    }
+
+    #[Test]
+    public function hasBreadcrumbListReturnsTrueeWhenOneBreadcrumbListIsSet(): void
+    {
+        $this->subject->addType(new BreadcrumbList());
+
+        self::assertTrue($this->subject->hasBreadcrumbList());
     }
 
     #[Test]
@@ -312,47 +319,6 @@ final class SchemaManagerTest extends Testcase
     }
 
     #[Test]
-    public function typesFromInitialiseTypesEventIsAdded(): void
-    {
-        $type1 = new ProductStub();
-        $type2 = new ServiceStub();
-
-        $eventDispatcherStub = new class($type1, $type2) implements EventDispatcherInterface {
-            /**
-             * @var TypeInterface[]
-             */
-            private readonly array $types;
-
-            public function __construct(TypeInterface ...$types)
-            {
-                $this->types = $types;
-            }
-
-            public function dispatch(object $event)
-            {
-                \array_map([$event, 'addType'], $this->types);
-
-                return $event;
-            }
-        };
-
-        $subject = new SchemaManager(
-            $this->applicationTypeStub,
-            $eventDispatcherStub,
-            $this->createStub(ExtensionConfiguration::class),
-            $this->renderer,
-        );
-
-        $subject->renderJsonLd();
-
-        $actual = $this->rendererTypes->getValue($this->renderer);
-
-        self::assertCount(2, $actual);
-        self::assertContains($type1, $actual);
-        self::assertContains($type2, $actual);
-    }
-
-    #[Test]
     public function onlyOneBreadCrumbListIsRenderedIfExtensionConfigurationIsEnabled(): void
     {
         $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
@@ -362,8 +328,6 @@ final class SchemaManagerTest extends Testcase
             ->willReturn('1');
 
         $subject = new SchemaManager(
-            $this->applicationTypeStub,
-            new NoopEventDispatcher(),
             $extensionConfigurationStub,
             $this->renderer,
         );
@@ -392,8 +356,6 @@ final class SchemaManagerTest extends Testcase
             ->willReturn('0');
 
         $subject = new SchemaManager(
-            $this->applicationTypeStub,
-            new NoopEventDispatcher(),
             $extensionConfigurationStub,
             $this->renderer,
         );
@@ -435,30 +397,5 @@ final class SchemaManagerTest extends Testcase
 
         $this->subject->renderJsonLd();
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
-    }
-
-    #[Test]
-    public function inBackendContextTheEventDispatcherIsNotCalled(): void
-    {
-        self::expectNotToPerformAssertions();
-
-        $applicationTypeStub = $this->createStub(ApplicationType::class);
-        $applicationTypeStub
-            ->method('isBackend')
-            ->willReturn(true);
-
-        $eventDispatcherStub = new class() implements EventDispatcherInterface {
-            public function dispatch(object $event): void
-            {
-                throw new \Exception('dispatch() method must not be called');
-            }
-        };
-
-        new SchemaManager(
-            $applicationTypeStub,
-            $eventDispatcherStub,
-            $this->createStub(ExtensionConfiguration::class),
-            $this->renderer,
-        );
     }
 }

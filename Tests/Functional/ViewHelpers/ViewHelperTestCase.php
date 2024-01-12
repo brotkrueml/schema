@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
@@ -38,8 +37,6 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
         parent::setup();
         $this->view = new TemplateView();
         $this->schemaManager = new SchemaManager(
-            $applicationType,
-            new NoopEventDispatcher(),
             $this->createStub(ExtensionConfiguration::class),
             new Renderer(),
         );

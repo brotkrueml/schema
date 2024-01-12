@@ -11,14 +11,11 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Manager;
 
-use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
-use Brotkrueml\Schema\Event\InitialiseTypesEvent;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
 
@@ -29,30 +26,20 @@ final class SchemaManager implements SingletonInterface
 
     private readonly MainEntityOfWebPageBag $mainEntityOfWebPageBag;
     /**
-     * @var TypeInterface[]
+     * @var list<TypeInterface>
      */
     private array $types = [];
     private ?TypeInterface $webPage = null;
     /**
-     * @var BreadcrumbList[]
+     * @var list<BreadcrumbList>
      */
     private array $breadcrumbLists = [];
 
     public function __construct(
-        private readonly ApplicationType $applicationType,
-        private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ExtensionConfiguration $extensionConfiguration,
         private readonly RendererInterface $renderer,
     ) {
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
-
-        if ($this->applicationType->isBackend()) {
-            return;
-        }
-
-        /** @var InitialiseTypesEvent $event */
-        $event = $this->eventDispatcher->dispatch(new InitialiseTypesEvent());
-        \array_map(fn(TypeInterface $type): SchemaManager => $this->addType($type), $event->getTypes());
     }
 
     /**
@@ -133,10 +120,22 @@ final class SchemaManager implements SingletonInterface
 
     /**
      * A WebPage or its descendants is available
+     *
+     * @internal
      */
     public function hasWebPage(): bool
     {
         return $this->webPage instanceof TypeInterface;
+    }
+
+    /**
+     * At least one breadcrumb list is available
+     *
+     * @internal
+     */
+    public function hasBreadcrumbList(): bool
+    {
+        return $this->breadcrumbLists !== [];
     }
 
     /**

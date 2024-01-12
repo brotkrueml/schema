@@ -58,7 +58,10 @@ final class SchemaMarkupInjection
         $result = $this->pagesCacheService->getMarkupFromCache();
         if ($result === null) {
             /** @var RenderAdditionalTypesEvent $event */
-            $event = $this->eventDispatcher->dispatch(new RenderAdditionalTypesEvent($this->schemaManager->hasWebPage()));
+            $event = $this->eventDispatcher->dispatch(new RenderAdditionalTypesEvent(
+                $this->schemaManager->hasWebPage(),
+                $this->schemaManager->hasBreadcrumbList(),
+            ));
             foreach ($event->getAdditionalTypes() as $additionalType) {
                 $this->schemaManager->addType($additionalType);
             }
