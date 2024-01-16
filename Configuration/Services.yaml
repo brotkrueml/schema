@@ -8,22 +8,29 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/{AdminPanel,Hooks,Extension.php}'
 
+  Brotkrueml\Schema\Configuration\ConfigurationProvider:
+    shared: true
+
+  schema.configuration:
+    class: 'Brotkrueml\Schema\Configuration\Configuration'
+    factory:
+      - '@Brotkrueml\Schema\Configuration\ConfigurationProvider'
+      - 'getConfiguration'
+
   Brotkrueml\Schema\AdminPanel\TypesInformation:
     public: true
 
   Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection:
     public: true
     arguments:
-      - '@Brotkrueml\Schema\Adapter\ApplicationType'
-      - !service_locator
-          Psr\EventDispatcher\EventDispatcherInterface: '@Psr\EventDispatcher\EventDispatcherInterface'
-          Brotkrueml\Schema\Adapter\ExtensionAvailability: '@Brotkrueml\Schema\Adapter\ExtensionAvailability'
-          TYPO3\CMS\Core\Configuration\ExtensionConfiguration: '@TYPO3\CMS\Core\Configuration\ExtensionConfiguration'
-          Brotkrueml\Schema\Cache\PagesCacheService: '@Brotkrueml\Schema\Cache\PagesCacheService'
-          Brotkrueml\Schema\Manager\SchemaManager: '@Brotkrueml\Schema\Manager\SchemaManager'
+      $configuration: '@schema.configuration'
 
   Brotkrueml\Schema\JsonLd\Renderer:
     public: true
+
+  Brotkrueml\Schema\Manager\SchemaManager:
+    arguments:
+      $configuration: '@schema.configuration'
 
   Brotkrueml\Schema\TypoScript\TypoScriptToSchema:
     public: true
@@ -37,11 +44,15 @@ services:
     public: true
 
   Brotkrueml\Schema\EventListener\AddBreadcrumbList:
+    arguments:
+      $configuration: '@schema.configuration'
     tags:
       - name: event.listener
         identifier: 'ext-schema/addBreadcrumbList'
 
   Brotkrueml\Schema\EventListener\AddWebPageType:
+    arguments:
+      $configuration: '@schema.configuration'
     tags:
       - name: event.listener
         identifier: 'ext-schema/addWebPageType'

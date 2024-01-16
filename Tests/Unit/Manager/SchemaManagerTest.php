@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
 use Brotkrueml\Schema\Adapter\ApplicationType;
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
@@ -23,7 +24,6 @@ use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SchemaManagerTest extends Testcase
@@ -53,7 +53,7 @@ final class SchemaManagerTest extends Testcase
 
         $this->renderer = new Renderer();
         $this->subject = new SchemaManager(
-            $this->createStub(ExtensionConfiguration::class),
+            $this->buildConfiguration(false),
             $this->renderer,
         );
     }
@@ -321,16 +321,9 @@ final class SchemaManagerTest extends Testcase
     #[Test]
     public function onlyOneBreadCrumbListIsRenderedIfExtensionConfigurationIsEnabled(): void
     {
-        $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
-        $extensionConfigurationStub
-            ->method('get')
-            ->with('schema', 'allowOnlyOneBreadcrumbList')
-            ->willReturn('1');
+        $configuration = $this->buildConfiguration(allowOnlyOneBreadcrumbList: true);
 
-        $subject = new SchemaManager(
-            $extensionConfigurationStub,
-            $this->renderer,
-        );
+        $subject = new SchemaManager($configuration, $this->renderer);
 
         $breadcrumbList1 = new BreadcrumbList();
         $breadcrumbList2 = new BreadcrumbList();
@@ -349,16 +342,9 @@ final class SchemaManagerTest extends Testcase
     #[Test]
     public function allBreadCrumbListsAreRenderedIfExtensionConfigurationIsDisabled(): void
     {
-        $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
-        $extensionConfigurationStub
-            ->method('get')
-            ->with('schema', 'allowOnlyOneBreadcrumbList')
-            ->willReturn('0');
+        $configuration = $this->buildConfiguration(allowOnlyOneBreadcrumbList: false);
 
-        $subject = new SchemaManager(
-            $extensionConfigurationStub,
-            $this->renderer,
-        );
+        $subject = new SchemaManager($configuration, $this->renderer);
 
         $breadcrumbList1 = new BreadcrumbList();
         $breadcrumbList2 = new BreadcrumbList();
@@ -397,5 +383,17 @@ final class SchemaManagerTest extends Testcase
 
         $this->subject->renderJsonLd();
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));
+    }
+
+    private function buildConfiguration(bool $allowOnlyOneBreadcrumbList): Configuration
+    {
+        return new Configuration(
+            false,
+            false,
+            [],
+            $allowOnlyOneBreadcrumbList,
+            false,
+            false,
+        );
     }
 }

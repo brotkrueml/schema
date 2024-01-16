@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\EventListener;
 
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
@@ -26,7 +27,6 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -39,9 +39,7 @@ final class AddBreadcrumbListTest extends TestCase
     use TypeProviderWithFixturesTrait;
 
     private ContentObjectRenderer&Stub $contentObjectRendererStub;
-    private ExtensionConfiguration&Stub $extensionConfigurationStub;
     private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
-    private AddBreadcrumbList $subject;
     private RenderAdditionalTypesEvent $event;
     private ServerRequestInterface&Stub $requestStub;
 
@@ -52,14 +50,7 @@ final class AddBreadcrumbListTest extends TestCase
         GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
 
         $this->contentObjectRendererStub = $this->createStub(ContentObjectRenderer::class);
-        $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
         $this->typoScriptFrontendControllerStub = $this->createStub(TypoScriptFrontendController::class);
-
-        $this->subject = new AddBreadcrumbList(
-            $this->contentObjectRendererStub,
-            $this->extensionConfigurationStub,
-            new TypeFactory(),
-        );
 
         $this->requestStub = $this->createStub(ServerRequestInterface::class);
         $this->requestStub
@@ -82,33 +73,32 @@ final class AddBreadcrumbListTest extends TestCase
     #[Test]
     public function noBreadcrumbIsAddedWhenItShouldNotBeEmbeddedViaConfiguration(): void
     {
-        $this->setExtensionConfiguration(false);
-        $this->subject->__invoke($this->event);
+        $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: false);
+
+        $subject = new AddBreadcrumbList(
+            $configuration,
+            $this->contentObjectRendererStub,
+            new TypeFactory(),
+        );
+
+        $subject->__invoke($this->event);
 
         self::assertSame([], $this->event->getAdditionalTypes());
-    }
-
-    private function setExtensionConfiguration(
-        bool $automaticGeneration,
-        string $excludeAdditionalDoktypes = '',
-        bool $allowOnlyOneBreadcrumbList = false,
-    ): void {
-        $this->extensionConfigurationStub
-            ->method('get')
-            ->with(Extension::KEY)
-            ->willReturn([
-                'automaticBreadcrumbSchemaGeneration' => $automaticGeneration ? '1' : '0',
-                'automaticBreadcrumbExcludeAdditionalDoktypes' => $excludeAdditionalDoktypes,
-                'allowOnlyOneBreadcrumbList' => $allowOnlyOneBreadcrumbList,
-            ]);
     }
 
     #[Test]
     public function withEmptyRootLineNoBreadcrumbIsAdded(): void
     {
-        $this->setExtensionConfiguration(true);
+        $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: true);
+
+        $subject = new AddBreadcrumbList(
+            $configuration,
+            $this->contentObjectRendererStub,
+            new TypeFactory(),
+        );
+
         $this->typoScriptFrontendControllerStub->rootLine = [];
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         self::assertSame([], $this->event->getAdditionalTypes());
     }
@@ -117,7 +107,17 @@ final class AddBreadcrumbListTest extends TestCase
     #[DataProvider('rootLineProvider')]
     public function breadcrumbIsAddedCorrectly(array $rootLine, string $expected): void
     {
-        $this->setExtensionConfiguration(true, '42,43');
+        $configuration = $this->buildConfiguration(
+            automaticBreadcrumbSchemaGeneration: true,
+            automaticBreadcrumbExcludeAdditionalDoktypes: [42, 43],
+        );
+
+        $subject = new AddBreadcrumbList(
+            $configuration,
+            $this->contentObjectRendererStub,
+            new TypeFactory(),
+        );
+
         $this->typoScriptFrontendControllerStub->rootLine = $rootLine;
         $this->contentObjectRendererStub
             ->method('typoLink_URL')
@@ -126,7 +126,7 @@ final class AddBreadcrumbListTest extends TestCase
                 'forceAbsoluteUrl' => true,
             ])
             ->willReturn('https://example.org/the-page/');
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         $actual = $this->event->getAdditionalTypes();
 
@@ -137,7 +137,17 @@ final class AddBreadcrumbListTest extends TestCase
     #[Test]
     public function breadcrumbIsAlreadyAvailabledAndAddedWhenOnlyOneIsAllowed(): void
     {
-        $this->setExtensionConfiguration(true, allowOnlyOneBreadcrumbList: true);
+        $configuration = $this->buildConfiguration(
+            automaticBreadcrumbSchemaGeneration: true,
+            allowOnlyOneBreadcrumbList: true,
+        );
+
+        $subject = new AddBreadcrumbList(
+            $configuration,
+            $this->contentObjectRendererStub,
+            new TypeFactory(),
+        );
+
         $this->typoScriptFrontendControllerStub->rootLine = [
             1 => [
                 'uid' => 1,
@@ -151,7 +161,7 @@ final class AddBreadcrumbListTest extends TestCase
         ];
 
         $event = new RenderAdditionalTypesEvent(false, true, $this->requestStub);
-        $this->subject->__invoke($event);
+        $subject->__invoke($event);
 
         $actual = $this->event->getAdditionalTypes();
 
@@ -487,7 +497,14 @@ final class AddBreadcrumbListTest extends TestCase
     #[Test]
     public function breadcrumbIsSortedCorrectly(): void
     {
-        $this->setExtensionConfiguration(true);
+        $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: true);
+
+        $subject = new AddBreadcrumbList(
+            $configuration,
+            $this->contentObjectRendererStub,
+            new TypeFactory(),
+        );
+
         $typoLinkMap = [
             [
                 [
@@ -569,7 +586,7 @@ final class AddBreadcrumbListTest extends TestCase
             ],
         ];
 
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         $actual = $this->event->getAdditionalTypes();
         $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}';
@@ -580,7 +597,14 @@ final class AddBreadcrumbListTest extends TestCase
     #[Test]
     public function rootLineWithDifferentWebPageTypeSet(): void
     {
-        $this->setExtensionConfiguration(true);
+        $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: true);
+
+        $subject = new AddBreadcrumbList(
+            $configuration,
+            $this->contentObjectRendererStub,
+            new TypeFactory(),
+        );
+
         $this->typoScriptFrontendControllerStub->rootLine = [
             2 => [
                 'uid' => 2,
@@ -610,11 +634,26 @@ final class AddBreadcrumbListTest extends TestCase
             ])
             ->willReturn('https://example.org/the-page/');
 
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         $actual = $this->event->getAdditionalTypes();
         $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}';
         self::assertCount(1, $actual);
         self::assertSame($expected, $this->renderJsonLd($actual[0]));
+    }
+
+    private function buildConfiguration(
+        bool $automaticBreadcrumbSchemaGeneration = false,
+        array $automaticBreadcrumbExcludeAdditionalDoktypes = [],
+        bool $allowOnlyOneBreadcrumbList = false,
+    ): Configuration {
+        return new Configuration(
+            false,
+            $automaticBreadcrumbSchemaGeneration,
+            $automaticBreadcrumbExcludeAdditionalDoktypes,
+            $allowOnlyOneBreadcrumbList,
+            false,
+            false,
+        );
     }
 }

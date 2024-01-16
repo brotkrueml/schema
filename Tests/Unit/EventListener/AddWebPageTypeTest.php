@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\EventListener;
 
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\EventListener\AddWebPageType;
 use Brotkrueml\Schema\Extension;
@@ -38,7 +39,6 @@ final class AddWebPageTypeTest extends TestCase
     private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
     private RenderAdditionalTypesEvent $event;
     private ServerRequestInterface&Stub $requestStub;
-    private AddWebPageType $subject;
 
     protected function setUp(): void
     {
@@ -51,8 +51,6 @@ final class AddWebPageTypeTest extends TestCase
             ->method('getAttribute')
             ->with('frontend.controller')
             ->willReturn($this->typoScriptFrontendControllerStub);
-
-        $this->subject = new AddWebPageType($this->extensionConfigurationStub, new TypeFactory());
 
         $this->event = new RenderAdditionalTypesEvent(false, false, $this->requestStub);
 
@@ -67,12 +65,16 @@ final class AddWebPageTypeTest extends TestCase
     #[Test]
     public function noWebPageTypeIsAddedWhenItShouldNotBeGeneratedViaConfiguration(): void
     {
+        $configuration = $this->buildConfiguration(false);
+
+        $subject = new AddWebPageType($configuration, new TypeFactory());
+
         $this->extensionConfigurationStub
             ->method('get')
             ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
             ->willReturn(false);
 
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         self::assertSame([], $this->event->getAdditionalTypes());
     }
@@ -80,13 +82,12 @@ final class AddWebPageTypeTest extends TestCase
     #[Test]
     public function noWebPageTypeIsAddedWhenItItIsAlreadyDefined(): void
     {
-        $this->extensionConfigurationStub
-            ->method('get')
-            ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
-            ->willReturn(true);
+        $configuration = $this->buildConfiguration(true);
+
+        $subject = new AddWebPageType($configuration, new TypeFactory());
 
         $event = new RenderAdditionalTypesEvent(true, false, $this->requestStub);
-        $this->subject->__invoke($event);
+        $subject->__invoke($event);
 
         self::assertSame([], $event->getAdditionalTypes());
     }
@@ -94,12 +95,11 @@ final class AddWebPageTypeTest extends TestCase
     #[Test]
     public function webPageTypeWebPageIsAddedWhenNoTypeIsDefinedInPageProperties(): void
     {
-        $this->extensionConfigurationStub
-            ->method('get')
-            ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
-            ->willReturn(true);
+        $configuration = $this->buildConfiguration(true);
 
-        $this->subject->__invoke($this->event);
+        $subject = new AddWebPageType($configuration, new TypeFactory());
+
+        $subject->__invoke($this->event);
 
         self::assertCount(1, $this->event->getAdditionalTypes());
         self::assertInstanceOf(FixtureType\WebPage::class, $this->event->getAdditionalTypes()[0]);
@@ -109,16 +109,15 @@ final class AddWebPageTypeTest extends TestCase
     #[Test]
     public function webPageTypeItemPageIsAddedWhenItemPageIsDefinedInPageProperties(): void
     {
-        $this->extensionConfigurationStub
-            ->method('get')
-            ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
-            ->willReturn(true);
+        $configuration = $this->buildConfiguration(true);
+
+        $subject = new AddWebPageType($configuration, new TypeFactory());
 
         $this->typoScriptFrontendControllerStub->page = [
             'tx_schema_webpagetype' => 'ItemPage',
         ];
 
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         self::assertCount(1, $this->event->getAdditionalTypes());
         self::assertInstanceOf(FixtureType\ItemPage::class, $this->event->getAdditionalTypes()[0]);
@@ -127,20 +126,31 @@ final class AddWebPageTypeTest extends TestCase
     #[Test]
     public function webPageTypeHasExpiresSetIfEndTimePagePropertiesIsDefined(): void
     {
-        $this->extensionConfigurationStub
-            ->method('get')
-            ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
-            ->willReturn(true);
+        $configuration = $this->buildConfiguration(true);
+
+        $subject = new AddWebPageType($configuration, new TypeFactory());
 
         $this->typoScriptFrontendControllerStub->page = [
             'endtime' => 1621615961,
             'tx_schema_webpagetype' => 'WebPage',
         ];
 
-        $this->subject->__invoke($this->event);
+        $subject->__invoke($this->event);
 
         self::assertCount(1, $this->event->getAdditionalTypes());
         self::assertInstanceOf(FixtureType\WebPage::class, $this->event->getAdditionalTypes()[0]);
         self::assertSame('2021-05-21T16:52:41+00:00', $this->event->getAdditionalTypes()[0]->getProperty('expires'));
+    }
+
+    private function buildConfiguration(bool $automaticWebPageSchemaGeneration): Configuration
+    {
+        return new Configuration(
+            $automaticWebPageSchemaGeneration,
+            false,
+            [],
+            false,
+            false,
+            false,
+        );
     }
 }

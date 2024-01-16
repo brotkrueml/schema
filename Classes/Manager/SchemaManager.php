@@ -11,12 +11,11 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Manager;
 
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
 
 final class SchemaManager implements SingletonInterface
@@ -36,7 +35,7 @@ final class SchemaManager implements SingletonInterface
     private array $breadcrumbLists = [];
 
     public function __construct(
-        private readonly ExtensionConfiguration $extensionConfiguration,
+        private readonly Configuration $configuration,
         private readonly RendererInterface $renderer,
     ) {
         $this->mainEntityOfWebPageBag = new MainEntityOfWebPageBag();
@@ -110,7 +109,7 @@ final class SchemaManager implements SingletonInterface
 
     private function addBreadcrumbList(BreadcrumbList $breadcrumbList): void
     {
-        if ($this->extensionConfiguration->get(Extension::KEY, 'allowOnlyOneBreadcrumbList')) {
+        if ($this->configuration->allowOnlyOneBreadcrumbList) {
             $this->breadcrumbLists = [$breadcrumbList];
             return;
         }

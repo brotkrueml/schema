@@ -11,12 +11,11 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\EventListener;
 
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -32,29 +31,25 @@ final class AddBreadcrumbList
     ];
 
     public function __construct(
+        private readonly Configuration $configuration,
         private readonly ContentObjectRenderer $contentObjectRenderer,
-        private readonly ExtensionConfiguration $extensionConfiguration,
         private readonly TypeFactory $typeFactory,
     ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {
-        $configuration = $this->extensionConfiguration->get('schema');
-        $shouldEmbedBreadcrumbMarkup = (bool)$configuration['automaticBreadcrumbSchemaGeneration'];
-        if (! $shouldEmbedBreadcrumbMarkup) {
+        if (! $this->configuration->automaticBreadcrumbSchemaGeneration) {
             return;
         }
 
-        if ($event->isBreadcrumbListAlreadyDefined() && (bool)$configuration['allowOnlyOneBreadcrumbList']) {
+        if ($event->isBreadcrumbListAlreadyDefined() && $this->configuration->allowOnlyOneBreadcrumbList) {
             return;
         }
 
-        $additionalDoktypesToExclude = GeneralUtility::intExplode(
-            ',',
-            $configuration['automaticBreadcrumbExcludeAdditionalDoktypes'],
-            true,
+        $doktypesToExclude = \array_merge(
+            self::DEFAULT_DOKTYPES_TO_EXCLUDE,
+            $this->configuration->automaticBreadcrumbExcludeAdditionalDoktypes,
         );
-        $doktypesToExclude = \array_merge(self::DEFAULT_DOKTYPES_TO_EXCLUDE, $additionalDoktypesToExclude);
         $rootLine = [];
         /** @var TypoScriptFrontendController $frontendController */
         $frontendController = $event->getRequest()->getAttribute('frontend.controller');

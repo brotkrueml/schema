@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Adapter\ApplicationType;
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
@@ -37,7 +37,7 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
         parent::setup();
         $this->view = new TemplateView();
         $this->schemaManager = new SchemaManager(
-            $this->createStub(ExtensionConfiguration::class),
+            new Configuration(false, false, [], false, false, false),
             new Renderer(),
         );
 

@@ -14,29 +14,22 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
 use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Page\PageRenderer;
 
 final class SchemaMarkupInjection
 {
-    /**
-     * @var array<string, string>
-     */
-    private array $configuration;
-    private EventDispatcherInterface $eventDispatcher;
-    private ExtensionAvailability $extensionAvailability;
-    private PagesCacheService $pagesCacheService;
-    private SchemaManager $schemaManager;
-
     public function __construct(
         private readonly ApplicationType $applicationType,
-        private readonly ContainerInterface $locator,
+        private readonly Configuration $configuration,
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly ExtensionAvailability $extensionAvailability,
+        private readonly PagesCacheService $pagesCacheService,
+        private readonly SchemaManager $schemaManager,
     ) {}
 
     public function execute(?array &$params, PageRenderer $pageRenderer): void
@@ -44,12 +37,6 @@ final class SchemaMarkupInjection
         if ($this->applicationType->isBackend()) {
             return;
         }
-
-        $this->configuration = $this->locator->get(ExtensionConfiguration::class)->get(Extension::KEY) ?? [];
-        $this->eventDispatcher = $this->locator->get(EventDispatcherInterface::class);
-        $this->extensionAvailability = $this->locator->get(ExtensionAvailability::class);
-        $this->pagesCacheService = $this->locator->get(PagesCacheService::class);
-        $this->schemaManager = $this->locator->get(SchemaManager::class);
 
         if (! $this->isMarkupToBeEmbedded()) {
             return;
@@ -77,7 +64,7 @@ final class SchemaMarkupInjection
             return;
         }
 
-        if ($this->configuration['embedMarkupInBodySection'] ?? false) {
+        if ($this->configuration->embedMarkupInBodySection) {
             $pageRenderer->addFooterData($result);
         } else {
             $pageRenderer->addHeaderData($result);
@@ -94,7 +81,7 @@ final class SchemaMarkupInjection
             return true;
         }
 
-        return (bool)($this->configuration['embedMarkupOnNoindexPages'] ?? true);
+        return $this->configuration->embedMarkupOnNoindexPages;
     }
 
     private function getRequest(): ServerRequestInterface

@@ -11,10 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\EventListener;
 
+use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Type\TypeFactory;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -25,18 +24,13 @@ final class AddWebPageType
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
     public function __construct(
-        private readonly ExtensionConfiguration $configuration,
+        private readonly Configuration $configuration,
         private readonly TypeFactory $typeFactory,
     ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {
-        $shouldGenerateWebPageSchema = $this->configuration->get(
-            Extension::KEY,
-            'automaticWebPageSchemaGeneration',
-        );
-
-        if (! $shouldGenerateWebPageSchema) {
+        if (! $this->configuration->automaticWebPageSchemaGeneration) {
             return;
         }
 
