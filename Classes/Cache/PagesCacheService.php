@@ -45,7 +45,7 @@ class PagesCacheService
                 $this->getCacheIdentifier(),
                 $markup,
                 \array_merge(['pageId_' . $this->controller->page['uid']], $this->controller->getPageCacheTags()),
-                $this->controller->get_cache_timeout(),
+                86400,
             );
         }
     }

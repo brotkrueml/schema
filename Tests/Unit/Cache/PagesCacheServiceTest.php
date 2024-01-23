@@ -31,9 +31,6 @@ final class PagesCacheServiceTest extends TestCase
         $this->cacheFrontendMock = $this->createMock(FrontendInterface::class);
 
         $this->controllerStub = $this->createStub(TypoScriptFrontendController::class);
-        $this->controllerStub
-            ->method('get_cache_timeout')
-            ->willReturn(3600);
         $this->controllerStub->newHash = 'some-hash';
         $this->controllerStub->page = [
             'uid' => 42,
@@ -76,7 +73,7 @@ final class PagesCacheServiceTest extends TestCase
         $this->cacheFrontendMock
             ->expects(self::once())
             ->method('set')
-            ->with('some-hash-tx-schema', 'markup to store', ['pageId_42'], 3600);
+            ->with('some-hash-tx-schema', 'markup to store', ['pageId_42'], 86400);
 
         $this->subject->storeMarkupInCache('markup to store');
     }
@@ -91,7 +88,7 @@ final class PagesCacheServiceTest extends TestCase
         $this->cacheFrontendMock
             ->expects(self::once())
             ->method('set')
-            ->with('some-hash-tx-schema', 'markup to store', ['pageId_42', 'some_tag_1', 'some_tag_2'], 3600);
+            ->with('some-hash-tx-schema', 'markup to store', ['pageId_42', 'some_tag_1', 'some_tag_2'], 86400);
 
         $this->subject->storeMarkupInCache('markup to store');
     }
