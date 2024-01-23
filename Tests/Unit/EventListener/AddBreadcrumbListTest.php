@@ -97,7 +97,7 @@ final class AddBreadcrumbListTest extends TestCase
             new TypeFactory(),
         );
 
-        $this->typoScriptFrontendControllerStub->rootLine = [];
+        $this->typoScriptFrontendControllerStub->config['rootLine'] = [];
         $subject->__invoke($this->event);
 
         self::assertSame([], $this->event->getAdditionalTypes());
@@ -118,7 +118,7 @@ final class AddBreadcrumbListTest extends TestCase
             new TypeFactory(),
         );
 
-        $this->typoScriptFrontendControllerStub->rootLine = $rootLine;
+        $this->typoScriptFrontendControllerStub->config['rootLine'] = $rootLine;
         $this->contentObjectRendererStub
             ->method('typoLink_URL')
             ->with([
@@ -148,8 +148,8 @@ final class AddBreadcrumbListTest extends TestCase
             new TypeFactory(),
         );
 
-        $this->typoScriptFrontendControllerStub->rootLine = [
-            1 => [
+        $this->typoScriptFrontendControllerStub->config['rootLine'] = [
+            [
                 'uid' => 1,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,
                 'title' => 'Site root page',
@@ -180,9 +180,18 @@ final class AddBreadcrumbListTest extends TestCase
 
     public static function rootLineProvider(): iterable
     {
-        yield 'Rootline with nav_title set' => [
+        yield 'Root line with nav_title set' => [
             [
-                2 => [
+                [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+                [
                     'uid' => 2,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
@@ -191,7 +200,13 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}',
+        ];
+
+        yield 'Root line with nav_hide set' => [
+            [
+                [
                     'uid' => 1,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
@@ -200,22 +215,7 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '1',
                     'tx_schema_webpagetype' => '',
                 ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A nav title page","position":"1"}}',
-        ];
-
-        yield 'Rootline with nav_hide set' => [
-            [
-                3 => [
-                    'uid' => 3,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page',
-                    'nav_title' => '',
-                    'nav_hide' => '1',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                2 => [
+                [
                     'uid' => 2,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
@@ -224,7 +224,22 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
+                [
+                    'uid' => 3,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '1',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
+        yield 'Root line with a hidden page' => [
+            [
+                [
                     'uid' => 1,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
@@ -233,13 +248,16 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '1',
                     'tx_schema_webpagetype' => '',
                 ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
-        yield 'Rootline with a hidden page' => [
-            [
-                3 => [
+                [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                [
                     'uid' => 3,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
@@ -249,73 +267,22 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                2 => [
-                    'uid' => 2,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                1 => [
-                    'uid' => 1,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '1',
-                    'tx_schema_webpagetype' => '',
-                ],
             ],
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
-        yield 'Rootline with siteroot not on first level' => [
+        yield 'Folder in root line should not be rendered' => [
             [
-                2 => [
-                    'uid' => 2,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                1 => [
-                    'uid' => 1,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '1',
-                    'tx_schema_webpagetype' => '',
-                ],
-                0 => [
+                [
                     'uid' => 42,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'some other page',
+                    'title' => 'Site root page',
                     'nav_title' => '',
                     'nav_hide' => '0',
-                    'is_siteroot' => '0',
+                    'is_siteroot' => '1',
                     'tx_schema_webpagetype' => '',
                 ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
-        yield 'Folder in rootline should not be rendered' => [
-            [
-                2 => [
-                    'uid' => 2,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                1 => [
+                [
                     'uid' => 1,
                     'doktype' => PageRepository::DOKTYPE_SYSFOLDER,
                     'title' => 'A folder',
@@ -324,22 +291,7 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                0 => [
-                    'uid' => 42,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '1',
-                    'tx_schema_webpagetype' => '',
-                ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
-        yield 'Recycler in rootline should not be rendered' => [
-            [
-                2 => [
+                [
                     'uid' => 2,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page',
@@ -348,16 +300,14 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
-                    'uid' => 1,
-                    'doktype' => PageRepository::DOKTYPE_RECYCLER,
-                    'title' => 'A folder',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                0 => [
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
+        // @todo Remove when compatibility with TYPO3 v12 is dropped
+        yield 'Recycler in root line should not be rendered' => [
+            [
+                [
                     'uid' => 42,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
@@ -366,22 +316,40 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '1',
                     'tx_schema_webpagetype' => '',
                 ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
-        yield 'Menu separator in rootline should not be rendered, but doktype 198' => [
-            [
-                2 => [
-                    'uid' => 2,
-                    'doktype' => 198,
-                    'title' => 'A page with doktype 198',
+                [
+                    'uid' => 1,
+                    'doktype' => 255,
+                    'title' => 'A folder',
                     'nav_title' => '',
                     'nav_hide' => '0',
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
+                [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
+        yield 'Menu separator in root line should not be rendered, but doktype 198' => [
+            [
+                [
+                    'uid' => 42,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+                [
                     'uid' => 1,
                     'doktype' => PageRepository::DOKTYPE_SPACER,
                     'title' => 'A menu separator',
@@ -390,13 +358,13 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                0 => [
-                    'uid' => 42,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
+                [
+                    'uid' => 2,
+                    'doktype' => 198,
+                    'title' => 'A page with doktype 198',
                     'nav_title' => '',
                     'nav_hide' => '0',
-                    'is_siteroot' => '1',
+                    'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
             ],
@@ -405,7 +373,16 @@ final class AddBreadcrumbListTest extends TestCase
 
         yield 'Doktype 200 should be rendered' => [
             [
-                2 => [
+                [
+                    'uid' => 1,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'Site root page',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '1',
+                    'tx_schema_webpagetype' => '',
+                ],
+                [
                     'uid' => 2,
                     'doktype' => 200,
                     'title' => 'A page',
@@ -414,7 +391,13 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
+        yield 'Doktype 300 should be rendered' => [
+            [
+                [
                     'uid' => 1,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
@@ -423,13 +406,7 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '1',
                     'tx_schema_webpagetype' => '',
                 ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
-        yield 'Doktype 300 should be rendered' => [
-            [
-                2 => [
+                [
                     'uid' => 2,
                     'doktype' => 300,
                     'title' => 'A page',
@@ -438,7 +415,13 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
+        ];
+
+        yield 'Doktype 43 (which is excluded via extension configuration) should not be rendered' => [
+            [
+                [
                     'uid' => 1,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'Site root page',
@@ -447,31 +430,7 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '1',
                     'tx_schema_webpagetype' => '',
                 ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
-        yield 'Doktype 43 (which is excluded via extension configuration) should not be rendered' => [
-            [
-                4 => [
-                    'uid' => 2,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page on level 3',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                3 => [
-                    'uid' => 2,
-                    'doktype' => 43,
-                    'title' => 'A page on level 2',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                2 => [
+                [
                     'uid' => 2,
                     'doktype' => PageRepository::DOKTYPE_DEFAULT,
                     'title' => 'A page on level 1',
@@ -480,118 +439,27 @@ final class AddBreadcrumbListTest extends TestCase
                     'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
-                1 => [
-                    'uid' => 1,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
+                [
+                    'uid' => 2,
+                    'doktype' => 43,
+                    'title' => 'A page on level 2',
                     'nav_title' => '',
                     'nav_hide' => '0',
-                    'is_siteroot' => '1',
+                    'is_siteroot' => '0',
+                    'tx_schema_webpagetype' => '',
+                ],
+                [
+                    'uid' => 2,
+                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                    'title' => 'A page on level 3',
+                    'nav_title' => '',
+                    'nav_hide' => '0',
+                    'is_siteroot' => '0',
                     'tx_schema_webpagetype' => '',
                 ],
             ],
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page on level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page on level 3","position":"2"}]}',
         ];
-    }
-
-    #[Test]
-    public function breadcrumbIsSortedCorrectly(): void
-    {
-        $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: true);
-
-        $subject = new AddBreadcrumbList(
-            $configuration,
-            $this->contentObjectRendererStub,
-            new TypeFactory(),
-        );
-
-        $typoLinkMap = [
-            [
-                [
-                    'parameter' => '2',
-                    'forceAbsoluteUrl' => true,
-                ],
-                'https://example.org/level-1/',
-            ],
-            [
-                [
-                    'parameter' => '33',
-                    'forceAbsoluteUrl' => true,
-                ],
-                'https://example.org/level-2/',
-            ],
-            [
-                [
-                    'parameter' => '22',
-                    'forceAbsoluteUrl' => true,
-                ],
-                'https://example.org/level-3/',
-            ],
-            [
-                [
-                    'parameter' => '111',
-                    'forceAbsoluteUrl' => true,
-                ],
-                'https://example.org/level-4/',
-            ],
-        ];
-        $this->contentObjectRendererStub
-            ->method('typoLink_URL')
-            ->willReturnMap($typoLinkMap);
-        $this->typoScriptFrontendControllerStub->rootLine = [
-            [
-                'uid' => 111,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'Level 4',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '0',
-                'tx_schema_webpagetype' => '',
-            ],
-            [
-                'uid' => 22,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'Level 3',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '0',
-                'tx_schema_webpagetype' => '',
-            ],
-            [
-                'uid' => 33,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'Level 2',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '0',
-                'tx_schema_webpagetype' => '',
-            ],
-            [
-                'uid' => 2,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'Level 1',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '0',
-                'tx_schema_webpagetype' => '',
-            ],
-            [
-                'uid' => 1,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'Site root page',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '1',
-                'tx_schema_webpagetype' => '',
-            ],
-        ];
-
-        $subject->__invoke($this->event);
-
-        $actual = $this->event->getAdditionalTypes();
-        $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-1/"},"name":"Level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-2/"},"name":"Level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-3/"},"name":"Level 3","position":"3"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/level-4/"},"name":"Level 4","position":"4"}]}';
-        self::assertCount(1, $actual);
-        self::assertSame($expected, $this->renderJsonLd($actual[0]));
     }
 
     #[Test]
@@ -605,17 +473,8 @@ final class AddBreadcrumbListTest extends TestCase
             new TypeFactory(),
         );
 
-        $this->typoScriptFrontendControllerStub->rootLine = [
-            2 => [
-                'uid' => 2,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'A page',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '0',
-                'tx_schema_webpagetype' => 'ItemPage',
-            ],
-            1 => [
+        $this->typoScriptFrontendControllerStub->config['rootLine'] = [
+            [
                 'uid' => 1,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,
                 'title' => 'Site root page',
@@ -623,6 +482,15 @@ final class AddBreadcrumbListTest extends TestCase
                 'nav_hide' => '0',
                 'is_siteroot' => '1',
                 'tx_schema_webpagetype' => '',
+            ],
+            [
+                'uid' => 2,
+                'doktype' => PageRepository::DOKTYPE_DEFAULT,
+                'title' => 'A page',
+                'nav_title' => '',
+                'nav_hide' => '0',
+                'is_siteroot' => '0',
+                'tx_schema_webpagetype' => 'ItemPage',
             ],
         ];
         $this->contentObjectRendererStub

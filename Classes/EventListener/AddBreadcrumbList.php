@@ -53,9 +53,9 @@ final class AddBreadcrumbList
         $rootLine = [];
         /** @var TypoScriptFrontendController $frontendController */
         $frontendController = $event->getRequest()->getAttribute('frontend.controller');
-        foreach ($frontendController->rootLine as $page) {
+        foreach ($frontendController->config['rootLine'] as $page) {
             if ($page['is_siteroot'] ?? false) {
-                break;
+                continue;
             }
 
             if ($page['hidden'] ?? false) {
@@ -77,7 +77,6 @@ final class AddBreadcrumbList
             return;
         }
 
-        $rootLine = \array_reverse($rootLine);
         $event->addType($this->buildBreadCrumbList($rootLine));
     }
 
