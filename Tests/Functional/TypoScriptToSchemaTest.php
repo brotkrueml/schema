@@ -74,7 +74,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         );
 
         $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
+        $content = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertStringNotContainsString('ext-schema-jsonld', $content);
         $this->assertHasLogEntries($expectedLogEntries);
@@ -134,7 +134,7 @@ TYPOSCRIPT,
         );
 
         $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
+        $content = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         $this->assertHasJsonLd($expectedJsonLd, $content);
         $this->assertHasLogEntries([]);
@@ -427,7 +427,7 @@ TYPOSCRIPT,
         );
 
         $request = new InternalRequest();
-        $content = (string)$this->executeFrontendRequest($request)->getBody();
+        $content = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         $this->assertHasJsonLd([
             '@context' => 'https://schema.org/',
