@@ -3,28 +3,27 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
 use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector;
-use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddMethodCallBasedStrictParamTypeRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector;
 use Rector\TypeDeclaration\Rector\FunctionLike\AddReturnTypeDeclarationFromYieldsRector;
+use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $config): void {
     $config->import(LevelSetList::UP_TO_PHP_81);
+    $config->import(PHPUnitSetList::PHPUNIT_100);
+    $config->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
     $config->import(SetList::CODE_QUALITY);
     $config->import(SetList::DEAD_CODE);
     $config->import(SetList::EARLY_RETURN);
     $config->import(SetList::TYPE_DECLARATION);
-    $config->import(PHPUnitLevelSetList::UP_TO_PHPUNIT_100);
-    $config->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
 
     $config->phpVersion(PhpVersion::PHP_81);
 
