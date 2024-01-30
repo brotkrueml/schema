@@ -28,10 +28,14 @@ jobs:
             typo3-versions: '^11'
           - php-versions: '8.2'
             typo3-versions: '^12'
+          - php-versions: '8.2'
+            typo3-versions: '^13'
           - php-versions: '8.3'
             typo3-versions: '^11'
           - php-versions: '8.3'
             typo3-versions: '^12'
+          - php-versions: '8.3'
+            typo3-versions: '^13'
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -52,9 +56,14 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
-      - name: Install composer dependencies
+      - name: Install composer dependencies for TYPO3 v11 and v12
+        if: matrix.typo3-versions != '^13'
         run: |
-          composer remove saschaegerer/phpstan-typo3 symplify/phpstan-rules --dev --no-update
+          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
+      - name: Install composer dependencies for TYPO3 v13
+        if: matrix.typo3-versions == '^13'
+        run: |
+          composer require typo3/testing-framework=dev-main@dev --dev --no-update
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
