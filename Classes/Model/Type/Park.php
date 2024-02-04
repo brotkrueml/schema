@@ -46,6 +46,7 @@ final class Park extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'identifier',
         'image',

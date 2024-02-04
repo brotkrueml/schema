@@ -65,6 +65,7 @@ final class ProfessionalService extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'hasOfferCatalog',
         'hasPOS',

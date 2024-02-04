@@ -44,6 +44,7 @@ final class NGO extends AbstractType
         'foundingLocation',
         'funder',
         'globalLocationNumber',
+        'hasCertification',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

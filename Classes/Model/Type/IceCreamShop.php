@@ -62,6 +62,7 @@ final class IceCreamShop extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'hasMenu',
         'hasOfferCatalog',

@@ -46,6 +46,7 @@ final class ParkingFacility extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'identifier',
         'image',

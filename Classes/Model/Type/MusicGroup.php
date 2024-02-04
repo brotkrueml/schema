@@ -46,6 +46,7 @@ final class MusicGroup extends AbstractType
         'funder',
         'genre',
         'globalLocationNumber',
+        'hasCertification',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

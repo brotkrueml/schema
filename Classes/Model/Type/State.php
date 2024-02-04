@@ -46,6 +46,7 @@ final class State extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'identifier',
         'image',

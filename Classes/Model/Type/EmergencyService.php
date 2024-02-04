@@ -61,6 +61,7 @@ final class EmergencyService extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'hasOfferCatalog',
         'hasPOS',

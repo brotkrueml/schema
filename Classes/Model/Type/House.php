@@ -48,6 +48,7 @@ final class House extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'identifier',
         'image',

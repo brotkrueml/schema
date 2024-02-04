@@ -45,6 +45,7 @@ final class CreditCard extends AbstractType
         'description',
         'disambiguatingDescription',
         'feesAndCommissionsSpecification',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',

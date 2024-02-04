@@ -44,6 +44,7 @@ final class PerformingGroup extends AbstractType
         'foundingLocation',
         'funder',
         'globalLocationNumber',
+        'hasCertification',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

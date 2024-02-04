@@ -36,6 +36,7 @@ final class DepositAccount extends AbstractType
         'description',
         'disambiguatingDescription',
         'feesAndCommissionsSpecification',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',

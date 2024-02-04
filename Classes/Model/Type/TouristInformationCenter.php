@@ -61,6 +61,7 @@ final class TouristInformationCenter extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'hasOfferCatalog',
         'hasPOS',

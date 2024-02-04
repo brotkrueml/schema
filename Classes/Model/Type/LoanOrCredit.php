@@ -37,6 +37,7 @@ final class LoanOrCredit extends AbstractType
         'description',
         'disambiguatingDescription',
         'feesAndCommissionsSpecification',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',

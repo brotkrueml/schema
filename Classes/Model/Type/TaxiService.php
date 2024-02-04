@@ -33,6 +33,7 @@ final class TaxiService extends AbstractType
         'category',
         'description',
         'disambiguatingDescription',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',

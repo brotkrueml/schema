@@ -45,6 +45,7 @@ final class Airline extends AbstractType
         'foundingLocation',
         'funder',
         'globalLocationNumber',
+        'hasCertification',
         'hasOfferCatalog',
         'hasPOS',
         'iataCode',

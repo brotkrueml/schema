@@ -44,6 +44,7 @@ final class PhysiciansOffice extends AbstractType
         'foundingLocation',
         'funder',
         'globalLocationNumber',
+        'hasCertification',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

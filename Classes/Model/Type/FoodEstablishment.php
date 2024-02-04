@@ -62,6 +62,7 @@ final class FoodEstablishment extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'hasMenu',
         'hasOfferCatalog',

@@ -27,6 +27,7 @@ final class Offer extends AbstractType
     protected static array $propertyNames = [
         'acceptedPaymentMethod',
         'addOn',
+        'additionalProperty',
         'additionalType',
         'advanceBookingRequirement',
         'aggregateRating',

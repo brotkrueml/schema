@@ -39,6 +39,7 @@ final class BroadcastService extends AbstractType
         'description',
         'disambiguatingDescription',
         'hasBroadcastChannel',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',

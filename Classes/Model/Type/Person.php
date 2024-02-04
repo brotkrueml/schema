@@ -46,6 +46,7 @@ final class Person extends AbstractType
         'funder',
         'givenName',
         'globalLocationNumber',
+        'hasCertification',
         'hasOccupation',
         'hasOfferCatalog',
         'hasPOS',

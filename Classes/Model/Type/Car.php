@@ -47,6 +47,7 @@ final class Car extends AbstractType
         'gtin13',
         'gtin14',
         'gtin8',
+        'hasCertification',
         'height',
         'identifier',
         'image',

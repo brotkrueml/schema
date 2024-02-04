@@ -33,6 +33,7 @@ final class FoodService extends AbstractType
         'category',
         'description',
         'disambiguatingDescription',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',

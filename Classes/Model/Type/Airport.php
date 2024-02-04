@@ -46,6 +46,7 @@ final class Airport extends AbstractType
         'geoTouches',
         'geoWithin',
         'globalLocationNumber',
+        'hasCertification',
         'hasMap',
         'iataCode',
         'icaoCode',

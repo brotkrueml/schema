@@ -33,6 +33,7 @@ final class Service extends AbstractType
         'category',
         'description',
         'disambiguatingDescription',
+        'hasCertification',
         'hasOfferCatalog',
         'hoursAvailable',
         'identifier',
