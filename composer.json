@@ -58,8 +58,6 @@
 		"typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
 		"typo3/cms-lowlevel": "Display available schema.org types in the Configuration module"
 	},
-	"minimum-stability": "RC",
-	"prefer-stable": true,
 	"autoload": {
 		"psr-4": {
 			"Brotkrueml\\Schema\\": "Classes/"
