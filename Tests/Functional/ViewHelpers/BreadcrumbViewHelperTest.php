@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\Parser;
+use TYPO3Fluid\Fluid\Core\Parser\Exception;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 #[CoversClass(BreadcrumbViewHelper::class)]
@@ -246,7 +246,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
         yield 'Missing breadcrumb attribute' => [
             '<schema:breadcrumb/>',
             [],
-            Parser\Exception::class,
+            Exception::class,
             1237823699,
         ];
 

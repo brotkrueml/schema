@@ -15,7 +15,8 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
  * ViewHelper for building the breadcrumb structure and assigning it
@@ -52,7 +53,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
  * <schema:breadcrumbMarkup breadcrumb="{breadcrumb}" renderFirstItem="1">
  * </code>
  */
-final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
+final class BreadcrumbViewHelper extends AbstractViewHelper
 {
     private const ARGUMENT_BREADCRUMB = 'breadcrumb';
     private const ARGUMENT_RENDER_FIRST_ITEM = 'renderFirstItem';
@@ -103,7 +104,7 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
         $itemsCount = \count($arguments[self::ARGUMENT_BREADCRUMB]);
         for ($i = 0; $i < $itemsCount; $i++) {
             $id = (string)$arguments[self::ARGUMENT_BREADCRUMB][$i]['link'];
-            if (! \str_starts_with($id, $siteUrl)) {
+            if (! \str_starts_with($id, (string)$siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }
 
@@ -139,14 +140,14 @@ final class BreadcrumbViewHelper extends ViewHelper\AbstractViewHelper
     {
         foreach ($breadcrumb as $item) {
             if (! isset($item['title'])) {
-                throw new ViewHelper\Exception(
+                throw new Exception(
                     'An item in the given breadcrumb structure does not have the "title" key.',
                     1561890280,
                 );
             }
 
             if (! isset($item['link'])) {
-                throw new ViewHelper\Exception(
+                throw new Exception(
                     'An item in the given breadcrumb structure does not have the "link" key.',
                     1561890281,
                 );

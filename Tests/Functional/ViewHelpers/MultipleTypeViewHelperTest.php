@@ -20,7 +20,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 #[CoversClass(MultipleTypeViewHelper::class)]
 final class MultipleTypeViewHelperTest extends ViewHelperTestCase
@@ -137,7 +137,7 @@ final class MultipleTypeViewHelperTest extends ViewHelperTestCase
     #[Test]
     public function itThrowsExceptionWhenUsedAsAChildTypeWithoutAsArgument(): void
     {
-        $this->expectException(ViewHelper\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('The child view helper of schema type "ProductStub / ServiceStub" must have an "-as" argument for embedding into the parent type');
 
         $template = <<< EOF

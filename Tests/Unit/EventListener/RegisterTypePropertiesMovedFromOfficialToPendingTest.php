@@ -13,7 +13,28 @@ namespace Brotkrueml\Schema\Tests\Unit\EventListener;
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending;
-use Brotkrueml\Schema\Model\Type;
+use Brotkrueml\Schema\Model\Type\AboutPage;
+use Brotkrueml\Schema\Model\Type\ActionAccessSpecification;
+use Brotkrueml\Schema\Model\Type\AggregateOffer;
+use Brotkrueml\Schema\Model\Type\BroadcastEvent;
+use Brotkrueml\Schema\Model\Type\Car;
+use Brotkrueml\Schema\Model\Type\DeliveryChargeSpecification;
+use Brotkrueml\Schema\Model\Type\Demand;
+use Brotkrueml\Schema\Model\Type\IndividualProduct;
+use Brotkrueml\Schema\Model\Type\JobPosting;
+use Brotkrueml\Schema\Model\Type\Movie;
+use Brotkrueml\Schema\Model\Type\Occupation;
+use Brotkrueml\Schema\Model\Type\Offer;
+use Brotkrueml\Schema\Model\Type\Person;
+use Brotkrueml\Schema\Model\Type\Product;
+use Brotkrueml\Schema\Model\Type\ProductModel;
+use Brotkrueml\Schema\Model\Type\ScreeningEvent;
+use Brotkrueml\Schema\Model\Type\SomeProducts;
+use Brotkrueml\Schema\Model\Type\SportsEvent;
+use Brotkrueml\Schema\Model\Type\SportsOrganization;
+use Brotkrueml\Schema\Model\Type\SportsTeam;
+use Brotkrueml\Schema\Model\Type\TVEpisode;
+use Brotkrueml\Schema\Model\Type\Vehicle;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -30,7 +51,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
     #[Test]
     public function additionalPropertiesForPersonTypeAreRegistered(): void
     {
-        $event = new RegisterAdditionalTypePropertiesEvent(Type\Person::class);
+        $event = new RegisterAdditionalTypePropertiesEvent(Person::class);
         ($this->subject)($event);
 
         self::assertContains('gender', $event->getAdditionalProperties());
@@ -49,12 +70,12 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 
     public static function dataProviderForHasEnergyConsumptionDetails(): \Iterator
     {
-        yield [Type\Car::class];
-        yield [Type\IndividualProduct::class];
-        yield [Type\Product::class];
-        yield [Type\ProductModel::class];
-        yield [Type\SomeProducts::class];
-        yield [Type\Vehicle::class];
+        yield [Car::class];
+        yield [IndividualProduct::class];
+        yield [Product::class];
+        yield [ProductModel::class];
+        yield [SomeProducts::class];
+        yield [Vehicle::class];
     }
 
     #[Test]
@@ -69,11 +90,11 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 
     public static function dataProviderForIneligibleRegion(): \Iterator
     {
-        yield [Type\ActionAccessSpecification::class];
-        yield [Type\AggregateOffer::class];
-        yield [Type\DeliveryChargeSpecification::class];
-        yield [Type\Demand::class];
-        yield [Type\Offer::class];
+        yield [ActionAccessSpecification::class];
+        yield [AggregateOffer::class];
+        yield [DeliveryChargeSpecification::class];
+        yield [Demand::class];
+        yield [Offer::class];
     }
 
     /**
@@ -83,7 +104,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
     #[Test]
     public function additionalPropertyProviderIsRegisteredCorrectly(): void
     {
-        $event = new RegisterAdditionalTypePropertiesEvent(Type\AboutPage::class);
+        $event = new RegisterAdditionalTypePropertiesEvent(AboutPage::class);
         ($this->subject)($event);
 
         self::assertContains('provider', $event->getAdditionalProperties());
@@ -101,9 +122,9 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 
     public static function dataProviderForSport(): \Iterator
     {
-        yield [Type\SportsEvent::class];
-        yield [Type\SportsOrganization::class];
-        yield [Type\SportsTeam::class];
+        yield [SportsEvent::class];
+        yield [SportsOrganization::class];
+        yield [SportsTeam::class];
     }
 
     #[Test]
@@ -118,10 +139,10 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 
     public static function dataProviderForSubtitleLanguage(): \Iterator
     {
-        yield [Type\BroadcastEvent::class];
-        yield [Type\Movie::class];
-        yield [Type\ScreeningEvent::class];
-        yield [Type\TVEpisode::class];
+        yield [BroadcastEvent::class];
+        yield [Movie::class];
+        yield [ScreeningEvent::class];
+        yield [TVEpisode::class];
     }
 
     #[Test]
@@ -136,7 +157,7 @@ class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 
     public static function dataProviderForOccupationalCategory(): \Iterator
     {
-        yield [Type\JobPosting::class];
-        yield [Type\Occupation::class];
+        yield [JobPosting::class];
+        yield [Occupation::class];
     }
 }

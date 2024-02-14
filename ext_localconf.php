@@ -1,25 +1,33 @@
 <?php
-defined('TYPO3') or die();
+
+use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
+use Brotkrueml\Schema\Extension;
+use Brotkrueml\Schema\TypoScript\SchemaContentObject;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use Brotkrueml\Schema\AdminPanel\SchemaModule;
+use Brotkrueml\Schema\AdminPanel\TypesInformation;
+
+defined('TYPO3') || die();
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',nav_hide,tx_schema_webpagetype';
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] =
-    Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection::class . '->execute';
+    SchemaMarkupInjection::class . '->execute';
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['schema'] = ['Brotkrueml\\Schema\\ViewHelpers'];
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Brotkrueml\Schema\Extension::CACHE_IDENTIFIER] ??= [];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Extension::CACHE_IDENTIFIER] ??= [];
 
 // This configuration can be removed once compatibility with TYPO3 v11 is gone
-$GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']['SCHEMA'] = Brotkrueml\Schema\TypoScript\SchemaContentObject::class;
+$GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']['SCHEMA'] = SchemaContentObject::class;
 
-if (TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('adminpanel')) {
+if (ExtensionManagementUtility::isLoaded('adminpanel')) {
     $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['ext-schema'] = [
-        'module' => Brotkrueml\Schema\AdminPanel\SchemaModule::class,
+        'module' => SchemaModule::class,
         'after' => ['tsdebug'],
         'submodules' => [
             'types' => [
-                'module' => Brotkrueml\Schema\AdminPanel\TypesInformation::class,
+                'module' => TypesInformation::class,
             ],
         ],
     ];

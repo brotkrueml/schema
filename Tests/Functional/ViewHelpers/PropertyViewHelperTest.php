@@ -21,7 +21,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 #[CoversClass(PropertyViewHelper::class)]
 final class PropertyViewHelperTest extends ViewHelperTestCase
@@ -99,7 +99,7 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
     {
         yield 'View helper is not a child of a type' => [
             '<schema:property -as="someProperty" value="some value"/>',
-            ViewHelper\Exception::class,
+            Exception::class,
             1561838013,
         ];
 
@@ -117,13 +117,13 @@ final class PropertyViewHelperTest extends ViewHelperTestCase
 
         yield 'Empty -as attribute' => [
             '<schema:type.thing><schema:property -as="" value="some value"/></schema:type.thing>',
-            ViewHelper\Exception::class,
+            Exception::class,
             1561838834,
         ];
 
         yield 'Empty value attribute' => [
             '<schema:type.thing><schema:property -as="name" value=""/></schema:type.thing>',
-            ViewHelper\Exception::class,
+            Exception::class,
             1561838999,
         ];
     }

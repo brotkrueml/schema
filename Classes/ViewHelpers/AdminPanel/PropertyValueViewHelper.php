@@ -19,12 +19,12 @@ use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * @internal
  */
-final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
+final class PropertyValueViewHelper extends AbstractViewHelper
 {
     /**
      * @var list<string>
@@ -171,7 +171,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     private static function getIconFactory(): IconFactory
     {
-        if (! self::$iconFactory instanceof \TYPO3\CMS\Core\Imaging\IconFactory) {
+        if (! self::$iconFactory instanceof IconFactory) {
             self::$iconFactory = GeneralUtility::makeInstance(IconFactory::class);
         }
 
@@ -180,7 +180,7 @@ final class PropertyValueViewHelper extends ViewHelper\AbstractViewHelper
 
     private static function getTypeProvider(): TypeProvider
     {
-        if (! self::$typeProvider instanceof \Brotkrueml\Schema\Type\TypeProvider) {
+        if (! self::$typeProvider instanceof TypeProvider) {
             self::$typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
         }
 

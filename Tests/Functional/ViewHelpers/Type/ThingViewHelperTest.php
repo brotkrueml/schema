@@ -12,7 +12,16 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\Type;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Model\Type;
+use Brotkrueml\Schema\Model\Type\Action;
+use Brotkrueml\Schema\Model\Type\ContactPoint;
+use Brotkrueml\Schema\Model\Type\Corporation;
+use Brotkrueml\Schema\Model\Type\CreativeWork;
+use Brotkrueml\Schema\Model\Type\Event;
+use Brotkrueml\Schema\Model\Type\Offer;
+use Brotkrueml\Schema\Model\Type\Organization;
+use Brotkrueml\Schema\Model\Type\Person;
+use Brotkrueml\Schema\Model\Type\Thing;
+use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Functional\ViewHelpers\ViewHelperTestCase;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeProvider;
@@ -21,7 +30,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 #[CoversClass(ThingViewHelper::class)]
 final class ThingViewHelperTest extends ViewHelperTestCase
@@ -34,16 +43,16 @@ final class ThingViewHelperTest extends ViewHelperTestCase
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
         $typeProvider = new TypeProvider();
-        $typeProvider->addType('Action', Type\Action::class);
-        $typeProvider->addType('ContactPoint', Type\ContactPoint::class);
-        $typeProvider->addType('Corporation', Type\Corporation::class);
-        $typeProvider->addType('CreativeWork', Type\CreativeWork::class);
-        $typeProvider->addType('Event', Type\Event::class);
-        $typeProvider->addType('Offer', Type\Offer::class);
-        $typeProvider->addType('Organization', Type\Organization::class);
-        $typeProvider->addType('Person', Type\Person::class);
-        $typeProvider->addType('Thing', Type\Thing::class);
-        $typeProvider->addType('WebPage', Type\WebPage::class);
+        $typeProvider->addType('Action', Action::class);
+        $typeProvider->addType('ContactPoint', ContactPoint::class);
+        $typeProvider->addType('Corporation', Corporation::class);
+        $typeProvider->addType('CreativeWork', CreativeWork::class);
+        $typeProvider->addType('Event', Event::class);
+        $typeProvider->addType('Offer', Offer::class);
+        $typeProvider->addType('Organization', Organization::class);
+        $typeProvider->addType('Person', Person::class);
+        $typeProvider->addType('Thing', Thing::class);
+        $typeProvider->addType('WebPage', WebPage::class);
         GeneralUtility::setSingletonInstance(TypeProvider::class, $typeProvider);
     }
 
@@ -379,7 +388,7 @@ final class ThingViewHelperTest extends ViewHelperTestCase
         int $expectedExceptionCode,
         string $expectedExceptionMessage,
     ): void {
-        $this->expectException(ViewHelper\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionCode($expectedExceptionCode);
         $this->expectExceptionMessage($expectedExceptionMessage);
 

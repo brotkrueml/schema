@@ -43,7 +43,7 @@ interface TypeInterface extends NodeIdentifierInterface
      * @param mixed $propertyValue The value of the property
      * @return self
      */
-    public function setProperty(string $propertyName, $propertyValue);
+    public function setProperty(string $propertyName, mixed $propertyValue);
 
     /**
      * Adds a value to a property
@@ -52,7 +52,7 @@ interface TypeInterface extends NodeIdentifierInterface
      * @param mixed $propertyValue The property value
      * @return self
      */
-    public function addProperty(string $propertyName, $propertyValue);
+    public function addProperty(string $propertyName, mixed $propertyValue);
 
     /**
      * Set multiple properties at once

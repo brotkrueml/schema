@@ -16,12 +16,13 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
  * @internal
  */
-abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
+abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
 {
     protected const ARGUMENT_AS = '-as';
     protected const ARGUMENT_ID = '-id';
@@ -88,7 +89,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
             $parentPropertyNameFromArgument = $this->arguments[static::ARGUMENT_AS];
 
             if ($parentPropertyNameFromArgument === '') {
-                throw new ViewHelper\Exception(
+                throw new Exception(
                     \sprintf(
                         'The child view helper of schema type "%s" must have an "%s" argument for embedding into the parent type',
                         $this->getType(),
@@ -110,7 +111,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         $this->isMainEntityOfWebPage = $isMainEntityOfWebPage === 'true' ? 1 : (int)$isMainEntityOfWebPage;
 
         if ($this->isMainEntityOfWebPage < 0 || $this->isMainEntityOfWebPage > 2) {
-            throw new ViewHelper\Exception(
+            throw new Exception(
                 \sprintf(
                     'The value of argument "%s" must be between 0 and 2, "%d" given (allowed: 0 = not a main entity, 1 = main entity, 2 = prioritised main entity',
                     static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
@@ -121,7 +122,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
 
         if ($this->isMainEntityOfWebPage > 0 && ! $this->stack->isEmpty()) {
-            throw new ViewHelper\Exception(
+            throw new Exception(
                 \sprintf(
                     'The argument "%s" must not be used in the child type "%s", only the main type is allowed',
                     static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
@@ -168,7 +169,7 @@ abstract class AbstractBaseTypeViewHelper extends ViewHelper\AbstractViewHelper
         }
 
         if (! \is_string($id) && ! $id instanceof NodeIdentifierInterface) {
-            throw new ViewHelper\Exception(
+            throw new Exception(
                 \sprintf(
                     'The %s argument has to be either a string or an instance of %s, %s given',
                     static::ARGUMENT_ID,

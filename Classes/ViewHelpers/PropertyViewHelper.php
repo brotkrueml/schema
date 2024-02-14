@@ -14,7 +14,8 @@ namespace Brotkrueml\Schema\ViewHelpers;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
  * ViewHelper for adding a property with a string value to a
@@ -28,7 +29,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper;
  * <schema:property -as="sameAs" value="https://twitter.com/example">
  * </code>
  */
-final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
+final class PropertyViewHelper extends AbstractViewHelper
 {
     private const ARGUMENT_AS = '-as';
     private const ARGUMENT_VALUE = 'value';
@@ -53,7 +54,7 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         $this->checkAttributes();
 
         if ($this->typeStack->isEmpty()) {
-            throw new ViewHelper\Exception(
+            throw new Exception(
                 'The property view helper can only be used as a child of a type view helper',
                 1561838013,
             );
@@ -70,14 +71,14 @@ final class PropertyViewHelper extends ViewHelper\AbstractViewHelper
         $emptyMessage = 'The argument "%s" cannot be empty';
 
         if ($this->arguments[self::ARGUMENT_AS] === '') {
-            throw new ViewHelper\Exception(
+            throw new Exception(
                 \sprintf($emptyMessage, self::ARGUMENT_AS),
                 1561838834,
             );
         }
 
         if ($this->arguments[self::ARGUMENT_VALUE] === '') {
-            throw new ViewHelper\Exception(
+            throw new Exception(
                 \sprintf($emptyMessage, self::ARGUMENT_VALUE),
                 1561838999,
             );

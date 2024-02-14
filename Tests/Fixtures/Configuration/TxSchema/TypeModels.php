@@ -9,11 +9,18 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\BreadcrumbList;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Image;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Table;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebSite;
+
 return [
-    \Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebPage::class,
-    \Brotkrueml\Schema\Tests\Fixtures\Model\Type\Image::class,
-    \Brotkrueml\Schema\Tests\Fixtures\Model\Type\BreadcrumbList::class,
-    \Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing::class,
-    \Brotkrueml\Schema\Tests\Fixtures\Model\Type\Table::class,
-    \Brotkrueml\Schema\Tests\Fixtures\Model\Type\WebSite::class,
+    WebPage::class,
+    Image::class,
+    BreadcrumbList::class,
+    Thing::class,
+    Table::class,
+    WebSite::class,
 ];
