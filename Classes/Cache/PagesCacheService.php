@@ -44,7 +44,7 @@ class PagesCacheService
             $this->cache->set(
                 $this->getCacheIdentifier(),
                 $markup,
-                \array_merge(['pageId_' . $this->controller->page['uid']], $this->controller->getPageCacheTags()),
+                \array_merge(['pageId_' . ($this->controller->page['uid'] ?? 0)], $this->controller->getPageCacheTags()),
                 86400,
             );
         }

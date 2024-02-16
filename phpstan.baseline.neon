@@ -6,11 +6,6 @@ parameters:
 			path: Classes/Cache/PagesCacheService.php
 
 		-
-			message: "#^Offset 'uid' does not exist on array\\|null\\.$#"
-			count: 1
-			path: Classes/Cache/PagesCacheService.php
-
-		-
 			message: "#^Instanceof between mixed and Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface will always evaluate to false\\.$#"
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
