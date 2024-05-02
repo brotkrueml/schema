@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Undefined array key "addRootLineFields" in TYPO3 v13.2
+
 ## [3.4.0] - 2024-02-16
 
 ### Updated

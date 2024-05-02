@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.4.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Undefined array key "addRootLineFields" in TYPO3 v13.2
+
 `3.4.0 <https://github.com/brotkrueml/schema/compare/v3.3.0...v3.4.0>`_ - 2024-02-16
 ----------------------------------------------------------------------------------------
 
