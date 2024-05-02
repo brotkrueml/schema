@@ -114,16 +114,17 @@ jobs:
         if: always()
         run: |
           make phpstan
-      - name: Run rector
-        if: always()
-        run: |
-          make rector-dry
-      - name: Run mutation tests
-        if: always()
-        env:
-          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
-        run: |
-          make mutation
+# Disabled rector and infection due to conflict with php-parser v4/v5 and TYPO3 v13.1
+#      - name: Run rector
+#        if: always()
+#        run: |
+#          make rector-dry
+#      - name: Run mutation tests
+#        if: always()
+#        env:
+#          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
+#        run: |
+#          make mutation
       - name: Generate code coverage
         run: |
           make code-coverage
