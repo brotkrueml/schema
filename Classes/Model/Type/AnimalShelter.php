@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class AnimalShelter extends AbstractType
 {
     protected static array $propertyNames = [
+        'acceptedPaymentMethod',
         'additionalProperty',
         'additionalType',
         'address',

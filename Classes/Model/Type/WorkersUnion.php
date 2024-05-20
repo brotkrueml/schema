@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class WorkersUnion extends AbstractType
 {
     protected static array $propertyNames = [
+        'acceptedPaymentMethod',
         'additionalType',
         'address',
         'aggregateRating',

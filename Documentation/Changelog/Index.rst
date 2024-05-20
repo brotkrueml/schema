@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.4.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Updated
+^^^^^^^
+
+
+* schema.org definition to version 27.0
+
 `3.4.1 <https://github.com/brotkrueml/schema/compare/v3.4.0...v3.4.1>`_ - 2024-05-03
 ----------------------------------------------------------------------------------------
 

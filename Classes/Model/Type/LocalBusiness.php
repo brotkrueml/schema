@@ -24,6 +24,7 @@ use Brotkrueml\Schema\Manual\Publisher;
 final class LocalBusiness extends AbstractType
 {
     protected static array $propertyNames = [
+        'acceptedPaymentMethod',
         'additionalProperty',
         'additionalType',
         'address',

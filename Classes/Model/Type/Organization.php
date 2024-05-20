@@ -25,6 +25,7 @@ use Brotkrueml\Schema\Manual\Publisher;
 final class Organization extends AbstractType
 {
     protected static array $propertyNames = [
+        'acceptedPaymentMethod',
         'additionalType',
         'address',
         'aggregateRating',
