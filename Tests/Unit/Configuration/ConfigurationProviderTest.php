@@ -21,13 +21,13 @@ final class ConfigurationProviderTest extends TestCase
 {
     #[Test]
     #[DataProvider('providerForGetConfigurationWithDifferentExtensionConfigurations')]
-    public function getConfigurationWithDifferentExtensionConfigurations(array $extensionConfigurationArray, array $expected): void
+    public function getConfigurationWithDifferentExtensionConfigurations(array $extensionConfiguration, array $expected): void
     {
         $extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
         $extensionConfigurationStub
             ->method('get')
             ->with('schema')
-            ->willReturn($extensionConfigurationArray);
+            ->willReturn($extensionConfiguration);
 
         $subject = new ConfigurationProvider($extensionConfigurationStub);
 

@@ -159,13 +159,13 @@ final class TypoScriptConverterTest extends TestCase
     public static function convertPlainArrayToTypoScriptArrayTestdata(): \Iterator
     {
         yield 'simple typoscript' => [
-            'extbaseTS' => [
+            'plainSettings' => [
                 '10' => [
                     'value' => 'Hallo',
                     '_typoScriptNodeValue' => 'TEXT',
                 ],
             ],
-            'classic' => [
+            'expectedSettings' => [
                 '10' => 'TEXT',
                 '10.' => [
                     'value' => 'Hallo',
@@ -174,14 +174,14 @@ final class TypoScriptConverterTest extends TestCase
         ];
 
         yield 'typoscript with null value' => [
-            'extbaseTS' => [
+            'plainSettings' => [
                 '10' => [
                     'value' => 'Hallo',
                     '_typoScriptNodeValue' => 'TEXT',
                 ],
                 '20' => null,
             ],
-            'classic' => [
+            'expectedSettings' => [
                 '10' => 'TEXT',
                 '10.' => [
                     'value' => 'Hallo',
@@ -191,13 +191,13 @@ final class TypoScriptConverterTest extends TestCase
         ];
 
         yield 'ts with dots in key' => [
-            'extbaseTS' => [
+            'plainSettings' => [
                 '1.0' => [
                     'value' => 'Hallo',
                     '_typoScriptNodeValue' => 'TEXT',
                 ],
             ],
-            'classic' => [
+            'expectedSettings' => [
                 '1.0' => 'TEXT',
                 '1.0.' => [
                     'value' => 'Hallo',
@@ -206,13 +206,13 @@ final class TypoScriptConverterTest extends TestCase
         ];
 
         yield 'ts with backslashes in key' => [
-            'extbaseTS' => [
+            'plainSettings' => [
                 '1\\0\\' => [
                     'value' => 'Hallo',
                     '_typoScriptNodeValue' => 'TEXT',
                 ],
             ],
-            'classic' => [
+            'expectedSettings' => [
                 '1\\0\\' => 'TEXT',
                 '1\\0\\.' => [
                     'value' => 'Hallo',
@@ -221,7 +221,7 @@ final class TypoScriptConverterTest extends TestCase
         ];
 
         yield 'bigger typoscript' => [
-            'extbaseTS' => [
+            'plainSettings' => [
                 '10' => [
                     '10' => [
                         'value' => 'Hello World!',
@@ -246,7 +246,7 @@ final class TypoScriptConverterTest extends TestCase
                     '_typoScriptNodeValue' => 'COA',
                 ],
             ],
-            'classic' => [
+            'expectedSettings' => [
                 '10' => 'COA',
                 '10.' => [
                     '10' => 'TEXT',
@@ -299,8 +299,7 @@ final class TypoScriptConverterTest extends TestCase
                         'splitConfiguration' => 'a',
                     ],
                     2 => [
-                        'splitConfiguration' =>
-                         'a',
+                        'splitConfiguration' => 'a',
                     ],
                 ],
             ],
