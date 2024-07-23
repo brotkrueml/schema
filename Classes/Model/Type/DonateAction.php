@@ -29,6 +29,7 @@ final class DonateAction extends AbstractType
         'disambiguatingDescription',
         'endTime',
         'error',
+        'fromLocation',
         'identifier',
         'image',
         'instrument',
@@ -47,6 +48,7 @@ final class DonateAction extends AbstractType
         'startTime',
         'subjectOf',
         'target',
+        'toLocation',
         'url',
     ];
 }
