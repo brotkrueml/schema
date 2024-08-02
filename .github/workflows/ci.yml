@@ -114,11 +114,11 @@ jobs:
         if: always()
         run: |
           make phpstan
-# Disabled rector and infection due to conflict with php-parser v4/v5 and TYPO3 v13.1
-#      - name: Run rector
-#        if: always()
-#        run: |
-#          make rector-dry
+      - name: Run rector
+        if: always()
+        run: |
+          make rector-dry
+# Disabled infection due to conflict with php-parser v4/v5 and TYPO3 v13.1
 #      - name: Run mutation tests
 #        if: always()
 #        env:
