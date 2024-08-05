@@ -21,12 +21,11 @@ page for the schema markup. The default value is the most generic one:
 `WebPage`.
 
 You'll find the field in the page properties under the :guilabel:`SEO` tab
-(with installed :ref:`seo system extension <ext_seo:introduction>`) or under the
+(with installed :ref:`seo system extension <typo3/cms-seo:introduction>`) or under the
 :guilabel:`Metadata` tab (if the seo system extension is not installed):
 
 .. figure:: /Images/Editor/TypeOfWebPage.png
    :alt: Field in the page properties
-   :class: with-border
 
    Field *Type of web page* in the page properties
 

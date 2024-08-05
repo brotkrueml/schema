@@ -23,7 +23,6 @@ configuration:
 
 .. figure:: /Images/Configuration/ExtensionConfiguration.png
    :alt: Options in the extension configuration
-   :class: with-border
 
    Options in the extension configuration
 
@@ -108,7 +107,7 @@ Default value
 
 .. note::
    The option is considered only if the :ref:`SEO system extension
-   <ext_seo:introduction>` is installed. If this is not the case, the markup is
+   <typo3/cms-seo:introduction>` is installed. If this is not the case, the markup is
    always embedded.
 
 

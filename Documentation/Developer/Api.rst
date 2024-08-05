@@ -275,7 +275,8 @@ Available type model methods
 The type models which extend :php:`\Brotkrueml\Schema\Core\Model\AbstractType`
 expose the following methods:
 
-.. option:: setId($id)
+.. confval:: setId($id)
+   :name: abstracttype-setid
 
    The method sets the unique ID of the model. With the ID, you can
    cross-reference types on the same page or between different pages (and even
@@ -296,7 +297,8 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. option:: getId(): string|null
+.. confval:: getId(): string|null
+   :name: abstracttype-getid
 
    Gets the ID of the type model.
 
@@ -307,7 +309,8 @@ expose the following methods:
       A previously set ID or null (if not defined).
 
 
-.. option:: setProperty($propertyName, $propertyValue)
+.. confval:: setProperty($propertyName, $propertyValue)
+   :name: abstracttype-setproperty
 
    Call this method to set a property or overwrite a previously one.
 
@@ -324,7 +327,8 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. option:: addProperty($propertyName, $propertyValue)
+.. confval:: addProperty($propertyName, $propertyValue)
+   :name: abstracttype-addproperty
 
    Call this method if you want to add a value to an existing one. In the
    example above, you can see that :php:`addProperty()` is used to add a second
@@ -347,7 +351,8 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. option:: setProperties($properties)
+.. confval:: setProperties($properties)
+   :name: abstracttype-setproperties
 
    Set multiple properties at once.
 
@@ -361,7 +366,8 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. option:: getProperty($propertyName)
+.. confval:: getProperty($propertyName)
+   :name: abstracttype-getproperty
 
    Get the value of a property.
 
@@ -375,7 +381,8 @@ expose the following methods:
       strings, array of models, null).
 
 
-.. option:: hasProperty($propertyName)
+.. confval:: hasProperty($propertyName)
+   :name: abstracttype-hasproperty
 
    Check whether the property name exists in a particular model.
 
@@ -387,7 +394,8 @@ expose the following methods:
       :php:`true`, if the property exists and :php:`false`, otherwise.
 
 
-.. option:: clearProperty($propertyName)
+.. confval:: clearProperty($propertyName)
+   :name: abstracttype-clearproperty
 
    Resets the value of the property (set it to :php:`null`).
 
@@ -400,7 +408,8 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. option:: getPropertyNames()
+.. confval:: getPropertyNames()
+   :name: abstracttype-getpropertynames
 
    Get the names of all properties of the model.
 
@@ -408,7 +417,8 @@ expose the following methods:
       Array of all property names of the model.
 
 
-.. option:: getType()
+.. confval:: getType()
+   :name: abstracttype-gettype
 
    Get the type of the model.
 
@@ -428,7 +438,8 @@ web page.
 
 The class exposes the following methods:
 
-.. option:: addType($type)
+.. confval:: addType($type)
+   :name: schemamanager-addtype
 
    Adds the given type model to the Schema Manager for inclusion on the web
    page.
@@ -442,7 +453,8 @@ The class exposes the following methods:
       Reference to itself.
 
 
-.. option:: hasWebPage()
+.. confval:: hasWebPage()
+   :name: schemamanager-haswebpage
 
    Checks, if a :ref:`web page type <webpage-types>` is already available.
 
@@ -455,7 +467,8 @@ The class exposes the following methods:
 
 .. _api-schema-manager-addmainentityofwebpage:
 
-.. option:: addMainEntityOfWebPage($mainEntity, $isPrioritised = false)
+.. confval:: addMainEntityOfWebPage($mainEntity, $isPrioritised = false)
+   :name: schemamanager-addmainentityofwebpage
 
    Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
 
@@ -484,7 +497,8 @@ the constructor.
 
 The class exposes the following method:
 
-.. option:: getId()
+.. confval:: getId()
+   :name: nodeidentifier-getid
 
    Returns the ID.
 
@@ -508,7 +522,8 @@ within a request.
 
 The class exposes the following method:
 
-.. option:: getId()
+.. confval:: getId()
+   :name: blanknodeidentifier-getid
 
    Returns the ID.
 
@@ -531,17 +546,20 @@ Boolean property values are mapped to the according schema terms
 the :php:`\Brotkrueml\Schema\Model\DataType\Boolean` class yourself. It exposes
 two public constants:
 
-.. option:: FALSE
+.. confval:: FALSE
+   :name: boolean-false
 
    Provides the value `https://schema.org/False`.
 
-.. option:: TRUE
+.. confval:: TRUE
+   :name: boolean-true
 
    Provides the value `https://schema.org/True`.
 
 and one static method:
 
-.. option:: convertToTerm(bool $value): string
+.. confval:: convertToTerm(bool $value): string
+   :name: boolean-converttoterm
 
    This method returns the according schema term.
 

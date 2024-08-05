@@ -34,7 +34,6 @@ To open the types overview, navigate to the
 
 .. figure:: /Images/Developer/ConfigurationModule.png
    :alt: Available types in the Configuration module
-   :class: with-border
 
    Available types in the *Configuration* module
 

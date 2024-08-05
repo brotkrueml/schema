@@ -159,7 +159,7 @@ Markup is embedded by default on "noindex" pages
 ------------------------------------------------
 
 In schema version 1.x the markup was not embedded on "noindex" pages (with
-installed :ref:`SEO system extension <ext_seo:introduction>`). In version 2
+installed :ref:`SEO system extension <typo3/cms-seo:introduction>`). In version 2
 the markup is embedded by default also on these pages. You can deactivate this
 behaviour in the :ref:`extension configuration
 <configuration-embedMarkupOnNoindexPages>`.

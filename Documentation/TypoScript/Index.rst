@@ -25,11 +25,11 @@ A small example:
    page = PAGE
    page.10 = SCHEMA
    page.10 {
-       type = WebSite
-       properties {
-           name.field = seo_title // title
-           description.field = description
-       }
+      type = WebSite
+      properties {
+         name.field = seo_title // title
+         description.field = description
+      }
    }
 
 That will add an element of type `WebSite` to schema. It will consist of the
@@ -64,152 +64,131 @@ the `title` field.
 
 .. _typoscript-cobjectSchema-topLevelProperties:
 
-Top Level Properties
+Top-level properties
 --------------------
 
-The cObject :ts:`SCHEMA` provides the following top level properties:
+The cObject :ts:`SCHEMA` provides the following top-level properties:
 
-.. container:: table-row
+.. confval:: type
+   :name: cobject-schema-type
+   :Data type: string / :ref:`stdWrap <t3tsref:stdwrap>`
 
-   Property
-      type
+   Defines the schema type to use, see: :ref:`available-types`.
 
-   Data type
-      string / :ref:`stdWrap <t3tsref:stdwrap>`
+   **Example:**
 
-   Description
-      Defines the schema type to use, see: :ref:`available-types`.
+   .. code-block:: typoscript
+      :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
-      **Example:**
+      page.10 = SCHEMA
+      page.10.type = WebSite
 
-      .. code-block:: typoscript
-         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
+.. confval:: id
+   :name: cobject-schema-id
+   :Data type: string / :ref:`stdWrap <t3tsref:stdwrap>`
 
-         page.10 = SCHEMA
-         page.10.type = WebSite
+   The ID added as `@id` to the type, if defined.
 
-.. container:: table-row
+   **Example:**
 
-   Property
-      id
+   .. code-block:: typoscript
+      :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
-   Data type
-      string / :ref:`stdWrap <t3tsref:stdwrap>`
-
-   Description
-      The ID added as `@id` to the type, if defined.
-
-      **Example:**
-
-      .. code-block:: typoscript
-         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
-
-         page.10 = SCHEMA
-         page.10.type = WebSite
-         page.10.id {
-             typolink {
-                 parameter = t3://page?uid={site : rootPageId}
-                 parameter.insertData = 1
-                 forceAbsoluteUrl = 1
-                 returnLast = url
-             }
+      page.10 = SCHEMA
+      page.10.type = WebSite
+      page.10.id {
+         typolink {
+            parameter = t3://page?uid={site : rootPageId}
+            parameter.insertData = 1
+            forceAbsoluteUrl = 1
+            returnLast = url
          }
+      }
 
-.. container:: table-row
+.. confval:: properties
+   :name: cobject-schema-properties
+   :Data type: array
 
-   Property
-      properties
+   The key will be used as property name.
+   The value can be a static text, an array, a content object, a
+   :ref:`stdWrap <t3tsref:stdwrap>` property or an :ref:`if <t3tsref:if>` condition.
 
-   Data type
-      array
+   **Example:**
 
-   Description
-      The key will be used as property name.
-      The value can be a static text, an array, a content object, a
-      :ref:`stdWrap <t3tsref:stdwrap>` property or an :ref:`if <t3tsref:if>` condition.
+   .. code-block:: typoscript
+      :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
-      **Example:**
+      page.10 = SCHEMA
+      page.10.type = WebSite
+      page.10.properties {
+         name.field = seo_title // title
+         description.field = description
+      }
 
-      .. code-block:: typoscript
-         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
+   A property can be a :ts:`SCHEMA` again, which will result in nested structures.
 
-         page.10 = SCHEMA
-         page.10.type = WebSite
-         page.10.properties {
-             name.field = seo_title // title
-             description.field = description
+   **Example:**
+
+   .. code-block:: typoscript
+      :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
+      :emphasize-lines: 4-14
+
+      page.10 = SCHEMA
+      page.10.type = WebSite
+      page.10.properties {
+         publisher = SCHEMA
+         publisher {
+            id {
+               typolink {
+                  parameter = t3://page?uid={site : rootPageId}#organization
+                  parameter.insertData = 1
+                  forceAbsoluteUrl = 1
+                  returnLast = url
+               }
+            }
          }
+      }
 
+   Multiple values can also be assigned to one property using numeric keys.
 
-      A property can be a :ts:`SCHEMA` again, which will result in nested structures.
+   **Example:**
 
-      **Example:**
+   .. code-block:: typoscript
+      :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
+      :emphasize-lines: 6-13
 
-      .. code-block:: typoscript
-         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
-         :emphasize-lines: 4-14
-
-         page.10 = SCHEMA
-         page.10.type = WebSite
-         page.10.properties {
-             publisher = SCHEMA
-             publisher {
-                 id {
-                     typolink {
-                         parameter = t3://page?uid={site : rootPageId}#organization
-                         parameter.insertData = 1
-                         forceAbsoluteUrl = 1
-                         returnLast = url
-                     }
-                 }
-             }
+      page.10 = SCHEMA
+      page.10 {
+         type = Organization
+         properties {
+            name = My Company
+            sameAs {
+               10 = https://example.org/
+               20.typolink {
+                  parameter = t3://page?uid=42
+                  forceAbsoluteUrl = 1
+                  returnLast = url
+               }
+            }
          }
+      }
 
-      Multiple values can also be assigned to one property using numeric keys.
+.. confval:: if
+   :name: cobject-schema-if
+   :Data type: :ref:`if <t3tsref:if>`
 
-      **Example:**
+   Prevents processing of the whole cObject if it evaluates to `false`.
 
-      .. code-block:: typoscript
-         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
-         :emphasize-lines: 6-13
+   **Example:**
 
-         page.10 = SCHEMA
-         page.10 {
-             type = Organization
-             properties {
-                 name = My Company
-                 sameAs {
-                     10 = https://example.org/
-                     20.typolink {
-                         parameter = t3://page?uid=42
-                         forceAbsoluteUrl = 1
-                         returnLast = url
-                     }
-                 }
-             }
+   .. code-block:: typoscript
+      :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
+
+      page.10 = SCHEMA
+      page.10 {
+         if {
+            equals.data = site : rootPageId
+            value.field = uid
          }
-
-.. container:: table-row
-
-   Property
-      if
-
-   Data type
-      :ref:`if <t3tsref:if>`
-
-   Description
-      Prevents processing of the whole cObject if it evaluates to `false`.
-
-      **Example:**
-
-      .. code-block:: typoscript
-         :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
-
-         page.10 = SCHEMA
-         page.10 {
-             if {
-                 equals.data = site : rootPageId
-                 value.field = uid
-             }
-             type = WebSite
-         }
+         type = WebSite
+      }

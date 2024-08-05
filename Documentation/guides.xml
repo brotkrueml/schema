@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides
+    xmlns="https://www.phpdoc.org/guides"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+    links-are-relative="true"
+>
+    <extension
+        class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+        project-repository="https://github.com/brotkrueml/schema"
+        project-issues="https://github.com/brotkrueml/schema/issues"
+        project-discussions="https://typo3.slack.com/app_redirect?channel=CV36M73D5"
+        edit-on-github-branch="main"
+        edit-on-github="brotkrueml/schema"
+        typo3-core-preferred="stable"
+    />
+    <project
+        title="schema"
+        release="3.6.1-dev"
+        version="3.6"
+        copyright="since 2019 by Chris Müller"
+    />
+</guides>

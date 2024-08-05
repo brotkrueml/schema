@@ -111,7 +111,8 @@ collisions. Let's have a deeper look on them.
 
 .. _view-helpers-id:
 
-.. option:: -id
+.. confval:: -id
+   :name: viewhelpers-special-id
 
    This attribute sets a unique id for the type and is mapped in JSON-LD to the
    `@id` property. The LD in JSON-LD means "linked data". With an `@id` you
@@ -159,7 +160,8 @@ collisions. Let's have a deeper look on them.
 
 .. _view-helpers-as:
 
-.. option:: -as
+.. confval:: -as
+   :name: viewhelpers-special-as
 
    This attribute is used to connect a type to its parent. In the above example,
    you can see that the event type view helper uses :html:`-as` to connect to
@@ -172,7 +174,8 @@ collisions. Let's have a deeper look on them.
 
 .. _view-helpers-specific-type:
 
-.. option:: -specificType
+.. confval:: -specificType
+   :name: viewhelpers-special-specifictype
 
    Sometimes it can may be helpful to set a specific type. Imagine you have
    records of places in the backend where you can select which type of specific
@@ -198,7 +201,8 @@ collisions. Let's have a deeper look on them.
       ones from the specific type.
 
 
-.. option:: -isMainEntityOfWebPage
+.. confval:: -isMainEntityOfWebPage
+   :name: viewhelpers-special-ismainentityofwebpage
 
    This argument defines the type as a :ref:`main entity <main-entity-of-web-page>`
    of a :ref:`web page <web-page-type>`:
@@ -334,7 +338,8 @@ This generates the following JSON-LD:
 
 The view helper has only one attribute which is required:
 
-.. option:: id
+.. confval:: id
+   :name: viewhelpers-nodeIdentifier-id
 
    This attribute defines the id and is mapped in JSON-LD to the `@id`
    property.
@@ -426,14 +431,16 @@ you prefer, you can combine the view helpers as follows:
 The :html:`<schema:property>` view helper accepts two argument, both are
 required.
 
-.. option:: -as
+.. confval:: -as
+   :name: viewhelpers-property-as
 
    You know already the :html:`-as` attribute from the :ref:`type view helpers
    <schema-type-view-helpers>`. Its purpose is the same, it references the
    property in the parent :html:`<schema:type>` view helper.
 
 
-.. option:: value
+.. confval:: value
+   :name: viewhelpers-property-value
 
    The :html:`value` argument sets the value of the property, as you guessed
    already.

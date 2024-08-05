@@ -165,7 +165,6 @@ The new web page type can now be selected in the page properties:
 
 .. figure:: /Images/Developer/MedicalWebPageTypeSelection.png
    :alt: MedicalWebPage in the list of available web page types
-   :class: with-border
 
    *MedicalWebPage* in the list of available web page types
 
