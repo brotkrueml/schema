@@ -85,6 +85,8 @@ Example
                - name: event.listener
                  identifier: 'myAdditionalPropertiesForPerson'
 
+Read :ref:`how to configure dependency injection in extensions <t3coreapi:dependency-injection-in-extensions>`.
+
 
 .. _pending: https://pending.schema.org/
 .. _property annotations: https://schema.org/docs/actions.html#part-4
