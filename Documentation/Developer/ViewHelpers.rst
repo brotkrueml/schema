@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: View helpers
-
 .. _view-helpers:
 
 ============
@@ -237,9 +235,6 @@ collisions. Let's have a deeper look on them.
    :ref:`main-entity-prioritisation` section.
 
 
-.. index::
-   single: Multiple type view helper
-
 .. _schema-multipleType-view-helper:
 
 :html:`<schema:multipleType>` view helper
@@ -295,9 +290,6 @@ add properties to a multiple type instead the :html:`properties` argument:
    </schema:multipleType>
 
 
-.. index::
-   single: Node identifier view helper
-
 .. _schema-nodeIdentifier-view-helper:
 
 :html:`<schema:nodeIdentifier>` view helper
@@ -348,9 +340,6 @@ The view helper has only one attribute which is required:
    property.
 
 
-.. index::
-   single: Blank node identifier view helper
-
 .. _schema-blankNodeIdentifier-view-helper:
 
 :html:`<schema:blankNodeIdentifier>` view helper
@@ -398,8 +387,6 @@ The view helper has no arguments.
 You can find more information in the :ref:`Blank node identifier API section
 <blank-node-identifier>`.
 
-
-.. index:: property view helper
 
 .. _schema-property-view-helper:
 
@@ -457,9 +444,6 @@ required.
 
 This view helper is described in-depth in the chapter
 :ref:`breadcrumb-view-helper`.
-
-
-.. index:: XSD
 
 
 Using the XML schema (XSD) in your code editor

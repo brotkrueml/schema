@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: PSR-14 Events
-
 .. _events:
 
 =============

@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: WebPage
-
 .. _web-page-type:
 
 ================
@@ -40,8 +38,6 @@ property for a blog article or a product.
 
 But now let's look at code.
 
-
-.. index:: WebPage via API
 
 Using the API
 =============
@@ -92,8 +88,6 @@ If you define a web page on your own, this overrules the :ref:`page field value
    entity of the page. You can also set the main entity independently of the web
    page. Have a look at the chapter :ref:`Main entity <main-entity-of-web-page>`.
 
-
-.. index:: WebPage via view helper
 
 Using the view helpers
 ======================

@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: WebPage page property
-
 .. _for-editors:
 .. _webpage-types:
 
@@ -35,8 +33,6 @@ You'll find the field in the page properties under the :guilabel:`SEO` tab
 
 If no value is selected, *WebPage* is assumed.
 
-
-.. index:: WebPage types
 
 Available web page types
 ========================

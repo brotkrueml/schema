@@ -1,9 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index::
-   single: Main entity of web page
-   seealso: Main entity of web page; WebPage
-
 .. _main-entity-of-web-page:
 
 =========================
@@ -100,9 +96,6 @@ Remark
 You can set the view helper argument :html:`-isMainEntityOfWebPage` only in the
 main type view helper, not in a child type view helper.
 
-
-.. index::
-   single: Prioritisation (main entity)
 
 .. _main-entity-prioritisation:
 

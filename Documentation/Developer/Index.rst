@@ -64,8 +64,6 @@ You can retrieve the information about a type or property from the URL
 *https://schema.org/Person*) or the name of the property
 (for example, *https://schema.org/givenName*).
 
-.. index:: Model
-
 Models
 ------
 

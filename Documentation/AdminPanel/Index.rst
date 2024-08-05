@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: Admin Panel
-
 .. _admin-panel:
 
 ===========

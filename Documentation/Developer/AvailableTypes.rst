@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: Available types
-
 .. _available-types:
 
 =======================

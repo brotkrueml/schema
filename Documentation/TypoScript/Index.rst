@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: TypoScript
-
 .. _typoscript:
 
 ==========
@@ -9,8 +7,6 @@ TypoScript
 ==========
 
 Target group: **Integrators**
-
-.. index:: Content object SCHEMA
 
 .. _content-object:
 

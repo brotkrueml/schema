@@ -102,7 +102,6 @@ provided by Google: `Understand how structured data works`_.
    :hidden:
 
    Sitemap
-   genindex
 
 
 .. _Creative Commons BY 4.0: https://creativecommons.org/licenses/by/4.0/

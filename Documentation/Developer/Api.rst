@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: API
-
 .. _api:
 
 =============
@@ -31,8 +29,6 @@ There are currently over 600 models available.
 
 Starting with examples
 ======================
-
-.. index:: Type
 
 .. _types:
 
@@ -120,8 +116,6 @@ automatically into the head section:
    }
 
 
-.. index:: Multiple type
-
 .. _multiple-types:
 
 Multiple types
@@ -159,9 +153,6 @@ This results in the following JSON-LD:
    }
 
 
-.. index::
-   single: Node identifier
-
 .. _node-identifier:
 
 Node identifiers
@@ -195,9 +186,6 @@ You can accomplish this with the help of the
 As you can see in the example, you can also use a node identifier as an
 argument for :php:`->setId()` instead of a string.
 
-
-.. index::
-   single: Blank node identifier
 
 .. _blank-node-identifier:
 
@@ -235,11 +223,6 @@ This results in the following JSON-LD output:
       }
    }
 
-
-.. index::
-   single: Model API
-   seealso: Model API; API
-   seealso: Model API; Model
 
 The model in-depth
 ==================
@@ -434,8 +417,6 @@ expose the following methods:
       :ref:`multiple type <multiple-types>`).
 
 
-.. index:: Schema Manager
-
 .. _api-schema-manager:
 
 Schema manager
@@ -541,8 +522,6 @@ The class exposes the following method:
 
 Other useful APIs
 =================
-
-.. index:: Boolean
 
 Boolean data type
 -----------------

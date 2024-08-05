@@ -1,7 +1,5 @@
 .. include:: /Includes.rst.txt
 
-.. index:: Configuration
-
 .. _configuration:
 
 =============
@@ -29,8 +27,6 @@ configuration:
 
    Options in the extension configuration
 
-.. index:: WebPage automatic embedding
-
 .. _configuration-automaticWebPageSchemaGeneration:
 
 Automatic embedding of the WebPage schema into the page
@@ -43,9 +39,6 @@ and defaults to :ref:`WebPage <web-page-type>`.
 
 Default value
    enabled
-
-.. index::
-   single: Breadcrumb automatic embedding
 
 .. _configuration-automaticBreadcrumbSchemaGeneration:
 
@@ -86,8 +79,6 @@ helpful, if the option :ref:`configuration-automaticBreadcrumbSchemaGeneration`
 is enabled and you want to overwrite the generated breadcrumb list on a
 dedicated page with a custom one.
 
-
-.. index:: Markup in body section
 
 .. _configuration-embedMarkupInBodySection:
 
