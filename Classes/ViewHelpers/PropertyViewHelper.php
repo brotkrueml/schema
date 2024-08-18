@@ -36,7 +36,7 @@ final class PropertyViewHelper extends AbstractViewHelper
 
     private readonly TypeStack $typeStack;
 
-    public function __construct(TypeStack $typeStack = null)
+    public function __construct(?TypeStack $typeStack = null)
     {
         $this->typeStack = $typeStack ?: GeneralUtility::makeInstance(TypeStack::class);
     }
