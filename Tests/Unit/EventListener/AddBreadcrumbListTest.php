@@ -463,8 +463,10 @@ final class AddBreadcrumbListTest extends TestCase
     }
 
     #[Test]
-    public function rootLineWithDifferentWebPageTypeSet(): void
+    public function rootLineWithDifferentWebPageTypeSet(): never
     {
+        self::markTestSkipped('Skipped, see https://github.com/brotkrueml/schema/issues/121');
+
         $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: true);
 
         $subject = new AddBreadcrumbList(

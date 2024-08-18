@@ -87,8 +87,7 @@ final class AddBreadcrumbList
     {
         $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         foreach (\array_values($rootLine) as $index => $page) {
-            $givenItemType = ($page['tx_schema_webpagetype'] ?? '') ?: 'WebPage';
-            $itemType = $this->typeFactory->create($givenItemType);
+            $itemType = $this->typeFactory->create('WebPage');
 
             $link = $this->contentObjectRenderer->typoLink_URL([
                 'parameter' => (string)$page['uid'],

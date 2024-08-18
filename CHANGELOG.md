@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- FAQ page type in automatic breadcrumb raises error in Rich Snippet Tool (#121)
+
 ## [3.6.0] - 2024-07-23
 
 ### Updated
