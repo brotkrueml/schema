@@ -1,6 +1,13 @@
 name: Documentation
 
-on: [ push, pull_request ]
+on:
+  push:
+    paths:
+      - 'Documentation/**'
+  pull_request:
+    paths:
+      - 'Documentation/**'
+
 
 jobs:
   tests:
