@@ -442,7 +442,7 @@ class AbstractTypeTest extends TestCase
     #[Test]
     public function cacheForAdditionalPropertiesReturnsFalseAndDispatcherIsCalled(): void
     {
-        $cacheFrontendMock = $this->createStub(FrontendInterface::class);
+        $cacheFrontendMock = $this->createMock(FrontendInterface::class);
         $cacheFrontendMock
             ->expects(self::once())
             ->method('get')
@@ -484,7 +484,7 @@ class AbstractTypeTest extends TestCase
     #[Test]
     public function cacheForAdditionalPropertiesReturnsFalseAndEventDispatcherIsCalled(): void
     {
-        $cacheFrontendMock = $this->createStub(FrontendInterface::class);
+        $cacheFrontendMock = $this->createMock(FrontendInterface::class);
         $cacheFrontendMock
             ->expects(self::once())
             ->method('get')

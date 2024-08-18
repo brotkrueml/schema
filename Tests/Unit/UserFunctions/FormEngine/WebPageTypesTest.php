@@ -76,9 +76,7 @@ final class WebPageTypesTest extends TestCase
         ], $params['items'][1]);
     }
 
-    /**
-     * @@test
-     */
+    #[Test]
     public function getDoesNotAddWebPageTypesWhenNoWebPageTypesAreAvailable(): void
     {
         $subject = new WebPageTypes(new TypeProvider());

@@ -130,7 +130,7 @@ final class MultipleTypeViewHelperTest extends ViewHelperTestCase
                     <schema:multipleType types="ProductStub,ServiceStub" properties="{name: '{item}'}"/>
                 </f:for>',
             EOF,
-            '{"@context":"https://schema.org/","@graph":[{"@type":["ProductStub","ServiceStub"],"name":"foo"},{"@type":["ProductStub","ServiceStub"],"name":"bar"},{"@type":["ProductStub","ServiceStub"],"name":"qux"}]}',
+            'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":["ProductStub","ServiceStub"],"name":"foo"},{"@type":["ProductStub","ServiceStub"],"name":"bar"},{"@type":["ProductStub","ServiceStub"],"name":"qux"}]}',
         ];
     }
 
