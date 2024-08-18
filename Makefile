@@ -20,9 +20,9 @@ cs: vendor
 	.Build/bin/ecs --fix
 	.Build/bin/ecs --fix --config=ecs.docs.php
 
-#.PHONY: mutation
-#mutation: vendor
-#	XDEBUG_MODE=coverage .Build/bin/infection --min-msi=67 --threads=4 --no-ansi
+.PHONY: mutation
+mutation: vendor
+	XDEBUG_MODE=coverage .Build/bin/infection --min-msi=89 --threads=4 --no-ansi
 
 .PHONY: phpstan
 phpstan: vendor

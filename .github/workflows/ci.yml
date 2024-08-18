@@ -58,6 +58,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
+          composer remove infection/infection --dev --no-update
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
@@ -79,7 +80,7 @@ jobs:
       - name: Setup PHP version
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.2
           coverage: xdebug
           extensions: mbstring
       - name: Get Composer Cache Directory
@@ -118,13 +119,12 @@ jobs:
         if: always()
         run: |
           make rector-dry
-# Disabled infection due to conflict with php-parser v4/v5 and TYPO3 v13.1
-#      - name: Run mutation tests
-#        if: always()
-#        env:
-#          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
-#        run: |
-#          make mutation
+      - name: Run mutation tests
+        if: always()
+        env:
+          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
+        run: |
+          make mutation
       - name: Generate code coverage
         run: |
           make code-coverage
