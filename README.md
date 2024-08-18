@@ -5,9 +5,7 @@
 [![Crowdin](https://badges.crowdin.net/typo3-extension-schema/localized.svg)](https://crowdin.com/project/typo3-extension-schema)
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
-<!--
 [![Infection MSI](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fbrotkrueml%2Fschema%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/brotkrueml/schema/main)
--->
 
 [![Verified TYPO3 Extension](Documentation/Images/verified.svg) Verified TYPO3 Extension](https://typo3.com/typo3-cms/verified-extensions-integrations-for-typo3/extensions/embedding-schemaorg-vocabulary-in-typo3)
 
