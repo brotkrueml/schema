@@ -87,7 +87,7 @@ final class PropertiesAdder
             return;
         }
 
-        $value = (string)$this->cObj->stdWrapValue($name, $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($properties));
+        $value = (string) $this->cObj->stdWrapValue($name, $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($properties));
         if ($value === '') {
             return;
         }
@@ -117,7 +117,7 @@ final class PropertiesAdder
         if (\is_string($configuration['id'])) {
             $id = $configuration['id'];
         } else {
-            $id = (string)$this->cObj->stdWrapValue(
+            $id = (string) $this->cObj->stdWrapValue(
                 'id',
                 $this->typoScriptConverter->convertPlainArrayToTypoScriptArray($configuration),
             );

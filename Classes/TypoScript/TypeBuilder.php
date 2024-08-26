@@ -49,7 +49,7 @@ final class TypeBuilder
             return null;
         }
 
-        $type->setId((string)$this->cObj->stdWrapValue('id', $configuration));
+        $type->setId((string) $this->cObj->stdWrapValue('id', $configuration));
 
         return $type;
     }
@@ -59,7 +59,7 @@ final class TypeBuilder
      */
     private function instantiateType(array $configuration): ?TypeInterface
     {
-        $configuredType = (string)$this->cObj->stdWrapValue('type', $configuration);
+        $configuredType = (string) $this->cObj->stdWrapValue('type', $configuration);
 
         try {
             return $this->typeFactory->create($configuredType);

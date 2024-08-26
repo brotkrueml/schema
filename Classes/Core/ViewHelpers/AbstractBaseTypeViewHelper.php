@@ -108,7 +108,7 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
     private function checkIsMainEntityOfWebPage(): void
     {
         $isMainEntityOfWebPage = $this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? 0;
-        $this->isMainEntityOfWebPage = $isMainEntityOfWebPage === 'true' ? 1 : (int)$isMainEntityOfWebPage;
+        $this->isMainEntityOfWebPage = $isMainEntityOfWebPage === 'true' ? 1 : (int) $isMainEntityOfWebPage;
 
         if ($this->isMainEntityOfWebPage < 0 || $this->isMainEntityOfWebPage > 2) {
             throw new Exception(

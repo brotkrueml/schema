@@ -207,14 +207,14 @@ final class TypoScriptConverterTest extends TestCase
 
         yield 'ts with backslashes in key' => [
             'plainSettings' => [
-                '1\\0\\' => [
+                '1\0\\' => [
                     'value' => 'Hallo',
                     '_typoScriptNodeValue' => 'TEXT',
                 ],
             ],
             'expectedSettings' => [
-                '1\\0\\' => 'TEXT',
-                '1\\0\\.' => [
+                '1\0\\' => 'TEXT',
+                '1\0\.' => [
                     'value' => 'Hallo',
                 ],
             ],

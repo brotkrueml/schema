@@ -24,11 +24,11 @@ final class TypoScriptConverter
     public function convertTypoScriptArrayToPlainArray(array $typoScriptArray): array
     {
         foreach ($typoScriptArray as $key => $value) {
-            if (! \str_ends_with((string)$key, '.')) {
+            if (! \str_ends_with((string) $key, '.')) {
                 continue;
             }
 
-            $keyWithoutDot = \substr((string)$key, 0, -1);
+            $keyWithoutDot = \substr((string) $key, 0, -1);
             $typoScriptNodeValue = $typoScriptArray[$keyWithoutDot] ?? null;
             if (\is_array($value)) {
                 $typoScriptArray[$keyWithoutDot] = $this->convertTypoScriptArrayToPlainArray($value);

@@ -29,8 +29,8 @@ final class ConfigurationProvider
 
         // The fallback values must be the same as in ext_conf_template.txt
         return new Configuration(
-            automaticWebPageSchemaGeneration: (bool)($configurationAsArray['automaticWebPageSchemaGeneration'] ?? true),
-            automaticBreadcrumbSchemaGeneration: (bool)($configurationAsArray['automaticBreadcrumbSchemaGeneration'] ?? false),
+            automaticWebPageSchemaGeneration: (bool) ($configurationAsArray['automaticWebPageSchemaGeneration'] ?? true),
+            automaticBreadcrumbSchemaGeneration: (bool) ($configurationAsArray['automaticBreadcrumbSchemaGeneration'] ?? false),
             automaticBreadcrumbExcludeAdditionalDoktypes: \array_values(
                 GeneralUtility::intExplode(
                     ',',
@@ -38,9 +38,9 @@ final class ConfigurationProvider
                     true,
                 ),
             ),
-            allowOnlyOneBreadcrumbList: (bool)($configurationAsArray['allowOnlyOneBreadcrumbList'] ?? false),
-            embedMarkupInBodySection: (bool)($configurationAsArray['embedMarkupInBodySection'] ?? false),
-            embedMarkupOnNoindexPages: (bool)($configurationAsArray['embedMarkupOnNoindexPages'] ?? true),
+            allowOnlyOneBreadcrumbList: (bool) ($configurationAsArray['allowOnlyOneBreadcrumbList'] ?? false),
+            embedMarkupInBodySection: (bool) ($configurationAsArray['embedMarkupInBodySection'] ?? false),
+            embedMarkupOnNoindexPages: (bool) ($configurationAsArray['embedMarkupOnNoindexPages'] ?? true),
         );
     }
 }

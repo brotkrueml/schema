@@ -98,7 +98,7 @@ class AbstractTypeTest extends TestCase
     #[Test]
     public function getIdReturnsTheIdAsStringWhenSetPreviouslyWithANodeIdentifier(): void
     {
-        $this->subject->setId(new class() implements NodeIdentifierInterface {
+        $this->subject->setId(new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
                 return 'someNodeIdentifier';
@@ -152,8 +152,8 @@ class AbstractTypeTest extends TestCase
         $this->subject->setProperty('description', ['The answer for everything']);
         $this->subject->setProperty('identifier', 42);
         $this->subject->setProperty('alternateName', 3.141592653);
-        $this->subject->setProperty('image', new class() extends AbstractType {});
-        $this->subject->setProperty('subjectOf', new class() implements NodeIdentifierInterface {
+        $this->subject->setProperty('image', new class extends AbstractType {});
+        $this->subject->setProperty('subjectOf', new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
                 return 'some-node-identifier';
@@ -299,9 +299,9 @@ class AbstractTypeTest extends TestCase
         // Valid, when no exception is thrown
         $this->expectNotToPerformAssertions();
 
-        $this->subject->addProperty('image', new class() extends AbstractType {});
-        $this->subject->addProperty('image', new class() extends AbstractType {});
-        $this->subject->addProperty('image', new class() extends AbstractType {});
+        $this->subject->addProperty('image', new class extends AbstractType {});
+        $this->subject->addProperty('image', new class extends AbstractType {});
+        $this->subject->addProperty('image', new class extends AbstractType {});
     }
 
     #[Test]
@@ -310,19 +310,19 @@ class AbstractTypeTest extends TestCase
         // Valid, when no exception is thrown
         $this->expectNotToPerformAssertions();
 
-        $this->subject->addProperty('subjectOf', new class() implements NodeIdentifierInterface {
+        $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
                 return 'some-node-identifier';
             }
         });
-        $this->subject->addProperty('subjectOf', new class() implements NodeIdentifierInterface {
+        $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
                 return 'another-node-identifier';
             }
         });
-        $this->subject->addProperty('subjectOf', new class() implements NodeIdentifierInterface {
+        $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
                 return 'one-more-node-identifier';
@@ -549,7 +549,7 @@ class AbstractTypeTest extends TestCase
         $this->expectExceptionCode(1697271711);
         $this->expectExceptionMessageMatches('/Type model class "Brotkrueml\\\Schema\\\Core\\\Model\\\AbstractType@anonymous.*" does not define the required attribute "Brotkrueml\\\Schema\\\Attributes\\\Type"\./');
 
-        $subject = new class() extends AbstractType {};
+        $subject = new class extends AbstractType {};
 
         $subject->getType();
     }

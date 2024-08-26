@@ -36,7 +36,7 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
     protected function assignPropertiesToType(): void
     {
         foreach ($this->arguments['properties'] as $name => $value) {
-            $this->assignPropertyToType((string)$name, $value);
+            $this->assignPropertyToType((string) $name, $value);
         }
     }
 

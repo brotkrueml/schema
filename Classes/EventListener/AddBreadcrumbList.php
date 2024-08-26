@@ -90,7 +90,7 @@ final class AddBreadcrumbList
             $itemType = $this->typeFactory->create('WebPage');
 
             $link = $this->contentObjectRenderer->typoLink_URL([
-                'parameter' => (string)$page['uid'],
+                'parameter' => (string) $page['uid'],
                 'forceAbsoluteUrl' => true,
             ]);
 

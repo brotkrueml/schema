@@ -67,6 +67,6 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
 
         \unlink($templatePath);
 
-        return (string)$output;
+        return (string) $output;
     }
 }

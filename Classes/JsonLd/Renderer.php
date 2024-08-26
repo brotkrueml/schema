@@ -138,7 +138,7 @@ final class Renderer implements RendererInterface
         }
 
         if (\is_numeric($value)) {
-            return (string)$value;
+            return (string) $value;
         }
 
         return $value;

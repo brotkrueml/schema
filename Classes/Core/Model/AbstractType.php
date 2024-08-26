@@ -183,7 +183,7 @@ abstract class AbstractType implements TypeInterface
      */
     private function stringifyNumericValue(mixed $value)
     {
-        return \is_numeric($value) ? (string)$value : $value;
+        return \is_numeric($value) ? (string) $value : $value;
     }
 
     /**
