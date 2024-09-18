@@ -26,7 +26,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-final class SchemaManagerTest extends Testcase
+final class SchemaManagerTest extends TestCase
 {
     use SchemaCacheTrait;
 
