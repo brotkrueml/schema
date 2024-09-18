@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -38,11 +37,8 @@ final class NodeIdentifierViewHelper extends AbstractViewHelper
         $this->registerArgument('id', 'string', 'The identifier for the node', true);
     }
 
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext,
-    ): NodeIdentifier {
-        return new NodeIdentifier($arguments['id']);
+    public function render(): NodeIdentifier
+    {
+        return new NodeIdentifier($this->arguments['id']);
     }
 }

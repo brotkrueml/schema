@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -32,14 +31,8 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 final class BlankNodeIdentifierViewHelper extends AbstractViewHelper
 {
-    /**
-     * @param array{} $arguments
-     */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext,
-    ): BlankNodeIdentifier {
+    public function render(): BlankNodeIdentifier
+    {
         return new BlankNodeIdentifier();
     }
 }
