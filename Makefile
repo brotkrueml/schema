@@ -20,6 +20,10 @@ cs: vendor
 	.Build/bin/ecs --fix
 	.Build/bin/ecs --fix --config=ecs.docs.php
 
+.PHONE: docs
+docs:
+	docker run --rm --pull always -v "$(shell pwd)":/project -t ghcr.io/typo3-documentation/render-guides:latest --config=Documentation
+
 .PHONY: mutation
 mutation: vendor
 	XDEBUG_MODE=coverage .Build/bin/infection --min-msi=89 --threads=4 --no-ansi
