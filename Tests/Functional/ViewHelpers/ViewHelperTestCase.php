@@ -57,7 +57,7 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
 
         \file_put_contents($templatePath, self::VIEWHELPER_NAMESPACE . $template);
 
-        $this->view->getTemplatePaths()->setTemplatePathAndFilename($templatePath);
+        $this->view->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename($templatePath);
 
         if ($variables !== []) {
             $this->view->assignMultiple($variables);
