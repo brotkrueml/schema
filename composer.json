@@ -34,7 +34,6 @@
 		"brotkrueml/coding-standards": "~6.0.0",
 		"ergebnis/composer-normalize": "~2.43.0",
 		"infection/infection": "^0.29.6",
-		"php-coveralls/php-coveralls": "^2.7",
 		"phpstan/extension-installer": "^1.4",
 		"phpstan/phpstan": "1.12.3",
 		"phpunit/phpunit": "^10.5 || ^11.3",
