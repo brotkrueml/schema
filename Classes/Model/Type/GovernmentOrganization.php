@@ -46,6 +46,7 @@ final class GovernmentOrganization extends AbstractType
         'funder',
         'globalLocationNumber',
         'hasCertification',
+        'hasMemberProgram',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

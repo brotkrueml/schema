@@ -46,6 +46,7 @@ final class WorkersUnion extends AbstractType
         'funder',
         'globalLocationNumber',
         'hasCertification',
+        'hasMemberProgram',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

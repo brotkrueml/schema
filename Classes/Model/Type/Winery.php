@@ -65,6 +65,7 @@ final class Winery extends AbstractType
         'globalLocationNumber',
         'hasCertification',
         'hasMap',
+        'hasMemberProgram',
         'hasMenu',
         'hasOfferCatalog',
         'hasPOS',

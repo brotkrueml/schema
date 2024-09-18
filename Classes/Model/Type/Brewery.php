@@ -65,6 +65,7 @@ final class Brewery extends AbstractType
         'globalLocationNumber',
         'hasCertification',
         'hasMap',
+        'hasMemberProgram',
         'hasMenu',
         'hasOfferCatalog',
         'hasPOS',

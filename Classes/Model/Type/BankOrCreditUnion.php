@@ -65,6 +65,7 @@ final class BankOrCreditUnion extends AbstractType
         'globalLocationNumber',
         'hasCertification',
         'hasMap',
+        'hasMemberProgram',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

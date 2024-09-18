@@ -39,6 +39,7 @@ final class PriceSpecification extends AbstractType
         'sameAs',
         'subjectOf',
         'url',
+        'validForMemberTier',
         'validFrom',
         'validThrough',
         'valueAddedTaxIncluded',

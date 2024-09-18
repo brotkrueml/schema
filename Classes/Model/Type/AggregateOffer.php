@@ -77,6 +77,7 @@ final class AggregateOffer extends AbstractType
         'sku',
         'subjectOf',
         'url',
+        'validForMemberTier',
         'validFrom',
         'validThrough',
         'warranty',

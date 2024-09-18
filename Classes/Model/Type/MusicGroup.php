@@ -48,6 +48,7 @@ final class MusicGroup extends AbstractType
         'genre',
         'globalLocationNumber',
         'hasCertification',
+        'hasMemberProgram',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

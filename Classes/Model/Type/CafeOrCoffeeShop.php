@@ -65,6 +65,7 @@ final class CafeOrCoffeeShop extends AbstractType
         'globalLocationNumber',
         'hasCertification',
         'hasMap',
+        'hasMemberProgram',
         'hasMenu',
         'hasOfferCatalog',
         'hasPOS',

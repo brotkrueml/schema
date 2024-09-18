@@ -48,6 +48,7 @@ final class SportsTeam extends AbstractType
         'funder',
         'globalLocationNumber',
         'hasCertification',
+        'hasMemberProgram',
         'hasOfferCatalog',
         'hasPOS',
         'identifier',

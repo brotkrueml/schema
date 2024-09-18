@@ -65,6 +65,7 @@ final class BarOrPub extends AbstractType
         'globalLocationNumber',
         'hasCertification',
         'hasMap',
+        'hasMemberProgram',
         'hasMenu',
         'hasOfferCatalog',
         'hasPOS',
