@@ -18,7 +18,6 @@ use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -50,8 +49,8 @@ final class PropertyValueViewHelper extends AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    private static ?IconFactory $iconFactory = null;
-    private static ?TypeProvider $typeProvider = null;
+    private ?IconFactory $iconFactory = null;
+    private ?TypeProvider $typeProvider = null;
 
     public function initializeArguments(): void
     {
@@ -61,20 +60,17 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         $this->registerArgument('value', 'mixed', 'Property value', true);
     }
 
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext,
-    ): string {
-        $name = $arguments['name'];
-        $value = $arguments['value'];
+    public function render(): string
+    {
+        $name = $this->arguments['name'];
+        $value = $this->arguments['value'];
 
         if (! \is_string($value)) {
             return '';
         }
 
         if ($name === '@type') {
-            return self::renderValue(self::buildLinksForType($value), $value);
+            return $this->renderValue(self::buildLinksForType($value), $value);
         }
 
         if ($name === '@id') {
@@ -92,22 +88,22 @@ final class PropertyValueViewHelper extends AbstractViewHelper
 
         if (\str_starts_with($value, 'http://schema.org/') || \str_starts_with($value, 'https://schema.org/')) {
             $linkTitle = \sprintf(
-                self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
+                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                 $value,
             );
             $iconIdentifier = 'ext-schema-documentation-schema';
         }
 
         if (\in_array(\strtolower(\pathinfo($value, \PATHINFO_EXTENSION)), self::IMAGE_EXTENSIONS, true)) {
-            $linkTitle = self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
+            $linkTitle = $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
             $iconIdentifier = 'actions-image';
         }
 
-        return self::renderValue(
+        return $this->renderValue(
             [
                 new Link(
                     $value,
-                    $linkTitle ?: self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
+                    $linkTitle ?: $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
                     $iconIdentifier ?: 'actions-link',
                 ),
             ],
@@ -118,15 +114,15 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     /**
      * @return Link[]
      */
-    private static function buildLinksForType(string $type): array
+    private function buildLinksForType(string $type): array
     {
-        $links = [self::buildLinkForSchemaOrgType($type)];
+        $links = [$this->buildLinkForSchemaOrgType($type)];
 
-        $manuals = self::getTypeProvider()->getManualsForType($type);
+        $manuals = $this->getTypeProvider()->getManualsForType($type);
         foreach ($manuals as $manual) {
             $links[] = new Link(
                 $manual->link,
-                \sprintf(self::getLanguageService()->sL(self::MANUAL_PUBLISHERS[$manual->publisher->name]['title']), $type),
+                \sprintf($this->getLanguageService()->sL(self::MANUAL_PUBLISHERS[$manual->publisher->name]['title']), $type),
                 self::MANUAL_PUBLISHERS[$manual->publisher->name]['iconIdentifier'],
             );
         }
@@ -134,12 +130,12 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         return $links;
     }
 
-    private static function buildLinkForSchemaOrgType(string $type): Link
+    private function buildLinkForSchemaOrgType(string $type): Link
     {
         return new Link(
             'https://schema.org/' . $type,
             \sprintf(
-                self::getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
+                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
                 $type,
             ),
             'ext-schema-documentation-schema',
@@ -149,17 +145,17 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     /**
      * @param Link[] $typeLinks
      */
-    private static function renderValue(array $typeLinks, string $value): string
+    private function renderValue(array $typeLinks, string $value): string
     {
         $iconLinks = [];
         foreach ($typeLinks as $typeLink) {
-            $iconLinks[] = self::renderIconLink($typeLink);
+            $iconLinks[] = $this->renderIconLink($typeLink);
         }
 
         return \trim(\implode(' ', $iconLinks) . ' ' . \htmlspecialchars($value));
     }
 
-    private static function renderIconLink(Link $typeLink): string
+    private function renderIconLink(Link $typeLink): string
     {
         return \sprintf(
             '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
@@ -169,42 +165,26 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         );
     }
 
-    private static function getIconFactory(): IconFactory
+    private function getIconFactory(): IconFactory
     {
-        if (! self::$iconFactory instanceof IconFactory) {
-            self::$iconFactory = GeneralUtility::makeInstance(IconFactory::class);
+        if (! $this->iconFactory instanceof IconFactory) {
+            $this->iconFactory = GeneralUtility::makeInstance(IconFactory::class);
         }
 
-        return self::$iconFactory;
+        return $this->iconFactory;
     }
 
-    private static function getTypeProvider(): TypeProvider
+    private function getTypeProvider(): TypeProvider
     {
-        if (! self::$typeProvider instanceof TypeProvider) {
-            self::$typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
+        if (! $this->typeProvider instanceof TypeProvider) {
+            $this->typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
         }
 
-        return self::$typeProvider;
+        return $this->typeProvider;
     }
 
-    private static function getLanguageService(): LanguageService
+    private function getLanguageService(): LanguageService
     {
         return $GLOBALS['LANG'];
-    }
-
-    /**
-     * For testing purposes only!
-     */
-    public static function setIconFactory(IconFactory $iconFactory): void
-    {
-        self::$iconFactory = $iconFactory;
-    }
-
-    /**
-     * For testing purposes only!
-     */
-    public static function setTypeProvider(TypeProvider $typeProvider): void
-    {
-        self::$typeProvider = $typeProvider;
     }
 }

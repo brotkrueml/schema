@@ -24,6 +24,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[CoversClass(PropertyValueViewHelper::class)]
 final class PropertyValueViewHelperTest extends ViewHelperTestCase
@@ -53,13 +54,13 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         $iconFactoryStub
             ->method('getIcon')
             ->willReturn($this->iconStub);
-
-        PropertyValueViewHelper::setIconFactory($iconFactoryStub);
+        GeneralUtility::addInstance(IconFactory::class, $iconFactoryStub);
     }
 
     protected function tearDown(): void
     {
         unset($GLOBALS['LANG']);
+        GeneralUtility::purgeInstances();
         parent::tearDown();
     }
 
@@ -244,7 +245,7 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         $typeProvider->addType('Thing', Thing::class);
         $typeProvider->addManualForType('Thing', [Publisher::Google, 'https://example.org/Thing']);
         $typeProvider->addManualForType('Thing', [Publisher::Yandex, 'https://example.com/Thing']);
-        PropertyValueViewHelper::setTypeProvider($typeProvider);
+        GeneralUtility::setSingletonInstance(TypeProvider::class, $typeProvider);
 
         $actual = $this->renderTemplate(
             '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
