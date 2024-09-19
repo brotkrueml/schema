@@ -14,7 +14,6 @@ namespace Brotkrueml\Schema\ViewHelpers;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
@@ -80,30 +79,27 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @param array{breadcrumb: list<array<string, mixed>>, renderFirstItem?: bool} $arguments
+     * @ param array{breadcrumb: list<array<string, mixed>>, renderFirstItem?: bool} $arguments
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext,
-    ): void {
-        if (! ($arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false)) {
-            \array_shift($arguments[self::ARGUMENT_BREADCRUMB]);
+    public function render(): void
+    {
+        if (! ($this->arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false)) {
+            \array_shift($this->arguments[self::ARGUMENT_BREADCRUMB]);
         }
 
-        if ($arguments[self::ARGUMENT_BREADCRUMB] === []) {
+        if ($this->arguments[self::ARGUMENT_BREADCRUMB] === []) {
             return;
         }
 
-        self::checkBreadcrumbStructure($arguments[self::ARGUMENT_BREADCRUMB]);
+        $this->checkBreadcrumbStructure($this->arguments[self::ARGUMENT_BREADCRUMB]);
 
         $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
         $typeFactory = new TypeFactory();
         $breadcrumbList = $typeFactory->create('BreadcrumbList');
-        $itemsCount = \count($arguments[self::ARGUMENT_BREADCRUMB]);
+        $itemsCount = \count($this->arguments[self::ARGUMENT_BREADCRUMB]);
         for ($i = 0; $i < $itemsCount; $i++) {
-            $id = (string) $arguments[self::ARGUMENT_BREADCRUMB][$i]['link'];
+            $id = (string) $this->arguments[self::ARGUMENT_BREADCRUMB][$i]['link'];
             if (! \str_starts_with($id, (string) $siteUrl)) {
                 $id = $siteUrl . \ltrim($id, '/');
             }
@@ -111,9 +107,9 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
             $webPageTypeClass = self::DEFAULT_WEBPAGE_TYPE;
             /*
             // @see: https://github.com/brotkrueml/schema/issues/101
-            if (\is_array($arguments[self::ARGUMENT_BREADCRUMB][$i]['data'] ?? false)
-                && ($arguments[self::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'] ?? '') !== '') {
-                $webPageTypeClass = $arguments[self::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'];
+            if (\is_array($this->arguments[self::ARGUMENT_BREADCRUMB][$i]['data'] ?? false)
+                && ($this->arguments[self::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'] ?? '') !== '') {
+                $webPageTypeClass = $this->arguments[self::ARGUMENT_BREADCRUMB][$i]['data']['tx_schema_webpagetype'];
             }
             */
             $itemType = $typeFactory->create($webPageTypeClass);
@@ -121,7 +117,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
             $item = $typeFactory->create('ListItem')->setProperties([
                 'position' => $i + 1,
-                'name' => $arguments[self::ARGUMENT_BREADCRUMB][$i]['title'],
+                'name' => $this->arguments[self::ARGUMENT_BREADCRUMB][$i]['title'],
                 'item' => $itemType,
             ]);
 
@@ -136,7 +132,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
     /**
      * @param list<array{title?: string, link?: string}> $breadcrumb
      */
-    private static function checkBreadcrumbStructure(array $breadcrumb): void
+    private function checkBreadcrumbStructure(array $breadcrumb): void
     {
         foreach ($breadcrumb as $item) {
             if (! isset($item['title'])) {
