@@ -479,7 +479,7 @@ template:
    >
 
 The relevant parts are the namespace declaration
-(:html:`xmlns:schema="https://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"`)
+(:html:`xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"`)
 and the :html:`schema:schemaLocation` attribute which points to the recent XSD
 definition.
 
