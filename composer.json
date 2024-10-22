@@ -25,9 +25,9 @@
 	},
 	"require": {
 		"php": ">=8.1",
-		"typo3/cms-core": "^11.5.19 || ^12.4 || ^13.3",
-		"typo3/cms-fluid": "^11.5.19 || ^12.4 || ^13.3",
-		"typo3/cms-frontend": "^11.5.19 || ^12.4 || ^13.3"
+		"typo3/cms-core": "^11.5.19 || ^12.4 || ^13.4",
+		"typo3/cms-fluid": "^11.5.19 || ^12.4 || ^13.4",
+		"typo3/cms-frontend": "^11.5.19 || ^12.4 || ^13.4"
 	},
 	"require-dev": {
 		"ext-sqlite3": "*",
@@ -41,8 +41,8 @@
 		"symfony/yaml": "^5.4 || ^6.4 || ^7.1",
 		"symplify/phpstan-rules": "^13.0",
 		"tomasvotruba/cognitive-complexity": "^0.2.3",
-		"typo3/cms-adminpanel": "^11.5.19 || ^12.4 || ^13.3",
-		"typo3/cms-lowlevel": "^11.5.19 || ^12.4 || ^13.3",
+		"typo3/cms-adminpanel": "^11.5.19 || ^12.4 || ^13.4",
+		"typo3/cms-lowlevel": "^11.5.19 || ^12.4 || ^13.4",
 		"typo3/testing-framework": "^7.0 || ^8.2"
 	},
 	"conflict": {
