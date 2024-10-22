@@ -472,8 +472,8 @@ template:
    :emphasize-lines: 3-4
 
    <html
-       xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-       xmlns:schema="https://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
+       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+       xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
        schema:schemaLocation="https://brot.krue.ml/schemas/schema-1.9.0.xsd"
        data-namespace-typo3-fluid="true"
    >
