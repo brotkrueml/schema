@@ -7,6 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.7.1] - 2024-10-22
+
+### Fixed
+- Parse error with Fluid 4 and TYPO3 v13 (#124)
+
 ## [3.7.0] - 2024-09-19
 
 ### Updated
@@ -488,7 +493,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.7.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.7.1...HEAD
+[3.7.1]: https://github.com/brotkrueml/schema/compare/v3.7.0...v3.7.1
 [3.7.0]: https://github.com/brotkrueml/schema/compare/v3.6.1...v3.7.0
 [3.6.1]: https://github.com/brotkrueml/schema/compare/v3.6.0...v3.6.1
 [3.6.0]: https://github.com/brotkrueml/schema/compare/v3.5.0...v3.6.0
