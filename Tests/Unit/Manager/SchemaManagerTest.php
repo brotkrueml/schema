@@ -22,7 +22,6 @@ use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -33,10 +32,6 @@ final class SchemaManagerTest extends TestCase
     private SchemaManager $subject;
     private \ReflectionProperty $rendererTypes;
     private Renderer $renderer;
-    /**
-     * @var ApplicationType&Stub
-     */
-    private Stub $applicationTypeStub;
 
     protected function setUp(): void
     {
@@ -46,8 +41,8 @@ final class SchemaManagerTest extends TestCase
         $this->rendererTypes = $reflector->getProperty('types');
         $this->rendererTypes->setAccessible(true);
 
-        $this->applicationTypeStub = $this->createStub(ApplicationType::class);
-        $this->applicationTypeStub
+        $applicationTypeStub = $this->createStub(ApplicationType::class);
+        $applicationTypeStub
             ->method('isBackend')
             ->willReturn(false);
 

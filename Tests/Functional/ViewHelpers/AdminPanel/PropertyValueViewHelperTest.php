@@ -34,11 +34,6 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
      */
     protected $languageServiceStub;
 
-    /**
-     * @var Stub|Icon
-     */
-    protected $iconStub;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -46,14 +41,14 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         $this->languageServiceStub = $this->createStub(LanguageService::class);
         $GLOBALS['LANG'] = $this->languageServiceStub;
 
-        $this->iconStub = $this->createStub(Icon::class);
-        $this->iconStub
+        $iconStub = $this->createStub(Icon::class);
+        $iconStub
             ->method('render')
             ->willReturn('stubbed icon');
         $iconFactoryStub = $this->createStub(IconFactory::class);
         $iconFactoryStub
             ->method('getIcon')
-            ->willReturn($this->iconStub);
+            ->willReturn($iconStub);
         GeneralUtility::addInstance(IconFactory::class, $iconFactoryStub);
     }
 
