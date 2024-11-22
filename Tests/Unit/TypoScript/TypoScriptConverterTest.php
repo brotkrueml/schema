@@ -373,10 +373,9 @@ final class TypoScriptConverterTest extends TestCase
                     5 => [
                         'splitConfiguration' => 'd',
                     ],
-                    6
- => [
-     'splitConfiguration' => 'e',
- ],
+                    6 => [
+                        'splitConfiguration' => 'e',
+                    ],
                 ],
             ],
             [
@@ -395,8 +394,7 @@ final class TypoScriptConverterTest extends TestCase
                         'splitConfiguration' => 'd',
                     ],
                     3 => [
-                        'splitConfiguration'
-                         => 'e',
+                        'splitConfiguration' => 'e',
                     ],
                 ],
             ],
@@ -413,8 +411,7 @@ final class TypoScriptConverterTest extends TestCase
                         'splitConfiguration' => 'd',
                     ],
                     2 => [
-                        'splitConfiguration' =>
-                         'e',
+                        'splitConfiguration' => 'e',
                     ],
                 ],
             ],
@@ -442,10 +439,9 @@ final class TypoScriptConverterTest extends TestCase
                     5 => [
                         'splitConfiguration' => 'c',
                     ],
-                    6
- => [
-     'splitConfiguration' => 'd',
- ],
+                    6 => [
+                        'splitConfiguration' => 'd',
+                    ],
                 ],
             ],
             [
@@ -472,10 +468,9 @@ final class TypoScriptConverterTest extends TestCase
                     5 => [
                         'splitConfiguration' => 'a',
                     ],
-                    6
- => [
-     'splitConfiguration' => 'b',
- ],
+                    6 => [
+                        'splitConfiguration' => 'b',
+                    ],
                 ],
             ],
             [
@@ -502,10 +497,9 @@ final class TypoScriptConverterTest extends TestCase
                     5 => [
                         'splitConfiguration' => 'b',
                     ],
-                    6
- => [
-     'splitConfiguration' => 'c',
- ],
+                    6 => [
+                        'splitConfiguration' => 'c',
+                    ],
                 ],
             ],
         ];
