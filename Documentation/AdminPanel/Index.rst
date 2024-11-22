@@ -39,7 +39,7 @@ Configuration
 
 To allow non-admin users to access the schema information in the Admin Panel,
 you have to configure it in the corresponding
-:ref:`user TSconfig <t3tsconfig:setting-user-tsconfig>`:
+:ref:`user TSconfig <t3tsref:setting-user-tsconfig>`:
 
 .. code-block:: typoscript
 
