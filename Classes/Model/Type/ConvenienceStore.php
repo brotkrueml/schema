@@ -100,6 +100,7 @@ final class ConvenienceStore extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class ResumeAction extends AbstractType
 {
     protected static array $propertyNames = [
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

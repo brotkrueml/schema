@@ -101,6 +101,7 @@ final class MovieTheater extends AbstractType
         'sameAs',
         'screenCount',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

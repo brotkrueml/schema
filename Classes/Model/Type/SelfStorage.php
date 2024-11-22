@@ -100,6 +100,7 @@ final class SelfStorage extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

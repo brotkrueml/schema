@@ -74,6 +74,7 @@ final class AggregateOffer extends AbstractType
         'sameAs',
         'seller',
         'serialNumber',
+        'shippingDetails',
         'sku',
         'subjectOf',
         'url',

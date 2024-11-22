@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class AllocateAction extends AbstractType
 {
     protected static array $propertyNames = [
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

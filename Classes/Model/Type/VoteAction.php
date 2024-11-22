@@ -22,6 +22,7 @@ final class VoteAction extends AbstractType
 {
     protected static array $propertyNames = [
         'actionOption',
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

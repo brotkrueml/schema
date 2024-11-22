@@ -104,6 +104,7 @@ final class ProfessionalService extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

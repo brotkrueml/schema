@@ -100,6 +100,7 @@ final class HVACBusiness extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

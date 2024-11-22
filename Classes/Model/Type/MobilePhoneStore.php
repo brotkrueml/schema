@@ -100,6 +100,7 @@ final class MobilePhoneStore extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

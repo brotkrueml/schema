@@ -103,6 +103,7 @@ final class Restaurant extends AbstractType
         'sameAs',
         'seeks',
         'servesCuisine',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

@@ -72,6 +72,7 @@ final class GovernmentOrganization extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'sponsor',
         'subOrganization',

@@ -104,6 +104,7 @@ final class HomeAndConstructionBusiness extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

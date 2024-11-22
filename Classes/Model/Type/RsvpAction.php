@@ -22,6 +22,7 @@ final class RsvpAction extends AbstractType
 {
     protected static array $propertyNames = [
         'about',
+        'actionProcess',
         'actionStatus',
         'additionalNumberOfGuests',
         'additionalType',

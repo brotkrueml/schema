@@ -103,6 +103,7 @@ final class Bakery extends AbstractType
         'sameAs',
         'seeks',
         'servesCuisine',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

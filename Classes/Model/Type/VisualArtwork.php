@@ -119,6 +119,7 @@ final class VisualArtwork extends AbstractType
         'url',
         'version',
         'video',
+        'weight',
         'width',
         'workExample',
     ];

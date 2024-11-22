@@ -22,6 +22,7 @@ final class EatAction extends AbstractType
 {
     protected static array $propertyNames = [
         'actionAccessibilityRequirement',
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

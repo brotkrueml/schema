@@ -103,6 +103,7 @@ final class Brewery extends AbstractType
         'sameAs',
         'seeks',
         'servesCuisine',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

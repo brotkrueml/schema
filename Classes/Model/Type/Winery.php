@@ -103,6 +103,7 @@ final class Winery extends AbstractType
         'sameAs',
         'seeks',
         'servesCuisine',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

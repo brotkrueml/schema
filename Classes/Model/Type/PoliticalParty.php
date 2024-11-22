@@ -72,6 +72,7 @@ final class PoliticalParty extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'sponsor',
         'subOrganization',

@@ -75,6 +75,7 @@ final class Person extends AbstractType
         'sameAs',
         'seeks',
         'sibling',
+        'skills',
         'sponsor',
         'spouse',
         'subjectOf',

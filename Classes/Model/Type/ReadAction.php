@@ -22,6 +22,7 @@ final class ReadAction extends AbstractType
 {
     protected static array $propertyNames = [
         'actionAccessibilityRequirement',
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

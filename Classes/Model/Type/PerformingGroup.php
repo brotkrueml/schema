@@ -72,6 +72,7 @@ final class PerformingGroup extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'sponsor',
         'subOrganization',

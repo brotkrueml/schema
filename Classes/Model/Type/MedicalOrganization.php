@@ -72,6 +72,7 @@ final class MedicalOrganization extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'sponsor',
         'subOrganization',

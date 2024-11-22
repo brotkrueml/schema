@@ -100,6 +100,7 @@ final class DryCleaningOrLaundry extends AbstractType
         'review',
         'sameAs',
         'seeks',
+        'skills',
         'slogan',
         'smokingAllowed',
         'specialOpeningHoursSpecification',

@@ -26,6 +26,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class JoinAction extends AbstractType
 {
     protected static array $propertyNames = [
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

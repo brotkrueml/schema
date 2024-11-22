@@ -27,6 +27,7 @@ final class CheckInAction extends AbstractType
 {
     protected static array $propertyNames = [
         'about',
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',

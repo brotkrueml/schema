@@ -24,6 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class CancelAction extends AbstractType
 {
     protected static array $propertyNames = [
+        'actionProcess',
         'actionStatus',
         'additionalType',
         'agent',
