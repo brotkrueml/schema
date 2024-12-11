@@ -131,12 +131,9 @@ jobs:
           INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
         run: |
           make mutation
-#      - name: Generate code coverage
-#        run: |
-#          make code-coverage
-#      - name: Send code coverage report to coveralls.io
-#        if: github.event_name != 'pull_request'
-#        run: .Build/bin/php-coveralls -v
-#        env:
-#          COVERALLS_RUN_LOCALLY: 1
-#          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      - name: Run tests and collect coverage
+        run: .Build/bin/phpunit --configuration Tests/phpunit.xml.dist --coverage-clover coverage.xml .
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
