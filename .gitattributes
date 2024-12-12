@@ -1,5 +1,4 @@
 /Tests/ export-ignore
-/.coveralls.yml export-ignore
 /.crowdin.yml export-ignore
 /.editorconfig export-ignore
 /.gitattributes export-ignore
