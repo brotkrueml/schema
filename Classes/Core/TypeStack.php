@@ -11,6 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core;
 
+use Brotkrueml\Schema\Core\Model\TypeInterface;
 use TYPO3\CMS\Core\SingletonInterface;
 
+/**
+ * @template-extends \SplStack<TypeInterface>
+ */
 final class TypeStack extends \SplStack implements SingletonInterface {}

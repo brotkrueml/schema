@@ -17,6 +17,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
 {
+    /**
+     * @var list<string>
+     */
     private array $types = [];
 
     public function initializeArguments(): void

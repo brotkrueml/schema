@@ -93,6 +93,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
         $this->checkBreadcrumbStructure($this->arguments[self::ARGUMENT_BREADCRUMB]);
 
+        /** @var string $siteUrl */
         $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
         $typeFactory = new TypeFactory();

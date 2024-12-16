@@ -171,6 +171,9 @@ final class SchemaManager implements SingletonInterface
         return $this->renderer->render();
     }
 
+    /**
+     * @phpstan-assert TypeInterface $this->webPage
+     */
     private function preparePropertiesForWebPage(): void
     {
         if ($this->breadcrumbLists !== []) {

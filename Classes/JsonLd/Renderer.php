@@ -29,7 +29,7 @@ final class Renderer implements RendererInterface
     private array $types = [];
 
     /**
-     * @var array<string,scalar|array>
+     * @var array<string,mixed>
      */
     private array $typeResult = [];
 
@@ -121,6 +121,9 @@ final class Renderer implements RendererInterface
         }
     }
 
+    /**
+     * @return array<string, mixed>|string
+     */
     private function getPropertyValueForResult(NodeIdentifierInterface|TypeInterface|bool|string|int|float $value): array|string
     {
         if ($value instanceof TypeInterface) {

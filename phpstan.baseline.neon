@@ -7,12 +7,6 @@ parameters:
 			path: Classes/Cache/PagesCacheService.php
 
 		-
-			message: '#^Call to an undefined method object\:\:getAdditionalProperties\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: Classes/Core/Model/AbstractType.php
-
-		-
 			message: '#^Instanceof between mixed and Brotkrueml\\Schema\\Core\\Model\\TypeInterface will always evaluate to false\.$#'
 			identifier: instanceof.alwaysFalse
 			count: 1
@@ -49,12 +43,6 @@ parameters:
 			path: Classes/Core/Model/MultipleType.php
 
 		-
-			message: '#^Class Brotkrueml\\Schema\\Core\\TypeStack extends generic class SplStack but does not specify its types\: TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: Classes/Core/TypeStack.php
-
-		-
 			message: '#^Cannot call method setId\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -67,28 +55,10 @@ parameters:
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
-			message: '#^Method Brotkrueml\\Schema\\Hooks\\PageRenderer\\SchemaMarkupInjection\:\:execute\(\) has parameter \$params with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Parameter \#1 \$value of method SplDoublyLinkedList\<Brotkrueml\\Schema\\Core\\Model\\TypeInterface\>\:\:push\(\) expects Brotkrueml\\Schema\\Core\\Model\\TypeInterface, Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null given\.$#'
+			identifier: argument.type
 			count: 1
-			path: Classes/Hooks/PageRenderer/SchemaMarkupInjection.php
-
-		-
-			message: '#^Cannot access an offset on array\|bool\|float\|int\|string\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: Classes/JsonLd/Renderer.php
-
-		-
-			message: '#^Method Brotkrueml\\Schema\\JsonLd\\Renderer\:\:getPropertyValueForResult\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/JsonLd/Renderer.php
-
-		-
-			message: '#^Property Brotkrueml\\Schema\\JsonLd\\Renderer\:\:\$typeResult type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/JsonLd/Renderer.php
+			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
 			message: '#^Method Brotkrueml\\Schema\\Lowlevel\\ConfigurationModuleProvider\\Types\:\:__invoke\(\) has parameter \$attributes with no value type specified in iterable type array\.$#'
@@ -121,32 +91,8 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: '#^Parameter \#1 \.\.\.\$type of method Brotkrueml\\Schema\\JsonLd\\RendererInterface\:\:addType\(\) expects Brotkrueml\\Schema\\Core\\Model\\TypeInterface, Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: Classes/Manager/SchemaManager.php
-
-		-
 			message: '#^Parameter &\$params by\-ref type of method Brotkrueml\\Schema\\UserFunctions\\FormEngine\\WebPageTypes\:\:get\(\) expects array\{items\: array\<string\>\}, array\{items\: non\-empty\-array\<array\{label\: string, value\: string\}\|array\{string, string\}\|string\>\} given\.$#'
 			identifier: parameterByRef.type
 			count: 2
 			path: Classes/UserFunctions/FormEngine/WebPageTypes.php
-
-		-
-			message: '#^Binary operation "\." between array\<string, bool\|string\|null\>\|bool\|string\|null and string results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
-
-		-
-			message: '#^Cannot cast array\<string, bool\|string\|null\>\|bool\|string\|null to string\.$#'
-			identifier: cast.string
-			count: 1
-			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
-
-		-
-			message: '#^Property Brotkrueml\\Schema\\ViewHelpers\\MultipleTypeViewHelper\:\:\$types type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/ViewHelpers/MultipleTypeViewHelper.php
 

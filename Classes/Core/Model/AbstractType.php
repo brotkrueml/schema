@@ -75,6 +75,7 @@ abstract class AbstractType implements TypeInterface
 
             /** @var EventDispatcherInterface $eventDispatcher */
             $eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
+            /** @var RegisterAdditionalTypePropertiesEvent $event */
             $event = $eventDispatcher->dispatch($event);
 
             $additionalProperties = $event->getAdditionalProperties();

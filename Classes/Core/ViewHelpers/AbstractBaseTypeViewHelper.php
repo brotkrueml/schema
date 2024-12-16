@@ -179,6 +179,6 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
             );
         }
 
-        $this->model->setId($this->arguments[static::ARGUMENT_ID]);
+        $this->model->setId($id);
     }
 }

@@ -32,6 +32,9 @@ final class SchemaMarkupInjection
         private readonly SchemaManager $schemaManager,
     ) {}
 
+    /**
+     * @param array<string, mixed>|null $params
+     */
     public function execute(?array &$params, PageRenderer $pageRenderer): void
     {
         if ($this->applicationType->isBackend()) {
