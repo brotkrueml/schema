@@ -1,112 +1,152 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot access property \\$newHash on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
+			message: '#^Cannot access property \$newHash on TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController\|null\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: Classes/Cache/PagesCacheService.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getAdditionalProperties\\(\\)\\.$#"
+			message: '#^Call to an undefined method object\:\:getAdditionalProperties\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
 
 		-
-			message: "#^Instanceof between mixed and Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface will always evaluate to false\\.$#"
+			message: '#^Instanceof between mixed and Brotkrueml\\Schema\\Core\\Model\\TypeInterface will always evaluate to false\.$#'
+			identifier: instanceof.alwaysFalse
 			count: 1
 			path: Classes/Core/Model/AbstractType.php
 
 		-
-			message: "#^Anonymous function should return string but returns array\\<string\\>\\|string\\.$#"
+			message: '#^Anonymous function should return string but returns array\<string\>\|string\.$#'
+			identifier: return.type
 			count: 1
 			path: Classes/Core/Model/MultipleType.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:mergePropertyNamesFromSingleTypes\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
+			message: '#^Method Brotkrueml\\Schema\\Core\\Model\\MultipleType\:\:getType\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
 			count: 1
 			path: Classes/Core/Model/MultipleType.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\MultipleType\\:\\:storeTypeNames\\(\\) has parameter \\$types with no value type specified in iterable type array\\.$#"
+			message: '#^Method Brotkrueml\\Schema\\Core\\Model\\MultipleType\:\:mergePropertyNamesFromSingleTypes\(\) has parameter \$types with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: Classes/Core/Model/MultipleType.php
 
 		-
-			message: "#^Class Brotkrueml\\\\Schema\\\\Core\\\\TypeStack extends generic class SplStack but does not specify its types\\: TValue$#"
+			message: '#^Method Brotkrueml\\Schema\\Core\\Model\\MultipleType\:\:storeTypeNames\(\) has parameter \$types with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: '#^Static property Brotkrueml\\Schema\\Core\\Model\\AbstractType\:\:\$propertyNames \(list\<string\>\) does not accept array\<int\<0, max\>, mixed\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: Classes/Core/Model/MultipleType.php
+
+		-
+			message: '#^Class Brotkrueml\\Schema\\Core\\TypeStack extends generic class SplStack but does not specify its types\: TValue$#'
+			identifier: missingType.generics
 			count: 1
 			path: Classes/Core/TypeStack.php
 
 		-
-			message: "#^Cannot call method setId\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			message: '#^Cannot call method setId\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
+			identifier: method.nonObject
 			count: 1
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
-			message: "#^Cannot call method setProperty\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			message: '#^Cannot call method setProperty\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
+			identifier: method.nonObject
 			count: 1
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Hooks\\\\PageRenderer\\\\SchemaMarkupInjection\\:\\:execute\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			message: '#^Method Brotkrueml\\Schema\\Hooks\\PageRenderer\\SchemaMarkupInjection\:\:execute\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: Classes/Hooks/PageRenderer/SchemaMarkupInjection.php
 
 		-
-			message: "#^Cannot access an offset on array\\|bool\\|float\\|int\\|string\\.$#"
+			message: '#^Cannot access an offset on array\|bool\|float\|int\|string\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: Classes/JsonLd/Renderer.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\JsonLd\\\\Renderer\\:\\:getPropertyValueForResult\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Method Brotkrueml\\Schema\\JsonLd\\Renderer\:\:getPropertyValueForResult\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: Classes/JsonLd/Renderer.php
 
 		-
-			message: "#^Property Brotkrueml\\\\Schema\\\\JsonLd\\\\Renderer\\:\\:\\$typeResult type has no value type specified in iterable type array\\.$#"
+			message: '#^Property Brotkrueml\\Schema\\JsonLd\\Renderer\:\:\$typeResult type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: Classes/JsonLd/Renderer.php
 
 		-
-			message: "#^Method Brotkrueml\\\\Schema\\\\Lowlevel\\\\ConfigurationModuleProvider\\\\Types\\:\\:__invoke\\(\\) has parameter \\$attributes with no value type specified in iterable type array\\.$#"
+			message: '#^Method Brotkrueml\\Schema\\Lowlevel\\ConfigurationModuleProvider\\Types\:\:__invoke\(\) has parameter \$attributes with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: Classes/Lowlevel/ConfigurationModuleProvider/Types.php
 
 		-
-			message: "#^Cannot call method addProperty\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			message: '#^Cannot call method addProperty\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
+			identifier: method.nonObject
 			count: 3
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Cannot call method clearProperty\\(\\) on Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null\\.$#"
+			message: '#^Cannot call method clearProperty\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
+			identifier: method.nonObject
 			count: 1
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Class cognitive complexity is 25, keep it under 20$#"
+			message: '#^Class cognitive complexity is 25, keep it under 20$#'
+			identifier: complexity.classLike
 			count: 1
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Cognitive complexity for \"Brotkrueml\\\\Schema\\\\Manager\\\\SchemaManager\\:\\:setWebPage\\(\\)\" is 14, keep it under 10$#"
+			message: '#^Cognitive complexity for "Brotkrueml\\Schema\\Manager\\SchemaManager\:\:setWebPage\(\)" is 14, keep it under 10$#'
+			identifier: complexity.functionLike
 			count: 1
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$type of method Brotkrueml\\\\Schema\\\\JsonLd\\\\RendererInterface\\:\\:addType\\(\\) expects Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface, Brotkrueml\\\\Schema\\\\Core\\\\Model\\\\TypeInterface\\|null given\\.$#"
+			message: '#^Parameter \#1 \.\.\.\$type of method Brotkrueml\\Schema\\JsonLd\\RendererInterface\:\:addType\(\) expects Brotkrueml\\Schema\\Core\\Model\\TypeInterface, Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null given\.$#'
+			identifier: argument.type
 			count: 1
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: "#^Binary operation \"\\.\" between array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null and string results in an error\\.$#"
+			message: '#^Parameter &\$params by\-ref type of method Brotkrueml\\Schema\\UserFunctions\\FormEngine\\WebPageTypes\:\:get\(\) expects array\{items\: array\<string\>\}, array\{items\: non\-empty\-array\<array\{label\: string, value\: string\}\|array\{string, string\}\|string\>\} given\.$#'
+			identifier: parameterByRef.type
+			count: 2
+			path: Classes/UserFunctions/FormEngine/WebPageTypes.php
+
+		-
+			message: '#^Binary operation "\." between array\<string, bool\|string\|null\>\|bool\|string\|null and string results in an error\.$#'
+			identifier: binaryOp.invalid
 			count: 1
 			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
 
 		-
-			message: "#^Cannot cast array\\<string, bool\\|string\\|null\\>\\|bool\\|string\\|null to string\\.$#"
+			message: '#^Cannot cast array\<string, bool\|string\|null\>\|bool\|string\|null to string\.$#'
+			identifier: cast.string
 			count: 1
 			path: Classes/ViewHelpers/BreadcrumbViewHelper.php
 
 		-
-			message: "#^Property Brotkrueml\\\\Schema\\\\ViewHelpers\\\\MultipleTypeViewHelper\\:\\:\\$types type has no value type specified in iterable type array\\.$#"
+			message: '#^Property Brotkrueml\\Schema\\ViewHelpers\\MultipleTypeViewHelper\:\:\$types type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: Classes/ViewHelpers/MultipleTypeViewHelper.php
 

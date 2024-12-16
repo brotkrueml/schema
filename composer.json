@@ -32,18 +32,18 @@
 	"require-dev": {
 		"ext-sqlite3": "*",
 		"brotkrueml/coding-standards": "~6.1.0",
-		"ergebnis/composer-normalize": "~2.44.0",
+		"ergebnis/composer-normalize": "~2.45.0",
 		"infection/infection": "^0.29.8",
 		"phpstan/extension-installer": "^1.4",
-		"phpstan/phpstan": "1.12.11",
-		"phpunit/phpunit": "^10.5 || ^11.4",
-		"rector/rector": "1.2.10",
-		"symfony/yaml": "^5.4 || ^6.4 || ^7.1",
-		"symplify/phpstan-rules": "^13.0",
-		"tomasvotruba/cognitive-complexity": "^0.2.3",
+		"phpstan/phpstan": "2.0.3",
+		"phpunit/phpunit": "^10.5 || ^11.5",
+		"rector/rector": "2.0.3",
+		"symfony/yaml": "^5.4 || ^6.4 || ^7.2",
+		"symplify/phpstan-rules": "^14.0",
+		"tomasvotruba/cognitive-complexity": "^1.0",
 		"typo3/cms-adminpanel": "^11.5.19 || ^12.4 || ^13.4",
 		"typo3/cms-lowlevel": "^11.5.19 || ^12.4 || ^13.4",
-		"typo3/testing-framework": "^7.0 || ^8.2 || ^9.0"
+		"typo3/testing-framework": "^7.0 || ^8.2 || ^9.1"
 	},
 	"conflict": {
 		"brotkrueml/sdbreadcrumb": "*"
