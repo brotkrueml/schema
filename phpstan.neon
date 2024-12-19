@@ -1,9 +1,5 @@
 includes:
     - phpstan.baseline.neon
-    - .Build/vendor/symplify/phpstan-rules/config/regex-rules.neon
-
-rules:
-    - Symplify\PHPStanRules\Rules\NoReturnArrayVariableListRule
 
 parameters:
     phpVersion: 80100
