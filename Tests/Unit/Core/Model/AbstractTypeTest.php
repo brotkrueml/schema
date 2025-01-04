@@ -407,12 +407,12 @@ class AbstractTypeTest extends TestCase
     #[Test]
     public function cacheForAdditionalPropertiesReturnsPropertiesAndTheseAreAddedSortedIntoPropertiesArray(): void
     {
-        $cacheFrontendStub = $this->createStub(FrontendInterface::class);
+        $cacheFrontendStub = self::createStub(FrontendInterface::class);
         $cacheFrontendStub
             ->method('get')
             ->willReturn(['someAdditionalProperty', 'anotherAdditionalProperty']);
 
-        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub = self::createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
             ->with(Extension::CACHE_IDENTIFIER)
@@ -458,7 +458,7 @@ class AbstractTypeTest extends TestCase
                 0,
             );
 
-        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub = self::createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
             ->with(Extension::CACHE_IDENTIFIER)
@@ -500,7 +500,7 @@ class AbstractTypeTest extends TestCase
                 0,
             );
 
-        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub = self::createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
             ->with(Extension::CACHE_IDENTIFIER)

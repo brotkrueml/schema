@@ -49,10 +49,10 @@ final class AddBreadcrumbListTest extends TestCase
 
         GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
 
-        $this->contentObjectRendererStub = $this->createStub(ContentObjectRenderer::class);
-        $this->typoScriptFrontendControllerStub = $this->createStub(TypoScriptFrontendController::class);
+        $this->contentObjectRendererStub = self::createStub(ContentObjectRenderer::class);
+        $this->typoScriptFrontendControllerStub = self::createStub(TypoScriptFrontendController::class);
 
-        $this->requestStub = $this->createStub(ServerRequestInterface::class);
+        $this->requestStub = self::createStub(ServerRequestInterface::class);
         $this->requestStub
             ->method('getAttribute')
             ->with('frontend.controller')

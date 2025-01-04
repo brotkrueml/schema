@@ -44,8 +44,8 @@ final class SchemaMarkupInjectionTest extends TestCase
     protected function setUp(): void
     {
         $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
-        $this->applicationTypeStub = $this->createStub(ApplicationType::class);
-        $this->extensionAvailabilityStub = $this->createStub(ExtensionAvailability::class);
+        $this->applicationTypeStub = self::createStub(ApplicationType::class);
+        $this->extensionAvailabilityStub = self::createStub(ExtensionAvailability::class);
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
 
@@ -56,7 +56,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             'uid' => 42,
         ];
 
-        $requestStub = $this->createStub(ServerRequestInterface::class);
+        $requestStub = self::createStub(ServerRequestInterface::class);
         $requestStub
             ->method('getAttribute')
             ->with('frontend.controller')
@@ -505,7 +505,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $schemaManager,
         );
 
-        $packageManagerStub = $this->createStub(PackageManager::class);
+        $packageManagerStub = self::createStub(PackageManager::class);
         $packageManagerStub
             ->method('isPackageActive')
             ->with('seo')
@@ -546,10 +546,10 @@ final class SchemaMarkupInjectionTest extends TestCase
         $event = new RenderAdditionalTypesEvent(
             false,
             false,
-            $this->createStub(ServerRequestInterface::class),
+            self::createStub(ServerRequestInterface::class),
         );
         $event->addType(new GenericStub('from-event'));
-        $eventDispatcherStub = $this->createStub(EventDispatcher::class);
+        $eventDispatcherStub = self::createStub(EventDispatcher::class);
         $eventDispatcherStub
             ->method('dispatch')
             ->willReturn($event);
@@ -563,7 +563,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             $schemaManager,
         );
 
-        $packageManagerStub = $this->createStub(PackageManager::class);
+        $packageManagerStub = self::createStub(PackageManager::class);
         $packageManagerStub
             ->method('isPackageActive')
             ->with('seo')

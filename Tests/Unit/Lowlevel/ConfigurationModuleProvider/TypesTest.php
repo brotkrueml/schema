@@ -46,7 +46,7 @@ final class TypesTest extends TestCase
                 'Web page types',
             ],
         ];
-        $languageServiceStub = $this->createStub(LanguageService::class);
+        $languageServiceStub = self::createStub(LanguageService::class);
         $languageServiceStub
             ->method('sL')
             ->willReturnMap($languageServiceMap);

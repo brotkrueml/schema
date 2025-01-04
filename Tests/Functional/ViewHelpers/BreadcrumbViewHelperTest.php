@@ -168,7 +168,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
         /** @noinspection PhpInternalEntityUsedInspection */
         GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
 
-        $cacheFrontendStub = $this->createStub(PhpFrontend::class);
+        $cacheFrontendStub = self::createStub(PhpFrontend::class);
         $cacheFrontendStub
             ->method('has')
             ->willReturn(true);
@@ -184,7 +184,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
                 'WebPage' => FixtureType\WebPage::class,
             ]);
 
-        $cacheManagerStub = $this->createStub(CacheManager::class);
+        $cacheManagerStub = self::createStub(CacheManager::class);
         $cacheManagerStub
             ->method('getCache')
             ->with(self::anything())
@@ -192,7 +192,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
 
         GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
 
-        $packageManagerStub = $this->createStub(PackageManager::class);
+        $packageManagerStub = self::createStub(PackageManager::class);
         $packageManagerStub
             ->method('getActivePackages')
             ->willReturn([]);

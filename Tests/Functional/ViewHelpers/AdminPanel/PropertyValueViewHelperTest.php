@@ -38,14 +38,14 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
     {
         parent::setUp();
 
-        $this->languageServiceStub = $this->createStub(LanguageService::class);
+        $this->languageServiceStub = self::createStub(LanguageService::class);
         $GLOBALS['LANG'] = $this->languageServiceStub;
 
-        $iconStub = $this->createStub(Icon::class);
+        $iconStub = self::createStub(Icon::class);
         $iconStub
             ->method('render')
             ->willReturn('stubbed icon');
-        $iconFactoryStub = $this->createStub(IconFactory::class);
+        $iconFactoryStub = self::createStub(IconFactory::class);
         $iconFactoryStub
             ->method('getIcon')
             ->willReturn($iconStub);

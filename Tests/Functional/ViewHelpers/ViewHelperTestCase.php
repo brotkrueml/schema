@@ -29,7 +29,7 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
 
     protected function setUp(): void
     {
-        $applicationType = $this->createStub(ApplicationType::class);
+        $applicationType = self::createStub(ApplicationType::class);
         $applicationType
             ->method('isBackend')
             ->willReturn(false);

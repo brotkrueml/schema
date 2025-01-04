@@ -44,9 +44,9 @@ final class AddWebPageTypeTest extends TestCase
     {
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
-        $this->extensionConfigurationStub = $this->createStub(ExtensionConfiguration::class);
-        $this->typoScriptFrontendControllerStub = $this->createStub(TypoScriptFrontendController::class);
-        $this->requestStub = $this->createStub(ServerRequestInterface::class);
+        $this->extensionConfigurationStub = self::createStub(ExtensionConfiguration::class);
+        $this->typoScriptFrontendControllerStub = self::createStub(TypoScriptFrontendController::class);
+        $this->requestStub = self::createStub(ServerRequestInterface::class);
         $this->requestStub
             ->method('getAttribute')
             ->with('frontend.controller')

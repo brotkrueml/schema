@@ -41,7 +41,7 @@ final class SchemaManagerTest extends TestCase
         $this->rendererTypes = $reflector->getProperty('types');
         $this->rendererTypes->setAccessible(true);
 
-        $applicationTypeStub = $this->createStub(ApplicationType::class);
+        $applicationTypeStub = self::createStub(ApplicationType::class);
         $applicationTypeStub
             ->method('isBackend')
             ->willReturn(false);

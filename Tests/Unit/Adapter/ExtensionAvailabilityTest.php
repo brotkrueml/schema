@@ -29,7 +29,7 @@ final class ExtensionAvailabilityTest extends TestCase
     {
         $this->subject = new ExtensionAvailability();
 
-        $this->packageManagerStub = $this->createStub(PackageManager::class);
+        $this->packageManagerStub = self::createStub(PackageManager::class);
         ExtensionManagementUtility::setPackageManager($this->packageManagerStub);
     }
 

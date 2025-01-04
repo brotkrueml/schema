@@ -33,7 +33,7 @@ final class TypesInformationTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->pagesCacheServiceStub = $this->createStub(PagesCacheService::class);
+        $this->pagesCacheServiceStub = self::createStub(PagesCacheService::class);
 
         $this->subject = new TypesInformation($this->pagesCacheServiceStub);
 
@@ -43,7 +43,7 @@ final class TypesInformationTest extends TestCase
             ->willReturn('');
         GeneralUtility::addInstance(StandaloneView::class, $this->viewMock);
 
-        $this->languageServiceStub = $this->createStub(LanguageService::class);
+        $this->languageServiceStub = self::createStub(LanguageService::class);
         $GLOBALS['LANG'] = $this->languageServiceStub;
     }
 

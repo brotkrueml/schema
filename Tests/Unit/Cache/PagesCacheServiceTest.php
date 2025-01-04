@@ -30,7 +30,7 @@ final class PagesCacheServiceTest extends TestCase
     {
         $this->cacheFrontendMock = $this->createMock(FrontendInterface::class);
 
-        $this->controllerStub = $this->createStub(TypoScriptFrontendController::class);
+        $this->controllerStub = self::createStub(TypoScriptFrontendController::class);
         $this->controllerStub->newHash = 'some-hash';
         $this->controllerStub->page = [
             'uid' => 42,

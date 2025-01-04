@@ -26,7 +26,7 @@ class RenderAdditionalTypesEventTest extends TestCase
         $this->subject = new RenderAdditionalTypesEvent(
             false,
             false,
-            $this->createStub(ServerRequestInterface::class),
+            self::createStub(ServerRequestInterface::class),
         );
     }
 
@@ -42,7 +42,7 @@ class RenderAdditionalTypesEventTest extends TestCase
         $subject = new RenderAdditionalTypesEvent(
             true,
             false,
-            $this->createStub(ServerRequestInterface::class),
+            self::createStub(ServerRequestInterface::class),
         );
 
         self::assertTrue($subject->isWebPageTypeAlreadyDefined());
@@ -60,7 +60,7 @@ class RenderAdditionalTypesEventTest extends TestCase
         $subject = new RenderAdditionalTypesEvent(
             false,
             true,
-            $this->createStub(ServerRequestInterface::class),
+            self::createStub(ServerRequestInterface::class),
         );
 
         self::assertTrue($subject->isBreadcrumbListAlreadyDefined());
@@ -68,7 +68,7 @@ class RenderAdditionalTypesEventTest extends TestCase
 
     public function getRequestReturnsRequestObjectCorrectly(): void
     {
-        $request = $this->createStub(ServerRequestInterface::class);
+        $request = self::createStub(ServerRequestInterface::class);
 
         $subject = new RenderAdditionalTypesEvent(
             false,
