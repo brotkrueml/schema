@@ -6,7 +6,10 @@
 Deprecations
 ============
 
-.. option:: \Brotkrueml\Schema\Type\TypeFactory::createType()
+Introduced in version 3
+=======================
+
+.. confval:: \Brotkrueml\Schema\Type\TypeFactory::createType()
 
    Deprecated since version
       3.0.0
@@ -20,7 +23,10 @@ Deprecations
       Have a look at the :ref:`migration <migration-type-factory>` section.
 
 
-.. option:: \Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()
+Introduced in version 1
+=======================
+
+.. confval:: \Brotkrueml\Schema\Core\Model\AbstractType->isEmpty()
 
    Deprecated since version
       1.7.0
@@ -35,7 +41,7 @@ Deprecations
       :php:`\Brotkrueml\Schema\Core\Model\AbstractType->getProperty()`.
 
 
-.. option:: \Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()
+.. confval:: \Brotkrueml\Schema\Manager\SchemaManager->setMainEntityOfWebPage()
 
    Deprecated since version
       1.4.1
@@ -47,7 +53,7 @@ Deprecations
       Use :php:`\Brotkrueml\Schema\Manager\SchemaManager->addMainEntityOfWebPage()`
       instead. See the :ref:`API <api-schema-manager-addmainentityofwebpage>`.
 
-.. option:: \Brotkrueml\Schema\Provider\TypesProvider
+.. confval:: \Brotkrueml\Schema\Provider\TypesProvider
 
    Deprecated since version
       1.7.0
