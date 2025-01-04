@@ -47,17 +47,13 @@ class AbstractTypeTest extends TestCase
         GeneralUtility::purgeInstances();
     }
 
-    /**
-     * @est
-     */
+    #[Test]
     public function subjectImplementsTypeInterface(): void
     {
         self::assertInstanceOf(TypeInterface::class, $this->subject);
     }
 
-    /**
-     * @est
-     */
+    #[Test]
     public function subjectImplementsNodeIdentifierInterface(): void
     {
         self::assertInstanceOf(NodeIdentifierInterface::class, $this->subject);
