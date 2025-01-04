@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
+ * @deprecated This type represents an enumeration, use the specific EventStatusType enum instead.
  */
 #[Type('EventStatusType')]
 final class EventStatusType extends AbstractType

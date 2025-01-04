@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Status of a game server.
+ * @deprecated This type represents an enumeration, use the specific GameServerStatus enum instead.
  */
 #[Type('GameServerStatus')]
 final class GameServerStatus extends AbstractType

@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  * http://purl.org/goodrelations/v1#Enduser
  * http://purl.org/goodrelations/v1#PublicInstitution
  * http://purl.org/goodrelations/v1#Reseller
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class BusinessEntityTypeViewHelper extends AbstractTypeViewHelper
 {

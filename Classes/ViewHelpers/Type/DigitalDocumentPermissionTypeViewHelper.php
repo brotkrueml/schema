@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * A type of permission which can be granted for accessing a digital document.
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class DigitalDocumentPermissionTypeViewHelper extends AbstractTypeViewHelper
 {

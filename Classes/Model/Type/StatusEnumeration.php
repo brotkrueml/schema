@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Lists or enumerations dealing with status types.
+ * @deprecated This type represents an enumeration, use the specific StatusEnumeration enum instead.
  */
 #[Type('StatusEnumeration')]
 final class StatusEnumeration extends AbstractType

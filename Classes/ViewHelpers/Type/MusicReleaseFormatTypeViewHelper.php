@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.).
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class MusicReleaseFormatTypeViewHelper extends AbstractTypeViewHelper
 {

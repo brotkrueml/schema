@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.).
+ * @deprecated This type represents an enumeration, use the specific MusicReleaseFormatType enum instead.
  */
 #[Type('MusicReleaseFormatType')]
 final class MusicReleaseFormatType extends AbstractType

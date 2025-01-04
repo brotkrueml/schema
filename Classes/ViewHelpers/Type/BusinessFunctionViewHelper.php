@@ -25,6 +25,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  * http://purl.org/goodrelations/v1#Repair
  * http://purl.org/goodrelations/v1#Sell
  * http://purl.org/goodrelations/v1#Buy
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class BusinessFunctionViewHelper extends AbstractTypeViewHelper
 {

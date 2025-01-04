@@ -222,7 +222,8 @@ abstract class AbstractType implements TypeInterface
             || \is_array($propertyValue)
             || \is_bool($propertyValue)
             || $propertyValue instanceof NodeIdentifierInterface
-            || $propertyValue instanceof TypeInterface;
+            || $propertyValue instanceof TypeInterface
+            || $propertyValue instanceof EnumerationInterface;
     }
 
     public function addProperty(string $propertyName, $propertyValue): self

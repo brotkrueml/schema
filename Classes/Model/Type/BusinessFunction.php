@@ -26,6 +26,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#Repair
  * http://purl.org/goodrelations/v1#Sell
  * http://purl.org/goodrelations/v1#Buy
+ * @deprecated This type represents an enumeration, use the specific BusinessFunction enum instead.
  */
 #[Type('BusinessFunction')]
 final class BusinessFunction extends AbstractType

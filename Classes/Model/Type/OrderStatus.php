@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated status values for Order.
+ * @deprecated This type represents an enumeration, use the specific OrderStatus enum instead.
  */
 #[Type('OrderStatus')]
 final class OrderStatus extends AbstractType

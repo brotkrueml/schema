@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The publication format of the book.
+ * @deprecated This type represents an enumeration, use the specific BookFormatType enum instead.
  */
 #[Type('BookFormatType')]
 final class BookFormatType extends AbstractType

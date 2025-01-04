@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An enumeration of genders.
+ * @deprecated This type represents an enumeration, use the specific GenderType enum instead.
  */
 #[Type('GenderType')]
 final class GenderType extends AbstractType

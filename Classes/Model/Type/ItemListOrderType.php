@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
+ * @deprecated This type represents an enumeration, use the specific ItemListOrderType enum instead.
  */
 #[Type('ItemListOrderType')]
 final class ItemListOrderType extends AbstractType

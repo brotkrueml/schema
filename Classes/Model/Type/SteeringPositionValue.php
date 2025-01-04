@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A value indicating a steering position.
+ * @deprecated This type represents an enumeration, use the specific SteeringPositionValue enum instead.
  */
 #[Type('SteeringPositionValue')]
 final class SteeringPositionValue extends AbstractType

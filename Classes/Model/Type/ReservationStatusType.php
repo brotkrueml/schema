@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated status values for Reservation.
+ * @deprecated This type represents an enumeration, use the specific ReservationStatusType enum instead.
  */
 #[Type('ReservationStatusType')]
 final class ReservationStatusType extends AbstractType

@@ -169,8 +169,59 @@ The new web page type can now be selected in the page properties:
    *MedicalWebPage* in the list of available web page types
 
 
+Add a new enumeration
+=====================
+
+.. versionadded:: 3.9.0
+   This feature is considered experimental and may change at any time until it
+   is declared stable. However, feedback is welcome.
+
+schema.org offers the possibility to use enumerations as value for certain
+properties. The TYPO3 schema extensions provide the
+:ref:`enumerations <enumerations>` defined by schema.org. However, there are
+some enumerations where schema.org refers to other vocabularies. One example is
+the `BusinessEntityType`_, which suggests using the `GoodRelations`_ terms. If
+you want to use them, you can define and use your own enumeration to provide a
+defined set of possible values (instead of plain strings):
+
+.. literalinclude:: _ExtendingVocabulary/_BusinessEntityType.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Schema/Enumeration/BusinessEntityType.php
+
+Now you can make use of this enum in PHP, for example:
+
+.. code-block:: php
+
+   // use MyVendor\MyExtension\Schema\Enumeration\BusinessEntityType;
+
+   $demand = $this->typeFactory->create('Demand');
+   $demand->setProperty('eligibleCustomerType', BusinessEntityType::Enduser);
+
+or in :ref:`Fluid <view-helpers-enumerations>`:
+
+.. code-block:: html
+
+   <schema:type.demand
+      eligibleCustomerType="{f:constant(
+         name: \MyVendor\MyExtension\Schema\Enumeration\BusinessEntityType::Enduser
+      )}"
+   />
+
+which results in:
+
+.. code-block:: json
+
+   {
+      "@type": "Demand",
+      "eligibleCustomerType": "http://purl.org/goodrelations/v1#Enduser"
+   }
+
+
+
 .. _Autos: https://schema.org/docs/automotive.html
+.. _BusinessEntityType: https://schema.org/BusinessEntityType
 .. _Event: https://schema.org/Event
+.. _GoodRelations: http://www.heppnetz.de/ontologies/goodrelations/v1
 .. _Health and lifesciences: https://schema.org/docs/meddocs.html
 .. _location: https://schema.org/location
 .. _MedicalWebPage: https://schema.org/MedicalWebPage

@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A list of possible product availability options.
+ * @deprecated This type represents an enumeration, use the specific ItemAvailability enum instead.
  */
 #[Type('ItemAvailability')]
 final class ItemAvailability extends AbstractType

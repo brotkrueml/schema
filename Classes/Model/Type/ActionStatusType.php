@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The status of an Action.
+ * @deprecated This type represents an enumeration, use the specific ActionStatusType enum instead.
  */
 #[Type('ActionStatusType')]
 final class ActionStatusType extends AbstractType

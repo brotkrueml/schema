@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A type of bed. This is used for indicating the bed or beds available in an accommodation.
+ * @deprecated This type represents an enumeration, use the specific BedType enum instead.
  */
 #[Type('BedType')]
 final class BedType extends AbstractType

@@ -26,6 +26,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#DHL
  * http://purl.org/goodrelations/v1#FederalExpress
  * http://purl.org/goodrelations/v1#UPS
+ * @deprecated This type represents an enumeration, use the specific DeliveryMethod enum instead.
  */
 #[Type('DeliveryMethod')]
 final class DeliveryMethod extends AbstractType

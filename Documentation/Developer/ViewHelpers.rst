@@ -98,6 +98,25 @@ You can also use the default Fluid view helpers:
       </f:if>
    </schema:type.blogPosting>
 
+.. versionadded:: 3.9.0
+   This feature is considered experimental and may change at any time until it
+   is declared stable. However, feedback is welcome.
+
+.. _view-helpers-enumerations:
+
+In the above example we use the :html:`<schema:type.person>` view helper with
+a `gender` property that receives a string. But we can also use the
+:ref:`enumeration <enumerations>` `GenderType` with the help of the
+:html:`<f:constant>` view helper (which is available since Fluid v2.12):
+
+.. code-block:: html
+
+   <schema:type.person
+      -id="https://example.org/#person-42"
+      givenName="John"
+      familyName="Smith"
+      gender="{f:constant(name: '\Brotkrueml\Schema\Model\Enumeration\GenderType::Male')}"
+   />
 
 .. _view-helpers-special-attributes:
 

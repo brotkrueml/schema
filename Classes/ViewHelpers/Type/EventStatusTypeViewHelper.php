@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class EventStatusTypeViewHelper extends AbstractTypeViewHelper
 {

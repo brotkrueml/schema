@@ -20,6 +20,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  * http://purl.org/goodrelations/v1#Labor-BringIn
  * http://purl.org/goodrelations/v1#PartsAndLabor-BringIn
  * http://purl.org/goodrelations/v1#PartsAndLabor-PickUp
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class WarrantyScopeViewHelper extends AbstractTypeViewHelper
 {

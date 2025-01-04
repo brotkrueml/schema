@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A type of permission which can be granted for accessing a digital document.
+ * @deprecated This type represents an enumeration, use the specific DigitalDocumentPermissionType enum instead.
  */
 #[Type('DigitalDocumentPermissionType')]
 final class DigitalDocumentPermissionType extends AbstractType

@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Enumerated options related to a ContactPoint.
+ * @deprecated This type represents an enumeration, use the specific ContactPointOption enum instead.
  */
 #[Type('ContactPointOption')]
 final class ContactPointOption extends AbstractType

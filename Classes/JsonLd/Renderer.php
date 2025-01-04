@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\JsonLd;
 
+use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Extension;
@@ -124,7 +125,7 @@ final class Renderer implements RendererInterface
     /**
      * @return array<string, mixed>|string
      */
-    private function getPropertyValueForResult(NodeIdentifierInterface|TypeInterface|bool|string|int|float $value): array|string
+    private function getPropertyValueForResult(NodeIdentifierInterface|TypeInterface|EnumerationInterface|bool|string|int|float $value): array|string
     {
         if ($value instanceof TypeInterface) {
             return (new self())->prepare($value);
@@ -134,6 +135,10 @@ final class Renderer implements RendererInterface
             return [
                 '@id' => $value->getId(),
             ];
+        }
+
+        if ($value instanceof EnumerationInterface) {
+            return $value->canonical();
         }
 
         if (\is_bool($value)) {

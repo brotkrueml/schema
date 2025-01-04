@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * RsvpResponseType is an enumeration type whose instances represent responding to an RSVP request.
+ * @deprecated This type represents an enumeration, use the specific RsvpResponseType enum instead.
  */
 #[Type('RsvpResponseType')]
 final class RsvpResponseType extends AbstractType

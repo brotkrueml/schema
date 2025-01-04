@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A type of boarding policy used by an airline.
+ * @deprecated This type represents an enumeration, use the specific BoardingPolicyType enum instead.
  */
 #[Type('BoardingPolicyType')]
 final class BoardingPolicyType extends AbstractType

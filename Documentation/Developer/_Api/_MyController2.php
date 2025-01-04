@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MyVendor\MyExtension\Controller;
 
+use Brotkrueml\Schema\Model\Enumeration\GenderType;
 use Brotkrueml\Schema\Type\TypeFactory;
 
 final class MyController
@@ -21,7 +22,7 @@ final class MyController
             ->setId('https://example.org/#person-42')
             ->setProperty('givenName', 'John')
             ->setProperty('familyName', 'Smith')
-            ->setProperty('gender', 'https://schema.org/Male');
+            ->setProperty('gender', GenderType::Male);
 
         // ...
     }

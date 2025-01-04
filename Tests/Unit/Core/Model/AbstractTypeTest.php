@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
@@ -153,6 +154,12 @@ class AbstractTypeTest extends TestCase
             public function getId(): ?string
             {
                 return 'some-node-identifier';
+            }
+        });
+        $this->subject->setProperty('isAccessibleForFree', new class implements EnumerationInterface {
+            public function canonical(): string
+            {
+                return 'some-canonical';
             }
         });
     }

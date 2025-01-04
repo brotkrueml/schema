@@ -153,6 +153,45 @@ This results in the following JSON-LD:
    }
 
 
+.. _enumerations:
+
+Enumerations
+------------
+
+.. versionadded:: 3.9.0
+   This feature is considered experimental and may change at any time until it
+   is declared stable. However, feedback is welcome.
+
+The schema.org vocabulary provides `lists/enumerations`_. An enumeration has
+one or more members, for example, the `GenderType` has the members `Male` and
+`Female`.
+
+These enumerations can be used in your code instead of plain strings. This has
+the advantage of avoiding typos because you can use your IDE's capabilities.
+Using an enumeration is optional, you can also use a string.
+
+Let's take a look at the usage:
+
+.. literalinclude:: _Api/_MyController2.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :emphasize-lines: 7,25
+
+This results in the following output:
+
+.. code-block:: json
+   :emphasize-lines: 7
+
+   {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "@id": "https://example.org/#person-42",
+      "givenName": "John",
+      "familyName": "Smith",
+      "gender": "https://schema.org/Male",
+   }
+
+
 .. _node-identifier:
 
 Node identifiers
@@ -566,6 +605,7 @@ and one static method:
 
 .. _blank node identifier: https://www.w3.org/TR/json-ld11/#example-95-referencing-an-unidentified-node
 .. _person: https://schema.org/Person
+.. _lists/enumerations: https://schema.org/Enumeration
 .. _IRI: https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier
 .. _schema.org: https://schema.org/docs/full.html
 .. _web page element type: https://schema.org/WebPageElement

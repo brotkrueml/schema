@@ -22,6 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#Enduser
  * http://purl.org/goodrelations/v1#PublicInstitution
  * http://purl.org/goodrelations/v1#Reseller
+ * @deprecated This type represents an enumeration, use the specific BusinessEntityType enum instead.
  */
 #[Type('BusinessEntityType')]
 final class BusinessEntityType extends AbstractType

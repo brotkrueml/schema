@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#Labor-BringIn
  * http://purl.org/goodrelations/v1#PartsAndLabor-BringIn
  * http://purl.org/goodrelations/v1#PartsAndLabor-PickUp
+ * @deprecated This type represents an enumeration, use the specific WarrantyScope enum instead.
  */
 #[Type('WarrantyScope')]
 final class WarrantyScope extends AbstractType

@@ -9,6 +9,18 @@ Deprecations
 Introduced in version 3
 =======================
 
+.. confval:: Enumeration type model / view helper classes
+
+   Deprecated since version
+      3.9.0
+
+   Will be removed in version
+      4.0.0
+
+   Alternative
+      Use the specific :ref:`enumerations <enumerations>` and the
+      :ref:`<f:constant> view helper <view-helpers-enumerations>` instead.
+
 .. confval:: \Brotkrueml\Schema\Type\TypeFactory::createType()
 
    Deprecated since version

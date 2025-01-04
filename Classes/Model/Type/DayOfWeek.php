@@ -18,6 +18,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * The day of the week, e.g. used to specify to which day the opening hours of an OpeningHoursSpecification refer.
  *
  * Originally, URLs from [GoodRelations](http://purl.org/goodrelations/v1) were used (for Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday plus a special entry for PublicHolidays); these have now been integrated directly into schema.org.
+ * @deprecated This type represents an enumeration, use the specific DayOfWeek enum instead.
  */
 #[Type('DayOfWeek')]
 final class DayOfWeek extends AbstractType

@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A value indicating which roadwheels will receive torque.
+ * @deprecated This type represents an enumeration, use the specific DriveWheelConfigurationValue enum instead.
  */
 #[Type('DriveWheelConfigurationValue')]
 final class DriveWheelConfigurationValue extends AbstractType

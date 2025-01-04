@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * An enumeration of several kinds of Map.
+ * @deprecated This type represents an enumeration, use the specific MapCategoryType enum instead.
  */
 #[Type('MapCategoryType')]
 final class MapCategoryType extends AbstractType

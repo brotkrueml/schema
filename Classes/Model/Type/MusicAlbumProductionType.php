@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Classification of the album by its type of content: soundtrack, live album, studio album, etc.
+ * @deprecated This type represents an enumeration, use the specific MusicAlbumProductionType enum instead.
  */
 #[Type('MusicAlbumProductionType')]
 final class MusicAlbumProductionType extends AbstractType

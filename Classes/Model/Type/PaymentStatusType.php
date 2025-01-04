@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
+ * @deprecated This type represents an enumeration, use the specific PaymentStatusType enum instead.
  */
 #[Type('PaymentStatusType')]
 final class PaymentStatusType extends AbstractType

@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Experimental support for schema.org enumerations
+
+### Deprecated
+- Types and view helpers representing enumerations
+
 ## [3.8.0] - 2024-11-22
 
 ### Updated

@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * Classification of the album by its type of content: soundtrack, live album, studio album, etc.
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class MusicAlbumProductionTypeViewHelper extends AbstractTypeViewHelper
 {

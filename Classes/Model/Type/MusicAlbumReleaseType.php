@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * The kind of release which this album is: single, EP or album.
+ * @deprecated This type represents an enumeration, use the specific MusicAlbumReleaseType enum instead.
  */
 #[Type('MusicAlbumReleaseType')]
 final class MusicAlbumReleaseType extends AbstractType

@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
+ * @deprecated This type represents an enumeration, use the specific GamePlayMode enum instead.
  */
 #[Type('GamePlayMode')]
 final class GamePlayMode extends AbstractType

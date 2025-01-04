@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * Lists or enumerations—for example, a list of cuisines or music genres, etc.
+ * @deprecated This type represents an enumeration, use the specific Enumeration enum instead.
  */
 #[Type('Enumeration')]
 final class Enumeration extends AbstractType

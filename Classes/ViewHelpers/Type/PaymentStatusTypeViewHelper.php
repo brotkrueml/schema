@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
+ * @deprecated This type represents an enumeration, use the enum with the {f:constant()} ViewHelper instead (available since Fluid 2.12).
  */
 final class PaymentStatusTypeViewHelper extends AbstractTypeViewHelper
 {

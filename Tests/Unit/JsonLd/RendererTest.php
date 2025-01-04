@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
+use Brotkrueml\Schema\Tests\Fixtures\Enumeration\GenericEnumeration;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
@@ -227,6 +228,27 @@ class RendererTest extends TestCase
             \sprintf(
                 Extension::JSONLD_TEMPLATE,
                 '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
+            ),
+            $this->subject->render(),
+        );
+    }
+
+    #[Test]
+    public function renderHandlesEnumerationCorrectly(): void
+    {
+        $type = new GenericStub(
+            properties: [
+                'some-property' => GenericEnumeration::Member1,
+                'another-property' => GenericEnumeration::Member2,
+            ],
+        );
+
+        $this->subject->addType($type);
+
+        self::assertSame(
+            \sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"https://schema.org/","@type":"GenericStub","some-property":"https://schema.org/Member1","another-property":"https://schema.org/Member2"}',
             ),
             $this->subject->render(),
         );

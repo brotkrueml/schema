@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
  * A list of possible conditions for the item.
+ * @deprecated This type represents an enumeration, use the specific OfferItemCondition enum instead.
  */
 #[Type('OfferItemCondition')]
 final class OfferItemCondition extends AbstractType
