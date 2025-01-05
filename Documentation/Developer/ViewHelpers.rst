@@ -57,8 +57,8 @@ enrich with structured markup:
          url="https://example.org/"
          isAccessibleForFree="true"
       >
-         <schema:property -as="sameAs" value="https://twitter.com/fancy-event"/>
-         <schema:property -as="sameAs" value="https://facebook.com/fancy-event"/>
+         <schema:property -as="sameAs" value="https://mastodon.social/@fancy-event"/>
+         <schema:property -as="sameAs" value="https://pixelfed.social/@fancy-event"/>
       </schema:type.event>
    </schema:type.person>
 
@@ -148,7 +148,7 @@ collisions. Let's have a deeper look on them.
          "image": "https://example.org/event.png",
          "url": "https://example.org",
          "isAccessibleForFree": "https://schema.org/True",
-         "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
+         "sameAs": ["https://mastodon.social/@fancy-event", "https://pixelfed.social/@fancy-event"]
       }
 
    and reference it on the same or another page (for example, `Person`):
@@ -429,8 +429,8 @@ property view helper into the game:
       image="https://example.org/logo.png"
       url="https://example.org/"
    >
-      <schema:property -as="sameAs" value="https://twitter.com/acme"/>
-      <schema:property -as="sameAs" value="https://facebook.com/acme"/>
+      <schema:property -as="sameAs" value="https://mastodon.social/@acme"/>
+      <schema:property -as="sameAs" value="https://pixelfed.social/@acme"/>
    </schema:type.corporation>
 
 You can use as much property view helpers as you like for the same property. If
@@ -442,8 +442,8 @@ you prefer, you can combine the view helpers as follows:
       <schema:property -as="name" value="Acme Ltd."/>
       <schema:property -as="image" value="https://example.org/logo.png"/>
       <schema:property -as="url" value="https://example.org/"/>
-      <schema:property -as="sameAs" value="https://twitter.com/acme"/>
-      <schema:property -as="sameAs" value="https://facebook.com/acme"/>
+      <schema:property -as="sameAs" value="https://mastodon.social/@acme"/>
+      <schema:property -as="sameAs" value="https://pixelfed.social/@acme"/>
    </schema:type.corporation>
 
 

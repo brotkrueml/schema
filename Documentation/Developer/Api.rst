@@ -111,7 +111,7 @@ automatically into the head section:
          "image": "https://example.org/event.png",
          "url": "https://example.org",
          "isAccessibleForFree": "https://schema.org/True",
-         "sameAs": ["https://twitter.com/fancy-event", "https://facebook.com/fancy-event"]
+         "sameAs": ["https://mastodon.social/@fancy-event", "https://pixelfed.social/@fancy-event"]
       }
    }
 

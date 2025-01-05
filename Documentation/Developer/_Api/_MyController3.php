@@ -21,8 +21,8 @@ final class MyController
             ->setProperty('image', 'https:/example.org/event.png')
             ->setProperty('url', 'https://example.org/')
             ->setProperty('isAccessibleForFree', true)
-            ->setProperty('sameAs', 'https://twitter.com/fancy-event')
-            ->addProperty('sameAs', 'https://facebook.com/fancy-event')
+            ->setProperty('sameAs', 'https://mastodon.social/@fancy-event')
+            ->addProperty('sameAs', 'https://pixelfed.social/@fancy-event')
         ;
 
         // ...
