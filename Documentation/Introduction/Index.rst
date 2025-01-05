@@ -44,7 +44,7 @@ Schema.org is a set of extensible schemas that enables webmasters to embed
 structured data on their web pages for use by search engines and other
 applications. The vocabulary is divided into different sections:
 
-*  The **core** vocabulary provides all default types and properties, like
+*  The **core** section provides all default types and properties, like
    `Person` or `Organization`.
 *  The **pending** section is a staging area for work-in-progress terms which
    have yet to be accepted into the core vocabulary. `Pending terms`_ are subject
@@ -56,7 +56,7 @@ applications. The vocabulary is divided into different sections:
    `health and lifesciences`_.
 
 .. note::
-   This TYPO3 schema extension provides the terms for the core vocabulary. To
+   This TYPO3 schema extension provides the terms for the core section. To
    use terms from other sections you can extend the vocabulary on your own as
    described in the :ref:`according chapter <extending-vocabulary>` or use one
    of the additional TYPO3 extensions provided by the author of this extension:

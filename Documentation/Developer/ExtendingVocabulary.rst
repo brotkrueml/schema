@@ -17,7 +17,7 @@ Introduction
 ============
 
 The TYPO3 schema extension ships :ref:`type models <api>` and :ref:`view helpers
-<view-helpers>` with their properties from the core vocabulary of the schema.org
+<view-helpers>` with their properties from the core section of the schema.org
 definitions. However, there are several extensions, like
 `Health and lifesciences`_ or `Autos`_. There are also `pending types and
 properties`_ available that enable schema.org to introduce terms on an
@@ -33,7 +33,7 @@ if you only want to add only a few terms you are encouraged to add them on your
 own, especially pending terms.
 
 Pending terms are experimental, after a certain time a term will be incorporated
-into the core vocabulary or dropped. This depends on the usage, adoption and
+into the core section or dropped. This depends on the usage, adoption and
 discussions. To maintain backward-compatibility and to not break any pages,
 pending types are also not supplied by this extension.
 
@@ -55,7 +55,7 @@ how to register additional properties in detail.
    About 1-2 times a year a new version of the schema.org definition is
    `released`_. The extension adopts these changes in future releases. If you
    register a pending property for a type, this property can be included in the
-   core vocabulary in a later version of this extension. However, it doesn't do
+   core section in a later version of this extension. However, it doesn't do
    any harm to register a property that already exists.
 
 
@@ -126,7 +126,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
          = 'MyVendor\\MyExtension\\ViewHelpers\\Schema';
 
    This way you don't have to think about which namespace to use. And if the
-   pending type is moved to the core vocabulary you have no need to touch your
+   pending type is moved to the core section you have no need to touch your
    Fluid templates. Of course, feel free to use another namespace.
 
 .. attention::
@@ -134,7 +134,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
    your class models take precedence over the delivered models from the schema
    extension. This may be necessary, if you define a pending type with pending
    properties (which you also use) to avoid breaks when the type is included
-   into the core vocabulary but some properties aren't.
+   into the core section but some properties aren't.
 
 .. tip::
    Have a look into the `schema_virtuallocation`_ extension. It serves as a
