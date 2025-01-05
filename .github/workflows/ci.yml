@@ -131,9 +131,9 @@ jobs:
           INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
         run: |
           make mutation
-      - name: Run tests and collect coverage
-        run: .Build/bin/phpunit --configuration Tests/phpunit.xml.dist --coverage-clover coverage.xml .
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+#      - name: Run tests and collect coverage
+#        run: .Build/bin/phpunit --configuration Tests/phpunit.xml.dist --coverage-clover coverage.xml .
+#      - name: Upload coverage to Codecov
+#        uses: codecov/codecov-action@v5
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
