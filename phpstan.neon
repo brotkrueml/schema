@@ -22,6 +22,7 @@ services:
                 - die
                 - compact
                 - var_dump
+                - var_export
     -
         class: Symplify\PHPStanRules\Rules\ForbiddenNodeRule
         tags: [phpstan.rules.rule]
