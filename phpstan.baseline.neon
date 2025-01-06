@@ -61,6 +61,12 @@ parameters:
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
+			message: '#^Parameter \#1 \$attributes \(array\{identifier\: string\}\) of method Brotkrueml\\Schema\\Lowlevel\\ConfigurationModuleProvider\\Types\:\:__invoke\(\) should be contravariant with parameter \$attributes \(array\) of method TYPO3\\CMS\\Lowlevel\\ConfigurationModuleProvider\\ProviderInterface\:\:__invoke\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: Classes/Lowlevel/ConfigurationModuleProvider/Types.php
+
+		-
 			message: '#^Cannot call method addProperty\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
 			identifier: method.nonObject
 			count: 3

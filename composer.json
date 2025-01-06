@@ -36,6 +36,7 @@
 		"infection/infection": "^0.29.10",
 		"phpstan/extension-installer": "^1.4",
 		"phpstan/phpstan": "2.1.0",
+		"phpstan/phpstan-strict-rules": "2.0.1",
 		"phpunit/phpunit": "^10.5 || ^11.5",
 		"rector/rector": "2.0.5",
 		"symfony/yaml": "^5.4 || ^6.4 || ^7.2",

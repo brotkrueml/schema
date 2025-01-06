@@ -10,6 +10,9 @@ parameters:
     cognitive_complexity:
         class: 20
         function: 10
+    strictRules:
+        booleansInConditions: false
+        disallowedShortTernary: false
 
 services:
     -
