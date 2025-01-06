@@ -103,8 +103,8 @@ final class PropertyValueViewHelper extends AbstractViewHelper
             [
                 new Link(
                     $value,
-                    $linkTitle ?: $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
-                    $iconIdentifier ?: 'actions-link',
+                    $linkTitle !== '' ? $linkTitle : $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
+                    $iconIdentifier !== '' ? $iconIdentifier : 'actions-link',
                 ),
             ],
             $value,

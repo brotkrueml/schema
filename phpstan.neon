@@ -12,7 +12,6 @@ parameters:
         function: 10
     strictRules:
         booleansInConditions: false
-        disallowedShortTernary: false
 
 services:
     -

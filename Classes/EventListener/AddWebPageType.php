@@ -40,7 +40,10 @@ final class AddWebPageType
 
         /** @var TypoScriptFrontendController $frontendController */
         $frontendController = $event->getRequest()->getAttribute('frontend.controller');
-        $webPageType = ($frontendController->page['tx_schema_webpagetype'] ?? '') ?: self::DEFAULT_WEBPAGE_TYPE;
+        $webPageType = self::DEFAULT_WEBPAGE_TYPE;
+        if (($frontendController->page['tx_schema_webpagetype'] ?? '') !== '') {
+            $webPageType = $frontendController->page['tx_schema_webpagetype'];
+        }
         $webPageModel = $this->typeFactory->create($webPageType);
         if ($frontendController->page['endtime'] ?? 0) {
             $webPageModel->setProperty('expires', \date('c', $frontendController->page['endtime']));

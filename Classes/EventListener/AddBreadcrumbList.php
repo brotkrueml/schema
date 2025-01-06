@@ -98,7 +98,7 @@ final class AddBreadcrumbList
 
             $item = $this->typeFactory->create('ListItem')->setProperties([
                 'position' => $index + 1,
-                'name' => $page['nav_title'] ?: $page['title'],
+                'name' => \is_string($page['nav_title']) && $page['nav_title'] !== '' ? $page['nav_title'] : $page['title'],
                 'item' => $itemType,
             ]);
 

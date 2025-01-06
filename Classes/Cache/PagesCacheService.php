@@ -28,8 +28,9 @@ class PagesCacheService
     public function getMarkupFromCache(): ?string
     {
         $this->initialiseTypoScriptFrontendController();
+        $markup = $this->cache->get($this->getCacheIdentifier());
 
-        return $this->cache->get($this->getCacheIdentifier()) ?: null;
+        return \is_string($markup) ? $markup : null;
     }
 
     private function getCacheIdentifier(): string
