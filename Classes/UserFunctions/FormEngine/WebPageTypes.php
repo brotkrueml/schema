@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Information\Typo3Version;
 
 /**
- * Provides a user function used as itemProcFunc in TCA defintion
+ * Provides a user function used as itemProcFunc in TCA definition
  * for pages.tx_schema_webpagetype field
  * @internal
  */
@@ -26,7 +26,7 @@ final class WebPageTypes
     ) {}
 
     /**
-     * @param array{items: string[]} $params
+     * @param array{items: non-empty-array<array{label: string, value: string}|array{string, string}>} $params
      */
     public function get(array &$params): void
     {

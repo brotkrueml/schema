@@ -61,12 +61,6 @@ parameters:
 			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
 
 		-
-			message: '#^Method Brotkrueml\\Schema\\Lowlevel\\ConfigurationModuleProvider\\Types\:\:__invoke\(\) has parameter \$attributes with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Lowlevel/ConfigurationModuleProvider/Types.php
-
-		-
 			message: '#^Cannot call method addProperty\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
 			identifier: method.nonObject
 			count: 3
@@ -89,10 +83,3 @@ parameters:
 			identifier: complexity.functionLike
 			count: 1
 			path: Classes/Manager/SchemaManager.php
-
-		-
-			message: '#^Parameter &\$params by\-ref type of method Brotkrueml\\Schema\\UserFunctions\\FormEngine\\WebPageTypes\:\:get\(\) expects array\{items\: array\<string\>\}, array\{items\: non\-empty\-array\<array\{label\: string, value\: string\}\|array\{string, string\}\|string\>\} given\.$#'
-			identifier: parameterByRef.type
-			count: 2
-			path: Classes/UserFunctions/FormEngine/WebPageTypes.php
-

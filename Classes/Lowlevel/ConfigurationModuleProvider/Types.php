@@ -27,6 +27,9 @@ final class Types implements ProviderInterface
         private readonly TypeProvider $typeProvider,
     ) {}
 
+    /**
+     * @param array{identifier: string} $attributes
+     */
     public function __invoke(array $attributes): ProviderInterface
     {
         $this->identifier = $attributes['identifier'];
