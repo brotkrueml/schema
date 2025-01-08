@@ -78,9 +78,6 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
         );
     }
 
-    /**
-     * @ param array{breadcrumb: list<array<string, mixed>>, renderFirstItem?: bool} $arguments
-     */
     public function render(): void
     {
         if (! ($this->arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false)) {
