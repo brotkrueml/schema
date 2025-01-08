@@ -23,7 +23,6 @@ use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class SchemaManagerTest extends TestCase
 {
@@ -51,11 +50,6 @@ final class SchemaManagerTest extends TestCase
             $this->buildConfiguration(false),
             $this->renderer,
         );
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
     }
 
     #[Test]
