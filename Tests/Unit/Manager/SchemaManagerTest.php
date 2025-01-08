@@ -17,6 +17,7 @@ use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Brotkrueml\Schema\Model\Type\ItemPage;
+use Brotkrueml\Schema\Model\Type\Organization;
 use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
@@ -266,6 +267,21 @@ final class SchemaManagerTest extends TestCase
         $actual = $this->rendererTypes->getValue($this->renderer);
 
         self::assertSame([$thing, $person], $actual);
+    }
+
+    #[Test]
+    public function renderJsonLdUsingVariadicAddTypeCorrectly(): void
+    {
+        $thing = new Thing();
+        $organization = new Organization();
+        $person = new Person();
+
+        $this->subject->addType($thing, $organization, $person);
+        $this->subject->renderJsonLd();
+
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertSame([$thing, $organization, $person], $actual);
     }
 
     #[Test]

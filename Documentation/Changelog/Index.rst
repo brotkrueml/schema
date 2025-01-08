@@ -16,6 +16,7 @@ Added
 
 
 * Experimental support for schema.org enumerations
+* ``SchemaManager->addType()`` is now variadic
 
 Deprecated
 ^^^^^^^^^^

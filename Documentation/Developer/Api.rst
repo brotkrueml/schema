@@ -472,20 +472,24 @@ Schema manager
 ==============
 
 The schema manager (class :php:`\Brotkrueml\Schema\Manager\SchemaManager`)
-manages the concrete type model objects and prepares them for embedding into the
-web page.
+collects the concrete type model objects and prepares them for embedding into
+the web page.
 
 The class exposes the following methods:
 
-.. confval:: addType($type)
+.. confval:: addType(...$type)
    :name: schemamanager-addtype
 
-   Adds the given type model to the Schema Manager for inclusion on the web
+   .. versionadded:: 3.9.0
+      This method is now variadic and can take an arbitrary number of type
+      models.
+
+   Adds the given type models to the Schema Manager for inclusion on the web
    page.
 
    Parameter
-      :php:`TypeInterface $type`
-         The type model class with the set properties. This can be also
+      :php:`TypeInterface ...$type`
+         The type model classes with the set properties. These can be also
          "special" types, like a `WebPage` or a `BreadcrumbList`.
 
    Return value

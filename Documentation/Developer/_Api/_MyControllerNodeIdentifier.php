@@ -31,8 +31,7 @@ final class MyController
 
         $person1->setProperty('knows', $person2);
 
-        $this->schemaManager->addType($person1);
-        $this->schemaManager->addType($person2);
+        $this->schemaManager->addType($person1, $person2);
 
         // ...
     }

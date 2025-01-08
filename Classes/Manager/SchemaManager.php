@@ -44,24 +44,26 @@ final class SchemaManager implements SingletonInterface
     /**
      * Add a type
      *
-     * @param TypeInterface $type The model type
+     * @param TypeInterface ...$type The model types
      */
-    public function addType(TypeInterface $type): self
+    public function addType(TypeInterface ...$type): self
     {
-        if ($this->isWebPageType($type)) {
-            $this->setWebPage($type);
+        foreach ($type as $singleType) {
+            if ($this->isWebPageType($singleType)) {
+                $this->setWebPage($singleType);
 
-            return $this;
+                return $this;
+            }
+
+            if ($this->isBreadCrumbList($singleType)) {
+                /** @var BreadcrumbList $singleType */
+                $this->addBreadcrumbList($singleType);
+
+                return $this;
+            }
+
+            $this->types[] = $singleType;
         }
-
-        if ($this->isBreadCrumbList($type)) {
-            /** @var BreadcrumbList $type */
-            $this->addBreadcrumbList($type);
-
-            return $this;
-        }
-
-        $this->types[] = $type;
 
         return $this;
     }

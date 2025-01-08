@@ -79,7 +79,7 @@ parameters:
 			path: Classes/Manager/SchemaManager.php
 
 		-
-			message: '#^Class cognitive complexity is 25, keep it under 20$#'
+			message: '#^Class cognitive complexity is 27, keep it under 20$#'
 			identifier: complexity.classLike
 			count: 1
 			path: Classes/Manager/SchemaManager.php

@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 - Experimental support for schema.org enumerations
+- `SchemaManager->addType()` is now variadic
 
 ### Deprecated
 - Types and view helpers representing enumerations
