@@ -54,15 +54,15 @@ final class AddBreadcrumbList
         /** @var TypoScriptFrontendController $frontendController */
         $frontendController = $event->getRequest()->getAttribute('frontend.controller');
         foreach ($frontendController->config['rootLine'] as $page) {
-            if ($page['is_siteroot'] ?? false) {
+            if ((bool) ($page['is_siteroot'] ?? false)) {
                 continue;
             }
 
-            if ($page['hidden'] ?? false) {
+            if ((bool) ($page['hidden'] ?? false)) {
                 continue;
             }
 
-            if ($page['nav_hide'] ?? false) {
+            if ((bool) ($page['nav_hide'] ?? false)) {
                 continue;
             }
 

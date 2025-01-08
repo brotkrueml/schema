@@ -90,8 +90,8 @@ final class Renderer implements RendererInterface
 
     private function addIdToResult(TypeInterface $type): void
     {
-        $id = $type->getId();
-        if ($id) {
+        $id = $type->getId() ?? '';
+        if ($id !== '') {
             $this->typeResult['@id'] = $id;
         }
     }

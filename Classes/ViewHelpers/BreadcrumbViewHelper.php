@@ -80,7 +80,8 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
     public function render(): void
     {
-        if (! ($this->arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false)) {
+        $shouldRenderFirstItem = (bool) ($this->arguments[self::ARGUMENT_RENDER_FIRST_ITEM] ?? false);
+        if (! $shouldRenderFirstItem) {
             \array_shift($this->arguments[self::ARGUMENT_BREADCRUMB]);
         }
 
