@@ -27,7 +27,7 @@ enum GenderType implements EnumerationInterface
 
     public function canonical(): string
     {
-        return match($this) {
+        return match ($this) {
             self::DemiBoy => 'Demi-boy',
             self::DemiGirl => 'Demi-girl',
             self::Female, self::Male => 'https://schema.org/' . $this->name,
