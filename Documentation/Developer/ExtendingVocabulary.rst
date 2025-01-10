@@ -225,6 +225,12 @@ which results in:
       "eligibleCustomerType": "http://purl.org/goodrelations/v1#Enduser"
    }
 
+Another use case might be to create your own extended `GenderType`
+enum instead using the enum from this extension:
+
+.. literalinclude:: _ExtendingVocabulary/_GenderType.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Schema/Enumeration/GenderType.php
 
 
 .. _Autos: https://schema.org/docs/automotive.html
