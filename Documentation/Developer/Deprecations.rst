@@ -18,8 +18,8 @@ Introduced in version 3
       4.0.0
 
    Alternative
-      Use the specific :ref:`enumerations <enumerations>` and the
-      :ref:`<f:constant> view helper <view-helpers-enumerations>` instead.
+      Use the specific enums and the <f:constant> view helper instead, see
+      :ref:`enumerations <enumerations>` for details.
 
 .. confval:: \Brotkrueml\Schema\Type\TypeFactory::createType()
 

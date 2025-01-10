@@ -169,6 +169,8 @@ The new web page type can now be selected in the page properties:
    *MedicalWebPage* in the list of available web page types
 
 
+.. _extending-adding-enumeration:
+
 Add a new enumeration
 =====================
 
@@ -176,17 +178,24 @@ Add a new enumeration
    This feature is considered experimental and may change at any time until it
    is declared stable. However, feedback is welcome.
 
-schema.org offers the possibility to use enumerations as value for certain
+schema.org provides the ability to use enumerations as values for certain
 properties. The TYPO3 schema extensions provide the
 :ref:`enumerations <enumerations>` defined by schema.org. However, there are
-some enumerations where schema.org refers to other vocabularies. One example is
-the `BusinessEntityType`_, which suggests using the `GoodRelations`_ terms. If
-you want to use them, you can define and use your own enumeration to provide a
-defined set of possible values (instead of plain strings):
+some enumerations where schema.org refers to other vocabularies. These
+enumerations are not provided by the TYPO3 schema extensions.
+An example is `BusinessEntityType`_, which suggests using the `GoodRelations`_
+terms. If you want to use them, you can define and use your own enumeration to
+provide a defined set of of possible values satisfiying your needs (instead of
+plain strings):
 
 .. literalinclude:: _ExtendingVocabulary/_BusinessEntityType.php
    :language: php
    :caption: EXT:my_extension/Classes/Schema/Enumeration/BusinessEntityType.php
+
+All enumeration types must implement the interface
+:php:`Brotkrueml\Schema\Core\Model\EnumerationInterface`, which requires a
+:php:`canonical()` method. Depending on the case, it returns the string to use
+in the JSON-LD output.
 
 Now you can make use of this enum in PHP, for example:
 
@@ -197,7 +206,7 @@ Now you can make use of this enum in PHP, for example:
    $demand = $this->typeFactory->create('Demand');
    $demand->setProperty('eligibleCustomerType', BusinessEntityType::Enduser);
 
-or in :ref:`Fluid <view-helpers-enumerations>`:
+or in :ref:`Fluid <enumerations-view-helper>`:
 
 .. code-block:: html
 
