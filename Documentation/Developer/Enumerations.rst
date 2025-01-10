@@ -28,10 +28,8 @@ These enumerations can be used in your code instead of plain strings. This has
 the advantage of avoiding typos because you can use your IDE's capabilities.
 Also these members are part of a common vocabulary.
 
-Using an enumeration, you can also use a string. For the `gender`
-property this may be `https://schema.org/Male`, `https://schema.org/Female`,
-`Male`, `Female`, `Queer` or `Demi-girl`.
-
+You can find the enums provided by the TYPO3 schema extensions in the
+:file:`Classes/Model/Enumeration/` folder.
 
 Usage in PHP
 ============
