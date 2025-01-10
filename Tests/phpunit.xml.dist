@@ -29,6 +29,7 @@
             <directory>../Classes/</directory>
         </include>
         <exclude>
+            <directory>../Classes/Model/Enumeration/</directory>
             <directory>../Classes/Model/Type/</directory>
             <directory>../Classes/ViewHelpers/Type/</directory>
         </exclude>
