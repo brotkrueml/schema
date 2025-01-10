@@ -240,6 +240,10 @@ model can also extend the abstract class
 :php:`\Brotkrueml\Schema\Core\Model\AbstractType` which implements every
 required method.
 
+Each :ref:`enumeration type <enumerations>`, like `GenderType`,
+`ItemAvailability` or `OrderStatus`, implement the interface
+:php:`\Brotkrueml\Schema\Core\Model\EnumerationInterface`.
+
 One interface is available to "mark" a type model class as a "special type". It
 does not require the implementation of additional methods:
 
@@ -256,10 +260,12 @@ These interfaces can be useful when you want to
    object Event
    object OtherTypes
    object WebPage
+   object Enumeration
    abstract AbstractType
    interface NodeIdentifierInterface
    interface TypeInterface
    interface WebPageTypeInterface
+   interface EnumerationInterface
 
    Thing --|> AbstractType
    Event --|> AbstractType
@@ -268,6 +274,7 @@ These interfaces can be useful when you want to
    AbstractType --|> TypeInterface
    AbstractType --|> NodeIdentifierInterface
    WebPage --|> WebPageTypeInterface
+   Enumeration --|> EnumerationInterface
 
 Each type model delivered with this extension extends the :php:`AbstractType`
 class.
@@ -431,6 +438,24 @@ expose the following methods:
    Return value
       A string (if it is a single type) or an array of strings (if it is a
       :ref:`multiple type <multiple-types>`).
+
+
+.. _api-enumeration-interface:
+
+:php:`EnumerationInterface` method
+----------------------------------
+
+An :ref:`enumeration type <enumerations>` requires to implement the interface
+:php:`\Brotkrueml\Schema\Core\Model\EnumerationInterface`.
+
+.. confval:: canonical()
+   :name: enumerationinterface-canonical
+
+   Returns the canonical value of an enum case. This value is used for
+   JSON-LD rendering.
+
+   Return value
+      The canonical value.
 
 
 .. _api-schema-manager:

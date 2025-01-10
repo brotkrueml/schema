@@ -193,9 +193,9 @@ plain strings):
    :caption: EXT:my_extension/Classes/Schema/Enumeration/BusinessEntityType.php
 
 All enumeration types must implement the interface
-:php:`Brotkrueml\Schema\Core\Model\EnumerationInterface`, which requires a
-:php:`canonical()` method. Depending on the case, it returns the string to use
-in the JSON-LD output.
+:ref:`Brotkrueml\Schema\Core\Model\EnumerationInterface <api-enumeration-interface>`,
+which requires a :php:`canonical()` method. Depending on the case, it returns
+the string to use in the JSON-LD output.
 
 Now you can make use of this enum in PHP, for example:
 
