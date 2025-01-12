@@ -13,7 +13,7 @@ namespace Brotkrueml\Schema\TypoScript;
 
 /**
  * Copied and adapted from \TYPO3\CMS\Core\TypoScriptService::convertTypoScriptArrayToPlainArray()
- * as th methods are marked as internal.
+ * as the methods are marked as internal.
  */
 final class TypoScriptConverter
 {
