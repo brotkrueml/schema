@@ -46,6 +46,17 @@ final class TypoScriptConverterTest extends TestCase
             ],
         ];
 
+        yield 'typoscript array with a dot key which value is not an array' => [
+            'typoScriptSettings' => [
+                '10.' => 42,
+                '10' => 'TEXT',
+            ],
+            'expectedSettings' => [
+                '10' => null,
+                '10.' => 42,
+            ],
+        ];
+
         yield 'typoscript with intermediate dots' => [
             'typoScriptSettings' => [
                 '10.' => [
