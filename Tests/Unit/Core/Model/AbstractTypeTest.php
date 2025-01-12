@@ -22,6 +22,7 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ThingWithResolvedTypesExposed;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -31,7 +32,8 @@ use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class AbstractTypeTest extends TestCase
+#[CoversClass(AbstractType::class)]
+final class AbstractTypeTest extends TestCase
 {
     use SchemaCacheTrait;
 

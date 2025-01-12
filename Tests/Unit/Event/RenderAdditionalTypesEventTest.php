@@ -13,11 +13,13 @@ namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
-class RenderAdditionalTypesEventTest extends TestCase
+#[CoversClass(RenderAdditionalTypesEvent::class)]
+final class RenderAdditionalTypesEventTest extends TestCase
 {
     private RenderAdditionalTypesEvent $subject;
 

@@ -16,10 +16,12 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-class MultipleTypeTest extends TestCase
+#[CoversClass(MultipleType::class)]
+final class MultipleTypeTest extends TestCase
 {
     private MultipleType $subject;
 

@@ -15,12 +15,14 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\TypeProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+#[CoversClass(Types::class)]
 #[RunTestsInSeparateProcesses]
 final class TypesTest extends TestCase
 {

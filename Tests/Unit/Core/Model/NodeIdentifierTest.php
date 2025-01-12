@@ -13,10 +13,12 @@ namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-class NodeIdentifierTest extends TestCase
+#[CoversClass(NodeIdentifier::class)]
+final class NodeIdentifierTest extends TestCase
 {
     #[Test]
     public function subjectIsInstanceOfNodeIdentifierInterface(): void

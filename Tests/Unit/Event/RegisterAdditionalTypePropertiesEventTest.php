@@ -13,10 +13,12 @@ namespace Brotkrueml\Schema\Tests\Unit\Event;
 
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-class RegisterAdditionalTypePropertiesEventTest extends TestCase
+#[CoversClass(RegisterAdditionalTypePropertiesEvent::class)]
+final class RegisterAdditionalTypePropertiesEventTest extends TestCase
 {
     private RegisterAdditionalTypePropertiesEvent $subject;
 

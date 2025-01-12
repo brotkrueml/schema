@@ -13,9 +13,11 @@ namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
 use Brotkrueml\Schema\Manager\MainEntityOfWebPageBag;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(MainEntityOfWebPageBag::class)]
 final class MainEntityOfWebPageBagTest extends TestCase
 {
     private MainEntityOfWebPageBag $subject;

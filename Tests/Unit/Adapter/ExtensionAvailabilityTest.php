@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Adapter;
 
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
@@ -19,6 +20,7 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
+#[CoversClass(ExtensionAvailability::class)]
 #[RunTestsInSeparateProcesses]
 final class ExtensionAvailabilityTest extends TestCase
 {

@@ -22,9 +22,11 @@ use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(SchemaManager::class)]
 final class SchemaManagerTest extends TestCase
 {
     use SchemaCacheTrait;

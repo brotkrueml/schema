@@ -12,10 +12,12 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Model\DataType;
 
 use Brotkrueml\Schema\Model\DataType\Boolean;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-class BooleanTest extends TestCase
+#[CoversClass(Boolean::class)]
+final class BooleanTest extends TestCase
 {
     #[Test]
     public function convertToTermWithArgumentTrue(): void

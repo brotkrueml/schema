@@ -35,11 +35,13 @@ use Brotkrueml\Schema\Model\Type\SportsOrganization;
 use Brotkrueml\Schema\Model\Type\SportsTeam;
 use Brotkrueml\Schema\Model\Type\TVEpisode;
 use Brotkrueml\Schema\Model\Type\Vehicle;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
+#[CoversClass(RegisterTypePropertiesMovedFromOfficialToPending::class)]
+final class RegisterTypePropertiesMovedFromOfficialToPendingTest extends TestCase
 {
     private RegisterTypePropertiesMovedFromOfficialToPending $subject;
 

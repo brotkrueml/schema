@@ -12,11 +12,13 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Configuration;
 
 use Brotkrueml\Schema\Configuration\ConfigurationProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 
+#[CoversClass(ConfigurationProvider::class)]
 final class ConfigurationProviderTest extends TestCase
 {
     #[Test]

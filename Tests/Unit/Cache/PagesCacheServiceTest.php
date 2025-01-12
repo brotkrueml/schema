@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\Cache;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -19,6 +20,7 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
+#[CoversClass(PagesCacheService::class)]
 final class PagesCacheServiceTest extends TestCase
 {
     private PagesCacheService $subject;

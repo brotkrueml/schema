@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 use Brotkrueml\Schema\AdminPanel\TypesInformation;
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Extension;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -24,6 +25,7 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
+#[CoversClass(TypesInformation::class)]
 final class TypesInformationTest extends TestCase
 {
     private PagesCacheService&Stub $pagesCacheServiceStub;

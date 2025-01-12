@@ -16,13 +16,15 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Enumeration\GenericEnumeration;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Renderer::class)]
 #[RunTestsInSeparateProcesses]
-class RendererTest extends TestCase
+final class RendererTest extends TestCase
 {
     private Renderer $subject;
 
