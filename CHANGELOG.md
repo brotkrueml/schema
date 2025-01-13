@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.9.0] - 2025-01-13
+
 ### Added
 - Experimental support for schema.org enumerations
 - `SchemaManager->addType()` is now variadic
@@ -505,7 +507,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.8.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.9.0...HEAD
+[3.9.0]: https://github.com/brotkrueml/schema/compare/v3.8.0...v3.9.0
 [3.8.0]: https://github.com/brotkrueml/schema/compare/v3.7.1...v3.8.0
 [3.7.1]: https://github.com/brotkrueml/schema/compare/v3.7.0...v3.7.1
 [3.7.0]: https://github.com/brotkrueml/schema/compare/v3.6.1...v3.7.0
