@@ -21,7 +21,7 @@ Introduction
 ============
 
 The schema.org vocabulary provides `enumerations types`_. An enumeration has
-one or more members, for example, the `GenderType` use for the `gender` property
+one or more members, for example, the `GenderType` used for the `gender` property
 has the members `Male` and `Female`.
 
 These enumerations can be used in your code instead of plain strings. This has

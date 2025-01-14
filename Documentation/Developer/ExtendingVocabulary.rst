@@ -193,7 +193,7 @@ plain strings):
    :caption: EXT:my_extension/Classes/Schema/Enumeration/BusinessEntityType.php
 
 All enumeration types must implement the interface
-:ref:`Brotkrueml\Schema\Core\Model\EnumerationInterface <api-enumeration-interface>`,
+:ref:`Brotkrueml\\Schema\\Core\\Model\\EnumerationInterface <api-enumeration-interface>`,
 which requires a :php:`canonical()` method. Depending on the case, it returns
 the string to use in the JSON-LD output.
 
