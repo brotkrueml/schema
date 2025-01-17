@@ -8,8 +8,6 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/schema.svg?label=stable)](https://packagist.org/packages/brotkrueml/schema)
 [![Total Downloads](https://img.shields.io/packagist/dt/brotkrueml/schema.svg)](https://packagist.org/packages/brotkrueml/schema)
 
-[![Verified TYPO3 Extension](Documentation/Images/verified.svg) Verified TYPO3 Extension](https://typo3.com/typo3-cms/verified-extensions-integrations-for-typo3/extensions/embedding-schemaorg-vocabulary-in-typo3)
-
 ## Versions and support
 
 | Latest release | TYPO3              | PHP   | Updates will contain                                 |
