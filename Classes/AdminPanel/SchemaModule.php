@@ -13,12 +13,14 @@ namespace Brotkrueml\Schema\AdminPanel;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Extension;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Adminpanel\ModuleApi\AbstractModule;
 use TYPO3\CMS\Adminpanel\ModuleApi\ShortInfoProviderInterface;
 
 /**
  * @internal
  */
+#[Autoconfigure(public: true)]
 final class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
     public function __construct(

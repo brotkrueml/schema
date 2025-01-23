@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\AdminPanel;
 
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Extension;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Adminpanel\ModuleApi\ContentProviderInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleInterface;
@@ -24,6 +25,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 /**
  * @internal
  */
+#[Autoconfigure(public: true)]
 final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
     public function __construct(

@@ -19,8 +19,13 @@ use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Page\PageRenderer;
 
+/**
+ * @internal
+ */
+#[Autoconfigure(public: true)]
 final class SchemaMarkupInjection
 {
     public function __construct(

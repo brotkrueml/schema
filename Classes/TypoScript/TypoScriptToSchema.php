@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\TypoScript;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -20,6 +21,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  * The result will be added as single (nested) type to the SchemaManager.
  * @internal
  */
+#[Autoconfigure(public: true)]
 final class TypoScriptToSchema
 {
     public function __construct(

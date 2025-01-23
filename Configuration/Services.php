@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema;
 
-use Brotkrueml\Schema\AdminPanel\SchemaModule;
-use Brotkrueml\Schema\AdminPanel\TypesInformation;
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Configuration\ConfigurationProvider;
@@ -23,12 +21,9 @@ use Brotkrueml\Schema\EventListener\AddWebPageType;
 use Brotkrueml\Schema\EventListener\RegisterRemovedTypePropertiesForPhysician;
 use Brotkrueml\Schema\EventListener\RegisterTypePropertiesMovedFromOfficialToPending;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
-use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\TypoScript\SchemaContentObject;
-use Brotkrueml\Schema\TypoScript\TypoScriptToSchema;
-use Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
@@ -53,28 +48,14 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
             'getConfiguration',
         ]);
 
-    $services->set(TypesInformation::class)
-        ->public();
-
     $services->set(SchemaMarkupInjection::class)
-        ->public()
         ->arg('$configuration', service('schema.configuration'));
-
-    $services->set(Renderer::class)
-        ->public();
 
     $services->set(SchemaManager::class)
         ->arg('$configuration', service('schema.configuration'));
 
-    $services->set(TypoScriptToSchema::class)
-        ->public();
-
     $services->set(PagesCacheService::class)
-        ->public()
         ->arg('$cache', service('cache.pages'));
-
-    $services->set(SchemaModule::class)
-        ->public();
 
     $services->set(AddBreadcrumbList::class)
         ->arg('$configuration', service('schema.configuration'))
@@ -102,9 +83,6 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
         ->tag('frontend.contentobject', [
             'identifier' => 'SCHEMA',
         ]);
-
-    $services->set(WebPageTypes::class)
-        ->public();
 
     $services->set('brotkrueml.schema.configuration.module.provider.types', Types::class)
         ->tag('lowlevel.configuration.module.provider', [

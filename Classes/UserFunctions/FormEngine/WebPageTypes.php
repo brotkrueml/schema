@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\UserFunctions\FormEngine;
 
 use Brotkrueml\Schema\Type\TypeProvider;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Information\Typo3Version;
 
 /**
@@ -19,6 +20,7 @@ use TYPO3\CMS\Core\Information\Typo3Version;
  * for pages.tx_schema_webpagetype field
  * @internal
  */
+#[Autoconfigure(public: true)]
 final class WebPageTypes
 {
     public function __construct(
