@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Error on legacy v13 installation with deactivated admin panel (#127)
+
 ## [3.9.0] - 2025-01-13
 
 ### Added

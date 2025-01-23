@@ -26,6 +26,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\TypoScript\SchemaContentObject;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use TYPO3\CMS\Adminpanel\Service\ConfigurationService as AdminPanelConfigurationService;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $configurator, ContainerBuilder $builder): void {
@@ -37,10 +38,15 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
         ->autowire()
         ->autoconfigure();
 
+    $excludes = [
+        __DIR__ . '/../Classes/Extension.php',
+    ];
+    if (! $builder->hasDefinition(AdminPanelConfigurationService::class)) {
+        $excludes[] = __DIR__ . '/../Classes/AdminPanel';
+    }
+
     $services->load('Brotkrueml\Schema\\', __DIR__ . '/../Classes/*')
-        ->exclude([
-            __DIR__ . '/../Classes/Extension.php',
-        ]);
+        ->exclude($excludes);
 
     $services->set('schema.configuration', Configuration::class)
         ->factory([

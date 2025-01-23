@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.9.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Error on legacy v13 installation with deactivated admin panel (#127)
+
 `3.9.0 <https://github.com/brotkrueml/schema/compare/v3.8.0...v3.9.0>`_ - 2025-01-13
 ----------------------------------------------------------------------------------------
 
