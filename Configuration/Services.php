@@ -47,9 +47,6 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
             __DIR__ . '/../Classes/Extension.php',
         ]);
 
-    $services->set(ConfigurationProvider::class)
-        ->share();
-
     $services->set('schema.configuration', Configuration::class)
         ->factory([
             service(ConfigurationProvider::class),
