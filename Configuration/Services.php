@@ -44,7 +44,7 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
 
     $services->load('Brotkrueml\Schema\\', __DIR__ . '/../Classes/*')
         ->exclude([
-            __DIR__ . '/../Classes/{AdminPanel,Hooks,Extension.php}',
+            __DIR__ . '/../Classes/Extension.php',
         ]);
 
     $services->set(ConfigurationProvider::class)
