@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.9.1] - 2025-01-28
+
 ### Fixed
 - Error on legacy v13 installation with deactivated admin panel (#127)
 
@@ -510,7 +512,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.9.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.9.1...HEAD
+[3.9.1]: https://github.com/brotkrueml/schema/compare/v3.9.0...v3.9.1
 [3.9.0]: https://github.com/brotkrueml/schema/compare/v3.8.0...v3.9.0
 [3.8.0]: https://github.com/brotkrueml/schema/compare/v3.7.1...v3.8.0
 [3.7.1]: https://github.com/brotkrueml/schema/compare/v3.7.0...v3.7.1
