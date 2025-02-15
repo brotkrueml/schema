@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace MyVendor\MyExtension\Controller;
 
 use Brotkrueml\Schema\Model\Enumeration\GenderType;
-use Brotkrueml\Schema\Type\TypeFactory;
+use Brotkrueml\Schema\Type\TypeFactoryInterface;
 
 final class MyController
 {
     public function __construct(
-        private readonly TypeFactory $typeFactory,
+        private readonly TypeFactoryInterface $typeFactory,
     ) {}
 
     public function doSomething(): void

@@ -9,14 +9,32 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Type;
+namespace Brotkrueml\Schema\Testing;
 
 use Brotkrueml\Schema\Core\Model\MultipleType;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Brotkrueml\Schema\Type\ModelClassNotFoundException;
+use Brotkrueml\Schema\Type\TypeFactoryInterface;
 
-final class TypeFactory implements TypeFactoryInterface
+final class TypeFactorySubstitute implements TypeFactoryInterface
 {
+    /**
+     * @var array<string, class-string>
+     */
+    private array $types = [];
+
+    public function addType(string $name, string $class): self
+    {
+        $implementations = \class_implements($class);
+        if (! isset($implementations[TypeInterface::class])) {
+            throw new \InvalidArgumentException($class . ' is not of type TypeInterface!');
+        }
+
+        $this->types[$name] = $class;
+
+        return $this;
+    }
+
     public function create(string ...$type): TypeInterface
     {
         if ($type === []) {
@@ -34,29 +52,13 @@ final class TypeFactory implements TypeFactoryInterface
         return $this->createMultiple($type);
     }
 
-    /**
-     * @deprecated since 3.0.0, will be removed in 4.0. Inject the TypeFactory into your class and call the method create() on that object.
-     */
-    public static function createType(string ...$type): TypeInterface
+    private function createSingle($type): TypeInterface
     {
-        \trigger_error(
-            'Calling the static method TypeFactory::createType() is deprecated since version 3.0.0 and will be removed in version 4.0. Inject the TypeFactory into your class and call the method create() on that object.',
-            \E_USER_DEPRECATED,
-        );
+        if (isset($this->types[$type])) {
+            return new $this->types[$type]();
+        }
 
-        return (new self())->create(...$type);
-    }
-
-    private function createSingle(string $type): TypeInterface
-    {
-        /** @var TypeProvider $typeProvider */
-        $typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
-        $typeClass = $typeProvider->getModelClassNameForType($type);
-
-        /** @var TypeInterface $type */
-        $type = new $typeClass();
-
-        return $type;
+        throw ModelClassNotFoundException::fromType($type);
     }
 
     /**

@@ -13,7 +13,7 @@ namespace Brotkrueml\Schema\EventListener;
 
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
-use Brotkrueml\Schema\Type\TypeFactory;
+use Brotkrueml\Schema\Type\TypeFactoryInterface;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -25,7 +25,7 @@ final class AddWebPageType
 
     public function __construct(
         private readonly Configuration $configuration,
-        private readonly TypeFactory $typeFactory,
+        private readonly TypeFactoryInterface $typeFactory,
     ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
