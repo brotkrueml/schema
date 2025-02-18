@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Core\Model;
 interface TypeInterface extends NodeIdentifierInterface
 {
     /**
-     * Set the id
+     * Set the id.
      *
      * @param NodeIdentifierInterface|string|null $id The id
      * @return self
@@ -22,14 +22,14 @@ interface TypeInterface extends NodeIdentifierInterface
     public function setId($id);
 
     /**
-     * Check, if a property exists
+     * Check, if a property exists.
      *
      * @param string $propertyName The property name
      */
     public function hasProperty(string $propertyName): bool;
 
     /**
-     * Get the value of a property
+     * Get the value of a property.
      *
      * @param string $propertyName The property name
      * @return mixed
@@ -37,7 +37,7 @@ interface TypeInterface extends NodeIdentifierInterface
     public function getProperty(string $propertyName);
 
     /**
-     * Set the value of a property
+     * Set the value of a property.
      *
      * @param string $propertyName The property name
      * @param mixed $propertyValue The value of the property
@@ -46,7 +46,7 @@ interface TypeInterface extends NodeIdentifierInterface
     public function setProperty(string $propertyName, mixed $propertyValue);
 
     /**
-     * Adds a value to a property
+     * Adds a value to a property.
      *
      * @param string $propertyName The property name
      * @param mixed $propertyValue The property value
@@ -55,7 +55,7 @@ interface TypeInterface extends NodeIdentifierInterface
     public function addProperty(string $propertyName, mixed $propertyValue);
 
     /**
-     * Set multiple properties at once
+     * Set multiple properties at once.
      *
      * The method expects the properties in the following format:
      * key = property name
@@ -67,7 +67,7 @@ interface TypeInterface extends NodeIdentifierInterface
     public function setProperties(array $properties);
 
     /**
-     * Clear a property
+     * Clear a property.
      *
      * @param string $propertyName The property name
      * @return self
@@ -75,15 +75,15 @@ interface TypeInterface extends NodeIdentifierInterface
     public function clearProperty(string $propertyName);
 
     /**
-     * Get the available property names
+     * Get the available property names.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getPropertyNames(): array;
 
     /**
-     * Get the type the model represents
-     * This can also be an array of types for a multiple type
+     * Get the type the model represents.
+     * This can also be an array of types for a multiple type.
      *
      * @return string|string[]
      */

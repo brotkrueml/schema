@@ -10,35 +10,11 @@ parameters:
 			message: '#^Instanceof between mixed and Brotkrueml\\Schema\\Core\\Model\\TypeInterface will always evaluate to false\.$#'
 			identifier: instanceof.alwaysFalse
 			count: 1
-			path: Classes/Core/Model/AbstractType.php
+			path: Classes/Core/Model/AbstractBaseType.php
 
 		-
 			message: '#^Anonymous function should return string but returns array\<string\>\|string\.$#'
 			identifier: return.type
-			count: 1
-			path: Classes/Core/Model/MultipleType.php
-
-		-
-			message: '#^Method Brotkrueml\\Schema\\Core\\Model\\MultipleType\:\:getType\(\) never returns string so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: Classes/Core/Model/MultipleType.php
-
-		-
-			message: '#^Method Brotkrueml\\Schema\\Core\\Model\\MultipleType\:\:mergePropertyNamesFromSingleTypes\(\) has parameter \$types with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Core/Model/MultipleType.php
-
-		-
-			message: '#^Method Brotkrueml\\Schema\\Core\\Model\\MultipleType\:\:storeTypeNames\(\) has parameter \$types with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Core/Model/MultipleType.php
-
-		-
-			message: '#^Static property Brotkrueml\\Schema\\Core\\Model\\AbstractType\:\:\$propertyNames \(list\<string\>\) does not accept array\<int\<0, max\>, mixed\>\.$#'
-			identifier: assign.propertyType
 			count: 1
 			path: Classes/Core/Model/MultipleType.php
 

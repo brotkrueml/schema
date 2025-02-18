@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-final class MultipleType extends AbstractType
+final class MultipleType extends AbstractBaseType
 {
     /**
      * @var string[]
@@ -23,10 +23,12 @@ final class MultipleType extends AbstractType
         $this->storeTypeNames($type);
         $this->checkForSameTypes();
         $this->checkNumberOfTypes();
-        $this->mergePropertyNamesFromSingleTypes($type);
-        parent::__construct();
+        $this->mergePropertiesFromSingleTypes($type);
     }
 
+    /**
+     * @param TypeInterface[] $types
+     */
     private function storeTypeNames(array $types): void
     {
         $this->typeNames = \array_map(
@@ -57,25 +59,24 @@ final class MultipleType extends AbstractType
         }
     }
 
-    private function mergePropertyNamesFromSingleTypes(array $types): void
+    /**
+     * @param TypeInterface[] $types
+     */
+    private function mergePropertiesFromSingleTypes(array $types): void
     {
         $propertyNames = [];
         foreach ($types as $type) {
             $propertyNames = \array_merge($propertyNames, $type->getPropertyNames());
         }
         \sort($propertyNames);
-        self::$propertyNames = \array_unique($propertyNames);
-    }
 
-    protected function addAdditionalProperties(): void
-    {
-        // not necessary
+        $this->properties = \array_fill_keys($propertyNames, null);
     }
 
     /**
      * @return string[]
      */
-    public function getType(): string|array
+    public function getType(): array
     {
         return $this->typeNames;
     }
