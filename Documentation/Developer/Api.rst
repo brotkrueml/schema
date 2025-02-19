@@ -272,7 +272,7 @@ These interfaces can be useful when you want to
    OtherTypes --|> AbstractType
    WebPage --|> AbstractType
    AbstractType --|> TypeInterface
-   AbstractType --|> NodeIdentifierInterface
+   TypeInterface --|> NodeIdentifierInterface
    WebPage --|> WebPageTypeInterface
    Enumeration --|> EnumerationInterface
 
