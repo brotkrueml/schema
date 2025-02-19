@@ -285,10 +285,11 @@ class.
 Available type model methods
 ----------------------------
 
-The type models which extend :php:`\Brotkrueml\Schema\Core\Model\AbstractType`
-expose the following methods:
+The type models which implement :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`
+or extend :php:`\Brotkrueml\Schema\Core\Model\AbstractType` expose the following
+methods:
 
-.. confval:: setId($id)
+.. confval:: setId($id): static
    :name: abstracttype-setid
 
    The method sets the unique ID of the model. With the ID, you can
@@ -322,7 +323,7 @@ expose the following methods:
       A previously set ID or null (if not defined).
 
 
-.. confval:: setProperty($propertyName, $propertyValue)
+.. confval:: setProperty($propertyName, $propertyValue): static
    :name: abstracttype-setproperty
 
    Call this method to set a property or overwrite a previously one.
@@ -340,7 +341,7 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. confval:: addProperty($propertyName, $propertyValue)
+.. confval:: addProperty($propertyName, $propertyValue): static
    :name: abstracttype-addproperty
 
    Call this method if you want to add a value to an existing one. In the
@@ -364,7 +365,7 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. confval:: setProperties($properties)
+.. confval:: setProperties($properties): static
    :name: abstracttype-setproperties
 
    Set multiple properties at once.
@@ -379,7 +380,7 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. confval:: getProperty($propertyName)
+.. confval:: getProperty($propertyName): mixed
    :name: abstracttype-getproperty
 
    Get the value of a property.
@@ -394,7 +395,7 @@ expose the following methods:
       strings, array of models, null).
 
 
-.. confval:: hasProperty($propertyName)
+.. confval:: hasProperty($propertyName): bool
    :name: abstracttype-hasproperty
 
    Check whether the property name exists in a particular model.
@@ -407,7 +408,7 @@ expose the following methods:
       :php:`true`, if the property exists and :php:`false`, otherwise.
 
 
-.. confval:: clearProperty($propertyName)
+.. confval:: clearProperty($propertyName): static
    :name: abstracttype-clearproperty
 
    Resets the value of the property (set it to :php:`null`).
@@ -421,7 +422,7 @@ expose the following methods:
       Reference to the model itself.
 
 
-.. confval:: getPropertyNames()
+.. confval:: getPropertyNames(): array
    :name: abstracttype-getpropertynames
 
    Get the names of all properties of the model.
@@ -430,7 +431,7 @@ expose the following methods:
       Array of all property names of the model.
 
 
-.. confval:: getType()
+.. confval:: getType(): string|string[]
    :name: abstracttype-gettype
 
    Get the type of the model.

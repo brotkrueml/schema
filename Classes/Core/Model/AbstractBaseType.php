@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Core\Model;
 
 /**
  * This class provides the logic for both, a single type and a multiple type.
+ * It is not for use in custom extensions. Use AbstractType instead.
  *
  * @internal
  */
@@ -33,7 +34,7 @@ abstract class AbstractBaseType implements TypeInterface
      */
     protected array $properties = [];
 
-    public function setId($id): self
+    public function setId($id): static
     {
         if (! $this->isValidDataTypeForId($id)) {
             throw new \InvalidArgumentException(
@@ -84,7 +85,7 @@ abstract class AbstractBaseType implements TypeInterface
         return true;
     }
 
-    public function getProperty(string $propertyName)
+    public function getProperty(string $propertyName): mixed
     {
         $this->checkPropertyExists($propertyName);
 
@@ -106,7 +107,7 @@ abstract class AbstractBaseType implements TypeInterface
         }
     }
 
-    public function setProperty(string $propertyName, $propertyValue): self
+    public function setProperty(string $propertyName, $propertyValue): static
     {
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
@@ -165,7 +166,7 @@ abstract class AbstractBaseType implements TypeInterface
             || $propertyValue instanceof EnumerationInterface;
     }
 
-    public function addProperty(string $propertyName, $propertyValue): self
+    public function addProperty(string $propertyName, $propertyValue): static
     {
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
@@ -194,7 +195,7 @@ abstract class AbstractBaseType implements TypeInterface
         return $this;
     }
 
-    public function setProperties(array $properties): self
+    public function setProperties(array $properties): static
     {
         foreach ($properties as $propertyName => $propertyValue) {
             $this->setProperty($propertyName, $propertyValue);
@@ -203,7 +204,7 @@ abstract class AbstractBaseType implements TypeInterface
         return $this;
     }
 
-    public function clearProperty(string $propertyName): self
+    public function clearProperty(string $propertyName): static
     {
         $this->checkPropertyExists($propertyName);
 

@@ -17,7 +17,8 @@ interface TypeInterface extends NodeIdentifierInterface
      * Set the id.
      *
      * @param NodeIdentifierInterface|string|null $id The id
-     * @return self
+     * @return static
+     * @todo Declare return type in method with v4.0.0
      */
     public function setId($id);
 
@@ -33,6 +34,7 @@ interface TypeInterface extends NodeIdentifierInterface
      *
      * @param string $propertyName The property name
      * @return mixed
+     * @todo Declare return type in method with v4.0.0
      */
     public function getProperty(string $propertyName);
 
@@ -41,7 +43,8 @@ interface TypeInterface extends NodeIdentifierInterface
      *
      * @param string $propertyName The property name
      * @param mixed $propertyValue The value of the property
-     * @return self
+     * @return static
+     * @todo Declare return type in method with v4.0.0
      */
     public function setProperty(string $propertyName, mixed $propertyValue);
 
@@ -50,7 +53,8 @@ interface TypeInterface extends NodeIdentifierInterface
      *
      * @param string $propertyName The property name
      * @param mixed $propertyValue The property value
-     * @return self
+     * @return static
+     * @todo Declare return type in method with v4.0.0
      */
     public function addProperty(string $propertyName, mixed $propertyValue);
 
@@ -62,7 +66,8 @@ interface TypeInterface extends NodeIdentifierInterface
      * value = property value
      *
      * @param array<string, mixed> $properties
-     * @return self
+     * @return static
+     * @todo Declare return type in method with v4.0.0
      */
     public function setProperties(array $properties);
 
@@ -70,7 +75,8 @@ interface TypeInterface extends NodeIdentifierInterface
      * Clear a property.
      *
      * @param string $propertyName The property name
-     * @return self
+     * @return static
+     * @todo Declare return type in method with v4.0.0
      */
     public function clearProperty(string $propertyName);
 
