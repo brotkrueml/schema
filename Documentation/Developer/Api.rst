@@ -449,7 +449,7 @@ methods:
 An :ref:`enumeration type <enumerations>` requires to implement the interface
 :php:`\Brotkrueml\Schema\Core\Model\EnumerationInterface`.
 
-.. confval:: canonical()
+.. confval:: canonical(): string
    :name: enumerationinterface-canonical
 
    Returns the canonical value of an enum case. This value is used for
@@ -470,7 +470,7 @@ the web page.
 
 The class exposes the following methods:
 
-.. confval:: addType(...$type)
+.. confval:: addType(...$type): self
    :name: schemamanager-addtype
 
    .. versionadded:: 3.9.0
@@ -489,7 +489,7 @@ The class exposes the following methods:
       Reference to itself.
 
 
-.. confval:: hasWebPage()
+.. confval:: hasWebPage(); bool
    :name: schemamanager-haswebpage
 
    Checks, if a :ref:`web page type <webpage-types>` is already available.
@@ -503,7 +503,7 @@ The class exposes the following methods:
 
 .. _api-schema-manager-addmainentityofwebpage:
 
-.. confval:: addMainEntityOfWebPage($mainEntity, $isPrioritised = false)
+.. confval:: addMainEntityOfWebPage($mainEntity, $isPrioritised = false): self
    :name: schemamanager-addmainentityofwebpage
 
    Adds a :ref:`main entity <main-entity-of-web-page>` to the web page.
@@ -533,7 +533,7 @@ the constructor.
 
 The class exposes the following method:
 
-.. confval:: getId()
+.. confval:: getId(): string
    :name: nodeidentifier-getid
 
    Returns the ID.
@@ -558,7 +558,7 @@ within a request.
 
 The class exposes the following method:
 
-.. confval:: getId()
+.. confval:: getId(): string
    :name: blanknodeidentifier-getid
 
    Returns the ID.
