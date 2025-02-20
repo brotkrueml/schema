@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
+use Brotkrueml\Schema\Core\Exception\InvalidIdValueException;
+use Brotkrueml\Schema\Core\Exception\InvalidPropertyValueException;
+use Brotkrueml\Schema\Core\Exception\UnknownPropertyException;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
@@ -110,9 +113,8 @@ final class AbstractTypeTest extends TestCase
     #[Test]
     public function setIdThrowsExceptionWhenInvalidTypeGiven(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidIdValueException::class);
         $this->expectExceptionCode(1620654936);
-        $this->expectExceptionMessage('Value for id has not a valid data type (given: "bool"). Valid types are: null, string, instanceof NodeIdentifierInterface');
 
         $this->subject->setId(true);
     }
@@ -169,7 +171,7 @@ final class AbstractTypeTest extends TestCase
     #[Test]
     public function setPropertyThrowsDomainExceptionIfPropertyNameNotValid(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(UnknownPropertyException::class);
         $this->expectExceptionCode(1561829996);
 
         $this->subject->setProperty('invalidProperty', 'some value');
@@ -178,7 +180,7 @@ final class AbstractTypeTest extends TestCase
     #[Test]
     public function setPropertyThrowsInvalidArgumentExceptionIfPropertyNotValid(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidPropertyValueException::class);
         $this->expectExceptionCode(1561830012);
 
         $this->subject->setProperty('image', new \stdClass());
@@ -205,7 +207,7 @@ final class AbstractTypeTest extends TestCase
     #[Test]
     public function getPropertyThrowsDomainExceptionIfPropertyNameDoesNotExist(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(UnknownPropertyException::class);
         $this->expectExceptionCode(1561829996);
 
         $this->subject->getProperty('invalidPropertyName');
@@ -383,7 +385,7 @@ final class AbstractTypeTest extends TestCase
     #[Test]
     public function clearPropertyThrowsDomainExceptionIfPropertyNameDoesNotExist(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(UnknownPropertyException::class);
         $this->expectExceptionCode(1561829996);
 
         $this->subject->clearProperty('invalidPropertyName');

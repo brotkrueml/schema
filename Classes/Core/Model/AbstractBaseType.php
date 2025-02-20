@@ -11,6 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
+use Brotkrueml\Schema\Core\Exception\InvalidIdValueException;
+use Brotkrueml\Schema\Core\Exception\InvalidPropertyValueException;
+use Brotkrueml\Schema\Core\Exception\UnknownPropertyException;
+
 /**
  * This class provides the logic for both, a single type and a multiple type.
  * It is not for use in custom extensions. Use AbstractType instead.
@@ -37,13 +41,7 @@ abstract class AbstractBaseType implements TypeInterface
     public function setId($id): static
     {
         if (! $this->isValidDataTypeForId($id)) {
-            throw new \InvalidArgumentException(
-                \sprintf(
-                    'Value for id has not a valid data type (given: "%s"). Valid types are: null, string, instanceof NodeIdentifierInterface',
-                    \get_debug_type($id),
-                ),
-                1620654936,
-            );
+            throw InvalidIdValueException::fromValueType(\get_debug_type($id));
         }
 
         if ($id === '') {
@@ -95,15 +93,7 @@ abstract class AbstractBaseType implements TypeInterface
     private function checkPropertyExists(string $propertyName): void
     {
         if (! \array_key_exists($propertyName, $this->properties)) {
-            $type = $this->getType();
-            throw new \DomainException(
-                \sprintf(
-                    'Property "%s" is unknown for type "%s"',
-                    $propertyName,
-                    \is_array($type) ? \implode(' / ', $type) : $type,
-                ),
-                1561829996,
-            );
+            throw UnknownPropertyException::fromPropertyName($this->getType(), $propertyName);
         }
     }
 
@@ -141,14 +131,7 @@ abstract class AbstractBaseType implements TypeInterface
         $this->checkPropertyExists($propertyName);
 
         if (! $this->isValidDataTypeForPropertyValue($propertyValue)) {
-            throw new \InvalidArgumentException(
-                \sprintf(
-                    'Value for property "%s" has not a valid data type (given: "%s"). Valid types are: null, string, int, array, bool, instanceof TypeInterface, instanceof NodeIdentifierInterface',
-                    $propertyName,
-                    \get_debug_type($propertyValue),
-                ),
-                1561830012,
-            );
+            throw InvalidPropertyValueException::fromValueType($propertyName, \get_debug_type($propertyValue));
         }
     }
 
