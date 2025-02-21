@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
+use Brotkrueml\Schema\Core\Exception\InvalidNumberOfTypesException;
+use Brotkrueml\Schema\Core\Exception\SameTypeForMultipleTypeException;
 use Brotkrueml\Schema\Core\Model\MultipleType;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
@@ -45,9 +47,8 @@ final class MultipleTypeTest extends TestCase
     #[Test]
     public function instantiatingSubjectWithNoTypeGivenThrowsException(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(InvalidNumberOfTypesException::class);
         $this->expectExceptionCode(1621871446);
-        $this->expectExceptionMessage('At least two types have to be assigned, 0 given');
 
         new MultipleType();
     }
@@ -55,9 +56,8 @@ final class MultipleTypeTest extends TestCase
     #[Test]
     public function instantiatingSubjectWithOneTypeGivenThrowsException(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(InvalidNumberOfTypesException::class);
         $this->expectExceptionCode(1621871446);
-        $this->expectExceptionMessage('At least two types have to be assigned, 1 given');
 
         new MultipleType(new ProductStub());
     }
@@ -65,9 +65,8 @@ final class MultipleTypeTest extends TestCase
     #[Test]
     public function instantiatingSubjectWithTwoSameTypesGivenThrowsException(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(SameTypeForMultipleTypeException::class);
         $this->expectExceptionCode(1621871950);
-        $this->expectExceptionMessage('Only different types can be used as arguments for a multiple type, "ProductStub, ProductStub, ServiceStub" given');
 
         new MultipleType(new ProductStub(), new ProductStub(), new ServiceStub());
     }

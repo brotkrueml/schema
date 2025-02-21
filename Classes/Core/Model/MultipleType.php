@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
+use Brotkrueml\Schema\Core\Exception\InvalidNumberOfTypesException;
+use Brotkrueml\Schema\Core\Exception\SameTypeForMultipleTypeException;
+
 final class MultipleType extends AbstractBaseType
 {
     /**
@@ -42,20 +45,14 @@ final class MultipleType extends AbstractBaseType
     {
         $uniqueTypeNames = \array_unique($this->typeNames);
         if (\count($this->typeNames) !== \count($uniqueTypeNames)) {
-            throw new \DomainException(
-                \sprintf('Only different types can be used as arguments for a multiple type, "%s" given', \implode(', ', $this->typeNames)),
-                1621871950,
-            );
+            throw SameTypeForMultipleTypeException::fromSingleTypes($this->typeNames);
         }
     }
 
     private function checkNumberOfTypes(): void
     {
         if (\count($this->typeNames) < 2) {
-            throw new \DomainException(
-                \sprintf('At least two types have to be assigned, %d given', \count($this->typeNames)),
-                1621871446,
-            );
+            throw InvalidNumberOfTypesException::fromSingleTypes($this->typeNames);
         }
     }
 
