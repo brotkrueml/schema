@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\Core\Model;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
+use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -58,14 +59,24 @@ abstract class AbstractType extends AbstractBaseType
         $cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(Extension::CACHE_IDENTIFIER);
         $additionalProperties = $cache->get($cacheEntryIdentifier);
         if ($additionalProperties === false) {
-            $event = new RegisterAdditionalTypePropertiesEvent(static::class);
+            /** @var AdditionalPropertiesProvider $additionalPropertiesProvider */
+            $additionalPropertiesProvider = GeneralUtility::makeInstance(AdditionalPropertiesProvider::class);
+            $additionalProperties = $additionalPropertiesProvider->getForType($this->getType());
 
+            $event = new RegisterAdditionalTypePropertiesEvent(static::class);
             /** @var EventDispatcherInterface $eventDispatcher */
             $eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
             /** @var RegisterAdditionalTypePropertiesEvent $event */
             $event = $eventDispatcher->dispatch($event);
+            if ($event->haveAdditionalPropertiesRegistered()) {
+                $message = \sprintf(
+                    'Using the RegisterAdditionalTypePropertiesEvent for "%s" is deprecated since EXT:schema version 3.10.0, it will be removed in version 4.0.0. To register additional properties create a class implementing AdditionalPropertiesInterface. Consult the docs for details.',
+                    $this->getType(),
+                );
+                \trigger_error($message, \E_USER_DEPRECATED);
+            }
 
-            $additionalProperties = $event->getAdditionalProperties();
+            $additionalProperties = [...$additionalProperties, ...$event->getAdditionalProperties()];
             $cache->set($cacheEntryIdentifier, $additionalProperties, [], 0);
         }
 

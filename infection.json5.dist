@@ -5,6 +5,12 @@
 	"source": {
 		"directories": [
 			"Classes"
+		],
+		"excludes": [
+		    // Auto-generated files
+			"Model/AdditionalProperties",
+			"Model/Enumeration",
+			"Model/Type"
 		]
 	},
 	"phpUnit": {

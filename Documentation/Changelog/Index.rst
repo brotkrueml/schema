@@ -11,6 +11,18 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.9.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Registration of additional properties by implementing ``AdditionalPropertiesInterface``
+
+Deprecated
+^^^^^^^^^^
+
+
+* PSR-14 event ``RegisterAdditionalTypePropertiesEvent``
+
 Fixed
 ^^^^^
 

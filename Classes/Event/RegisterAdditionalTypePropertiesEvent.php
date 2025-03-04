@@ -11,12 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Event;
 
+/**
+ * @deprecated since 3.10.0, will be removed in 4.0.0. To register additional properties create a class implementing AdditionalPropertiesInterface. Consult the docs for details.
+ */
 final class RegisterAdditionalTypePropertiesEvent
 {
     /**
      * @var list<string>
      */
     private array $additionalProperties = [];
+    private bool $haveAdditionalPropertiesRegistered = false;
 
     public function __construct(
         private readonly string $type,
@@ -39,6 +43,15 @@ final class RegisterAdditionalTypePropertiesEvent
     {
         if (! \in_array($propertyName, $this->additionalProperties, true)) {
             $this->additionalProperties[] = $propertyName;
+            $this->haveAdditionalPropertiesRegistered = true;
         }
+    }
+
+    /**
+     * @internal
+     */
+    public function haveAdditionalPropertiesRegistered(): bool
+    {
+        return $this->haveAdditionalPropertiesRegistered;
     }
 }

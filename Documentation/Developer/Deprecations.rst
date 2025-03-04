@@ -9,6 +9,18 @@ Deprecations
 Introduced in version 3
 =======================
 
+.. confval:: PSR-14 event RegisterAdditionalTypePropertiesEvent
+
+   Deprecated since version
+      3.10.0
+
+   Will be removed in version
+      4.0.0
+
+   Alternative
+      Create a class implementing `AdditionalPropertiesInterface`, see
+      :ref:`extending-register-additional-properties` for details.
+
 .. confval:: Enumeration type model / view helper classes
 
    Deprecated since version

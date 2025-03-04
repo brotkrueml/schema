@@ -47,9 +47,44 @@ properties to existing types or to introduce new types on your website.
 Register additional properties
 ==============================
 
-You can use a PSR-14 event listener to add one ore more properties to one or
-more types. The chapter :ref:`event-register-additional-properties` describes
-how to register additional properties in detail.
+.. versionchanged:: 3.10.0
+   The previous way to register additional properties was to
+   :ref:`use a PSR-14 event <event-register-additional-properties>`. This way
+   will continue to work with schema v3, but will be removed with schema v4.
+
+Sometimes it may be necessary to use properties that are not standardised or
+`pending`_, or to add `property annotations`_. Therefore the schema extension
+provides a way to extend types.
+
+These additional properties are not only available in the :ref:`API <api>` but
+also as arguments in the :ref:`view helpers <view-helpers>`.
+
+To add one or more properties to a type, create a new class, for example in
+:file:`EXT:my_extension/Classes/Schema/AdditionalProperties/` and implement
+the `\Brotkrueml\Schema\Core\AdditionalPropertiesInterface`. The interface
+requires two methods:
+
+.. confval:: getType(): string
+   :name: additional-properties-interface-get-type
+
+   Returns the type name.
+
+.. confval:: getAdditionalProperties(): array
+   :name: additional-properties-interface-get-additional-properties
+
+   Return a list of additional properties as string.
+
+Here is an example for such an implementation:
+
+.. literalinclude:: _ExtendingVocabulary/_Car.php
+   :language: php
+   :caption: EXT:my_extension/Classes/Schema/AdditionalProperties/Car.php
+
+For each type create a new PHP class.
+
+.. important::
+   Flush the cache after a change via the console or
+   :guilabel:`Admin Tools > Maintenance`.
 
 .. note::
    About 1-2 times a year a new version of the schema.org definition is
@@ -240,7 +275,9 @@ enum instead using the enum from this extension:
 .. _Health and lifesciences: https://schema.org/docs/meddocs.html
 .. _location: https://schema.org/location
 .. _MedicalWebPage: https://schema.org/MedicalWebPage
+.. _pending: https://pending.schema.org/
 .. _pending types and properties: https://pending.schema.org/docs/pending.home.html
+.. _property annotations: https://schema.org/docs/actions.html#part-4
 .. _released: https://schema.org/docs/releases.html
 .. _schema_virtuallocation: https://github.com/brotkrueml/schema-virtuallocation
 .. _VirtualLocation: https://schema.org/VirtualLocation

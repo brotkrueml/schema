@@ -147,8 +147,6 @@ final class AbstractTypeTest extends TestCase
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
         // Test is valid, when no exception is thrown
-        self::expectNotToPerformAssertions();
-
         $this->subject->setProperty('name', 'Pi');
         $this->subject->setProperty('description', ['The answer for everything']);
         $this->subject->setProperty('identifier', 42);
@@ -249,8 +247,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsStringsAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->setProperty('name', 'some name');
         $this->subject->setProperty('name', 'another name');
         $this->subject->setProperty('name', 'one more name');
@@ -260,8 +256,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsArraysAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->setProperty('description', ['some description']);
         $this->subject->setProperty('description', ['another description']);
         $this->subject->setProperty('description', ['one more description']);
@@ -271,8 +265,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsIntegerAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->addProperty('identifier', 1);
         $this->subject->addProperty('identifier', 2);
         $this->subject->addProperty('identifier', 3);
@@ -282,8 +274,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsBooleanAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->addProperty('isAccessibleForFree', true);
         $this->subject->addProperty('isAccessibleForFree', false);
         $this->subject->addProperty('isAccessibleForFree', true);
@@ -293,8 +283,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsFloatAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->addProperty('alternateName', 3.141592653);
         $this->subject->addProperty('alternateName', 3.2);
         $this->subject->addProperty('alternateName', 3.3);
@@ -304,8 +292,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsTypeAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->addProperty('image', new class extends AbstractType {});
         $this->subject->addProperty('image', new class extends AbstractType {});
         $this->subject->addProperty('image', new class extends AbstractType {});
@@ -315,8 +301,6 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsNodeIdentifierAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->expectNotToPerformAssertions();
-
         $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
