@@ -58,4 +58,22 @@ final class RegisterAdditionalTypePropertiesEventTest extends TestCase
 
         self::assertSame(['someProperty'], $this->subject->getAdditionalProperties());
     }
+
+    #[Test]
+    public function haveAdditionalPropertiesChangedReturnsFalseIfNoAdditionalPropertiesHaveBeenRegistered(): void
+    {
+        $actual = $this->subject->haveAdditionalPropertiesRegistered();
+
+        self::assertFalse($actual);
+    }
+
+    #[Test]
+    public function haveAdditionalPropertiesChangedReturnsTrueIfAdditionalPropertiesHaveBeenRegistered(): void
+    {
+        $this->subject->registerAdditionalProperty('someProperty');
+
+        $actual = $this->subject->haveAdditionalPropertiesRegistered();
+
+        self::assertTrue($actual);
+    }
 }

@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Registration of additional properties by implementing `AdditionalPropertiesInterface`
+
+### Deprecated
+- PSR-14 event `RegisterAdditionalTypePropertiesEvent`
+
 ### Fixed
 - Additional properties cache is not cleared when flushing the cache
 

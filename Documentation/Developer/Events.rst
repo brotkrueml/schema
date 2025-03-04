@@ -30,6 +30,10 @@ retrieving and setting dedicated properties.
 Register additional properties for a type
 =========================================
 
+.. deprecated:: 3.10.0
+   This way to extend a type with additional properties has been deprecated
+   and will stop working with schema v4.
+
 Sometimes it can be necessary to use properties which are not standardised or
 `pending`_, or to add `property annotations`_. Therefore an PSR-14 event is
 available which can be used in an event listener.
