@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.9.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Additional properties cache is not cleared when flushing the cache
+
 `3.9.1 <https://github.com/brotkrueml/schema/compare/v3.9.0...v3.9.1>`_ - 2025-01-28
 ----------------------------------------------------------------------------------------
 

@@ -22,6 +22,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php'][
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['schema'] = ['Brotkrueml\\Schema\\ViewHelpers'];
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Extension::CACHE_IDENTIFIER] ??= [];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Extension::CACHE_IDENTIFIER]['groups'] ??= ['system'];
 
 // This configuration can be removed once compatibility with TYPO3 v11 is gone
 $GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']['SCHEMA'] = SchemaContentObject::class;

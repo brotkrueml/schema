@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Additional properties cache is not cleared when flushing the cache
+
 ## [3.9.1] - 2025-01-28
 
 ### Fixed
