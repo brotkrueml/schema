@@ -30,7 +30,7 @@ final class MainEntityOfWebPageBagTest extends TestCase
     #[Test]
     public function bagIsEmptyAfterInstantiation(): void
     {
-        self::assertCount(0, $this->subject);
+        self::assertEmpty($this->subject);
         self::assertSame([], $this->subject->getTypes());
     }
 

@@ -36,7 +36,7 @@ final class RegisterAdditionalTypePropertiesEventTest extends TestCase
     #[Test]
     public function additionalPropertiesIsInitiallyEmpty(): void
     {
-        self::assertCount(0, $this->subject->getAdditionalProperties());
+        self::assertEmpty($this->subject->getAdditionalProperties());
     }
 
     #[Test]
