@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.10.0...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Markup was cached on non-cached pages (#131)
+
 `3.10.0 <https://github.com/brotkrueml/schema/compare/v3.9.1...v3.10.0>`_ - 2025-03-12
 ------------------------------------------------------------------------------------------
 

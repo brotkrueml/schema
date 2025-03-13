@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Markup was cached on non-cached pages (#131)
+
 ## [3.10.0] - 2025-03-12
 
 ### Added

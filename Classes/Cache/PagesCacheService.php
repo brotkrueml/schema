@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Cache;
 
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Frontend\Cache\CacheInstruction;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -30,6 +32,11 @@ class PagesCacheService
     public function getMarkupFromCache(): ?string
     {
         $this->initialiseTypoScriptFrontendController();
+
+        if (! $this->isCachingAllowed()) {
+            return null;
+        }
+
         $markup = $this->cache->get($this->getCacheIdentifier());
 
         return \is_string($markup) ? $markup : null;
@@ -43,6 +50,11 @@ class PagesCacheService
     public function storeMarkupInCache(string $markup): void
     {
         $this->initialiseTypoScriptFrontendController();
+
+        if (! $this->isCachingAllowed()) {
+            return;
+        }
+
         if ($this->controller instanceof TypoScriptFrontendController) {
             $this->cache->set(
                 $this->getCacheIdentifier(),
@@ -58,6 +70,24 @@ class PagesCacheService
         if (! $this->controller instanceof TypoScriptFrontendController) {
             $this->controller = $GLOBALS['TSFE'];
         }
+    }
+
+    private function isCachingAllowed(): bool
+    {
+        /** @var CacheInstruction|null $cacheInstruction */
+        $cacheInstruction = $this->getRequest()->getAttribute('frontend.cache.instruction');
+        if ($cacheInstruction instanceof CacheInstruction) {
+            // TYPO3 v13
+            return $cacheInstruction->isCachingAllowed();
+        }
+
+        /** @phpstan-ignore-next-line Cannot access property $no_cache (TYPO3 v11/v12 only) */
+        return ! (bool) $this->controller->no_cache;
+    }
+
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 
     /**

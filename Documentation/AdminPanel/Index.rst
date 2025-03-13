@@ -33,6 +33,10 @@ page.
    :php:`\TYPO3\CMS\Core\Cache\Backend\NullBackend`). Otherwise you will not
    see any markup.
 
+   The markup is also not visible in the Admin Panel, if the cache of a page
+   is disabled (for example, via :php:`TypoScriptFrontendController->no_cache`
+   or :php:`CacheInstruction->disableCache()`).
+
 
 Configuration
 =============
