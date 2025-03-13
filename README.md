@@ -1,4 +1,4 @@
-# Structured data for TYPO3 with the schema extension
+# Structured data for TYPO3 (schema.org)
 
 [![CI](https://github.com/brotkrueml/schema/actions/workflows/ci.yml/badge.svg)](https://github.com/brotkrueml/schema/actions/workflows/ci.yml)
 [![Documentation](https://github.com/brotkrueml/schema/actions/workflows/docs.yml/badge.svg)](https://github.com/brotkrueml/schema/actions/workflows/docs.yml)
