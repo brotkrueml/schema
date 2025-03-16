@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.10.1] - 2025-03-16
+
 ### Fixed
 - Markup was cached on non-cached pages (#131)
 
@@ -526,7 +528,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.10.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.10.1...HEAD
+[3.10.1]: https://github.com/brotkrueml/schema/compare/v3.10.0...v3.10.1
 [3.10.0]: https://github.com/brotkrueml/schema/compare/v3.9.1...v3.10.0
 [3.9.1]: https://github.com/brotkrueml/schema/compare/v3.9.0...v3.9.1
 [3.9.0]: https://github.com/brotkrueml/schema/compare/v3.8.0...v3.9.0
