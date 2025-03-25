@@ -32,7 +32,7 @@ final class BusReservation implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
+            'provider',
         ];
     }
 }

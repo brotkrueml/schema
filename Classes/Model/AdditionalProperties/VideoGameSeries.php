@@ -32,7 +32,7 @@ final class VideoGameSeries implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
+            'provider',
         ];
     }
 }

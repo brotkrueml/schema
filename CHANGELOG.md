@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Missing pending properties for some types (#133)
+
 ## [3.10.1] - 2025-03-16
 
 ### Fixed

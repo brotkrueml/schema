@@ -32,7 +32,7 @@ final class JobPosting implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'occupationalCategoryTypes',
+            'occupationalCategory',
         ];
     }
 }

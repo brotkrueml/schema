@@ -32,8 +32,8 @@ final class Movie implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
-            'subtitleLanguageTypes',
+            'provider',
+            'subtitleLanguage',
         ];
     }
 }

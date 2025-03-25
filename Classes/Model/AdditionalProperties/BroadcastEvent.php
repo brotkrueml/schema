@@ -32,7 +32,7 @@ final class BroadcastEvent implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'subtitleLanguageTypes',
+            'subtitleLanguage',
         ];
     }
 }

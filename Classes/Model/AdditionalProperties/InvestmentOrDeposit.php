@@ -32,7 +32,7 @@ final class InvestmentOrDeposit implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
+            'provider',
         ];
     }
 }

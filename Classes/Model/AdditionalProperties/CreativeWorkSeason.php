@@ -32,7 +32,7 @@ final class CreativeWorkSeason implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
+            'provider',
         ];
     }
 }

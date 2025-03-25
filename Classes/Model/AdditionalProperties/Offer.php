@@ -32,7 +32,7 @@ final class Offer implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'ineligibleRegionTypes',
+            'ineligibleRegion',
         ];
     }
 }

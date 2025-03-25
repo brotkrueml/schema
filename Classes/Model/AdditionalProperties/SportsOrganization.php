@@ -32,7 +32,7 @@ final class SportsOrganization implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'sportTypes',
+            'sport',
         ];
     }
 }

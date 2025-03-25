@@ -32,8 +32,8 @@ final class TVEpisode implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
-            'subtitleLanguageTypes',
+            'provider',
+            'subtitleLanguage',
         ];
     }
 }

@@ -32,7 +32,7 @@ final class AggregateOffer implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'ineligibleRegionTypes',
+            'ineligibleRegion',
         ];
     }
 }

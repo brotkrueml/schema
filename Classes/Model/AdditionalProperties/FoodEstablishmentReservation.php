@@ -32,7 +32,7 @@ final class FoodEstablishmentReservation implements AdditionalPropertiesInterfac
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
+            'provider',
         ];
     }
 }

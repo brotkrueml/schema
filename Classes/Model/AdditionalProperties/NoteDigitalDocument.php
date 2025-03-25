@@ -32,7 +32,7 @@ final class NoteDigitalDocument implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'providerTypes',
+            'provider',
         ];
     }
 }
