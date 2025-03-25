@@ -33,6 +33,7 @@ final class DeliveryChargeSpecification implements AdditionalPropertiesInterface
     {
         return [
             'ineligibleRegion',
+            'validForMemberTier',
         ];
     }
 }

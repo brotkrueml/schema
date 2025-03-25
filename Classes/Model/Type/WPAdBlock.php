@@ -114,6 +114,7 @@ final class WPAdBlock extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
         'xpath',
     ];

@@ -114,6 +114,7 @@ final class WPHeader extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
         'xpath',
     ];

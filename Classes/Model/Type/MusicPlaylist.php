@@ -115,6 +115,7 @@ final class MusicPlaylist extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

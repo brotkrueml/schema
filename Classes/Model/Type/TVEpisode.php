@@ -122,6 +122,7 @@ final class TVEpisode extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

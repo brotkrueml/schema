@@ -76,7 +76,6 @@ final class Offer extends AbstractType
         'sku',
         'subjectOf',
         'url',
-        'validForMemberTier',
         'validFrom',
         'validThrough',
         'warranty',

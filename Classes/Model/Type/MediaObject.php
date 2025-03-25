@@ -75,7 +75,6 @@ final class MediaObject extends AbstractType
         'genre',
         'hasPart',
         'headline',
-        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -128,7 +127,7 @@ final class MediaObject extends AbstractType
         'url',
         'version',
         'video',
-        'width',
+        'wordCount',
         'workExample',
     ];
 }

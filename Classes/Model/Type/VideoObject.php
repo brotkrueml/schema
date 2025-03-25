@@ -82,7 +82,6 @@ final class VideoObject extends AbstractType
         'genre',
         'hasPart',
         'headline',
-        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -139,7 +138,7 @@ final class VideoObject extends AbstractType
         'video',
         'videoFrameSize',
         'videoQuality',
-        'width',
+        'wordCount',
         'workExample',
     ];
 }

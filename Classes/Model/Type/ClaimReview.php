@@ -121,6 +121,7 @@ final class ClaimReview extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

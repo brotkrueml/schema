@@ -77,7 +77,6 @@ final class Barcode extends AbstractType
         'genre',
         'hasPart',
         'headline',
-        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -131,7 +130,7 @@ final class Barcode extends AbstractType
         'url',
         'version',
         'video',
-        'width',
+        'wordCount',
         'workExample',
     ];
 }

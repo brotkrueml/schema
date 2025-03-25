@@ -32,7 +32,11 @@ final class Vehicle implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
+            'depth',
             'hasEnergyConsumptionDetails',
+            'height',
+            'weight',
+            'width',
         ];
     }
 }

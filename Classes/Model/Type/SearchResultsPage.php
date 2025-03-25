@@ -123,6 +123,7 @@ final class SearchResultsPage extends AbstractType implements WebPageTypeInterfa
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

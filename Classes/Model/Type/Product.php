@@ -35,7 +35,6 @@ final class Product extends AbstractType
         'category',
         'color',
         'countryOfOrigin',
-        'depth',
         'description',
         'disambiguatingDescription',
         'gtin12',
@@ -43,7 +42,6 @@ final class Product extends AbstractType
         'gtin14',
         'gtin8',
         'hasCertification',
-        'height',
         'identifier',
         'image',
         'isAccessoryOrSparePartFor',
@@ -73,7 +71,5 @@ final class Product extends AbstractType
         'slogan',
         'subjectOf',
         'url',
-        'weight',
-        'width',
     ];
 }

@@ -114,6 +114,7 @@ final class WebPageElement extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
         'xpath',
     ];

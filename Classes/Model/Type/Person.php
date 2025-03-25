@@ -50,7 +50,6 @@ final class Person extends AbstractType
         'hasOccupation',
         'hasOfferCatalog',
         'hasPOS',
-        'height',
         'homeLocation',
         'honorificPrefix',
         'honorificSuffix',
@@ -83,7 +82,6 @@ final class Person extends AbstractType
         'telephone',
         'url',
         'vatID',
-        'weight',
         'workLocation',
         'worksFor',
     ];

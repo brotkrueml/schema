@@ -114,6 +114,7 @@ final class WPSideBar extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
         'xpath',
     ];

@@ -114,6 +114,7 @@ final class WPFooter extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
         'xpath',
     ];

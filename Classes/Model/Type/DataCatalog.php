@@ -117,6 +117,7 @@ final class DataCatalog extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

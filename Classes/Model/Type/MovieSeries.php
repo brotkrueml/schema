@@ -121,6 +121,7 @@ final class MovieSeries extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

@@ -121,6 +121,7 @@ final class Book extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

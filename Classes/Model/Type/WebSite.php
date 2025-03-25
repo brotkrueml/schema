@@ -117,6 +117,7 @@ final class WebSite extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

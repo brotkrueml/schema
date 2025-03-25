@@ -126,6 +126,7 @@ final class FAQPage extends AbstractType implements WebPageTypeInterface
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

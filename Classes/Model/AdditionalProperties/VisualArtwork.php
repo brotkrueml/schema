@@ -32,7 +32,11 @@ final class VisualArtwork implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
+            'depth',
+            'height',
             'provider',
+            'weight',
+            'width',
         ];
     }
 }

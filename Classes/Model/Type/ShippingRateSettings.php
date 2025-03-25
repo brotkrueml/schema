@@ -35,7 +35,6 @@ final class ShippingRateSettings extends AbstractType
         'potentialAction',
         'sameAs',
         'shippingDestination',
-        'shippingLabel',
         'shippingRate',
         'subjectOf',
         'url',

@@ -123,6 +123,7 @@ final class RadioSeason extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

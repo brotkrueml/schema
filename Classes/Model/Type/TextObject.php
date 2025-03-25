@@ -75,7 +75,6 @@ final class TextObject extends AbstractType
         'genre',
         'hasPart',
         'headline',
-        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -128,7 +127,7 @@ final class TextObject extends AbstractType
         'url',
         'version',
         'video',
-        'width',
+        'wordCount',
         'workExample',
     ];
 }

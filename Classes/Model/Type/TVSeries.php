@@ -125,6 +125,7 @@ final class TVSeries extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

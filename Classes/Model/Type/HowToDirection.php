@@ -124,6 +124,7 @@ final class HowToDirection extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

@@ -41,7 +41,6 @@ final class CompoundPriceSpecification extends AbstractType
         'sameAs',
         'subjectOf',
         'url',
-        'validForMemberTier',
         'validFrom',
         'validThrough',
         'valueAddedTaxIncluded',

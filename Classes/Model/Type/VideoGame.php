@@ -153,6 +153,7 @@ final class VideoGame extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

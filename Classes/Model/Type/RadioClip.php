@@ -120,6 +120,7 @@ final class RadioClip extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

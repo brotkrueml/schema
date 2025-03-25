@@ -57,7 +57,6 @@ final class VisualArtwork extends AbstractType
         'dateCreated',
         'dateModified',
         'datePublished',
-        'depth',
         'description',
         'disambiguatingDescription',
         'discussionUrl',
@@ -72,7 +71,6 @@ final class VisualArtwork extends AbstractType
         'genre',
         'hasPart',
         'headline',
-        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -119,8 +117,7 @@ final class VisualArtwork extends AbstractType
         'url',
         'version',
         'video',
-        'weight',
-        'width',
+        'wordCount',
         'workExample',
     ];
 }

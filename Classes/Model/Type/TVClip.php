@@ -120,6 +120,7 @@ final class TVClip extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

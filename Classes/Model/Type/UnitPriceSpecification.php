@@ -44,7 +44,6 @@ final class UnitPriceSpecification extends AbstractType
         'unitCode',
         'unitText',
         'url',
-        'validForMemberTier',
         'validFrom',
         'validThrough',
         'valueAddedTaxIncluded',

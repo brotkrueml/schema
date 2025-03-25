@@ -133,6 +133,7 @@ final class Recipe extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
         'yield',
     ];

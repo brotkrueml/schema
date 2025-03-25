@@ -114,6 +114,7 @@ final class SpreadsheetDigitalDocument extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

@@ -117,6 +117,7 @@ final class DataFeed extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

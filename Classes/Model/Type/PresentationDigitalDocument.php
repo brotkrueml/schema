@@ -114,6 +114,7 @@ final class PresentationDigitalDocument extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

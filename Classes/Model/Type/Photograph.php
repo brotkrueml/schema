@@ -113,6 +113,7 @@ final class Photograph extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

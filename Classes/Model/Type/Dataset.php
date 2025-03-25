@@ -119,6 +119,7 @@ final class Dataset extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

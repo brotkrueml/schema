@@ -113,6 +113,7 @@ final class Painting extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

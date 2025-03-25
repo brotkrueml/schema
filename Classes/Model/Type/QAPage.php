@@ -126,6 +126,7 @@ final class QAPage extends AbstractType implements WebPageTypeInterface
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

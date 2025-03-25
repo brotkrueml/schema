@@ -113,6 +113,7 @@ final class Conversation extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

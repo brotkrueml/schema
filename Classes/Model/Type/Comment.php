@@ -117,6 +117,7 @@ final class Comment extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

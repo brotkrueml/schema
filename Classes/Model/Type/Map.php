@@ -114,6 +114,7 @@ final class Map extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

@@ -123,6 +123,7 @@ final class CheckoutPage extends AbstractType implements WebPageTypeInterface
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

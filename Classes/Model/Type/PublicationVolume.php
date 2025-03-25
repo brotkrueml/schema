@@ -17,7 +17,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 /**
  * A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.
  *
- * See also [blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).
+ * See also [blog post](https://blog-schema.org/2014/09/02/schema-org-support-for-bibliographic-relationships-and-periodicals/).
  */
 #[Type('PublicationVolume')]
 final class PublicationVolume extends AbstractType
@@ -119,6 +119,7 @@ final class PublicationVolume extends AbstractType
         'version',
         'video',
         'volumeNumber',
+        'wordCount',
         'workExample',
     ];
 }

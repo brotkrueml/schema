@@ -113,6 +113,7 @@ final class Sculpture extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

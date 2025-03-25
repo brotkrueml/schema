@@ -139,6 +139,7 @@ final class SoftwareApplication extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

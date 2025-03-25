@@ -126,6 +126,7 @@ final class ProfilePage extends AbstractType implements WebPageTypeInterface
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

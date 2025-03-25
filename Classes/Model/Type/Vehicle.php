@@ -33,7 +33,6 @@ final class Vehicle extends AbstractType
         'color',
         'countryOfOrigin',
         'dateVehicleFirstRegistered',
-        'depth',
         'description',
         'disambiguatingDescription',
         'driveWheelConfiguration',
@@ -45,7 +44,6 @@ final class Vehicle extends AbstractType
         'gtin14',
         'gtin8',
         'hasCertification',
-        'height',
         'identifier',
         'image',
         'isAccessoryOrSparePartFor',
@@ -91,7 +89,5 @@ final class Vehicle extends AbstractType
         'vehicleModelDate',
         'vehicleSeatingCapacity',
         'vehicleTransmission',
-        'weight',
-        'width',
     ];
 }

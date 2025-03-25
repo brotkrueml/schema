@@ -11,6 +11,18 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.10.1...HEAD>`_
 -------------------------------------------------------------------------------
 
+Updated
+^^^^^^^
+
+
+* schema.org definition to version 29.0
+
+Fixed
+^^^^^
+
+
+* Missing pending properties for some types (#133)
+
 `3.10.1 <https://github.com/brotkrueml/schema/compare/v3.10.0...v3.10.1>`_ - 2025-03-16
 -------------------------------------------------------------------------------------------
 

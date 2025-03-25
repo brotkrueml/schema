@@ -115,6 +115,7 @@ final class Blog extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

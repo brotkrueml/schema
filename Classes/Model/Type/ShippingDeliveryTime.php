@@ -27,7 +27,6 @@ final class ShippingDeliveryTime extends AbstractType
         'cutoffTime',
         'description',
         'disambiguatingDescription',
-        'handlingTime',
         'identifier',
         'image',
         'mainEntityOfPage',

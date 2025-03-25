@@ -125,6 +125,7 @@ final class RadioSeries extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

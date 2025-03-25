@@ -120,6 +120,7 @@ final class Review extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

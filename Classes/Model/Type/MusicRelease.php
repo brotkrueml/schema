@@ -121,6 +121,7 @@ final class MusicRelease extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

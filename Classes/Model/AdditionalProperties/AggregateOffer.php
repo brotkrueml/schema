@@ -33,6 +33,7 @@ final class AggregateOffer implements AdditionalPropertiesInterface
     {
         return [
             'ineligibleRegion',
+            'validForMemberTier',
         ];
     }
 }

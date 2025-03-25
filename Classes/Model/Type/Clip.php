@@ -123,6 +123,7 @@ final class Clip extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

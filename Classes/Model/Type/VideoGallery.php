@@ -123,6 +123,7 @@ final class VideoGallery extends AbstractType implements WebPageTypeInterface
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }

@@ -123,6 +123,7 @@ final class CreativeWorkSeason extends AbstractType
         'url',
         'version',
         'video',
+        'wordCount',
         'workExample',
     ];
 }
