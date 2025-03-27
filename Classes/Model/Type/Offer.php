@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.
@@ -22,6 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * For [GTIN](http://www.gs1.org/barcodes/technical/idkeys/gtin)-related fields, see [Check Digit calculator](http://www.gs1.org/barcodes/support/check_digit_calculator) and [validation guide](http://www.gs1us.org/resources/standards/gtin-validation-guide) from [GS1](http://www.gs1.org/).
  */
 #[Type('Offer')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing')]
 final class Offer extends AbstractType
 {
     protected static array $propertyNames = [

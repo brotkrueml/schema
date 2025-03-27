@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * OfferShippingDetails represents information about shipping destinations.
@@ -29,6 +31,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * or Fast and expensive: $15 in 1-2 days.
  */
 #[Type('OfferShippingDetails')]
+#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-with-shipping-example')]
 final class OfferShippingDetails extends AbstractType
 {
     protected static array $propertyNames = [
