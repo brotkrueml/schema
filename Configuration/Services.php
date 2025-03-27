@@ -9,8 +9,6 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema;
-
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Configuration\ConfigurationProvider;
