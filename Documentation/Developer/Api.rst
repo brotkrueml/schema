@@ -57,7 +57,8 @@ from the core section of `schema.org`_. Also have a look into the
 :file:`Classes\Model\Type` folder of this extension to get a general idea
 of the available types.
 
-If the type is not available a :php:`\DomainException` is thrown.
+If the type is not available a
+:php:`\Brotkrueml\Schema\Type\ModelClassNotFoundException` is thrown.
 
 Every type implements the :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`.
 You will find a list of the available methods in the section
