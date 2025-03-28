@@ -54,7 +54,7 @@ have to create the schema model:
 The schema type `Person` maps to the model
 :php:`\Brotkrueml\Schema\Model\Type\Person`. You can use every accepted type
 from the core section of `schema.org`_. Also have a look into the
-:file:`Classes\\Model\\Type` folder of this extension to get a general idea
+:file:`Classes\Model\Type` folder of this extension to get a general idea
 of the available types.
 
 If the type is not available a :php:`\DomainException` is thrown.
