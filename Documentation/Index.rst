@@ -2,9 +2,9 @@
 
 .. _start:
 
-=========================================
-Structured data with the schema extension
-=========================================
+======================================
+Structured data for TYPO3 (schema.org)
+======================================
 
 .. rst-class:: horizbuttons-tip-m
 
