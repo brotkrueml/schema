@@ -29,6 +29,12 @@ Changed
 
 * ``RenderAdditionalTypesEvent`` is part of the API now (#135)
 
+Deprecated
+^^^^^^^^^^
+
+
+* Direct instantiation of a type model classes. Use the ``TypeFactory`` instead
+
 Fixed
 ^^^^^
 

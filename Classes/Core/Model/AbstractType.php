@@ -39,6 +39,10 @@ abstract class AbstractType extends AbstractBaseType
      */
     protected static array $resolvedTypes = [];
 
+    /**
+     * @deprecated Instantiating a type model class manually with "new" is discouraged and might not work with v4.0 anymore.
+     *             Use the TypeFactory instead.
+     */
     public function __construct()
     {
         $this->initialiseProperties();

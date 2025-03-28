@@ -9,6 +9,18 @@ Deprecations
 Introduced in version 3
 =======================
 
+.. confval:: Direct instantiation of a type model
+
+   Deprecated since version
+      3.11.0
+
+   Will be removed in version
+      4.0.0
+
+   Alternative
+      Get an instance of a type model via the `TypeFactory`, see
+      :ref:`types` for details.
+
 .. confval:: PSR-14 event RegisterAdditionalTypePropertiesEvent
 
    Deprecated since version
