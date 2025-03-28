@@ -35,9 +35,11 @@ final class RenderAdditionalTypesEvent
         return $this->request;
     }
 
-    public function addType(TypeInterface $type): void
+    public function addType(TypeInterface ...$type): void
     {
-        $this->types[] = $type;
+        foreach ($type as $singleType) {
+            $this->types[] = $singleType;
+        }
     }
 
     /**

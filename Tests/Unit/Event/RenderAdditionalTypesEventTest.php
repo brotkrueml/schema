@@ -106,4 +106,16 @@ final class RenderAdditionalTypesEventTest extends TestCase
 
         self::assertSame([$type1, $type2], $this->subject->getAdditionalTypes());
     }
+
+    #[Test]
+    public function addingThreeTypesVariadicGetAdditionalTypesReturnsTypesCorrectly(): void
+    {
+        $type1 = new GenericStub();
+        $type2 = new GenericStub();
+        $type3 = new GenericStub();
+        $this->subject->addType($type1);
+        $this->subject->addType($type2, $type3);
+
+        self::assertSame([$type1, $type2, $type3], $this->subject->getAdditionalTypes());
+    }
 }

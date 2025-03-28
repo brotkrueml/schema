@@ -44,9 +44,9 @@ provides the following methods:
 
    Returns the PSR-7 request object.
 
-.. option:: addType(TypeInterface $type): void
+.. option:: addType(TypeInterface ...$type): void
 
-   Add a type model.
+   Add one or more type models.
 
 Example
 ~~~~~~~
