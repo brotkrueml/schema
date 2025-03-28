@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * @internal
+ * @api since version 3.11.0
  */
 final class RenderAdditionalTypesEvent
 {
@@ -30,16 +30,6 @@ final class RenderAdditionalTypesEvent
         private readonly ServerRequestInterface $request,
     ) {}
 
-    public function isWebPageTypeAlreadyDefined(): bool
-    {
-        return $this->webPageTypeAlreadyDefined;
-    }
-
-    public function isBreadcrumbListAlreadyDefined(): bool
-    {
-        return $this->breadcrumbListAlreadyDefined;
-    }
-
     public function getRequest(): ServerRequestInterface
     {
         return $this->request;
@@ -51,6 +41,23 @@ final class RenderAdditionalTypesEvent
     }
 
     /**
+     * @internal Not public API, only for internal use!
+     */
+    public function isWebPageTypeAlreadyDefined(): bool
+    {
+        return $this->webPageTypeAlreadyDefined;
+    }
+
+    /**
+     * @internal Not public API, only for internal use!
+     */
+    public function isBreadcrumbListAlreadyDefined(): bool
+    {
+        return $this->breadcrumbListAlreadyDefined;
+    }
+
+    /**
+     * @internal Not public API, only for internal use!
      * @return list<TypeInterface>
      */
     public function getAdditionalTypes(): array

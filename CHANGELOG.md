@@ -13,6 +13,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Updated
 - schema.org definition to version 29.0
 
+### Changed
+- `RenderAdditionalTypesEvent` is part of the API now (#135)
+
 ### Fixed
 - Missing pending properties for some types (#133)
 

@@ -25,6 +25,62 @@ retrieving and setting dedicated properties.
    <t3coreapi:EventDispatcher>`.
 
 
+.. _event-render-additional-types:
+
+Render additional types
+=======================
+
+.. versionchanged:: 3.11.0
+   This event is available in older versions, but is now official API.
+
+The event allows to add markup in cases where no controller is available, for
+example, if you want to enrich a page with structured data depending on the
+doktype of a page.
+
+The event :php:`\Brotkrueml\Schema\Event\RenderAdditionalTypesEvent`
+provides the following methods:
+
+.. option:: getRequest(): \Psr\Http\Message\ServerRequestInterface
+
+   Returns the PSR-7 request object.
+
+.. option:: addType(TypeInterface $type): void
+
+   Add a type model.
+
+Example
+~~~~~~~
+
+In the example we add structured data markup depending on the doktype of the
+page.
+
+.. rst-class:: bignums-xxl
+
+#. Create the event listener
+
+   .. literalinclude:: _Events/_AddMarkupToArticlePages.php
+      :language: php
+      :caption: EXT:my_extension/Classes/EventListener/AddMarkupToArticlePages.php
+
+   The method :php:`__invoke()` implements the logic for rendering additional
+   types. It receives the :php:`RenderAdditionalTypesEvent`. You can add as many
+   types as you like.
+
+#. Register your event listener in :file:`Configuration/Services.yaml`
+
+   .. code-block:: yaml
+
+      services:
+         # Place here the default dependency injection configuration
+
+         MyVendor\MyExtension\EventListener\AddMarkupToArticlePages:
+            tags:
+               - name: event.listener
+                 identifier: 'my-extension/add-markup-to-article-pages'
+
+Read :ref:`how to configure dependency injection in extensions <t3coreapi:dependency-injection-in-extensions>`.
+
+
 .. _event-register-additional-properties:
 
 Register additional properties for a type
@@ -85,7 +141,7 @@ Example
          MyVendor\MyExtension\EventListener\AdditionalPropertiesForPerson:
             tags:
                - name: event.listener
-                 identifier: 'myAdditionalPropertiesForPerson'
+                 identifier: 'my-extension/additional-properties-for-person'
 
 Read :ref:`how to configure dependency injection in extensions <t3coreapi:dependency-injection-in-extensions>`.
 

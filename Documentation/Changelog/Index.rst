@@ -23,6 +23,12 @@ Updated
 
 * schema.org definition to version 29.0
 
+Changed
+^^^^^^^
+
+
+* ``RenderAdditionalTypesEvent`` is part of the API now (#135)
+
 Fixed
 ^^^^^
 
