@@ -24,6 +24,11 @@ final class RenderAdditionalTypesEvent
      */
     private array $types = [];
 
+    /**
+     * @var list<TypeInterface>
+     */
+    private array $mainEntitiesOfWebPage = [];
+
     public function __construct(
         private readonly bool $webPageTypeAlreadyDefined,
         private readonly bool $breadcrumbListAlreadyDefined,
@@ -40,6 +45,11 @@ final class RenderAdditionalTypesEvent
         foreach ($type as $singleType) {
             $this->types[] = $singleType;
         }
+    }
+
+    public function addMainEntityOfWebPage(TypeInterface $mainEntity): void
+    {
+        $this->mainEntitiesOfWebPage[] = $mainEntity;
     }
 
     /**
@@ -65,5 +75,14 @@ final class RenderAdditionalTypesEvent
     public function getAdditionalTypes(): array
     {
         return $this->types;
+    }
+
+    /**
+     * @internal Not public API, only for internal use!
+     * @return list<TypeInterface>
+     */
+    public function getMainEntitiesOfWebPage(): array
+    {
+        return $this->mainEntitiesOfWebPage;
     }
 }

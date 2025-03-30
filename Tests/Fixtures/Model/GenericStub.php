@@ -20,7 +20,7 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
 {
     public function __construct(
         private readonly ?string $id = null,
-        private readonly array $properties = [],
+        private array $properties = [],
         private readonly string $type = 'GenericStub',
     ) {}
 
@@ -43,7 +43,12 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
 
     public function setProperty(string $propertyName, $propertyValue): void {}
 
-    public function addProperty(string $propertyName, $propertyValue): void {}
+    public function addProperty(string $propertyName, $propertyValue): void
+    {
+        if ($this->properties[$propertyName] === null) {
+            $this->properties[$propertyName] = $propertyValue;
+        }
+    }
 
     public function setProperties(array $properties): void {}
 

@@ -118,4 +118,24 @@ final class RenderAdditionalTypesEventTest extends TestCase
 
         self::assertSame([$type1, $type2, $type3], $this->subject->getAdditionalTypes());
     }
+
+    #[Test]
+    public function addingOneMainEntityGetMainEntitiesOfWebPageReturnsTypeCorrectly(): void
+    {
+        $type = new GenericStub();
+        $this->subject->addMainEntityOfWebPage($type);
+
+        self::assertSame([$type], $this->subject->getMainEntitiesOfWebPage());
+    }
+
+    #[Test]
+    public function addingTwoMainEntitiesGetMainEntitiesOfWebPageReturnsTypeCorrectly(): void
+    {
+        $type1 = new GenericStub();
+        $type2 = new GenericStub();
+        $this->subject->addMainEntityOfWebPage($type1);
+        $this->subject->addMainEntityOfWebPage($type2);
+
+        self::assertSame([$type1, $type2], $this->subject->getMainEntitiesOfWebPage());
+    }
 }

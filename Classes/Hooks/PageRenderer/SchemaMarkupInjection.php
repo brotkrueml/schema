@@ -52,16 +52,7 @@ final class SchemaMarkupInjection
 
         $result = $this->pagesCacheService->getMarkupFromCache();
         if ($result === null) {
-            /** @var RenderAdditionalTypesEvent $event */
-            $event = $this->eventDispatcher->dispatch(new RenderAdditionalTypesEvent(
-                $this->schemaManager->hasWebPage(),
-                $this->schemaManager->hasBreadcrumbList(),
-                $this->getRequest(),
-            ));
-            foreach ($event->getAdditionalTypes() as $additionalType) {
-                $this->schemaManager->addType($additionalType);
-            }
-
+            $this->dispatchRenderAdditionalTypesEvent();
             $result = $this->schemaManager->renderJsonLd();
             if ($result !== '') {
                 $this->pagesCacheService->storeMarkupInCache($result);
@@ -90,6 +81,32 @@ final class SchemaMarkupInjection
         }
 
         return $this->configuration->embedMarkupOnNoindexPages;
+    }
+
+    private function dispatchRenderAdditionalTypesEvent(): void
+    {
+        // The PageRenderer hook is called twice with an INT script on a page or when the page
+        // is hard reloaded. A second call of the event dispatcher should be avoided to not
+        // add the types a second time to the SchemaManager.
+        static $eventAlreadyDispatched = false;
+        if ($eventAlreadyDispatched) {
+            return;
+        }
+
+        /** @var RenderAdditionalTypesEvent $event */
+        $event = $this->eventDispatcher->dispatch(new RenderAdditionalTypesEvent(
+            $this->schemaManager->hasWebPage(),
+            $this->schemaManager->hasBreadcrumbList(),
+            $this->getRequest(),
+        ));
+        foreach ($event->getAdditionalTypes() as $additionalType) {
+            $this->schemaManager->addType($additionalType);
+        }
+        foreach ($event->getMainEntitiesOfWebPage() as $mainEntity) {
+            $this->schemaManager->addMainEntityOfWebPage($mainEntity);
+        }
+
+        $eventAlreadyDispatched = true;
     }
 
     private function getRequest(): ServerRequestInterface

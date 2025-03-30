@@ -48,6 +48,10 @@ provides the following methods:
 
    Add one or more type models.
 
+.. option:: addMainEntityOfWebPage(TypeInterface $mainEntity): void
+
+   Add a :ref:`main entity <main-entity-of-web-page>`.
+
 Example
 ~~~~~~~
 

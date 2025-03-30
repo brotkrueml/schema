@@ -21,7 +21,9 @@ use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\WebPageStub;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -35,6 +37,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 #[CoversClass(SchemaMarkupInjection::class)]
+#[RunTestsInSeparateProcesses]
 final class SchemaMarkupInjectionTest extends TestCase
 {
     private PageRenderer&MockObject $pageRendererMock;
@@ -551,6 +554,65 @@ final class SchemaMarkupInjectionTest extends TestCase
             self::createStub(ServerRequestInterface::class),
         );
         $event->addType(new GenericStub('from-event'));
+        $eventDispatcherStub = self::createStub(EventDispatcher::class);
+        $eventDispatcherStub
+            ->method('dispatch')
+            ->willReturn($event);
+
+        $subject = new SchemaMarkupInjection(
+            $this->applicationTypeStub,
+            $configuration,
+            $eventDispatcherStub,
+            $this->extensionAvailabilityStub,
+            $this->pagesCacheServiceMock,
+            $schemaManager,
+        );
+
+        $packageManagerStub = self::createStub(PackageManager::class);
+        $packageManagerStub
+            ->method('isPackageActive')
+            ->with('seo')
+            ->willReturn(false);
+        ExtensionManagementUtility::setPackageManager($packageManagerStub);
+
+        $params = [];
+        $subject->execute($params, $this->pageRendererMock);
+    }
+
+    #[Test]
+    public function mainEntitiesAddedViaEventDispatcherAreAddedCorrectly(): void
+    {
+        $configuration = $this->buildConfiguration();
+
+        $schemaManager = new SchemaManager($configuration, new Renderer());
+        $schemaManager->addType(new WebPageStub());
+
+        $this->pagesCacheServiceMock
+            ->expects(self::once())
+            ->method('getMarkupFromCache')
+            ->willReturn(null);
+        $this->pagesCacheServiceMock
+            ->expects(self::once())
+            ->method('storeMarkupInCache')
+            ->with(\sprintf(
+                Extension::JSONLD_TEMPLATE,
+                '{"@context":"https://schema.org/","@type":"WebPageStub","mainEntity":{"@type":"GenericStub","@id":"from-event-as-main-entity"}}',
+            ));
+
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
+        $this->extensionAvailabilityStub
+            ->method('isSeoAvailable')
+            ->willReturn(false);
+
+        $event = new RenderAdditionalTypesEvent(
+            false,
+            false,
+            self::createStub(ServerRequestInterface::class),
+        );
+        $event->addMainEntityOfWebPage(new GenericStub('from-event-as-main-entity'));
         $eventDispatcherStub = self::createStub(EventDispatcher::class);
         $eventDispatcherStub
             ->method('dispatch')
