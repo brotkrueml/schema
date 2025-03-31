@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
+use Brotkrueml\Schema\Type\TypeFactory;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -45,8 +46,37 @@ abstract class AbstractType extends AbstractBaseType
      */
     public function __construct()
     {
+        $this->triggerDeprecationOnManualInstantiation();
         $this->initialiseProperties();
         $this->addAdditionalProperties();
+    }
+
+    private function triggerDeprecationOnManualInstantiation(): void
+    {
+        $file = '';
+        $line = 0;
+        $backtraceLimit = 5;
+        $backtrace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, $backtraceLimit);
+        // The first item is this method, we can skip it
+        for ($i = 1; $i < $backtraceLimit - 1; $i++) {
+            $calledClass = $backtrace[$i]['class'] ?? '';
+            $callingClass = $backtrace[$i + 1]['class'] ?? '';
+            if ($calledClass === self::class && ($callingClass !== TypeFactory::class)) {
+                $file = $backtrace[$i]['file'] ?? 'unknown';
+                $line = $backtrace[$i]['line'] ?? 0;
+                break;
+            }
+        }
+
+        if ($file !== '') {
+            $message = \sprintf(
+                'Manual instantiation of type "%s" in file "%s", line "%d" is discouraged and might not work with EXT:schema v4.0 anymore. Use the TypeFactory instead.',
+                $this->getType(),
+                $file,
+                $line,
+            );
+            \trigger_error($message, \E_USER_DEPRECATED);
+        }
     }
 
     private function initialiseProperties(): void

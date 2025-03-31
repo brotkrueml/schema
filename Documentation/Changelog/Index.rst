@@ -33,7 +33,7 @@ Deprecated
 ^^^^^^^^^^
 
 
-* Direct instantiation of a type model classes. Use the ``TypeFactory`` instead
+* Manual instantiation of a type model classes - use the ``TypeFactory`` instead. A deprecation log entry is written with more information
 
 Fixed
 ^^^^^

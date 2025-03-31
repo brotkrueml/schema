@@ -19,7 +19,8 @@ Introduced in version 3
 
    Alternative
       Get an instance of a type model via the `TypeFactory`, see
-      :ref:`types` for details.
+      :ref:`types` for details. A deprecation log entry is written with
+      information about the calling class and line number.
 
 .. confval:: PSR-14 event RegisterAdditionalTypePropertiesEvent
 

@@ -151,7 +151,7 @@ final class AbstractTypeTest extends TestCase
         $this->subject->setProperty('description', ['The answer for everything']);
         $this->subject->setProperty('identifier', 42);
         $this->subject->setProperty('alternateName', 3.141592653);
-        $this->subject->setProperty('image', new class extends AbstractType {});
+        $this->subject->setProperty('image', new GenericStub());
         $this->subject->setProperty('subjectOf', new class implements NodeIdentifierInterface {
             public function getId(): ?string
             {
@@ -292,9 +292,9 @@ final class AbstractTypeTest extends TestCase
     public function addPropertyAcceptsTypeAsValue(): void
     {
         // Valid, when no exception is thrown
-        $this->subject->addProperty('image', new class extends AbstractType {});
-        $this->subject->addProperty('image', new class extends AbstractType {});
-        $this->subject->addProperty('image', new class extends AbstractType {});
+        $this->subject->addProperty('image', new GenericStub());
+        $this->subject->addProperty('image', new GenericStub());
+        $this->subject->addProperty('image', new GenericStub());
     }
 
     #[Test]

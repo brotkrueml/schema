@@ -31,6 +31,20 @@ class ThingWithResolvedTypesExposed extends AbstractType
         'url',
     ];
 
+    /**
+     * We have to overwrite the construct method, because it triggers the deprecation with "new".
+     * The type is resolved there, which is not desired.
+     * @todo Remove again for 4.0.0
+     * @noinspection PhpMissingParentConstructorInspection
+     */
+    public function __construct()
+    {
+        // There seems to be a leak since adding the deprecation for manual instantiation,
+        // as other types are already added here. For the test we can initialise the
+        // property again. Not nice, but works for now.
+        static::$resolvedTypes = [];
+    }
+
     public function getResolvedTypes(): array
     {
         return static::$resolvedTypes;

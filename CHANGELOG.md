@@ -17,7 +17,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `RenderAdditionalTypesEvent` is part of the API now (#135)
 
 ### Deprecated
-- Direct instantiation of a type model classes. Use the `TypeFactory` instead
+- Manual instantiation of a type model classes - use the `TypeFactory` instead. A deprecation log entry is written with more information
 
 ### Fixed
 - Missing pending properties for some types (#133)
