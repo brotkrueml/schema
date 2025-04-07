@@ -139,6 +139,23 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
             ],
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}',
         ];
+
+        yield 'Breadcrumb item with an absolute external URL as link given' => [
+            '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
+            [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Home page',
+                        'link' => 'https://main.example.org/',
+                    ],
+                    [
+                        'title' => 'Unicorns in TYPO3 land',
+                        'link' => 'videos/unicorns-in-typo3-land/',
+                    ],
+                ],
+            ],
+            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://main.example.org/"},"name":"Home page","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}',
+        ];
     }
 
     /**
