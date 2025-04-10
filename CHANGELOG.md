@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Absolute URL is prefixed with site URL in a reverse proxy environment (#136)
+
 ## [3.11.0] - 2025-04-01
 
 ### Added

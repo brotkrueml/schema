@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.11.0...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Absolute URL is prefixed with site URL in a reverse proxy environment (#136)
+
 `3.11.0 <https://github.com/brotkrueml/schema/compare/v3.10.1...v3.11.0>`_ - 2025-04-01
 -------------------------------------------------------------------------------------------
 
