@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.11.1] - 2025-04-10
+
 ### Fixed
 - Absolute URL is prefixed with site URL in a reverse proxy environment (#136)
 
@@ -548,7 +550,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.11.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.11.1...HEAD
+[3.11.1]: https://github.com/brotkrueml/schema/compare/v3.11.0...v3.11.1
 [3.11.0]: https://github.com/brotkrueml/schema/compare/v3.10.1...v3.11.0
 [3.10.1]: https://github.com/brotkrueml/schema/compare/v3.10.0...v3.10.1
 [3.10.0]: https://github.com/brotkrueml/schema/compare/v3.9.1...v3.10.0
