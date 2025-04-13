@@ -37,14 +37,14 @@
 		"phpstan/extension-installer": "^1.4",
 		"phpstan/phpstan": "2.1.11",
 		"phpstan/phpstan-strict-rules": "2.0.4",
-		"phpunit/phpunit": "^10.5 || ^11.5",
+		"phpunit/phpunit": "^10.5 || ^11.5 || ^12.1",
 		"rector/rector": "2.0.11",
 		"symfony/yaml": "^5.4 || ^6.4 || ^7.2",
 		"symplify/phpstan-rules": "^14.5",
 		"tomasvotruba/cognitive-complexity": "^1.0",
 		"typo3/cms-adminpanel": "^11.5.19 || ^12.4 || ^13.4",
 		"typo3/cms-lowlevel": "^11.5.19 || ^12.4 || ^13.4",
-		"typo3/testing-framework": "^7.0 || ^8.2 || ^9.1"
+		"typo3/testing-framework": "^7.0 || ^8.2 || ^9.2"
 	},
 	"conflict": {
 		"brotkrueml/sdbreadcrumb": "*"
