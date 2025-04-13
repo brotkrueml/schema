@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A listing that describes a job opening in a certain organization.
  */
 #[Type('JobPosting')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/job-posting')]
+#[Manual(Publisher::Google, 'Job posting', 'https://developers.google.com/search/docs/appearance/structured-data/job-posting')]
 final class JobPosting extends AbstractType
 {
     protected static array $propertyNames = [

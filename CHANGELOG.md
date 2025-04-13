@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Multiple documentation links for same publisher for a type in admin panel
+
 ## [3.11.1] - 2025-04-10
 
 ### Fixed

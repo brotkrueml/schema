@@ -69,8 +69,8 @@ final class RenderAdditionalTypesEvent
     }
 
     /**
-     * @internal Not public API, only for internal use!
      * @return list<TypeInterface>
+     * @internal Not public API, only for internal use!
      */
     public function getAdditionalTypes(): array
     {
@@ -78,8 +78,8 @@ final class RenderAdditionalTypesEvent
     }
 
     /**
-     * @internal Not public API, only for internal use!
      * @return list<TypeInterface>
+     * @internal Not public API, only for internal use!
      */
     public function getMainEntitiesOfWebPage(): array
     {

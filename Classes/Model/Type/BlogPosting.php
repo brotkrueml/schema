@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A blog post.
  */
 #[Type('BlogPosting')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/article')]
+#[Manual(Publisher::Google, 'Article', 'https://developers.google.com/search/docs/appearance/structured-data/article')]
 final class BlogPosting extends AbstractType
 {
     protected static array $propertyNames = [

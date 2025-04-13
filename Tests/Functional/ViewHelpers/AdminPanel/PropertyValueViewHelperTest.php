@@ -42,6 +42,12 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         $GLOBALS['LANG'] = $this->languageServiceStub;
 
         $iconStub = self::createStub(Icon::class);
+        if (\method_exists(Icon::class, 'setTitle')) {
+            // @todo remove method check once compatibility with TYPO3 v11 is dropped, setTitle() is available since TYPO3 v12
+            $iconStub
+                ->method('setTitle')
+                ->willReturn($iconStub);
+        }
         $iconStub
             ->method('render')
             ->willReturn('stubbed icon');
@@ -98,16 +104,12 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
 
         yield '@type is linked to schema.org documentation' => [
             '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
-            'openDocumentationOnSchemaOrg',
-            'Open documentation on schema.org',
+            '<span class="ext-schema-adminpanel-property">Thing</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span></span>',
         ];
 
         yield '@type value is htmlspecialchar\'d' => [
             '<schema:adminPanel.propertyValue name="@type" value="Th&ing"/>',
-            '<a href="https://schema.org/Th&amp;ing" title="Open &quot;documentation&quot; on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> Th&amp;ing',
-            'openDocumentationOnSchemaOrg',
-            'Open "documentation" on schema.org',
+            '<span class="ext-schema-adminpanel-property">Th&amp;ing</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://schema.org/Th&amp;ing" target="_blank" rel="noreferrer">Schema.org</a></span></span>',
         ];
 
         yield 'value is returned unchanged if not a URL' => [
@@ -127,98 +129,94 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
 
         yield 'value is a schema.org URL with http' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://schema.org/Thing"/>',
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> https://schema.org/Thing',
-            'openDocumentationOnSchemaOrg',
-            'Open documentation on schema.org',
+            '<span class="ext-schema-adminpanel-property">https://schema.org/Thing</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span></span>',
         ];
 
         yield 'value is a schema.org URL with https' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://schema.org/Thing"/>',
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> https://schema.org/Thing',
-            'openDocumentationOnSchemaOrg',
-            'Open documentation on schema.org',
+            '<span class="ext-schema-adminpanel-property">https://schema.org/Thing</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span></span>',
         ];
 
         yield 'value is a gif image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.gif"/>',
-            '<a href="http://example.org/image.gif" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.gif',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.gif</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.gif" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a jpg image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.jpg"/>',
-            '<a href="http://example.org/image.jpg" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.jpg',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.jpg</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.jpg" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a jpeg image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.jpeg"/>',
-            '<a href="http://example.org/image.jpeg" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.jpeg',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.jpeg</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.jpeg" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a png image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.png"/>',
-            '<a href="http://example.org/image.png" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.png',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.png</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.png" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a svg image and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://example.org/image.svg"/>',
-            '<a href="https://example.org/image.svg" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> https://example.org/image.svg',
+            '<span class="ext-schema-adminpanel-property">https://example.org/image.svg</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://example.org/image.svg" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a gif image with uppercase extension and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.GIF"/>',
-            '<a href="http://example.org/image.GIF" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.GIF',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.GIF</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.GIF" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a jpg image with uppercase extension and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.JPG"/>',
-            '<a href="http://example.org/image.JPG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.JPG',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.JPG</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.JPG" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a jpeg image with uppercase extension and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.JPEG"/>',
-            '<a href="http://example.org/image.JPEG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.JPEG',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.JPEG</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.JPEG" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a png image with uppercase extension and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/image.PNG"/>',
-            '<a href="http://example.org/image.PNG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/image.PNG',
+            '<span class="ext-schema-adminpanel-property">http://example.org/image.PNG</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/image.PNG" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a svg image with uppercase extension and returned with a link' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://example.org/image.SVG"/>',
-            '<a href="https://example.org/image.SVG" title="Show image" target="_blank" rel="noreferrer">stubbed icon</a> https://example.org/image.SVG',
+            '<span class="ext-schema-adminpanel-property">https://example.org/image.SVG</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://example.org/image.SVG" target="_blank" rel="noreferrer">Show image</a></span></span>',
             'showImage',
             'Show image',
         ];
 
         yield 'value is a URL with http' => [
             '<schema:adminPanel.propertyValue name="some-name" value="http://example.org/page.html"/>',
-            '<a href="http://example.org/page.html" title="Go to website" target="_blank" rel="noreferrer">stubbed icon</a> http://example.org/page.html',
+            '<span class="ext-schema-adminpanel-property">http://example.org/page.html</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="http://example.org/page.html" target="_blank" rel="noreferrer">Go to website</a></span></span>',
             'goToWebsite',
             'Go to website',
         ];
 
         yield 'value is a URL with https' => [
             '<schema:adminPanel.propertyValue name="some-name" value="https://example.org/page.html"/>',
-            '<a href="https://example.org/page.html" title="Go to website" target="_blank" rel="noreferrer">stubbed icon</a> https://example.org/page.html',
+            '<span class="ext-schema-adminpanel-property">https://example.org/page.html</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://example.org/page.html" target="_blank" rel="noreferrer">Go to website</a></span></span>',
             'goToWebsite',
             'Go to website',
         ];
@@ -227,19 +225,10 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
     #[Test]
     public function additionalManualsAreRenderedCorrectly(): void
     {
-        $languageMap = [
-            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg', 'Open documentation on schema.org'],
-            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference', 'Open Google reference'],
-            [Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference', 'Open Yandex reference'],
-        ];
-        $this->languageServiceStub
-            ->method('sL')
-            ->willReturnMap($languageMap);
-
         $typeProvider = new TypeProvider();
         $typeProvider->addType('Thing', Thing::class);
-        $typeProvider->addManualForType('Thing', [Publisher::Google, 'https://example.org/Thing']);
-        $typeProvider->addManualForType('Thing', [Publisher::Yandex, 'https://example.com/Thing']);
+        $typeProvider->addManualForType('Thing', [Publisher::Google, 'Some link', 'https://example.org/Thing']);
+        $typeProvider->addManualForType('Thing', [Publisher::Yandex, 'Another link', 'https://example.com/Thing']);
         GeneralUtility::setSingletonInstance(TypeProvider::class, $typeProvider);
 
         $actual = $this->renderTemplate(
@@ -247,7 +236,7 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         );
 
         self::assertSame(
-            '<a href="https://schema.org/Thing" title="Open documentation on schema.org" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.org/Thing" title="Open Google reference" target="_blank" rel="noreferrer">stubbed icon</a> <a href="https://example.com/Thing" title="Open Yandex reference" target="_blank" rel="noreferrer">stubbed icon</a> Thing',
+            '<span class="ext-schema-adminpanel-property">Thing</span> <span class="ext-schema-adminpanel-links"><span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span> <span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://example.org/Thing" target="_blank" rel="noreferrer">Some link</a></span> <span>stubbed icon <a class="ext-schema-adminpanel-link" href="https://example.com/Thing" target="_blank" rel="noreferrer">Another link</a></span></span>',
             $actual,
         );
     }

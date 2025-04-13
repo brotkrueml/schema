@@ -100,8 +100,8 @@ final class TypeProviderTest extends TestCase
     #[Test]
     public function getManualsForTypeReturnsManualsCorrectly(): void
     {
-        $this->subject->addManualForType('Thing', [Publisher::Google, 'https://example.com/thing']);
-        $this->subject->addManualForType('Thing', [Publisher::Yandex, 'https://example.net/thing']);
+        $this->subject->addManualForType('Thing', [Publisher::Google, 'Some text', 'https://example.com/thing']);
+        $this->subject->addManualForType('Thing', [Publisher::Yandex, 'Another text', 'https://example.net/thing']);
 
         $actual = $this->subject->getManualsForType('Thing');
 

@@ -20,7 +20,9 @@ use Brotkrueml\Schema\Manual\Publisher;
  * The price asked for a given offer by the respective organization or person.
  */
 #[Type('UnitPriceSpecification')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#pricing-examples')]
+#[Manual(Publisher::Google, 'Merchant listing: Pricing', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#pricing-examples')]
+#[Manual(Publisher::Google, 'Merchant listing: Sale pricing', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example')]
+#[Manual(Publisher::Google, 'Merchant listing: Member prices', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#member-price-example')]
 final class UnitPriceSpecification extends AbstractType
 {
     protected static array $propertyNames = [

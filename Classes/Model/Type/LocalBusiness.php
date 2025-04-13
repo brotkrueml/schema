@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
  */
 #[Type('LocalBusiness')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/local-business')]
+#[Manual(Publisher::Google, 'Local business', 'https://developers.google.com/search/docs/appearance/structured-data/local-business')]
 final class LocalBusiness extends AbstractType
 {
     protected static array $propertyNames = [

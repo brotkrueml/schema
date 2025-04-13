@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * An image file.
  */
 #[Type('ImageObject')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/image-license-metadata')]
+#[Manual(Publisher::Google, 'Image metadata', 'https://developers.google.com/search/docs/appearance/structured-data/image-license-metadata')]
 final class ImageObject extends AbstractType
 {
     protected static array $propertyNames = [

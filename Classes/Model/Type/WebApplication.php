@@ -20,8 +20,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  * Web applications.
  */
 #[Type('WebApplication')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/software-app')]
-#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
+#[Manual(Publisher::Google, 'Software app', 'https://developers.google.com/search/docs/appearance/structured-data/software-app')]
+#[Manual(Publisher::Yandex, 'Software', 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
 final class WebApplication extends AbstractType
 {
     protected static array $propertyNames = [

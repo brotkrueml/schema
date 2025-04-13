@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A step in the instructions for how to achieve a result. It is an ordered list with HowToDirection and/or HowToTip items.
  */
 #[Type('HowToStep')]
+#[Manual(Publisher::Google, 'Recipe', 'https://developers.google.com/search/docs/appearance/structured-data/recipe#how-to-step')]
 final class HowToStep extends AbstractType
 {
     protected static array $propertyNames = [

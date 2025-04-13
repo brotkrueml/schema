@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * Entities that have a somewhat fixed, physical extension.
  */
 #[Type('Place')]
-#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/address-organization.html')]
+#[Manual(Publisher::Yandex, 'Addresses and organizations', 'https://yandex.com/support/webmaster/supported-schemas/address-organization.html')]
 final class Place extends AbstractType
 {
     protected static array $propertyNames = [

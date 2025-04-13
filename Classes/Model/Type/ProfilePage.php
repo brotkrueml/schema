@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * Web page type: Profile page.
  */
 #[Type('ProfilePage')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/profile-page')]
+#[Manual(Publisher::Google, 'Profile page', 'https://developers.google.com/search/docs/appearance/structured-data/profile-page')]
 final class ProfilePage extends AbstractType implements WebPageTypeInterface
 {
     protected static array $propertyNames = [

@@ -31,17 +31,11 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     private const IMAGE_EXTENSIONS = ['avif', 'gif', 'jpg', 'jpeg', 'png', 'webp', 'svg'];
 
     /**
-     * @var array<string, array{title: string, iconIdentifier: string}>
+     * @var array<string, string>
      */
-    private const MANUAL_PUBLISHERS = [
-        'Google' => [
-            'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openGoogleReference',
-            'iconIdentifier' => 'ext-schema-documentation-google',
-        ],
-        'Yandex' => [
-            'title' => Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openYandexReference',
-            'iconIdentifier' => 'ext-schema-documentation-yandex',
-        ],
+    private const MANUAL_PUBLISHER_ICONS = [
+        'Google' => 'ext-schema-documentation-google',
+        'Yandex' => 'ext-schema-documentation-yandex',
     ];
 
     /**
@@ -87,10 +81,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         $linkTitle = '';
 
         if (\str_starts_with($value, 'http://schema.org/') || \str_starts_with($value, 'https://schema.org/')) {
-            $linkTitle = \sprintf(
-                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
-                $value,
-            );
+            $linkTitle = 'Schema.org';
             $iconIdentifier = 'ext-schema-documentation-schema';
         }
 
@@ -122,8 +113,9 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         foreach ($manuals as $manual) {
             $links[] = new Link(
                 $manual->link,
-                \sprintf($this->getLanguageService()->sL(self::MANUAL_PUBLISHERS[$manual->publisher->name]['title']), $type),
-                self::MANUAL_PUBLISHERS[$manual->publisher->name]['iconIdentifier'],
+                $manual->text,
+                self::MANUAL_PUBLISHER_ICONS[$manual->publisher->name],
+                $manual->publisher->name,
             );
         }
 
@@ -134,10 +126,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     {
         return new Link(
             'https://schema.org/' . $type,
-            \sprintf(
-                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.openDocumentationOnSchemaOrg'),
-                $type,
-            ),
+            'Schema.org',
             'ext-schema-documentation-schema',
         );
     }
@@ -147,21 +136,32 @@ final class PropertyValueViewHelper extends AbstractViewHelper
      */
     private function renderValue(array $typeLinks, string $value): string
     {
-        $iconLinks = [];
+        $docLinks = [];
         foreach ($typeLinks as $typeLink) {
-            $iconLinks[] = $this->renderIconLink($typeLink);
+            $docLinks[] = $this->renderDocLink($typeLink);
         }
 
-        return \trim(\implode(' ', $iconLinks) . ' ' . \htmlspecialchars($value));
+        return \sprintf(
+            '<span class="ext-schema-adminpanel-property">%s</span> <span class="ext-schema-adminpanel-links">%s</span>',
+            \htmlspecialchars($value),
+            \implode(' ', $docLinks),
+        );
     }
 
-    private function renderIconLink(Link $typeLink): string
+    private function renderDocLink(Link $typeLink): string
     {
+        $icon = self::getIconFactory()->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL);
+        // @phpstan-ignore-next-line Call to function method_exists() with TYPO3\CMS\Core\Imaging\Icon and 'setTitle' will always evaluate to true.
+        if (\method_exists($icon, 'setTitle')) {
+            // @todo remove method check once compatibility with TYPO3 v11 is dropped, setTitle() is available since TYPO3 v12
+            $icon = $icon->setTitle($typeLink->alternative);
+        }
+
         return \sprintf(
-            '<a href="%s" title="%s" target="_blank" rel="noreferrer">%s</a>',
+            '<span>%s <a class="ext-schema-adminpanel-link" href="%s" target="_blank" rel="noreferrer">%s</a></span>',
+            $icon->render(),
             \htmlspecialchars($typeLink->link),
             \htmlspecialchars($typeLink->title),
-            self::getIconFactory()->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL)->render(),
         );
     }
 

@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A direction indicating a single action to do in the instructions for how to achieve a result.
  */
 #[Type('HowToDirection')]
+#[Manual(Publisher::Google, 'Recipe', 'https://developers.google.com/search/docs/appearance/structured-data/recipe#supply-tool')]
 final class HowToDirection extends AbstractType
 {
     protected static array $propertyNames = [

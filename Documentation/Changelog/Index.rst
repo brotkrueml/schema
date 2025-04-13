@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.11.1...HEAD>`_
 -------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Multiple documentation links for same publisher for a type in admin panel
+
 `3.11.1 <https://github.com/brotkrueml/schema/compare/v3.11.0...v3.11.1>`_ - 2025-04-10
 -------------------------------------------------------------------------------------------
 

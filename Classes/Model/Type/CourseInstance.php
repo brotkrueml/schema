@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * An instance of a Course which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
  */
 #[Type('CourseInstance')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/course-info')]
+#[Manual(Publisher::Google, 'Course info', 'https://developers.google.com/search/docs/appearance/structured-data/course-info')]
 final class CourseInstance extends AbstractType
 {
     protected static array $propertyNames = [

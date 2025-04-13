@@ -22,6 +22,7 @@ final class Link
         string $link,
         public readonly string $title,
         public readonly string $iconIdentifier,
+        public readonly string $alternative = '',
     ) {
         $this->checkLink($link);
         $this->link = $link;

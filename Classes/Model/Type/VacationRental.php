@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A kind of lodging business that focuses on renting single properties for limited time.
  */
 #[Type('VacationRental')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/vacation-rental')]
+#[Manual(Publisher::Google, 'Vacation rental', 'https://developers.google.com/search/docs/appearance/structured-data/vacation-rental')]
 final class VacationRental extends AbstractType
 {
     protected static array $propertyNames = [

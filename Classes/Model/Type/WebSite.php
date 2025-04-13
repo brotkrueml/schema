@@ -11,16 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
-use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
  */
 #[Type('WebSite')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox')]
 final class WebSite extends AbstractType
 {
     protected static array $propertyNames = [

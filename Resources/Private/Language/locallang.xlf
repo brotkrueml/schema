@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2024-12-16T18:12:47Z" product-name="schema">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2025-04-13T09:13:58Z" product-name="schema">
 		<body>
 			<trans-unit id="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
@@ -10,15 +10,6 @@
 			</trans-unit>
 			<trans-unit id="adminPanel.noEntries">
 				<source><![CDATA[No structured data available.]]></source>
-			</trans-unit>
-			<trans-unit id="adminPanel.openDocumentationOnSchemaOrg">
-				<source><![CDATA[Open schema.org documentation for %s]]></source>
-			</trans-unit>
-			<trans-unit id="adminPanel.openGoogleReference">
-				<source><![CDATA[Open Google reference for %s]]></source>
-			</trans-unit>
-			<trans-unit id="adminPanel.openYandexReference">
-				<source><![CDATA[Open Yandex reference for %s]]></source>
 			</trans-unit>
 			<trans-unit id="adminPanel.showImage">
 				<source><![CDATA[Show image]]></source>

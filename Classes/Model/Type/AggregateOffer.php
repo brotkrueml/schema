@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
@@ -20,6 +22,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Note: AggregateOffers are normally expected to associate multiple offers that all share the same defined businessFunction value, or default to http://purl.org/goodrelations/v1#Sell if businessFunction is not explicitly defined.
  */
 #[Type('AggregateOffer')]
+#[Manual(Publisher::Google, 'Product snippet: Shopping aggregator page', 'https://developers.google.com/search/docs/appearance/structured-data/product-snippet#shopping-aggregator-page-example')]
 final class AggregateOffer extends AbstractType
 {
     protected static array $propertyNames = [

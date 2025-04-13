@@ -20,7 +20,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A review of an item - for example, of a restaurant, movie, or store.
  */
 #[Type('Review')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/review-snippet')]
+#[Manual(Publisher::Google, 'Review snippet', 'https://developers.google.com/search/docs/appearance/structured-data/review-snippet')]
+#[Manual(Publisher::Google, 'Product snippet: Pros and cons', 'https://developers.google.com/search/docs/appearance/structured-data/product-snippet#pros-cons-example')]
 final class Review extends AbstractType
 {
     protected static array $propertyNames = [

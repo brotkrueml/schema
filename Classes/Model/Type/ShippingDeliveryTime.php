@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * ShippingDeliveryTime provides various pieces of information about delivery times for shipping.
  */
 #[Type('ShippingDeliveryTime')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-with-shipping-example')]
+#[Manual(Publisher::Google, 'Merchant listing: Shipping details', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-with-shipping-example')]
 final class ShippingDeliveryTime extends AbstractType
 {
     protected static array $propertyNames = [

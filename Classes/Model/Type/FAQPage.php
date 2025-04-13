@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A FAQPage is a WebPage presenting one or more "[Frequently asked questions](https://en.wikipedia.org/wiki/FAQ)" (see also QAPage).
  */
 #[Type('FAQPage')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/faqpage')]
+#[Manual(Publisher::Google, 'FAQ', 'https://developers.google.com/search/docs/appearance/structured-data/faqpage')]
 final class FAQPage extends AbstractType implements WebPageTypeInterface
 {
     protected static array $propertyNames = [

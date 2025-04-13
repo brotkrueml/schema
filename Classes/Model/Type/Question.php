@@ -20,8 +20,9 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.
  */
 #[Type('Question')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/education-qa')]
-#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/questions.html')]
+#[Manual(Publisher::Google, 'FAQ', 'https://developers.google.com/search/docs/appearance/structured-data/faqpage')]
+#[Manual(Publisher::Google, 'Q&amp;A', 'https://developers.google.com/search/docs/appearance/structured-data/qapage')]
+#[Manual(Publisher::Google, 'Education Q&amp;A', 'https://developers.google.com/search/docs/appearance/structured-data/education-qa')]
 final class Question extends AbstractType
 {
     protected static array $propertyNames = [

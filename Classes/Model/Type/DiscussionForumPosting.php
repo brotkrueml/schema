@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A posting to a discussion forum.
  */
 #[Type('DiscussionForumPosting')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/discussion-forum')]
+#[Manual(Publisher::Google, 'Discussion forum', 'https://developers.google.com/search/docs/appearance/structured-data/discussion-forum')]
 final class DiscussionForumPosting extends AbstractType
 {
     protected static array $propertyNames = [

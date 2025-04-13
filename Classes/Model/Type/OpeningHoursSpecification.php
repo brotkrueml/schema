@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A structured value providing information about the opening hours of a place or a certain service inside a place.
@@ -22,6 +24,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * If the value for the closes property is less than the value for the opens property then the hour range is assumed to span over the next day.
  */
 #[Type('OpeningHoursSpecification')]
+#[Manual(Publisher::Google, 'Local Business: Business hours', 'https://developers.google.com/search/docs/appearance/structured-data/local-business#business-hours')]
 final class OpeningHoursSpecification extends AbstractType
 {
     protected static array $propertyNames = [

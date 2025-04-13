@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A contact point - for example, a Customer Complaints department.
  */
 #[Type('ContactPoint')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/logo')]
+#[Manual(Publisher::Google, 'Organization', 'https://developers.google.com/search/docs/appearance/structured-data/organization')]
 final class ContactPoint extends AbstractType
 {
     protected static array $propertyNames = [

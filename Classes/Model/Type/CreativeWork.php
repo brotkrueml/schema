@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * The most generic kind of creative work, including books, movies, photographs, software programs, etc.
  */
 #[Type('CreativeWork')]
-#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/essay.html')]
+#[Manual(Publisher::Yandex, 'Essays', 'https://yandex.com/support/webmaster/supported-schemas/essay.html')]
 final class CreativeWork extends AbstractType
 {
     protected static array $propertyNames = [

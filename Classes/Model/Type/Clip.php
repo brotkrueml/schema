@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A short TV or radio program or a segment/part of a program.
  */
 #[Type('Clip')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/learning-video')]
+#[Manual(Publisher::Google, 'Learning video', 'https://developers.google.com/search/docs/appearance/structured-data/learning-video')]
 final class Clip extends AbstractType
 {
     protected static array $propertyNames = [

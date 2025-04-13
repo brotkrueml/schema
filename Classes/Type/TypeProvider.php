@@ -54,7 +54,7 @@ final class TypeProvider implements SingletonInterface
     }
 
     /**
-     * @param array{0: Publisher, 1: non-empty-string} $manualProperties
+     * @param array{0: Publisher, 1: non-empty-string, 2: non-empty-string} $manualProperties
      */
     public function addManualForType(string $type, array $manualProperties): void
     {
@@ -62,7 +62,7 @@ final class TypeProvider implements SingletonInterface
             $this->manuals[$type] = [];
         }
 
-        $this->manuals[$type][] = new Manual($manualProperties[0], $manualProperties[1]);
+        $this->manuals[$type][] = new Manual($manualProperties[0], $manualProperties[1], $manualProperties[2]);
     }
 
     /**

@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A car is a wheeled, self-powered motor vehicle used for transportation.
  */
 #[Type('Car')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/vehicle-listing')]
+#[Manual(Publisher::Google, 'Vehicle listing', 'https://developers.google.com/search/docs/appearance/structured-data/vehicle-listing')]
 final class Car extends AbstractType
 {
     protected static array $propertyNames = [

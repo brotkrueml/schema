@@ -31,7 +31,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * or Fast and expensive: $15 in 1-2 days.
  */
 #[Type('OfferShippingDetails')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-with-shipping-example')]
+#[Manual(Publisher::Google, 'Merchant listing: Shipping details', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-with-shipping-example')]
 final class OfferShippingDetails extends AbstractType
 {
     protected static array $propertyNames = [

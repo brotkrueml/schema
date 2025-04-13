@@ -2,7 +2,11 @@
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
     data-namespace-typo3-fluid="true"
+    lang="en"
 >
+
+<link rel="stylesheet" media="all" href="{core:normalizedUrl(pathOrUrl: 'EXT:schema/Resources/Public/Css/adminpanel.css')}"/>
+
 <p>{f:translate(key: 'LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.intro')}</p>
 
 <f:if condition="{types}">
@@ -87,4 +91,5 @@
         </f:for>
     </f:if>
 </f:section>
+
 </html>

@@ -24,7 +24,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * For [GTIN](http://www.gs1.org/barcodes/technical/idkeys/gtin)-related fields, see [Check Digit calculator](http://www.gs1.org/barcodes/support/check_digit_calculator) and [validation guide](http://www.gs1us.org/resources/standards/gtin-validation-guide) from [GS1](http://www.gs1.org/).
  */
 #[Type('Offer')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing')]
+#[Manual(Publisher::Google, 'Merchant listing', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing')]
 final class Offer extends AbstractType
 {
     protected static array $propertyNames = [

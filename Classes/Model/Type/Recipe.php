@@ -20,8 +20,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via suitableForDiet. The keywords property can also be used to add more detail.
  */
 #[Type('Recipe')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/recipe')]
-#[Manual(Publisher::Yandex, 'https://yandex.com/support/webmaster/supported-schemas/recipe.html')]
+#[Manual(Publisher::Google, 'Recipe', 'https://developers.google.com/search/docs/appearance/structured-data/recipe')]
+#[Manual(Publisher::Yandex, 'Recipes', 'https://yandex.com/support/webmaster/supported-schemas/recipe.html')]
 final class Recipe extends AbstractType
 {
     protected static array $propertyNames = [

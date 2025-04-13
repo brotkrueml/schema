@@ -11,13 +11,18 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An answer offered to a question; perhaps correct, perhaps opinionated or wrong.
  */
 #[Type('Answer')]
+#[Manual(Publisher::Google, 'FAQ', 'https://developers.google.com/search/docs/appearance/structured-data/faqpage')]
+#[Manual(Publisher::Google, 'Q&amp;A', 'https://developers.google.com/search/docs/appearance/structured-data/qapage')]
+#[Manual(Publisher::Google, 'Education Q&amp;A', 'https://developers.google.com/search/docs/appearance/structured-data/education-qa')]
 final class Answer extends AbstractType
 {
     protected static array $propertyNames = [

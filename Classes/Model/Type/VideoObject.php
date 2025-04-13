@@ -20,8 +20,9 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A video file.
  */
 #[Type('VideoObject')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/video')]
-#[Manual(Publisher::Yandex, 'https://yandex.com/support/video/partners/schema-org.html')]
+#[Manual(Publisher::Google, 'Video', 'https://developers.google.com/search/docs/appearance/structured-data/video')]
+#[Manual(Publisher::Google, 'Learning video', 'https://developers.google.com/search/docs/appearance/structured-data/learning-video')]
+#[Manual(Publisher::Yandex, 'Video', 'https://yandex.com/support/video/en/partners/schema-org.html')]
 final class VideoObject extends AbstractType
 {
     protected static array $propertyNames = [

@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A collection of datasets.
  */
 #[Type('DataCatalog')]
-#[Manual(Publisher::Google, 'https://developers.google.com/search/docs/appearance/structured-data/dataset')]
+#[Manual(Publisher::Google, 'Dataset', 'https://developers.google.com/search/docs/appearance/structured-data/dataset')]
 final class DataCatalog extends AbstractType
 {
     protected static array $propertyNames = [
