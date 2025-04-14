@@ -32,7 +32,7 @@
 	"require-dev": {
 		"ext-sqlite3": "*",
 		"brotkrueml/coding-standards": "~6.1.0",
-		"ergebnis/composer-normalize": "~2.45.0",
+		"ergebnis/composer-normalize": "~2.46.0",
 		"infection/infection": "^0.29.14",
 		"phpstan/extension-installer": "^1.4",
 		"phpstan/phpstan": "2.1.11",
