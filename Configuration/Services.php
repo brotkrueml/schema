@@ -65,16 +65,10 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
         ->arg('$cache', service('cache.pages'));
 
     $services->set(AddBreadcrumbList::class)
-        ->arg('$configuration', service('schema.configuration'))
-        ->tag('event.listener', [
-            'identifier' => 'ext-schema/addBreadcrumbList',
-        ]);
+        ->arg('$configuration', service('schema.configuration'));
 
     $services->set(AddWebPageType::class)
-        ->arg('$configuration', service('schema.configuration'))
-        ->tag('event.listener', [
-            'identifier' => 'ext-schema/addWebPageType',
-        ]);
+        ->arg('$configuration', service('schema.configuration'));
 
     $services->set(SchemaContentObject::class)
         ->tag('frontend.contentobject', [

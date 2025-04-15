@@ -14,11 +14,15 @@ namespace Brotkrueml\Schema\EventListener;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * @internal
  */
+#[AsEventListener(
+    identifier: 'ext-schema/addWebPageType',
+)]
 final class AddWebPageType
 {
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';

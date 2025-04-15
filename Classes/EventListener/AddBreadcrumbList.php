@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -22,6 +23,9 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 /**
  * @internal
  */
+#[AsEventListener(
+    identifier: 'ext-schema/addBreadcrumbList',
+)]
 final class AddBreadcrumbList
 {
     private const DEFAULT_DOKTYPES_TO_EXCLUDE = [
