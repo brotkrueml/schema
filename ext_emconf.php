@@ -5,17 +5,13 @@ $EM_CONF[$_EXTKEY] = [
     'description' => 'API and view helpers for schema.org markup',
     'category' => 'fe',
     'state' => 'stable',
-    'clearCacheOnLoad' => true,
     'author' => 'Chris Müller',
     'author_email' => 'typo3@brotkrueml.dev',
     'version' => '4.0.0-dev',
     'constraints' => [
         'depends' => [
             'php' => '8.1.0-0.0.0',
-            'typo3' => '11.5.19-13.4.99',
-        ],
-        'conflicts' => [
-            'sdbreadcrumb' => '',
+            'typo3' => '12.4.0-13.4.99',
         ],
         'suggests' => [
             'adminpanel' => '',

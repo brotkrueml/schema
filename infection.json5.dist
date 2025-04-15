@@ -1,7 +1,6 @@
 {
 	"$schema": ".Build/vendor/infection/infection/resources/schema.json",
 	"timeout": 10,
-	"bootstrap": "./infection-bootstrap.php",
 	"source": {
 		"directories": [
 			"Classes"

@@ -25,9 +25,9 @@
 	},
 	"require": {
 		"php": ">=8.1",
-		"typo3/cms-core": "^11.5.19 || ^12.4 || ^13.4",
-		"typo3/cms-fluid": "^11.5.19 || ^12.4 || ^13.4",
-		"typo3/cms-frontend": "^11.5.19 || ^12.4 || ^13.4"
+		"typo3/cms-core": "^12.4 || ^13.4",
+		"typo3/cms-fluid": "^12.4 || ^13.4",
+		"typo3/cms-frontend": "^12.4 || ^13.4"
 	},
 	"require-dev": {
 		"ext-sqlite3": "*",
@@ -39,15 +39,12 @@
 		"phpstan/phpstan-strict-rules": "2.0.4",
 		"phpunit/phpunit": "^10.5 || ^11.5 || ^12.1",
 		"rector/rector": "2.0.11",
-		"symfony/yaml": "^5.4 || ^6.4 || ^7.2",
+		"symfony/yaml": "^6.4 || ^7.2",
 		"symplify/phpstan-rules": "^14.5",
 		"tomasvotruba/cognitive-complexity": "^1.0",
-		"typo3/cms-adminpanel": "^11.5.19 || ^12.4 || ^13.4",
-		"typo3/cms-lowlevel": "^11.5.19 || ^12.4 || ^13.4",
-		"typo3/testing-framework": "^7.0 || ^8.2 || ^9.2"
-	},
-	"conflict": {
-		"brotkrueml/sdbreadcrumb": "*"
+		"typo3/cms-adminpanel": "^12.4 || ^13.4",
+		"typo3/cms-lowlevel": "^12.4 || ^13.4",
+		"typo3/testing-framework": "^8.2 || ^9.2"
 	},
 	"suggest": {
 		"brotkrueml/schema-auto": "Provides additional terms related to auto",
@@ -85,7 +82,6 @@
 			"dev-main": "4.0.x-dev"
 		},
 		"typo3/cms": {
-			"app-dir": ".Build",
 			"extension-key": "schema",
 			"web-dir": ".Build/web"
 		}

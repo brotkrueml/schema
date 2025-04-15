@@ -42,12 +42,9 @@ final class PropertyValueViewHelperTest extends ViewHelperTestCase
         $GLOBALS['LANG'] = $this->languageServiceStub;
 
         $iconStub = self::createStub(Icon::class);
-        if (\method_exists(Icon::class, 'setTitle')) {
-            // @todo remove method check once compatibility with TYPO3 v11 is dropped, setTitle() is available since TYPO3 v12
-            $iconStub
-                ->method('setTitle')
-                ->willReturn($iconStub);
-        }
+        $iconStub
+            ->method('setTitle')
+            ->willReturn($iconStub);
         $iconStub
             ->method('render')
             ->willReturn('stubbed icon');

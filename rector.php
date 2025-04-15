@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\DeadCode\Rector\StaticCall\RemoveParentCallWithoutParentRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
@@ -38,8 +37,5 @@ return RectorConfig::configure()
         __DIR__ . '/Classes/ViewHelpers/Type/*',
         PreferPHPUnitThisCallRector::class,
         RemoveDataProviderParamKeysRector::class,
-        RemoveParentCallWithoutParentRector::class => [
-            __DIR__ . '/Classes/AdminPanel/SchemaModule', // can be removed with minimum compatibility to TYPO3 v12 LTS
-        ],
         ReplaceTestAnnotationWithPrefixedFunctionRector::class,
     ]);

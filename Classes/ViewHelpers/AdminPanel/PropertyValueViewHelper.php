@@ -150,12 +150,9 @@ final class PropertyValueViewHelper extends AbstractViewHelper
 
     private function renderDocLink(Link $typeLink): string
     {
-        $icon = self::getIconFactory()->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL);
-        // @phpstan-ignore-next-line Call to function method_exists() with TYPO3\CMS\Core\Imaging\Icon and 'setTitle' will always evaluate to true.
-        if (\method_exists($icon, 'setTitle')) {
-            // @todo remove method check once compatibility with TYPO3 v11 is dropped, setTitle() is available since TYPO3 v12
-            $icon = $icon->setTitle($typeLink->alternative);
-        }
+        $icon = self::getIconFactory()
+            ->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL)
+            ->setTitle($typeLink->alternative);
 
         return \sprintf(
             '<span>%s <a class="ext-schema-adminpanel-link" href="%s" target="_blank" rel="noreferrer">%s</a></span>',

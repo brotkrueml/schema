@@ -2,7 +2,6 @@
 
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\TypoScript\SchemaContentObject;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use Brotkrueml\Schema\AdminPanel\SchemaModule;
 use Brotkrueml\Schema\AdminPanel\TypesInformation;
@@ -23,9 +22,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['schema'] = ['Brotkrue
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Extension::CACHE_IDENTIFIER] ??= [];
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][Extension::CACHE_IDENTIFIER]['groups'] ??= ['system'];
-
-// This configuration can be removed once compatibility with TYPO3 v11 is gone
-$GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects']['SCHEMA'] = SchemaContentObject::class;
 
 if (ExtensionManagementUtility::isLoaded('adminpanel')) {
     $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['adminpanel']['modules']['ext-schema'] = [

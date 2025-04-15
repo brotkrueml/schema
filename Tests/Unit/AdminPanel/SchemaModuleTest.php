@@ -18,7 +18,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
 #[CoversClass(SchemaModule::class)]
@@ -29,10 +28,6 @@ final class SchemaModuleTest extends TestCase
 
     protected function setUp(): void
     {
-        if ((new Typo3Version())->getMajorVersion() < 12) {
-            self::markTestSkipped('Skip tests for TYPO3 version 11, as there is more configuration necessary.');
-        }
-
         $this->pagesCacheService = self::createStub(PagesCacheService::class);
         $this->subject = new SchemaModule($this->pagesCacheService);
 

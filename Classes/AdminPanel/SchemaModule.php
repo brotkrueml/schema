@@ -25,13 +25,7 @@ final class SchemaModule extends AbstractModule implements ShortInfoProviderInte
 {
     public function __construct(
         private readonly PagesCacheService $pagesCacheService,
-    ) {
-        if (\is_callable(\get_parent_class($this) . '::__construct')) {
-            // Call to parent constructor can be removed when minimum TYPO3 version is set to v12 LTS
-            // @phpstan-ignore-next-line Call to an undefined static method TYPO3\CMS\Adminpanel\ModuleApi\AbstractModule::__construct()
-            parent::__construct();
-        }
-    }
+    ) {}
 
     public function getIconIdentifier(): string
     {
