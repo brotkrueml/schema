@@ -77,12 +77,10 @@ class PagesCacheService
         /** @var CacheInstruction|null $cacheInstruction */
         $cacheInstruction = $this->getRequest()->getAttribute('frontend.cache.instruction');
         if ($cacheInstruction instanceof CacheInstruction) {
-            // TYPO3 v13
             return $cacheInstruction->isCachingAllowed();
         }
 
-        /** @phpstan-ignore-next-line Cannot access property $no_cache (TYPO3 v11/v12 only) */
-        return ! (bool) $this->controller->no_cache;
+        return true;
     }
 
     private function getRequest(): ServerRequestInterface

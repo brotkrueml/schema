@@ -8,13 +8,6 @@ use Brotkrueml\Schema\AdminPanel\TypesInformation;
 
 defined('TYPO3') || die();
 
-if (isset($GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'])) {
-    // Since TYPO3 v13.2 the addRootLineFields are not necessary anymore
-    // This configuration can be removed once compatibility with TYPO3 v12 is gone
-    // @see https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/13.2/Deprecation-103752-ObsoleteGLOBALSTYPO3_CONF_VARSFEaddRootLineFields.html
-    $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',nav_hide,tx_schema_webpagetype';
-}
-
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] =
     SchemaMarkupInjection::class . '->execute';
 

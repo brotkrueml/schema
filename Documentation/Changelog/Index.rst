@@ -16,6 +16,7 @@ Removed
 
 
 * Compatibility with TYPO3 v11 (#100)
+* Compatibility with TYPO3 v12 (#119)
 
 `3.12.0 <https://github.com/brotkrueml/schema/compare/v3.11.1...v3.12.0>`_ - 2025-04-14
 -------------------------------------------------------------------------------------------

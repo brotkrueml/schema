@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Removed
 - Compatibility with TYPO3 v11 (#100)
+- Compatibility with TYPO3 v12 (#119)
 
 ## [3.12.0] - 2025-04-14
 

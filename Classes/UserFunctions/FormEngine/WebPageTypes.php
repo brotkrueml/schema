@@ -13,7 +13,6 @@ namespace Brotkrueml\Schema\UserFunctions\FormEngine;
 
 use Brotkrueml\Schema\Type\TypeProvider;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
-use TYPO3\CMS\Core\Information\Typo3Version;
 
 /**
  * Provides a user function used as itemProcFunc in TCA definition
@@ -34,13 +33,7 @@ final class WebPageTypes
     {
         $webPageTypes = $this->typeProvider->getWebPageTypes();
         \sort($webPageTypes);
-        $majorTypo3Version = (new Typo3Version())->getMajorVersion();
         foreach ($webPageTypes as $type) {
-            if ($majorTypo3Version < 12) {
-                $params['items'][] = [$type, $type];
-                continue;
-            }
-
             $params['items'][] = [
                 'label' => $type,
                 'value' => $type,

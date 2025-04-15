@@ -304,40 +304,6 @@ final class AddBreadcrumbListTest extends TestCase
             '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
         ];
 
-        // @todo Remove when compatibility with TYPO3 v12 is dropped
-        yield 'Recycler in root line should not be rendered' => [
-            [
-                [
-                    'uid' => 42,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'Site root page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '1',
-                    'tx_schema_webpagetype' => '',
-                ],
-                [
-                    'uid' => 1,
-                    'doktype' => 255,
-                    'title' => 'A folder',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-                [
-                    'uid' => 2,
-                    'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                    'title' => 'A page',
-                    'nav_title' => '',
-                    'nav_hide' => '0',
-                    'is_siteroot' => '0',
-                    'tx_schema_webpagetype' => '',
-                ],
-            ],
-            '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/the-page/"},"name":"A page","position":"1"}}',
-        ];
-
         yield 'Menu separator in root line should not be rendered, but doktype 198' => [
             [
                 [

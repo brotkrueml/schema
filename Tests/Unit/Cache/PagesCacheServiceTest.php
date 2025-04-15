@@ -23,7 +23,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Frontend\Cache\CacheInstruction;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -83,30 +82,9 @@ final class PagesCacheServiceTest extends TestCase
     #[Test]
     public function getMarkupFromCacheReturnsNullIfCachingIsDisabledViaCacheInstruction(): void
     {
-        if ((new Typo3Version())->getMajorVersion() < 13) {
-            self::markTestSkipped('Only TYPO3 v13+');
-        }
-
         $cacheInstruction = new CacheInstruction();
         $cacheInstruction->disableCache('Test');
         $GLOBALS['TYPO3_REQUEST'] = $this->request->withAttribute('frontend.cache.instruction', $cacheInstruction);
-
-        $this->cacheFrontendMock
-            ->expects(self::never())
-            ->method('get')
-            ->with('some-hash-tx-schema');
-
-        self::assertNull($this->subject->getMarkupFromCache());
-    }
-
-    #[Test]
-    public function getMarkupFromCacheReturnsNullIfCachingIsDisabledViaTSFE(): void
-    {
-        if ((new Typo3Version())->getMajorVersion() >= 13) {
-            self::markTestSkipped('Only TYPO3 v11/v12');
-        }
-
-        $this->controllerStub->no_cache = true;
 
         $this->cacheFrontendMock
             ->expects(self::never())
@@ -149,29 +127,9 @@ final class PagesCacheServiceTest extends TestCase
     #[Test]
     public function storeMarkupInCacheDoesNotSetMarkupIfCachingIsDisabledViaCacheInstruction(): void
     {
-        if ((new Typo3Version())->getMajorVersion() < 13) {
-            self::markTestSkipped('Only TYPO3 v13+');
-        }
-
         $cacheInstruction = new CacheInstruction();
         $cacheInstruction->disableCache('Test');
         $GLOBALS['TYPO3_REQUEST'] = $this->request->withAttribute('frontend.cache.instruction', $cacheInstruction);
-
-        $this->cacheFrontendMock
-            ->expects(self::never())
-            ->method('set');
-
-        $this->subject->storeMarkupInCache('markup to store');
-    }
-
-    #[Test]
-    public function storeMarkupInCacheDoesNotSetMarkupIfCachingIsDisabledViaTSFE(): void
-    {
-        if ((new Typo3Version())->getMajorVersion() >= 13) {
-            self::markTestSkipped('Only TYPO3 v11/v12');
-        }
-
-        $this->controllerStub->no_cache = true;
 
         $this->cacheFrontendMock
             ->expects(self::never())
