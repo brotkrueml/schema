@@ -34,19 +34,6 @@ final class TypeFactory
         return $this->createMultiple($type);
     }
 
-    /**
-     * @deprecated since 3.0.0, will be removed in 4.0. Inject the TypeFactory into your class and call the method create() on that object.
-     */
-    public static function createType(string ...$type): TypeInterface
-    {
-        \trigger_error(
-            'Calling the static method TypeFactory::createType() is deprecated since version 3.0.0 and will be removed in version 4.0. Inject the TypeFactory into your class and call the method create() on that object.',
-            \E_USER_DEPRECATED,
-        );
-
-        return (new self())->create(...$type);
-    }
-
     private function createSingle(string $type): TypeInterface
     {
         /** @var TypeProvider $typeProvider */

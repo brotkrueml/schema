@@ -42,7 +42,7 @@ final class TypeFactoryTest extends TestCase
     }
 
     #[Test]
-    public function createTypeWithNoArgumentThrowsException(): void
+    public function createWithNoArgumentThrowsException(): void
     {
         $this->expectException(\DomainException::class);
         $this->expectExceptionCode(1621787452);
@@ -52,7 +52,7 @@ final class TypeFactoryTest extends TestCase
     }
 
     #[Test]
-    public function createTypeWithSingleArgumentReturnsInstanceOfTypeModel(): void
+    public function createWithSingleArgumentReturnsInstanceOfTypeModel(): void
     {
         $this->typeProvider->addType('GenericStub', GenericStub::class);
 
@@ -62,7 +62,7 @@ final class TypeFactoryTest extends TestCase
     }
 
     #[Test]
-    public function createTypeWithSingleArgumentThrowsExceptionOnInvalidType(): void
+    public function createWithSingleArgumentThrowsExceptionOnInvalidType(): void
     {
         $this->expectException(ModelClassNotFoundException::class);
 
@@ -70,7 +70,7 @@ final class TypeFactoryTest extends TestCase
     }
 
     #[Test]
-    public function createTypeWithTwoArgumentsReturnsInstanceOfMultipleType(): void
+    public function createWithTwoArgumentsReturnsInstanceOfMultipleType(): void
     {
         $this->typeProvider->addType('ProductStub', ProductStub::class);
         $this->typeProvider->addType('ServiceStub', ServiceStub::class);
@@ -82,7 +82,7 @@ final class TypeFactoryTest extends TestCase
     }
 
     #[Test]
-    public function createTypeWithTwoSameArgumentsReturnsSingleTypeInstance(): void
+    public function createWithTwoSameArgumentsReturnsSingleTypeInstance(): void
     {
         $this->typeProvider->addType('GenericStub', GenericStub::class);
 

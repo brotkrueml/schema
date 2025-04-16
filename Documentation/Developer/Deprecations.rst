@@ -51,7 +51,7 @@ Introduced in version 3
    Deprecated since version
       3.0.0
 
-   Will be removed in version
+   Removed in version
       4.0.0
 
    Alternative

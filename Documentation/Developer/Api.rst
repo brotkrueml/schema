@@ -35,13 +35,6 @@ Starting with examples
 Types
 -----
 
-.. deprecated:: 3.0.0
-   Before version 3.0 a type was created with the static method
-   :php:`TypeFactory::createType()`. This has been
-   :ref:`deprecated <api-deprecations>`, inject the :php:`TypeFactory` into the
-   constructor and use :php:`TypeFactory->create()` instead (like in the example
-   below).
-
 Let's start with a simple example. Imagine you describe a `person`_ on a
 plugin's detail page that you want to enrich with structured markup. First you
 have to create the schema model:
