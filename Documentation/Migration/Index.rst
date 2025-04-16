@@ -10,10 +10,17 @@ Migration
    :depth: 2
    :local:
 
+From version 3.x to version 4.0
+===============================
+
+In version 4.0, the compatibility with TYPO3 v11 LTS and TYPO3 v12 LTS has been
+removed.
+
+
 From version 2.x to version 3.0
 ===============================
 
-In version 3.0 the compatibility with TYPO3 v10 LTS was removed. Also PHP 8.1
+In version 3.0, the compatibility with TYPO3 v10 LTS was removed. Also PHP 8.1
 or higher is necessary.
 
 Type model classes
@@ -96,7 +103,7 @@ and use the new :php:`create()` method:
 From version 1.x to version 2.0
 ===============================
 
-In version 2.0 the compatibility with TYPO3 v9 LTS was removed. Also PHP 7.4
+In version 2.0, the compatibility with TYPO3 v9 LTS was removed. Also PHP 7.4
 or higher is necessary.
 
 
