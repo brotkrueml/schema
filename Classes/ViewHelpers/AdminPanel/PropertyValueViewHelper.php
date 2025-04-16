@@ -15,8 +15,8 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manual\Link;
 use Brotkrueml\Schema\Type\TypeProvider;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
-use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
+use TYPO3\CMS\Core\Imaging\IconSize;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -159,7 +159,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     private function renderDocLink(Link $typeLink): string
     {
         $icon = $this->iconFactory
-            ->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL)
+            ->getIcon($typeLink->iconIdentifier, IconSize::SMALL)
             ->setTitle($typeLink->alternative);
 
         return \sprintf(
