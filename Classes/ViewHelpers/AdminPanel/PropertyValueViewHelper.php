@@ -14,10 +14,11 @@ namespace Brotkrueml\Schema\ViewHelpers\AdminPanel;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manual\Link;
 use Brotkrueml\Schema\Type\TypeProvider;
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -43,8 +44,15 @@ final class PropertyValueViewHelper extends AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    private ?IconFactory $iconFactory = null;
-    private ?TypeProvider $typeProvider = null;
+    private readonly LanguageService $languageService;
+
+    public function __construct(
+        private readonly IconFactory $iconFactory,
+        private readonly TypeProvider $typeProvider,
+        LanguageServiceFactory $languageServiceFactory,
+    ) {
+        $this->languageService = $languageServiceFactory->createFromUserPreferences($this->getBackendUser());
+    }
 
     public function initializeArguments(): void
     {
@@ -86,7 +94,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         }
 
         if (\in_array(\strtolower(\pathinfo($value, \PATHINFO_EXTENSION)), self::IMAGE_EXTENSIONS, true)) {
-            $linkTitle = $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
+            $linkTitle = $this->languageService->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.showImage');
             $iconIdentifier = 'actions-image';
         }
 
@@ -94,7 +102,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
             [
                 new Link(
                     $value,
-                    $linkTitle !== '' ? $linkTitle : $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
+                    $linkTitle !== '' ? $linkTitle : $this->languageService->sL(Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.goToWebsite'),
                     $iconIdentifier !== '' ? $iconIdentifier : 'actions-link',
                 ),
             ],
@@ -103,13 +111,13 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @return Link[]
+     * @return list<Link>
      */
     private function buildLinksForType(string $type): array
     {
         $links = [$this->buildLinkForSchemaOrgType($type)];
 
-        $manuals = $this->getTypeProvider()->getManualsForType($type);
+        $manuals = $this->typeProvider->getManualsForType($type);
         foreach ($manuals as $manual) {
             $links[] = new Link(
                 $manual->link,
@@ -132,7 +140,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @param Link[] $typeLinks
+     * @param list<Link> $typeLinks
      */
     private function renderValue(array $typeLinks, string $value): string
     {
@@ -150,7 +158,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
 
     private function renderDocLink(Link $typeLink): string
     {
-        $icon = self::getIconFactory()
+        $icon = $this->iconFactory
             ->getIcon($typeLink->iconIdentifier, Icon::SIZE_SMALL)
             ->setTitle($typeLink->alternative);
 
@@ -162,26 +170,8 @@ final class PropertyValueViewHelper extends AbstractViewHelper
         );
     }
 
-    private function getIconFactory(): IconFactory
+    private function getBackendUser(): BackendUserAuthentication
     {
-        if (! $this->iconFactory instanceof IconFactory) {
-            $this->iconFactory = GeneralUtility::makeInstance(IconFactory::class);
-        }
-
-        return $this->iconFactory;
-    }
-
-    private function getTypeProvider(): TypeProvider
-    {
-        if (! $this->typeProvider instanceof TypeProvider) {
-            $this->typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
-        }
-
-        return $this->typeProvider;
-    }
-
-    private function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
+        return $GLOBALS['BE_USER'];
     }
 }
