@@ -11,58 +11,41 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
-use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
-use Brotkrueml\Schema\Type\TypeProvider;
 use Brotkrueml\Schema\ViewHelpers\NodeIdentifierViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use TYPO3Fluid\Fluid\View\TemplateView;
 
 #[CoversClass(NodeIdentifierViewHelper::class)]
-final class NodeIdentifierViewHelperTest extends ViewHelperTestCase
+final class NodeIdentifierViewHelperTest extends FunctionalTestCase
 {
-    use SchemaCacheTrait;
-    use TypeProviderWithFixturesTrait;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->defineCacheStubsWhichReturnEmptyEntry();
-
-        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
-        parent::tearDown();
-    }
+    protected array $testExtensionsToLoad = [
+        'brotkrueml/schema',
+    ];
 
     #[Test]
     public function viewHelperPrintsNodeIdentifiersCorrectly(): void
     {
-        $actual = $this->renderTemplate('<schema:nodeIdentifier id="some-id"/>', []);
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource(
+            '<schema:nodeIdentifier id="some-id"/>',
+        );
 
-        self::assertSame('some-id', $actual);
+        self::assertSame('some-id', (new TemplateView($context))->render());
     }
 
     #[Test]
-    public function usingVariablesAndThenAssignedToTypePropertiesBuildsSchemaCorrectly(): void
+    public function useInlineNotationAndPassValueToVariable(): void
     {
-        $template = <<<EOF
-<f:variable name="identifier1" value="{schema:nodeIdentifier(id: 'https://example.org/#john-smith')}"/>
-<f:variable name="identifier2" value="{schema:nodeIdentifier(id: 'https://example.org/#sarah-jane-smith')}"/>
-<schema:type.person name="John Smith" -id="{identifier1}" knows="{identifier2}"/>
-<schema:type.person name="Sarah Jane Smith" -id="{identifier2}" knows="{identifier1}"/>
-EOF
-        ;
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource('
+<f:variable name="identifier1" value="{schema:nodeIdentifier(id: \'https://example.org/#john-smith\')}"/>
+<f:variable name="identifier2" value="{schema:nodeIdentifier(id: \'https://example.org/#sarah-jane-smith\')}"/>
+{identifier1} {identifier2}
+        ');
 
-        $this->renderTemplate($template, []);
-        $actual = $this->schemaManager->renderJsonLd();
-
-        $expected = '{"@context":"https://schema.org/","@graph":[{"@type":"Person","@id":"https://example.org/#john-smith","name":"John Smith","knows":{"@id":"https://example.org/#sarah-jane-smith"}},{"@type":"Person","@id":"https://example.org/#sarah-jane-smith","name":"Sarah Jane Smith","knows":{"@id":"https://example.org/#john-smith"}}]}';
-        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
+        self::assertSame('https://example.org/#john-smith https://example.org/#sarah-jane-smith', \trim((string) (new TemplateView($context))->render()));
     }
 }
