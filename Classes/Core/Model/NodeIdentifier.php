@@ -11,13 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-class NodeIdentifier implements NodeIdentifierInterface, \Stringable
+final readonly class NodeIdentifier implements NodeIdentifierInterface, \Stringable
 {
     public function __construct(
         /**
          * The ID of the type (mapped to @id in result)
          */
-        private readonly string $id,
+        private string $id,
     ) {}
 
     public function getId(): string
