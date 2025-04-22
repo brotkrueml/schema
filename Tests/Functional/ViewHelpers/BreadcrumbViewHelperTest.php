@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
+use Brotkrueml\Schema\Core\Exception\MissingBreadcrumbArgumentException;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
@@ -25,7 +26,6 @@ use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Parser\Exception;
-use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 #[CoversClass(BreadcrumbViewHelper::class)]
 final class BreadcrumbViewHelperTest extends ViewHelperTestCase
@@ -276,7 +276,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     ],
                 ],
             ],
-            ViewHelper\Exception::class,
+            MissingBreadcrumbArgumentException::class,
             1561890280,
         ];
 
@@ -289,7 +289,7 @@ final class BreadcrumbViewHelperTest extends ViewHelperTestCase
                     ],
                 ],
             ],
-            ViewHelper\Exception::class,
+            MissingBreadcrumbArgumentException::class,
             1561890281,
         ];
     }

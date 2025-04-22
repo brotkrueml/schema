@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\ViewHelpers;
 
+use Brotkrueml\Schema\Core\Exception\MissingBreadcrumbArgumentException;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
  * ViewHelper for building the breadcrumb structure and assigning it
@@ -134,17 +134,11 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
     {
         foreach ($breadcrumb as $item) {
             if (! isset($item['title'])) {
-                throw new Exception(
-                    'An item in the given breadcrumb structure does not have the "title" key.',
-                    1561890280,
-                );
+                throw MissingBreadcrumbArgumentException::fromMissingTitle($breadcrumb);
             }
 
             if (! isset($item['link'])) {
-                throw new Exception(
-                    'An item in the given breadcrumb structure does not have the "link" key.',
-                    1561890281,
-                );
+                throw MissingBreadcrumbArgumentException::fromMissingLink($breadcrumb);
             }
         }
     }
