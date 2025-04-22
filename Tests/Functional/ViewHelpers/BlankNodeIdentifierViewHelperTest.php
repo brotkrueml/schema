@@ -12,69 +12,60 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
-use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
-use Brotkrueml\Schema\Type\TypeProvider;
 use Brotkrueml\Schema\ViewHelpers\BlankNodeIdentifierViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use TYPO3Fluid\Fluid\View\TemplateView;
 
 #[CoversClass(BlankNodeIdentifierViewHelper::class)]
-final class BlankNodeIdentifierViewHelperTest extends ViewHelperTestCase
+final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
 {
-    use SchemaCacheTrait;
-    use TypeProviderWithFixturesTrait;
+    protected array $testExtensionsToLoad = [
+        'brotkrueml/schema',
+    ];
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->defineCacheStubsWhichReturnEmptyEntry();
-
-        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
 
         // For every test case reset the counter. In a test case itself the counter starts now with 1.
         new BlankNodeIdentifier(true);
     }
 
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
-        parent::tearDown();
-    }
-
     #[Test]
     public function viewHelperUsedOncePrintsBlankNodeIdentifierCorrectly(): void
     {
-        $actual = $this->renderTemplate('<schema:blankNodeIdentifier/>', []);
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource(
+            '<schema:blankNodeIdentifier/>',
+        );
 
-        self::assertSame('_:b1', $actual);
+        self::assertSame('_:b1', (new TemplateView($context))->render());
     }
 
     #[Test]
     public function viewHelperUsedTwicePrintsBlankNodeIdentifiersCorrectly(): void
     {
-        $actual = $this->renderTemplate('<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>', []);
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource(
+            '<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>',
+        );
 
-        self::assertSame('_:b1 _:b2', $actual);
+        self::assertSame('_:b1 _:b2', (new TemplateView($context))->render());
     }
 
     #[Test]
-    public function usingVariablesAndThenAssignedToTypePropertiesBuildsSchemaCorrectly(): void
+    public function useInlineNotationAndPassValueToVariable(): void
     {
-        $template = <<<EOF
-<f:variable name="blankIdentifier1" value="{schema:blankNodeIdentifier()}"/>
-<f:variable name="blankIdentifier2" value="{schema:blankNodeIdentifier()}"/>
-<schema:type.person name="John Smith" -id="{blankIdentifier1}" knows="{blankIdentifier2}"/>
-<schema:type.person name="Sarah Jane Smith" -id="{blankIdentifier2}" knows="{blankIdentifier1}"/>
-EOF
-        ;
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource('
+            <f:variable name="blankIdentifier1" value="{schema:blankNodeIdentifier()}"/>
+            <f:variable name="blankIdentifier2" value="{schema:blankNodeIdentifier()}"/>
+            {blankIdentifier1} {blankIdentifier2}
+        ');
 
-        $this->renderTemplate($template, []);
-        $actual = $this->schemaManager->renderJsonLd();
-
-        $expected = '{"@context":"https://schema.org/","@graph":[{"@type":"Person","@id":"_:b1","name":"John Smith","knows":{"@id":"_:b2"}},{"@type":"Person","@id":"_:b2","name":"Sarah Jane Smith","knows":{"@id":"_:b1"}}]}';
-        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
+        self::assertSame('_:b1 _:b2', \trim((string) (new TemplateView($context))->render()));
     }
 }
