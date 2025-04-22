@@ -19,15 +19,15 @@ final class MyController
     {
         // ...
 
-        $nodeIdentifier = new BlankNodeIdentifier();
+        $johnSmithId = new BlankNodeIdentifier();
 
         $person1 = $this->typeFactory->create('Person');
-        $person1->setId($nodeIdentifier);
+        $person1->setId($johnSmithId);
         $person1->setProperty('name', 'John Smith');
 
         $person2 = $this->typeFactory->create('Person');
         $person2->setProperty('name', 'Sarah Jane Smith');
-        $person2->setProperty('knows', $nodeIdentifier);
+        $person2->setProperty('knows', $johnSmithId);
 
         $person1->setProperty('knows', $person2);
 
