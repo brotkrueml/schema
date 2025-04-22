@@ -11,22 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
+final readonly class BlankNodeIdentifier implements NodeIdentifierInterface, \Stringable
 {
     /**
      * The ID of the type (mapped to @id in result)
      */
-    private readonly string $id;
+    private string $id;
 
-    /**
-     * @param bool $resetCounter This argument is internal and for testing purposes only and may be removed at any time!
-     */
-    public function __construct(bool $resetCounter = false)
+    public function __construct()
     {
         static $counter = 0;
-        if ($resetCounter) {
-            $counter = 0;
-        }
         $this->id = '_:b' . $counter++;
     }
 

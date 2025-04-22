@@ -11,28 +11,21 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
-use Brotkrueml\Schema\Core\Model\BlankNodeIdentifier;
 use Brotkrueml\Schema\ViewHelpers\BlankNodeIdentifierViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
 
 #[CoversClass(BlankNodeIdentifierViewHelper::class)]
+#[RunTestsInSeparateProcesses]
 final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        // For every test case reset the counter. In a test case itself the counter starts now with 1.
-        new BlankNodeIdentifier(true);
-    }
 
     #[Test]
     public function viewHelperUsedOncePrintsBlankNodeIdentifierCorrectly(): void
@@ -42,7 +35,7 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
             '<schema:blankNodeIdentifier/>',
         );
 
-        self::assertSame('_:b1', (new TemplateView($context))->render());
+        self::assertSame('_:b0', (new TemplateView($context))->render());
     }
 
     #[Test]
@@ -50,10 +43,10 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
     {
         $context = $this->get(RenderingContextFactory::class)->create();
         $context->getTemplatePaths()->setTemplateSource(
-            '<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>',
+            '<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>',
         );
 
-        self::assertSame('_:b1 _:b2', (new TemplateView($context))->render());
+        self::assertSame('_:b0 _:b1 _:b2', (new TemplateView($context))->render());
     }
 
     #[Test]
@@ -66,6 +59,6 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
             {blankIdentifier1} {blankIdentifier2}
         ');
 
-        self::assertSame('_:b1 _:b2', \trim((string) (new TemplateView($context))->render()));
+        self::assertSame('_:b0 _:b1', \trim((string) (new TemplateView($context))->render()));
     }
 }
