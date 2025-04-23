@@ -14,6 +14,13 @@ namespace Brotkrueml\Schema\Core\Model;
 use Brotkrueml\Schema\Core\Exception\InvalidNumberOfTypesException;
 use Brotkrueml\Schema\Core\Exception\SameTypeForMultipleTypeException;
 
+/**
+ * This class represents a multiple type.
+ * Do not instantiate it directly but use the TypeFactory to create
+ * a multiple type model, for example:
+ *
+ * $productService = $this->typeFactory->create('Product', 'Service');
+ */
 final class MultipleType extends AbstractBaseType
 {
     /**
