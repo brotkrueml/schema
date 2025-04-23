@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\ViewHelpers;
 use Brotkrueml\Schema\Core\Exception\MissingBreadcrumbArgumentException;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -90,8 +91,8 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
         $this->checkBreadcrumbStructure($breadcrumb);
 
-        /** @var string $siteUrl */
-        $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
+        $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
+        $siteUrl = (string) $request->getAttribute('site')->getBase();
 
         $typeFactory = new TypeFactory();
         $breadcrumbList = $typeFactory->create('BreadcrumbList');

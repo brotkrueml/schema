@@ -19,10 +19,13 @@ use Brotkrueml\Schema\ViewHelpers\BreadcrumbViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\Core\Parser\Exception;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\View\TemplateView;
 
 #[CoversClass(BreadcrumbViewHelper::class)]
@@ -49,10 +52,18 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
     #[DataProvider('fluidTemplatesProvider')]
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, array $arguments, string $expected): void
     {
-        /** @noinspection PhpInternalEntityUsedInspection */
-        GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
+        $site = new Site('test', 1, [
+            'base' => 'https://example.org/',
+        ]);
+        $requestStub = self::createStub(ServerRequestInterface::class);
+        $requestStub
+            ->method('getAttribute')
+            ->with('site')
+            ->willReturn($site);
 
+        /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
+        $context->setAttribute(ServerRequestInterface::class, $requestStub);
         $context->getTemplatePaths()->setTemplateSource($template);
 
         $view = new TemplateView($context);
@@ -190,6 +201,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
         $this->expectException($expectedExceptionClass);
         $this->expectExceptionCode($expectedExceptionCode);
 
+        /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
         $context->getTemplatePaths()->setTemplateSource($template);
 
