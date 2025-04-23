@@ -13,7 +13,6 @@ namespace Brotkrueml\Schema\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
@@ -26,7 +25,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
  *
  * = Examples =
  * <code title="Using the view helper">
- * <schema:property -as="sameAs" value="https://twitter.com/example">
+ * <schema:property -as="sameAs" value="https://mastodon.social/example">
  * </code>
  */
 final class PropertyViewHelper extends AbstractViewHelper
@@ -34,12 +33,9 @@ final class PropertyViewHelper extends AbstractViewHelper
     private const ARGUMENT_AS = '-as';
     private const ARGUMENT_VALUE = 'value';
 
-    private readonly TypeStack $typeStack;
-
-    public function __construct(?TypeStack $typeStack = null)
-    {
-        $this->typeStack = $typeStack instanceof TypeStack ? $typeStack : GeneralUtility::makeInstance(TypeStack::class);
-    }
+    public function __construct(
+        private readonly TypeStack $typeStack,
+    ) {}
 
     public function initializeArguments(): void
     {
