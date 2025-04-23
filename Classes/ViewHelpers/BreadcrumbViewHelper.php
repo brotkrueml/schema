@@ -102,15 +102,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
                 $id = $siteUrl . \ltrim($id, '/');
             }
 
-            $webPageTypeClass = self::DEFAULT_WEBPAGE_TYPE;
-            /*
-            // @see: https://github.com/brotkrueml/schema/issues/101
-            if (\is_array($breadcrumb[$i]['data'] ?? false)
-                && ($breadcrumb[$i]['data']['tx_schema_webpagetype'] ?? '') !== '') {
-                $webPageTypeClass = $breadcrumb[$i]['data']['tx_schema_webpagetype'];
-            }
-            */
-            $itemType = $typeFactory->create($webPageTypeClass);
+            $itemType = $typeFactory->create(self::DEFAULT_WEBPAGE_TYPE);
             $itemType->setId($id);
 
             $item = $typeFactory->create('ListItem')->setProperties([
