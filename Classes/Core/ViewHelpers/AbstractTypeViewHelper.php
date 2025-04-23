@@ -21,15 +21,13 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
     protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
 
     private readonly TypeInterface $modelTemplate;
-    protected readonly TypeFactory $typeFactory;
 
     public function __construct(
-        ?TypeStack $typeStack = null,
-        ?SchemaManager $schemaManager = null,
-        ?TypeFactory $typeFactory = null,
+        TypeStack $stack,
+        SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
     ) {
-        parent::__construct($typeStack, $schemaManager);
-        $this->typeFactory = $typeFactory ?? new TypeFactory();
+        parent::__construct($stack, $schemaManager);
         $this->modelTemplate = $this->typeFactory->create($this->getType());
     }
 

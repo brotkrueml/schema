@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
@@ -33,14 +32,11 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
     private int $isMainEntityOfWebPage = 0;
     private string $parentPropertyName = '';
     private ?TypeInterface $model = null;
-    private readonly TypeStack $stack;
-    private readonly SchemaManager $schemaManager;
 
-    public function __construct(?TypeStack $typeStack = null, ?SchemaManager $schemaManager = null)
-    {
-        $this->stack = $typeStack ?? GeneralUtility::makeInstance(TypeStack::class);
-        $this->schemaManager = $schemaManager ?? GeneralUtility::makeInstance(SchemaManager::class);
-    }
+    public function __construct(
+        private readonly TypeStack $stack,
+        private readonly SchemaManager $schemaManager,
+    ) {}
 
     public function initializeArguments(): void
     {
