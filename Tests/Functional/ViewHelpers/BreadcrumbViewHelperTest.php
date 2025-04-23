@@ -14,14 +14,12 @@ namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 use Brotkrueml\Schema\Core\Exception\MissingBreadcrumbArgumentException;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Type\TypeProvider;
 use Brotkrueml\Schema\ViewHelpers\BreadcrumbViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\Core\Parser\Exception;
@@ -34,19 +32,6 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->get(TypeProvider::class));
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        GeneralUtility::purgeInstances();
-    }
 
     #[Test]
     #[DataProvider('fluidTemplatesProvider')]

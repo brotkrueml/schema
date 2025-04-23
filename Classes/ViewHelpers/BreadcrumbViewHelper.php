@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Exception\MissingBreadcrumbArgumentException;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -57,6 +56,11 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 {
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
+    public function __construct(
+        private readonly SchemaManager $schemaManager,
+        private readonly TypeFactory $typeFactory,
+    ) {}
+
     public function initializeArguments(): void
     {
         parent::initializeArguments();
@@ -94,8 +98,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
         $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
         $siteUrl = (string) $request->getAttribute('site')->getBase();
 
-        $typeFactory = new TypeFactory();
-        $breadcrumbList = $typeFactory->create('BreadcrumbList');
+        $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         $itemsCount = \count($breadcrumb);
         for ($i = 0; $i < $itemsCount; $i++) {
             $id = (string) $breadcrumb[$i]['link'];
@@ -103,10 +106,10 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
                 $id = $siteUrl . \ltrim($id, '/');
             }
 
-            $itemType = $typeFactory->create(self::DEFAULT_WEBPAGE_TYPE);
+            $itemType = $this->typeFactory->create(self::DEFAULT_WEBPAGE_TYPE);
             $itemType->setId($id);
 
-            $item = $typeFactory->create('ListItem')->setProperties([
+            $item = $this->typeFactory->create('ListItem')->setProperties([
                 'position' => $i + 1,
                 'name' => $breadcrumb[$i]['title'],
                 'item' => $itemType,
@@ -115,9 +118,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
             $breadcrumbList->addProperty('itemListElement', $item);
         }
 
-        /** @var SchemaManager $schemaManager */
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType($breadcrumbList);
+        $this->schemaManager->addType($breadcrumbList);
     }
 
     /**
