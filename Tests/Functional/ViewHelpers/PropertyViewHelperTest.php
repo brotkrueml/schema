@@ -12,137 +12,112 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\ViewHelpers\PropertyViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\Core\Parser;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
+use TYPO3Fluid\Fluid\View\TemplateView;
 
 #[CoversClass(PropertyViewHelper::class)]
-final class PropertyViewHelperTest extends ViewHelperTestCase
+final class PropertyViewHelperTest extends FunctionalTestCase
 {
-    use SchemaCacheTrait;
-    use TypeProviderWithFixturesTrait;
+    protected array $testExtensionsToLoad = [
+        'brotkrueml/schema',
+    ];
 
-    protected function setUp(): void
+    #[Test]
+    #[DataProvider('fluidTemplatesProvider')]
+    public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, string $expected): void
     {
-        parent::setUp();
-        $this->defineCacheStubsWhichReturnEmptyEntry();
+        /** @var RenderingContextInterface $context */
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource($template);
+        (new TemplateView($context))->render();
 
-        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
+        $actual = $this->get(SchemaManager::class)->renderJsonLd();
+
+        self::assertSame($expected, $actual);
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        GeneralUtility::purgeInstances();
-    }
-
-    /**
-     * Data provider for testing the property view helper in Fluid templates
-     *
-     * @return array
-     */
     public static function fluidTemplatesProvider(): iterable
     {
         yield 'Property with one value' => [
-            '<schema:type.thing>
+            'template' => '<schema:type.thing>
                     <schema:property -as="image" value="http://example.org/image.png"/>
                 </schema:type.thing>',
-            \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","image":"http://example.org/image.png"}'),
+            'expected' => \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","image":"http://example.org/image.png"}'),
         ];
 
         yield 'Property with multiple values' => [
-            '<schema:type.thing>
+            'template' => '<schema:type.thing>
                     <schema:property -as="image" value="http://example.org/image1.png"/>
                     <schema:property -as="image" value="http://example.org/image2.png"/>
                     <schema:property -as="image" value="http://example.org/image3.png"/>
                     <schema:property -as="image" value="http://example.org/image4.png"/>
                 </schema:type.thing>',
-            \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}'),
+            'expected' => \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}'),
         ];
 
         yield 'Property with value "0"' => [
-            '<schema:type.thing>
-                    <schema:property -as="isAccessibleForFree" value="0"/>
+            'template' => '<schema:type.thing>
+                    <schema:property -as="description" value="0"/>
                 </schema:type.thing>',
-            \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","isAccessibleForFree":"0"}'),
+            'expected' => \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","description":"0"}'),
         ];
     }
 
-    /**
-     * @param string $template The Fluid template
-     * @param string $expected The expected output
-     */
-    #[Test]
-    #[DataProvider('fluidTemplatesProvider')]
-    public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, string $expected): void
-    {
-        $this->renderTemplate($template);
-
-        $actual = $this->schemaManager->renderJsonLd();
-
-        self::assertSame($expected, $actual);
-    }
-
-    /**
-     * Data provider for some cases where exceptions are thrown when using the property view helper incorrectly
-     *
-     * @return array
-     */
-    public static function fluidTemplatesProviderForExceptions(): iterable
-    {
-        yield 'View helper is not a child of a type' => [
-            '<schema:property -as="someProperty" value="some value"/>',
-            Exception::class,
-            1561838013,
-        ];
-
-        yield 'Missing -as attribute' => [
-            '<schema:type.thing><schema:property value="some value"/></schema:type.thing>',
-            Parser\Exception::class,
-            1237823699,
-        ];
-
-        yield 'Missing value attribute' => [
-            '<schema:type.thing><schema:property -as="someProperty" /></schema:type.thing>',
-            Parser\Exception::class,
-            1237823699,
-        ];
-
-        yield 'Empty -as attribute' => [
-            '<schema:type.thing><schema:property -as="" value="some value"/></schema:type.thing>',
-            Exception::class,
-            1561838834,
-        ];
-
-        yield 'Empty value attribute' => [
-            '<schema:type.thing><schema:property -as="name" value=""/></schema:type.thing>',
-            Exception::class,
-            1561838999,
-        ];
-    }
-
-    /**
-     * @param string $template The Fluid template
-     * @param string $exceptionClass The exception class
-     * @param int $expectedExceptionCode The expected exception code
-     */
     #[Test]
     #[DataProvider('fluidTemplatesProviderForExceptions')]
     public function itThrowsExceptionWhenViewHelperIsUsedIncorrectly(
         string $template,
-        string $exceptionClass,
+        string $expectedExceptionClass,
         int $expectedExceptionCode,
     ): void {
-        $this->expectException($exceptionClass);
+        $this->expectException($expectedExceptionClass);
         $this->expectExceptionCode($expectedExceptionCode);
 
-        $this->renderTemplate($template);
+        /** @var RenderingContextInterface $context */
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource($template);
+        (new TemplateView($context))->render();
+    }
+
+    public static function fluidTemplatesProviderForExceptions(): iterable
+    {
+        yield 'View helper is not a child of a type' => [
+            'template' => '<schema:property -as="someProperty" value="some value"/>',
+            'expectedExceptionClass' => Exception::class,
+            'expectedExceptionCode' => 1561838013,
+        ];
+
+        yield 'Missing -as attribute' => [
+            'template' => '<schema:type.thing><schema:property value="some value"/></schema:type.thing>',
+            'expectedExceptionClass' => Parser\Exception::class,
+            'expectedExceptionCode' => 1237823699,
+        ];
+
+        yield 'Missing value attribute' => [
+            'template' => '<schema:type.thing><schema:property -as="someProperty" /></schema:type.thing>',
+            'expectedExceptionClass' => Parser\Exception::class,
+            'expectedExceptionCode' => 1237823699,
+        ];
+
+        yield 'Empty -as attribute' => [
+            'template' => '<schema:type.thing><schema:property -as="" value="some value"/></schema:type.thing>',
+            'expectedExceptionClass' => Exception::class,
+            'expectedExceptionCode' => 1561838834,
+        ];
+
+        yield 'Empty value attribute' => [
+            'template' => '<schema:type.thing><schema:property -as="name" value=""/></schema:type.thing>',
+            'expectedExceptionClass' => Exception::class,
+            'expectedExceptionCode' => 1561838999,
+        ];
     }
 }
