@@ -15,10 +15,12 @@ use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 /**
  * @internal
@@ -26,7 +28,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 #[AsEventListener(
     identifier: 'ext-schema/addBreadcrumbList',
 )]
-final class AddBreadcrumbList
+final readonly class AddBreadcrumbList
 {
     private const DEFAULT_DOKTYPES_TO_EXCLUDE = [
         PageRepository::DOKTYPE_SPACER,
@@ -34,9 +36,8 @@ final class AddBreadcrumbList
     ];
 
     public function __construct(
-        private readonly Configuration $configuration,
-        private readonly ContentObjectRenderer $contentObjectRenderer,
-        private readonly TypeFactory $typeFactory,
+        private Configuration $configuration,
+        private TypeFactory $typeFactory,
     ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
@@ -54,9 +55,9 @@ final class AddBreadcrumbList
             $this->configuration->automaticBreadcrumbExcludeAdditionalDoktypes,
         );
         $rootLine = [];
-        /** @var TypoScriptFrontendController $frontendController */
-        $frontendController = $event->getRequest()->getAttribute('frontend.controller');
-        foreach ($frontendController->config['rootLine'] as $page) {
+        /** @var PageInformation $pageInformation */
+        $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
+        foreach ($pageInformation->getRootLine() as $page) {
             if ((bool) ($page['is_siteroot'] ?? false)) {
                 continue;
             }
@@ -80,23 +81,29 @@ final class AddBreadcrumbList
             return;
         }
 
-        $event->addType($this->buildBreadCrumbList($rootLine));
+        $event->addType($this->buildBreadCrumbList($rootLine, $event->getRequest()));
     }
 
     /**
      * @param non-empty-array<int, array<string, mixed>> $rootLine
      */
-    private function buildBreadCrumbList(array $rootLine): TypeInterface
+    private function buildBreadCrumbList(array $rootLine, ServerRequestInterface $request): TypeInterface
     {
+        /** @var Site $site */
+        $site = $request->getAttribute('site');
+        /** @var SiteLanguage $language */
+        $language = $request->getAttribute('language');
+
         $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         foreach (\array_values($rootLine) as $index => $page) {
+            $link = (string) $site->getRouter()->generateUri(
+                $page,
+                [
+                    '_language' => $language->getLanguageId(),
+                ],
+            );
+
             $itemType = $this->typeFactory->create('WebPage');
-
-            $link = $this->contentObjectRenderer->typoLink_URL([
-                'parameter' => (string) $page['uid'],
-                'forceAbsoluteUrl' => true,
-            ]);
-
             $itemType->setId($link);
 
             $item = $this->typeFactory->create('ListItem')->setProperties([
