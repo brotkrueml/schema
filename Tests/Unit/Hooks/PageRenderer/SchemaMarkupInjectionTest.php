@@ -40,9 +40,9 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 #[RunTestsInSeparateProcesses]
 final class SchemaMarkupInjectionTest extends TestCase
 {
-    private PageRenderer&MockObject $pageRendererMock;
-    private TypoScriptFrontendController&MockObject $controllerMock;
-    private PagesCacheService&MockObject $pagesCacheServiceMock;
+    private MockObject $pageRendererMock;
+    private MockObject $controllerMock;
+    private MockObject $pagesCacheServiceMock;
     private ApplicationType&Stub $applicationTypeStub;
     private ExtensionAvailability&Stub $extensionAvailabilityStub;
 

@@ -29,7 +29,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 final class TypesInformationTest extends TestCase
 {
     private PagesCacheService&Stub $pagesCacheServiceStub;
-    private StandaloneView&MockObject $viewMock;
+    private MockObject $viewMock;
     private LanguageService&Stub $languageServiceStub;
     private TypesInformation $subject;
 
