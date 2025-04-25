@@ -5,7 +5,16 @@
     lang="en"
 >
 
-<link rel="stylesheet" media="all" href="{core:normalizedUrl(pathOrUrl: 'EXT:schema/Resources/Public/Css/adminpanel.css')}" nonce="{f:security.nonce()}"/>
+<f:variable name="nonce" value="{schema:security.nonce()}"/>
+<f:if condition="{nonce}">
+    <f:then>
+        <link rel="stylesheet" media="all" href="{core:normalizedUrl(pathOrUrl: 'EXT:schema/Resources/Public/Css/adminpanel.css')}" nonce="{nonce}"/>
+    </f:then>
+    <f:else>
+        <link rel="stylesheet" media="all" href="{core:normalizedUrl(pathOrUrl: 'EXT:schema/Resources/Public/Css/adminpanel.css')}"/>
+    </f:else>
+</f:if>
+
 
 <p>{f:translate(key: 'LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.intro')}</p>
 
