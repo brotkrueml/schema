@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.12.1] - 2025-04-25
+
 ### Fixed
 - Exception with activated admin panel on TYPO3 v11 (#139)
 
@@ -558,7 +560,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.12.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD
+[3.12.1]: https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1
 [3.12.0]: https://github.com/brotkrueml/schema/compare/v3.11.1...v3.12.0
 [3.11.1]: https://github.com/brotkrueml/schema/compare/v3.11.0...v3.11.1
 [3.11.0]: https://github.com/brotkrueml/schema/compare/v3.10.1...v3.11.0
