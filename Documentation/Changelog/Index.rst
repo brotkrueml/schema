@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.0...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD>`_
 -------------------------------------------------------------------------------
 
 Removed
@@ -18,6 +18,15 @@ Removed
 * Compatibility with TYPO3 v11 (#100)
 * Compatibility with TYPO3 v12 (#119)
 * Deprecated method ``TypeFactory::createType()`` (#116)
+
+`3.12.1 <https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1>`_ - 2025-04-25
+-------------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Exception with activated admin panel on TYPO3 v11 (#139)
 
 `3.12.0 <https://github.com/brotkrueml/schema/compare/v3.11.1...v3.12.0>`_ - 2025-04-14
 -------------------------------------------------------------------------------------------
