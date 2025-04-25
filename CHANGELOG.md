@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Exception with activated admin panel on TYPO3 v11 (#139)
+
 ## [3.12.0] - 2025-04-14
 
 ### Added

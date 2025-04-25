@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.0...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Exception with activated admin panel on TYPO3 v11 (#139)
+
 `3.12.0 <https://github.com/brotkrueml/schema/compare/v3.11.1...v3.12.0>`_ - 2025-04-14
 -------------------------------------------------------------------------------------------
 
