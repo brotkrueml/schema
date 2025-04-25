@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 #[CoversClass(AddWebPageType::class)]
 final class AddWebPageTypeTest extends TestCase
@@ -36,7 +36,7 @@ final class AddWebPageTypeTest extends TestCase
     use TypeProviderWithFixturesTrait;
 
     private ExtensionConfiguration&Stub $extensionConfigurationStub;
-    private TypoScriptFrontendController&Stub $typoScriptFrontendControllerStub;
+    private PageInformation $pageInformation;
     private RenderAdditionalTypesEvent $event;
     private ServerRequestInterface&Stub $requestStub;
 
@@ -45,12 +45,13 @@ final class AddWebPageTypeTest extends TestCase
         $this->defineCacheStubsWhichReturnEmptyEntry();
 
         $this->extensionConfigurationStub = self::createStub(ExtensionConfiguration::class);
-        $this->typoScriptFrontendControllerStub = self::createStub(TypoScriptFrontendController::class);
+
+        $this->pageInformation = new PageInformation();
         $this->requestStub = self::createStub(ServerRequestInterface::class);
         $this->requestStub
             ->method('getAttribute')
-            ->with('frontend.controller')
-            ->willReturn($this->typoScriptFrontendControllerStub);
+            ->with('frontend.page.information')
+            ->willReturn($this->pageInformation);
 
         $this->event = new RenderAdditionalTypesEvent(false, false, $this->requestStub);
 
@@ -80,7 +81,7 @@ final class AddWebPageTypeTest extends TestCase
     }
 
     #[Test]
-    public function noWebPageTypeIsAddedWhenItItIsAlreadyDefined(): void
+    public function noWebPageTypeIsAddedWhenItIsAlreadyDefined(): void
     {
         $configuration = $this->buildConfiguration(true);
 
@@ -96,6 +97,11 @@ final class AddWebPageTypeTest extends TestCase
     public function webPageTypeWebPageIsAddedWhenNoTypeIsDefinedInPageProperties(): void
     {
         $configuration = $this->buildConfiguration(true);
+
+        $this->pageInformation->setPageRecord([
+            'uid' => 1,
+            'tx_schema_webpagetype' => '',
+        ]);
 
         $subject = new AddWebPageType($configuration, new TypeFactory());
 
@@ -113,9 +119,10 @@ final class AddWebPageTypeTest extends TestCase
 
         $subject = new AddWebPageType($configuration, new TypeFactory());
 
-        $this->typoScriptFrontendControllerStub->page = [
+        $this->pageInformation->setPageRecord([
+            'uid' => 1,
             'tx_schema_webpagetype' => 'ItemPage',
-        ];
+        ]);
 
         $subject->__invoke($this->event);
 
@@ -130,10 +137,11 @@ final class AddWebPageTypeTest extends TestCase
 
         $subject = new AddWebPageType($configuration, new TypeFactory());
 
-        $this->typoScriptFrontendControllerStub->page = [
+        $this->pageInformation->setPageRecord([
+            'uid' => 1,
             'endtime' => 1621615961,
             'tx_schema_webpagetype' => 'WebPage',
-        ];
+        ]);
 
         $subject->__invoke($this->event);
 

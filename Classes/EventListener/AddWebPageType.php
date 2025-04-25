@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 /**
  * @internal
@@ -23,13 +23,13 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 #[AsEventListener(
     identifier: 'ext-schema/addWebPageType',
 )]
-final class AddWebPageType
+final readonly class AddWebPageType
 {
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
     public function __construct(
-        private readonly Configuration $configuration,
-        private readonly TypeFactory $typeFactory,
+        private Configuration $configuration,
+        private TypeFactory $typeFactory,
     ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
@@ -42,15 +42,16 @@ final class AddWebPageType
             return;
         }
 
-        /** @var TypoScriptFrontendController $frontendController */
-        $frontendController = $event->getRequest()->getAttribute('frontend.controller');
+        /** @var PageInformation $pageInformation */
+        $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
+        $pageRecord = $pageInformation->getPageRecord();
         $webPageType = self::DEFAULT_WEBPAGE_TYPE;
-        if (($frontendController->page['tx_schema_webpagetype'] ?? '') !== '') {
-            $webPageType = $frontendController->page['tx_schema_webpagetype'];
+        if (($pageRecord['tx_schema_webpagetype'] ?? '') !== '') {
+            $webPageType = $pageRecord['tx_schema_webpagetype'];
         }
         $webPageModel = $this->typeFactory->create($webPageType);
-        if ($frontendController->page['endtime'] ?? 0) {
-            $webPageModel->setProperty('expires', \date('c', $frontendController->page['endtime']));
+        if ($pageRecord['endtime'] ?? 0) {
+            $webPageModel->setProperty('expires', \date('c', $pageRecord['endtime']));
         }
         $event->addType($webPageModel);
     }
