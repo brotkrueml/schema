@@ -15,6 +15,7 @@
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
+                'dbFieldLength' => 30,
                 'items' => [
                     [
                         'label' => '',
