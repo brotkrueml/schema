@@ -17,9 +17,10 @@ use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
+use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
-use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeFactory;
+use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -39,11 +40,11 @@ use TYPO3\CMS\Frontend\Page\PageInformation;
 final class AddBreadcrumbListTest extends TestCase
 {
     use SchemaCacheTrait;
-    use TypeProviderWithFixturesTrait;
 
     private RenderAdditionalTypesEvent $event;
     private PageInformation $pageInformation;
     private ServerRequestInterface&Stub $requestStub;
+    private TypeProvider $typeProvider;
 
     protected function setUp(): void
     {
@@ -86,6 +87,11 @@ final class AddBreadcrumbListTest extends TestCase
             false,
             $this->requestStub,
         );
+
+        $this->typeProvider = new TypeProvider();
+        $this->typeProvider->addType('BreadcrumbList', FixtureType\BreadcrumbList::class);
+        $this->typeProvider->addType('ListItem', FixtureType\ListItem::class);
+        $this->typeProvider->addType('WebPage', FixtureType\WebPage::class);
     }
 
     #[Test]
@@ -95,7 +101,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $subject = new AddBreadcrumbList(
             $configuration,
-            new TypeFactory($this->getTypeProvider()),
+            new TypeFactory($this->typeProvider),
         );
 
         $subject->__invoke($this->event);
@@ -110,7 +116,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $subject = new AddBreadcrumbList(
             $configuration,
-            new TypeFactory($this->getTypeProvider()),
+            new TypeFactory($this->typeProvider),
         );
 
         $this->pageInformation->setRootLine([]);
@@ -132,7 +138,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $subject = new AddBreadcrumbList(
             $configuration,
-            new TypeFactory($this->getTypeProvider()),
+            new TypeFactory($this->typeProvider),
         );
         $subject->__invoke($this->event);
 
@@ -378,7 +384,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $subject = new AddBreadcrumbList(
             $configuration,
-            new TypeFactory($this->getTypeProvider()),
+            new TypeFactory($this->typeProvider),
         );
 
         $this->pageInformation->setRootLine([
@@ -420,7 +426,7 @@ final class AddBreadcrumbListTest extends TestCase
 
         $subject = new AddBreadcrumbList(
             $configuration,
-            new TypeFactory($this->getTypeProvider()),
+            new TypeFactory($this->typeProvider),
         );
 
         $this->pageInformation->setRootLine([
