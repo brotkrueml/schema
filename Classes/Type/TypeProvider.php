@@ -14,12 +14,11 @@ namespace Brotkrueml\Schema\Type;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\Manual\Manual;
 use Brotkrueml\Schema\Manual\Publisher;
-use TYPO3\CMS\Core\SingletonInterface;
 
 /**
  * @internal
  */
-final class TypeProvider implements SingletonInterface
+final class TypeProvider
 {
     /**
      * @var array<string, class-string>
