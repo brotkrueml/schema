@@ -19,6 +19,7 @@ Removed
 * Compatibility with TYPO3 v12 (#119)
 * Deprecated method ``TypeFactory::createType()`` (#116)
 * Types and view helpers representing enumerations (#126)
+* Properties moved from core vocabulary to pending (#120)
 
 `3.12.1 <https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1>`_ - 2025-04-25
 -------------------------------------------------------------------------------------------

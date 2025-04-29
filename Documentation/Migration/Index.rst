@@ -23,6 +23,18 @@ Types and view helpers representing enumerations were removed. It is unlikely
 that they were used as they had no real purpose. Use real
 :ref:`enumerations <enumerations>` instead.
 
+Properties moved from core to pending
+-------------------------------------
+
+Over the time some properties moved from the core vocabulary to pending with
+newer version of the Schema.org definition (for whatever reason). To avoid
+breaking, these properties were reapplied to the corresponding type models.
+Those properties have no been removed. If you need some of them, register them
+yourself like explained in :ref:`extending-register-additional-properties` or
+install the `schema_pending`_ extension.
+
+.. _schema_pending: https://extensions.typo3.org/extension/schema_pending
+
 
 From version 2.x to version 3.0
 ===============================

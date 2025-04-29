@@ -12,6 +12,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Compatibility with TYPO3 v12 (#119)
 - Deprecated method `TypeFactory::createType()` (#116)
 - Types and view helpers representing enumerations (#126)
+- Properties moved from core vocabulary to pending (#120)
 
 ## [3.12.1] - 2025-04-25
 
