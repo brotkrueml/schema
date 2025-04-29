@@ -19,14 +19,12 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Tests\Helper\TypeProviderWithFixturesTrait;
 use Brotkrueml\Schema\Type\TypeFactory;
-use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Page\PageInformation;
 
 #[CoversClass(AddWebPageType::class)]
@@ -54,13 +52,6 @@ final class AddWebPageTypeTest extends TestCase
             ->willReturn($this->pageInformation);
 
         $this->event = new RenderAdditionalTypesEvent(false, false, $this->requestStub);
-
-        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->getTypeProvider());
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
     }
 
     #[Test]
@@ -68,7 +59,7 @@ final class AddWebPageTypeTest extends TestCase
     {
         $configuration = $this->buildConfiguration(false);
 
-        $subject = new AddWebPageType($configuration, new TypeFactory());
+        $subject = new AddWebPageType($configuration, new TypeFactory($this->getTypeProvider()));
 
         $this->extensionConfigurationStub
             ->method('get')
@@ -85,7 +76,7 @@ final class AddWebPageTypeTest extends TestCase
     {
         $configuration = $this->buildConfiguration(true);
 
-        $subject = new AddWebPageType($configuration, new TypeFactory());
+        $subject = new AddWebPageType($configuration, new TypeFactory($this->getTypeProvider()));
 
         $event = new RenderAdditionalTypesEvent(true, false, $this->requestStub);
         $subject->__invoke($event);
@@ -103,7 +94,7 @@ final class AddWebPageTypeTest extends TestCase
             'tx_schema_webpagetype' => '',
         ]);
 
-        $subject = new AddWebPageType($configuration, new TypeFactory());
+        $subject = new AddWebPageType($configuration, new TypeFactory($this->getTypeProvider()));
 
         $subject->__invoke($this->event);
 
@@ -117,7 +108,7 @@ final class AddWebPageTypeTest extends TestCase
     {
         $configuration = $this->buildConfiguration(true);
 
-        $subject = new AddWebPageType($configuration, new TypeFactory());
+        $subject = new AddWebPageType($configuration, new TypeFactory($this->getTypeProvider()));
 
         $this->pageInformation->setPageRecord([
             'uid' => 1,
@@ -135,7 +126,7 @@ final class AddWebPageTypeTest extends TestCase
     {
         $configuration = $this->buildConfiguration(true);
 
-        $subject = new AddWebPageType($configuration, new TypeFactory());
+        $subject = new AddWebPageType($configuration, new TypeFactory($this->getTypeProvider()));
 
         $this->pageInformation->setPageRecord([
             'uid' => 1,

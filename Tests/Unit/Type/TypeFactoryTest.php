@@ -21,7 +21,6 @@ use Brotkrueml\Schema\Type\TypeProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[CoversClass(TypeFactory::class)]
 final class TypeFactoryTest extends TestCase
@@ -31,14 +30,8 @@ final class TypeFactoryTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->subject = new TypeFactory();
         $this->typeProvider = new TypeProvider();
-        GeneralUtility::setSingletonInstance(TypeProvider::class, $this->typeProvider);
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
+        $this->subject = new TypeFactory($this->typeProvider);
     }
 
     #[Test]

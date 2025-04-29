@@ -13,10 +13,13 @@ namespace Brotkrueml\Schema\Type;
 
 use Brotkrueml\Schema\Core\Model\MultipleType;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-final class TypeFactory
+final readonly class TypeFactory
 {
+    public function __construct(
+        private TypeProvider $typeProvider,
+    ) {}
+
     public function create(string ...$type): TypeInterface
     {
         if ($type === []) {
@@ -36,9 +39,7 @@ final class TypeFactory
 
     private function createSingle(string $type): TypeInterface
     {
-        /** @var TypeProvider $typeProvider */
-        $typeProvider = GeneralUtility::makeInstance(TypeProvider::class);
-        $typeClass = $typeProvider->getModelClassNameForType($type);
+        $typeClass = $this->typeProvider->getModelClassNameForType($type);
 
         /** @var TypeInterface $type */
         $type = new $typeClass();

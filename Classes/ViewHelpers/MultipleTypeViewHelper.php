@@ -11,12 +11,22 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\ViewHelpers;
 
+use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractBaseTypeViewHelper;
+use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
 {
+    public function __construct(
+        private readonly TypeFactory $typeFactory,
+        TypeStack $stack,
+        SchemaManager $schemaManager,
+    ) {
+        parent::__construct($stack, $schemaManager);
+    }
+
     /**
      * @var list<string>
      */
@@ -32,7 +42,7 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
     public function render(): void
     {
         $this->types = GeneralUtility::trimExplode(',', $this->arguments['types'], true);
-        $model = (new TypeFactory())->create(...$this->types);
+        $model = $this->typeFactory->create(...$this->types);
         $this->addTypeToSchemaManager($model);
     }
 
