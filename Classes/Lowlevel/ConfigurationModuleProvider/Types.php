@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider;
 
 use Brotkrueml\Schema\Extension;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Lowlevel\ConfigurationModuleProvider\ProviderInterface;
 
@@ -24,7 +24,7 @@ final class Types implements ProviderInterface
     private string $identifier;
 
     public function __construct(
-        private readonly TypeProvider $typeProvider,
+        private readonly TypeRegistry $typeRegistry,
     ) {}
 
     /**
@@ -52,7 +52,7 @@ final class Types implements ProviderInterface
      */
     public function getConfiguration(): array
     {
-        $webPageTypes = $this->typeProvider->getWebPageTypes();
+        $webPageTypes = $this->typeRegistry->getWebPageTypes();
         \sort($webPageTypes);
 
         return [
@@ -66,7 +66,7 @@ final class Types implements ProviderInterface
      */
     private function getAllTypes(): array
     {
-        $types = $this->typeProvider->getTypes();
+        $types = $this->typeRegistry->getTypes();
         \usort($types, static fn(string $a, string $b): int => \strtolower($a) <=> \strtolower($b));
         $sortedTypes = [];
         foreach ($types as $type) {

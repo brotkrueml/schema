@@ -17,7 +17,7 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
 use Brotkrueml\Schema\Type\TypeFactory;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -26,12 +26,12 @@ use PHPUnit\Framework\TestCase;
 final class TypeFactoryTest extends TestCase
 {
     private TypeFactory $subject;
-    private TypeProvider $typeProvider;
+    private TypeRegistry $typeRegistry;
 
     protected function setUp(): void
     {
-        $this->typeProvider = new TypeProvider();
-        $this->subject = new TypeFactory($this->typeProvider);
+        $this->typeRegistry = new TypeRegistry();
+        $this->subject = new TypeFactory($this->typeRegistry);
     }
 
     #[Test]
@@ -47,7 +47,7 @@ final class TypeFactoryTest extends TestCase
     #[Test]
     public function createWithSingleArgumentReturnsInstanceOfTypeModel(): void
     {
-        $this->typeProvider->addType('GenericStub', GenericStub::class);
+        $this->typeRegistry->addType('GenericStub', GenericStub::class);
 
         $type = $this->subject->create('GenericStub');
 
@@ -65,8 +65,8 @@ final class TypeFactoryTest extends TestCase
     #[Test]
     public function createWithTwoArgumentsReturnsInstanceOfMultipleType(): void
     {
-        $this->typeProvider->addType('ProductStub', ProductStub::class);
-        $this->typeProvider->addType('ServiceStub', ServiceStub::class);
+        $this->typeRegistry->addType('ProductStub', ProductStub::class);
+        $this->typeRegistry->addType('ServiceStub', ServiceStub::class);
 
         $actual = $this->subject->create('ProductStub', 'ServiceStub');
 
@@ -77,7 +77,7 @@ final class TypeFactoryTest extends TestCase
     #[Test]
     public function createWithTwoSameArgumentsReturnsSingleTypeInstance(): void
     {
-        $this->typeProvider->addType('GenericStub', GenericStub::class);
+        $this->typeRegistry->addType('GenericStub', GenericStub::class);
 
         $type = $this->subject->create('GenericStub', 'GenericStub');
 

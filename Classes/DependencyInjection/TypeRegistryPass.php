@@ -13,26 +13,26 @@ namespace Brotkrueml\Schema\DependencyInjection;
 
 use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @internal
  */
-final class TypeProviderPass implements CompilerPassInterface
+final readonly class TypeRegistryPass implements CompilerPassInterface
 {
     public function __construct(
-        private readonly string $tagName,
+        private string $tagName,
     ) {}
 
     public function process(ContainerBuilder $container): void
     {
-        if (! $container->hasDefinition(TypeProvider::class)) {
+        if (! $container->hasDefinition(TypeRegistry::class)) {
             return;
         }
 
-        $typeProviderDefinition = $container->getDefinition(TypeProvider::class);
+        $typeRegistryDefinition = $container->getDefinition(TypeRegistry::class);
 
         foreach (\array_keys($container->findTaggedServiceIds($this->tagName)) as $serviceName) {
             /** @var class-string $serviceName */
@@ -43,14 +43,14 @@ final class TypeProviderPass implements CompilerPassInterface
                 continue;
             }
             $typeName = $typeAttribute->getArguments()[0];
-            $typeProviderDefinition->addMethodCall('addType', [
+            $typeRegistryDefinition->addMethodCall('addType', [
                 $typeName,
                 $serviceName,
             ]);
 
             $manualAttributes = $reflector->getAttributes(Manual::class);
             foreach ($manualAttributes as $manualAttribute) {
-                $typeProviderDefinition->addMethodCall('addManualForType', [
+                $typeRegistryDefinition->addMethodCall('addManualForType', [
                     $typeName,
                     $manualAttribute->getArguments(),
                 ]);

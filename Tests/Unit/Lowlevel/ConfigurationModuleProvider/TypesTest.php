@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema\Tests\Unit\Lowlevel\ConfigurationModuleProvider;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
@@ -26,13 +26,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 #[RunTestsInSeparateProcesses]
 final class TypesTest extends TestCase
 {
-    private TypeProvider $typeProvider;
+    private TypeRegistry $typeRegistry;
     private Types $subject;
 
     protected function setUp(): void
     {
-        $this->typeProvider = new TypeProvider();
-        $this->subject = new Types($this->typeProvider);
+        $this->typeRegistry = new TypeRegistry();
+        $this->subject = new Types($this->typeRegistry);
 
         $languageServiceMap = [
             [
@@ -80,11 +80,11 @@ final class TypesTest extends TestCase
     #[Test]
     public function getConfigurationReturnsCorrectConfiguration(): void
     {
-        $this->typeProvider->addType('ItemPage', FixtureType\ItemPage::class);
-        $this->typeProvider->addType('Person', FixtureType\Person::class);
-        $this->typeProvider->addType('Table', FixtureType\Table::class);
-        $this->typeProvider->addType('Thing', FixtureType\Thing::class);
-        $this->typeProvider->addType('WebPage', FixtureType\WebPage::class);
+        $this->typeRegistry->addType('ItemPage', FixtureType\ItemPage::class);
+        $this->typeRegistry->addType('Person', FixtureType\Person::class);
+        $this->typeRegistry->addType('Table', FixtureType\Table::class);
+        $this->typeRegistry->addType('Thing', FixtureType\Thing::class);
+        $this->typeRegistry->addType('WebPage', FixtureType\WebPage::class);
 
         $expected = [
             'All types' => [

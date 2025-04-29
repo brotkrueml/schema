@@ -13,7 +13,7 @@ namespace Brotkrueml\Schema\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manual\Link;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Imaging\IconSize;
@@ -48,7 +48,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
 
     public function __construct(
         private readonly IconFactory $iconFactory,
-        private readonly TypeProvider $typeProvider,
+        private readonly TypeRegistry $typeRegistry,
         LanguageServiceFactory $languageServiceFactory,
     ) {
         $this->languageService = $languageServiceFactory->createFromUserPreferences($this->getBackendUser());
@@ -117,7 +117,7 @@ final class PropertyValueViewHelper extends AbstractViewHelper
     {
         $links = [$this->buildLinkForSchemaOrgType($type)];
 
-        $manuals = $this->typeProvider->getManualsForType($type);
+        $manuals = $this->typeRegistry->getManualsForType($type);
         foreach ($manuals as $manual) {
             $links[] = new Link(
                 $manual->link,

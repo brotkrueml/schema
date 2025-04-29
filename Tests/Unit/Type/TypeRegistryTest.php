@@ -14,19 +14,19 @@ namespace Brotkrueml\Schema\Tests\Unit\Type;
 use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(TypeProvider::class)]
-final class TypeProviderTest extends TestCase
+#[CoversClass(TypeRegistry::class)]
+final class TypeRegistryTest extends TestCase
 {
-    private TypeProvider $subject;
+    private TypeRegistry $subject;
 
     protected function setUp(): void
     {
-        $this->subject = new TypeProvider();
+        $this->subject = new TypeRegistry();
     }
 
     #[Test]

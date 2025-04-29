@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\UserFunctions\FormEngine;
 
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Brotkrueml\Schema\UserFunctions\FormEngine\WebPageTypes;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -24,12 +24,12 @@ final class WebPageTypesTest extends TestCase
     #[Test]
     public function getAddsWebPageTypesToItemsArray(): void
     {
-        $typeProvider = new TypeProvider();
-        $typeProvider->addType('Thing', FixtureType\Thing::class);
-        $typeProvider->addType('WebPage', FixtureType\WebPage::class);
-        $typeProvider->addType('VideoGallery', FixtureType\VideoGallery::class);
+        $typeRegistry = new TypeRegistry();
+        $typeRegistry->addType('Thing', FixtureType\Thing::class);
+        $typeRegistry->addType('WebPage', FixtureType\WebPage::class);
+        $typeRegistry->addType('VideoGallery', FixtureType\VideoGallery::class);
 
-        $subject = new WebPageTypes($typeProvider);
+        $subject = new WebPageTypes($typeRegistry);
 
         $params = [
             'items' => [],
@@ -50,7 +50,7 @@ final class WebPageTypesTest extends TestCase
     #[Test]
     public function getDoesNotAddWebPageTypesWhenNoWebPageTypesAreAvailable(): void
     {
-        $subject = new WebPageTypes(new TypeProvider());
+        $subject = new WebPageTypes(new TypeRegistry());
 
         $params = [
             'items' => [],

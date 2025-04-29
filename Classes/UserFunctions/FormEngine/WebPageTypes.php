@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\UserFunctions\FormEngine;
 
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 
 /**
@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 final class WebPageTypes
 {
     public function __construct(
-        private readonly TypeProvider $typeProvider,
+        private readonly TypeRegistry $typeRegistry,
     ) {}
 
     /**
@@ -31,7 +31,7 @@ final class WebPageTypes
      */
     public function get(array &$params): void
     {
-        $webPageTypes = $this->typeProvider->getWebPageTypes();
+        $webPageTypes = $this->typeRegistry->getWebPageTypes();
         \sort($webPageTypes);
         foreach ($webPageTypes as $type) {
             $params['items'][] = [

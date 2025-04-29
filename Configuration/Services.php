@@ -15,7 +15,7 @@ use Brotkrueml\Schema\Configuration\ConfigurationProvider;
 use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\DependencyInjection\AdditionalPropertiesPass;
-use Brotkrueml\Schema\DependencyInjection\TypeProviderPass;
+use Brotkrueml\Schema\DependencyInjection\TypeRegistryPass;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
 use Brotkrueml\Schema\EventListener\AddWebPageType;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
@@ -29,7 +29,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $configurator, ContainerBuilder $builder): void {
     $builder->registerForAutoconfiguration(TypeInterface::class)->addTag('tx_schema.type');
-    $builder->addCompilerPass(new TypeProviderPass('tx_schema.type'));
+    $builder->addCompilerPass(new TypeRegistryPass('tx_schema.type'));
 
     $builder->registerForAutoconfiguration(AdditionalPropertiesInterface::class)->addTag('tx_schema.additional_properties');
     $builder->addCompilerPass(new AdditionalPropertiesPass('tx_schema.additional_properties'));

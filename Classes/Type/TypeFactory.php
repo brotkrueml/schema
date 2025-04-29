@@ -17,7 +17,7 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 final readonly class TypeFactory
 {
     public function __construct(
-        private TypeProvider $typeProvider,
+        private TypeRegistry $typeRegistry,
     ) {}
 
     public function create(string ...$type): TypeInterface
@@ -39,7 +39,7 @@ final readonly class TypeFactory
 
     private function createSingle(string $type): TypeInterface
     {
-        $typeClass = $this->typeProvider->getModelClassNameForType($type);
+        $typeClass = $this->typeRegistry->getModelClassNameForType($type);
 
         /** @var TypeInterface $type */
         $type = new $typeClass();

@@ -16,9 +16,12 @@ use Brotkrueml\Schema\Manual\Manual;
 use Brotkrueml\Schema\Manual\Publisher;
 
 /**
+ * Registry for model types and their manuals, populated by attributes
+ *
+ * @see TypeRegistryPass
  * @internal
  */
-final class TypeProvider
+final class TypeRegistry
 {
     /**
      * @var array<string, class-string>

@@ -13,7 +13,7 @@ namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\AdminPanel;
 
 use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
-use Brotkrueml\Schema\Type\TypeProvider;
+use Brotkrueml\Schema\Type\TypeRegistry;
 use Brotkrueml\Schema\ViewHelpers\AdminPanel\PropertyValueViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -278,10 +278,10 @@ EXPECTED,
     #[Test]
     public function additionalManualsAreRenderedCorrectly(): void
     {
-        $typeProvider = $this->get(TypeProvider::class);
-        $typeProvider->addType('Thing', Thing::class);
-        $typeProvider->addManualForType('Thing', [Publisher::Google, 'Some link', 'https://example.org/Thing']);
-        $typeProvider->addManualForType('Thing', [Publisher::Yandex, 'Another link', 'https://example.com/Thing']);
+        $typeRegistry = $this->get(TypeRegistry::class);
+        $typeRegistry->addType('Thing', Thing::class);
+        $typeRegistry->addManualForType('Thing', [Publisher::Google, 'Some link', 'https://example.org/Thing']);
+        $typeRegistry->addManualForType('Thing', [Publisher::Yandex, 'Another link', 'https://example.com/Thing']);
 
         $context = $this->get(RenderingContextFactory::class)->create();
         $context->getTemplatePaths()->setTemplateSource(
