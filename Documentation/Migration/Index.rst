@@ -16,6 +16,13 @@ From version 3.x to version 4.0
 In version 4.0, the compatibility with TYPO3 v11 LTS and TYPO3 v12 LTS has been
 removed.
 
+Types and view helpers representing enumerations
+------------------------------------------------
+
+Types and view helpers representing enumerations were removed. It is unlikely
+that they were used as they had no real purpose. Use real
+:ref:`enumerations <enumerations>` instead.
+
 
 From version 2.x to version 3.0
 ===============================
