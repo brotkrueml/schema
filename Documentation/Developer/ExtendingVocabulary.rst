@@ -47,11 +47,6 @@ properties to existing types or to introduce new types on your website.
 Register additional properties
 ==============================
 
-.. versionchanged:: 3.10.0
-   The previous way to register additional properties was to
-   :ref:`use a PSR-14 event <event-register-additional-properties>`. This way
-   will continue to work with schema v3, but will be removed with schema v4.
-
 Sometimes it may be necessary to use properties that are not standardised or
 `pending`_, or to add `property annotations`_. Therefore the schema extension
 provides a way to extend types.

@@ -16,7 +16,6 @@ use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\EventListener\AddWebPageType;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -30,8 +29,6 @@ use TYPO3\CMS\Frontend\Page\PageInformation;
 #[CoversClass(AddWebPageType::class)]
 final class AddWebPageTypeTest extends TestCase
 {
-    use SchemaCacheTrait;
-
     private ExtensionConfiguration&Stub $extensionConfigurationStub;
     private PageInformation $pageInformation;
     private RenderAdditionalTypesEvent $event;
@@ -40,8 +37,6 @@ final class AddWebPageTypeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->defineCacheStubsWhichReturnEmptyEntry();
-
         $this->extensionConfigurationStub = self::createStub(ExtensionConfiguration::class);
 
         $this->pageInformation = new PageInformation();

@@ -17,39 +17,24 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Event\RegisterAdditionalTypePropertiesEvent;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ThingWithResolvedTypesExposed;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\EventDispatcher\EventDispatcherInterface;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[CoversClass(AbstractType::class)]
 final class AbstractTypeTest extends TestCase
 {
-    use SchemaCacheTrait;
-
     protected Thing $subject;
 
     protected function setUp(): void
     {
-        $this->defineCacheStubsWhichReturnEmptyEntry();
         $this->subject = new Thing();
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
     }
 
     #[Test]
@@ -134,6 +119,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function setPropertyAcceptsValidDataTypesAsValue(): void
     {
         // Test is valid, when no exception is thrown
@@ -234,6 +220,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsStringsAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -243,6 +230,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsArraysAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -252,6 +240,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsIntegerAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -261,6 +250,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsBooleanAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -270,6 +260,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsFloatAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -279,6 +270,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsTypeAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -288,6 +280,7 @@ final class AbstractTypeTest extends TestCase
     }
 
     #[Test]
+    #[DoesNotPerformAssertions]
     public function addPropertyAcceptsNodeIdentifierAsValue(): void
     {
         // Valid, when no exception is thrown
@@ -383,128 +376,6 @@ final class AbstractTypeTest extends TestCase
             ],
             $actual,
         );
-    }
-
-    #[Test]
-    public function cacheForAdditionalPropertiesReturnsPropertiesAndTheseAreAddedSortedIntoPropertiesArray(): void
-    {
-        $cacheFrontendStub = self::createStub(FrontendInterface::class);
-        $cacheFrontendStub
-            ->method('get')
-            ->willReturn(['someAdditionalProperty', 'anotherAdditionalProperty']);
-
-        $cacheManagerStub = self::createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with(Extension::CACHE_IDENTIFIER)
-            ->willReturn($cacheFrontendStub);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
-        $subject = new Thing();
-
-        self::assertSame(
-            [
-                'alternateName',
-                'anotherAdditionalProperty',
-                'description',
-                'identifier',
-                'image',
-                'isAccessibleForFree',
-                'name',
-                'someAdditionalProperty',
-                'subjectOf',
-                'url',
-            ],
-            $subject->getPropertyNames(),
-        );
-    }
-
-    #[Test]
-    public function cacheForAdditionalPropertiesReturnsFalseAndDispatcherIsCalled(): void
-    {
-        $cacheFrontendMock = $this->createMock(FrontendInterface::class);
-        $cacheFrontendMock
-            ->expects(self::once())
-            ->method('get')
-            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing')
-            ->willReturn(false);
-
-        $cacheFrontendMock
-            ->method('set')
-            ->with(
-                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing',
-                [],
-                [],
-                0,
-            );
-
-        $cacheManagerStub = self::createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with(Extension::CACHE_IDENTIFIER)
-            ->willReturn($cacheFrontendMock);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
-        $event = new RegisterAdditionalTypePropertiesEvent(Thing::class);
-
-        /** @var MockObject|EventDispatcherInterface $eventDispatcherMock */
-        $eventDispatcherMock = $this->createMock(EventDispatcherInterface::class);
-        $eventDispatcherMock
-            ->expects(self::once())
-            ->method('dispatch')
-            ->with($event)
-            ->willReturn($event);
-
-        GeneralUtility::addInstance(EventDispatcherInterface::class, $eventDispatcherMock);
-
-        new Thing();
-    }
-
-    #[Test]
-    public function cacheForAdditionalPropertiesReturnsFalseAndEventDispatcherIsCalled(): void
-    {
-        $cacheFrontendMock = $this->createMock(FrontendInterface::class);
-        $cacheFrontendMock
-            ->expects(self::once())
-            ->method('get')
-            ->with('additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing')
-            ->willReturn(false);
-
-        $cacheFrontendMock
-            ->method('set')
-            ->with(
-                'additionalTypeProperties-Brotkrueml_Schema_Tests_Fixtures_Model_Type_Thing',
-                ['someAdditionalProperty'],
-                [],
-                0,
-            );
-
-        $cacheManagerStub = self::createStub(CacheManager::class);
-        $cacheManagerStub
-            ->method('getCache')
-            ->with(Extension::CACHE_IDENTIFIER)
-            ->willReturn($cacheFrontendMock);
-
-        GeneralUtility::setSingletonInstance(CacheManager::class, $cacheManagerStub);
-
-        $inEvent = new RegisterAdditionalTypePropertiesEvent(Thing::class);
-
-        $outEvent = new RegisterAdditionalTypePropertiesEvent(Thing::class);
-        $outEvent->registerAdditionalProperty('someAdditionalProperty');
-
-        /** @var MockObject|EventDispatcherInterface $eventDispatcherMock */
-        $eventDispatcherMock = $this->createMock(EventDispatcherInterface::class);
-        $eventDispatcherMock
-            ->expects(self::once())
-            ->method('dispatch')
-            ->with($inEvent)
-            ->willReturn($outEvent);
-
-        GeneralUtility::addInstance(EventDispatcherInterface::class, $eventDispatcherMock);
-
-        new Thing();
     }
 
     #[Test]

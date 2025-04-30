@@ -23,11 +23,12 @@ Introduced in version 3
       information about the calling class and line number.
 
 .. confval:: PSR-14 event RegisterAdditionalTypePropertiesEvent
+   :name: deprecation-RegisterAdditionalTypePropertiesEvent
 
    Deprecated since version
       3.10.0
 
-   Will be removed in version
+   Removed in version
       4.0.0
 
    Alternative
@@ -39,7 +40,7 @@ Introduced in version 3
    Deprecated since version
       3.9.0
 
-   Will be removed in version
+   Removed in version
       4.0.0
 
    Alternative

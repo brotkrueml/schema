@@ -16,12 +16,22 @@ From version 3.x to version 4.0
 In version 4.0, the compatibility with TYPO3 v11 LTS and TYPO3 v12 LTS has been
 removed.
 
+PSR-14 event `RegisterAdditionalTypePropertiesEvent`
+----------------------------------------------------
+
+The :confval:`deprecated <deprecation-RegisterAdditionalTypePropertiesEvent>`
+PSR-14 event `RegisterAdditionalTypePropertiesEvent` has been removed. As an
+alternative create a class implementing `AdditionalPropertiesInterface`
+(which is available since version 3.10.0), see
+:ref:`extending-register-additional-properties` for details.
+
 Types and view helpers representing enumerations
 ------------------------------------------------
 
 Types and view helpers representing enumerations were removed. It is unlikely
 that they were used as they had no real purpose. Use real
-:ref:`enumerations <enumerations>` instead.
+:ref:`enumerations <enumerations>` instead which are available since version
+3.9.0.
 
 Properties moved from core to pending
 -------------------------------------

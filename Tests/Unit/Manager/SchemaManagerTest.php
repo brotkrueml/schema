@@ -21,7 +21,6 @@ use Brotkrueml\Schema\Model\Type\Organization;
 use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -29,16 +28,12 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(SchemaManager::class)]
 final class SchemaManagerTest extends TestCase
 {
-    use SchemaCacheTrait;
-
     private SchemaManager $subject;
     private \ReflectionProperty $rendererTypes;
     private Renderer $renderer;
 
     protected function setUp(): void
     {
-        $this->defineCacheStubsWhichReturnEmptyEntry();
-
         $reflector = new \ReflectionClass(Renderer::class);
         $this->rendererTypes = $reflector->getProperty('types');
         $this->rendererTypes->setAccessible(true);

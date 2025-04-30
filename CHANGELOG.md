@@ -16,6 +16,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Deprecated method `TypeFactory::createType()` (#116)
 - Types and view helpers representing enumerations (#126)
 - Properties moved from core vocabulary to pending (#120)
+- Deprecated PSR-14 event `RegisterAdditionalTypePropertiesEvent` (#130)
 
 ## [3.12.1] - 2025-04-25
 

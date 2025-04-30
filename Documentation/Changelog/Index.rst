@@ -26,6 +26,7 @@ Removed
 * Deprecated method ``TypeFactory::createType()`` (#116)
 * Types and view helpers representing enumerations (#126)
 * Properties moved from core vocabulary to pending (#120)
+* Deprecated PSR-14 event ``RegisterAdditionalTypePropertiesEvent`` (#130)
 
 `3.12.1 <https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1>`_ - 2025-04-25
 -------------------------------------------------------------------------------------------

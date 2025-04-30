@@ -18,7 +18,6 @@ use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
-use Brotkrueml\Schema\Tests\Helper\SchemaCacheTrait;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -39,8 +38,6 @@ use TYPO3\CMS\Frontend\Page\PageInformation;
 #[CoversClass(AddBreadcrumbList::class)]
 final class AddBreadcrumbListTest extends TestCase
 {
-    use SchemaCacheTrait;
-
     private RenderAdditionalTypesEvent $event;
     private PageInformation $pageInformation;
     private ServerRequestInterface&Stub $requestStub;
@@ -48,8 +45,6 @@ final class AddBreadcrumbListTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->defineCacheStubsWhichReturnEmptyEntry();
-
         $router = new class implements RouterInterface {
             public function matchRequest(ServerRequestInterface $request, ?RouteResultInterface $previousResult = null): RouteResultInterface
             {

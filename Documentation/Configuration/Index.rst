@@ -109,24 +109,3 @@ Default value
    The option is considered only if the :ref:`SEO system extension
    <typo3/cms-seo:introduction>` is installed. If this is not the case, the markup is
    always embedded.
-
-
-Cache configuration
-===================
-
-The extension stores some data temporarily, for example, :ref:`additional type
-properties <event-register-additional-properties>`. They are cached for better
-performance. By default, the cache uses the default database backend cache. You
-can reconfigure it to use a different cache backend. You can find further
-information in the chapter :ref:`t3coreapi:caching` of TYPO3 Explained.
-
-For example, place the following snippet in the :file:`ext_localconf.php` file
-of your site package extension to use the file backend (which stores the data
-in the file system) instead:
-
-.. code-block:: php
-   :caption: EXT:my_extension/ext_localconf.php
-
-   $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend']
-      ??= \TYPO3\CMS\Core\Cache\Backend\FileBackend::class;
-
