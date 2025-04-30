@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
-use Brotkrueml\Schema\Core\Exception\InvalidIdValueException;
 use Brotkrueml\Schema\Core\Exception\InvalidPropertyValueException;
 use Brotkrueml\Schema\Core\Exception\UnknownPropertyException;
 use Brotkrueml\Schema\Core\Model\AbstractType;
@@ -108,15 +107,6 @@ final class AbstractTypeTest extends TestCase
         });
 
         self::assertSame('someNodeIdentifier', $this->subject->getId());
-    }
-
-    #[Test]
-    public function setIdThrowsExceptionWhenInvalidTypeGiven(): void
-    {
-        $this->expectException(InvalidIdValueException::class);
-        $this->expectExceptionCode(1620654936);
-
-        $this->subject->setId(true);
     }
 
     #[Test]

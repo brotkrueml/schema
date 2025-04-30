@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\Model;
 
-use Brotkrueml\Schema\Core\Exception\InvalidIdValueException;
 use Brotkrueml\Schema\Core\Exception\InvalidPropertyValueException;
 use Brotkrueml\Schema\Core\Exception\UnknownPropertyException;
 
@@ -38,12 +37,8 @@ abstract class AbstractBaseType implements TypeInterface
      */
     protected array $properties = [];
 
-    public function setId($id): static
+    public function setId(NodeIdentifierInterface|string|null $id): static
     {
-        if (! $this->isValidDataTypeForId($id)) {
-            throw InvalidIdValueException::fromValueType(\get_debug_type($id));
-        }
-
         if ($id === '') {
             $id = null;
         }
@@ -55,16 +50,6 @@ abstract class AbstractBaseType implements TypeInterface
         $this->id = $id;
 
         return $this;
-    }
-
-    /**
-     * @param NodeIdentifierInterface|string|null $id
-     */
-    private function isValidDataTypeForId($id): bool
-    {
-        return $id === null
-            || \is_string($id)
-            || $id instanceof NodeIdentifierInterface;
     }
 
     public function getId(): ?string
@@ -97,7 +82,7 @@ abstract class AbstractBaseType implements TypeInterface
         }
     }
 
-    public function setProperty(string $propertyName, $propertyValue): static
+    public function setProperty(string $propertyName, mixed $propertyValue): static
     {
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);
@@ -149,7 +134,7 @@ abstract class AbstractBaseType implements TypeInterface
             || $propertyValue instanceof EnumerationInterface;
     }
 
-    public function addProperty(string $propertyName, $propertyValue): static
+    public function addProperty(string $propertyName, mixed $propertyValue): static
     {
         $propertyValue = $this->stringifyNumericValue($propertyValue);
         $this->checkProperty($propertyName, $propertyValue);

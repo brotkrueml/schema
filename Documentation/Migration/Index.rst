@@ -35,6 +35,14 @@ install the `schema_pending`_ extension.
 
 .. _schema_pending: https://extensions.typo3.org/extension/schema_pending
 
+Type declarations added to :php:`TypeInterface`
+-----------------------------------------------
+
+Missing return type declarations and type declarations for the argument of the
+`setId()` method have been added. If you do not implement custom type models
+directly from the :php:`TypeInterface`, you are not affected by this change.
+Otherwise you have to adjust the methods of your type model classes.
+
 
 From version 2.x to version 3.0
 ===============================

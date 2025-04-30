@@ -29,30 +29,46 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
         return $this->id;
     }
 
-    public function setId($id): void {}
+    public function setId($id): static
+    {
+        throw new \Exception('Should not be called!');
+    }
 
     public function hasProperty(string $propertyName): bool
     {
         return true;
     }
 
-    public function getProperty(string $propertyName)
+    public function getProperty(string $propertyName): mixed
     {
         return $this->properties[$propertyName];
     }
 
-    public function setProperty(string $propertyName, $propertyValue): void {}
+    public function setProperty(string $propertyName, $propertyValue): static
+    {
+        throw new \Exception('Should not be called!');
+    }
 
-    public function addProperty(string $propertyName, $propertyValue): void
+    public function addProperty(string $propertyName, $propertyValue): static
     {
         if ($this->properties[$propertyName] === null) {
             $this->properties[$propertyName] = $propertyValue;
         }
+
+        return $this;
     }
 
-    public function setProperties(array $properties): void {}
+    public function setProperties(array $properties): static
+    {
+        throw new \Exception('Should not be called!');
+    }
 
-    public function clearProperty(string $propertyName): void {}
+    public function clearProperty(string $propertyName): static
+    {
+        $this->properties[$propertyName] = null;
+
+        return $this;
+    }
 
     public function getPropertyNames(): array
     {

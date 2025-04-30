@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD>`_
 -------------------------------------------------------------------------------
 
+Changed
+-------
+
+
+* Type declarations added to ``TypeInterface`` (#129)
+
 Removed
 -------
 

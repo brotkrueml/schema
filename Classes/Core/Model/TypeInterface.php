@@ -15,48 +15,28 @@ interface TypeInterface extends NodeIdentifierInterface
 {
     /**
      * Set the id.
-     *
-     * @param NodeIdentifierInterface|string|null $id The id
-     * @return static
-     * @todo Declare return type in method with v4.0.0
      */
-    public function setId($id);
+    public function setId(NodeIdentifierInterface|string|null $id): static;
 
     /**
      * Check, if a property exists.
-     *
-     * @param string $propertyName The property name
      */
     public function hasProperty(string $propertyName): bool;
 
     /**
      * Get the value of a property.
-     *
-     * @param string $propertyName The property name
-     * @return mixed
-     * @todo Declare return type in method with v4.0.0
      */
-    public function getProperty(string $propertyName);
+    public function getProperty(string $propertyName): mixed;
 
     /**
      * Set the value of a property.
-     *
-     * @param string $propertyName The property name
-     * @param mixed $propertyValue The value of the property
-     * @return static
-     * @todo Declare return type in method with v4.0.0
      */
-    public function setProperty(string $propertyName, mixed $propertyValue);
+    public function setProperty(string $propertyName, mixed $propertyValue): static;
 
     /**
      * Adds a value to a property.
-     *
-     * @param string $propertyName The property name
-     * @param mixed $propertyValue The property value
-     * @return static
-     * @todo Declare return type in method with v4.0.0
      */
-    public function addProperty(string $propertyName, mixed $propertyValue);
+    public function addProperty(string $propertyName, mixed $propertyValue): static;
 
     /**
      * Set multiple properties at once.
@@ -66,19 +46,13 @@ interface TypeInterface extends NodeIdentifierInterface
      * value = property value
      *
      * @param array<string, mixed> $properties
-     * @return static
-     * @todo Declare return type in method with v4.0.0
      */
-    public function setProperties(array $properties);
+    public function setProperties(array $properties): static;
 
     /**
      * Clear a property.
-     *
-     * @param string $propertyName The property name
-     * @return static
-     * @todo Declare return type in method with v4.0.0
      */
-    public function clearProperty(string $propertyName);
+    public function clearProperty(string $propertyName): static;
 
     /**
      * Get the available property names.
