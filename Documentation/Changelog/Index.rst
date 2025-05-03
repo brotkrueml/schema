@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Example in the docs for adding a type
+
 `3.12.1 <https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1>`_ - 2025-04-25
 -------------------------------------------------------------------------------------------
 

@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace MyVendor\MyExtension\Schema\Type;
 
 use Brotkrueml\Schema\Attributes\Type;
+use Brotkrueml\Schema\Core\Model\AbstractType;
 
 #[Type('VirtualLocation')]
-final class VirtualLocation
+final class VirtualLocation extends AbstractType
 {
-    private static array $propertyNames = [
+    protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'description',

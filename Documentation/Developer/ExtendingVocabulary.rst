@@ -116,10 +116,11 @@ was quickly adopted by Google. The type can be used as `location`_ in the
 
    .. literalinclude:: _ExtendingVocabulary/_VirtualLocation.php
       :language: php
-      :caption: EXT:my_extension/Classes/EventListener/AdditionalPropertiesForPerson.php
+      :caption: EXT:my_extension/Classes/Schema/Type/VirtualLocation.php
 
    In the example, the class is stored in :file:`Classes/Schema/Type` of your
-   extension, but you can choose any namespace. The class must have the
+   extension, but you can choose any namespace. It has to extend from
+   :php:`\Brotkrueml\Schema\Core\Model\AbstractType`. The class must have the
    :php:`\Brotkrueml\Schema\Attributes\Type` attribute assigned. It has one
    mandatory parameter: the type name. The protected static property
    :php:`$propertyNames` contains the available schema.org properties.
