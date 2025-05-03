@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.12.2] - 2025-05-03
+
 ### Fixed
 - Example in the docs for adding a type
 
