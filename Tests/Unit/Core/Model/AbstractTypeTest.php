@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\Thing;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\ThingWithResolvedTypesExposed;
+use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
@@ -34,7 +35,7 @@ final class AbstractTypeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->subject = new Thing();
+        $this->subject = new Thing(new AdditionalPropertiesProvider());
     }
 
     #[Test]
@@ -389,7 +390,7 @@ final class AbstractTypeTest extends TestCase
     #[Test]
     public function getTypeReturnsTypeCorrectlyWhenClassNameIsDifferentFromTypeDefinedInAttribute(): void
     {
-        $subject = new _3DModel();
+        $subject = new _3DModel(new AdditionalPropertiesProvider());
 
         self::assertSame('3DModel', $subject->getType());
     }
@@ -401,7 +402,7 @@ final class AbstractTypeTest extends TestCase
         $this->expectExceptionCode(1697271711);
         $this->expectExceptionMessageMatches('/Type model class "Brotkrueml\\\Schema\\\Core\\\Model\\\AbstractType@anonymous.*" does not define the required attribute "Brotkrueml\\\Schema\\\Attributes\\\Type"\./');
 
-        $subject = new class extends AbstractType {};
+        $subject = new class(new AdditionalPropertiesProvider()) extends AbstractType {};
 
         $subject->getType();
     }

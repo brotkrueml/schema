@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Model\Type\Organization;
 use Brotkrueml\Schema\Model\Type\Person;
 use Brotkrueml\Schema\Model\Type\Thing;
 use Brotkrueml\Schema\Model\Type\WebPage;
+use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -31,6 +32,7 @@ final class SchemaManagerTest extends TestCase
     private SchemaManager $subject;
     private \ReflectionProperty $rendererTypes;
     private Renderer $renderer;
+    private AdditionalPropertiesProvider $additionalPropertiesProvider;
 
     protected function setUp(): void
     {
@@ -48,6 +50,8 @@ final class SchemaManagerTest extends TestCase
             $this->buildConfiguration(false),
             $this->renderer,
         );
+
+        $this->additionalPropertiesProvider = new AdditionalPropertiesProvider();
     }
 
     #[Test]
@@ -59,7 +63,7 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function hasWebPageReturnsTrueWhenWebPageIsSet(): void
     {
-        $this->subject->addType(new WebPage());
+        $this->subject->addType(new WebPage($this->additionalPropertiesProvider));
 
         self::assertTrue($this->subject->hasWebPage());
     }
@@ -73,7 +77,7 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function hasBreadcrumbListReturnsTrueeWhenOneBreadcrumbListIsSet(): void
     {
-        $this->subject->addType(new BreadcrumbList());
+        $this->subject->addType(new BreadcrumbList($this->additionalPropertiesProvider));
 
         self::assertTrue($this->subject->hasBreadcrumbList());
     }
@@ -81,7 +85,7 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithOnBreadcrumbListAndNoWebPageAvailable(): void
     {
-        $breadcrumbList = new BreadcrumbList();
+        $breadcrumbList = new BreadcrumbList($this->additionalPropertiesProvider);
 
         $this->subject->addType($breadcrumbList);
         $this->subject->renderJsonLd();
@@ -94,8 +98,8 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithTwoBreadcrumbListAndNoWebPageAvailable(): void
     {
-        $breadcrumbList1 = new BreadcrumbList();
-        $breadcrumbList2 = new BreadcrumbList();
+        $breadcrumbList1 = new BreadcrumbList($this->additionalPropertiesProvider);
+        $breadcrumbList2 = new BreadcrumbList($this->additionalPropertiesProvider);
 
         $this->subject->addType($breadcrumbList1);
         $this->subject->addType($breadcrumbList2);
@@ -109,8 +113,8 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithABreadcrumbListInAWebPage(): void
     {
-        $webPage = new WebPage();
-        $breadcrumbList = new BreadcrumbList();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
+        $breadcrumbList = new BreadcrumbList($this->additionalPropertiesProvider);
 
         $this->subject->addType($breadcrumbList);
         $this->subject->addType($webPage);
@@ -123,10 +127,10 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithABreadcrumbListInAWebPageAndAnAdditionalWebPage(): void
     {
-        $breadcrumbList1 = new BreadcrumbList();
-        $breadcrumbList2 = new BreadcrumbList();
+        $breadcrumbList1 = new BreadcrumbList($this->additionalPropertiesProvider);
+        $breadcrumbList2 = new BreadcrumbList($this->additionalPropertiesProvider);
 
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('breadcrumb', $breadcrumbList2);
 
         $this->subject->addType($breadcrumbList1);
@@ -141,9 +145,9 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithTwoBreadcrumbListInAWebPage(): void
     {
-        $breadcrumbLists = [new BreadcrumbList(), new BreadcrumbList()];
+        $breadcrumbLists = [new BreadcrumbList($this->additionalPropertiesProvider), new BreadcrumbList($this->additionalPropertiesProvider)];
 
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('breadcrumb', $breadcrumbLists);
 
         $this->subject->addType($webPage);
@@ -157,11 +161,11 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithAWrongTypeAsBreadcrumbListInWebPageIsIgnored(): void
     {
-        $breadcrumbList = new BreadcrumbList();
+        $breadcrumbList = new BreadcrumbList($this->additionalPropertiesProvider);
 
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('breadcrumb', $breadcrumbList);
-        $webPage->addProperty('breadcrumb', new Thing());
+        $webPage->addProperty('breadcrumb', new Thing($this->additionalPropertiesProvider));
 
         $this->subject->addType($webPage);
         $this->subject->renderJsonLd();
@@ -174,9 +178,9 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithWebPageAndOneMainEntityDefined(): void
     {
-        $thing = new Thing();
+        $thing = new Thing($this->additionalPropertiesProvider);
 
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('mainEntity', $thing);
 
         $this->subject->addType($webPage);
@@ -190,7 +194,7 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithWebPageAndOneInvalidMainEntityDefined(): void
     {
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('mainEntity', 'some string');
 
         $this->subject->addType($webPage);
@@ -204,10 +208,10 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithWebPageAndTwoMainEntitiesDefined(): void
     {
-        $thing1 = new Thing();
-        $thing2 = new Thing();
+        $thing1 = new Thing($this->additionalPropertiesProvider);
+        $thing2 = new Thing($this->additionalPropertiesProvider);
 
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('mainEntity', $thing1);
         $webPage->addProperty('mainEntity', $thing2);
 
@@ -222,9 +226,9 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithWebPageAndTwoMainEntitiesDefinedOneIsInvalid(): void
     {
-        $thing = new Thing();
+        $thing = new Thing($this->additionalPropertiesProvider);
 
-        $webPage = new WebPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
         $webPage->setProperty('mainEntity', $thing);
         $webPage->addProperty('mainEntity', 'some string');
 
@@ -239,8 +243,8 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function addTypeWithWebPageSetTwiceThenTheSecondOneOverridesTheFirstOne(): void
     {
-        $webPage = new WebPage();
-        $itemPage = new ItemPage();
+        $webPage = new WebPage($this->additionalPropertiesProvider);
+        $itemPage = new ItemPage($this->additionalPropertiesProvider);
 
         $this->subject->addType($webPage);
         $this->subject->addType($itemPage);
@@ -254,8 +258,8 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdWithSomeTypesAreHandledCorrectly(): void
     {
-        $thing = new Thing();
-        $person = new Person();
+        $thing = new Thing($this->additionalPropertiesProvider);
+        $person = new Person($this->additionalPropertiesProvider);
 
         $this->subject->addType($thing);
         $this->subject->addType($person);
@@ -269,9 +273,9 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function renderJsonLdUsingVariadicAddTypeCorrectly(): void
     {
-        $thing = new Thing();
-        $organization = new Organization();
-        $person = new Person();
+        $thing = new Thing($this->additionalPropertiesProvider);
+        $organization = new Organization($this->additionalPropertiesProvider);
+        $person = new Person($this->additionalPropertiesProvider);
 
         $this->subject->addType($thing, $organization, $person);
         $this->subject->renderJsonLd();
@@ -284,9 +288,9 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function addMainEntityOfWebPageCalledMultipleTimesWithNotPrioritisedTypes(): void
     {
-        $thing = new Thing();
-        $person = new Person();
-        $webPage = new WebPage();
+        $thing = new Thing($this->additionalPropertiesProvider);
+        $person = new Person($this->additionalPropertiesProvider);
+        $webPage = new WebPage($this->additionalPropertiesProvider);
 
         $this->subject->addMainEntityOfWebPage($thing);
         $this->subject->addMainEntityOfWebPage($person);
@@ -300,11 +304,11 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function addMainEntityOfWebPageCalledMultipleTimesWithMixedPrioritisedAndNotPrioritisedTypes(): void
     {
-        $person1 = new Person();
-        $person2 = new Person();
-        $person3 = new Person();
-        $person4 = new Person();
-        $webPage = new WebPage();
+        $person1 = new Person($this->additionalPropertiesProvider);
+        $person2 = new Person($this->additionalPropertiesProvider);
+        $person3 = new Person($this->additionalPropertiesProvider);
+        $person4 = new Person($this->additionalPropertiesProvider);
+        $webPage = new WebPage($this->additionalPropertiesProvider);
 
         $this->subject->addMainEntityOfWebPage($person1, false);
         $this->subject->addMainEntityOfWebPage($person2, true);
@@ -327,8 +331,8 @@ final class SchemaManagerTest extends TestCase
 
         $subject = new SchemaManager($configuration, $this->renderer);
 
-        $breadcrumbList1 = new BreadcrumbList();
-        $breadcrumbList2 = new BreadcrumbList();
+        $breadcrumbList1 = new BreadcrumbList($this->additionalPropertiesProvider);
+        $breadcrumbList2 = new BreadcrumbList($this->additionalPropertiesProvider);
 
         $subject->addType($breadcrumbList1);
         $subject->addType($breadcrumbList2);
@@ -348,8 +352,8 @@ final class SchemaManagerTest extends TestCase
 
         $subject = new SchemaManager($configuration, $this->renderer);
 
-        $breadcrumbList1 = new BreadcrumbList();
-        $breadcrumbList2 = new BreadcrumbList();
+        $breadcrumbList1 = new BreadcrumbList($this->additionalPropertiesProvider);
+        $breadcrumbList2 = new BreadcrumbList($this->additionalPropertiesProvider);
 
         $subject->addType($breadcrumbList1);
         $subject->addType($breadcrumbList2);
@@ -366,19 +370,19 @@ final class SchemaManagerTest extends TestCase
     #[Test]
     public function addTypeReturnsInstanceOfSelf(): void
     {
-        self::assertSame($this->subject, $this->subject->addType(new Thing()));
+        self::assertSame($this->subject, $this->subject->addType(new Thing($this->additionalPropertiesProvider)));
     }
 
     #[Test]
     public function addMainEntityOfWebPageReturnsInstanceOfSelf(): void
     {
-        self::assertSame($this->subject, $this->subject->addMainEntityOfWebPage(new Thing()));
+        self::assertSame($this->subject, $this->subject->addMainEntityOfWebPage(new Thing($this->additionalPropertiesProvider)));
     }
 
     #[Test]
     public function multipleCallsOfRenderJsonLd(): void
     {
-        $this->subject->addType(new Thing());
+        $this->subject->addType(new Thing($this->additionalPropertiesProvider));
 
         $this->subject->renderJsonLd();
         self::assertCount(1, $this->rendererTypes->getValue($this->renderer));

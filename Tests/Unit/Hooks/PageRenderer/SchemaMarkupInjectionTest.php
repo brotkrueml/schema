@@ -147,7 +147,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration(embedMarkupInBodySection: false);
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->pageRendererMock
             ->expects(self::once())
@@ -188,7 +188,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration(embedMarkupInBodySection: true);
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->pageRendererMock
             ->expects(self::never())
@@ -229,7 +229,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration(embedMarkupInBodySection: false);
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->controllerMock->page = [
             'uid' => 42,
@@ -308,7 +308,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -349,7 +349,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -390,7 +390,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration(embedMarkupOnNoIndexPages: true);
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->controllerMock->page = [
             'no_index' => 1,
@@ -436,7 +436,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration(embedMarkupOnNoIndexPages: false);
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->controllerMock->page = [
             'no_index' => 1,
@@ -474,7 +474,7 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration(embedMarkupOnNoIndexPages: false);
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new GenericStub('some-type'));
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
         $this->controllerMock->page = [
             'no_index' => 1,
@@ -553,7 +553,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             false,
             self::createStub(ServerRequestInterface::class),
         );
-        $event->addType(new GenericStub('from-event'));
+        $event->addType((new GenericStub())->setId('from-event'));
         $eventDispatcherStub = self::createStub(EventDispatcher::class);
         $eventDispatcherStub
             ->method('dispatch')
@@ -585,7 +585,10 @@ final class SchemaMarkupInjectionTest extends TestCase
         $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType(new WebPageStub());
+        $schemaManager->addType((new WebPageStub())->defineProperties([
+            'breadcrumb' => null,
+            'mainEntity' => null,
+        ]));
 
         $this->pagesCacheServiceMock
             ->expects(self::once())
@@ -612,7 +615,7 @@ final class SchemaMarkupInjectionTest extends TestCase
             false,
             self::createStub(ServerRequestInterface::class),
         );
-        $event->addMainEntityOfWebPage(new GenericStub('from-event-as-main-entity'));
+        $event->addMainEntityOfWebPage((new GenericStub())->setId('from-event-as-main-entity'));
         $eventDispatcherStub = self::createStub(EventDispatcher::class);
         $eventDispatcherStub
             ->method('dispatch')

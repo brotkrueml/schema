@@ -10,11 +10,12 @@ Introduced in version 3
 =======================
 
 .. confval:: Direct instantiation of a type model
+   :name: deprecation-directInstantiationOfTypeModel
 
    Deprecated since version
       3.11.0
 
-   Will be removed in version
+   Removed in version
       4.0.0
 
    Alternative
@@ -48,6 +49,7 @@ Introduced in version 3
       :ref:`enumerations <enumerations>` for details.
 
 .. confval:: \Brotkrueml\Schema\Type\TypeFactory::createType()
+   :name: deprecation-TypeFactoryCreateType
 
    Deprecated since version
       3.0.0

@@ -16,6 +16,8 @@ use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Enumeration\GenericEnumeration;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
+use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
@@ -43,7 +45,7 @@ final class RendererTest extends TestCase
     #[DataProvider('dataProvider')]
     public function renderReturnsCorrectOutputWithOneTypeGiven(?string $id, array $properties, string $expected): void
     {
-        $this->subject->addType(new GenericStub($id, $properties));
+        $this->subject->addType((new GenericStub())->setId($id)->defineProperties($properties));
 
         self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
     }
@@ -150,38 +152,34 @@ final class RendererTest extends TestCase
         yield 'Value is a model' => [
             null,
             [
-                'some-type' => new GenericStub(
-                    'from-type-property',
-                    [
-                        'some-property' => 'some-value',
-                    ],
-                    'SomeSubTypeStub',
-                ),
+                'some-type' => (new GenericStub())
+                    ->setId('from-type-property')
+                    ->defineProperties(
+                        [
+                            'some-property' => 'some-value',
+                        ],
+                    ),
             ],
-            '{"@context":"https://schema.org/","@type":"GenericStub","some-type":{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"}}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-type":{"@type":"GenericStub","@id":"from-type-property","some-property":"some-value"}}',
         ];
 
         yield 'Value is an array of models' => [
             null,
             [
                 'some-type' => [
-                    new GenericStub(
-                        'from-type-property',
-                        [
+                    (new ProductStub())
+                        ->setId('from-type-property')
+                        ->defineProperties([
                             'some-property' => 'some-value',
-                        ],
-                        'SomeSubTypeStub',
-                    ),
-                    new GenericStub(
-                        'from-another-type-property',
-                        [
+                        ]),
+                    (new ServiceStub())
+                        ->setId('from-another-type-property')
+                        ->defineProperties([
                             'another-property' => 'another-value',
-                        ],
-                        'AnotherSubTypeStub',
-                    ),
+                        ]),
                 ],
             ],
-            '{"@context":"https://schema.org/","@type":"GenericStub","some-type":[{"@type":"SomeSubTypeStub","@id":"from-type-property","some-property":"some-value"},{"@type":"AnotherSubTypeStub","@id":"from-another-type-property","another-property":"another-value"}]}',
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-type":[{"@type":"ProductStub","@id":"from-type-property","some-property":"some-value"},{"@type":"ServiceStub","@id":"from-another-type-property","another-property":"another-value"}]}',
         ];
 
         yield 'Value is of type NodeIdentifierInterface' => [
@@ -204,8 +202,8 @@ final class RendererTest extends TestCase
     #[Test]
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedSeparately(): void
     {
-        $this->subject->addType(new GenericStub('some-id'));
-        $this->subject->addType(new GenericStub('another-id'));
+        $this->subject->addType((new GenericStub())->setId('some-id'));
+        $this->subject->addType((new GenericStub())->setId('another-id'));
 
         self::assertSame(
             \sprintf(
@@ -220,8 +218,8 @@ final class RendererTest extends TestCase
     public function renderReturnsGraphStructureWhenTwoTypesAreAddedAtOnce(): void
     {
         $types = [
-            new GenericStub('some-id'),
-            new GenericStub('another-id'),
+            (new GenericStub())->setId('some-id'),
+            (new GenericStub())->setId('another-id'),
         ];
 
         $this->subject->addType(...$types);
@@ -238,8 +236,8 @@ final class RendererTest extends TestCase
     #[Test]
     public function renderHandlesEnumerationCorrectly(): void
     {
-        $type = new GenericStub(
-            properties: [
+        $type = (new GenericStub())->defineProperties(
+            [
                 'some-property' => GenericEnumeration::Member1,
                 'another-property' => GenericEnumeration::Member2,
             ],

@@ -16,15 +16,10 @@ use Brotkrueml\Schema\Attributes\Type;
 #[Type('ServiceStub')]
 class ServiceStub extends GenericStub
 {
-    public function __construct()
+    protected string $type = 'ServiceStub';
+
+    public function getType(): string
     {
-        parent::__construct(
-            null,
-            [
-                'name' => null,
-                'serviceType' => null,
-            ],
-            'ServiceStub',
-        );
+        return 'ServiceStub';
     }
 }

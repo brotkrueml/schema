@@ -25,6 +25,41 @@ alternative create a class implementing `AdditionalPropertiesInterface`
 (which is available since version 3.10.0), see
 :ref:`extending-register-additional-properties` for details.
 
+Manual instantiation of a type model class
+------------------------------------------
+
+Instantiating a type model class manually with "new" is not supported anymore.
+The :php:`\Brotkrueml\Schema\Type\TypeFactory->create()` method should be used
+instead (which is available since version 3.0.0):
+
+.. code-block:: diff
+
+     use Brotkrueml\Schema\Model\Type\Event;
+   + use Brotkrueml\Schema\Type\TypeFactory;
+
+     final class MyController
+     {
+   +     public function __construct(
+   +         private readonly TypeFactory $typeFactory,
+   +     ) {}
+
+         public function doSomething(): void
+         {
+             // ...
+
+   -         $event = new Event();
+   +         $event = $this->typeFactory->create('Event');
+
+             // ...
+         }
+     }
+
+.. seealso::
+
+   *  :ref:`Create a model via the TypeFactory <types>`
+   *  :confval:`Deprecation: direct instantiation of a type model <deprecation-directInstantiationOfTypeModel>`
+   *  :confval:`Deprecation: TypeFactory::createType() method <deprecation-TypeFactoryCreateType>`
+
 Types and view helpers representing enumerations
 ------------------------------------------------
 
@@ -50,8 +85,16 @@ Type declarations added to :php:`TypeInterface`
 
 Missing return type declarations and type declarations for the argument of the
 `setId()` method have been added. If you do not implement custom type models
-directly from the :php:`TypeInterface`, you are not affected by this change.
-Otherwise you have to adjust the methods of your type model classes.
+directly from the :php:`\Brotkrueml\Schema\Core\Model\TypeInterface`, you are
+not affected by this change. Otherwise you have to adjust the methods of your
+type model classes.
+
+However, implementing a type model directly from the interface is
+discouraged and might not work in the future, extend from
+:php:`\Brotkrueml\Schema\Core\Model\AbstractType` instead.
+
+.. seealso::
+   *  :ref:`extending-adding-types`
 
 
 From version 2.x to version 3.0
@@ -121,8 +164,7 @@ and use the new :php:`create()` method:
     {
    +    public function __construct(
    +        private readonly TypeFactory $typeFactory,
-   +    ) {
-   +    }
+   +    ) {}
 
         public function doSomething(): void
         {

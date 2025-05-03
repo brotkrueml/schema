@@ -29,7 +29,14 @@ final class MultipleTypeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->subject = new MultipleType(new ProductStub(), new ServiceStub());
+        $this->subject = new MultipleType(
+            (new ProductStub())->defineProperties([
+                'name' => null,
+                'serviceType' => null,
+                'sku' => null,
+            ]),
+            new ServiceStub(),
+        );
     }
 
     #[Test]

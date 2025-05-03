@@ -18,25 +18,31 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 #[Type('GenericStub')]
 class GenericStub implements NodeIdentifierInterface, TypeInterface
 {
-    public function __construct(
-        private readonly ?string $id = null,
-        private array $properties = [],
-        private readonly string $type = 'GenericStub',
-    ) {}
+    protected ?string $id = null;
+    protected array $properties = [];
+
+    public function defineProperties(array $properties): static
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId($id): static
+    public function setId(NodeIdentifierInterface|string|null $id): static
     {
-        throw new \Exception('Should not be called!');
+        $this->id = $id;
+
+        return $this;
     }
 
     public function hasProperty(string $propertyName): bool
     {
-        return true;
+        throw new \Exception('Should not be called!');
     }
 
     public function getProperty(string $propertyName): mixed
@@ -77,6 +83,6 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
 
     public function getType(): string
     {
-        return $this->type;
+        return 'GenericStub';
     }
 }

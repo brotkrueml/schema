@@ -17,6 +17,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Types and view helpers representing enumerations (#126)
 - Properties moved from core vocabulary to pending (#120)
 - Deprecated PSR-14 event `RegisterAdditionalTypePropertiesEvent` (#130)
+- Manual instantiation of type model classes
 
 ## [3.12.2] - 2025-05-03
 

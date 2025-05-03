@@ -14,18 +14,11 @@ namespace Brotkrueml\Schema\Tests\Fixtures\Model;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 
-#[Type('ProductStub')]
+#[Type('WebPageStub')]
 class WebPageStub extends GenericStub implements WebPageTypeInterface
 {
-    public function __construct()
+    public function getType(): string
     {
-        parent::__construct(
-            null,
-            [
-                'breadcrumb' => null,
-                'mainEntity' => null,
-            ],
-            'WebPageStub',
-        );
+        return 'WebPageStub';
     }
 }

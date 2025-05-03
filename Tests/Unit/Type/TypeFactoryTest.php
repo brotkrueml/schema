@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\Model\MultipleType;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
+use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
 use Brotkrueml\Schema\Type\ModelClassNotFoundException;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Brotkrueml\Schema\Type\TypeRegistry;
@@ -31,7 +32,7 @@ final class TypeFactoryTest extends TestCase
     protected function setUp(): void
     {
         $this->typeRegistry = new TypeRegistry();
-        $this->subject = new TypeFactory($this->typeRegistry);
+        $this->subject = new TypeFactory(new AdditionalPropertiesProvider(), $this->typeRegistry);
     }
 
     #[Test]

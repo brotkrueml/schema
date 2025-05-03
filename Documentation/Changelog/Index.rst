@@ -27,6 +27,7 @@ Removed
 * Types and view helpers representing enumerations (#126)
 * Properties moved from core vocabulary to pending (#120)
 * Deprecated PSR-14 event ``RegisterAdditionalTypePropertiesEvent`` (#130)
+* Manual instantiation of type model classes
 
 `3.12.2 <https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2>`_ - 2025-05-03
 -------------------------------------------------------------------------------------------

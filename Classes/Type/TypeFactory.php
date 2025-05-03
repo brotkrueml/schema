@@ -17,6 +17,7 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 final readonly class TypeFactory
 {
     public function __construct(
+        private AdditionalPropertiesProvider $additionalPropertiesProvider,
         private TypeRegistry $typeRegistry,
     ) {}
 
@@ -42,7 +43,7 @@ final readonly class TypeFactory
         $typeClass = $this->typeRegistry->getModelClassNameForType($type);
 
         /** @var TypeInterface $type */
-        $type = new $typeClass();
+        $type = new $typeClass($this->additionalPropertiesProvider);
 
         return $type;
     }
