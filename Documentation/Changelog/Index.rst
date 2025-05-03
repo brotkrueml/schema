@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.2...HEAD>`_
 -------------------------------------------------------------------------------
 
 Changed
@@ -27,6 +27,15 @@ Removed
 * Types and view helpers representing enumerations (#126)
 * Properties moved from core vocabulary to pending (#120)
 * Deprecated PSR-14 event ``RegisterAdditionalTypePropertiesEvent`` (#130)
+
+`3.12.2 <https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2>`_ - 2025-05-03
+-------------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Example in the docs for adding a type
 
 `3.12.1 <https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1>`_ - 2025-04-25
 -------------------------------------------------------------------------------------------

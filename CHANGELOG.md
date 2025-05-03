@@ -18,6 +18,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Properties moved from core vocabulary to pending (#120)
 - Deprecated PSR-14 event `RegisterAdditionalTypePropertiesEvent` (#130)
 
+## [3.12.2] - 2025-05-03
+
+### Fixed
+- Example in the docs for adding a type
+
 ## [3.12.1] - 2025-04-25
 
 ### Fixed
@@ -571,7 +576,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.12.2...HEAD
+[3.12.2]: https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2
 [3.12.1]: https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1
 [3.12.0]: https://github.com/brotkrueml/schema/compare/v3.11.1...v3.12.0
 [3.11.1]: https://github.com/brotkrueml/schema/compare/v3.11.0...v3.11.1
