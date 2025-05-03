@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Core\Model;
 
+use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 use Brotkrueml\Schema\Core\Exception\InvalidPropertyValueException;
 use Brotkrueml\Schema\Core\Exception\UnknownPropertyException;
 use Brotkrueml\Schema\Core\Model\AbstractType;
@@ -48,6 +49,63 @@ final class AbstractTypeTest extends TestCase
     public function subjectImplementsNodeIdentifierInterface(): void
     {
         self::assertInstanceOf(NodeIdentifierInterface::class, $this->subject);
+    }
+
+    #[Test]
+    public function additionalPropertiesAreAvailable(): void
+    {
+        $additionalProperties = new class implements AdditionalPropertiesInterface {
+            public function getType(): string
+            {
+                return 'Thing';
+            }
+
+            public function getAdditionalProperties(): array
+            {
+                return [
+                    'someAdditionalProperty',
+                    'anotherAdditionalProperty',
+                ];
+            }
+        };
+        $additionalPropertiesProvider = new AdditionalPropertiesProvider();
+        $additionalPropertiesProvider->add($additionalProperties::class);
+
+        $subject = new Thing($additionalPropertiesProvider);
+
+        self::assertTrue($subject->hasProperty('name'), 'initially defined property is available');
+        self::assertTrue($subject->hasProperty('someAdditionalProperty'), 'added property is available');
+        self::assertTrue($subject->hasProperty('anotherAdditionalProperty'), 'added property is available');
+    }
+
+    #[Test]
+    public function propertiesAreSortedAlphabeticallyAfterAddingAdditionalProperties(): void
+    {
+        $additionalProperties = new class implements AdditionalPropertiesInterface {
+            public function getType(): string
+            {
+                return 'Thing';
+            }
+
+            public function getAdditionalProperties(): array
+            {
+                return [
+                    'someAdditionalProperty',
+                    'anotherAdditionalProperty',
+                ];
+            }
+        };
+        $additionalPropertiesProvider = new AdditionalPropertiesProvider();
+        $additionalPropertiesProvider->add($additionalProperties::class);
+
+        $subject = new Thing($additionalPropertiesProvider);
+
+        $indexOfSomeAdditionalProperty = \array_search('someAdditionalProperty', $subject->getPropertyNames());
+        $indexOfAnotherAdditionalProperty = \array_search('anotherAdditionalProperty', $subject->getPropertyNames());
+        $indexOfName = \array_search('name', $subject->getPropertyNames());
+
+        self::assertLessThan($indexOfName, $indexOfAnotherAdditionalProperty);
+        self::assertLessThan($indexOfSomeAdditionalProperty, $indexOfName);
     }
 
     #[Test]
