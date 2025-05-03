@@ -41,8 +41,7 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
 
     $excludes = [
         __DIR__ . '/../Classes/Extension.php',
-        __DIR__ . '/../Classes/Core/Model/BlankNodeIdentifier.php',
-        __DIR__ . '/../Classes/Core/Model/NodeIdentifier.php',
+        __DIR__ . '/../Classes/Core/Model/',
     ];
     if (! $builder->hasDefinition(AdminPanelConfigurationService::class)) {
         $excludes[] = __DIR__ . '/../Classes/AdminPanel';
