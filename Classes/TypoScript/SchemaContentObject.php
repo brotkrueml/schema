@@ -31,14 +31,15 @@ final class SchemaContentObject extends AbstractContentObject
     /**
      * Renders the content object.
      *
-     * @param mixed[] $configuration
+     * @param array{type: string, id?: string, "properties.": array<string, mixed>} $conf
+     * @phpstan-ignore-next-line parameter.defaultValue method.childParameterType
      */
-    public function render($configuration = []): string
+    public function render($conf = []): string
     {
         $service = GeneralUtility::makeInstance(TypoScriptToSchema::class);
         $service->convert(
             $this->getContentObjectRenderer(),
-            $configuration,
+            $conf,
         );
 
         return '';
