@@ -21,7 +21,6 @@ use Brotkrueml\Schema\EventListener\AddWebPageType;
 use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\TypoScript\SchemaContentObject;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use TYPO3\CMS\Adminpanel\Service\ConfigurationService as AdminPanelConfigurationService;
@@ -70,11 +69,6 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
 
     $services->set(AddWebPageType::class)
         ->arg('$configuration', service('schema.configuration'));
-
-    $services->set(SchemaContentObject::class)
-        ->tag('frontend.contentobject', [
-            'identifier' => 'SCHEMA',
-        ]);
 
     $services->set('brotkrueml.schema.configuration.module.provider.types', Types::class)
         ->tag('lowlevel.configuration.module.provider', [

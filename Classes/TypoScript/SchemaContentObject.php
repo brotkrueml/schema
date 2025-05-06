@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\TypoScript;
 
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
 
@@ -19,6 +20,12 @@ use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
  * This will be converted to JSON LD via TypoScriptToSchema.
  * @internal
  */
+#[AutoconfigureTag(
+    name: 'frontend.contentobject',
+    attributes: [
+        'identifier' => 'SCHEMA',
+    ],
+)]
 final class SchemaContentObject extends AbstractContentObject
 {
     /**
