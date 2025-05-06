@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -36,6 +37,7 @@ final readonly class AddBreadcrumbList
     ];
 
     public function __construct(
+        #[Autowire(service: 'tx_schema.configuration')]
         private Configuration $configuration,
         private TypeFactory $typeFactory,
     ) {}

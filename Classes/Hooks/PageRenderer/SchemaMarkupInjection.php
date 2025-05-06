@@ -20,6 +20,7 @@ use Brotkrueml\Schema\Manager\SchemaManager;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Page\PageRenderer;
 
 /**
@@ -30,6 +31,7 @@ final class SchemaMarkupInjection
 {
     public function __construct(
         private readonly ApplicationType $applicationType,
+        #[Autowire(service: 'tx_schema.configuration')]
         private readonly Configuration $configuration,
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ExtensionAvailability $extensionAvailability,

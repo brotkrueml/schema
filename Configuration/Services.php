@@ -16,11 +16,7 @@ use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\DependencyInjection\AdditionalPropertiesPass;
 use Brotkrueml\Schema\DependencyInjection\TypeRegistryPass;
-use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
-use Brotkrueml\Schema\EventListener\AddWebPageType;
-use Brotkrueml\Schema\Hooks\PageRenderer\SchemaMarkupInjection;
 use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
-use Brotkrueml\Schema\Manager\SchemaManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use TYPO3\CMS\Adminpanel\Service\ConfigurationService as AdminPanelConfigurationService;
@@ -55,20 +51,8 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
             'getConfiguration',
         ]);
 
-    $services->set(SchemaMarkupInjection::class)
-        ->arg('$configuration', service('tx_schema.configuration'));
-
-    $services->set(SchemaManager::class)
-        ->arg('$configuration', service('tx_schema.configuration'));
-
     $services->set(PagesCacheService::class)
         ->arg('$cache', service('cache.pages'));
-
-    $services->set(AddBreadcrumbList::class)
-        ->arg('$configuration', service('tx_schema.configuration'));
-
-    $services->set(AddWebPageType::class)
-        ->arg('$configuration', service('tx_schema.configuration'));
 
     $services->set('brotkrueml.schema.configuration.module.provider.types', Types::class)
         ->tag('lowlevel.configuration.module.provider', [

@@ -16,6 +16,7 @@ use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\SingletonInterface;
 
 final class SchemaManager implements SingletonInterface
@@ -35,6 +36,7 @@ final class SchemaManager implements SingletonInterface
     private array $breadcrumbLists = [];
 
     public function __construct(
+        #[Autowire(service: 'tx_schema.configuration')]
         private readonly Configuration $configuration,
         private readonly RendererInterface $renderer,
     ) {

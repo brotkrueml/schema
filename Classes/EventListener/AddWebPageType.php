@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\EventListener;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Frontend\Page\PageInformation;
 
@@ -28,6 +29,7 @@ final readonly class AddWebPageType
     private const DEFAULT_WEBPAGE_TYPE = 'WebPage';
 
     public function __construct(
+        #[Autowire(service: 'tx_schema.configuration')]
         private Configuration $configuration,
         private TypeFactory $typeFactory,
     ) {}
