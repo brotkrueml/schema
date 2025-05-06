@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\TypoScript;
 
+use Brotkrueml\Schema\Core\Model\TypeInterface;
+use Brotkrueml\Schema\Manager\SchemaManager;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
 
 /**
@@ -28,6 +29,12 @@ use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
 )]
 final class SchemaContentObject extends AbstractContentObject
 {
+    public function __construct(
+        private readonly TypeBuilder $typeBuilder,
+        private readonly PropertiesAdder $propertiesAdder,
+        private readonly SchemaManager $schemaManager,
+    ) {}
+
     /**
      * Renders the content object.
      *
@@ -36,11 +43,11 @@ final class SchemaContentObject extends AbstractContentObject
      */
     public function render($conf = []): string
     {
-        $service = GeneralUtility::makeInstance(TypoScriptToSchema::class);
-        $service->convert(
-            $this->getContentObjectRenderer(),
-            $conf,
-        );
+        $type = $this->typeBuilder->build($this->getContentObjectRenderer(), $conf);
+        if ($type instanceof TypeInterface) {
+            $this->propertiesAdder->add($this->getContentObjectRenderer(), $type, $conf['properties.'] ?? []);
+            $this->schemaManager->addType($type);
+        }
 
         return '';
     }

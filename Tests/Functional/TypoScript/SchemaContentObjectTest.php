@@ -9,26 +9,24 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Functional;
+namespace Brotkrueml\Schema\Tests\Functional\TypoScript;
 
+use Brotkrueml\Schema\TypoScript\SchemaContentObject;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\Attributes\TestDox;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-#[TestDox('Conversion of TypoScript to Schema')]
-class TypoScriptToSchemaTest extends FunctionalTestCase
+#[CoversClass(SchemaContentObject::class)]
+final class SchemaContentObjectTest extends FunctionalTestCase
 {
     protected array $coreExtensionsToLoad = [
         'adminpanel',
     ];
 
-    /**
-     * @var string[]
-     */
     protected array $testExtensionsToLoad = [
-        'typo3conf/ext/schema',
+        'brotkrueml/schema',
     ];
 
     /**
@@ -64,7 +62,7 @@ class TypoScriptToSchemaTest extends FunctionalTestCase
         string $typoScriptSetup,
         array $expectedLogEntries,
     ): void {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
@@ -124,7 +122,7 @@ TYPOSCRIPT,
         string $typoScriptSetup,
         array $expectedJsonLd,
     ): void {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
@@ -412,7 +410,7 @@ TYPOSCRIPT,
     #[Test]
     public function returnsSchemaAndAddsErrorForUnknownProperty(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/Database.csv');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/Database.csv');
         $this->setUpFrontendRootPage(
             1,
             [],
