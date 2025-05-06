@@ -13,12 +13,19 @@ namespace Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider;
 
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Type\TypeRegistry;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Lowlevel\ConfigurationModuleProvider\ProviderInterface;
 
 /**
  * @internal
  */
+#[AutoconfigureTag(
+    name: 'lowlevel.configuration.module.provider',
+    attributes: [
+        'identifier' => 'ext-schema/types',
+    ],
+)]
 final class Types implements ProviderInterface
 {
     private string $identifier;

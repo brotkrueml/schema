@@ -16,7 +16,6 @@ use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\DependencyInjection\AdditionalPropertiesPass;
 use Brotkrueml\Schema\DependencyInjection\TypeRegistryPass;
-use Brotkrueml\Schema\Lowlevel\ConfigurationModuleProvider\Types;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use TYPO3\CMS\Adminpanel\Service\ConfigurationService as AdminPanelConfigurationService;
@@ -53,9 +52,4 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
 
     $services->set(PagesCacheService::class)
         ->arg('$cache', service('cache.pages'));
-
-    $services->set('brotkrueml.schema.configuration.module.provider.types', Types::class)
-        ->tag('lowlevel.configuration.module.provider', [
-            'identifier' => 'ext-schema/types',
-        ]);
 };
