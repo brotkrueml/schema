@@ -8,7 +8,7 @@
     displayDetailsOnTestsThatTriggerErrors="true"
     displayDetailsOnTestsThatTriggerNotices="true"
     displayDetailsOnTestsThatTriggerWarnings="true"
-    executionOrder="default"
+    executionOrder="random"
 >
     <testsuites>
         <testsuite name="Unit">
