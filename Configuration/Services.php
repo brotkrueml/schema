@@ -49,26 +49,26 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
     $services->load('Brotkrueml\Schema\\', __DIR__ . '/../Classes/*')
         ->exclude($excludes);
 
-    $services->set('schema.configuration', Configuration::class)
+    $services->set('tx_schema.configuration', Configuration::class)
         ->factory([
             service(ConfigurationProvider::class),
             'getConfiguration',
         ]);
 
     $services->set(SchemaMarkupInjection::class)
-        ->arg('$configuration', service('schema.configuration'));
+        ->arg('$configuration', service('tx_schema.configuration'));
 
     $services->set(SchemaManager::class)
-        ->arg('$configuration', service('schema.configuration'));
+        ->arg('$configuration', service('tx_schema.configuration'));
 
     $services->set(PagesCacheService::class)
         ->arg('$cache', service('cache.pages'));
 
     $services->set(AddBreadcrumbList::class)
-        ->arg('$configuration', service('schema.configuration'));
+        ->arg('$configuration', service('tx_schema.configuration'));
 
     $services->set(AddWebPageType::class)
-        ->arg('$configuration', service('schema.configuration'));
+        ->arg('$configuration', service('tx_schema.configuration'));
 
     $services->set('brotkrueml.schema.configuration.module.provider.types', Types::class)
         ->tag('lowlevel.configuration.module.provider', [
