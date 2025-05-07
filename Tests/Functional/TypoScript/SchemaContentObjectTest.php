@@ -11,14 +11,20 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\TypoScript;
 
+use Brotkrueml\Schema\TypoScript\PropertiesAdder;
 use Brotkrueml\Schema\TypoScript\SchemaContentObject;
+use Brotkrueml\Schema\TypoScript\TypeBuilder;
+use Brotkrueml\Schema\TypoScript\TypoScriptConverter;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
+#[CoversClass(PropertiesAdder::class)]
 #[CoversClass(SchemaContentObject::class)]
+#[CoversClass(TypeBuilder::class)]
+#[CoversClass(TypoScriptConverter::class)]
 final class SchemaContentObjectTest extends FunctionalTestCase
 {
     protected array $coreExtensionsToLoad = [

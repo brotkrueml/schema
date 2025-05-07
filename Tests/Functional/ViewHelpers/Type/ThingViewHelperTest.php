@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\Type;
 
+use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\ViewHelpers\Type\ThingViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,7 +23,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 use TYPO3Fluid\Fluid\View\TemplateView;
 
-#[CoversClass(ThingViewHelper::class)]
+#[CoversClass(AbstractTypeViewHelper::class)]
 final class ThingViewHelperTest extends FunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
