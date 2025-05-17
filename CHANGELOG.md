@@ -19,6 +19,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Deprecated PSR-14 event `RegisterAdditionalTypePropertiesEvent` (#130)
 - Manual instantiation of type model classes
 
+## [3.13.0] - 2025-05-17
+
+### Updated
+- schema.org definition to version 29.2
+
 ## [3.12.2] - 2025-05-03
 
 ### Fixed
@@ -577,7 +582,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.12.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.13.0...HEAD
+[3.13.0]: https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0
 [3.12.2]: https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2
 [3.12.1]: https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1
 [3.12.0]: https://github.com/brotkrueml/schema/compare/v3.11.1...v3.12.0

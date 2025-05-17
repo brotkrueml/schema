@@ -76,6 +76,7 @@ final class AudioObject extends AbstractType
         'genre',
         'hasPart',
         'headline',
+        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -129,6 +130,7 @@ final class AudioObject extends AbstractType
         'url',
         'version',
         'video',
+        'width',
         'wordCount',
         'workExample',
     ];

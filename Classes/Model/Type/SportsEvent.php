@@ -56,6 +56,7 @@ final class SportsEvent extends AbstractType
         'potentialAction',
         'previousStartDate',
         'recordedIn',
+        'referee',
         'remainingAttendeeCapacity',
         'review',
         'sameAs',

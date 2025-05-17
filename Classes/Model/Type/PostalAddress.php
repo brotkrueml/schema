@@ -37,6 +37,7 @@ final class PostalAddress extends AbstractType
         'description',
         'disambiguatingDescription',
         'email',
+        'extendedAddress',
         'faxNumber',
         'hoursAvailable',
         'identifier',
