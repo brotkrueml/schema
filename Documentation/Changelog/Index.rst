@@ -8,8 +8,11 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v3.12.1...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v3.13.0...HEAD>`_
 -------------------------------------------------------------------------------
+
+`3.13.0 <https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0>`_ - 2025-05-17
+-------------------------------------------------------------------------------------------
 
 Updated
 ^^^^^^^
@@ -17,8 +20,8 @@ Updated
 
 * schema.org definition to version 29.2
 
-[3.12.2] - 2025-05-03
----------------------
+`3.12.2 <https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2>`_ - 2025-05-03
+-------------------------------------------------------------------------------------------
 
 Fixed
 ^^^^^
