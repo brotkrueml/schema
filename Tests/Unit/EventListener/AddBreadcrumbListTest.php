@@ -72,7 +72,7 @@ final class AddBreadcrumbListTest extends TestCase
         $this->requestStub = self::createStub(ServerRequestInterface::class);
         $this->requestStub
             ->method('getAttribute')
-            ->willReturnCallback(fn($argument): PageInformation|SiteLanguage|Stub => match ($argument) {
+            ->willReturnCallback(fn(string $argument): PageInformation|SiteLanguage|Stub => match ($argument) {
                 'frontend.page.information' => $this->pageInformation,
                 'language' => $language,
                 'site' => $site,
