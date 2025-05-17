@@ -32,9 +32,7 @@ final class ImageObject implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'height',
             'provider',
-            'width',
         ];
     }
 }

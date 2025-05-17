@@ -32,9 +32,7 @@ final class DataDownload implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'height',
             'provider',
-            'width',
         ];
     }
 }

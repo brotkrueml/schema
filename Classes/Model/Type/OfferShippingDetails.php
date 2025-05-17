@@ -38,9 +38,11 @@ final class OfferShippingDetails extends AbstractType
         'additionalType',
         'alternateName',
         'deliveryTime',
+        'depth',
         'description',
         'disambiguatingDescription',
         'doesNotShip',
+        'height',
         'identifier',
         'image',
         'mainEntityOfPage',
@@ -52,5 +54,7 @@ final class OfferShippingDetails extends AbstractType
         'shippingRate',
         'subjectOf',
         'url',
+        'weight',
+        'width',
     ];
 }

@@ -32,11 +32,7 @@ final class IndividualProduct implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'depth',
             'hasEnergyConsumptionDetails',
-            'height',
-            'weight',
-            'width',
         ];
     }
 }

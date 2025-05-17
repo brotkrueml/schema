@@ -32,14 +32,10 @@ final class OfferShippingDetails implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'depth',
-            'height',
             'shippingLabel',
             'shippingSettingsLink',
             'transitTimeLabel',
             'validForMemberTier',
-            'weight',
-            'width',
         ];
     }
 }

@@ -78,6 +78,7 @@ final class DataDownload extends AbstractType
         'genre',
         'hasPart',
         'headline',
+        'height',
         'identifier',
         'image',
         'inLanguage',
@@ -130,6 +131,7 @@ final class DataDownload extends AbstractType
         'url',
         'version',
         'video',
+        'width',
         'wordCount',
         'workExample',
     ];

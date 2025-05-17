@@ -32,8 +32,6 @@ final class Person implements AdditionalPropertiesInterface
     public function getAdditionalProperties(): array
     {
         return [
-            'height',
-            'width',
             // @see https://github.com/schemaorg/schemaorg/issues/2499
             'gender',
             // from official to pending in schema version 3.7
