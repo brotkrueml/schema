@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\AdminPanel;
 
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Caching\AdminPanelCacheHandler;
 use Brotkrueml\Schema\Extension;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Adminpanel\ModuleApi\AbstractModule;
 use TYPO3\CMS\Adminpanel\ModuleApi\ShortInfoProviderInterface;
@@ -24,7 +25,7 @@ use TYPO3\CMS\Adminpanel\ModuleApi\ShortInfoProviderInterface;
 final class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
     public function __construct(
-        private readonly PagesCacheService $pagesCacheService,
+        private readonly AdminPanelCacheHandler $adminPanelCacheHandler,
     ) {}
 
     public function getIconIdentifier(): string
@@ -44,7 +45,7 @@ final class SchemaModule extends AbstractModule implements ShortInfoProviderInte
 
     public function getShortInfo(): string
     {
-        $jsonLd = $this->pagesCacheService->getMarkupFromCache() ?? '';
+        $jsonLd = $this->adminPanelCacheHandler->getMarkup($this->getRequest());
 
         $numberOfTypes = 0;
         if ($jsonLd !== '') {
@@ -60,5 +61,10 @@ final class SchemaModule extends AbstractModule implements ShortInfoProviderInte
                 Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.type' . ($numberOfTypes !== 1 ? 's' : ''),
             ),
         );
+    }
+
+    public function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

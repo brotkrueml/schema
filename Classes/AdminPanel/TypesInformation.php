@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\AdminPanel;
 
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Caching\AdminPanelCacheHandler;
 use Brotkrueml\Schema\Extension;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Adminpanel\ModuleApi\ContentProviderInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
@@ -26,10 +27,10 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  * @internal
  */
 #[Autoconfigure(public: true)]
-final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
+final readonly class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
     public function __construct(
-        private readonly PagesCacheService $pagesCacheService,
+        private AdminPanelCacheHandler $adminPanelCacheHandler,
     ) {}
 
     public function getIdentifier(): string
@@ -46,7 +47,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
     public function getContent(ModuleData $data): string
     {
-        $jsonLd = $this->pagesCacheService->getMarkupFromCache() ?? '';
+        $jsonLd = $this->adminPanelCacheHandler->getMarkup($this->getRequest());
 
         $types = [];
         if ($jsonLd !== '') {
@@ -83,11 +84,6 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
         return $view;
     }
 
-    private function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
-    }
-
     /**
      * @return string[]
      */
@@ -102,5 +98,15 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     public function getCssFiles(): array
     {
         return [];
+    }
+
+    private function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
+    }
+
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

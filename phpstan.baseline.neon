@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Cannot access property \$newHash on TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController\|null\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: Classes/Cache/PagesCacheService.php
-
-		-
 			message: '#^Instanceof between mixed and Brotkrueml\\Schema\\Core\\Model\\TypeInterface will always evaluate to false\.$#'
 			identifier: instanceof.alwaysFalse
 			count: 1

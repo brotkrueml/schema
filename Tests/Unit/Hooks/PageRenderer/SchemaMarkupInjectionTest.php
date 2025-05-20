@@ -13,7 +13,8 @@ namespace Brotkrueml\Schema\Tests\Unit\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Caching\PersistentCacheHandler;
+use Brotkrueml\Schema\Caching\RuntimeCacheHandler;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Extension;
@@ -34,40 +35,30 @@ use TYPO3\CMS\Core\EventDispatcher\NoopEventDispatcher;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 #[CoversClass(SchemaMarkupInjection::class)]
 #[RunTestsInSeparateProcesses]
 final class SchemaMarkupInjectionTest extends TestCase
 {
     private MockObject $pageRendererMock;
-    private MockObject $controllerMock;
-    private MockObject $pagesCacheServiceMock;
+    private MockObject $persistentCacheHandlerMock;
+    private MockObject $runtimeCacheHandlerMock;
     private ApplicationType&Stub $applicationTypeStub;
     private ExtensionAvailability&Stub $extensionAvailabilityStub;
+    private ServerRequestInterface&Stub $requestStub;
 
     protected function setUp(): void
     {
-        $this->pagesCacheServiceMock = $this->createMock(PagesCacheService::class);
         $this->applicationTypeStub = self::createStub(ApplicationType::class);
         $this->extensionAvailabilityStub = self::createStub(ExtensionAvailability::class);
+        $this->persistentCacheHandlerMock = $this->createMock(PersistentCacheHandler::class);
+        $this->runtimeCacheHandlerMock = $this->createMock(RuntimeCacheHandler::class);
 
         $this->pageRendererMock = $this->createMock(PageRenderer::class);
 
-        $this->controllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $this->controllerMock->newHash = 'somehash';
-        $this->controllerMock->page = [
-            'no_index' => 0,
-            'uid' => 42,
-        ];
-
-        $requestStub = self::createStub(ServerRequestInterface::class);
-        $requestStub
-            ->method('getAttribute')
-            ->with('frontend.controller')
-            ->willReturn($this->controllerMock);
-
-        $GLOBALS['TYPO3_REQUEST'] = $requestStub;
+        $this->requestStub = self::createStub(ServerRequestInterface::class);
+        $GLOBALS['TYPO3_REQUEST'] = $this->requestStub;
     }
 
     protected function tearDown(): void
@@ -102,14 +93,15 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
         $subject->execute($params, $this->pageRendererMock);
     }
 
     #[Test]
-    public function executeWithoutDefinedMarkupAndNoBreacrumbAndWebpageDoesNotEmbedAnything(): void
+    public function executeWithoutDefinedMarkupAndNoBreadcrumbAndWebpageDoesNotEmbedAnything(): void
     {
         $configuration = $this->buildConfiguration();
 
@@ -134,7 +126,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -174,7 +167,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -215,7 +209,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -231,10 +226,6 @@ final class SchemaMarkupInjectionTest extends TestCase
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
 
-        $this->controllerMock->page = [
-            'uid' => 42,
-        ];
-
         $this->applicationTypeStub
             ->method('isBackend')
             ->willReturn(false);
@@ -248,7 +239,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -265,15 +257,15 @@ final class SchemaMarkupInjectionTest extends TestCase
     }
 
     #[Test]
-    public function whenCacheIsDefinedItIsUsedToGetMarkup(): void
+    public function markupIsRetrievedFromCache(): void
     {
         $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
 
-        $this->pagesCacheServiceMock
+        $this->persistentCacheHandlerMock
             ->expects(self::once())
-            ->method('getMarkupFromCache')
+            ->method('getMarkup')
             ->willReturn('some-cached-markup');
 
         $this->pageRendererMock
@@ -294,7 +286,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -303,24 +296,21 @@ final class SchemaMarkupInjectionTest extends TestCase
     }
 
     #[Test]
-    public function whenCacheIsDefinedItIsUsedToStoreMarkup(): void
+    public function runtimeCacheIsUsedToStoreMarkupIfMarkupWasRetrievedFromCache(): void
     {
         $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType((new GenericStub())->setId('some-type'));
 
-        $this->pagesCacheServiceMock
+        $this->persistentCacheHandlerMock
             ->expects(self::once())
-            ->method('getMarkupFromCache')
-            ->willReturn(null);
-        $this->pagesCacheServiceMock
+            ->method('getMarkup')
+            ->with($this->requestStub)
+            ->willReturn('some-cached-markup');
+        $this->runtimeCacheHandlerMock
             ->expects(self::once())
-            ->method('storeMarkupInCache')
-            ->with(\sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
-            ));
+            ->method('setMarkup')
+            ->with('some-cached-markup');
 
         $this->applicationTypeStub
             ->method('isBackend')
@@ -335,7 +325,48 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
+            $schemaManager,
+        );
+
+        $params = [];
+        $subject->execute($params, $this->pageRendererMock);
+    }
+
+    #[Test]
+    public function runtimeCacheIsUsedToStoreMarkupIfMarkupWasNotRetrievedFromCache(): void
+    {
+        $configuration = $this->buildConfiguration();
+
+        $schemaManager = new SchemaManager($configuration, new Renderer());
+        $schemaManager->addType((new GenericStub())->setId('some-type'));
+
+        $this->persistentCacheHandlerMock
+            ->expects(self::once())
+            ->method('getMarkup')
+            ->with($this->requestStub)
+            ->willReturn(null);
+        $this->runtimeCacheHandlerMock
+            ->expects(self::once())
+            ->method('setMarkup')
+            ->with('<script type="application/ld+json" id="ext-schema-jsonld">{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}</script>');
+
+        $this->applicationTypeStub
+            ->method('isBackend')
+            ->willReturn(false);
+
+        $this->extensionAvailabilityStub
+            ->method('isSeoAvailable')
+            ->willReturn(false);
+
+        $subject = new SchemaMarkupInjection(
+            $this->applicationTypeStub,
+            $configuration,
+            new NoopEventDispatcher(),
+            $this->extensionAvailabilityStub,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -351,17 +382,14 @@ final class SchemaMarkupInjectionTest extends TestCase
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
 
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('getMarkupFromCache')
-            ->willReturn(null);
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('storeMarkupInCache')
-            ->with(\sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
-            ));
+        $pageInformation = new PageInformation();
+        $pageInformation->setPageRecord([
+            'no_index' => 0,
+        ]);
+        $this->requestStub
+            ->method('getAttribute')
+            ->with('frontend.page.information')
+            ->willReturn($pageInformation);
 
         $this->applicationTypeStub
             ->method('isBackend')
@@ -371,12 +399,18 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(true);
 
+        $this->pageRendererMock
+            ->expects(self::once())
+            ->method('addHeaderData')
+            ->with('<script type="application/ld+json" id="ext-schema-jsonld">{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}</script>');
+
         $subject = new SchemaMarkupInjection(
             $this->applicationTypeStub,
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -392,22 +426,14 @@ final class SchemaMarkupInjectionTest extends TestCase
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
 
-        $this->controllerMock->page = [
+        $pageInformation = new PageInformation();
+        $pageInformation->setPageRecord([
             'no_index' => 1,
-            'uid' => 42,
-        ];
-
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('getMarkupFromCache')
-            ->willReturn(null);
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('storeMarkupInCache')
-            ->with(\sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
-            ));
+        ]);
+        $this->requestStub
+            ->method('getAttribute')
+            ->with('frontend.page.information')
+            ->willReturn($pageInformation);
 
         $this->applicationTypeStub
             ->method('isBackend')
@@ -417,12 +443,18 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(true);
 
+        $this->pageRendererMock
+            ->expects(self::once())
+            ->method('addHeaderData')
+            ->with('<script type="application/ld+json" id="ext-schema-jsonld">{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}</script>');
+
         $subject = new SchemaMarkupInjection(
             $this->applicationTypeStub,
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -438,14 +470,14 @@ final class SchemaMarkupInjectionTest extends TestCase
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
 
-        $this->controllerMock->page = [
+        $pageInformation = new PageInformation();
+        $pageInformation->setPageRecord([
             'no_index' => 1,
-            'uid' => 42,
-        ];
-
-        $this->pagesCacheServiceMock
-            ->expects(self::never())
-            ->method('getMarkupFromCache');
+        ]);
+        $this->requestStub
+            ->method('getAttribute')
+            ->with('frontend.page.information')
+            ->willReturn($pageInformation);
 
         $this->applicationTypeStub
             ->method('isBackend')
@@ -455,12 +487,17 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(true);
 
+        $this->pageRendererMock
+            ->expects(self::never())
+            ->method('addHeaderData');
+
         $subject = new SchemaMarkupInjection(
             $this->applicationTypeStub,
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -476,22 +513,14 @@ final class SchemaMarkupInjectionTest extends TestCase
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
 
-        $this->controllerMock->page = [
+        $pageInformation = new PageInformation();
+        $pageInformation->setPageRecord([
             'no_index' => 1,
-            'uid' => 42,
-        ];
-
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('getMarkupFromCache')
-            ->willReturn(null);
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('storeMarkupInCache')
-            ->with(\sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
-            ));
+        ]);
+        $this->requestStub
+            ->method('getAttribute')
+            ->with('frontend.page.information')
+            ->willReturn($pageInformation);
 
         $this->applicationTypeStub
             ->method('isBackend')
@@ -501,12 +530,18 @@ final class SchemaMarkupInjectionTest extends TestCase
             ->method('isSeoAvailable')
             ->willReturn(false);
 
+        $this->pageRendererMock
+            ->expects(self::once())
+            ->method('addHeaderData')
+            ->with('<script type="application/ld+json" id="ext-schema-jsonld">{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}</script>');
+
         $subject = new SchemaMarkupInjection(
             $this->applicationTypeStub,
             $configuration,
             new NoopEventDispatcher(),
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -528,13 +563,9 @@ final class SchemaMarkupInjectionTest extends TestCase
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
 
-        $this->pagesCacheServiceMock
+        $this->runtimeCacheHandlerMock
             ->expects(self::once())
-            ->method('getMarkupFromCache')
-            ->willReturn(null);
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('storeMarkupInCache')
+            ->method('setMarkup')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
                 '{"@context":"https://schema.org/","@type":"GenericStub","@id":"from-event"}',
@@ -564,7 +595,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             $eventDispatcherStub,
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 
@@ -590,13 +622,9 @@ final class SchemaMarkupInjectionTest extends TestCase
             'mainEntity' => null,
         ]));
 
-        $this->pagesCacheServiceMock
+        $this->runtimeCacheHandlerMock
             ->expects(self::once())
-            ->method('getMarkupFromCache')
-            ->willReturn(null);
-        $this->pagesCacheServiceMock
-            ->expects(self::once())
-            ->method('storeMarkupInCache')
+            ->method('setMarkup')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
                 '{"@context":"https://schema.org/","@type":"WebPageStub","mainEntity":{"@type":"GenericStub","@id":"from-event-as-main-entity"}}',
@@ -626,7 +654,8 @@ final class SchemaMarkupInjectionTest extends TestCase
             $configuration,
             $eventDispatcherStub,
             $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
+            $this->persistentCacheHandlerMock,
+            $this->runtimeCacheHandlerMock,
             $schemaManager,
         );
 

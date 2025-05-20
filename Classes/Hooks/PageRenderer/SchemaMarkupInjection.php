@@ -13,7 +13,8 @@ namespace Brotkrueml\Schema\Hooks\PageRenderer;
 
 use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Caching\PersistentCacheHandler;
+use Brotkrueml\Schema\Caching\RuntimeCacheHandler;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -27,16 +28,17 @@ use TYPO3\CMS\Core\Page\PageRenderer;
  * @internal
  */
 #[Autoconfigure(public: true)]
-final class SchemaMarkupInjection
+final readonly class SchemaMarkupInjection
 {
     public function __construct(
-        private readonly ApplicationType $applicationType,
+        private ApplicationType $applicationType,
         #[Autowire(service: 'tx_schema.configuration')]
-        private readonly Configuration $configuration,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly ExtensionAvailability $extensionAvailability,
-        private readonly PagesCacheService $pagesCacheService,
-        private readonly SchemaManager $schemaManager,
+        private Configuration $configuration,
+        private EventDispatcherInterface $eventDispatcher,
+        private ExtensionAvailability $extensionAvailability,
+        private PersistentCacheHandler $persistentCacheHandler,
+        private RuntimeCacheHandler $runtimeCacheHandler,
+        private SchemaManager $schemaManager,
     ) {}
 
     /**
@@ -52,18 +54,17 @@ final class SchemaMarkupInjection
             return;
         }
 
-        $result = $this->pagesCacheService->getMarkupFromCache();
+        $result = $this->persistentCacheHandler->getMarkup($this->getRequest());
         if ($result === null) {
             $this->dispatchRenderAdditionalTypesEvent();
             $result = $this->schemaManager->renderJsonLd();
-            if ($result !== '') {
-                $this->pagesCacheService->storeMarkupInCache($result);
-            }
         }
 
         if ($result === '') {
             return;
         }
+
+        $this->runtimeCacheHandler->setMarkup($result);
 
         if ($this->configuration->embedMarkupInBodySection) {
             $pageRenderer->addFooterData($result);
@@ -78,7 +79,7 @@ final class SchemaMarkupInjection
             return true;
         }
 
-        if (! ($this->getRequest()->getAttribute('frontend.controller')->page['no_index'] ?? false)) {
+        if (! ($this->getRequest()->getAttribute('frontend.page.information')->getPageRecord()['no_index'] ?? false)) {
             return true;
         }
 

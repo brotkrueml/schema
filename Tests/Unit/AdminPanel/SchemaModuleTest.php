@@ -12,24 +12,25 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 
 use Brotkrueml\Schema\AdminPanel\SchemaModule;
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Caching\AdminPanelCacheHandler;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
 #[CoversClass(SchemaModule::class)]
 final class SchemaModuleTest extends TestCase
 {
-    private PagesCacheService&Stub $pagesCacheService;
+    private AdminPanelCacheHandler&Stub $adminPanelCacheHandlerStub;
     private SchemaModule $subject;
 
     protected function setUp(): void
     {
-        $this->pagesCacheService = self::createStub(PagesCacheService::class);
-        $this->subject = new SchemaModule($this->pagesCacheService);
+        $this->adminPanelCacheHandlerStub = self::createStub(AdminPanelCacheHandler::class);
+        $this->subject = new SchemaModule($this->adminPanelCacheHandlerStub);
 
         $languageService = self::createStub(LanguageService::class);
         $languageService
@@ -39,11 +40,14 @@ final class SchemaModuleTest extends TestCase
                 ['LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.types', 'Types'],
             ]);
         $GLOBALS['LANG'] = $languageService;
+
+        $GLOBALS['TYPO3_REQUEST'] = self::createStub(ServerRequestInterface::class);
     }
 
     protected function tearDown(): void
     {
         unset($GLOBALS['LANG']);
+        unset($GLOBALS['TYPO3_REQUEST']);
     }
 
     #[Test]
@@ -68,8 +72,8 @@ final class SchemaModuleTest extends TestCase
     #[DataProvider('providerForGetShortInfo')]
     public function getShortInfo(?string $markupFromCache, string $expected): void
     {
-        $this->pagesCacheService
-            ->method('getMarkupFromCache')
+        $this->adminPanelCacheHandlerStub
+            ->method('getMarkup')
             ->willReturn($markupFromCache);
 
         $actual = $this->subject->getShortInfo();
@@ -80,7 +84,7 @@ final class SchemaModuleTest extends TestCase
     public static function providerForGetShortInfo(): iterable
     {
         yield 'with null returned from cache' => [
-            'markupFromCache' => null,
+            'markupFromCache' => '',
             'expected' => '(0 Types)',
         ];
 
