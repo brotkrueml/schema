@@ -65,11 +65,7 @@ final class SchemaMarkupInjection
             return;
         }
 
-        if ($this->configuration->embedMarkupInBodySection) {
-            $pageRenderer->addFooterData($result);
-        } else {
-            $pageRenderer->addHeaderData($result);
-        }
+        $pageRenderer->addFooterData($result);
     }
 
     private function isMarkupToBeEmbedded(): bool

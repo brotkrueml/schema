@@ -10,8 +10,5 @@ automaticBreadcrumbExcludeAdditionalDoktypes =
 # cat=Basic; type=boolean; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.allowOnlyOneBreadcrumbList
 allowOnlyOneBreadcrumbList = 0
 
-# cat=Basic; type=boolean; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.embedMarkupInBodySection
-embedMarkupInBodySection = 0
-
 # cat=Basic; type=boolean; label=LLL:EXT:schema/Resources/Private/Language/locallang.xlf:config.embedMarkupOnNoindexPages
 embedMarkupOnNoindexPages = 1

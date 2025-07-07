@@ -79,21 +79,6 @@ is enabled and you want to overwrite the generated breadcrumb list on a
 dedicated page with a custom one.
 
 
-.. _configuration-embedMarkupInBodySection:
-
-Embed markup in the body section
---------------------------------
-
-If this option is enabled, the schema markup is embedded at the end of the
-:html:`<body>` section. If it is disabled, it is embedded in the :html:`<head>`
-section of the page.
-
-Default value
-   disabled
-
-.. youtube:: lI6EtxjoyDU
-
-
 .. _configuration-embedMarkupOnNoindexPages:
 
 Embed markup on "noindex" pages

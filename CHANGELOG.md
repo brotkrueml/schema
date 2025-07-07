@@ -18,6 +18,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Properties moved from core vocabulary to pending (#120)
 - Deprecated PSR-14 event `RegisterAdditionalTypePropertiesEvent` (#130)
 - Manual instantiation of type model classes
+- Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
 ## [3.13.0] - 2025-05-17
 

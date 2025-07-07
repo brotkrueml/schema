@@ -26,7 +26,6 @@ final class Configuration
         public readonly bool $automaticBreadcrumbSchemaGeneration,
         public readonly array $automaticBreadcrumbExcludeAdditionalDoktypes,
         public readonly bool $allowOnlyOneBreadcrumbList,
-        public readonly bool $embedMarkupInBodySection,
         public readonly bool $embedMarkupOnNoindexPages,
     ) {}
 }

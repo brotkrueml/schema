@@ -39,7 +39,6 @@ final class ConfigurationProvider
                 ),
             ),
             allowOnlyOneBreadcrumbList: (bool) ($configurationAsArray['allowOnlyOneBreadcrumbList'] ?? false),
-            embedMarkupInBodySection: (bool) ($configurationAsArray['embedMarkupInBodySection'] ?? false),
             embedMarkupOnNoindexPages: (bool) ($configurationAsArray['embedMarkupOnNoindexPages'] ?? true),
         );
     }

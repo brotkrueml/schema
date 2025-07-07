@@ -39,8 +39,6 @@ final class ConfigurationProviderTest extends TestCase
         self::assertSame($expected['automaticBreadcrumbSchemaGeneration'], $actual->automaticBreadcrumbSchemaGeneration);
         self::assertSame($expected['automaticBreadcrumbExcludeAdditionalDoktypes'], $actual->automaticBreadcrumbExcludeAdditionalDoktypes);
         self::assertSame($expected['allowOnlyOneBreadcrumbList'], $actual->allowOnlyOneBreadcrumbList);
-        self::assertSame($expected['embedMarkupInBodySection'], $actual->embedMarkupInBodySection);
-        self::assertSame($expected['embedMarkupInBodySection'], $actual->embedMarkupInBodySection);
     }
 
     public static function providerForGetConfigurationWithDifferentExtensionConfigurations(): iterable
@@ -52,7 +50,6 @@ final class ConfigurationProviderTest extends TestCase
                 'automaticBreadcrumbSchemaGeneration' => false,
                 'automaticBreadcrumbExcludeAdditionalDoktypes' => [],
                 'allowOnlyOneBreadcrumbList' => false,
-                'embedMarkupInBodySection' => false,
                 'embedMarkupOnNoindexPages' => true,
             ],
         ];
@@ -63,7 +60,6 @@ final class ConfigurationProviderTest extends TestCase
                 'automaticBreadcrumbSchemaGeneration' => '0',
                 'automaticBreadcrumbExcludeAdditionalDoktypes' => '',
                 'allowOnlyOneBreadcrumbList' => '0',
-                'embedMarkupInBodySection' => '0',
                 'embedMarkupOnNoindexPages' => '0',
             ],
             'expected' => [
@@ -71,7 +67,6 @@ final class ConfigurationProviderTest extends TestCase
                 'automaticBreadcrumbSchemaGeneration' => false,
                 'automaticBreadcrumbExcludeAdditionalDoktypes' => [],
                 'allowOnlyOneBreadcrumbList' => false,
-                'embedMarkupInBodySection' => false,
                 'embedMarkupOnNoindexPages' => false,
             ],
         ];
@@ -82,7 +77,6 @@ final class ConfigurationProviderTest extends TestCase
                 'automaticBreadcrumbSchemaGeneration' => '1',
                 'automaticBreadcrumbExcludeAdditionalDoktypes' => ',42, , 123,987, ',
                 'allowOnlyOneBreadcrumbList' => '1',
-                'embedMarkupInBodySection' => '1',
                 'embedMarkupOnNoindexPages' => '1',
             ],
             'expected' => [
@@ -90,7 +84,6 @@ final class ConfigurationProviderTest extends TestCase
                 'automaticBreadcrumbSchemaGeneration' => true,
                 'automaticBreadcrumbExcludeAdditionalDoktypes' => [42, 123, 987],
                 'allowOnlyOneBreadcrumbList' => true,
-                'embedMarkupInBodySection' => true,
                 'embedMarkupOnNoindexPages' => true,
             ],
         ];

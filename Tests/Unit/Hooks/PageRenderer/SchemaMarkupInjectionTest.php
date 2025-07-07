@@ -142,57 +142,12 @@ final class SchemaMarkupInjectionTest extends TestCase
     }
 
     #[Test]
-    public function executeWithMarkupDefinedCallsAddHeaderDataIfShouldEmbeddedIntoHead(): void
+    public function executeWithSchemaCallsAddFooterDataOnce(): void
     {
-        $configuration = $this->buildConfiguration(embedMarkupInBodySection: false);
+        $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
-
-        $this->pageRendererMock
-            ->expects(self::once())
-            ->method('addHeaderData')
-            ->with(\sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
-            ));
-
-        $this->pageRendererMock
-            ->expects(self::never())
-            ->method('addFooterData');
-
-        $this->applicationTypeStub
-            ->method('isBackend')
-            ->willReturn(false);
-
-        $this->extensionAvailabilityStub
-            ->method('isSeoAvailable')
-            ->willReturn(false);
-
-        $subject = new SchemaMarkupInjection(
-            $this->applicationTypeStub,
-            $configuration,
-            new NoopEventDispatcher(),
-            $this->extensionAvailabilityStub,
-            $this->pagesCacheServiceMock,
-            $schemaManager,
-        );
-
-        $params = [];
-        $subject->execute($params, $this->pageRendererMock);
-    }
-
-    #[Test]
-    public function executeWithSchemaCallsAddFooterDataOnceIfShouldEmbeddedIntoBody(): void
-    {
-        $configuration = $this->buildConfiguration(embedMarkupInBodySection: true);
-
-        $schemaManager = new SchemaManager($configuration, new Renderer());
-        $schemaManager->addType((new GenericStub())->setId('some-type'));
-
-        $this->pageRendererMock
-            ->expects(self::never())
-            ->method('addHeaderData');
 
         $this->pageRendererMock
             ->expects(self::once())
@@ -224,9 +179,9 @@ final class SchemaMarkupInjectionTest extends TestCase
     }
 
     #[Test]
-    public function seoExtensionIsNotInstalledAddsHeaderData(): void
+    public function seoExtensionIsNotInstalledAddsFooterData(): void
     {
-        $configuration = $this->buildConfiguration(embedMarkupInBodySection: false);
+        $configuration = $this->buildConfiguration();
 
         $schemaManager = new SchemaManager($configuration, new Renderer());
         $schemaManager->addType((new GenericStub())->setId('some-type'));
@@ -254,7 +209,7 @@ final class SchemaMarkupInjectionTest extends TestCase
 
         $this->pageRendererMock
             ->expects(self::once())
-            ->method('addHeaderData')
+            ->method('addFooterData')
             ->with(\sprintf(
                 Extension::JSONLD_TEMPLATE,
                 '{"@context":"https://schema.org/","@type":"GenericStub","@id":"some-type"}',
@@ -278,7 +233,7 @@ final class SchemaMarkupInjectionTest extends TestCase
 
         $this->pageRendererMock
             ->expects(self::once())
-            ->method('addHeaderData')
+            ->method('addFooterData')
             ->with('some-cached-markup');
 
         $this->applicationTypeStub
@@ -642,7 +597,6 @@ final class SchemaMarkupInjectionTest extends TestCase
     }
 
     private function buildConfiguration(
-        bool $embedMarkupInBodySection = false,
         bool $embedMarkupOnNoIndexPages = false,
     ): Configuration {
         return new Configuration(
@@ -650,7 +604,6 @@ final class SchemaMarkupInjectionTest extends TestCase
             false,
             [],
             false,
-            $embedMarkupInBodySection,
             $embedMarkupOnNoIndexPages,
         );
     }

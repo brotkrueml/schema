@@ -28,6 +28,7 @@ Removed
 * Properties moved from core vocabulary to pending (#120)
 * Deprecated PSR-14 event ``RegisterAdditionalTypePropertiesEvent`` (#130)
 * Manual instantiation of type model classes
+* Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
 `3.13.0 <https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0>`_ - 2025-05-17
 -------------------------------------------------------------------------------------------

@@ -50,7 +50,6 @@ final class SchemaContentObjectTest extends FunctionalTestCase
             'schema' => [
                 'automaticBreadcrumbSchemaGeneration' => '0',
                 'automaticWebPageSchemaGeneration' => '0',
-                'embedMarkupInBodySection' => '1',
                 'embedMarkupOnNoindexPages' => '0',
             ],
         ],
