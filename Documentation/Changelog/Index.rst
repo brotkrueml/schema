@@ -17,6 +17,12 @@ Changed
 
 * Type declarations added to ``TypeInterface`` (#129)
 
+Fixed
+-----
+
+
+* Admin panel shows no markup when loading a page with Shift+Reload (#132)
+
 Removed
 -------
 

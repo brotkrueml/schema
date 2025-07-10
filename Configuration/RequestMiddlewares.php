@@ -14,10 +14,10 @@ return [
         'brotkrueml/schema/markup-injection' => [
             'target' => MarkupInjectionMiddleware::class,
             'before' => [
-                'typo3/cms-adminpanel/renderer',
                 'typo3/cms-core/cache-timout',
             ],
             'after' => [
+                'typo3/cms-adminpanel/renderer',
                 'typo3/cms-frontend/content-length-headers',
             ],
         ],
