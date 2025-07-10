@@ -21,19 +21,19 @@ use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 /**
  * @internal
  */
-readonly class PersistentCacheHandler
+readonly class MarkupCacheHandler
 {
     public function __construct(
         private CacheIdentifierCreator $cacheIdentifierCreator,
         #[Autowire(service: Extension::CACHE_SERVICE_ID)]
-        private FrontendInterface $persistentCache,
+        private FrontendInterface $cache,
     ) {}
 
     public function getMarkup(ServerRequestInterface $request): ?string
     {
         $cacheIdentifier = $this->cacheIdentifierCreator->getCacheIdentifier($request);
-        if ($this->persistentCache->has($cacheIdentifier)) {
-            return $this->persistentCache->get($cacheIdentifier);
+        if ($this->cache->has($cacheIdentifier)) {
+            return $this->cache->get($cacheIdentifier);
         }
 
         return null;
@@ -48,7 +48,7 @@ readonly class PersistentCacheHandler
             $cacheDataCollector->getCacheTags(),
         );
 
-        $this->persistentCache->set(
+        $this->cache->set(
             $this->cacheIdentifierCreator->getCacheIdentifier($request),
             $markup,
             $cacheTags,

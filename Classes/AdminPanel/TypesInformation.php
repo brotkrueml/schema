@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\AdminPanel;
 
-use Brotkrueml\Schema\Cache\PersistentCacheHandler;
+use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use Brotkrueml\Schema\Extension;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
@@ -30,7 +30,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
     public function __construct(
-        private readonly PersistentCacheHandler $persistentCacheHandler,
+        private readonly MarkupCacheHandler $markupCacheHandler,
     ) {}
 
     public function getIdentifier(): string
@@ -47,7 +47,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
     public function getContent(ModuleData $data): string
     {
-        $jsonLd = $this->persistentCacheHandler->getMarkup($this->getRequest()) ?? '';
+        $jsonLd = $this->markupCacheHandler->getMarkup($this->getRequest()) ?? '';
 
         $types = [];
         if ($jsonLd !== '') {

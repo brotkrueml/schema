@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\AdminPanel;
 
-use Brotkrueml\Schema\Cache\PersistentCacheHandler;
+use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use Brotkrueml\Schema\Extension;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
@@ -25,7 +25,7 @@ use TYPO3\CMS\Adminpanel\ModuleApi\ShortInfoProviderInterface;
 final class SchemaModule extends AbstractModule implements ShortInfoProviderInterface
 {
     public function __construct(
-        private readonly PersistentCacheHandler $persistentCacheHandler,
+        private readonly MarkupCacheHandler $markupCacheHandler,
     ) {}
 
     public function getIconIdentifier(): string
@@ -45,7 +45,7 @@ final class SchemaModule extends AbstractModule implements ShortInfoProviderInte
 
     public function getShortInfo(): string
     {
-        $jsonLd = $this->persistentCacheHandler->getMarkup($this->getRequest()) ?? '';
+        $jsonLd = $this->markupCacheHandler->getMarkup($this->getRequest()) ?? '';
 
         $numberOfTypes = 0;
         if ($jsonLd !== '') {

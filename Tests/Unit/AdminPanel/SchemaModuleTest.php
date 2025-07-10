@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 
 use Brotkrueml\Schema\AdminPanel\SchemaModule;
-use Brotkrueml\Schema\Cache\PersistentCacheHandler;
+use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -24,13 +24,13 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 #[CoversClass(SchemaModule::class)]
 final class SchemaModuleTest extends TestCase
 {
-    private PersistentCacheHandler&Stub $persistentCacheHandlerStub;
+    private MarkupCacheHandler&Stub $markupCacheHandlerStub;
     private SchemaModule $subject;
 
     protected function setUp(): void
     {
-        $this->persistentCacheHandlerStub = self::createStub(PersistentCacheHandler::class);
-        $this->subject = new SchemaModule($this->persistentCacheHandlerStub);
+        $this->markupCacheHandlerStub = self::createStub(MarkupCacheHandler::class);
+        $this->subject = new SchemaModule($this->markupCacheHandlerStub);
 
         $languageService = self::createStub(LanguageService::class);
         $languageService
@@ -71,7 +71,7 @@ final class SchemaModuleTest extends TestCase
     #[DataProvider('providerForGetShortInfo')]
     public function getShortInfo(?string $markupFromCache, string $expected): void
     {
-        $this->persistentCacheHandlerStub
+        $this->markupCacheHandlerStub
             ->method('getMarkup')
             ->willReturn($markupFromCache);
 
