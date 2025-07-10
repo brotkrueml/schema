@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 
 use Brotkrueml\Schema\AdminPanel\TypesInformation;
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Cache\PersistentCacheHandler;
 use Brotkrueml\Schema\Extension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -20,6 +20,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -28,16 +29,16 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 #[CoversClass(TypesInformation::class)]
 final class TypesInformationTest extends TestCase
 {
-    private PagesCacheService&Stub $pagesCacheServiceStub;
+    private PersistentCacheHandler&Stub $persistentCacheHandlerStub;
     private MockObject $viewMock;
     private LanguageService&Stub $languageServiceStub;
     private TypesInformation $subject;
 
     protected function setUp(): void
     {
-        $this->pagesCacheServiceStub = self::createStub(PagesCacheService::class);
+        $this->persistentCacheHandlerStub = self::createStub(PersistentCacheHandler::class);
 
-        $this->subject = new TypesInformation($this->pagesCacheServiceStub);
+        $this->subject = new TypesInformation($this->persistentCacheHandlerStub);
 
         $this->viewMock = $this->createMock(StandaloneView::class);
         $this->viewMock
@@ -47,11 +48,13 @@ final class TypesInformationTest extends TestCase
 
         $this->languageServiceStub = self::createStub(LanguageService::class);
         $GLOBALS['LANG'] = $this->languageServiceStub;
+        $GLOBALS['TYPO3_REQUEST'] = self::createStub(ServerRequestInterface::class);
     }
 
     protected function tearDown(): void
     {
         unset($GLOBALS['LANG']);
+        unset($GLOBALS['TYPO3_REQUEST']);
         GeneralUtility::purgeInstances();
     }
 
@@ -76,8 +79,8 @@ final class TypesInformationTest extends TestCase
     #[DataProvider('dataProviderForGetContent')]
     public function getContentWithNoCacheEntryAvailable(?string $markupFromCache, array $expectedTypes): void
     {
-        $this->pagesCacheServiceStub
-            ->method('getMarkupFromCache')
+        $this->persistentCacheHandlerStub
+            ->method('getMarkup')
             ->willReturn($markupFromCache ? \sprintf(Extension::JSONLD_TEMPLATE, $markupFromCache) : $markupFromCache);
 
         $this->viewMock

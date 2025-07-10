@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Injection;
 
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Cache\PersistentCacheHandler;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -30,7 +30,7 @@ final readonly class MarkupProvider
         private Configuration $configuration,
         private EventDispatcherInterface $eventDispatcher,
         private ExtensionAvailability $extensionAvailability,
-        private PagesCacheService $pagesCacheService,
+        private PersistentCacheHandler $persistentCacheHandler,
         private SchemaManager $schemaManager,
     ) {}
 
@@ -40,12 +40,12 @@ final readonly class MarkupProvider
             return '';
         }
 
-        $markup = $this->pagesCacheService->getMarkupFromCache();
+        $markup = $this->persistentCacheHandler->getMarkup($request);
         if ($markup === null) {
             $this->dispatchRenderAdditionalTypesEvent($request);
             $markup = $this->schemaManager->renderJsonLd();
             if ($markup !== '') {
-                $this->pagesCacheService->storeMarkupInCache($markup);
+                $this->persistentCacheHandler->storeMarkup($markup, $request);
             }
         }
 
