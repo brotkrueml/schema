@@ -9,12 +9,6 @@
 
 use TYPO3\TestingFramework\Core\Testbase;
 
-/*
- * This file is part of the "schema" extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- */
 /**
  * Copied from typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php
  * and adapted.
@@ -24,7 +18,4 @@ use TYPO3\TestingFramework\Core\Testbase;
     $testbase->defineOriginalRootPath();
     $testbase->createDirectory(ORIGINAL_ROOT . 'typo3temp/var/tests');
     $testbase->createDirectory(ORIGINAL_ROOT . 'typo3temp/var/transient');
-
-    // Needed for PageRenderer mock
-    defined('LF') ?: define('LF', chr(10));
 })();

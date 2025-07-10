@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
-use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -29,11 +28,6 @@ abstract class ViewHelperTestCase extends FunctionalTestCase
 
     protected function setUp(): void
     {
-        $applicationType = self::createStub(ApplicationType::class);
-        $applicationType
-            ->method('isBackend')
-            ->willReturn(false);
-
         parent::setup();
         $this->view = new TemplateView();
         $this->schemaManager = new SchemaManager(
