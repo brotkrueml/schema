@@ -16,6 +16,7 @@ Changed
 
 
 * Type declarations added to ``TypeInterface`` (#129)
+* schema.org enumerations marked as stable
 
 Removed
 -------

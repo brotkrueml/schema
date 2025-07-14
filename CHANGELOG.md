@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Changed
 - Type declarations added to `TypeInterface` (#129)
+- schema.org enumerations marked as stable
 
 ## Removed
 - Compatibility with TYPO3 v11 (#100)

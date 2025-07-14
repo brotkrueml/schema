@@ -205,10 +205,6 @@ The new web page type can now be selected in the page properties:
 Add a new enumeration
 =====================
 
-.. versionadded:: 3.9.0
-   This feature is considered experimental and may change at any time until it
-   is declared stable. However, feedback is welcome.
-
 schema.org provides the ability to use enumerations as values for certain
 properties. The TYPO3 schema extensions provide the
 :ref:`enumerations <enumerations>` defined by schema.org. However, there are
