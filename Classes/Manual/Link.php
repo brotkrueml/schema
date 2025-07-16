@@ -14,15 +14,15 @@ namespace Brotkrueml\Schema\Manual;
 /**
  * @internal
  */
-final class Link
+final readonly class Link
 {
-    public readonly string $link;
+    public string $link;
 
     public function __construct(
         string $link,
-        public readonly string $title,
-        public readonly string $iconIdentifier,
-        public readonly string $alternative = '',
+        public string $title,
+        public string $iconIdentifier,
+        public string $alternative = '',
     ) {
         $this->checkLink($link);
         $this->link = $link;

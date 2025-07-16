@@ -16,7 +16,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 /**
  * @internal
  */
-class ExtensionAvailability
+readonly class ExtensionAvailability
 {
     public function isSeoAvailable(): bool
     {

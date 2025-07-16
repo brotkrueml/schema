@@ -17,14 +17,14 @@ use Brotkrueml\Schema\Manual\Publisher;
  * @internal
  */
 #[\Attribute(\Attribute::TARGET_CLASS | \Attribute::IS_REPEATABLE)]
-final class Manual
+final readonly class Manual
 {
     /**
      * @param non-empty-string $link
      */
     public function __construct(
-        public readonly Publisher $provider,
-        public readonly string $text,
-        public readonly string $link,
+        public Publisher $provider,
+        public string $text,
+        public string $link,
     ) {}
 }

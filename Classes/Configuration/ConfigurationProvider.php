@@ -17,10 +17,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * @internal
  */
-final class ConfigurationProvider
+final readonly class ConfigurationProvider
 {
     public function __construct(
-        private readonly ExtensionConfiguration $extensionConfiguration,
+        private ExtensionConfiguration $extensionConfiguration,
     ) {}
 
     public function getConfiguration(): Configuration

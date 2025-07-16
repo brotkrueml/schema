@@ -15,7 +15,7 @@ namespace Brotkrueml\Schema\TypoScript;
  * Copied and adapted from \TYPO3\CMS\Core\TypoScriptService::convertTypoScriptArrayToPlainArray()
  * as the methods are marked as internal.
  */
-final class TypoScriptConverter
+final readonly class TypoScriptConverter
 {
     /**
      * @param array<mixed> $typoScriptArray

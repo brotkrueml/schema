@@ -15,7 +15,7 @@ namespace Brotkrueml\Schema\Model\DataType;
  * Boolean DataType model
  * @api
  */
-final class Boolean
+final readonly class Boolean
 {
     public const FALSE = 'https://schema.org/False';
     public const TRUE = 'https://schema.org/True';

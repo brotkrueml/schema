@@ -15,14 +15,14 @@ namespace Brotkrueml\Schema\Manual;
  * Manual DTO
  * @internal
  */
-final class Manual
+final readonly class Manual
 {
     /**
      * @param non-empty-string $link
      */
     public function __construct(
-        public readonly Publisher $publisher,
-        public readonly string $text,
-        public readonly string $link,
+        public Publisher $publisher,
+        public string $text,
+        public string $link,
     ) {}
 }

@@ -16,16 +16,16 @@ namespace Brotkrueml\Schema\Configuration;
  *
  * @internal
  */
-final class Configuration
+final readonly class Configuration
 {
     /**
      * @param list<int> $automaticBreadcrumbExcludeAdditionalDoktypes
      */
     public function __construct(
-        public readonly bool $automaticWebPageSchemaGeneration,
-        public readonly bool $automaticBreadcrumbSchemaGeneration,
-        public readonly array $automaticBreadcrumbExcludeAdditionalDoktypes,
-        public readonly bool $allowOnlyOneBreadcrumbList,
-        public readonly bool $embedMarkupOnNoindexPages,
+        public bool $automaticWebPageSchemaGeneration,
+        public bool $automaticBreadcrumbSchemaGeneration,
+        public array $automaticBreadcrumbExcludeAdditionalDoktypes,
+        public bool $allowOnlyOneBreadcrumbList,
+        public bool $embedMarkupOnNoindexPages,
     ) {}
 }
