@@ -27,16 +27,16 @@ use TYPO3\CMS\Core\Page\PageRenderer;
  * @internal
  */
 #[Autoconfigure(public: true)]
-final class SchemaMarkupInjection
+final readonly class SchemaMarkupInjection
 {
     public function __construct(
-        private readonly ApplicationType $applicationType,
+        private ApplicationType $applicationType,
         #[Autowire(service: 'tx_schema.configuration')]
-        private readonly Configuration $configuration,
-        private readonly EventDispatcherInterface $eventDispatcher,
-        private readonly ExtensionAvailability $extensionAvailability,
-        private readonly PagesCacheService $pagesCacheService,
-        private readonly SchemaManager $schemaManager,
+        private Configuration $configuration,
+        private EventDispatcherInterface $eventDispatcher,
+        private ExtensionAvailability $extensionAvailability,
+        private PagesCacheService $pagesCacheService,
+        private SchemaManager $schemaManager,
     ) {}
 
     /**

@@ -14,7 +14,7 @@ namespace Brotkrueml\Schema;
 /**
  * @internal
  */
-final class Extension
+final readonly class Extension
 {
     public const KEY = 'schema';
 

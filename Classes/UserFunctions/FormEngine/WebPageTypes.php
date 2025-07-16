@@ -20,10 +20,10 @@ use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
  * @internal
  */
 #[Autoconfigure(public: true)]
-final class WebPageTypes
+final readonly class WebPageTypes
 {
     public function __construct(
-        private readonly TypeRegistry $typeRegistry,
+        private TypeRegistry $typeRegistry,
     ) {}
 
     /**

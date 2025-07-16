@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Php82\Rector\Class_\ReadOnlyClassRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\ReplaceTestAnnotationWithPrefixedFunctionRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
@@ -37,7 +36,6 @@ return RectorConfig::configure()
         __DIR__ . '/Classes/Model/Type/*',
         __DIR__ . '/Classes/ViewHelpers/Type/*',
         PreferPHPUnitThisCallRector::class,
-        ReadOnlyClassRector::class, // @todo apply in a separate step
         RemoveDataProviderParamKeysRector::class,
         ReplaceTestAnnotationWithPrefixedFunctionRector::class,
     ]);

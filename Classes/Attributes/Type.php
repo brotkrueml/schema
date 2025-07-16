@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Attributes;
 
 #[\Attribute(\Attribute::TARGET_CLASS)]
-final class Type
+final readonly class Type
 {
     /**
      * @param non-empty-string $type
      */
     public function __construct(
-        public readonly string $type,
+        public string $type,
     ) {}
 }

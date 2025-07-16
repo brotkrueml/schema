@@ -18,10 +18,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @internal
  */
-final class AdditionalPropertiesPass implements CompilerPassInterface
+final readonly class AdditionalPropertiesPass implements CompilerPassInterface
 {
     public function __construct(
-        private readonly string $tagName,
+        private string $tagName,
     ) {}
 
     public function process(ContainerBuilder $container): void

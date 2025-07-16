@@ -26,10 +26,10 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  * @internal
  */
 #[Autoconfigure(public: true)]
-final class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
+final readonly class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
     public function __construct(
-        private readonly PagesCacheService $pagesCacheService,
+        private PagesCacheService $pagesCacheService,
     ) {}
 
     public function getIdentifier(): string
