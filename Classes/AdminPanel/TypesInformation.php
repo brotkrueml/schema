@@ -13,7 +13,6 @@ namespace Brotkrueml\Schema\AdminPanel;
 
 use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use Brotkrueml\Schema\Extension;
-use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Adminpanel\ModuleApi\ContentProviderInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
@@ -47,7 +46,7 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
 
     public function getContent(ModuleData $data): string
     {
-        $jsonLd = $this->markupCacheHandler->getMarkup($this->getRequest()) ?? '';
+        $jsonLd = $this->markupCacheHandler->getMarkup() ?? '';
 
         $types = [];
         if ($jsonLd !== '') {
@@ -103,10 +102,5 @@ final class TypesInformation implements ModuleInterface, ContentProviderInterfac
     private function getLanguageService(): LanguageService
     {
         return $GLOBALS['LANG'];
-    }
-
-    private function getRequest(): ServerRequestInterface
-    {
-        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

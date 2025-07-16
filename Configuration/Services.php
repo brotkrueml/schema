@@ -52,7 +52,7 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
             'getConfiguration',
         ]);
 
-    $services->set(Extension::CACHE_SERVICE_ID, FrontendInterface::class)
+    $services->set(Extension::CACHE_MARKUP_SERVICE_ID, FrontendInterface::class)
         ->factory([
             service(CacheManager::class),
             'getCache',

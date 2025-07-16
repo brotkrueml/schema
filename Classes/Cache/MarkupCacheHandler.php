@@ -24,16 +24,17 @@ use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 readonly class MarkupCacheHandler
 {
     public function __construct(
-        private CacheIdentifierCreator $cacheIdentifierCreator,
-        #[Autowire(service: Extension::CACHE_SERVICE_ID)]
-        private FrontendInterface $cache,
+        #[Autowire(service: Extension::CACHE_MARKUP_SERVICE_ID)]
+        private FrontendInterface $markupCache,
+        #[Autowire(service: 'cache.runtime')]
+        private FrontendInterface $runtimeCache,
     ) {}
 
-    public function getMarkup(ServerRequestInterface $request): ?string
+    public function getMarkup(): ?string
     {
-        $cacheIdentifier = $this->cacheIdentifierCreator->getCacheIdentifier($request);
-        if ($this->cache->has($cacheIdentifier)) {
-            return $this->cache->get($cacheIdentifier);
+        $pageCacheIdentifier = $this->getCacheIdentifier();
+        if ($this->markupCache->has($pageCacheIdentifier)) {
+            return $this->markupCache->get($pageCacheIdentifier);
         }
 
         return null;
@@ -48,11 +49,21 @@ readonly class MarkupCacheHandler
             $cacheDataCollector->getCacheTags(),
         );
 
-        $this->cache->set(
-            $this->cacheIdentifierCreator->getCacheIdentifier($request),
+        $this->markupCache->set(
+            $this->getCacheIdentifier(),
             $markup,
             $cacheTags,
             $cacheDataCollector->resolveLifetime(),
         );
+    }
+
+    public function getCacheIdentifier(): string
+    {
+        $pageCacheIdentifier = $this->runtimeCache->get(Extension::RUNTIME_CACHE_ENTRY_IDENTIFIER);
+        if ($pageCacheIdentifier === false) {
+            throw UnknownPageCacheIdentifierException::create();
+        }
+
+        return $pageCacheIdentifier;
     }
 }
