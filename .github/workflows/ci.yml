@@ -104,11 +104,11 @@ jobs:
       - name: Run phpstan
         if: always()
         run: |
-          make phpstan
+          make stan
       - name: Run rector
         if: always()
         run: |
-          make rector-dry
+          make rector-check
       - name: Run mutation tests
         if: always()
         env:

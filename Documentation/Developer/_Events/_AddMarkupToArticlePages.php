@@ -6,12 +6,16 @@ namespace MyVendor\MyExtension\EventListener;
 
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Type\TypeFactory;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Frontend\Page\PageInformation;
 
-final class AddMarkupToArticlePages
+#[AsEventListener(
+    identifier: 'my-extension/add-markup-to-article-pages',
+)]
+final readonly class AddMarkupToArticlePages
 {
     public function __construct(
-        private readonly TypeFactory $typeFactory,
+        private TypeFactory $typeFactory,
     ) {}
 
     public function __invoke(RenderAdditionalTypesEvent $event): void

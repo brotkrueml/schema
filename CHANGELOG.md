@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Changed
 - Type declarations added to `TypeInterface` (#129)
+- schema.org enumerations marked as stable
 
 ## Fixed
 - Admin panel shows no markup when loading a page with Shift+Reload (#132)

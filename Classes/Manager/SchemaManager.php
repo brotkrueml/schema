@@ -17,9 +17,8 @@ use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
 use Brotkrueml\Schema\JsonLd\RendererInterface;
 use Brotkrueml\Schema\Model\Type\BreadcrumbList;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use TYPO3\CMS\Core\SingletonInterface;
 
-final class SchemaManager implements SingletonInterface
+final class SchemaManager
 {
     private const WEBPAGE_PROPERTY_BREADCRUMB = 'breadcrumb';
     private const WEBPAGE_PROPERTY_MAIN_ENTITY = 'mainEntity';

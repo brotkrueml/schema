@@ -66,10 +66,6 @@ Surely you will need to add some properties:
 
 That was easy ...
 
-.. versionadded:: 3.9.0
-   The example above makes use of the `GenderType` enumeration. See
-   :ref:`enumerations <enumerations>` for more details.
-
 Let's go on and define an event the person attends:
 
 .. literalinclude:: _Api/_MyController3.php
@@ -466,10 +462,6 @@ The class exposes the following methods:
 
 .. confval:: addType(...$type): self
    :name: schemamanager-addtype
-
-   .. versionadded:: 3.9.0
-      This method is now variadic and can take an arbitrary number of type
-      models.
 
    Adds the given type models to the Schema Manager for inclusion on the web
    page.

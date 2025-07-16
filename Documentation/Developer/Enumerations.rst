@@ -8,10 +8,6 @@ Enumerations
 
 Target group: **Integrators, Developers**
 
-.. versionadded:: 3.9.0
-   This feature is considered experimental and may change at any time until it
-   is declared stable. However, feedback is welcome.
-
 .. contents:: Table of Contents
    :depth: 1
    :local:
