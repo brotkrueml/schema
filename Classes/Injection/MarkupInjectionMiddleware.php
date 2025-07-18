@@ -13,9 +13,9 @@ namespace Brotkrueml\Schema\Injection;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Http\Stream;
 
 /**
  * @internal
@@ -24,6 +24,7 @@ final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private MarkupProvider $markupProvider,
+        private StreamFactoryInterface $streamFactory,
     ) {}
 
     public function process(
@@ -42,10 +43,7 @@ final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
                 $contents,
             );
 
-            $body = new Stream('php://temp', 'rw');
-            $body->write($contents);
-
-            $response = $response->withBody($body);
+            $response = $response->withBody($this->streamFactory->createStream($contents));
         }
 
         return $response;

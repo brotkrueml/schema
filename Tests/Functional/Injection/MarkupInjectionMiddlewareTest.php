@@ -64,7 +64,7 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
             ->method('getMarkup')
             ->with($request)
             ->willReturn('');
-        $subject = new MarkupInjectionMiddleware($markupProviderStub);
+        $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
         $actual->getBody()->rewind();
@@ -81,7 +81,7 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
             ->method('getMarkup')
             ->with($request)
             ->willReturn('some-markup');
-        $subject = new MarkupInjectionMiddleware($markupProviderStub);
+        $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
         $actual->getBody()->rewind();
