@@ -71,9 +71,7 @@ final readonly class MarkupProvider
             $this->schemaManager->hasBreadcrumbList(),
             $request,
         ));
-        foreach ($event->getAdditionalTypes() as $additionalType) {
-            $this->schemaManager->addType($additionalType);
-        }
+        $this->schemaManager->addType(...$event->getAdditionalTypes());
         foreach ($event->getMainEntitiesOfWebPage() as $mainEntity) {
             $this->schemaManager->addMainEntityOfWebPage($mainEntity);
         }
