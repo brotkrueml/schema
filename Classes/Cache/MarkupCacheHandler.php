@@ -17,15 +17,18 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Cache\CacheDataCollector;
 use TYPO3\CMS\Core\Cache\CacheTag;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Frontend\Cache\CacheInstruction;
 
 /**
  * @internal
  */
 readonly class MarkupCacheHandler
 {
+    private const TRANSIENT_MARKUP_CACHE_ENTRY_IDENTIFIER = Extension::KEY . '_markup';
+
     public function __construct(
         #[Autowire(service: Extension::CACHE_MARKUP_SERVICE_ID)]
-        private FrontendInterface $markupCache,
+        private FrontendInterface $persistentCache,
         #[Autowire(service: 'cache.runtime')]
         private FrontendInterface $runtimeCache,
     ) {}
@@ -33,8 +36,12 @@ readonly class MarkupCacheHandler
     public function getMarkup(): ?string
     {
         $pageCacheIdentifier = $this->getCacheIdentifier();
-        if ($this->markupCache->has($pageCacheIdentifier)) {
-            return $this->markupCache->get($pageCacheIdentifier);
+        if ($this->persistentCache->has($pageCacheIdentifier)) {
+            return $this->persistentCache->get($pageCacheIdentifier);
+        }
+        if ($this->runtimeCache->has(self::TRANSIENT_MARKUP_CACHE_ENTRY_IDENTIFIER)) {
+            // Page might not be cached, then the markup might be in the runtime cache
+            return $this->runtimeCache->get(self::TRANSIENT_MARKUP_CACHE_ENTRY_IDENTIFIER);
         }
 
         return null;
@@ -42,6 +49,18 @@ readonly class MarkupCacheHandler
 
     public function storeMarkup(string $markup, ServerRequestInterface $request): void
     {
+        /** @var CacheInstruction $cacheInstruction */
+        $cacheInstruction = $request->getAttribute('frontend.cache.instruction');
+        if (! $cacheInstruction->isCachingAllowed()) {
+            // If caching is not allowed we have to store the markup in the transient cache for
+            // usage in the admin panel.
+            $this->runtimeCache->set(
+                self::TRANSIENT_MARKUP_CACHE_ENTRY_IDENTIFIER,
+                $markup,
+            );
+            return;
+        }
+
         /** @var CacheDataCollector $cacheDataCollector */
         $cacheDataCollector = $request->getAttribute('frontend.cache.collector');
         $cacheTags = \array_map(
@@ -49,7 +68,7 @@ readonly class MarkupCacheHandler
             $cacheDataCollector->getCacheTags(),
         );
 
-        $this->markupCache->set(
+        $this->persistentCache->set(
             $this->getCacheIdentifier(),
             $markup,
             $cacheTags,
