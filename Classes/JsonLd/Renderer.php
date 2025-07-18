@@ -15,12 +15,10 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Model\DataType\Boolean;
-use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 
 /**
  * @internal
  */
-#[Autoconfigure(public: true)]
 final class Renderer implements RendererInterface
 {
     private const CONTEXT = 'https://schema.org/';
