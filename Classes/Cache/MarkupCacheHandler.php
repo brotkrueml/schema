@@ -22,7 +22,7 @@ use TYPO3\CMS\Frontend\Cache\CacheInstruction;
 /**
  * @internal
  */
-readonly class MarkupCacheHandler
+final readonly class MarkupCacheHandler
 {
     private const TRANSIENT_MARKUP_CACHE_ENTRY_IDENTIFIER = Extension::KEY . '_markup';
 

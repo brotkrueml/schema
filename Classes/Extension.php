@@ -26,5 +26,5 @@ final readonly class Extension
     public const CACHE_IDENTIFIER = 'tx_' . self::KEY;
     public const CACHE_MARKUP_SERVICE_ID = 'cache.' . self::CACHE_IDENTIFIER;
 
-    public const RUNTIME_CACHE_ENTRY_IDENTIFIER = self::KEY . '_page_cache_identifier';
+    public const RUNTIME_CACHE_ENTRY_IDENTIFIER = 'tx_' . self::KEY . '_page_cache_identifier';
 }
