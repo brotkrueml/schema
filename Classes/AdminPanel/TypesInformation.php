@@ -19,8 +19,8 @@ use TYPO3\CMS\Adminpanel\ModuleApi\ModuleData;
 use TYPO3\CMS\Adminpanel\ModuleApi\ModuleInterface;
 use TYPO3\CMS\Adminpanel\ModuleApi\ResourceProviderInterface;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
 
 /**
  * @internal
@@ -30,6 +30,7 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
 {
     public function __construct(
         private MarkupCacheHandler $markupCacheHandler,
+        private ViewFactoryInterface $viewFactory,
     ) {}
 
     public function getIdentifier(): string
@@ -54,10 +55,12 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
             \usort($types, static fn(array $a, array $b): int => $a['@type'] <=> $b['@type']);
         }
 
-        $view = $this->initialiseView();
+        $view = $this->viewFactory->create(new ViewFactoryData(
+            templateRootPaths: ['EXT:' . Extension::KEY . '/Resources/Private/Templates'],
+        ));
         $view->assign('types', $types);
 
-        return $view->render();
+        return $view->render('AdminPanel/TypesInformation');
     }
 
     /**
@@ -69,17 +72,6 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
         unset($decodedJsonLd['@context']);
 
         return $decodedJsonLd['@graph'] ?? [$decodedJsonLd];
-    }
-
-    private function initialiseView(): StandaloneView
-    {
-        /** @var StandaloneView $view */
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setTemplatePathAndFilename(
-            'EXT:' . Extension::KEY . '/Resources/Private/Templates/AdminPanel/TypesInformation.html',
-        );
-
-        return $view;
     }
 
     /**
