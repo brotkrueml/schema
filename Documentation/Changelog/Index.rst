@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.13.0...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Passing multiple types to ``SchemaManager->addType()`` not all types are considered under circumstances (#140)
+
 `3.13.0 <https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0>`_ - 2025-05-17
 -------------------------------------------------------------------------------------------
 

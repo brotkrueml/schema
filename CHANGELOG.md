@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Passing multiple types to `SchemaManager->addType()` not all types are considered under circumstances (#140)
+
 ## [3.13.0] - 2025-05-17
 
 ### Updated
