@@ -22,4 +22,9 @@ final readonly class Extension
     public const LANGUAGE_PATH_DEFAULT = 'LLL:EXT:' . self::KEY . '/Resources/Private/Language/locallang.xlf';
 
     public const JSONLD_TEMPLATE = '<script type="application/ld+json" id="ext-schema-jsonld">%s</script>';
+
+    public const CACHE_IDENTIFIER = 'tx_' . self::KEY;
+    public const CACHE_MARKUP_SERVICE_ID = 'cache.' . self::CACHE_IDENTIFIER;
+
+    public const RUNTIME_CACHE_PAGE_CACHE_IDENTIFIER = 'tx_' . self::KEY . '_page_cache_identifier';
 }

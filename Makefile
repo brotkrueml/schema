@@ -53,7 +53,7 @@ lint-yaml: vendor ## Lint YAML files
 	find -regex '.*\.ya?ml' ! -path "./.Build/*" -exec .Build/bin/yaml-lint -v {} \;
 
 mutation: vendor # Run mutation tests
-	XDEBUG_MODE=coverage .Build/bin/infection --min-msi=84 --threads=4 --no-ansi
+	XDEBUG_MODE=coverage .Build/bin/infection --min-msi=87 --threads=4 --no-ansi
 
 rector: vendor ## Apply rector rules
 	.Build/bin/rector

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\AdminPanel;
 
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use Brotkrueml\Schema\Extension;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Adminpanel\ModuleApi\ContentProviderInterface;
@@ -29,7 +29,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 final readonly class TypesInformation implements ModuleInterface, ContentProviderInterface, ResourceProviderInterface
 {
     public function __construct(
-        private PagesCacheService $pagesCacheService,
+        private MarkupCacheHandler $markupCacheHandler,
     ) {}
 
     public function getIdentifier(): string
@@ -46,7 +46,7 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
 
     public function getContent(ModuleData $data): string
     {
-        $jsonLd = $this->pagesCacheService->getMarkupFromCache() ?? '';
+        $jsonLd = $this->markupCacheHandler->getMarkup() ?? '';
 
         $types = [];
         if ($jsonLd !== '') {
@@ -83,13 +83,8 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
         return $view;
     }
 
-    private function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
-    }
-
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getJavaScriptFiles(): array
     {
@@ -102,5 +97,10 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
     public function getCssFiles(): array
     {
         return [];
+    }
+
+    private function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 }

@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Unit\Manager;
 
-use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Manager\SchemaManager;
@@ -39,11 +38,6 @@ final class SchemaManagerTest extends TestCase
         $reflector = new \ReflectionClass(Renderer::class);
         $this->rendererTypes = $reflector->getProperty('types');
         $this->rendererTypes->setAccessible(true);
-
-        $applicationTypeStub = self::createStub(ApplicationType::class);
-        $applicationTypeStub
-            ->method('isBackend')
-            ->willReturn(false);
 
         $this->renderer = new Renderer();
         $this->subject = new SchemaManager(

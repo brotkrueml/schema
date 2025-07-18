@@ -9,16 +9,18 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Configuration\ConfigurationProvider;
 use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\DependencyInjection\AdditionalPropertiesPass;
 use Brotkrueml\Schema\DependencyInjection\TypeRegistryPass;
+use Brotkrueml\Schema\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use TYPO3\CMS\Adminpanel\Service\ConfigurationService as AdminPanelConfigurationService;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $configurator, ContainerBuilder $builder): void {
@@ -50,6 +52,10 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $b
             'getConfiguration',
         ]);
 
-    $services->set(PagesCacheService::class)
-        ->arg('$cache', service('cache.pages'));
+    $services->set(Extension::CACHE_MARKUP_SERVICE_ID, FrontendInterface::class)
+        ->factory([
+            service(CacheManager::class),
+            'getCache',
+        ])
+        ->arg('$identifier', Extension::CACHE_IDENTIFIER);
 };

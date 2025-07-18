@@ -11,6 +11,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Type declarations added to `TypeInterface` (#129)
 - schema.org enumerations marked as stable
 
+## Fixed
+- Admin panel shows no markup when loading a page with Shift+Reload (#132)
+
 ## Removed
 - Compatibility with TYPO3 v11 (#100)
 - Compatibility with TYPO3 v12 (#119)

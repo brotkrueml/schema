@@ -18,6 +18,12 @@ Changed
 * Type declarations added to ``TypeInterface`` (#129)
 * schema.org enumerations marked as stable
 
+Fixed
+-----
+
+
+* Admin panel shows no markup when loading a page with Shift+Reload (#132)
+
 Removed
 -------
 

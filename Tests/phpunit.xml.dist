@@ -32,4 +32,11 @@
             <directory>../Classes/ViewHelpers/Type/</directory>
         </exclude>
     </source>
+
+    <extensions>
+        <bootstrap class="DG\BypassFinals\PHPUnitExtension">
+            <parameter name="bypassFinal" value="true"/>
+            <parameter name="bypassReadOnly" value="false"/>
+        </bootstrap>
+    </extensions>
 </phpunit>

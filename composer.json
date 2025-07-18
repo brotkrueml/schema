@@ -32,6 +32,7 @@
 	"require-dev": {
 		"ext-sqlite3": "*",
 		"brotkrueml/coding-standards": "~6.1.0",
+		"dg/bypass-finals": "^1.9",
 		"ergebnis/composer-normalize": "~2.47.0",
 		"infection/infection": "^0.30.3",
 		"phpstan/extension-installer": "^1.4",

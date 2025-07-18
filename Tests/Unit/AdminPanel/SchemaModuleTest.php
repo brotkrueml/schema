@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\AdminPanel;
 
 use Brotkrueml\Schema\AdminPanel\SchemaModule;
-use Brotkrueml\Schema\Cache\PagesCacheService;
+use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,13 +23,13 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 #[CoversClass(SchemaModule::class)]
 final class SchemaModuleTest extends TestCase
 {
-    private PagesCacheService&Stub $pagesCacheService;
+    private MarkupCacheHandler&Stub $markupCacheHandlerStub;
     private SchemaModule $subject;
 
     protected function setUp(): void
     {
-        $this->pagesCacheService = self::createStub(PagesCacheService::class);
-        $this->subject = new SchemaModule($this->pagesCacheService);
+        $this->markupCacheHandlerStub = self::createStub(MarkupCacheHandler::class);
+        $this->subject = new SchemaModule($this->markupCacheHandlerStub);
 
         $languageService = self::createStub(LanguageService::class);
         $languageService
@@ -68,8 +68,8 @@ final class SchemaModuleTest extends TestCase
     #[DataProvider('providerForGetShortInfo')]
     public function getShortInfo(?string $markupFromCache, string $expected): void
     {
-        $this->pagesCacheService
-            ->method('getMarkupFromCache')
+        $this->markupCacheHandlerStub
+            ->method('getMarkup')
             ->willReturn($markupFromCache);
 
         $actual = $this->subject->getShortInfo();
