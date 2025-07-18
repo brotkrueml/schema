@@ -44,9 +44,7 @@ final readonly class MarkupProvider
         if ($markup === null) {
             $this->dispatchRenderAdditionalTypesEvent($request);
             $markup = $this->schemaManager->renderJsonLd();
-            if ($markup !== '') {
-                $this->markupCacheHandler->storeMarkup($markup, $request);
-            }
+            $this->markupCacheHandler->storeMarkup($markup, $request);
         }
 
         return $markup;
