@@ -16,7 +16,7 @@
     />
     <project
         title="schema"
-        release="3.13.0"
+        release="3.13.1-dev"
         version="3.13"
         copyright="since 2019 by Chris Müller"
     />
