@@ -52,15 +52,13 @@ final class SchemaManager
         foreach ($type as $singleType) {
             if ($this->isWebPageType($singleType)) {
                 $this->setWebPage($singleType);
-
-                return $this;
+                continue;
             }
 
             if ($this->isBreadCrumbList($singleType)) {
                 /** @var BreadcrumbList $singleType */
                 $this->addBreadcrumbList($singleType);
-
-                return $this;
+                continue;
             }
 
             $this->types[] = $singleType;

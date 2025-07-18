@@ -24,6 +24,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Manual instantiation of type model classes
 - Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
+## [3.13.1] - 2025-07-18
+
+### Fixed
+- Passing multiple types to `SchemaManager->addType()` not all types are considered under circumstances (#140)
+
 ## [3.13.0] - 2025-05-17
 
 ### Updated
@@ -587,7 +592,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.13.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.13.1...HEAD
+[3.13.1]: https://github.com/brotkrueml/schema/compare/v3.13.0...v3.13.1
 [3.13.0]: https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0
 [3.12.2]: https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2
 [3.12.1]: https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1

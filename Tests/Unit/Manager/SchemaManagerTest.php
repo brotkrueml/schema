@@ -250,6 +250,20 @@ final class SchemaManagerTest extends TestCase
     }
 
     #[Test]
+    public function addTypeWithBreadcrumbListAndThingConsidersBoth(): void
+    {
+        $webPage = new WebPage($this->additionalPropertiesProvider);
+        $thing = new Thing($this->additionalPropertiesProvider);
+
+        $this->subject->addType($webPage, $thing);
+        $this->subject->renderJsonLd();
+
+        $actual = $this->rendererTypes->getValue($this->renderer);
+
+        self::assertSame([$webPage, $thing], $actual);
+    }
+
+    #[Test]
     public function renderJsonLdWithSomeTypesAreHandledCorrectly(): void
     {
         $thing = new Thing($this->additionalPropertiesProvider);
