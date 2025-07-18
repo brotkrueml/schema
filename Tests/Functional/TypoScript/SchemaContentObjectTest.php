@@ -28,7 +28,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 final class SchemaContentObjectTest extends FunctionalTestCase
 {
     protected array $coreExtensionsToLoad = [
-        'adminpanel',
+        'typo3/cms-adminpanel',
     ];
 
     protected array $testExtensionsToLoad = [
