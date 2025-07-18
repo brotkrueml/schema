@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers\Type;
 
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -42,7 +41,7 @@ final class ThingViewHelperTest extends FunctionalTestCase
 
         $actual = $this->get(SchemaManager::class)->renderJsonLd();
 
-        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
+        self::assertSame($expected, $actual);
     }
 
     public static function fluidTemplatesProvider(): iterable
@@ -334,7 +333,7 @@ final class ThingViewHelperTest extends FunctionalTestCase
     public function itRecognisesAGivenSpecificType(): void
     {
         $template = '<schema:type.organization name="a corporation" -specificType="Corporation"/>';
-        $expected = \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Corporation","name":"a corporation"}');
+        $expected = '{"@context":"https://schema.org/","@type":"Corporation","name":"a corporation"}';
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();

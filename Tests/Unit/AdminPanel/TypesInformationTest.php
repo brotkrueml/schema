@@ -78,7 +78,7 @@ final class TypesInformationTest extends TestCase
     {
         $this->markupCacheHandlerStub
             ->method('getMarkup')
-            ->willReturn($markupFromCache ? \sprintf(Extension::JSONLD_TEMPLATE, $markupFromCache) : $markupFromCache);
+            ->willReturn($markupFromCache);
 
         $this->viewMock
             ->expects(self::once())

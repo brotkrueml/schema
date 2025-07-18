@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Enumeration\GenericEnumeration;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
@@ -47,7 +46,7 @@ final class RendererTest extends TestCase
     {
         $this->subject->addType((new GenericStub())->setId($id)->defineProperties($properties));
 
-        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $this->subject->render());
+        self::assertSame($expected, $this->subject->render());
     }
 
     public static function dataProvider(): \Iterator
@@ -206,10 +205,7 @@ final class RendererTest extends TestCase
         $this->subject->addType((new GenericStub())->setId('another-id'));
 
         self::assertSame(
-            \sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
-            ),
+            '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
             $this->subject->render(),
         );
     }
@@ -225,10 +221,7 @@ final class RendererTest extends TestCase
         $this->subject->addType(...$types);
 
         self::assertSame(
-            \sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
-            ),
+            '{"@context":"https://schema.org/","@graph":[{"@type":"GenericStub","@id":"some-id"},{"@type":"GenericStub","@id":"another-id"}]}',
             $this->subject->render(),
         );
     }
@@ -246,10 +239,7 @@ final class RendererTest extends TestCase
         $this->subject->addType($type);
 
         self::assertSame(
-            \sprintf(
-                Extension::JSONLD_TEMPLATE,
-                '{"@context":"https://schema.org/","@type":"GenericStub","some-property":"https://schema.org/Member1","another-property":"https://schema.org/Member2"}',
-            ),
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-property":"https://schema.org/Member1","another-property":"https://schema.org/Member2"}',
             $this->subject->render(),
         );
     }

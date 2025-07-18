@@ -80,12 +80,12 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $markupProviderStub
             ->method('getMarkup')
             ->with($request)
-            ->willReturn('some-markup');
+            ->willReturn('{"some": "markup"}');
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
         $actual->getBody()->rewind();
 
-        self::assertStringContainsString('some-markup', $actual->getBody()->getContents());
+        self::assertStringContainsString('<script type="application/ld+json" id="ext-schema-jsonld">{"some": "markup"}</script>', $actual->getBody()->getContents());
     }
 }

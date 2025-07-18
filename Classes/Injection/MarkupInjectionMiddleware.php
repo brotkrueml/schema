@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Injection;
 
+use Brotkrueml\Schema\Extension;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -35,11 +36,15 @@ final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
 
         $markup = $this->markupProvider->getMarkup($request);
         if ($markup !== '') {
+            $markupWithScriptTag = \sprintf(
+                Extension::JSONLD_TEMPLATE,
+                $markup,
+            );
             $response->getBody()->rewind();
             $contents = $response->getBody()->getContents();
             $contents = \str_ireplace(
                 '</body>',
-                \chr(10) . $markup . \chr(10) . '</body>',
+                \chr(10) . $markupWithScriptTag . \chr(10) . '</body>',
                 $contents,
             );
 

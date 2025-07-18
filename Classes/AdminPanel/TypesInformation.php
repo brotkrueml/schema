@@ -65,7 +65,6 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
      */
     private function convertJsonLdToArray(string $jsonLd): array
     {
-        $jsonLd = \str_replace(\explode('%s', Extension::JSONLD_TEMPLATE), '', $jsonLd);
         $decodedJsonLd = \json_decode($jsonLd, true, flags: \JSON_THROW_ON_ERROR);
         unset($decodedJsonLd['@context']);
 

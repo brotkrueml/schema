@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\ViewHelpers\MultipleTypeViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -42,7 +41,7 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
 
         $actual = $this->get(SchemaManager::class)->renderJsonLd();
 
-        self::assertSame(\sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
+        self::assertSame($expected, $actual);
     }
 
     public static function fluidTemplatesProvider(): iterable

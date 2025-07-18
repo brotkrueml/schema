@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
@@ -409,10 +408,8 @@ final class AddBreadcrumbListTest extends TestCase
     {
         $renderer = new Renderer();
         $renderer->addType($type);
-        $jsonLd = $renderer->render();
-        $templateParts = \explode('%s', Extension::JSONLD_TEMPLATE);
 
-        return \str_replace($templateParts, '', $jsonLd);
+        return $renderer->render();
     }
 
     #[Test]

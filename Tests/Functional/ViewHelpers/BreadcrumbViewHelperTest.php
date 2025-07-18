@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Exception\MissingBreadcrumbArgumentException;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\ViewHelpers\BreadcrumbViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -57,7 +56,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
 
         $actual = $this->get(SchemaManager::class)->renderJsonLd();
 
-        self::assertSame($expected === '' ? '' : \sprintf(Extension::JSONLD_TEMPLATE, $expected), $actual);
+        self::assertSame($expected, $actual);
     }
 
     public static function fluidTemplatesProvider(): \Iterator

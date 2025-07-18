@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\ViewHelpers\PropertyViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -51,7 +50,7 @@ final class PropertyViewHelperTest extends FunctionalTestCase
             'template' => '<schema:type.thing>
                     <schema:property -as="image" value="http://example.org/image.png"/>
                 </schema:type.thing>',
-            'expected' => \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","image":"http://example.org/image.png"}'),
+            'expected' => '{"@context":"https://schema.org/","@type":"Thing","image":"http://example.org/image.png"}',
         ];
 
         yield 'Property with multiple values' => [
@@ -61,14 +60,14 @@ final class PropertyViewHelperTest extends FunctionalTestCase
                     <schema:property -as="image" value="http://example.org/image3.png"/>
                     <schema:property -as="image" value="http://example.org/image4.png"/>
                 </schema:type.thing>',
-            'expected' => \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}'),
+            'expected' => '{"@context":"https://schema.org/","@type":"Thing","image":["http://example.org/image1.png","http://example.org/image2.png","http://example.org/image3.png","http://example.org/image4.png"]}',
         ];
 
         yield 'Property with value "0"' => [
             'template' => '<schema:type.thing>
                     <schema:property -as="description" value="0"/>
                 </schema:type.thing>',
-            'expected' => \sprintf(Extension::JSONLD_TEMPLATE, '{"@context":"https://schema.org/","@type":"Thing","description":"0"}'),
+            'expected' => '{"@context":"https://schema.org/","@type":"Thing","description":"0"}',
         ];
     }
 

@@ -14,7 +14,6 @@ namespace Brotkrueml\Schema\JsonLd;
 use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Extension;
 use Brotkrueml\Schema\Model\DataType\Boolean;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 
@@ -65,10 +64,7 @@ final class Renderer implements RendererInterface
             '@context' => self::CONTEXT,
         ], $result);
 
-        return \sprintf(
-            Extension::JSONLD_TEMPLATE,
-            \json_encode($result, \JSON_HEX_TAG | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE),
-        );
+        return \json_encode($result, \JSON_HEX_TAG | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
     }
 
     /**
