@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.13.1] - 2025-07-18
+
 ### Fixed
 - Passing multiple types to `SchemaManager->addType()` not all types are considered under circumstances (#140)
 
@@ -573,7 +575,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.13.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.13.1...HEAD
+[3.13.1]: https://github.com/brotkrueml/schema/compare/v3.13.0...v3.13.1
 [3.13.0]: https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0
 [3.12.2]: https://github.com/brotkrueml/schema/compare/v3.12.1...v3.12.2
 [3.12.1]: https://github.com/brotkrueml/schema/compare/v3.12.0...v3.12.1
