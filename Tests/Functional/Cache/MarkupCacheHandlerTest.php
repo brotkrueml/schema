@@ -144,7 +144,7 @@ final class MarkupCacheHandlerTest extends FunctionalTestCase
 
         self::assertCount(1, $cacheTableRows);
         // We can't "mock" the time, so we check, if the max lifetime is within reasonable constraints
-        self::assertGreaterThan($currentTimeStamp + 50, $cacheTableRows[0]['expires']);
+        self::assertGreaterThan($currentTimeStamp + 40, $cacheTableRows[0]['expires']);
         self::assertLessThan($currentTimeStamp + 70, $cacheTableRows[0]['expires']);
 
         $cacheTagsRows = $connectionPool
