@@ -412,47 +412,6 @@ final class AddBreadcrumbListTest extends TestCase
         return $renderer->render();
     }
 
-    #[Test]
-    public function rootLineWithDifferentWebPageTypeSet(): never
-    {
-        self::markTestSkipped('Skipped, see https://github.com/brotkrueml/schema/issues/121');
-
-        $configuration = $this->buildConfiguration(automaticBreadcrumbSchemaGeneration: true);
-
-        $subject = new AddBreadcrumbList(
-            $configuration,
-            $this->typeFactory,
-        );
-
-        $this->pageInformation->setRootLine([
-            [
-                'uid' => 1,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'Site root page',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '1',
-                'tx_schema_webpagetype' => '',
-            ],
-            [
-                'uid' => 2,
-                'doktype' => PageRepository::DOKTYPE_DEFAULT,
-                'title' => 'A page',
-                'nav_title' => '',
-                'nav_hide' => '0',
-                'is_siteroot' => '0',
-                'tx_schema_webpagetype' => 'ItemPage',
-            ],
-        ]);
-
-        $subject->__invoke($this->event);
-
-        $actual = $this->event->getAdditionalTypes();
-        $expected = '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"ItemPage","@id":"https://example.org/page-2-0/"},"name":"A page","position":"1"}}';
-        self::assertCount(1, $actual);
-        self::assertSame($expected, $this->renderJsonLd($actual[0]));
-    }
-
     private function buildConfiguration(
         bool $automaticBreadcrumbSchemaGeneration = false,
         array $automaticBreadcrumbExcludeAdditionalDoktypes = [],
