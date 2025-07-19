@@ -116,8 +116,9 @@ jobs:
         run: |
           make mutation
       - name: Run tests and collect coverage
-        run: .Build/bin/phpunit --configuration Tests/phpunit.xml.dist --coverage-clover coverage.xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        run: .Build/bin/phpunit --configuration Tests/phpunit.xml.dist --log-junit junit.xml
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
