@@ -74,7 +74,7 @@ Properties moved from core to pending
 Over the time some properties moved from the core vocabulary to pending with
 newer version of the Schema.org definition (for whatever reason). To avoid
 breaking, these properties were reapplied to the corresponding type models.
-Those properties have no been removed. If you need some of them, register them
+Those properties have now been removed. If you need some of them, register them
 yourself like explained in :ref:`extending-register-additional-properties` or
 install the `schema_pending`_ extension.
 
