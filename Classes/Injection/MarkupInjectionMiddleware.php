@@ -11,18 +11,20 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Injection;
 
-use Brotkrueml\Schema\Extension;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use TYPO3\CMS\Adminpanel\Utility\StateUtility;
 
 /**
  * @internal
  */
 final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
 {
+    private const SCRIPT_TEMPLATE = '<script type="application/ld+json"%s>%s</script>';
+
     public function __construct(
         private MarkupProvider $markupProvider,
         private StreamFactoryInterface $streamFactory,
@@ -36,15 +38,11 @@ final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
 
         $markup = $this->markupProvider->getMarkup($request);
         if ($markup !== '') {
-            $markupWithScriptTag = \sprintf(
-                Extension::JSONLD_TEMPLATE,
-                $markup,
-            );
             $response->getBody()->rewind();
             $contents = $response->getBody()->getContents();
             $contents = \str_ireplace(
                 '</body>',
-                \chr(10) . $markupWithScriptTag . \chr(10) . '</body>',
+                \chr(10) . $this->renderMarkupWithScriptTag($markup) . \chr(10) . '</body>',
                 $contents,
             );
 
@@ -52,5 +50,21 @@ final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
         }
 
         return $response;
+    }
+
+    private function renderMarkupWithScriptTag(string $markup): string
+    {
+        $idAttribute = '';
+        if (\class_exists(StateUtility::class) && StateUtility::isActivatedForUser() && StateUtility::isOpen()) {
+            // The id is necessary to select the JSON-LD for validation
+            // @see Resources/Public/JavaScript/AdminPanel/Validate.js
+            $idAttribute = ' id="ext-schema-jsonld"';
+        }
+
+        return \sprintf(
+            self::SCRIPT_TEMPLATE,
+            $idAttribute,
+            $markup,
+        );
     }
 }

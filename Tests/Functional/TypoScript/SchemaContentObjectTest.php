@@ -79,7 +79,7 @@ final class SchemaContentObjectTest extends FunctionalTestCase
         $request = new InternalRequest();
         $content = (string) $this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringNotContainsString('ext-schema-jsonld', $content);
+        self::assertStringNotContainsString('<script type="application/ld+json">', $content);
         $this->assertHasLogEntries($expectedLogEntries);
     }
 
@@ -449,7 +449,7 @@ TYPOSCRIPT,
     {
         $jsonLd = \json_encode($expectedJsonLd, \JSON_UNESCAPED_SLASHES | \JSON_THROW_ON_ERROR);
         self::assertStringContainsString(
-            '<script type="application/ld+json" id="ext-schema-jsonld">' . $jsonLd . '</script>',
+            '<script type="application/ld+json">' . $jsonLd . '</script>',
             $content,
             'Content did not include expected JSON LD',
         );

@@ -22,6 +22,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Http\Stream;
+use TYPO3\CMS\Frontend\Authentication\FrontendBackendUserAuthentication;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 #[CoversClass(MarkupInjectionMiddleware::class)]
@@ -55,6 +56,12 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         };
     }
 
+    protected function tearDown(): void
+    {
+        unset($GLOBALS['BE_USER']);
+        parent::tearDown();
+    }
+
     #[Test]
     public function markupIsEmptyThenNothingIsChangedInResponse(): void
     {
@@ -75,6 +82,69 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
     #[Test]
     public function markupIsDefinedThenItIsAddedToTheResponse(): void
     {
+        $request = new ServerRequest('/some/url', 'GET');
+        $markupProviderStub = self::createStub(MarkupProvider::class);
+        $markupProviderStub
+            ->method('getMarkup')
+            ->with($request)
+            ->willReturn('{"some": "markup"}');
+        $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
+
+        $actual = $subject->process($request, $this->responseOutputHandler);
+        $actual->getBody()->rewind();
+
+        self::assertStringContainsString('<script type="application/ld+json">{"some": "markup"}</script>', $actual->getBody()->getContents());
+    }
+
+    #[Test]
+    public function markupIsDefinedAndAdminPanelIsActivatedButNotOpenThenIdIsNotAddedToScriptTag(): void
+    {
+        $backendUserStub = self::createStub(FrontendBackendUserAuthentication::class);
+        $backendUserStub
+            ->method('getTSConfig')
+            ->willReturn([
+                'admPanel.' => [
+                    'enable.' => [
+                        'ext-schema' => 1,
+                    ],
+                ],
+            ]);
+        $GLOBALS['BE_USER'] = $backendUserStub;
+
+        $request = new ServerRequest('/some/url', 'GET');
+        $markupProviderStub = self::createStub(MarkupProvider::class);
+        $markupProviderStub
+            ->method('getMarkup')
+            ->with($request)
+            ->willReturn('{"some": "markup"}');
+        $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
+
+        $actual = $subject->process($request, $this->responseOutputHandler);
+        $actual->getBody()->rewind();
+
+        self::assertStringContainsString('<script type="application/ld+json">{"some": "markup"}</script>', $actual->getBody()->getContents());
+    }
+
+    #[Test]
+    public function markupIsDefinedAndAdminPanelIsActivatedAndOpenThenIdIsNotAddedToScriptTag(): void
+    {
+        $backendUserStub = self::createStub(FrontendBackendUserAuthentication::class);
+        $backendUserStub
+            ->method('getTSConfig')
+            ->willReturn([
+                'admPanel.' => [
+                    'enable.' => [
+                        'ext-schema' => 1,
+                    ],
+                ],
+            ]);
+        $backendUserStub->uc = [
+            'AdminPanel' => [
+                'display_top' => 1,
+            ],
+        ];
+        $GLOBALS['BE_USER'] = $backendUserStub;
+
         $request = new ServerRequest('/some/url', 'GET');
         $markupProviderStub = self::createStub(MarkupProvider::class);
         $markupProviderStub
