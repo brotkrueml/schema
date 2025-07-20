@@ -12,7 +12,7 @@
 
 | Latest release | TYPO3              | PHP   | Updates will contain                                               |
 |----------------|--------------------|-------|--------------------------------------------------------------------|
-| 4.x            | 13.4               | ≥ 8.2 | (In development)                                                   |
+| 4.x            | 13.4               | ≥ 8.2 | (In beta phase)                                                    |
 | 3.x            | 11.5 / 12.4 / 13.4 | ≥ 8.1 | Schema.org updates, security and bug fixes (EOL expected Apr 2026) |
 | 2.x            | 10.4 / 11.5 / 12.4 | ≥ 7.4 | End of life (since Oct 2024)                                       |
 | 1.x            | 9.5 / 10.4 / 11.5  | ≥ 7.2 | End of life (since Apr 2023)                                       |
