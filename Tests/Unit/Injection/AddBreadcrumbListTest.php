@@ -9,12 +9,12 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\Schema\Tests\Unit\EventListener;
+namespace Brotkrueml\Schema\Tests\Unit\Injection;
 
 use Brotkrueml\Schema\Configuration\Configuration;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
-use Brotkrueml\Schema\EventListener\AddBreadcrumbList;
+use Brotkrueml\Schema\Injection\AddBreadcrumbList;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type as FixtureType;
 use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
