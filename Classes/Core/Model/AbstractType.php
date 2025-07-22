@@ -79,7 +79,7 @@ abstract class AbstractType extends AbstractBaseType
                     1697271711,
                 );
             }
-            static::$resolvedTypes[static::class] = $typeAttribute->getArguments()[0];
+            static::$resolvedTypes[static::class] = $typeAttribute->getArguments()[0] ?? $typeAttribute->getArguments()['type'];
         }
 
         return static::$resolvedTypes[static::class];

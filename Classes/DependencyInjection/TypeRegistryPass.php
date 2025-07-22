@@ -42,7 +42,7 @@ final readonly class TypeRegistryPass implements CompilerPassInterface
             if (! $typeAttribute instanceof \ReflectionAttribute) {
                 continue;
             }
-            $typeName = $typeAttribute->getArguments()[0];
+            $typeName = $typeAttribute->getArguments()[0] ?? $typeAttribute->getArguments()['type'];
             $typeRegistryDefinition->addMethodCall('addType', [
                 $typeName,
                 $serviceName,
