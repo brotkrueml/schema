@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Type attribute with named argument throws warning (#141)
+
 ## [3.13.1] - 2025-07-18
 
 ### Fixed

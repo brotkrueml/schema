@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.13.1...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Type attribute with named argument throws warning (#141)
+
 `3.13.1 <https://github.com/brotkrueml/schema/compare/v3.13.0...v3.13.1>`_ - 2025-07-18
 -------------------------------------------------------------------------------------------
 

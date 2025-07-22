@@ -42,7 +42,7 @@ final class TypeProviderPass implements CompilerPassInterface
             if (! $typeAttribute instanceof \ReflectionAttribute) {
                 continue;
             }
-            $typeName = $typeAttribute->getArguments()[0];
+            $typeName = $typeAttribute->getArguments()[0] ?? $typeAttribute->getArguments()['type'];
             $typeProviderDefinition->addMethodCall('addType', [
                 $typeName,
                 $serviceName,
