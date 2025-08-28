@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed
+- Validation via Schema Markup Validator in Admin Panel (#144)
+
 ## [3.13.2] - 2025-07-22
 
 ### Fixed

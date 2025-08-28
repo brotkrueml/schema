@@ -7,10 +7,6 @@
           checkButtonId: 'ext-schema-check-rtt',
           actionUrl: 'https://search.google.com/test/rich-results'
         },
-        smv: {
-          checkButtonId: 'ext-schema-check-smv',
-          actionUrl: 'https://validator.schema.org/'
-        }
       },
     };
 
@@ -37,9 +33,6 @@
 
       const rttButton = document.getElementById(this.options.tools.rtt.checkButtonId);
       rttButton && rttButton.addEventListener('click', this.invokeRichResultTest.bind(this));
-
-      const smvButton = document.getElementById(this.options.tools.smv.checkButtonId);
-      smvButton && smvButton.addEventListener('click', this.invokeSchemaMarkupValidator.bind(this));
     }
 
     invokeRichResultTest(event) {
@@ -47,16 +40,9 @@
       this.submitForm('rtt', this.options.tools.rtt.actionUrl, 'code_snippet');
     }
 
-    invokeSchemaMarkupValidator(event) {
-      event.preventDefault();
-      this.submitForm('smv', this.options.tools.smv.actionUrl, 'code');
-    }
-
     submitForm(type, actionUrl, codeFieldName) {
       let code = JSON.stringify(this.jsonLd, null, '\t');
-      if (type === 'rtt') {
-        code = '<script type="application/ld+json">\n' + code + '\n</script>';
-      }
+      code = '<script type="application/ld+json">\n' + code + '\n</script>';
 
       const form = document.createElement('form');
       form.setAttribute('method', 'post');

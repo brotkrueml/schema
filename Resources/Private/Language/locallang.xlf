@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2025-04-13T09:13:58Z" product-name="schema">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2025-08-28T17:41:38Z" product-name="schema">
 		<body>
 			<trans-unit id="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
@@ -19,9 +19,6 @@
 			</trans-unit>
 			<trans-unit id="adminPanel.types">
 				<source><![CDATA[Types]]></source>
-			</trans-unit>
-			<trans-unit id="adminPanel.validateInSchemaMarkupValidator">
-				<source><![CDATA[Validate in Schema Markup Validator]]></source>
 			</trans-unit>
 			<trans-unit id="adminPanel.validateInRichResultTest">
 				<source><![CDATA[Validate in Rich Result Test]]></source>
