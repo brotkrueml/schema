@@ -41,7 +41,6 @@ final class SchemaManagerTest extends TestCase
 
         $reflector = new \ReflectionClass(Renderer::class);
         $this->rendererTypes = $reflector->getProperty('types');
-        $this->rendererTypes->setAccessible(true);
 
         $applicationTypeStub = self::createStub(ApplicationType::class);
         $applicationTypeStub
