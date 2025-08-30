@@ -24,6 +24,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Manual instantiation of type model classes
 - Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
+## [3.14.0] - 2025-08-30
+
+### Added
+- Button to copy markup to clipboard in Admin Panel
+
+### Removed
+- Validation via Schema Markup Validator in Admin Panel (#144)
+
 ## [3.13.2] - 2025-07-22
 
 ### Fixed
@@ -597,7 +605,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.13.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.14.0...HEAD
+[3.14.0]: https://github.com/brotkrueml/schema/compare/v3.13.2...v3.14.0
 [3.13.2]: https://github.com/brotkrueml/schema/compare/v3.13.1...v3.13.2
 [3.13.1]: https://github.com/brotkrueml/schema/compare/v3.13.0...v3.13.1
 [3.13.0]: https://github.com/brotkrueml/schema/compare/v3.12.2...v3.13.0
