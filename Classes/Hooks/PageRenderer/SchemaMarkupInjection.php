@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Adapter\ApplicationType;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\PagesCacheService;
 use Brotkrueml\Schema\Configuration\Configuration;
+use Brotkrueml\Schema\Event\IsMarkupToBeInjectedEvent;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -72,6 +73,12 @@ final class SchemaMarkupInjection
 
     private function isMarkupToBeEmbedded(): bool
     {
+        /** @var IsMarkupToBeInjectedEvent $event */
+        $event = $this->eventDispatcher->dispatch(new IsMarkupToBeInjectedEvent($this->getRequest()));
+        if (!$event->isMarkupToBeInjected()) {
+            return false;
+        }
+
         if (! $this->extensionAvailability->isSeoAvailable()) {
             return true;
         }
