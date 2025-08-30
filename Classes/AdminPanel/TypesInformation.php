@@ -79,7 +79,12 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
      */
     public function getJavaScriptFiles(): array
     {
-        return [\sprintf('EXT:%s/Resources/Public/JavaScript/AdminPanel/Validate.js', Extension::KEY)];
+        $path = \sprintf('EXT:%s/Resources/Public/JavaScript/AdminPanel/', Extension::KEY);
+
+        return [
+            $path . 'Copy.js',
+            $path . 'Validate.js',
+        ];
     }
 
     /**

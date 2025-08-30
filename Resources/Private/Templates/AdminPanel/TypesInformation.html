@@ -1,4 +1,5 @@
 <html
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
     data-namespace-typo3-fluid="true"
@@ -11,10 +12,19 @@
 
 <f:if condition="{types}">
     <f:then>
-        <div class="typo3-adminPanel-form-group" style="float:right">
+        <div class="typo3-adminPanel-form-group ext-schema-adminPanel-form-group">
+            <button id="ext-schema-copy" class="typo3-adminPanel-btn typo3-adminPanel-btn-primary">
+                <span id="ext-schema-copy-clipboard"><core:icon title="Copy" identifier="ext-schema-code"/></span>
+                <span id="ext-schema-copy-check" hidden><core:icon title="Copied" identifier="actions-check"/></span>
+                {f:translate(key: 'LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.copyMarkup')}
+            </button>
             <button id="ext-schema-check-rtt" class="typo3-adminPanel-btn typo3-adminPanel-btn-primary">
+                <core:icon identifier="actions-check-badge"/>
                 {f:translate(key: 'LLL:EXT:schema/Resources/Private/Language/locallang.xlf:adminPanel.validateInRichResultTest')}
             </button>
+            <br><br>
+            <core:icon identifier="actions-arrow-right-alt"/>
+            <a class="ext-schema-adminpanel-link" href="https://validator.schema.org/" target="_blank" rel="noreferrer">Schema Markup Validator</a>
         </div>
         <f:variable name="typeKey" value="@type"/>
         <f:variable name="idKey" value="@id"/>

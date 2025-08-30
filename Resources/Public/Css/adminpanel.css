@@ -1,3 +1,13 @@
+.typo3-adminPanel-content-panes-item[data-typo3-tab-id="ext-schema_types"] {
+    position: relative;
+}
+
+.ext-schema-adminPanel-form-group {
+    --icon-size-small: 1.2em;
+    position: absolute;
+    inset: 7px 20px auto auto;
+}
+
 .ext-schema-adminpanel-property {
     display: inline-block;
     margin-inline-end: 15px;
