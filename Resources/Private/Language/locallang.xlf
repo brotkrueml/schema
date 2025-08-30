@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2025-08-28T17:41:38Z" product-name="schema">
+	<file source-language="en" datatype="plaintext" original="EXT:schema/Resources/Private/Language/locallang.xlf" date="2025-08-30T16:49:26Z" product-name="schema">
 		<body>
+			<trans-unit id="adminPanel.copyMarkup">
+				<source><![CDATA[Copy markup]]></source>
+			</trans-unit>
 			<trans-unit id="adminPanel.goToWebsite">
 				<source><![CDATA[Go to website]]></source>
 			</trans-unit>

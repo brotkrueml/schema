@@ -20,10 +20,12 @@ There are links available: The type to the according Schema.org documentation
 and - if available - to the Google and Yandex references for the specific type,
 other URLs to their destination.
 
-Additionally, you can call `Google's Rich Result Test`_ to validate the
-structured data on the specific page.
+Additionally, you can copy the markup on the specific page to the clipboard,
+for example, to check it against the `Schema Markup Validator`_, or call
+`Google's Rich Result Test`_ to validate the structured data.
 
 .. _Google's Rich Result Test: https://search.google.com/test/rich-results
+.. _Schema Markup Validator: https://validator.schema.org/
 
 .. hint::
    Since the JSON-LD markup is fetched from the page cache, please make sure

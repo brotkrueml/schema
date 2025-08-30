@@ -10,6 +10,10 @@ declare(strict_types=1);
  */
 
 return [
+    'ext-schema-code' => [
+        'provider' => TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        'source' => 'EXT:' . Brotkrueml\Schema\Extension::KEY . '/Resources/Public/Icons/code.svg',
+    ],
     'ext-schema-documentation-google' => [
         'provider' => TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
         'source' => 'EXT:' . Brotkrueml\Schema\Extension::KEY . '/Resources/Public/Icons/documentation-google.svg',

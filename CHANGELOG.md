@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Button to copy markup to clipboard in Admin Panel
+
 ### Removed
 - Validation via Schema Markup Validator in Admin Panel (#144)
 

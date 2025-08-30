@@ -11,6 +11,18 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.13.2...HEAD>`_
 -------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Button to copy markup to clipboard in Admin Panel
+
+Removed
+^^^^^^^
+
+
+* Validation via Schema Markup Validator in Admin Panel (#144)
+
 `3.13.2 <https://github.com/brotkrueml/schema/compare/v3.13.1...v3.13.2>`_ - 2025-07-22
 -------------------------------------------------------------------------------------------
 
