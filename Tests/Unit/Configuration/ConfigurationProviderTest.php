@@ -40,7 +40,7 @@ final class ConfigurationProviderTest extends TestCase
         self::assertSame($expected['automaticBreadcrumbExcludeAdditionalDoktypes'], $actual->automaticBreadcrumbExcludeAdditionalDoktypes);
         self::assertSame($expected['allowOnlyOneBreadcrumbList'], $actual->allowOnlyOneBreadcrumbList);
         self::assertSame($expected['embedMarkupInBodySection'], $actual->embedMarkupInBodySection);
-        self::assertSame($expected['embedMarkupInBodySection'], $actual->embedMarkupInBodySection);
+        self::assertSame($expected['embedMarkupOnNoindexPages'], $actual->embedMarkupOnNoindexPages);
     }
 
     public static function providerForGetConfigurationWithDifferentExtensionConfigurations(): iterable
