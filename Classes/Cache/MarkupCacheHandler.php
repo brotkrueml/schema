@@ -76,7 +76,7 @@ final readonly class MarkupCacheHandler
         );
     }
 
-    public function getCacheIdentifier(): string
+    private function getCacheIdentifier(): string
     {
         $pageCacheIdentifier = $this->runtimeCache->get(Extension::RUNTIME_CACHE_PAGE_CACHE_IDENTIFIER);
         if ($pageCacheIdentifier === false) {
