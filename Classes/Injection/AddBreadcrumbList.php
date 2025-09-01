@@ -87,7 +87,7 @@ final readonly class AddBreadcrumbList
     }
 
     /**
-     * @param non-empty-array<int, array<string, mixed>> $rootLine
+     * @param non-empty-list<array<string, mixed>> $rootLine
      */
     private function buildBreadCrumbList(array $rootLine, ServerRequestInterface $request): TypeInterface
     {
@@ -97,7 +97,7 @@ final readonly class AddBreadcrumbList
         $language = $request->getAttribute('language');
 
         $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
-        foreach (\array_values($rootLine) as $index => $page) {
+        foreach ($rootLine as $index => $page) {
             $link = (string) $site->getRouter()->generateUri(
                 $page,
                 [
