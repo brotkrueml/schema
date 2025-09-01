@@ -74,12 +74,11 @@ final class Types implements ProviderInterface
     private function getAllTypes(): array
     {
         $types = $this->typeRegistry->getTypes();
-        \usort($types, static fn(string $a, string $b): int => \strtolower($a) <=> \strtolower($b));
+        \usort($types, static fn(string $a, string $b): int => $a <=> $b);
         $sortedTypes = [];
         foreach ($types as $type) {
             $sortedTypes[\substr($type, 0, 1)][] = $type;
         }
-        \ksort($sortedTypes);
 
         return $sortedTypes;
     }

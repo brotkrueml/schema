@@ -80,11 +80,12 @@ final class TypesTest extends TestCase
     #[Test]
     public function getConfigurationReturnsCorrectConfiguration(): void
     {
-        $this->typeRegistry->addType('ItemPage', FixtureType\ItemPage::class);
-        $this->typeRegistry->addType('Person', FixtureType\Person::class);
-        $this->typeRegistry->addType('Table', FixtureType\Table::class);
-        $this->typeRegistry->addType('Thing', FixtureType\Thing::class);
+        // Types are not in alphabetical order to check sorting
         $this->typeRegistry->addType('WebPage', FixtureType\WebPage::class);
+        $this->typeRegistry->addType('ItemPage', FixtureType\ItemPage::class);
+        $this->typeRegistry->addType('Thing', FixtureType\Thing::class);
+        $this->typeRegistry->addType('Table', FixtureType\Table::class);
+        $this->typeRegistry->addType('Person', FixtureType\Person::class);
 
         $expected = [
             'All types' => [
