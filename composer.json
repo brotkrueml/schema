@@ -34,7 +34,7 @@
 		"brotkrueml/coding-standards": "~6.1.0",
 		"dg/bypass-finals": "^1.9",
 		"ergebnis/composer-normalize": "~2.48.1",
-		"infection/infection": "^0.30.3",
+		"infection/infection": "^0.31.2",
 		"phpstan/extension-installer": "^1.4",
 		"phpstan/phpstan": "2.1.22",
 		"phpstan/phpstan-strict-rules": "2.0.6",
