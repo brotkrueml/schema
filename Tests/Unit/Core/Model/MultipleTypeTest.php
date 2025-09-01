@@ -35,7 +35,12 @@ final class MultipleTypeTest extends TestCase
                 'serviceType' => null,
                 'sku' => null,
             ]),
-            new ServiceStub(),
+            (new ServiceStub())->defineProperties([
+                // not alphabetically sorted, "name" is also added to check that it is available only once later
+                'name' => null,
+                'logo' => null,
+                'image' => null,
+            ]),
         );
     }
 
@@ -89,7 +94,7 @@ final class MultipleTypeTest extends TestCase
     #[Test]
     public function propertiesFromTwoTypesAreMergedCorrectly(): void
     {
-        self::assertSame(['name', 'serviceType', 'sku'], $this->subject->getPropertyNames());
+        self::assertSame(['image', 'logo', 'name', 'serviceType', 'sku'], $this->subject->getPropertyNames());
     }
 
     #[Test]
