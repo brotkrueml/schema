@@ -31,12 +31,10 @@ final readonly class ConfigurationProvider
         return new Configuration(
             automaticWebPageSchemaGeneration: (bool) ($configurationAsArray['automaticWebPageSchemaGeneration'] ?? true),
             automaticBreadcrumbSchemaGeneration: (bool) ($configurationAsArray['automaticBreadcrumbSchemaGeneration'] ?? false),
-            automaticBreadcrumbExcludeAdditionalDoktypes: \array_values(
-                GeneralUtility::intExplode(
-                    ',',
-                    $configurationAsArray['automaticBreadcrumbExcludeAdditionalDoktypes'] ?? '',
-                    true,
-                ),
+            automaticBreadcrumbExcludeAdditionalDoktypes: GeneralUtility::intExplode(
+                ',',
+                $configurationAsArray['automaticBreadcrumbExcludeAdditionalDoktypes'] ?? '',
+                true,
             ),
             allowOnlyOneBreadcrumbList: (bool) ($configurationAsArray['allowOnlyOneBreadcrumbList'] ?? false),
             embedMarkupOnNoindexPages: (bool) ($configurationAsArray['embedMarkupOnNoindexPages'] ?? true),
