@@ -46,10 +46,7 @@ abstract class AbstractType extends AbstractBaseType
         $this->properties = \array_fill_keys(static::$propertyNames, null);
     }
 
-    /**
-     * @internal
-     */
-    protected function addAdditionalProperties(): void
+    private function addAdditionalProperties(): void
     {
         $additionalProperties = $this->additionalPropertiesProvider->getForType($this->getType());
         if ($additionalProperties === []) {
