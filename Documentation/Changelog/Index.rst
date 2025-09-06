@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.14.0...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Undeclared argument ``title`` passed to IconViewHelper in TYPO3 v11 (#145)
+
 `3.14.0 <https://github.com/brotkrueml/schema/compare/v3.13.2...v3.14.0>`_ - 2025-08-30
 -------------------------------------------------------------------------------------------
 

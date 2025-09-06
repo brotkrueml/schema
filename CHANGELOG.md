@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Undeclared argument `title` passed to IconViewHelper in TYPO3 v11 (#145)
+
 ## [3.14.0] - 2025-08-30
 
 ### Added
