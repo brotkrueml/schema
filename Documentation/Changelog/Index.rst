@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v3.14.0...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v3.14.1...HEAD>`_
 -------------------------------------------------------------------------------
 
 Changed
@@ -36,6 +36,15 @@ Removed
 * Deprecated PSR-14 event ``RegisterAdditionalTypePropertiesEvent`` (#130)
 * Manual instantiation of type model classes
 * Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
+
+`3.14.1 <https://github.com/brotkrueml/schema/compare/v3.14.0...v3.14.1>`_ - 2025-09-06
+-------------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Undeclared argument ``title`` passed to IconViewHelper in TYPO3 v11 (#145)
 
 `3.14.0 <https://github.com/brotkrueml/schema/compare/v3.13.2...v3.14.0>`_ - 2025-08-30
 -------------------------------------------------------------------------------------------
