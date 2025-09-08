@@ -16,7 +16,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
 /**
  * An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.
  *
- * See also [blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).
+ * See also [blog post](https://blog.schema.org/2014/09/02/schema-org-support-for-bibliographic-relationships-and-periodicals/).
  */
 final class ArticleViewHelper extends AbstractTypeViewHelper
 {
