@@ -27,16 +27,6 @@ for example, to check it against the `Schema Markup Validator`_, or call
 .. _Google's Rich Result Test: https://search.google.com/test/rich-results
 .. _Schema Markup Validator: https://validator.schema.org/
 
-.. hint::
-   Since the JSON-LD markup is fetched from the page cache, please make sure
-   that this cache is enabled (for example, no use of the
-   :php:`\TYPO3\CMS\Core\Cache\Backend\NullBackend`). Otherwise you will not
-   see any markup.
-
-   The markup is also not visible in the Admin Panel, if the cache of a page
-   is disabled (for example, via :php:`TypoScriptFrontendController->no_cache`
-   or :php:`CacheInstruction->disableCache()`).
-
 
 Configuration
 =============
