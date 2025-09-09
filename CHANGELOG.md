@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.0.0] - 2025-09-09
+
 ## Changed
 - Type declarations added to `TypeInterface` (#129)
 - schema.org enumerations marked as stable
@@ -610,7 +612,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.14.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/brotkrueml/schema/compare/v3.14.1...v4.0.0
 [3.14.1]: https://github.com/brotkrueml/schema/compare/v3.14.0...v3.14.1
 [3.14.0]: https://github.com/brotkrueml/schema/compare/v3.13.2...v3.14.0
 [3.13.2]: https://github.com/brotkrueml/schema/compare/v3.13.1...v3.13.2
