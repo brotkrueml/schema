@@ -144,7 +144,7 @@ final class AbstractTypeTest extends TestCase
     public function getIdReturnsTheIdAsStringWhenSetPreviouslyWithANodeIdentifier(): void
     {
         $this->subject->setId(new class implements NodeIdentifierInterface {
-            public function getId(): ?string
+            public function getId(): string
             {
                 return 'someNodeIdentifier';
             }
@@ -188,7 +188,7 @@ final class AbstractTypeTest extends TestCase
         $this->subject->setProperty('alternateName', 3.141592653);
         $this->subject->setProperty('image', new GenericStub());
         $this->subject->setProperty('subjectOf', new class implements NodeIdentifierInterface {
-            public function getId(): ?string
+            public function getId(): string
             {
                 return 'some-node-identifier';
             }
@@ -344,19 +344,19 @@ final class AbstractTypeTest extends TestCase
     {
         // Valid, when no exception is thrown
         $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
-            public function getId(): ?string
+            public function getId(): string
             {
                 return 'some-node-identifier';
             }
         });
         $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
-            public function getId(): ?string
+            public function getId(): string
             {
                 return 'another-node-identifier';
             }
         });
         $this->subject->addProperty('subjectOf', new class implements NodeIdentifierInterface {
-            public function getId(): ?string
+            public function getId(): string
             {
                 return 'one-more-node-identifier';
             }
