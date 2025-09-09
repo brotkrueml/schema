@@ -19,7 +19,6 @@ $EM_CONF[$_EXTKEY] = [
             'schema_bib' => '',
             'schema_health' => '',
             'schema_pending' => '',
-            'schema_virtuallocation' => '',
         ],
     ],
     'autoload' => [
