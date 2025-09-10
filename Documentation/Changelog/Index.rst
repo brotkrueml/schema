@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v3.14.1...HEAD>`_
 -------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Double masking of special chars of types in admin panel
+
 `3.14.1 <https://github.com/brotkrueml/schema/compare/v3.14.0...v3.14.1>`_ - 2025-09-06
 -------------------------------------------------------------------------------------------
 

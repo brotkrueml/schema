@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Double masking of special chars of types in admin panel
+
 ## [3.14.1] - 2025-09-06
 
 ### Fixed
