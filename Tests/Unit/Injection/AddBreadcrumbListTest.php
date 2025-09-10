@@ -116,7 +116,7 @@ final class AddBreadcrumbListTest extends TestCase
             $this->typeFactory,
         );
 
-        $this->pageInformation->setRootLine([]);
+        $this->pageInformation->setLocalRootLine([]);
         $subject->__invoke($this->event);
 
         self::assertSame([], $this->event->getAdditionalTypes());
@@ -131,7 +131,7 @@ final class AddBreadcrumbListTest extends TestCase
             automaticBreadcrumbExcludeAdditionalDoktypes: [42, 43],
         );
 
-        $this->pageInformation->setRootLine($rootLine);
+        $this->pageInformation->setLocalRootLine($rootLine);
 
         $subject = new AddBreadcrumbList(
             $configuration,
@@ -384,7 +384,7 @@ final class AddBreadcrumbListTest extends TestCase
             $this->typeFactory,
         );
 
-        $this->pageInformation->setRootLine([
+        $this->pageInformation->setLocalRootLine([
             [
                 'uid' => 1,
                 'doktype' => PageRepository::DOKTYPE_DEFAULT,

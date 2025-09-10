@@ -59,7 +59,7 @@ final readonly class AddBreadcrumbList
         $rootLine = [];
         /** @var PageInformation $pageInformation */
         $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
-        foreach ($pageInformation->getRootLine() as $page) {
+        foreach ($pageInformation->getLocalRootLine() as $page) {
             if ((bool) ($page['is_siteroot'] ?? false)) {
                 continue;
             }

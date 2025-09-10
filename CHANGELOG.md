@@ -7,16 +7,19 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- `automaticBreadcrumbSchemaGeneration` outputs breadcrumbs in wrong order (#146)
+
 ## [4.0.0] - 2025-09-09
 
-## Changed
+### Changed
 - Type declarations added to `TypeInterface` (#129)
 - schema.org enumerations marked as stable
 
-## Fixed
+### Fixed
 - Admin panel shows no markup when loading a page with Shift+Reload (#132)
 
-## Removed
+### Removed
 - Compatibility with TYPO3 v11 (#100)
 - Compatibility with TYPO3 v12 (#119)
 - Deprecated method `TypeFactory::createType()` (#116)

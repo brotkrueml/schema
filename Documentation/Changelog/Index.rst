@@ -11,24 +11,30 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v4.0.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* ``automaticBreadcrumbSchemaGeneration`` outputs breadcrumbs in wrong order (#146)
+
 `4.0.0 <https://github.com/brotkrueml/schema/compare/v3.14.1...v4.0.0>`_ - 2025-09-09
 -----------------------------------------------------------------------------------------
 
 Changed
--------
+^^^^^^^
 
 
 * Type declarations added to ``TypeInterface`` (#129)
 * schema.org enumerations marked as stable
 
 Fixed
------
+^^^^^
 
 
 * Admin panel shows no markup when loading a page with Shift+Reload (#132)
 
 Removed
--------
+^^^^^^^
 
 
 * Compatibility with TYPO3 v11 (#100)
