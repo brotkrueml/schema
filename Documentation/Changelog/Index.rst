@@ -47,6 +47,15 @@ Removed
 * Manual instantiation of type model classes
 * Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
+`3.14.2 <https://github.com/brotkrueml/schema/compare/v3.14.1...v3.14.2>`_ - 2025-09-10
+-------------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Double masking of special chars of types in admin panel
+
 `3.14.1 <https://github.com/brotkrueml/schema/compare/v3.14.0...v3.14.1>`_ - 2025-09-06
 -------------------------------------------------------------------------------------------
 
