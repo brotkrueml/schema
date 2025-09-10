@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 - `automaticBreadcrumbSchemaGeneration` outputs breadcrumbs in wrong order (#146)
+- Double masking of special chars of types in admin panel
 
 ## [4.0.0] - 2025-09-09
 

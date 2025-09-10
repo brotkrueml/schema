@@ -16,6 +16,7 @@ Fixed
 
 
 * ``automaticBreadcrumbSchemaGeneration`` outputs breadcrumbs in wrong order (#146)
+* Double masking of special chars of types in admin panel
 
 `4.0.0 <https://github.com/brotkrueml/schema/compare/v3.14.1...v4.0.0>`_ - 2025-09-09
 -----------------------------------------------------------------------------------------

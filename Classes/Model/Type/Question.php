@@ -21,8 +21,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  */
 #[Type('Question')]
 #[Manual(Publisher::Google, 'FAQ', 'https://developers.google.com/search/docs/appearance/structured-data/faqpage')]
-#[Manual(Publisher::Google, 'Q&amp;A', 'https://developers.google.com/search/docs/appearance/structured-data/qapage')]
-#[Manual(Publisher::Google, 'Education Q&amp;A', 'https://developers.google.com/search/docs/appearance/structured-data/education-qa')]
+#[Manual(Publisher::Google, 'Q&A', 'https://developers.google.com/search/docs/appearance/structured-data/qapage')]
+#[Manual(Publisher::Google, 'Education Q&A', 'https://developers.google.com/search/docs/appearance/structured-data/education-qa')]
 final class Question extends AbstractType
 {
     protected static array $propertyNames = [
