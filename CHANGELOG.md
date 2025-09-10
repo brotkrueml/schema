@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.14.2] - 2025-09-10
+
 ### Fixed
 - Double masking of special chars of types in admin panel
 
@@ -596,7 +598,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.14.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v3.14.2...HEAD
+[3.14.2]: https://github.com/brotkrueml/schema/compare/v3.14.1...v3.14.2
 [3.14.1]: https://github.com/brotkrueml/schema/compare/v3.14.0...v3.14.1
 [3.14.0]: https://github.com/brotkrueml/schema/compare/v3.13.2...v3.14.0
 [3.13.2]: https://github.com/brotkrueml/schema/compare/v3.13.1...v3.13.2
