@@ -21,6 +21,9 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(NodeIdentifierViewHelper::class)]
 final class NodeIdentifierViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];

@@ -25,10 +25,16 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(TypesInformation::class)]
 final class TypesInformationTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $coreExtensionsToLoad = [
         'typo3/cms-adminpanel',
     ];
 
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
@@ -81,6 +87,9 @@ final class TypesInformationTest extends FunctionalTestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<(array<int, null> | array<int, string>)>
+     */
     public static function dataProviderForGetContent(): \Iterator
     {
         yield 'No cache entry found, assign empty array to view' => [

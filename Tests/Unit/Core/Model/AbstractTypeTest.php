@@ -60,6 +60,9 @@ final class AbstractTypeTest extends TestCase
                 return 'Thing';
             }
 
+            /**
+             * @return list<string>
+             */
             public function getAdditionalProperties(): array
             {
                 return [
@@ -87,6 +90,9 @@ final class AbstractTypeTest extends TestCase
                 return 'Thing';
             }
 
+            /**
+             * @return list<string>
+             */
             public function getAdditionalProperties(): array
             {
                 return [

@@ -25,6 +25,9 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(MultipleTypeViewHelper::class)]
 final class MultipleTypeViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
@@ -44,6 +47,9 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<array<string, string>>
+     */
     public static function fluidTemplatesProvider(): iterable
     {
         yield 'Using view helper without properties' => [

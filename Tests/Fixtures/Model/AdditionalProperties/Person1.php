@@ -20,6 +20,9 @@ final class Person1 implements AdditionalPropertiesInterface
         return 'Person';
     }
 
+    /**
+     * @return list<string>
+     */
     public function getAdditionalProperties(): array
     {
         return [

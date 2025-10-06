@@ -27,10 +27,16 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(TypoScriptConverter::class)]
 final class SchemaContentObjectTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $coreExtensionsToLoad = [
         'typo3/cms-adminpanel',
     ];
 
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
@@ -61,6 +67,9 @@ final class SchemaContentObjectTest extends FunctionalTestCase
         \file_put_contents($this->getInstancePath() . '/typo3temp/var/log/typo3_0493d91d8e.log', '');
     }
 
+    /**
+     * @param array<int, array<string, string>> $expectedLogEntries
+     */
     #[Test]
     #[DataProvider('possibleTypoScriptConfigurationsWithNoResultProvider')]
     public function returnsNoSchema(
@@ -83,6 +92,9 @@ final class SchemaContentObjectTest extends FunctionalTestCase
         $this->assertHasLogEntries($expectedLogEntries);
     }
 
+    /**
+     * @return \Iterator<array<array<string, mixed>, mixed>>
+     */
     public static function possibleTypoScriptConfigurationsWithNoResultProvider(): iterable
     {
         yield 'Without SCHEMA content object no JSON-LD is embedded' => [
@@ -121,6 +133,9 @@ TYPOSCRIPT,
         ];
     }
 
+    /**
+     * @param array<string, array<int|string, string>|string> $expectedJsonLd
+     */
     #[Test]
     #[DataProvider('possibleTypoScriptConfigurationsProvider')]
     public function returnsExpectedSchemaInHtml(
@@ -143,6 +158,9 @@ TYPOSCRIPT,
         $this->assertHasLogEntries([]);
     }
 
+    /**
+     * @return \Iterator<array<array<string, mixed>, mixed>>
+     */
     public static function possibleTypoScriptConfigurationsProvider(): iterable
     {
         yield 'type and id' => [
@@ -445,6 +463,9 @@ TYPOSCRIPT,
         ]);
     }
 
+    /**
+     * @param array<string, array<int|string, string>|string>|array<string, string> $expectedJsonLd
+     */
     private function assertHasJsonLd(array $expectedJsonLd, string $content): void
     {
         $jsonLd = \json_encode($expectedJsonLd, \JSON_UNESCAPED_SLASHES | \JSON_THROW_ON_ERROR);

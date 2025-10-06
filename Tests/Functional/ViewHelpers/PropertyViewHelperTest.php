@@ -26,6 +26,9 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(PropertyViewHelper::class)]
 final class PropertyViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
@@ -44,6 +47,9 @@ final class PropertyViewHelperTest extends FunctionalTestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<array<string, string>>
+     */
     public static function fluidTemplatesProvider(): iterable
     {
         yield 'Property with one value' => [
@@ -87,6 +93,9 @@ final class PropertyViewHelperTest extends FunctionalTestCase
         (new TemplateView($context))->render();
     }
 
+    /**
+     * @return \Iterator<array<array<string, mixed>, mixed>>
+     */
     public static function fluidTemplatesProviderForExceptions(): iterable
     {
         yield 'View helper is not a child of a type' => [

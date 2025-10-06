@@ -25,6 +25,7 @@ return RectorConfig::configure()
         deadCode: true,
         codeQuality: true,
         typeDeclarations: true,
+        typeDeclarationDocblocks: true,
         earlyReturn: true,
     )
     ->withSets([

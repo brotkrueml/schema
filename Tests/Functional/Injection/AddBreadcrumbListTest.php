@@ -20,14 +20,23 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(AddBreadcrumbList::class)]
 final class AddBreadcrumbListTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $coreExtensionsToLoad = [
         'typo3/cms-adminpanel',
     ];
 
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
 
+    /**
+     * @var array<string, string>
+     */
     protected array $pathsToLinkInTestInstance = [
         'typo3conf/ext/schema/Tests/Functional/Fixtures/Sites/' => 'typo3conf/sites',
     ];

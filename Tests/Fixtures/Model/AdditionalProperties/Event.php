@@ -20,6 +20,9 @@ final class Event implements AdditionalPropertiesInterface
         return 'Event';
     }
 
+    /**
+     * @return list<string>
+     */
     public function getAdditionalProperties(): array
     {
         return [

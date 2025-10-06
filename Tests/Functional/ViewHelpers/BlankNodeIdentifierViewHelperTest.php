@@ -23,6 +23,9 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[RunTestsInSeparateProcesses]
 final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];

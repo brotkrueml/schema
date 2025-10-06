@@ -59,7 +59,7 @@ final class PropertiesAdder
     }
 
     /**
-     * @param mixed[] $properties
+     * @param array<string, mixed> $properties
      */
     private function addProperty(TypeInterface $type, string $name, array $properties): void
     {
@@ -110,7 +110,7 @@ final class PropertiesAdder
     }
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     private function addIdOnly(string $name, array $configuration, TypeInterface $type): void
     {
@@ -131,7 +131,7 @@ final class PropertiesAdder
     }
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     private function addFullType(string $name, array $configuration, TypeInterface $type): void
     {
@@ -148,7 +148,7 @@ final class PropertiesAdder
     }
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     private function isFullType(array $configuration): bool
     {
@@ -157,7 +157,7 @@ final class PropertiesAdder
     }
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     private function isIdOnly(array $configuration): bool
     {

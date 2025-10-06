@@ -25,6 +25,9 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(AbstractTypeViewHelper::class)]
 final class ThingViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
@@ -44,6 +47,9 @@ final class ThingViewHelperTest extends FunctionalTestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<array<string, string>>
+     */
     public static function fluidTemplatesProvider(): iterable
     {
         yield 'Simple type with id' => [
@@ -369,6 +375,9 @@ final class ThingViewHelperTest extends FunctionalTestCase
         (new TemplateView($context))->render();
     }
 
+    /**
+     * @return \Iterator<(array<string, int> | array<string, string>)>
+     */
     public static function fluidTemplatesProviderForExceptions(): iterable
     {
         yield 'Missing -as attribute' => [

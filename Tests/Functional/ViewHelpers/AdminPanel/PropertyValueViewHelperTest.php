@@ -25,6 +25,9 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(PropertyValueViewHelper::class)]
 final class PropertyValueViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
@@ -50,6 +53,9 @@ final class PropertyValueViewHelperTest extends FunctionalTestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<array<string, string>>
+     */
     public static function dataProvider(): iterable
     {
         yield 'when value is an array, an empty string is returned' => [

@@ -34,6 +34,9 @@ final class LinkTest extends TestCase
         new Link($link, '', '');
     }
 
+    /**
+     * @return \Iterator<array<int, string>>
+     */
     public static function dataProviderWithInvalidUrls(): iterable
     {
         yield [

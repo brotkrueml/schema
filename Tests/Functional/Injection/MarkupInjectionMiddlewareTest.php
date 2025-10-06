@@ -28,10 +28,16 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(MarkupInjectionMiddleware::class)]
 final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $coreExtensionsToLoad = [
         'typo3/cms-adminpanel',
     ];
 
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];

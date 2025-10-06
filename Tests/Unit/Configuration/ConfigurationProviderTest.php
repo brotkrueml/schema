@@ -21,6 +21,10 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 #[CoversClass(ConfigurationProvider::class)]
 final class ConfigurationProviderTest extends TestCase
 {
+    /**
+     * @param array<string, string> $extensionConfiguration
+     * @param array<string, bool|int[]> $expected
+     */
     #[Test]
     #[DataProvider('providerForGetConfigurationWithDifferentExtensionConfigurations')]
     public function getConfigurationWithDifferentExtensionConfigurations(array $extensionConfiguration, array $expected): void
@@ -42,6 +46,9 @@ final class ConfigurationProviderTest extends TestCase
         self::assertSame($expected['embedMarkupOnNoindexPages'], $actual->embedMarkupOnNoindexPages);
     }
 
+    /**
+     * @return \Iterator<array<array<string, array<string, mixed>>, mixed>>
+     */
     public static function providerForGetConfigurationWithDifferentExtensionConfigurations(): iterable
     {
         yield 'with empty configuration' => [

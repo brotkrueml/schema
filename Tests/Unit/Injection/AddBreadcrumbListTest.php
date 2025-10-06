@@ -51,6 +51,9 @@ final class AddBreadcrumbListTest extends TestCase
                 throw new \Exception('Should never be called!');
             }
 
+            /**
+             * @param array<string, mixed> $parameters
+             */
             public function generateUri($route, array $parameters = [], string $fragment = '', string $type = self::ABSOLUTE_URL): UriInterface
             {
                 return new Uri(\sprintf(
@@ -122,6 +125,9 @@ final class AddBreadcrumbListTest extends TestCase
         self::assertSame([], $this->event->getAdditionalTypes());
     }
 
+    /**
+     * @param array<int, array<string, int|string>> $rootLine
+     */
     #[Test]
     #[DataProvider('rootLineProvider')]
     public function breadcrumbIsAddedCorrectly(array $rootLine, string $expected): void
@@ -145,6 +151,9 @@ final class AddBreadcrumbListTest extends TestCase
         self::assertSame($expected, $this->renderJsonLd($actual[0]));
     }
 
+    /**
+     * @return \Iterator<array<array<string, mixed>, mixed>>
+     */
     public static function rootLineProvider(): iterable
     {
         yield 'Root line with nav_title set' => [
@@ -412,6 +421,9 @@ final class AddBreadcrumbListTest extends TestCase
         return $renderer->render();
     }
 
+    /**
+     * @param list<int> $automaticBreadcrumbExcludeAdditionalDoktypes
+     */
     private function buildConfiguration(
         bool $automaticBreadcrumbSchemaGeneration = false,
         array $automaticBreadcrumbExcludeAdditionalDoktypes = [],

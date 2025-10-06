@@ -22,6 +22,7 @@ final class TypoScriptConverterTest extends TestCase
 {
     /**
      * data provider for convertTypoScriptArrayToPlainArray
+     * @return \Iterator<array<array<string, array<mixed>>, mixed>>
      */
     public static function convertTypoScriptArrayToPlainArrayTestdata(): \Iterator
     {
@@ -155,6 +156,10 @@ final class TypoScriptConverterTest extends TestCase
         ];
     }
 
+    /**
+     * @param array<int|string, mixed> $typoScriptSettings
+     * @param array<int|string, mixed> $expectedSettings
+     */
     #[Test]
     #[DataProvider('convertTypoScriptArrayToPlainArrayTestdata')]
     public function convertTypoScriptArrayToPlainArrayRemovesTrailingDotsWithChangedOrderInTheTypoScriptArray(
@@ -168,6 +173,7 @@ final class TypoScriptConverterTest extends TestCase
 
     /**
      * Data provider for testcase "convertPlainArrayToTypoScriptArray"
+     * @return \Iterator<array<array<string, array<mixed>>, mixed>>
      */
     public static function convertPlainArrayToTypoScriptArrayTestdata(): \Iterator
     {
@@ -287,6 +293,10 @@ final class TypoScriptConverterTest extends TestCase
         ];
     }
 
+    /**
+     * @param array<int|string, mixed> $plainSettings
+     * @param array<int|string, mixed> $expectedSettings
+     */
     #[Test]
     #[DataProvider('convertPlainArrayToTypoScriptArrayTestdata')]
     public function convertPlainArrayToTypoScriptArray(array $plainSettings, array $expectedSettings): void
@@ -296,6 +306,9 @@ final class TypoScriptConverterTest extends TestCase
         self::assertEquals($converted, $expectedSettings);
     }
 
+    /**
+     * @return array<int, array<int|string, array<string, string>|string>[]|int[]>
+     */
     public function explodeConfigurationForOptionSplitProvider(): array
     {
         return [

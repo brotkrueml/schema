@@ -40,6 +40,9 @@ final class RendererTest extends TestCase
         self::assertSame('', $this->subject->render());
     }
 
+    /**
+     * @param array<string, mixed> $properties
+     */
     #[Test]
     #[DataProvider('dataProvider')]
     public function renderReturnsCorrectOutputWithOneTypeGiven(?string $id, array $properties, string $expected): void
@@ -49,6 +52,9 @@ final class RendererTest extends TestCase
         self::assertSame($expected, $this->subject->render());
     }
 
+    /**
+     * @return \Iterator<array<array<int, mixed>, mixed>>
+     */
     public static function dataProvider(): \Iterator
     {
         yield 'No id set and properties are empty' => [

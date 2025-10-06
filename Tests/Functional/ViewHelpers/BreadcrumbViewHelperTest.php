@@ -28,10 +28,16 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(BreadcrumbViewHelper::class)]
 final class BreadcrumbViewHelperTest extends FunctionalTestCase
 {
+    /**
+     * @var list<string>
+     */
     protected array $testExtensionsToLoad = [
         'brotkrueml/schema',
     ];
 
+    /**
+     * @param array<string, array<int, array<string, \stdClass|array<string, string>|string>>> $arguments
+     */
     #[Test]
     #[DataProvider('fluidTemplatesProvider')]
     public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, array $arguments, string $expected): void
@@ -59,6 +65,9 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<array<array<string, mixed>, mixed>>
+     */
     public static function fluidTemplatesProvider(): \Iterator
     {
         yield 'Breadcrumb is empty' => [
@@ -170,7 +179,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
 
     /**
      * @param string $template The Fluid template
-     * @param array $arguments Variables for the Fluid template
+     * @param array<string, array<int, array<string, string>>> $arguments Variables for the Fluid template
      * @param string $expectedExceptionClass The exception class
      * @param int $expectedExceptionCode The expected exception code
      */
@@ -194,6 +203,9 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
         $view->render();
     }
 
+    /**
+     * @return \Iterator<array<array<string, mixed>, mixed>>
+     */
     public static function fluidTemplatesProviderForExceptions(): iterable
     {
         yield 'Missing breadcrumb attribute' => [

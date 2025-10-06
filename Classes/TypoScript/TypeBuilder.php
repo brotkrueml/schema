@@ -31,7 +31,7 @@ final class TypeBuilder
     ) {}
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     public function build(
         ContentObjectRenderer $cObj,
@@ -55,7 +55,7 @@ final class TypeBuilder
     }
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     private function instantiateType(array $configuration): ?TypeInterface
     {
@@ -77,7 +77,7 @@ final class TypeBuilder
     }
 
     /**
-     * @param mixed[] $configuration
+     * @param array<string, mixed> $configuration
      */
     private function hasFalsyIf(array $configuration): bool
     {

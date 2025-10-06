@@ -77,6 +77,9 @@ final class SchemaModuleTest extends TestCase
         self::assertSame($expected, $actual);
     }
 
+    /**
+     * @return \Iterator<(array<string, null> | array<string, string>)>
+     */
     public static function providerForGetShortInfo(): iterable
     {
         yield 'with null returned from cache' => [
