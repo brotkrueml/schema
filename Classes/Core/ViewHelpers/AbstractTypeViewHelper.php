@@ -41,10 +41,12 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
         }
     }
 
-    public function render(): void
+    public function render(): string
     {
         $model = $this->getSpecificTypeIfDefined() ?? clone $this->modelTemplate;
         $this->addTypeToSchemaManager($model);
+
+        return '';
     }
 
     private function getSpecificTypeIfDefined(): ?TypeInterface

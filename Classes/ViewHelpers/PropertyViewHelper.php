@@ -45,7 +45,7 @@ final class PropertyViewHelper extends AbstractViewHelper
         $this->registerArgument(self::ARGUMENT_VALUE, 'string', 'The value of the property', true);
     }
 
-    public function render(): void
+    public function render(): string
     {
         $this->checkAttributes();
 
@@ -60,6 +60,8 @@ final class PropertyViewHelper extends AbstractViewHelper
         $type = $this->typeStack->pop();
         $type->addProperty($this->arguments[self::ARGUMENT_AS], $this->arguments[self::ARGUMENT_VALUE]);
         $this->typeStack->push($type);
+
+        return '';
     }
 
     private function checkAttributes(): void

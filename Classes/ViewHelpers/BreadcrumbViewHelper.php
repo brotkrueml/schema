@@ -81,7 +81,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
         );
     }
 
-    public function render(): void
+    public function render(): string
     {
         $breadcrumb = $this->arguments['breadcrumb'];
         $shouldRenderFirstItem = (bool) ($this->arguments['renderFirstItem'] ?? false);
@@ -90,7 +90,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
         }
 
         if ($breadcrumb === []) {
-            return;
+            return '';
         }
 
         $this->checkBreadcrumbStructure($breadcrumb);
@@ -119,6 +119,8 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
         }
 
         $this->schemaManager->addType($breadcrumbList);
+
+        return '';
     }
 
     /**

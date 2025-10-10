@@ -39,11 +39,13 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
         $this->registerArgument('properties', 'array', 'The properties for the multiple type', false, []);
     }
 
-    public function render(): void
+    public function render(): string
     {
         $this->types = GeneralUtility::trimExplode(',', $this->arguments['types'], true);
         $model = $this->typeFactory->create(...$this->types);
         $this->addTypeToSchemaManager($model);
+
+        return '';
     }
 
     protected function assignPropertiesToType(): void
