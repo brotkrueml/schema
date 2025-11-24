@@ -1,7 +1,6 @@
-commit_message: '[L10N]: New translations for %language%'
-append_commit_message: false
+preserve_hierarchy: 1
 files:
-  - source: '/Resources/Private/Language/*.xlf'
+  - source: /Resources/Private/Language/*.xlf
+    translation: /%original_path%/%two_letters_code%.%original_file_name%
     ignore:
-      - '/Resources/Private/Language/%two_letters_code%.%original_file_name%'
-    translation: '/Resources/Private/Language/%two_letters_code%.%original_file_name%'
+      - /**/%two_letters_code%.%original_file_name%
