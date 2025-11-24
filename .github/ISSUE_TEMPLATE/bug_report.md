@@ -22,10 +22,10 @@ If applicable, add screenshots to help explain your problem.
 
 ### Environment
 
-- schema version(s): [e.g. 1.12.1, 2.0.2]
-- TYPO3 version(s): [e.g. 9.5.30, 10.4.21, 11.5.0]
+- schema version(s): [e.g. 4.0.1]
+- TYPO3 version(s): [e.g. 13.4.20]
 - Is your TYPO3 installation set up with Composer (Composer Mode): [yes, no]
-- OS: [e.g. OSX 10.13.4, Windows 10, Debian 11]
+- OS: [e.g. Debian 13]
 
 ### Possible Solution
 
