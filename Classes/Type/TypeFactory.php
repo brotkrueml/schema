@@ -53,9 +53,6 @@ final readonly class TypeFactory
      */
     private function createMultiple(array $types): MultipleType
     {
-        return new MultipleType(...\array_map(
-            fn(string $type): TypeInterface => $this->createSingle($type),
-            $types,
-        ));
+        return new MultipleType(...\array_map($this->createSingle(...), $types));
     }
 }
