@@ -22,12 +22,20 @@ jobs:
         include:
           - php-versions: '8.2'
             typo3-versions: '^13'
+          - php-versions: '8.2'
+            typo3-versions: '^14'
           - php-versions: '8.3'
             typo3-versions: '^13'
+          - php-versions: '8.3'
+            typo3-versions: '^14'
           - php-versions: '8.4'
             typo3-versions: '^13'
+          - php-versions: '8.4'
+            typo3-versions: '^14'
           - php-versions: '8.5'
             typo3-versions: '^13'
+          - php-versions: '8.5'
+            typo3-versions: '^14'
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
@@ -73,7 +81,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-#          coverage: xdebug
           extensions: mbstring
       - name: Get Composer Cache Directory
         id: composer-cache

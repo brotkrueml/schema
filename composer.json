@@ -25,9 +25,9 @@
 	},
 	"require": {
 		"php": ">=8.2",
-		"typo3/cms-core": "^13.4",
-		"typo3/cms-fluid": "^13.4",
-		"typo3/cms-frontend": "^13.4"
+		"typo3/cms-core": "^13.4 || 14.0",
+		"typo3/cms-fluid": "^13.4 || ^14.0",
+		"typo3/cms-frontend": "^13.4 || ^14.0"
 	},
 	"require-dev": {
 		"brotkrueml/coding-standards": "~6.3.0",
@@ -43,9 +43,9 @@
 		"symfony/yaml": "^7.3",
 		"symplify/phpstan-rules": "^14.8",
 		"tomasvotruba/cognitive-complexity": "^1.0",
-		"typo3/cms-adminpanel": "^13.4",
-		"typo3/cms-lowlevel": "^13.4",
-		"typo3/testing-framework": "^9.2"
+		"typo3/cms-adminpanel": "^13.4 || ^14.0",
+		"typo3/cms-lowlevel": "^13.4 || ^14.0",
+		"typo3/testing-framework": "^9.3"
 	},
 	"suggest": {
 		"brotkrueml/schema-auto": "Provides additional terms related to auto",

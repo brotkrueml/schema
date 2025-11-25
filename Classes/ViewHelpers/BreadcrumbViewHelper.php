@@ -95,6 +95,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
         $this->checkBreadcrumbStructure($breadcrumb);
 
+        /** @phpstan-ignore-next-line Cannot call method getAttribute() on TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface|null */
         $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
         $siteUrl = (string) $request->getAttribute('site')->getBase();
 
