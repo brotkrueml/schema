@@ -8,8 +8,11 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres
 to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/schema/compare/v4.0.1...HEAD>`_
+`Unreleased <https://github.com/brotkrueml/schema/compare/v4.1.0...HEAD>`_
 ------------------------------------------------------------------------------
+
+`4.1.0 <https://github.com/brotkrueml/schema/compare/v4.0.1...v4.1.0>`_ - 2025-11-25
+----------------------------------------------------------------------------------------
 
 Added
 ^^^^^

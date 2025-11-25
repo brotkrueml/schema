@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.1.0] - 2025-11-25
+
 ### Added
 - Compatibility with TYPO3 v14
 
@@ -626,7 +628,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.0.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.1.0...HEAD
+[4.1.0]: https://github.com/brotkrueml/schema/compare/v4.0.1...v4.1.0
 [4.0.1]: https://github.com/brotkrueml/schema/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/brotkrueml/schema/compare/v3.14.1...v4.0.0
 [3.14.2]: https://github.com/brotkrueml/schema/compare/v3.14.1...v3.14.2
