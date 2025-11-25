@@ -179,12 +179,49 @@ final class ThingViewHelperTest extends FunctionalTestCase
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}',
         ];
 
+        yield 'Type with -isMainEntityOfWebPage set to "{true}" without a WebPage' => [
+            'template' => <<<TEMPLATE
+                <schema:type.thing
+                    -id="parentThing"
+                    -isMainEntityOfWebPage="{true}"
+                    name="parent name"
+                    url="http://example.org/">
+                    <schema:type.person
+                        -as="subjectOf"
+                        -id="childThing"
+                        name="child name"
+                        url="https://example.org/child"
+                    />
+                </schema:type.thing>
+            TEMPLATE,
+            'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}',
+        ];
+
         yield 'Type with -isMainEntityOfWebPage set to "true" with a WebPage' => [
             'template' => <<<TEMPLATE
                 <schema:type.webPage/>
                 <schema:type.thing
                     -id="parentThing"
                     -isMainEntityOfWebPage="true"
+                    name="parent name"
+                    url="http://example.org/">
+                    <schema:type.person
+                        -as="subjectOf"
+                        -id="childThing"
+                        name="child name"
+                        url="https://example.org/child"
+                    />
+                </schema:type.thing>
+            TEMPLATE,
+            'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
+        ];
+
+        yield 'Type with -isMainEntityOfWebPage set to "{true}" with a WebPage' => [
+            'template' => <<<TEMPLATE
+                <schema:type.webPage/>
+                <schema:type.thing
+                    -id="parentThing"
+                    -isMainEntityOfWebPage="{true}"
                     name="parent name"
                     url="http://example.org/">
                     <schema:type.person

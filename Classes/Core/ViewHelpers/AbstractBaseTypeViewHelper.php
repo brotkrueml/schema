@@ -15,6 +15,7 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
@@ -40,10 +41,13 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
 
     public function initializeArguments(): void
     {
+        $typo3Version = (new Typo3Version())->getMajorVersion();
+        $mainEntityType = $typo3Version === 13 ? 'int' : 'int|string|bool';
+
         parent::initializeArguments();
         $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node', false, '');
         $this->registerArgument(static::ARGUMENT_ID, 'mixed', 'IRI or a node identifier to identify the node', false, '');
-        $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, 'int', 'Set to true, if the type is the primary content of the web page', false, false);
+        $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, $mainEntityType, 'Set to true, if the type is the primary content of the web page', false, 0);
     }
 
     protected function addTypeToSchemaManager(TypeInterface $model): void
@@ -104,7 +108,11 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
     private function checkIsMainEntityOfWebPage(): void
     {
         $isMainEntityOfWebPage = $this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? 0;
-        $this->isMainEntityOfWebPage = $isMainEntityOfWebPage === 'true' ? 1 : (int) $isMainEntityOfWebPage;
+        $this->isMainEntityOfWebPage = match ($isMainEntityOfWebPage) {
+            'true', true => 1,
+            'false', false => 0,
+            default => (int) $isMainEntityOfWebPage,
+        };
 
         if ($this->isMainEntityOfWebPage < 0 || $this->isMainEntityOfWebPage > 2) {
             throw new Exception(
