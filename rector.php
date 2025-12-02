@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\PHPUnit\CodeQuality\Rector\Class_\RemoveDataProviderParamKeysRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -37,5 +36,4 @@ return RectorConfig::configure()
         __DIR__ . '/Classes/Model/Type/*',
         __DIR__ . '/Classes/ViewHelpers/Type/*',
         PreferPHPUnitThisCallRector::class,
-        RemoveDataProviderParamKeysRector::class,
     ]);
