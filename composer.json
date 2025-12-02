@@ -1,6 +1,6 @@
 {
 	"name": "brotkrueml/schema",
-	"description": "API and view helpers for schema.org markup",
+	"description": "Embedding schema.org vocabulary - API and view helpers for schema.org markup",
 	"license": "GPL-2.0-or-later",
 	"type": "typo3-cms-extension",
 	"keywords": [
