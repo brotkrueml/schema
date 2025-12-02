@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Version constraint for TYPO3 v14 in `composer.json` file
+
 ## [4.1.0] - 2025-11-25
 
 ### Added

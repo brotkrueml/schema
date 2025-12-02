@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v4.1.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Version constraint for TYPO3 v14 in ``composer.json`` file
+
 `4.1.0 <https://github.com/brotkrueml/schema/compare/v4.0.1...v4.1.0>`_ - 2025-11-25
 ----------------------------------------------------------------------------------------
 
