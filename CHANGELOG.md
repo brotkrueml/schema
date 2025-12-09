@@ -49,6 +49,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Manual instantiation of type model classes
 - Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
+## [3.15.0] - 2025-12-09
+
+### Updated
+- schema.org definition to version 29.4
+
 ## [3.14.2] - 2025-09-10
 
 ### Fixed
@@ -645,6 +650,7 @@ Initial release
 [4.1.0]: https://github.com/brotkrueml/schema/compare/v4.0.1...v4.1.0
 [4.0.1]: https://github.com/brotkrueml/schema/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/brotkrueml/schema/compare/v3.14.1...v4.0.0
+[3.15.0]: https://github.com/brotkrueml/schema/compare/v3.14.2...v3.15.0
 [3.14.2]: https://github.com/brotkrueml/schema/compare/v3.14.1...v3.14.2
 [3.14.1]: https://github.com/brotkrueml/schema/compare/v3.14.0...v3.14.1
 [3.14.0]: https://github.com/brotkrueml/schema/compare/v3.13.2...v3.14.0

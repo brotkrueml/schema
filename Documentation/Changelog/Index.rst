@@ -81,6 +81,15 @@ Removed
 * Manual instantiation of type model classes
 * Extension setting "Embed markup in the body section", the markup is now always embedded into the body section
 
+`3.15.0 <https://github.com/brotkrueml/schema/compare/v3.14.2...v3.15.0>`_ - 2025-12-09
+-------------------------------------------------------------------------------------------
+
+Updated
+^^^^^^^
+
+
+* schema.org definition to version 29.4
+
 `3.14.2 <https://github.com/brotkrueml/schema/compare/v3.14.1...v3.14.2>`_ - 2025-09-10
 -------------------------------------------------------------------------------------------
 
