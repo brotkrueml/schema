@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.2.0] - 2025-12-09
+
 ### Added
 - PSR-14 event `IsMarkupToBeInjectedEvent` to exclude markup on a page (#142)
 
@@ -645,7 +647,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.1.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.2.0...HEAD
+[4.2.0]: https://github.com/brotkrueml/schema/compare/v4.1.1...v4.2.0
 [4.1.1]: https://github.com/brotkrueml/schema/compare/v4.1.0...v4.1.1
 [4.1.0]: https://github.com/brotkrueml/schema/compare/v4.0.1...v4.1.0
 [4.0.1]: https://github.com/brotkrueml/schema/compare/v4.0.0...v4.0.1
