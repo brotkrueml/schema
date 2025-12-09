@@ -14,6 +14,7 @@ namespace Brotkrueml\Schema\Injection;
 use Brotkrueml\Schema\Adapter\ExtensionAvailability;
 use Brotkrueml\Schema\Cache\MarkupCacheHandler;
 use Brotkrueml\Schema\Configuration\Configuration;
+use Brotkrueml\Schema\Event\IsMarkupToBeInjectedEvent;
 use Brotkrueml\Schema\Event\RenderAdditionalTypesEvent;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -52,6 +53,12 @@ final readonly class MarkupProvider
 
     private function isMarkupToBeEmbedded(ServerRequestInterface $request): bool
     {
+        /** @var IsMarkupToBeInjectedEvent $event */
+        $event = $this->eventDispatcher->dispatch(new IsMarkupToBeInjectedEvent($request));
+        if (! $event->isMarkupToBeInjected()) {
+            return false;
+        }
+
         if (! $this->extensionAvailability->isSeoAvailable()) {
             return true;
         }

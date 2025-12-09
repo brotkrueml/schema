@@ -37,15 +37,18 @@ doktype of a page.
 The event :php:`\Brotkrueml\Schema\Event\RenderAdditionalTypesEvent`
 provides the following methods:
 
-.. option:: getRequest(): \Psr\Http\Message\ServerRequestInterface
+.. confval:: getRequest(): \Psr\Http\Message\ServerRequestInterface
+   :name: RenderAdditionalTypesEvent-getRequest
 
    Returns the PSR-7 request object.
 
-.. option:: addType(TypeInterface ...$type): void
+.. confval:: addType(TypeInterface ...$type): void
+   :name: RenderAdditionalTypesEvent-addType
 
    Add one or more type models.
 
-.. option:: addMainEntityOfWebPage(TypeInterface $mainEntity): void
+.. confval:: addMainEntityOfWebPage(TypeInterface $mainEntity): void
+   :name: RenderAdditionalTypesEvent-addMainEntityOfWebPage
 
    Add a :ref:`main entity <main-entity-of-web-page>`.
 
@@ -62,6 +65,37 @@ of the page:
 The method :php:`__invoke()` implements the logic for rendering additional
 types. It receives the :php:`RenderAdditionalTypesEvent`. You can add as many
 types as you like.
+
+
+Prevent embedding of markup
+===========================
+
+Sometimes it is required to disable the embedding of markup on certain pages.
+If you have the need for that, the event
+:php:`\Brotkrueml\Schema\Event\IsMarkupToBeInjectedEvent` is your friend.
+The event is stoppable: the event listener that excludes the markup from
+injection is the last one called in the chain.
+
+The event provides the following methods:
+
+.. confval:: getRequest(): \Psr\Http\Message\ServerRequestInterface
+   :name: IsMarkupToBeInjectedEvent-getRequest
+
+   Returns the PSR-7 request object.
+
+.. confval:: excludeMarkupFromInjection(): void
+   :name: IsMarkupToBeInjectedEvent-excludeMarkupFromInjection
+
+   Method to be called, if you want to exclude a page from embedding the markup.
+
+Example
+~~~~~~~
+
+The example excludes the markup from injection, if the page ID is 42:
+
+.. literalinclude:: _Events/_ExcludeMarkupOnPage42.php
+   :language: php
+   :caption: EXT:my_extension/Classes/EventListener/ExcludeMarkupOnPage42.php
 
 
 .. _pending: https://pending.schema.org/
