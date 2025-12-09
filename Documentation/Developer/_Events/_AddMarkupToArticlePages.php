@@ -20,9 +20,6 @@ final readonly class AddMarkupToArticlePages
 
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {
-        // The "frontend.page.information" attribute is available since TYPO3 v13.
-        // Use the "frontend.controller" attribute (TSFE) in older TYPO3 versions
-        // to retrieve the page record.
         /** @var PageInformation $pageInformation */
         $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
         $page = $pageInformation->getPageRecord();
