@@ -31,6 +31,7 @@ final class PeopleAudience extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'requiredGender',
         'requiredMaxAge',

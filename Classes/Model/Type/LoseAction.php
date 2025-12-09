@@ -37,6 +37,7 @@ final class LoseAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'result',

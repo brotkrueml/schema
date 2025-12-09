@@ -33,6 +33,7 @@ final class DataFeedItem extends AbstractType
         'item',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

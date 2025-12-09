@@ -72,6 +72,7 @@ final class Organization extends AbstractType
         'naics',
         'name',
         'numberOfEmployees',
+        'owner',
         'owns',
         'parentOrganization',
         'potentialAction',

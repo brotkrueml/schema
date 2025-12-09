@@ -30,6 +30,7 @@ final class GameServer extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'playersOnline',
         'potentialAction',
         'sameAs',

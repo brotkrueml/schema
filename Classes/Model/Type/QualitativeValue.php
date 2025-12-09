@@ -37,6 +37,7 @@ final class QualitativeValue extends AbstractType
         'mainEntityOfPage',
         'name',
         'nonEqual',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

@@ -92,6 +92,7 @@ final class VisualArtwork extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

@@ -94,6 +94,7 @@ final class HowToDirection extends AbstractType
         'name',
         'nextItem',
         'offers',
+        'owner',
         'performTime',
         'position',
         'potentialAction',

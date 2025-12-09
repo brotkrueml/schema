@@ -36,6 +36,7 @@ final class Invoice extends AbstractType
         'mainEntityOfPage',
         'minimumPaymentDue',
         'name',
+        'owner',
         'paymentDueDate',
         'paymentMethod',
         'paymentMethodId',

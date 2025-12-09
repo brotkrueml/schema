@@ -89,6 +89,7 @@ final class TechArticle extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

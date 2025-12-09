@@ -50,6 +50,7 @@ final class LoanOrCredit extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'providerMobility',
         'requiredCollateral',

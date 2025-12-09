@@ -40,6 +40,7 @@ final class LodgingReservation extends AbstractType
         'name',
         'numAdults',
         'numChildren',
+        'owner',
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',

@@ -35,6 +35,7 @@ final class GeoShape extends AbstractType
         'line',
         'mainEntityOfPage',
         'name',
+        'owner',
         'polygon',
         'postalCode',
         'potentialAction',

@@ -42,6 +42,7 @@ final class GiveAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'recipient',

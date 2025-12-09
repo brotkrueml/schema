@@ -37,6 +37,7 @@ final class PreOrderAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'price',

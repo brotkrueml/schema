@@ -36,6 +36,7 @@ final class TrainTrip extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

@@ -61,6 +61,7 @@ final class CivicStructure extends AbstractType
         'name',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

@@ -68,6 +68,7 @@ final class SportsOrganization extends AbstractType
         'naics',
         'name',
         'numberOfEmployees',
+        'owner',
         'owns',
         'parentOrganization',
         'potentialAction',

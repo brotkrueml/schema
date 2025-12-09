@@ -94,6 +94,7 @@ final class HowToStep extends AbstractType
         'nextItem',
         'numberOfItems',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'previousItem',

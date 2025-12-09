@@ -34,6 +34,7 @@ final class OrderItem extends AbstractType
         'orderItemStatus',
         'orderQuantity',
         'orderedItem',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

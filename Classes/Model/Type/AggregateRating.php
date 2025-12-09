@@ -36,6 +36,7 @@ final class AggregateRating extends AbstractType
         'itemReviewed',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'ratingCount',
         'ratingValue',

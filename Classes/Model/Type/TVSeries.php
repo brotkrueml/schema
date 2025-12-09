@@ -95,6 +95,7 @@ final class TVSeries extends AbstractType
         'numberOfEpisodes',
         'numberOfSeasons',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

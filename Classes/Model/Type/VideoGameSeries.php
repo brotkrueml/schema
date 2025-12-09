@@ -101,6 +101,7 @@ final class VideoGameSeries extends AbstractType
         'numberOfPlayers',
         'numberOfSeasons',
         'offers',
+        'owner',
         'playMode',
         'position',
         'potentialAction',

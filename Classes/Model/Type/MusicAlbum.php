@@ -91,6 +91,7 @@ final class MusicAlbum extends AbstractType
         'name',
         'numTracks',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

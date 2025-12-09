@@ -32,6 +32,7 @@ final class Role extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'roleName',
         'sameAs',

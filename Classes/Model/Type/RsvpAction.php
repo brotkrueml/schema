@@ -42,6 +42,7 @@ final class RsvpAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'recipient',

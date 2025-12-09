@@ -92,6 +92,7 @@ final class Dataset extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

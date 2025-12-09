@@ -38,6 +38,7 @@ final class DownloadAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'result',

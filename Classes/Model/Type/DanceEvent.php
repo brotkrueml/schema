@@ -49,6 +49,7 @@ final class DanceEvent extends AbstractType
         'name',
         'offers',
         'organizer',
+        'owner',
         'performer',
         'potentialAction',
         'previousStartDate',

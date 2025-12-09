@@ -86,6 +86,7 @@ final class Photograph extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

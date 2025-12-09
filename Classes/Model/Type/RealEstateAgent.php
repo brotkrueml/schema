@@ -92,6 +92,7 @@ final class RealEstateAgent extends AbstractType
         'numberOfEmployees',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

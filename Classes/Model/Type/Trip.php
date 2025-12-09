@@ -32,6 +32,7 @@ final class Trip extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

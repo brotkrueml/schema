@@ -58,6 +58,7 @@ final class ProductModel extends AbstractType
         'mpn',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'predecessorOf',
         'productID',

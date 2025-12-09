@@ -36,6 +36,7 @@ final class ParcelDelivery extends AbstractType
         'mainEntityOfPage',
         'name',
         'originAddress',
+        'owner',
         'partOfOrder',
         'potentialAction',
         'sameAs',

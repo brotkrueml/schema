@@ -69,6 +69,7 @@ final class Person extends AbstractType
         'name',
         'nationality',
         'netWorth',
+        'owner',
         'owns',
         'parent',
         'performerIn',

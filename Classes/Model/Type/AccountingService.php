@@ -95,6 +95,7 @@ final class AccountingService extends AbstractType
         'numberOfEmployees',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

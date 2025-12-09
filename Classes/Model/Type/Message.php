@@ -92,6 +92,7 @@ final class Message extends AbstractType
         'messageAttachment',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

@@ -48,6 +48,7 @@ final class InvestmentOrDeposit extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'providerMobility',
         'review',

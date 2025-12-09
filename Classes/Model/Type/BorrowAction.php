@@ -42,6 +42,7 @@ final class BorrowAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'result',

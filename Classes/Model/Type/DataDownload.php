@@ -98,6 +98,7 @@ final class DataDownload extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'playerType',
         'position',
         'potentialAction',

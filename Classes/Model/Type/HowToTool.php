@@ -31,6 +31,7 @@ final class HowToTool extends AbstractType
         'mainEntityOfPage',
         'name',
         'nextItem',
+        'owner',
         'position',
         'potentialAction',
         'previousItem',

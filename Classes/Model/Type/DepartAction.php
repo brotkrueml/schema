@@ -38,6 +38,7 @@ final class DepartAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'result',

@@ -91,6 +91,7 @@ final class LiveBlogPosting extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

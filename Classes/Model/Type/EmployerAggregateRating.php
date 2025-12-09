@@ -35,6 +35,7 @@ final class EmployerAggregateRating extends AbstractType
         'itemReviewed',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'ratingCount',
         'ratingValue',

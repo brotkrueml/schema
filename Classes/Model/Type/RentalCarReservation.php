@@ -36,6 +36,7 @@ final class RentalCarReservation extends AbstractType
         'mainEntityOfPage',
         'modifiedTime',
         'name',
+        'owner',
         'pickupLocation',
         'pickupTime',
         'potentialAction',

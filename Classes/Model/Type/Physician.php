@@ -92,6 +92,7 @@ final class Physician extends AbstractType
         'numberOfEmployees',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

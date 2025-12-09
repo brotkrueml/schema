@@ -70,6 +70,7 @@ final class SportsTeam extends AbstractType
         'naics',
         'name',
         'numberOfEmployees',
+        'owner',
         'owns',
         'parentOrganization',
         'potentialAction',

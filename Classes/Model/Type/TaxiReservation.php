@@ -34,6 +34,7 @@ final class TaxiReservation extends AbstractType
         'mainEntityOfPage',
         'modifiedTime',
         'name',
+        'owner',
         'partySize',
         'pickupLocation',
         'pickupTime',

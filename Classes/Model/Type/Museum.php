@@ -61,6 +61,7 @@ final class Museum extends AbstractType
         'name',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

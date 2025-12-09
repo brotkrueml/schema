@@ -34,6 +34,7 @@ final class NutritionInformation extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'proteinContent',
         'sameAs',

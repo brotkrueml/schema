@@ -39,6 +39,7 @@ final class CommunicateAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'recipient',

@@ -44,6 +44,7 @@ final class Service extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'providerMobility',
         'review',

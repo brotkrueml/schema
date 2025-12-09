@@ -39,6 +39,7 @@ final class ContactPoint extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'productSupported',
         'sameAs',

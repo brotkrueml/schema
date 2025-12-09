@@ -31,6 +31,7 @@ final class Permit extends AbstractType
         'issuedThrough',
         'mainEntityOfPage',
         'name',
+        'owner',
         'permitAudience',
         'potentialAction',
         'sameAs',

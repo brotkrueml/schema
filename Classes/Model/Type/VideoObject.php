@@ -104,6 +104,7 @@ final class VideoObject extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'playerType',
         'position',
         'potentialAction',

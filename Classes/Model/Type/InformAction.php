@@ -40,6 +40,7 @@ final class InformAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'recipient',

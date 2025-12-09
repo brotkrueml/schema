@@ -35,6 +35,7 @@ final class FoodEstablishmentReservation extends AbstractType
         'mainEntityOfPage',
         'modifiedTime',
         'name',
+        'owner',
         'partySize',
         'potentialAction',
         'priceCurrency',

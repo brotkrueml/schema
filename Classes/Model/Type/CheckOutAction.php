@@ -44,6 +44,7 @@ final class CheckOutAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'recipient',

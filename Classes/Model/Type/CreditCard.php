@@ -58,6 +58,7 @@ final class CreditCard extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'providerMobility',
         'requiredCollateral',

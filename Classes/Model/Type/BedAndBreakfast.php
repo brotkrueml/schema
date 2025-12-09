@@ -99,6 +99,7 @@ final class BedAndBreakfast extends AbstractType
         'numberOfRooms',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

@@ -32,6 +32,7 @@ final class EmployeeRole extends AbstractType
         'mainEntityOfPage',
         'name',
         'numberedPosition',
+        'owner',
         'potentialAction',
         'roleName',
         'salaryCurrency',

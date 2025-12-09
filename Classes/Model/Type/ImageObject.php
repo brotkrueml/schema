@@ -100,6 +100,7 @@ final class ImageObject extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'playerType',
         'position',
         'potentialAction',

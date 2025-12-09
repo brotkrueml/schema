@@ -87,6 +87,7 @@ final class TextDigitalDocument extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

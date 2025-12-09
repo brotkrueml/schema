@@ -49,6 +49,7 @@ final class MusicEvent extends AbstractType
         'name',
         'offers',
         'organizer',
+        'owner',
         'performer',
         'potentialAction',
         'previousStartDate',

@@ -37,6 +37,7 @@ final class BedType extends AbstractType
         'mainEntityOfPage',
         'name',
         'nonEqual',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

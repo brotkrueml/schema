@@ -26,7 +26,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * http://purl.org/goodrelations/v1#PayPal
  * http://purl.org/goodrelations/v1#PaySwarm
  *
- * Structured values are recommended for newer payment methods.
+ * Structured values, or [UNCE payment means](https://vocabulary.uncefact.org/PaymentMeans) are recommended or for newer annotations.
  */
 #[Type('PaymentMethod')]
 final class PaymentMethod extends AbstractType
@@ -40,6 +40,7 @@ final class PaymentMethod extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

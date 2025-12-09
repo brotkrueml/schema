@@ -61,6 +61,7 @@ final class ParkingFacility extends AbstractType
         'name',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

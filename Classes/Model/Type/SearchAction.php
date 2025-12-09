@@ -40,6 +40,7 @@ final class SearchAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'query',

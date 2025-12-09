@@ -91,6 +91,7 @@ final class TVSeason extends AbstractType
         'name',
         'numberOfEpisodes',
         'offers',
+        'owner',
         'partOfSeries',
         'position',
         'potentialAction',

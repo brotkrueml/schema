@@ -63,6 +63,7 @@ final class Place extends AbstractType
         'maximumAttendeeCapacity',
         'name',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

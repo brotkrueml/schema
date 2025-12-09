@@ -90,6 +90,7 @@ final class SearchResultsPage extends AbstractType implements WebPageTypeInterfa
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'primaryImageOfPage',

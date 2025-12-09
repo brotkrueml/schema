@@ -71,6 +71,7 @@ final class Vehicle extends AbstractType
         'numberOfForwardGears',
         'numberOfPreviousOwners',
         'offers',
+        'owner',
         'potentialAction',
         'productID',
         'productionDate',

@@ -44,6 +44,7 @@ final class GovernmentService extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'providerMobility',
         'review',

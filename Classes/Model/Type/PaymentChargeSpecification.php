@@ -35,6 +35,7 @@ final class PaymentChargeSpecification extends AbstractType
         'maxPrice',
         'minPrice',
         'name',
+        'owner',
         'potentialAction',
         'price',
         'priceCurrency',

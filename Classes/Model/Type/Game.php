@@ -90,6 +90,7 @@ final class Game extends AbstractType
         'name',
         'numberOfPlayers',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

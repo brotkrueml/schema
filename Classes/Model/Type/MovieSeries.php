@@ -91,6 +91,7 @@ final class MovieSeries extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

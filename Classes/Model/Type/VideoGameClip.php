@@ -90,6 +90,7 @@ final class VideoGameClip extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'partOfEpisode',
         'partOfSeason',
         'partOfSeries',

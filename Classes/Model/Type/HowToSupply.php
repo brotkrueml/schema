@@ -32,6 +32,7 @@ final class HowToSupply extends AbstractType
         'mainEntityOfPage',
         'name',
         'nextItem',
+        'owner',
         'position',
         'potentialAction',
         'previousItem',

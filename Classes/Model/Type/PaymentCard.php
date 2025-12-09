@@ -47,6 +47,7 @@ final class PaymentCard extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'providerMobility',
         'review',

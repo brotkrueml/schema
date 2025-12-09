@@ -33,6 +33,7 @@ final class PriceSpecification extends AbstractType
         'maxPrice',
         'minPrice',
         'name',
+        'owner',
         'potentialAction',
         'price',
         'priceCurrency',

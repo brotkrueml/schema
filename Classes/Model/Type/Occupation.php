@@ -35,6 +35,7 @@ final class Occupation extends AbstractType
         'mainEntityOfPage',
         'name',
         'occupationLocation',
+        'owner',
         'potentialAction',
         'responsibilities',
         'sameAs',

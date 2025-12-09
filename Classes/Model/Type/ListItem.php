@@ -31,6 +31,7 @@ final class ListItem extends AbstractType
         'mainEntityOfPage',
         'name',
         'nextItem',
+        'owner',
         'position',
         'potentialAction',
         'previousItem',

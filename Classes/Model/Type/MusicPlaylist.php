@@ -87,6 +87,7 @@ final class MusicPlaylist extends AbstractType
         'name',
         'numTracks',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

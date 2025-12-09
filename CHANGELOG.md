@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Updated
+- schema.org definition to version 29.4
+
 ## [3.14.2] - 2025-09-10
 
 ### Fixed

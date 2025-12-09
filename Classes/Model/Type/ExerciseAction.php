@@ -43,6 +43,7 @@ final class ExerciseAction extends AbstractType
         'name',
         'object',
         'opponent',
+        'owner',
         'participant',
         'potentialAction',
         'result',

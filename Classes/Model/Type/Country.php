@@ -60,6 +60,7 @@ final class Country extends AbstractType
         'maximumAttendeeCapacity',
         'name',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

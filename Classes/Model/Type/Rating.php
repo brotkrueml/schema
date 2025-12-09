@@ -34,6 +34,7 @@ final class Rating extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'ratingValue',
         'reviewAspect',

@@ -60,6 +60,7 @@ final class OceanBodyOfWater extends AbstractType
         'maximumAttendeeCapacity',
         'name',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

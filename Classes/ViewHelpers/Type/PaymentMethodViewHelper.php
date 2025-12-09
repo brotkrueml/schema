@@ -25,7 +25,7 @@ use Brotkrueml\Schema\Core\ViewHelpers\AbstractTypeViewHelper;
  * http://purl.org/goodrelations/v1#PayPal
  * http://purl.org/goodrelations/v1#PaySwarm
  *
- * Structured values are recommended for newer payment methods.
+ * Structured values, or [UNCE payment means](https://vocabulary.uncefact.org/PaymentMeans) are recommended or for newer annotations.
  */
 final class PaymentMethodViewHelper extends AbstractTypeViewHelper
 {

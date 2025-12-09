@@ -37,6 +37,7 @@ final class ReplaceAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'replacee',

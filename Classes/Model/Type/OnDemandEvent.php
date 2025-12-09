@@ -49,6 +49,7 @@ final class OnDemandEvent extends AbstractType
         'name',
         'offers',
         'organizer',
+        'owner',
         'performer',
         'potentialAction',
         'previousStartDate',

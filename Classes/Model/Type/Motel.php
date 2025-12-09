@@ -99,6 +99,7 @@ final class Motel extends AbstractType
         'numberOfRooms',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

@@ -30,6 +30,7 @@ final class ServiceChannel extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'processingTime',
         'providesService',

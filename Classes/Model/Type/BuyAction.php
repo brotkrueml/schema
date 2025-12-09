@@ -37,6 +37,7 @@ final class BuyAction extends AbstractType
         'mainEntityOfPage',
         'name',
         'object',
+        'owner',
         'participant',
         'potentialAction',
         'price',

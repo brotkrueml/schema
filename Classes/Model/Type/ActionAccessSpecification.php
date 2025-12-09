@@ -34,6 +34,7 @@ final class ActionAccessSpecification extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'requiresSubscription',
         'sameAs',

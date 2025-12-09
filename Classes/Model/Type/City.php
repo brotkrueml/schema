@@ -60,6 +60,7 @@ final class City extends AbstractType
         'maximumAttendeeCapacity',
         'name',
         'openingHoursSpecification',
+        'owner',
         'photo',
         'potentialAction',
         'publicAccess',

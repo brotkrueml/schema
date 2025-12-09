@@ -32,6 +32,7 @@ final class MonetaryAmount extends AbstractType
         'maxValue',
         'minValue',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

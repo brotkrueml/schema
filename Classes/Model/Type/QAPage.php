@@ -93,6 +93,7 @@ final class QAPage extends AbstractType implements WebPageTypeInterface
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'primaryImageOfPage',

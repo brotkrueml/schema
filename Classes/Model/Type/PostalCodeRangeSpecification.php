@@ -29,6 +29,7 @@ final class PostalCodeRangeSpecification extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'postalCodeBegin',
         'postalCodeEnd',
         'potentialAction',

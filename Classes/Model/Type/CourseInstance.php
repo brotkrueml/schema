@@ -54,6 +54,7 @@ final class CourseInstance extends AbstractType
         'name',
         'offers',
         'organizer',
+        'owner',
         'performer',
         'potentialAction',
         'previousStartDate',

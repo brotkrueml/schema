@@ -90,6 +90,7 @@ final class MediaGallery extends AbstractType implements WebPageTypeInterface
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'primaryImageOfPage',

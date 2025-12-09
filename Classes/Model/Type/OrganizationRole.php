@@ -31,6 +31,7 @@ final class OrganizationRole extends AbstractType
         'mainEntityOfPage',
         'name',
         'numberedPosition',
+        'owner',
         'potentialAction',
         'roleName',
         'sameAs',

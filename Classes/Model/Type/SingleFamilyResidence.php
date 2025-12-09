@@ -64,6 +64,7 @@ final class SingleFamilyResidence extends AbstractType
         'numberOfRooms',
         'occupancy',
         'openingHoursSpecification',
+        'owner',
         'permittedUsage',
         'petsAllowed',
         'photo',

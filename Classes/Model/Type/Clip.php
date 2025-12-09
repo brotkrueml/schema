@@ -93,6 +93,7 @@ final class Clip extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'partOfEpisode',
         'partOfSeason',
         'partOfSeries',

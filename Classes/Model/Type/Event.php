@@ -52,6 +52,7 @@ final class Event extends AbstractType
         'name',
         'offers',
         'organizer',
+        'owner',
         'performer',
         'potentialAction',
         'previousStartDate',

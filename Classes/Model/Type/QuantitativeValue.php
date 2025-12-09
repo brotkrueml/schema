@@ -32,6 +32,7 @@ final class QuantitativeValue extends AbstractType
         'maxValue',
         'minValue',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

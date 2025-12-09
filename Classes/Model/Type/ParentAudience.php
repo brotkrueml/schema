@@ -33,6 +33,7 @@ final class ParentAudience extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'requiredGender',
         'requiredMaxAge',

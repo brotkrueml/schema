@@ -32,6 +32,7 @@ final class ShippingRateSettings extends AbstractType
         'isUnlabelledFallback',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'shippingDestination',

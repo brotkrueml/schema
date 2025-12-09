@@ -90,6 +90,7 @@ final class TVClip extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'partOfEpisode',
         'partOfSeason',
         'partOfSeries',

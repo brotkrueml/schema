@@ -95,6 +95,7 @@ final class MediaObject extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'playerType',
         'position',
         'potentialAction',

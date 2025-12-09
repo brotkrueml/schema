@@ -37,6 +37,7 @@ final class BreadcrumbList extends AbstractType
         'mainEntityOfPage',
         'name',
         'numberOfItems',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',
