@@ -66,6 +66,7 @@ final class Offer extends AbstractType
         'mpn',
         'name',
         'offeredBy',
+        'owner',
         'potentialAction',
         'price',
         'priceCurrency',

@@ -87,6 +87,7 @@ final class SpreadsheetDigitalDocument extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

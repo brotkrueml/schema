@@ -87,6 +87,7 @@ final class NoteDigitalDocument extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

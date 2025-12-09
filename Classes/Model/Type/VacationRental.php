@@ -100,6 +100,7 @@ final class VacationRental extends AbstractType
         'numberOfRooms',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

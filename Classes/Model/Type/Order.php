@@ -43,6 +43,7 @@ final class Order extends AbstractType
         'orderNumber',
         'orderStatus',
         'orderedItem',
+        'owner',
         'partOfInvoice',
         'paymentDueDate',
         'paymentMethod',

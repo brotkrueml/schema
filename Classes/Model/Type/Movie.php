@@ -94,6 +94,7 @@ final class Movie extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

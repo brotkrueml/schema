@@ -30,6 +30,7 @@ final class DigitalDocumentPermission extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'permissionType',
         'potentialAction',
         'sameAs',

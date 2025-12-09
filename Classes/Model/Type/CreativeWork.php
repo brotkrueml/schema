@@ -89,6 +89,7 @@ final class CreativeWork extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

@@ -33,6 +33,7 @@ final class PropertyValueSpecification extends AbstractType
         'minValue',
         'multipleValues',
         'name',
+        'owner',
         'potentialAction',
         'readonlyValue',
         'sameAs',

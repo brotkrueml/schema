@@ -53,6 +53,7 @@ final class Demand extends AbstractType
         'mainEntityOfPage',
         'mpn',
         'name',
+        'owner',
         'potentialAction',
         'priceSpecification',
         'sameAs',

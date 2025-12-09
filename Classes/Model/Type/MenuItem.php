@@ -32,6 +32,7 @@ final class MenuItem extends AbstractType
         'name',
         'nutrition',
         'offers',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

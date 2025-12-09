@@ -49,6 +49,7 @@ final class BusinessEvent extends AbstractType
         'name',
         'offers',
         'organizer',
+        'owner',
         'performer',
         'potentialAction',
         'previousStartDate',

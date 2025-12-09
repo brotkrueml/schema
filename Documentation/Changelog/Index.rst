@@ -15,7 +15,13 @@ Added
 ^^^^^
 
 
-* Event ``IsMarkupToBeInjectedEvent`` to exclude markup on a page (#142)
+* PSR-14 event ``IsMarkupToBeInjectedEvent`` to exclude markup on a page (#142)
+
+Updated
+^^^^^^^
+
+
+* schema.org definition to version 29.4
 
 `4.1.1 <https://github.com/brotkrueml/schema/compare/v4.1.0...v4.1.1>`_ - 2025-12-02
 ----------------------------------------------------------------------------------------

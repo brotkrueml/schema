@@ -95,6 +95,7 @@ final class RadioSeries extends AbstractType
         'numberOfEpisodes',
         'numberOfSeasons',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

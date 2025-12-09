@@ -66,6 +66,7 @@ final class MeetingRoom extends AbstractType
         'numberOfRooms',
         'occupancy',
         'openingHoursSpecification',
+        'owner',
         'permittedUsage',
         'petsAllowed',
         'photo',

@@ -32,6 +32,7 @@ final class ProgramMembership extends AbstractType
         'member',
         'membershipNumber',
         'name',
+        'owner',
         'potentialAction',
         'program',
         'programName',

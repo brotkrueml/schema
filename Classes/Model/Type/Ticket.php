@@ -31,6 +31,7 @@ final class Ticket extends AbstractType
         'issuedBy',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'priceCurrency',
         'sameAs',

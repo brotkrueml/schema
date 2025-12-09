@@ -32,6 +32,7 @@ final class BusinessAudience extends AbstractType
         'mainEntityOfPage',
         'name',
         'numberOfEmployees',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

@@ -91,6 +91,7 @@ final class HowToTip extends AbstractType
         'name',
         'nextItem',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'previousItem',

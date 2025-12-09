@@ -91,6 +91,7 @@ final class APIReference extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

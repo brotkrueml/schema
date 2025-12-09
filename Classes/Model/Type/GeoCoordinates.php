@@ -34,6 +34,7 @@ final class GeoCoordinates extends AbstractType
         'longitude',
         'mainEntityOfPage',
         'name',
+        'owner',
         'postalCode',
         'potentialAction',
         'sameAs',

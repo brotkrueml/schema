@@ -39,6 +39,7 @@ final class OpeningHoursSpecification extends AbstractType
         'mainEntityOfPage',
         'name',
         'opens',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

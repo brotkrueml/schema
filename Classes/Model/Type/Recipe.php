@@ -94,6 +94,7 @@ final class Recipe extends AbstractType
         'name',
         'nutrition',
         'offers',
+        'owner',
         'performTime',
         'position',
         'potentialAction',

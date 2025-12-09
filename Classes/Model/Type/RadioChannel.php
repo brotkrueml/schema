@@ -34,6 +34,7 @@ final class RadioChannel extends AbstractType
         'inBroadcastLineup',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'providesBroadcastService',
         'sameAs',

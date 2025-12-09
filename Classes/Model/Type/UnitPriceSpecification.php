@@ -39,6 +39,7 @@ final class UnitPriceSpecification extends AbstractType
         'maxPrice',
         'minPrice',
         'name',
+        'owner',
         'potentialAction',
         'price',
         'priceCurrency',

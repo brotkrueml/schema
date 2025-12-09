@@ -91,6 +91,7 @@ final class ClaimReview extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

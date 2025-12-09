@@ -66,6 +66,7 @@ final class Suite extends AbstractType
         'numberOfRooms',
         'occupancy',
         'openingHoursSpecification',
+        'owner',
         'permittedUsage',
         'petsAllowed',
         'photo',

@@ -10,6 +10,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 - PSR-14 event `IsMarkupToBeInjectedEvent` to exclude markup on a page (#142)
 
+### Updated
+- schema.org definition to version 29.4
+
 ## [4.1.1] - 2025-12-02
 
 ### Fixed

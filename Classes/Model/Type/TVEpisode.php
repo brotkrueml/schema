@@ -91,6 +91,7 @@ final class TVEpisode extends AbstractType
         'musicBy',
         'name',
         'offers',
+        'owner',
         'partOfSeason',
         'partOfSeries',
         'position',

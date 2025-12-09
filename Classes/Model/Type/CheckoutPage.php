@@ -90,6 +90,7 @@ final class CheckoutPage extends AbstractType implements WebPageTypeInterface
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'primaryImageOfPage',

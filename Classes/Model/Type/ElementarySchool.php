@@ -91,6 +91,7 @@ final class ElementarySchool extends AbstractType
         'numberOfEmployees',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'photo',

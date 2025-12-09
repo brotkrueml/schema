@@ -36,6 +36,7 @@ final class InteractionCounter extends AbstractType
         'location',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'startTime',

@@ -34,6 +34,7 @@ final class BusReservation extends AbstractType
         'mainEntityOfPage',
         'modifiedTime',
         'name',
+        'owner',
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',

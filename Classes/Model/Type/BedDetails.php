@@ -30,6 +30,7 @@ final class BedDetails extends AbstractType
         'mainEntityOfPage',
         'name',
         'numberOfBeds',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

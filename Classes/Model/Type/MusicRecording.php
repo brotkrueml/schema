@@ -91,6 +91,7 @@ final class MusicRecording extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

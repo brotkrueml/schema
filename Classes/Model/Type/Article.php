@@ -93,6 +93,7 @@ final class Article extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

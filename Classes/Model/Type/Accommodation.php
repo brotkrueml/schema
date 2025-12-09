@@ -67,6 +67,7 @@ final class Accommodation extends AbstractType
         'numberOfRooms',
         'occupancy',
         'openingHoursSpecification',
+        'owner',
         'permittedUsage',
         'petsAllowed',
         'photo',

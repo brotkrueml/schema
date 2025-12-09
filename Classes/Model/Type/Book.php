@@ -94,6 +94,7 @@ final class Book extends AbstractType
         'name',
         'numberOfPages',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

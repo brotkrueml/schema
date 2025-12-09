@@ -103,6 +103,7 @@ final class Campground extends AbstractType
         'numberOfRooms',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

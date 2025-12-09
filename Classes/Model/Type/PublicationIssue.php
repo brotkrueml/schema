@@ -89,6 +89,7 @@ final class PublicationIssue extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

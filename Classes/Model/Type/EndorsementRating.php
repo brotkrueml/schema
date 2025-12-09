@@ -36,6 +36,7 @@ final class EndorsementRating extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'ratingValue',
         'reviewAspect',

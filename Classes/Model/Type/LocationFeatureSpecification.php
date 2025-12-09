@@ -32,6 +32,7 @@ final class LocationFeatureSpecification extends AbstractType
         'maxValue',
         'minValue',
         'name',
+        'owner',
         'potentialAction',
         'propertyID',
         'sameAs',

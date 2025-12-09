@@ -95,6 +95,7 @@ final class MusicVideoObject extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'playerType',
         'position',
         'potentialAction',

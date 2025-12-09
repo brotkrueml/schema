@@ -99,6 +99,7 @@ final class Resort extends AbstractType
         'numberOfRooms',
         'openingHours',
         'openingHoursSpecification',
+        'owner',
         'owns',
         'parentOrganization',
         'paymentAccepted',

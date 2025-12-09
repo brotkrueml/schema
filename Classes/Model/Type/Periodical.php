@@ -90,6 +90,7 @@ final class Periodical extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

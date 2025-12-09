@@ -64,6 +64,7 @@ final class Product extends AbstractType
         'mpn',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'productID',
         'productionDate',

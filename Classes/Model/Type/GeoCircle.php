@@ -39,6 +39,7 @@ final class GeoCircle extends AbstractType
         'line',
         'mainEntityOfPage',
         'name',
+        'owner',
         'polygon',
         'postalCode',
         'potentialAction',

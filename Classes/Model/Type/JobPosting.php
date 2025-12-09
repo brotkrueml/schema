@@ -42,6 +42,7 @@ final class JobPosting extends AbstractType
         'jobLocation',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'relevantOccupation',
         'responsibilities',

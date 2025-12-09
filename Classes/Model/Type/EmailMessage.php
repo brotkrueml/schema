@@ -92,6 +92,7 @@ final class EmailMessage extends AbstractType
         'messageAttachment',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

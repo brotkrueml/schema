@@ -87,6 +87,7 @@ final class WPSideBar extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

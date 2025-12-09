@@ -87,6 +87,7 @@ final class DigitalDocument extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

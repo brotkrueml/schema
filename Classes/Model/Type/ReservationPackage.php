@@ -32,6 +32,7 @@ final class ReservationPackage extends AbstractType
         'mainEntityOfPage',
         'modifiedTime',
         'name',
+        'owner',
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',

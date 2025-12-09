@@ -88,6 +88,7 @@ final class ScholarlyArticle extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

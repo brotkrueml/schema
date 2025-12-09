@@ -44,6 +44,7 @@ final class Flight extends AbstractType
         'mealService',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'sameAs',
         'seller',

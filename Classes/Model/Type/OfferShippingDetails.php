@@ -47,6 +47,7 @@ final class OfferShippingDetails extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'shippingDestination',

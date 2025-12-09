@@ -51,6 +51,7 @@ final class BroadcastService extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'parentService',
         'potentialAction',
         'providerMobility',

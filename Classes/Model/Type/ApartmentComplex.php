@@ -60,6 +60,7 @@ final class ApartmentComplex extends AbstractType
         'maximumAttendeeCapacity',
         'name',
         'openingHoursSpecification',
+        'owner',
         'petsAllowed',
         'photo',
         'potentialAction',

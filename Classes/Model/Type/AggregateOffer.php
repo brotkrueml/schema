@@ -68,6 +68,7 @@ final class AggregateOffer extends AbstractType
         'offerCount',
         'offeredBy',
         'offers',
+        'owner',
         'potentialAction',
         'price',
         'priceCurrency',

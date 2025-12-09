@@ -31,6 +31,7 @@ final class Brand extends AbstractType
         'logo',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'review',
         'sameAs',

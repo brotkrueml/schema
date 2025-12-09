@@ -90,6 +90,7 @@ final class Comment extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'parentItem',
         'position',
         'potentialAction',

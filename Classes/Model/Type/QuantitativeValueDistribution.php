@@ -31,6 +31,7 @@ final class QuantitativeValueDistribution extends AbstractType
         'mainEntityOfPage',
         'median',
         'name',
+        'owner',
         'percentile10',
         'percentile25',
         'percentile75',

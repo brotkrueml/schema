@@ -36,6 +36,7 @@ final class BusTrip extends AbstractType
         'mainEntityOfPage',
         'name',
         'offers',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',

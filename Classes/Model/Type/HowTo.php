@@ -87,6 +87,7 @@ final class HowTo extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'performTime',
         'position',
         'potentialAction',

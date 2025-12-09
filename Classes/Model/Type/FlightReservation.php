@@ -35,6 +35,7 @@ final class FlightReservation extends AbstractType
         'mainEntityOfPage',
         'modifiedTime',
         'name',
+        'owner',
         'passengerPriorityStatus',
         'passengerSequenceNumber',
         'potentialAction',

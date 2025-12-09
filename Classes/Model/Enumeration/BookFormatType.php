@@ -30,17 +30,24 @@ enum BookFormatType implements EnumerationInterface
     case EBook;
 
     /**
+     * This type is deprecated: GraphicNovel does not fit the BookFormatType enumeration, as it can appear in multiple formats (e.g., Hardcover, eBook). It is not mutually exclusive and therefore deprecated. Use standard BookFormatType values instead in combination with the SequentialArt.
+     *
      * Book format: GraphicNovel. May represent a bound collection of ComicIssue instances.
      */
     case GraphicNovel;
 
     /**
-     * Book format: Hardcover.
+     * A durable, archival-quality book featuring a rigid protective shell made of heavy board wrapped in cloth or paper, designed to withstand heavy use and preservation on a shelf.
      */
     case Hardcover;
 
     /**
-     * Book format: Paperback.
+     * A small, unbound or stapled booklet consisting of few pages with a flexible paper cover, designed for the economical distribution of focused information on a single subject.
+     */
+    case Pamphlet;
+
+    /**
+     * A flexible, lightweight book bound with a thick paper or cardstock cover and glued spine, prioritizing portability and affordability over long-term durability.
      */
     case Paperback;
 

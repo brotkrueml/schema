@@ -91,6 +91,7 @@ final class DiscussionForumPosting extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'pageEnd',
         'pageStart',
         'pagination',

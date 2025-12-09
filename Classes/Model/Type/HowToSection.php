@@ -94,6 +94,7 @@ final class HowToSection extends AbstractType
         'nextItem',
         'numberOfItems',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'previousItem',

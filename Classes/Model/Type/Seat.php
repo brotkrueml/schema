@@ -29,6 +29,7 @@ final class Seat extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'sameAs',
         'seatNumber',

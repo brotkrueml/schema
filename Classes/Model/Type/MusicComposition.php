@@ -95,6 +95,7 @@ final class MusicComposition extends AbstractType
         'musicalKey',
         'name',
         'offers',
+        'owner',
         'position',
         'potentialAction',
         'producer',

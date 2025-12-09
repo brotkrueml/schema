@@ -35,6 +35,7 @@ final class MonetaryAmountDistribution extends AbstractType
         'mainEntityOfPage',
         'median',
         'name',
+        'owner',
         'percentile10',
         'percentile25',
         'percentile75',

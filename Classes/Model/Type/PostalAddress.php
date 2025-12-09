@@ -44,6 +44,7 @@ final class PostalAddress extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'postOfficeBoxNumber',
         'postalCode',
         'potentialAction',

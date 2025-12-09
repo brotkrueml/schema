@@ -92,6 +92,7 @@ final class Answer extends AbstractType
         'mentions',
         'name',
         'offers',
+        'owner',
         'parentItem',
         'position',
         'potentialAction',

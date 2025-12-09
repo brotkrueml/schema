@@ -31,6 +31,7 @@ final class PerformanceRole extends AbstractType
         'image',
         'mainEntityOfPage',
         'name',
+        'owner',
         'potentialAction',
         'roleName',
         'sameAs',

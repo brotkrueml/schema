@@ -32,6 +32,7 @@ final class OwnershipInfo extends AbstractType
         'name',
         'ownedFrom',
         'ownedThrough',
+        'owner',
         'potentialAction',
         'sameAs',
         'subjectOf',
