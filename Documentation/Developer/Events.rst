@@ -70,6 +70,8 @@ types as you like.
 Prevent embedding of markup
 ===========================
 
+.. versionadded:: 4.2.0
+
 Sometimes it is required to disable the embedding of markup on certain pages.
 If you have the need for that, the event
 :php:`\Brotkrueml\Schema\Event\IsMarkupToBeInjectedEvent` is your friend.
