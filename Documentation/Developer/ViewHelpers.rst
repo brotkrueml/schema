@@ -453,39 +453,4 @@ This view helper is described in-depth in the chapter
 :ref:`breadcrumb-view-helper`.
 
 
-Using the XML schema (XSD) in your code editor
-==============================================
-
-It is possible to assist your code editor on suggesting the tag name and the
-possible attributes:
-
-.. figure:: /Images/Developer/XsdSchemaSuggestion.png
-   :alt: Auto completion in PhpStorm with configured XSD schema
-   :class: with-border
-
-   Auto completion in PhpStorm with configured XSD schema
-
-Just add the :html:`schema` namespace to the root element of your Fluid
-template:
-
-.. code-block:: html
-   :emphasize-lines: 3-4
-
-   <html
-       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-       xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"
-       schema:schemaLocation="https://brot.krue.ml/schemas/schema-1.9.0.xsd"
-       data-namespace-typo3-fluid="true"
-   >
-
-The relevant parts are the namespace declaration
-(:html:`xmlns:schema="http://typo3.org/ns/Brotkrueml/Schema/ViewHelpers"`)
-and the :html:`schema:schemaLocation` attribute which points to the recent XSD
-definition.
-
-You can also import the XSD file into your favorite IDE after downloading it
-from the following URL:
-`https://brot.krue.ml/schemas/schema-1.9.0.xsd <https://brot.krue.ml/schemas/schema-1.9.0.xsd>`_.
-
-
 .. _person: https://schema.org/Person
