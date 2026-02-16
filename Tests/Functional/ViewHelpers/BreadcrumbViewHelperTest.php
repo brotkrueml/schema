@@ -48,8 +48,9 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
         $requestStub = self::createStub(ServerRequestInterface::class);
         $requestStub
             ->method('getAttribute')
-            ->with('site')
-            ->willReturn($site);
+            ->willReturnMap([
+                ['site', $site],
+            ]);
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();

@@ -75,8 +75,9 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $markupProviderStub = self::createStub(MarkupProvider::class);
         $markupProviderStub
             ->method('getMarkup')
-            ->with($request)
-            ->willReturn('');
+            ->willReturnMap([
+                [$request, ''],
+            ]);
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
@@ -92,8 +93,9 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $markupProviderStub = self::createStub(MarkupProvider::class);
         $markupProviderStub
             ->method('getMarkup')
-            ->with($request)
-            ->willReturn('{"some": "markup"}');
+            ->willReturnMap([
+                [$request, '{"some": "markup"}'],
+            ]);
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
@@ -121,8 +123,9 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $markupProviderStub = self::createStub(MarkupProvider::class);
         $markupProviderStub
             ->method('getMarkup')
-            ->with($request)
-            ->willReturn('{"some": "markup"}');
+            ->willReturnMap([
+                [$request, '{"some": "markup"}'],
+            ]);
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
@@ -155,8 +158,9 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $markupProviderStub = self::createStub(MarkupProvider::class);
         $markupProviderStub
             ->method('getMarkup')
-            ->with($request)
-            ->willReturn('{"some": "markup"}');
+            ->willReturnMap([
+                [$request, '{"some": "markup"}'],
+            ]);
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);

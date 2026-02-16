@@ -44,8 +44,9 @@ final class AddWebPageTypeTest extends TestCase
         $this->requestStub = self::createStub(ServerRequestInterface::class);
         $this->requestStub
             ->method('getAttribute')
-            ->with('frontend.page.information')
-            ->willReturn($this->pageInformation);
+            ->willReturnMap([
+                ['frontend.page.information', $this->pageInformation],
+            ]);
 
         $this->event = new RenderAdditionalTypesEvent(false, false, $this->requestStub);
 
@@ -65,8 +66,9 @@ final class AddWebPageTypeTest extends TestCase
 
         $this->extensionConfigurationStub
             ->method('get')
-            ->with(Extension::KEY, 'automaticWebPageSchemaGeneration')
-            ->willReturn(false);
+            ->willReturnMap([
+                [Extension::KEY, 'automaticWebPageSchemaGeneration', false],
+            ]);
 
         $subject->__invoke($this->event);
 

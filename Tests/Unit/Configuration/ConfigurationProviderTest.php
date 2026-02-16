@@ -32,8 +32,9 @@ final class ConfigurationProviderTest extends TestCase
         $extensionConfigurationStub = self::createStub(ExtensionConfiguration::class);
         $extensionConfigurationStub
             ->method('get')
-            ->with('schema')
-            ->willReturn($extensionConfiguration);
+            ->willReturnMap([
+                ['schema', $extensionConfiguration],
+            ]);
 
         $subject = new ConfigurationProvider($extensionConfigurationStub);
 

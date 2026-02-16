@@ -55,8 +55,9 @@ final class MarkupProviderTest extends TestCase
         $requestStub = self::createStub(ServerRequestInterface::class);
         $requestStub
             ->method('getAttribute')
-            ->with('frontend.page.information')
-            ->willReturn($pageInformation);
+            ->willReturnMap([
+                ['frontend.page.information', $pageInformation],
+            ]);
 
         $actual = $subject->getMarkup($requestStub);
 
@@ -79,8 +80,9 @@ final class MarkupProviderTest extends TestCase
         $requestStub = self::createStub(ServerRequestInterface::class);
         $requestStub
             ->method('getAttribute')
-            ->with('frontend.page.information')
-            ->willReturn($pageInformation);
+            ->willReturnMap([
+                ['frontend.page.information', $pageInformation],
+            ]);
 
         $actual = $subject->getMarkup($requestStub);
 
@@ -102,8 +104,9 @@ final class MarkupProviderTest extends TestCase
         $requestStub = self::createStub(ServerRequestInterface::class);
         $requestStub
             ->method('getAttribute')
-            ->with('frontend.page.information')
-            ->willReturn($pageInformation);
+            ->willReturnMap([
+                ['frontend.page.information', $pageInformation],
+            ]);
 
         $actual = $subject->getMarkup($requestStub);
 

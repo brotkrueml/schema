@@ -40,8 +40,9 @@ final class ExtensionAvailabilityTest extends TestCase
     {
         $this->packageManagerStub
             ->method('isPackageActive')
-            ->with('seo')
-            ->willReturn(true);
+            ->willReturnMap([
+                ['seo', true],
+            ]);
 
         self::assertTrue($this->subject->isSeoAvailable());
     }
@@ -51,8 +52,9 @@ final class ExtensionAvailabilityTest extends TestCase
     {
         $this->packageManagerStub
             ->method('isPackageActive')
-            ->with('seo')
-            ->willReturn(false);
+            ->willReturnMap([
+                ['seo', false],
+            ]);
 
         self::assertFalse($this->subject->isSeoAvailable());
     }
