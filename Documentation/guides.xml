@@ -12,6 +12,7 @@
         project-discussions="https://typo3.slack.com/app_redirect?channel=CV36M73D5"
         edit-on-github-branch="main"
         edit-on-github="brotkrueml/schema"
+        interlink-shortcode="brotkrueml/schema"
         typo3-core-preferred="stable"
     />
     <project
