@@ -42,7 +42,7 @@ final class PropertyViewHelper extends AbstractViewHelper
         parent::initializeArguments();
 
         $this->registerArgument(self::ARGUMENT_AS, 'string', 'Property name to merge under the parent node', true);
-        $this->registerArgument(self::ARGUMENT_VALUE, 'string', 'The value of the property', true);
+        $this->registerArgument(self::ARGUMENT_VALUE, 'mixed', 'The value of the property', true);
     }
 
     public function render(): string

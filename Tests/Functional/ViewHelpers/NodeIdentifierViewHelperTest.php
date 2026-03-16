@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
+use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\ViewHelpers\NodeIdentifierViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -50,5 +51,25 @@ final class NodeIdentifierViewHelperTest extends FunctionalTestCase
         ');
 
         self::assertSame('https://example.org/#john-smith https://example.org/#sarah-jane-smith', \trim((string) (new TemplateView($context))->render()));
+    }
+
+    #[Test]
+    public function useInTypeViewHelper(): void
+    {
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource('
+<schema:type.hotel -id="https://example.com/#some-hotel">
+    <schema:property -as="containsPlace" value="{schema:nodeIdentifier(id: \'https://example.org/#some-place\')}"/>
+</schema:type.hotel>
+        ');
+
+        (new TemplateView($context))->render();
+
+        $actual = $this->get(SchemaManager::class)->renderJsonLd();
+
+        self::assertSame(
+            '{"@context":"https://schema.org/","@type":"Hotel","@id":"https://example.com/#some-hotel","containsPlace":{"@id":"https://example.org/#some-place"}}',
+            $actual,
+        );
     }
 }

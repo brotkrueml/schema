@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Node identifiers are not rendered correctly in PropertyViewHelper with TYPO3 v14 (#153)
+
 ## [4.2.0] - 2025-12-09
 
 ### Added

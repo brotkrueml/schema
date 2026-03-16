@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Tests\Functional\ViewHelpers;
 
+use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\ViewHelpers\BlankNodeIdentifierViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
@@ -63,5 +64,25 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
         ');
 
         self::assertSame('_:b0 _:b1', \trim((string) (new TemplateView($context))->render()));
+    }
+
+    #[Test]
+    public function useInTypeViewHelper(): void
+    {
+        $context = $this->get(RenderingContextFactory::class)->create();
+        $context->getTemplatePaths()->setTemplateSource('
+<schema:type.hotel -id="https://example.com/#some-hotel">
+    <schema:property -as="containsPlace" value="{schema:blankNodeIdentifier()}"/>
+</schema:type.hotel>
+        ');
+
+        (new TemplateView($context))->render();
+
+        $actual = $this->get(SchemaManager::class)->renderJsonLd();
+
+        self::assertSame(
+            '{"@context":"https://schema.org/","@type":"Hotel","@id":"https://example.com/#some-hotel","containsPlace":{"@id":"_:b0"}}',
+            $actual,
+        );
     }
 }
