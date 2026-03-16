@@ -128,6 +128,7 @@ jobs:
         run: .Build/bin/phpunit --configuration Tests/phpunit.xml.dist --log-junit junit.xml
       - name: Upload test results to Codecov
         if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/codecov-action@v5
         with:
+          report_type: test_results
           token: ${{ secrets.CODECOV_TOKEN }}
