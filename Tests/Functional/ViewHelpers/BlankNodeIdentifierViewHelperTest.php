@@ -24,6 +24,8 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[RunTestsInSeparateProcesses]
 final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */

@@ -26,6 +26,8 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(PropertyViewHelper::class)]
 final class PropertyViewHelperTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */

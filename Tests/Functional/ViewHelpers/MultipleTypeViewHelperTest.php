@@ -25,6 +25,8 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(MultipleTypeViewHelper::class)]
 final class MultipleTypeViewHelperTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */

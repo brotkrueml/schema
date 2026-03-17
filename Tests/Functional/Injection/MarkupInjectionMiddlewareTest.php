@@ -28,6 +28,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(MarkupInjectionMiddleware::class)]
 final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */

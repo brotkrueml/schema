@@ -28,6 +28,8 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(BreadcrumbViewHelper::class)]
 final class BreadcrumbViewHelperTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */

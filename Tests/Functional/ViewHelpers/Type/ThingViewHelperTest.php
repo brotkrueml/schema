@@ -25,6 +25,8 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(AbstractTypeViewHelper::class)]
 final class ThingViewHelperTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */

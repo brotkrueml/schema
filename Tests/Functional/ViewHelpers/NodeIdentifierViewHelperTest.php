@@ -22,6 +22,8 @@ use TYPO3Fluid\Fluid\View\TemplateView;
 #[CoversClass(NodeIdentifierViewHelper::class)]
 final class NodeIdentifierViewHelperTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     /**
      * @var list<string>
      */
