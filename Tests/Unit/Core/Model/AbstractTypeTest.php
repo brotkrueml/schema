@@ -71,8 +71,9 @@ final class AbstractTypeTest extends TestCase
                 ];
             }
         };
-        $additionalPropertiesProvider = new AdditionalPropertiesProvider();
-        $additionalPropertiesProvider->add($additionalProperties::class);
+        $additionalPropertiesProvider = new AdditionalPropertiesProvider([
+            'Thing' => [$additionalProperties::class],
+        ]);
 
         $subject = new Thing($additionalPropertiesProvider);
 
@@ -101,8 +102,9 @@ final class AbstractTypeTest extends TestCase
                 ];
             }
         };
-        $additionalPropertiesProvider = new AdditionalPropertiesProvider();
-        $additionalPropertiesProvider->add($additionalProperties::class);
+        $additionalPropertiesProvider = new AdditionalPropertiesProvider([
+            'Thing' => [$additionalProperties::class],
+        ]);
 
         $subject = new Thing($additionalPropertiesProvider);
 

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\DependencyInjection;
 
+use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 use Brotkrueml\Schema\Type\AdditionalPropertiesProvider;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -31,8 +32,14 @@ final readonly class AdditionalPropertiesPass implements CompilerPassInterface
         }
 
         $providerDefinition = $container->getDefinition(AdditionalPropertiesProvider::class)->setPublic(true);
+
+        $additionalPropertiesByType = [];
         foreach (\array_keys($container->findTaggedServiceIds($this->tagName)) as $id) {
-            $providerDefinition->addMethodCall('add', [$id]);
+            /** @var AdditionalPropertiesInterface $instance */
+            $instance = new $id();
+            $additionalPropertiesByType[$instance->getType()][] = $id;
         }
+
+        $providerDefinition->setArgument('$additionalPropertiesByType', $additionalPropertiesByType);
     }
 }
