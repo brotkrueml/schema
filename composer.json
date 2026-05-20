@@ -82,7 +82,11 @@
 			"dev-main": "4.2.x-dev"
 		},
 		"typo3/cms": {
+			"Package": {
+				"providesPackages": {}
+			},
 			"extension-key": "schema",
+			"version": "4.2.1",
 			"web-dir": ".Build/web"
 		}
 	}

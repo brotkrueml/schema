@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v4.2.1...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Avoid deprecation about ext_emconf.php in classic mode with TYPO3 v14
+
 `4.2.1 <https://github.com/brotkrueml/schema/compare/v4.2.0...v4.2.1>`_ - 2026-03-17
 ----------------------------------------------------------------------------------------
 
