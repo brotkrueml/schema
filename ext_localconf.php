@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Brotkrueml\Schema\Extension;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use Brotkrueml\Schema\AdminPanel\SchemaModule;
