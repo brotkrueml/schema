@@ -86,7 +86,7 @@
 				"providesPackages": {}
 			},
 			"extension-key": "schema",
-			"version": "4.2.2-dev",
+			"version": "4.2.2",
 			"web-dir": ".Build/web"
 		}
 	}

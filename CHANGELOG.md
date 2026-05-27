@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.2.2] - 2026-05-27
+
 ### Fixed
 - Deprecation about ext_emconf.php in classic mode with TYPO3 v14
 - AdditionalPropertiesProvider instantiates all tagged classes on every service construction (#156, #157) - thanks to @wazum
@@ -656,7 +658,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.2.1...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.2.2...HEAD
+[4.2.2]: https://github.com/brotkrueml/schema/compare/v4.2.1...v4.2.2
 [4.2.1]: https://github.com/brotkrueml/schema/compare/v4.2.0...v4.2.1
 [4.2.0]: https://github.com/brotkrueml/schema/compare/v4.1.1...v4.2.0
 [4.1.1]: https://github.com/brotkrueml/schema/compare/v4.1.0...v4.1.1
