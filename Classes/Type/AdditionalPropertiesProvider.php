@@ -16,36 +16,26 @@ use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 /**
  * @internal
  */
-final class AdditionalPropertiesProvider
+final readonly class AdditionalPropertiesProvider
 {
     /**
-     * @var array<non-empty-string, list<class-string<AdditionalPropertiesInterface>>>
+     * @param array<non-empty-string, list<class-string<AdditionalPropertiesInterface>>> $additionalPropertiesByType
      */
-    private array $additionalProperties = [];
-
-    /**
-     * @param class-string<AdditionalPropertiesInterface> $className
-     */
-    public function add(string $className): void
-    {
-        $type = (new $className())->getType();
-        if (! isset($this->additionalProperties[$type])) {
-            $this->additionalProperties[$type] = [];
-        }
-        $this->additionalProperties[$type][] = $className;
-    }
+    public function __construct(
+        private array $additionalPropertiesByType = [],
+    ) {}
 
     /**
      * @return list<non-empty-string>
      */
     public function getForType(string $type): array
     {
-        if (! isset($this->additionalProperties[$type])) {
+        if (! isset($this->additionalPropertiesByType[$type])) {
             return [];
         }
 
         $additionalPropertiesForType = [];
-        foreach ($this->additionalProperties[$type] as $className) {
+        foreach ($this->additionalPropertiesByType[$type] as $className) {
             $additionalPropertiesForType = [
                 ...$additionalPropertiesForType,
                 ...(new $className())->getAdditionalProperties(),

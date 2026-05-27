@@ -22,29 +22,33 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AdditionalPropertiesProvider::class)]
 final class AdditionalPropertiesProviderTest extends TestCase
 {
-    private AdditionalPropertiesProvider $subject;
-
-    protected function setUp(): void
+    #[Test]
+    public function getForTypeReturnsEmptyArrayWhenNoTypesAreRegistered(): void
     {
-        $this->subject = new AdditionalPropertiesProvider();
+        $subject = new AdditionalPropertiesProvider();
+
+        self::assertSame([], $subject->getForType('NonExisting'));
     }
 
     #[Test]
-    public function getForTypeReturnsEmptyArrayIfTypeIsNotAvailable(): void
+    public function getForTypeReturnsEmptyArrayWhenTypeIsNotRegistered(): void
     {
-        $actual = $this->subject->getForType('NonExisting');
+        $subject = new AdditionalPropertiesProvider([
+            'Person' => [Person1::class],
+        ]);
 
-        self::assertSame([], $actual);
+        self::assertSame([], $subject->getForType('NonExisting'));
     }
 
     #[Test]
-    public function getForTypeReturnsPreviouslyAddedClassesCorrectly(): void
+    public function getForTypeReturnsRegisteredPropertiesCorrectly(): void
     {
-        $this->subject->add(Person1::class);
-        $this->subject->add(Person2::class);
-        $this->subject->add(Event::class);
+        $subject = new AdditionalPropertiesProvider([
+            'Person' => [Person1::class, Person2::class],
+            'Event' => [Event::class],
+        ]);
 
-        $actual = $this->subject->getForType('Person');
+        $actual = $subject->getForType('Person');
 
         self::assertCount(3, $actual);
         self::assertSame('additional-person-property-1', $actual[0]);
