@@ -56,6 +56,20 @@ Default value
    the :ref:`API <breadcrumb-api>` or the
    :ref:`view helpers <breadcrumb-viewhelpers>`).
 
+.. hint::
+   When using `Yoast SEO for TYPO3 <https://extensions.typo3.org/extension/yoast_seo>`__,
+   this extension also adds a breadcrumb by default to the website. To avoid
+   duplicate JSON-LD markup, you can disable the breadcrumb markup generated
+   by Yoast SEO for TYPO3 extension with this TypoScript snippet:
+
+   .. code-block:: typoscript
+
+      config.structuredData.providers.breadcrumb >
+
+   See also the :ref:`Structured data chapter <ext_yoast_seo:structureddata>` in
+   the Yoast SEO for TYPO3 manual.
+
+
 
 Automatic embedding of the breadcrumb markup into the page - Exclude additional doktypes
 ----------------------------------------------------------------------------------------

@@ -21,4 +21,8 @@
         version="4.2"
         copyright="since 2019 by Chris Müller"
     />
+    <inventory
+        id="ext_yoast_seo"
+        url="https://docs.typo3.org/p/yoast-seo-for-typo3/yoast_seo/main/en-us/"
+    />
 </guides>
