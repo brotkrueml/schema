@@ -15,7 +15,8 @@ Fixed
 ^^^^^
 
 
-* Avoid deprecation about ext_emconf.php in classic mode with TYPO3 v14
+* Deprecation about ext_emconf.php in classic mode with TYPO3 v14
+* AdditionalPropertiesProvider instantiates all tagged classes on every service construction (#156, #157) - thanks to @wazum
 
 `4.2.1 <https://github.com/brotkrueml/schema/compare/v4.2.0...v4.2.1>`_ - 2026-03-17
 ----------------------------------------------------------------------------------------

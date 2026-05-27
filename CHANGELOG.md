@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 - Deprecation about ext_emconf.php in classic mode with TYPO3 v14
+- AdditionalPropertiesProvider instantiates all tagged classes on every service construction (#156, #157) - thanks to @wazum
 
 ## [4.2.1] - 2026-03-17
 
