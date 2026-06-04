@@ -18,7 +18,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\Core\Parser\Exception;
@@ -42,16 +43,13 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
      */
     #[Test]
     #[DataProvider('fluidTemplatesProvider')]
-    public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, array $arguments, string $expected): void
+    public function itBuildsSchemaCorrectlyOutOfViewHelpers(string $template, array $arguments, SiteLanguage $siteLanguage, string $expected): void
     {
-        $site = new Site('test', 1, [
-            'base' => 'https://example.org/',
-        ]);
         $requestStub = self::createStub(ServerRequestInterface::class);
         $requestStub
             ->method('getAttribute')
             ->willReturnMap([
-                ['site', $site],
+                ['language', $siteLanguage],
             ]);
 
         /** @var RenderingContextInterface $context */
@@ -73,11 +71,14 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
      */
     public static function fluidTemplatesProvider(): \Iterator
     {
+        $defaultSiteLanguage = new SiteLanguage(0, 'en', new Uri('https://example.org/'), []);
+
         yield 'Breadcrumb is empty' => [
             'template' => '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
             'arguments' => [
                 'breadcrumb' => [],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '',
         ];
 
@@ -91,6 +92,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
                     ],
                 ],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '',
         ];
 
@@ -104,6 +106,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
                     ],
                 ],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/"},"name":"Some page","position":"1"}}',
         ];
 
@@ -121,6 +124,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
                     ],
                 ],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/sub-page/"},"name":"Some sub page","position":"1"}}',
         ];
 
@@ -142,6 +146,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
                     ],
                 ],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}',
         ];
 
@@ -159,6 +164,7 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
                     ],
                 ],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"1"}}',
         ];
 
@@ -176,7 +182,52 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
                     ],
                 ],
             ],
+            'siteLanguage' => $defaultSiteLanguage,
             'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://main.example.org/"},"name":"Home page","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.org/videos/unicorns-in-typo3-land/"},"name":"Unicorns in TYPO3 land","position":"2"}]}',
+        ];
+
+        yield 'Site language given with another URL as base and a sub-path' => [
+            'template' => '<schema:breadcrumb breadcrumb="{breadcrumb}"/>',
+            'arguments' => [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Start page',
+                        'link' => '/it/',
+                    ],
+                    [
+                        'title' => 'Some page',
+                        'link' => '/it/sub-page/',
+                    ],
+                    [
+                        'title' => 'Some sub page',
+                        'link' => '/it/sub-page/sub-sub-page/',
+                    ],
+                ],
+            ],
+            'siteLanguage' => new SiteLanguage(1, 'it', new Uri('https://example.com/it/'), []),
+            'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.com/it/sub-page/"},"name":"Some page","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.com/it/sub-page/sub-sub-page/"},"name":"Some sub page","position":"2"}]}',
+        ];
+
+        yield 'Site language given with another URL as base and a sub-path with renderFirstItem' => [
+            'template' => '<schema:breadcrumb breadcrumb="{breadcrumb}" renderFirstItem="1"/>',
+            'arguments' => [
+                'breadcrumb' => [
+                    [
+                        'title' => 'Start page',
+                        'link' => '/it/',
+                    ],
+                    [
+                        'title' => 'Some page',
+                        'link' => '/it/sub-page/',
+                    ],
+                    [
+                        'title' => 'Some sub page',
+                        'link' => '/it/sub-page/sub-sub-page/',
+                    ],
+                ],
+            ],
+            'siteLanguage' => new SiteLanguage(1, 'it', new Uri('https://example.com/it/'), []),
+            'expected' => '{"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.com/it/"},"name":"Start page","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.com/it/sub-page/"},"name":"Some page","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"https://example.com/it/sub-page/sub-sub-page/"},"name":"Some sub page","position":"3"}]}',
         ];
     }
 

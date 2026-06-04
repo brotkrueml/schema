@@ -97,7 +97,7 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
         /** @phpstan-ignore-next-line Cannot call method getAttribute() on TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface|null */
         $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
-        $siteUrl = (string) $request->getAttribute('site')->getBase();
+        $siteUrl = (string) ($request->getAttribute('language')->getBase()->withPath('/'));
 
         $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         $itemsCount = \count($breadcrumb);
@@ -118,7 +118,6 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
 
             $breadcrumbList->addProperty('itemListElement', $item);
         }
-
         $this->schemaManager->addType($breadcrumbList);
 
         return '';
