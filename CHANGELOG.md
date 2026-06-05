@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.2.3] - 2026-06-05
+
 ### Fixed
 - Menu links built wrong by BreadcrumbViewHelper on multi-domain sites with different domains (#158)
 
@@ -661,7 +663,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.2.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.2.3...HEAD
+[4.2.3]: https://github.com/brotkrueml/schema/compare/v4.2.2...v4.2.3
 [4.2.2]: https://github.com/brotkrueml/schema/compare/v4.2.1...v4.2.2
 [4.2.1]: https://github.com/brotkrueml/schema/compare/v4.2.0...v4.2.1
 [4.2.0]: https://github.com/brotkrueml/schema/compare/v4.1.1...v4.2.0
