@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Menu links built wrong by BreadcrumbViewHelper on multi-domain sites with different domains (#158)
+
 ## [4.2.2] - 2026-05-27
 
 ### Fixed

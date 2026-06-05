@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v4.2.2...HEAD>`_
 ------------------------------------------------------------------------------
 
+Fixed
+^^^^^
+
+
+* Menu links built wrong by BreadcrumbViewHelper on multi-domain sites with different domains (#158)
+
 `4.2.2 <https://github.com/brotkrueml/schema/compare/v4.2.1...v4.2.2>`_ - 2026-05-27
 ----------------------------------------------------------------------------------------
 
