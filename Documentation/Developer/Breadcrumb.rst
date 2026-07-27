@@ -222,8 +222,8 @@ Remarks
    BreadcrumbList are ignored by the schema manager.
 *  It is intended that the breadcrumb is not automatically rendered out of the
    page structure of your TYPO3 installation, because it is possible to extend
-   the breadcrumb with own MenuProcessors like in the
+   the breadcrumb with own data processors like in the
    `news extension`_.
 
 
-.. _news extension: https://docs.typo3.org/typo3cms/extensions/news/7.2.0/Misc/Changelog/7-2-0.html#custom-menu-processor
+.. _news extension: https://github.com/georgringer/news/blob/main/Classes/DataProcessing/AddNewsToMenuProcessor.php
