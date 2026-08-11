@@ -40,9 +40,10 @@ final readonly class TypesInformation implements ModuleInterface, ContentProvide
 
     public function getLabel(): string
     {
-        return $this->getLanguageService()->sL(
-            Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.types',
-        );
+        return $this->getLanguageService()
+            ->sL(
+                Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.types',
+            );
     }
 
     public function getContent(ModuleData $data): string

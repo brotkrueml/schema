@@ -13,8 +13,5 @@ namespace Brotkrueml\Schema\Core\Model;
 
 interface NodeIdentifierInterface
 {
-    /**
-     * Get the id
-     */
     public function getId(): ?string;
 }

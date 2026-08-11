@@ -38,8 +38,10 @@ final readonly class MarkupInjectionMiddleware implements MiddlewareInterface
 
         $markup = $this->markupProvider->getMarkup($request);
         if ($markup !== '') {
-            $response->getBody()->rewind();
-            $contents = $response->getBody()->getContents();
+            $response->getBody()
+                ->rewind();
+            $contents = $response->getBody()
+                ->getContents();
             $contents = \str_ireplace(
                 '</body>',
                 \chr(10) . $this->renderMarkupWithScriptTag($markup) . \chr(10) . '</body>',

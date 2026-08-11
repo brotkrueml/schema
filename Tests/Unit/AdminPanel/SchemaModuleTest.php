@@ -78,7 +78,7 @@ final class SchemaModuleTest extends TestCase
     }
 
     /**
-     * @return \Iterator<(array<string, null> | array<string, string>)>
+     * @return \Iterator<(array<string, null>|array<string, string>)>
      */
     public static function providerForGetShortInfo(): iterable
     {

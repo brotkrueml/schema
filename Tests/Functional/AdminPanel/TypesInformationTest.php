@@ -95,7 +95,7 @@ final class TypesInformationTest extends FunctionalTestCase
     }
 
     /**
-     * @return \Iterator<(array<int, null> | array<int, string>)>
+     * @return \Iterator<(array<int, null>|array<int, string>)>
      */
     public static function dataProviderForGetContent(): \Iterator
     {
@@ -109,7 +109,8 @@ final class TypesInformationTest extends FunctionalTestCase
 No structured data available.
 </div>
 </div>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'One type is available' => [
@@ -189,7 +190,8 @@ thingy name
 </tr>
 </tbody>
 </table>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'Two types are available' => [
@@ -312,7 +314,8 @@ someone
 </tr>
 </tbody>
 </table>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'Types are sorted alphabetically' => [
@@ -438,7 +441,8 @@ A thing
 </tr>
 </tbody>
 </table>
-EXPECTED,
+EXPECTED
+            ,
         ];
     }
 

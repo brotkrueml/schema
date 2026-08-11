@@ -55,7 +55,8 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
         $context->setAttribute(ServerRequestInterface::class, $requestStub);
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         $view = new TemplateView($context);
         $view->assignMultiple($arguments);
@@ -250,7 +251,8 @@ final class BreadcrumbViewHelperTest extends FunctionalTestCase
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         $view = new TemplateView($context);
         $view->assignMultiple($arguments);

@@ -40,7 +40,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
     {
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         (new TemplateView($context))->render();
 
@@ -69,7 +70,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
                         serviceType: 'some service type'
                     }"
                 />
-             TEMPLATE,
+             TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":["Product","Service"],"name":"some name","serviceType":"some service type","sku":"some sku"}',
         ];
 
@@ -80,7 +82,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
                     <schema:property -as="sku" value="this sku"/>
                     <schema:property -as="serviceType" value="this service type"/>
                 </schema:multipleType>',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":["Product","Service"],"name":"this name","serviceType":"this service type","sku":"this sku"}',
         ];
 
@@ -90,7 +93,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
                     <schema:property -as="sku" value="that sku"/>
                     <schema:property -as="serviceType" value="that service type"/>
                 </schema:multipleType>',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":["Product","Service"],"name":"that name","serviceType":"that service type","sku":"that sku"}',
         ];
 
@@ -108,7 +112,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
                         -as="subjectOf"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","subjectOf":{"@type":["Product","Service"],"name":"child name"}}',
         ];
 
@@ -120,7 +125,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
                     properties="{name: 'child name'}"
                     -isMainEntityOfWebPage="1"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":["Product","Service"],"name":"child name"}}',
         ];
 
@@ -129,7 +135,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
                 <f:for each="{0: 'foo', 1: 'bar', 2: 'qux'}" as="item">
                     <schema:multipleType types="Product,Service" properties="{name: '{item}'}"/>
                 </f:for>',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":["Product","Service"],"name":"foo"},{"@type":["Product","Service"],"name":"bar"},{"@type":["Product","Service"],"name":"qux"}]}',
         ];
     }
@@ -142,7 +149,8 @@ final class MultipleTypeViewHelperTest extends FunctionalTestCase
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource(<<<TEMPLATE
+        $context->getTemplatePaths()
+            ->setTemplateSource(<<<TEMPLATE
             <schema:type.thing>
                 <schema:multipleType
                     types="Product,Service"

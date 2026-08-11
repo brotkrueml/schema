@@ -86,7 +86,8 @@ final class SchemaContentObjectTest extends FunctionalTestCase
         );
 
         $request = new InternalRequest();
-        $content = (string) $this->executeFrontendSubRequest($request)->getBody();
+        $content = (string) $this->executeFrontendSubRequest($request)
+            ->getBody();
 
         self::assertStringNotContainsString('<script type="application/ld+json">', $content);
         $this->assertHasLogEntries($expectedLogEntries);
@@ -101,7 +102,8 @@ final class SchemaContentObjectTest extends FunctionalTestCase
             'typoScriptSetup' => <<< TYPOSCRIPT
 page = PAGE
 page.10 = TEXT
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedLogEntries' => [],
         ];
 
@@ -113,7 +115,8 @@ page.10 {
     if.isTrue = 0
     type = WebPage
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedLogEntries' => [],
         ];
 
@@ -122,7 +125,8 @@ TYPOSCRIPT,
 page = PAGE
 page.10 = SCHEMA
 page.10.type = Unknown
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedLogEntries' => [
                 [
                     'type' => 'ERROR',
@@ -152,7 +156,8 @@ TYPOSCRIPT,
         );
 
         $request = new InternalRequest();
-        $content = (string) $this->executeFrontendSubRequest($request)->getBody();
+        $content = (string) $this->executeFrontendSubRequest($request)
+            ->getBody();
 
         $this->assertHasJsonLd($expectedJsonLd, $content);
         $this->assertHasLogEntries([]);
@@ -169,7 +174,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.id = https://example.com/test#id
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
@@ -183,7 +189,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.type.override = ItemPage
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'ItemPage',
@@ -196,7 +203,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.id =
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
@@ -209,7 +217,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.properties.url = https://example.com/url.html
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
@@ -223,7 +232,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.properties.publisher =
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
@@ -236,7 +246,8 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.properties.publisher.if.isTrue = 0
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
@@ -252,7 +263,8 @@ page.10 {
     properties.publisher = SCHEMA
     properties.publisher.id = https://example.com/publisher
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -271,7 +283,8 @@ page.10 {
     properties.publisher = SCHEMA
     properties.publisher.id =
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -287,7 +300,8 @@ page.10 {
     properties.publisher = SCHEMA
     properties.publisher.id.if.isTrue = 0
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -313,7 +327,8 @@ page.10 {
         }
     }
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'Organization',
@@ -339,7 +354,8 @@ page.10 {
         returnLast = url
     }
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebPage',
@@ -359,7 +375,8 @@ page.10 {
         returnLast = url
     }
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -376,7 +393,8 @@ page.10 {
     properties.sameAs = HTTPS://EXAMPLE.COM/
     properties.sameAs.case = lower
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -393,7 +411,8 @@ page.10 {
     properties.sameAs.10 = https://example.net/
     properties.sameAs.20 = https://example.com/
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -421,7 +440,8 @@ page.10 {
         30.cObject.value = via TEXT cObject
     }
 }
-TYPOSCRIPT,
+TYPOSCRIPT
+            ,
             'expectedJsonLd' => [
                 '@context' => 'https://schema.org/',
                 '@type' => 'WebSite',
@@ -443,12 +463,14 @@ page = PAGE
 page.10 = SCHEMA
 page.10.type = WebPage
 page.10.properties.unknownProperty = some value
-TYPOSCRIPT,
+TYPOSCRIPT
+                ,
             ],
         );
 
         $request = new InternalRequest();
-        $content = (string) $this->executeFrontendSubRequest($request)->getBody();
+        $content = (string) $this->executeFrontendSubRequest($request)
+            ->getBody();
 
         $this->assertHasJsonLd([
             '@context' => 'https://schema.org/',

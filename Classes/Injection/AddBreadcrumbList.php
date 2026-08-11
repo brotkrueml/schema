@@ -58,7 +58,8 @@ final readonly class AddBreadcrumbList
         );
         $rootLine = [];
         /** @var PageInformation $pageInformation */
-        $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
+        $pageInformation = $event->getRequest()
+            ->getAttribute('frontend.page.information');
         foreach ($pageInformation->getLocalRootLine() as $page) {
             if ((bool) ($page['is_siteroot'] ?? false)) {
                 continue;
@@ -98,21 +99,23 @@ final readonly class AddBreadcrumbList
 
         $breadcrumbList = $this->typeFactory->create('BreadcrumbList');
         foreach ($rootLine as $index => $page) {
-            $link = (string) $site->getRouter()->generateUri(
-                $page,
-                [
-                    '_language' => $language->getLanguageId(),
-                ],
-            );
+            $link = (string) $site->getRouter()
+                ->generateUri(
+                    $page,
+                    [
+                        '_language' => $language->getLanguageId(),
+                    ],
+                );
 
             $itemType = $this->typeFactory->create('WebPage');
             $itemType->setId($link);
 
-            $item = $this->typeFactory->create('ListItem')->setProperties([
-                'position' => $index + 1,
-                'name' => \is_string($page['nav_title']) && $page['nav_title'] !== '' ? $page['nav_title'] : $page['title'],
-                'item' => $itemType,
-            ]);
+            $item = $this->typeFactory->create('ListItem')
+                ->setProperties([
+                    'position' => $index + 1,
+                    'name' => \is_string($page['nav_title']) && $page['nav_title'] !== '' ? $page['nav_title'] : $page['title'],
+                    'item' => $itemType,
+                ]);
 
             $breadcrumbList->addProperty('itemListElement', $item);
         }

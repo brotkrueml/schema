@@ -85,7 +85,8 @@ final class Types implements ProviderInterface
 
     private function translate(string $key): string
     {
-        return $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_DEFAULT . ':lowlevel.configuration.' . $key);
+        return $this->getLanguageService()
+            ->sL(Extension::LANGUAGE_PATH_DEFAULT . ':lowlevel.configuration.' . $key);
     }
 
     private function getLanguageService(): LanguageService

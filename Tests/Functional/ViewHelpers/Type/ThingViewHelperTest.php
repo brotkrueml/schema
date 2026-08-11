@@ -40,7 +40,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
     {
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         (new TemplateView($context))->render();
 
@@ -61,7 +62,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     name="thingy name"
                     description="thingy description"
                 />',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"}',
         ];
 
@@ -81,7 +83,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     name="action name"
                     url="http://example.org/"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":"Thing","@id":"thingyId","description":"thingy description","name":"thingy name"},{"@type":"Person","@id":"personId","name":"person name","worksFor":"someone"},{"@type":"Action","name":"action name","url":"http://example.org/"}]}',
         ];
 
@@ -91,7 +94,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     -as="shouldBeIgnored"
                     name="as is ignored"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","name":"as is ignored"}',
         ];
 
@@ -108,7 +112,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}',
         ];
 
@@ -138,7 +143,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         areaServed="TR"
                     />
                 </schema:type.organization>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Organization","contactPoint":[{"@type":"ContactPoint","areaServed":"DE","contactType":"sales","telephone":"+49 30 123456789"},{"@type":"ContactPoint","areaServed":"PL","contactType":"sales","telephone":"+48 22 123456789"},{"@type":"ContactPoint","areaServed":"TR","contactType":"sales","telephone":"+90 212 123456789"}],"logo":"https://www.example.org/logo.png","name":"Acme Ltd.","url":"https://www.example.org/"}',
         ];
 
@@ -147,7 +153,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                 <f:for each="{0: 'foo', 1: 'bar', 2: 'qux'}" as="item" iteration="iterator">
                     <schema:type.thing name="{item}" identifier="{iterator.cycle}"/>
                 </f:for>',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":"Thing","identifier":"1","name":"foo"},{"@type":"Thing","identifier":"2","name":"bar"},{"@type":"Thing","identifier":"3","name":"qux"}]}',
         ];
 
@@ -159,7 +166,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     name="parent name"
                     url="http://example.org/"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","url":"http://example.org/"}',
         ];
 
@@ -177,7 +185,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}',
         ];
 
@@ -195,7 +204,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}',
         ];
 
@@ -214,7 +224,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
         ];
 
@@ -233,7 +244,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
         ];
 
@@ -252,7 +264,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
         ];
 
@@ -271,7 +284,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                         url="https://example.org/child"
                     />
                 </schema:type.thing>',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing","name":"parent name","subjectOf":{"@type":"Person","@id":"childThing","name":"child name","url":"https://example.org/child"},"url":"http://example.org/"}}',
         ];
 
@@ -288,7 +302,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     -isMainEntityOfWebPage="1"
                     name="parent name #2"
                  />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"WebPage","mainEntity":[{"@type":"Thing","@id":"parentThing#1","name":"parent name #1"},{"@type":"Thing","@id":"parentThing#2","name":"parent name #2"}]}',
         ];
 
@@ -305,7 +320,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     -isMainEntityOfWebPage="2"
                     name="parent name #2"
                  />',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":"WebPage","mainEntity":{"@type":"Thing","@id":"parentThing#2","name":"parent name #2"}},{"@type":"Thing","@id":"parentThing#1","name":"parent name #1"}]}',
         ];
 
@@ -318,7 +334,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     name="parent name"
                     url="http://example.org/"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":"WebPage"},{"@type":"Thing","@id":"parentThing","name":"parent name","url":"http://example.org/"}]}',
         ];
 
@@ -331,7 +348,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     name="parent name"
                     url="http://example.org/"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@graph":[{"@type":"WebPage"},{"@type":"Thing","@id":"parentThing","name":"parent name","url":"http://example.org/"}]}',
         ];
 
@@ -341,7 +359,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     price="0.00"
                     priceCurrency="EUR"
                  />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Offer","price":"0","priceCurrency":"EUR"}',
         ];
 
@@ -351,7 +370,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                     price="0.01"
                     priceCurrency="EUR"
                  />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Offer","price":"0.01","priceCurrency":"EUR"}',
         ];
 
@@ -360,7 +380,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                 <schema:type.event
                     isAccessibleForFree="false"
                 />',
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Event","isAccessibleForFree":"https://schema.org/False"}',
         ];
 
@@ -369,7 +390,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
                 <schema:type.event
                     isAccessibleForFree="true"
                 />
-            TEMPLATE,
+            TEMPLATE
+            ,
             'expected' => '{"@context":"https://schema.org/","@type":"Event","isAccessibleForFree":"https://schema.org/True"}',
         ];
     }
@@ -382,7 +404,8 @@ final class ThingViewHelperTest extends FunctionalTestCase
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         (new TemplateView($context))->render();
 
@@ -409,13 +432,14 @@ final class ThingViewHelperTest extends FunctionalTestCase
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         (new TemplateView($context))->render();
     }
 
     /**
-     * @return \Iterator<(array<string, int> | array<string, string>)>
+     * @return \Iterator<(array<string, int>|array<string, string>)>
      */
     public static function fluidTemplatesProviderForExceptions(): iterable
     {

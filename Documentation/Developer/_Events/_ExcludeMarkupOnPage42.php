@@ -16,7 +16,8 @@ final readonly class ExcludeMarkupOnPage42
     public function __invoke(IsMarkupToBeInjectedEvent $event): void
     {
         /** @var PageInformation $pageInformation */
-        $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
+        $pageInformation = $event->getRequest()
+            ->getAttribute('frontend.page.information');
         if ($pageInformation->getId() === 42) {
             $event->excludeMarkupFromInjection();
         }

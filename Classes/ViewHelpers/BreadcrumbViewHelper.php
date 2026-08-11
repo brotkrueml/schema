@@ -110,11 +110,12 @@ final class BreadcrumbViewHelper extends AbstractViewHelper
             $itemType = $this->typeFactory->create(self::DEFAULT_WEBPAGE_TYPE);
             $itemType->setId($id);
 
-            $item = $this->typeFactory->create('ListItem')->setProperties([
-                'position' => $i + 1,
-                'name' => $breadcrumb[$i]['title'],
-                'item' => $itemType,
-            ]);
+            $item = $this->typeFactory->create('ListItem')
+                ->setProperties([
+                    'position' => $i + 1,
+                    'name' => $breadcrumb[$i]['title'],
+                    'item' => $itemType,
+                ]);
 
             $breadcrumbList->addProperty('itemListElement', $item);
         }

@@ -45,7 +45,8 @@ final readonly class AddWebPageType
         }
 
         /** @var PageInformation $pageInformation */
-        $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
+        $pageInformation = $event->getRequest()
+            ->getAttribute('frontend.page.information');
         $pageRecord = $pageInformation->getPageRecord();
         $webPageType = self::DEFAULT_WEBPAGE_TYPE;
         if (($pageRecord['tx_schema_webpagetype'] ?? '') !== '') {

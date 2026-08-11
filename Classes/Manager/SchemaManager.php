@@ -43,8 +43,6 @@ final class SchemaManager
     }
 
     /**
-     * Add a type
-     *
      * @param TypeInterface ...$type The model types
      */
     public function addType(TypeInterface ...$type): self
@@ -138,9 +136,6 @@ final class SchemaManager
         return $this->breadcrumbLists !== [];
     }
 
-    /**
-     * Add a main entity of the WebPage
-     */
     public function addMainEntityOfWebPage(TypeInterface $mainEntity, bool $isPrioritised = false): self
     {
         $notPrioritisedTypes = $this->mainEntityOfWebPageBag->add($mainEntity, $isPrioritised);

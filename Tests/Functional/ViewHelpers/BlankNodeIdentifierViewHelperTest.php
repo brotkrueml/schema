@@ -37,9 +37,10 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
     public function viewHelperUsedOncePrintsBlankNodeIdentifierCorrectly(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource(
-            '<schema:blankNodeIdentifier/>',
-        );
+        $context->getTemplatePaths()
+            ->setTemplateSource(
+                '<schema:blankNodeIdentifier/>',
+            );
 
         self::assertSame('_:b0', (new TemplateView($context))->render());
     }
@@ -48,9 +49,10 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
     public function viewHelperUsedTwicePrintsBlankNodeIdentifiersCorrectly(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource(
-            '<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>',
-        );
+        $context->getTemplatePaths()
+            ->setTemplateSource(
+                '<schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/> <schema:blankNodeIdentifier/>',
+            );
 
         self::assertSame('_:b0 _:b1 _:b2', (new TemplateView($context))->render());
     }
@@ -59,7 +61,8 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
     public function useInlineNotationAndPassValueToVariable(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource('
+        $context->getTemplatePaths()
+            ->setTemplateSource('
             <f:variable name="blankIdentifier1" value="{schema:blankNodeIdentifier()}"/>
             <f:variable name="blankIdentifier2" value="{schema:blankNodeIdentifier()}"/>
             {blankIdentifier1} {blankIdentifier2}
@@ -72,7 +75,8 @@ final class BlankNodeIdentifierViewHelperTest extends FunctionalTestCase
     public function useInTypeViewHelper(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource('
+        $context->getTemplatePaths()
+            ->setTemplateSource('
 <schema:type.hotel -id="https://example.com/#some-hotel">
     <schema:property -as="containsPlace" value="{schema:blankNodeIdentifier()}"/>
 </schema:type.hotel>

@@ -53,7 +53,8 @@ final class PropertyValueViewHelperTest extends FunctionalTestCase
         }
 
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
 
         $actual = $this->trimLines((new TemplateView($context))->render());
 
@@ -89,7 +90,8 @@ final class PropertyValueViewHelperTest extends FunctionalTestCase
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield '@type value is htmlspecialchar-d' => [
@@ -101,7 +103,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://schema.org/Th&amp;ing" target="_blank" rel="noreferrer">Schema.org</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is returned unchanged if not a URL' => [
@@ -128,7 +131,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a schema.org URL with https' => [
@@ -140,7 +144,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://schema.org/Thing" target="_blank" rel="noreferrer">Schema.org</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a gif image and returned with a link' => [
@@ -152,7 +157,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.gif" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a jpg image and returned with a link' => [
@@ -164,7 +170,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.jpg" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a jpeg image and returned with a link' => [
@@ -176,7 +183,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.jpeg" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a png image and returned with a link' => [
@@ -188,7 +196,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.png" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a svg image and returned with a link' => [
@@ -200,7 +209,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://example.org/image.svg" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a gif image with uppercase extension and returned with a link' => [
@@ -212,7 +222,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.GIF" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a jpg image with uppercase extension and returned with a link' => [
@@ -224,7 +235,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.JPG" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a jpeg image with uppercase extension and returned with a link' => [
@@ -236,7 +248,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.JPEG" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a png image with uppercase extension and returned with a link' => [
@@ -248,7 +261,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/image.PNG" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a svg image with uppercase extension and returned with a link' => [
@@ -260,7 +274,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://example.org/image.SVG" target="_blank" rel="noreferrer">Show image</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a URL with http' => [
@@ -272,7 +287,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="http://example.org/page.html" target="_blank" rel="noreferrer">Go to website</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
 
         yield 'value is a URL with https' => [
@@ -284,7 +300,8 @@ EXPECTED,
 </span>
 
 </span> <a class="ext-schema-adminpanel-link" href="https://example.org/page.html" target="_blank" rel="noreferrer">Go to website</a></span></span>
-EXPECTED,
+EXPECTED
+            ,
         ];
     }
 
@@ -303,9 +320,10 @@ EXPECTED,
         $typeRegistry->addManualForType('Thing', [Publisher::Yandex, 'Another link', 'https://example.com/Thing']);
 
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource(
-            '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
-        );
+        $context->getTemplatePaths()
+            ->setTemplateSource(
+                '<schema:adminPanel.propertyValue name="@type" value="Thing"/>',
+            );
 
         $actual = $this->trimLines((new TemplateView($context))->render());
 

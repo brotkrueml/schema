@@ -35,9 +35,10 @@ final class NodeIdentifierViewHelperTest extends FunctionalTestCase
     public function viewHelperPrintsNodeIdentifiersCorrectly(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource(
-            '<schema:nodeIdentifier id="some-id"/>',
-        );
+        $context->getTemplatePaths()
+            ->setTemplateSource(
+                '<schema:nodeIdentifier id="some-id"/>',
+            );
 
         self::assertSame('some-id', (new TemplateView($context))->render());
     }
@@ -46,7 +47,8 @@ final class NodeIdentifierViewHelperTest extends FunctionalTestCase
     public function useInlineNotationAndPassValueToVariable(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource('
+        $context->getTemplatePaths()
+            ->setTemplateSource('
 <f:variable name="identifier1" value="{schema:nodeIdentifier(id: \'https://example.org/#john-smith\')}"/>
 <f:variable name="identifier2" value="{schema:nodeIdentifier(id: \'https://example.org/#sarah-jane-smith\')}"/>
 {identifier1} {identifier2}
@@ -59,7 +61,8 @@ final class NodeIdentifierViewHelperTest extends FunctionalTestCase
     public function useInTypeViewHelper(): void
     {
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource('
+        $context->getTemplatePaths()
+            ->setTemplateSource('
 <schema:type.hotel -id="https://example.com/#some-hotel">
     <schema:property -as="containsPlace" value="{schema:nodeIdentifier(id: \'https://example.org/#some-place\')}"/>
 </schema:type.hotel>

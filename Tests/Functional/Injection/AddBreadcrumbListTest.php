@@ -65,12 +65,14 @@ final class AddBreadcrumbListTest extends FunctionalTestCase
                 'config' => <<< TYPOSCRIPT
 page = PAGE
 page.10 = TEXT
-TYPOSCRIPT,
+TYPOSCRIPT
+                ,
             ],
         );
         $request = (new InternalRequest())->withPageId(4);
 
-        $actual = (string) $this->executeFrontendSubRequest($request)->getBody();
+        $actual = (string) $this->executeFrontendSubRequest($request)
+            ->getBody();
 
         self::assertStringContainsString(
             '{"@context":"https://schema.org/","@type":"WebPage","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":{"@type":"WebPage","@id":"http://localhost/level-1.html"},"name":"level 1","position":"1"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"http://localhost/level-2.html"},"name":"level 2","position":"2"},{"@type":"ListItem","item":{"@type":"WebPage","@id":"http://localhost/level-3.html"},"name":"level 3","position":"3"}]}}',

@@ -13,9 +13,6 @@ namespace Brotkrueml\Schema\Core\Model;
 
 interface TypeInterface extends NodeIdentifierInterface
 {
-    /**
-     * Set the id.
-     */
     public function setId(NodeIdentifierInterface|string|null $id): static;
 
     /**
@@ -49,9 +46,6 @@ interface TypeInterface extends NodeIdentifierInterface
      */
     public function setProperties(array $properties): static;
 
-    /**
-     * Clear a property.
-     */
     public function clearProperty(string $propertyName): static;
 
     /**

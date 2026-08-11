@@ -83,7 +83,8 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertSame('<body>some-content</body>', $actual->getBody()->getContents());
     }
@@ -101,7 +102,8 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertStringContainsString('<script type="application/ld+json">{"some": "markup"}</script>', $actual->getBody()->getContents());
     }
@@ -131,7 +133,8 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertStringContainsString('<script type="application/ld+json">{"some": "markup"}</script>', $actual->getBody()->getContents());
     }
@@ -166,7 +169,8 @@ final class MarkupInjectionMiddlewareTest extends FunctionalTestCase
         $subject = new MarkupInjectionMiddleware($markupProviderStub, $this->get(StreamFactoryInterface::class));
 
         $actual = $subject->process($request, $this->responseOutputHandler);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertStringContainsString('<script type="application/ld+json" id="ext-schema-jsonld">{"some": "markup"}</script>', $actual->getBody()->getContents());
     }

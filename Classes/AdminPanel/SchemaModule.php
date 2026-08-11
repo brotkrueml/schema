@@ -55,9 +55,10 @@ final class SchemaModule extends AbstractModule implements ShortInfoProviderInte
         return \sprintf(
             '(%s %s)',
             $numberOfTypes,
-            $this->getLanguageService()->sL(
-                Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.type' . ($numberOfTypes !== 1 ? 's' : ''),
-            ),
+            $this->getLanguageService()
+                ->sL(
+                    Extension::LANGUAGE_PATH_DEFAULT . ':adminPanel.type' . ($numberOfTypes !== 1 ? 's' : ''),
+                ),
         );
     }
 }

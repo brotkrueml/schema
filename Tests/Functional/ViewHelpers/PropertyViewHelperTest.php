@@ -41,7 +41,8 @@ final class PropertyViewHelperTest extends FunctionalTestCase
     {
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
         (new TemplateView($context))->render();
 
         $actual = $this->get(SchemaManager::class)->renderJsonLd();
@@ -91,7 +92,8 @@ final class PropertyViewHelperTest extends FunctionalTestCase
 
         /** @var RenderingContextInterface $context */
         $context = $this->get(RenderingContextFactory::class)->create();
-        $context->getTemplatePaths()->setTemplateSource($template);
+        $context->getTemplatePaths()
+            ->setTemplateSource($template);
         (new TemplateView($context))->render();
     }
 

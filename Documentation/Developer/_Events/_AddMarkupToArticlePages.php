@@ -21,7 +21,8 @@ final readonly class AddMarkupToArticlePages
     public function __invoke(RenderAdditionalTypesEvent $event): void
     {
         /** @var PageInformation $pageInformation */
-        $pageInformation = $event->getRequest()->getAttribute('frontend.page.information');
+        $pageInformation = $event->getRequest()
+            ->getAttribute('frontend.page.information');
         $page = $pageInformation->getPageRecord();
         if ($page['doktype'] !== 12345) {
             return;
