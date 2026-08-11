@@ -21,7 +21,7 @@ use Psr\Http\Message\ServerRequestInterface;
 #[CoversClass(IsMarkupToBeInjectedEvent::class)]
 final class IsMarkupToBeInjectedEventTest extends TestCase
 {
-    private Stub $requestStub;
+    private Stub&ServerRequestInterface $requestStub;
     private IsMarkupToBeInjectedEvent $subject;
 
     protected function setUp(): void

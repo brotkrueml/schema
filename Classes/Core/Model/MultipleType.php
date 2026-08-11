@@ -26,7 +26,7 @@ final class MultipleType extends AbstractBaseType
     /**
      * @var string[]
      */
-    private array $typeNames = [];
+    private array $typeNames;
 
     public function __construct(TypeInterface ...$type)
     {

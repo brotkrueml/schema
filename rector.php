@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
-use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\PHPUnit\PHPUnit120\Rector\Class_\AllowMockObjectsForDataProviderRector;
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\SafeDeclareStrictTypesRector;
 
 return RectorConfig::configure()
@@ -28,14 +28,14 @@ return RectorConfig::configure()
         earlyReturn: true,
         phpunitCodeQuality: true,
     )
-    ->withSets([
-        PHPUnitSetList::PHPUNIT_100,
-        PHPUnitSetList::PHPUNIT_110,
-    ])
+    ->withComposerBased(
+        phpunit: true,
+    )
     ->withRootFiles()
     ->withSkip([
         __DIR__ . '/Classes/Model/Type/*',
         __DIR__ . '/Classes/ViewHelpers/Type/*',
+        AllowMockObjectsForDataProviderRector::class,
         PreferPHPUnitThisCallRector::class,
         SafeDeclareStrictTypesRector::class => [
             __DIR__ . '/ext_emconf.php',

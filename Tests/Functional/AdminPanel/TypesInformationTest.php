@@ -40,7 +40,7 @@ final class TypesInformationTest extends FunctionalTestCase
         'brotkrueml/schema',
     ];
 
-    private Stub $markupCacheHandlerStub;
+    private Stub&MarkupCacheHandler $markupCacheHandlerStub;
     private TypesInformation $subject;
 
     protected function setUp(): void
