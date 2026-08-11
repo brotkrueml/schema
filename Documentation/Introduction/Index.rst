@@ -15,10 +15,11 @@ Introduction
 What does it do?
 ================
 
-Structured data is essential for search engine optimisation nowadays. This
-extension allows the easy integration of structured data based on the
-`schema.org vocabulary`_ on a TYPO3 website. A good introduction to the topic is
-provided by Google: `Understand how structured data works`_.
+Structured data is essential for Search Engine Optimisation (SEO) and Generative
+Engine Optimisation (GEO) nowadays. This extension allows the easy integration
+of structured data based on the `schema.org vocabulary`_ on a TYPO3 website. A
+good introduction to the topic is provided by Google:
+`Understand how structured data works`_.
 
 The defined structured data is embedded on a web page in `JSON-LD`_ markup and
 can be checked with the `Schema Markup Validator`_ and Google's
