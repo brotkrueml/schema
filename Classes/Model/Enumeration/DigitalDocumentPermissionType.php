@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A type of permission which can be granted for accessing a digital document.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum DigitalDocumentPermissionType implements EnumerationInterface
 {

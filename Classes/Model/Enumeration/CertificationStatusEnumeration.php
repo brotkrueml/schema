@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates the different statuses of a Certification (Active and Inactive).
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum CertificationStatusEnumeration implements EnumerationInterface
 {

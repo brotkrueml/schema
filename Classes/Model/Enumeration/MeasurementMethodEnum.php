@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumeration(s) for use with measurementMethod.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum MeasurementMethodEnum implements EnumerationInterface
 {

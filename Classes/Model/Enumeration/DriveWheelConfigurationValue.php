@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A value indicating which roadwheels will receive torque.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum DriveWheelConfigurationValue implements EnumerationInterface
 {

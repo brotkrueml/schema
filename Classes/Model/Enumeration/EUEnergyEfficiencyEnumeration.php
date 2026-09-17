@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates the EU energy efficiency classes A-G as well as A+, A++, and A+++ as defined in EU directive 2017/1369.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum EUEnergyEfficiencyEnumeration implements EnumerationInterface
 {

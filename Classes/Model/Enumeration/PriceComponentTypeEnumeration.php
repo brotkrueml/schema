@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates different price components that together make up the total price for an offered product.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum PriceComponentTypeEnumeration implements EnumerationInterface
 {

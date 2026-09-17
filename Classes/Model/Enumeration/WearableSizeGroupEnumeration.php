@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates common size groups (also known as "size types") for wearable products.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum WearableSizeGroupEnumeration implements EnumerationInterface
 {

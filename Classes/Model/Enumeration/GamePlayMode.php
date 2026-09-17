@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum GamePlayMode implements EnumerationInterface
 {

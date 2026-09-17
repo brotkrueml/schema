@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A value indicating a steering position.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum SteeringPositionValue implements EnumerationInterface
 {

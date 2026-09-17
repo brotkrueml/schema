@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * An enumeration of possible benefits as part of a loyalty (members) program.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum TierBenefitEnumeration implements EnumerationInterface
 {

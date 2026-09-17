@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.).
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum MusicReleaseFormatType implements EnumerationInterface
 {

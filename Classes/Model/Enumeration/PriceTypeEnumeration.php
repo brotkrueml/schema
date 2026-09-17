@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates different price types, for example list price, invoice price, and sale price.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum PriceTypeEnumeration implements EnumerationInterface
 {

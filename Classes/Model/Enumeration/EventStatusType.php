@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum EventStatusType implements EnumerationInterface
 {

@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates several types of return labels for product returns.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum ReturnLabelSourceEnumeration implements EnumerationInterface
 {

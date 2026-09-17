@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Status of a game server.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum GameServerStatus implements EnumerationInterface
 {

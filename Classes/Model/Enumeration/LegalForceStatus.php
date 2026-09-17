@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A list of possible statuses for the legal force of a legislation.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum LegalForceStatus implements EnumerationInterface
 {

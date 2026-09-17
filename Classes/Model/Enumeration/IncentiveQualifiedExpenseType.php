@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * The types of expenses that are covered by the incentive. For example some incentives are only for the goods (tangible items) but the services (labor) are excluded.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum IncentiveQualifiedExpenseType implements EnumerationInterface
 {

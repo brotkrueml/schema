@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum PaymentStatusType implements EnumerationInterface
 {

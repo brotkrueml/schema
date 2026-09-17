@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * UKNonprofitType: Non-profit organization type originating from the United Kingdom.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum UKNonprofitType implements EnumerationInterface
 {

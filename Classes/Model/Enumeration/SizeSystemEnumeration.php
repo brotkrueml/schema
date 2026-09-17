@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates common size systems for different categories of products, for example "EN-13402" or "UK" for wearables or "Imperial" for screws.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum SizeSystemEnumeration implements EnumerationInterface
 {

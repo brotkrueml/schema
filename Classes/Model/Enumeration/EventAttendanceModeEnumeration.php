@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * An EventAttendanceModeEnumeration value is one of potentially several modes of organising an event, relating to whether it is online or offline.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum EventAttendanceModeEnumeration implements EnumerationInterface
 {

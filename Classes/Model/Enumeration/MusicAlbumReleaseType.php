@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * The kind of release which this album is: single, EP or album.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum MusicAlbumReleaseType implements EnumerationInterface
 {

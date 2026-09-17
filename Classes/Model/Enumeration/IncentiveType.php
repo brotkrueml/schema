@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates common financial incentives for products, including tax credits, tax deductions, rebates and subsidies, etc.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum IncentiveType implements EnumerationInterface
 {

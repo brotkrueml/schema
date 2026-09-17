@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * USNonprofitType: Non-profit organization type originating from the United States.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum USNonprofitType implements EnumerationInterface
 {

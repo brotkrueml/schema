@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * GovernmentBenefitsType enumerates several kinds of government benefits to support the COVID-19 situation. Note that this structure may not capture all benefits offered.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum GovernmentBenefitsType implements EnumerationInterface
 {

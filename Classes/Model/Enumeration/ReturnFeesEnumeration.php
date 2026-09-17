@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates several kinds of policies for product return fees.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum ReturnFeesEnumeration implements EnumerationInterface
 {

@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates types (or dimensions) of a person's body measurements, for example for fitting of clothes.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum BodyMeasurementTypeEnumeration implements EnumerationInterface
 {

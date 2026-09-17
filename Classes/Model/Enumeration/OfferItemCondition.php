@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A list of possible conditions for the item.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum OfferItemCondition implements EnumerationInterface
 {

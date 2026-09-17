@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * The publication format of the book.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum BookFormatType implements EnumerationInterface
 {

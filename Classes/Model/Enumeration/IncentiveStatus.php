@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerates a status for an incentive, such as whether it is active.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum IncentiveStatus implements EnumerationInterface
 {

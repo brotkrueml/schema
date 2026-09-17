@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A type of boarding policy used by an airline.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum BoardingPolicyType implements EnumerationInterface
 {

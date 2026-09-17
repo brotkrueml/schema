@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A list of possible levels for the legal validity of a legislation.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum LegalValueLevel implements EnumerationInterface
 {

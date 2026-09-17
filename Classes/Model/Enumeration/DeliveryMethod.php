@@ -25,7 +25,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
  * http://purl.org/goodrelations/v1#DHL
  * http://purl.org/goodrelations/v1#FederalExpress
  * http://purl.org/goodrelations/v1#UPS
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum DeliveryMethod implements EnumerationInterface
 {

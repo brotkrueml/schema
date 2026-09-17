@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * For a VideoGame, such as used with a PlayGameAction, an enumeration of the kind of game availability offered.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum GameAvailabilityEnumeration implements EnumerationInterface
 {

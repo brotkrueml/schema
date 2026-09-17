@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * HealthAspectEnumeration enumerates several aspects of health content online, each of which might be described using hasHealthAspect and HealthTopicContent.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum HealthAspectEnumeration implements EnumerationInterface
 {

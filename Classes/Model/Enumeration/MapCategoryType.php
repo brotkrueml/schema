@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * An enumeration of several kinds of Map.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum MapCategoryType implements EnumerationInterface
 {

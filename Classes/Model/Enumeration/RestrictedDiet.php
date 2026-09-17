@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum RestrictedDiet implements EnumerationInterface
 {

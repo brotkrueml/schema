@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Classification of the album by its type of content: soundtrack, live album, studio album, etc.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum MusicAlbumProductionType implements EnumerationInterface
 {

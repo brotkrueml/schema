@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * The type of payment method, only for generic payment types, specific forms of payments, like card payment should be expressed using subclasses of PaymentMethod.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum PaymentMethodType implements EnumerationInterface
 {

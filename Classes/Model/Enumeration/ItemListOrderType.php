@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
- * @experimental This enum is considered experimental and may change at any time until it is declared stable.
  */
 enum ItemListOrderType implements EnumerationInterface
 {
