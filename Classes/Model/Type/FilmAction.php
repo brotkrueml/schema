@@ -40,6 +40,7 @@ final class FilmAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'startTime',

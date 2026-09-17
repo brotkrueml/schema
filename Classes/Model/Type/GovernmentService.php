@@ -40,12 +40,14 @@ final class GovernmentService extends AbstractType
         'image',
         'isRelatedTo',
         'isSimilarTo',
+        'jurisdiction',
         'logo',
         'mainEntityOfPage',
         'name',
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -54,6 +56,7 @@ final class GovernmentService extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
     ];
 }

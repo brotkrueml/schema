@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * Entities that have a somewhat fixed, physical extension.
@@ -50,6 +50,8 @@ final class Place extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'identifier',
         'image',
@@ -74,6 +76,7 @@ final class Place extends AbstractType
         'specialOpeningHoursSpecification',
         'subjectOf',
         'telephone',
+        'tourBookingPage',
         'url',
     ];
 }

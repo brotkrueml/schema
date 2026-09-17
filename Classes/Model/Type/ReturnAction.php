@@ -41,6 +41,7 @@ final class ReturnAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'sameAs',

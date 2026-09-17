@@ -61,6 +61,8 @@ final class DefinedRegion extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'identifier',
         'image',
@@ -88,6 +90,7 @@ final class DefinedRegion extends AbstractType
         'specialOpeningHoursSpecification',
         'subjectOf',
         'telephone',
+        'tourBookingPage',
         'url',
     ];
 }

@@ -38,6 +38,7 @@ final class TrainTrip extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'sameAs',
         'subjectOf',
         'trainName',

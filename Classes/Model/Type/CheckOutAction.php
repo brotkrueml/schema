@@ -47,6 +47,7 @@ final class CheckOutAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'sameAs',

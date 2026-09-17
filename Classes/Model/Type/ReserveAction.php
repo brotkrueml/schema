@@ -43,6 +43,7 @@ final class ReserveAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'scheduledTime',

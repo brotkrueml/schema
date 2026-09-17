@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A kind of lodging business that focuses on renting single properties for limited time.
@@ -25,9 +25,11 @@ final class VacationRental extends AbstractType
 {
     protected static array $propertyNames = [
         'acceptedPaymentMethod',
+        'actionableFeedbackPolicy',
         'additionalProperty',
         'additionalType',
         'address',
+        'agentInteractionStatistic',
         'aggregateRating',
         'alternateName',
         'alumni',
@@ -44,20 +46,26 @@ final class VacationRental extends AbstractType
         'contactPoint',
         'containedInPlace',
         'containsPlace',
+        'correctionsPolicy',
         'currenciesAccepted',
         'department',
         'description',
         'disambiguatingDescription',
         'dissolutionDate',
+        'diversityPolicy',
+        'diversityStaffingReport',
         'duns',
         'email',
         'employee',
+        'ethicsPolicy',
         'event',
         'faxNumber',
+        'floorLevel',
         'founder',
         'foundingDate',
         'foundingLocation',
         'funder',
+        'funding',
         'geo',
         'geoContains',
         'geoCoveredBy',
@@ -71,16 +79,24 @@ final class VacationRental extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasCredential',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'hasMemberProgram',
+        'hasMerchantReturnPolicy',
         'hasOfferCatalog',
         'hasPOS',
+        'hasShippingService',
         'identifier',
         'image',
         'interactionStatistic',
         'isAccessibleForFree',
         'isicV4',
+        'iso6523Code',
         'keywords',
+        'knowsAbout',
+        'knowsLanguage',
         'latitude',
         'legalAddress',
         'legalName',
@@ -96,11 +112,13 @@ final class VacationRental extends AbstractType
         'memberOf',
         'naics',
         'name',
+        'nonprofitStatus',
         'numberOfEmployees',
         'numberOfRooms',
         'openingHours',
         'openingHoursSpecification',
         'owner',
+        'ownershipFundingInfo',
         'owns',
         'parentOrganization',
         'paymentAccepted',
@@ -123,6 +141,8 @@ final class VacationRental extends AbstractType
         'subjectOf',
         'taxID',
         'telephone',
+        'tourBookingPage',
+        'unnamedSourcesPolicy',
         'url',
         'vatID',
     ];

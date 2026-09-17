@@ -40,6 +40,7 @@ final class MarryAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'startTime',

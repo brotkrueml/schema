@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A BreadcrumbList is an ItemList consisting of a chain of linked Web pages, typically described using at least their URL and their name, and typically ending with the current page.

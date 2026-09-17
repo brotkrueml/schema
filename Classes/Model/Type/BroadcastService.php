@@ -35,6 +35,7 @@ final class BroadcastService extends AbstractType
         'broadcastTimezone',
         'broadcaster',
         'broker',
+        'callSign',
         'category',
         'description',
         'disambiguatingDescription',
@@ -54,6 +55,7 @@ final class BroadcastService extends AbstractType
         'owner',
         'parentService',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -61,6 +63,7 @@ final class BroadcastService extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
         'videoFormat',
     ];

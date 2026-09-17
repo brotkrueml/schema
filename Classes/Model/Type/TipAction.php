@@ -43,6 +43,7 @@ final class TipAction extends AbstractType
         'price',
         'priceCurrency',
         'priceSpecification',
+        'provider',
         'recipient',
         'result',
         'sameAs',

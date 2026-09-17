@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
@@ -36,18 +36,26 @@ final class Product extends AbstractType
         'brand',
         'category',
         'color',
+        'countryOfAssembly',
+        'countryOfLastProcessing',
         'countryOfOrigin',
         'depth',
         'description',
         'disambiguatingDescription',
+        'funding',
         'gtin12',
         'gtin13',
         'gtin14',
         'gtin8',
         'hasCertification',
+        'hasEnergyConsumptionDetails',
+        'hasGS1DigitalLink',
+        'hasMeasurement',
+        'hasMerchantReturnPolicy',
         'height',
         'identifier',
         'image',
+        'inProductGroupWithID',
         'isAccessoryOrSparePartFor',
         'isConsumableFor',
         'isFamilyFriendly',
@@ -63,8 +71,12 @@ final class Product extends AbstractType
         'model',
         'mpn',
         'name',
+        'negativeNotes',
+        'nsn',
         'offers',
         'owner',
+        'pattern',
+        'positiveNotes',
         'potentialAction',
         'productID',
         'productionDate',
@@ -72,6 +84,7 @@ final class Product extends AbstractType
         'releaseDate',
         'review',
         'sameAs',
+        'size',
         'sku',
         'slogan',
         'subjectOf',

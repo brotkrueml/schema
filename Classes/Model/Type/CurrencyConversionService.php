@@ -49,6 +49,7 @@ final class CurrencyConversionService extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -56,6 +57,7 @@ final class CurrencyConversionService extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
     ];
 }

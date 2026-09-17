@@ -42,6 +42,7 @@ final class CommunicateAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'sameAs',

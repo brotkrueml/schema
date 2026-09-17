@@ -47,6 +47,8 @@ final class BusStop extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'identifier',
         'image',
@@ -72,6 +74,7 @@ final class BusStop extends AbstractType
         'specialOpeningHoursSpecification',
         'subjectOf',
         'telephone',
+        'tourBookingPage',
         'url',
     ];
 }

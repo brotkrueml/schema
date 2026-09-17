@@ -47,6 +47,8 @@ final class Airport extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'iataCode',
         'icaoCode',
@@ -74,6 +76,7 @@ final class Airport extends AbstractType
         'specialOpeningHoursSpecification',
         'subjectOf',
         'telephone',
+        'tourBookingPage',
         'url',
     ];
 }

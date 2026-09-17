@@ -21,6 +21,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class Residence extends AbstractType
 {
     protected static array $propertyNames = [
+        'accommodationFloorPlan',
         'additionalProperty',
         'additionalType',
         'address',
@@ -34,6 +35,7 @@ final class Residence extends AbstractType
         'disambiguatingDescription',
         'event',
         'faxNumber',
+        'floorLevel',
         'geo',
         'geoContains',
         'geoCoveredBy',
@@ -47,6 +49,8 @@ final class Residence extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'identifier',
         'image',
@@ -71,6 +75,7 @@ final class Residence extends AbstractType
         'specialOpeningHoursSpecification',
         'subjectOf',
         'telephone',
+        'tourBookingPage',
         'url',
     ];
 }

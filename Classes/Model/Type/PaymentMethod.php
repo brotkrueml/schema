@@ -41,6 +41,7 @@ final class PaymentMethod extends AbstractType
         'mainEntityOfPage',
         'name',
         'owner',
+        'paymentMethodType',
         'potentialAction',
         'sameAs',
         'subjectOf',

@@ -46,6 +46,7 @@ final class ConfirmAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'sameAs',

@@ -43,6 +43,7 @@ final class QuoteAction extends AbstractType
         'price',
         'priceCurrency',
         'priceSpecification',
+        'provider',
         'result',
         'sameAs',
         'startTime',

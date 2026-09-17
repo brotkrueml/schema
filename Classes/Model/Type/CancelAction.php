@@ -43,6 +43,7 @@ final class CancelAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'scheduledTime',

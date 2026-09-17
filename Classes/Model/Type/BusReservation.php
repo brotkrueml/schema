@@ -38,6 +38,7 @@ final class BusReservation extends AbstractType
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',
+        'provider',
         'reservationFor',
         'reservationId',
         'reservationStatus',

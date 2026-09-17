@@ -20,19 +20,5 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 #[Type('Distance')]
 final class Distance extends AbstractType
 {
-    protected static array $propertyNames = [
-        'additionalType',
-        'alternateName',
-        'description',
-        'disambiguatingDescription',
-        'identifier',
-        'image',
-        'mainEntityOfPage',
-        'name',
-        'owner',
-        'potentialAction',
-        'sameAs',
-        'subjectOf',
-        'url',
-    ];
+    protected static array $propertyNames = [];
 }

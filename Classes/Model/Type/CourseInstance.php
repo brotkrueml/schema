@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An instance of a Course which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
@@ -34,14 +34,19 @@ final class CourseInstance extends AbstractType
         'composer',
         'contributor',
         'courseMode',
+        'courseSchedule',
+        'courseWorkload',
         'description',
         'director',
         'disambiguatingDescription',
         'doorTime',
         'duration',
         'endDate',
+        'eventAttendanceMode',
+        'eventSchedule',
         'eventStatus',
         'funder',
+        'funding',
         'identifier',
         'image',
         'inLanguage',
@@ -51,6 +56,8 @@ final class CourseInstance extends AbstractType
         'location',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',
+        'maximumPhysicalAttendeeCapacity',
+        'maximumVirtualAttendeeCapacity',
         'name',
         'offers',
         'organizer',

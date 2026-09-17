@@ -47,6 +47,7 @@ final class Demand extends AbstractType
         'identifier',
         'image',
         'includesObject',
+        'ineligibleRegion',
         'inventoryLevel',
         'itemCondition',
         'itemOffered',

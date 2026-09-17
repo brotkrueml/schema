@@ -38,6 +38,7 @@ final class EndorsementRating extends AbstractType
         'name',
         'owner',
         'potentialAction',
+        'ratingExplanation',
         'ratingValue',
         'reviewAspect',
         'sameAs',

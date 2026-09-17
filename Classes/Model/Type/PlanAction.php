@@ -40,6 +40,7 @@ final class PlanAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'scheduledTime',

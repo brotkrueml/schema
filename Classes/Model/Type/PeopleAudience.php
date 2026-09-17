@@ -38,8 +38,10 @@ final class PeopleAudience extends AbstractType
         'requiredMinAge',
         'sameAs',
         'subjectOf',
+        'suggestedAge',
         'suggestedGender',
         'suggestedMaxAge',
+        'suggestedMeasurement',
         'suggestedMinAge',
         'url',
     ];

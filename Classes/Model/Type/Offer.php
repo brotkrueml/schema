@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.
@@ -43,6 +43,7 @@ final class Offer extends AbstractType
         'availableDeliveryMethod',
         'businessFunction',
         'category',
+        'checkoutPageURLTemplate',
         'deliveryLeadTime',
         'description',
         'disambiguatingDescription',
@@ -55,13 +56,18 @@ final class Offer extends AbstractType
         'gtin13',
         'gtin14',
         'gtin8',
+        'hasGS1DigitalLink',
+        'hasMeasurement',
+        'hasMerchantReturnPolicy',
         'identifier',
         'image',
         'includesObject',
+        'ineligibleRegion',
         'inventoryLevel',
         'isFamilyFriendly',
         'itemCondition',
         'itemOffered',
+        'leaseLength',
         'mainEntityOfPage',
         'mpn',
         'name',
@@ -80,6 +86,7 @@ final class Offer extends AbstractType
         'sku',
         'subjectOf',
         'url',
+        'validForMemberTier',
         'validFrom',
         'validThrough',
         'warranty',

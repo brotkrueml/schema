@@ -38,6 +38,7 @@ final class BusTrip extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'sameAs',
         'subjectOf',
         'tripOrigin',

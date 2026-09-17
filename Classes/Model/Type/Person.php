@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A person (alive, dead, undead, or fictional).
@@ -28,12 +28,14 @@ final class Person extends AbstractType
         'additionalType',
         'address',
         'affiliation',
+        'agentInteractionStatistic',
         'alternateName',
         'alumniOf',
         'award',
         'birthDate',
         'birthPlace',
         'brand',
+        'callSign',
         'children',
         'colleague',
         'contactPoint',
@@ -47,9 +49,12 @@ final class Person extends AbstractType
         'faxNumber',
         'follows',
         'funder',
+        'funding',
+        'gender',
         'givenName',
         'globalLocationNumber',
         'hasCertification',
+        'hasCredential',
         'hasOccupation',
         'hasOfferCatalog',
         'hasPOS',
@@ -61,7 +66,10 @@ final class Person extends AbstractType
         'image',
         'interactionStatistic',
         'isicV4',
+        'jobTitle',
         'knows',
+        'knowsAbout',
+        'knowsLanguage',
         'mainEntityOfPage',
         'makesOffer',
         'memberOf',

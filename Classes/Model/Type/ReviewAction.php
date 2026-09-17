@@ -40,6 +40,7 @@ final class ReviewAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'resultReview',
         'sameAs',

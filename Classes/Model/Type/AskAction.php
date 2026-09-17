@@ -45,6 +45,7 @@ final class AskAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'question',
         'recipient',
         'result',

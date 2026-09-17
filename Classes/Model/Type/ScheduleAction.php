@@ -43,6 +43,7 @@ final class ScheduleAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'scheduledTime',

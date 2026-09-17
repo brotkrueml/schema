@@ -40,6 +40,7 @@ final class FoodEstablishmentReservation extends AbstractType
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',
+        'provider',
         'reservationFor',
         'reservationId',
         'reservationStatus',

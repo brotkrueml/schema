@@ -21,6 +21,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class BankAccount extends AbstractType
 {
     protected static array $propertyNames = [
+        'accountMinimumInflow',
+        'accountOverdraftLimit',
         'additionalType',
         'aggregateRating',
         'alternateName',
@@ -29,6 +31,7 @@ final class BankAccount extends AbstractType
         'audience',
         'availableChannel',
         'award',
+        'bankAccountType',
         'brand',
         'broker',
         'category',
@@ -49,6 +52,7 @@ final class BankAccount extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -56,6 +60,7 @@ final class BankAccount extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
     ];
 }

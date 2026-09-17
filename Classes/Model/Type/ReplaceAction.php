@@ -40,6 +40,7 @@ final class ReplaceAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'replacee',
         'replacer',
         'result',

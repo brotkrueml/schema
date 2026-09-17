@@ -31,6 +31,7 @@ final class ProgramMembership extends AbstractType
         'mainEntityOfPage',
         'member',
         'membershipNumber',
+        'membershipPointsEarned',
         'name',
         'owner',
         'potentialAction',

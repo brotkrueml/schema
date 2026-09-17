@@ -48,7 +48,9 @@ final class PaymentService extends AbstractType
         'name',
         'offers',
         'owner',
+        'paymentMethodType',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -56,6 +58,7 @@ final class PaymentService extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
     ];
 }

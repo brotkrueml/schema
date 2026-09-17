@@ -43,6 +43,7 @@ final class SearchAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'query',
         'result',
         'sameAs',

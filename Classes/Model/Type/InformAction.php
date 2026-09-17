@@ -43,6 +43,7 @@ final class InformAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'sameAs',

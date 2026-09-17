@@ -39,6 +39,7 @@ final class ParcelDelivery extends AbstractType
         'owner',
         'partOfOrder',
         'potentialAction',
+        'provider',
         'sameAs',
         'subjectOf',
         'trackingNumber',

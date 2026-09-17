@@ -44,6 +44,7 @@ final class DonateAction extends AbstractType
         'price',
         'priceCurrency',
         'priceSpecification',
+        'provider',
         'recipient',
         'result',
         'sameAs',

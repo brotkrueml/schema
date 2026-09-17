@@ -46,6 +46,7 @@ final class CableOrSatelliteService extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -53,6 +54,7 @@ final class CableOrSatelliteService extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
     ];
 }

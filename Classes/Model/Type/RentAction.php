@@ -44,6 +44,7 @@ final class RentAction extends AbstractType
         'price',
         'priceCurrency',
         'priceSpecification',
+        'provider',
         'realEstateAgent',
         'result',
         'sameAs',

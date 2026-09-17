@@ -32,12 +32,15 @@ final class ShippingRateSettings extends AbstractType
         'isUnlabelledFallback',
         'mainEntityOfPage',
         'name',
+        'orderPercentage',
         'owner',
         'potentialAction',
         'sameAs',
         'shippingDestination',
+        'shippingLabel',
         'shippingRate',
         'subjectOf',
         'url',
+        'weightPercentage',
     ];
 }

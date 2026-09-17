@@ -23,6 +23,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
 final class MeetingRoom extends AbstractType
 {
     protected static array $propertyNames = [
+        'accommodationCategory',
+        'accommodationFloorPlan',
         'additionalProperty',
         'additionalType',
         'address',
@@ -37,6 +39,7 @@ final class MeetingRoom extends AbstractType
         'disambiguatingDescription',
         'event',
         'faxNumber',
+        'floorLevel',
         'floorSize',
         'geo',
         'geoContains',
@@ -51,6 +54,8 @@ final class MeetingRoom extends AbstractType
         'geoWithin',
         'globalLocationNumber',
         'hasCertification',
+        'hasDriveThroughService',
+        'hasGS1DigitalLink',
         'hasMap',
         'identifier',
         'image',
@@ -58,11 +63,16 @@ final class MeetingRoom extends AbstractType
         'isicV4',
         'keywords',
         'latitude',
+        'leaseLength',
         'logo',
         'longitude',
         'mainEntityOfPage',
         'maximumAttendeeCapacity',
         'name',
+        'numberOfBathroomsTotal',
+        'numberOfBedrooms',
+        'numberOfFullBathrooms',
+        'numberOfPartialBathrooms',
         'numberOfRooms',
         'occupancy',
         'openingHoursSpecification',
@@ -79,6 +89,8 @@ final class MeetingRoom extends AbstractType
         'specialOpeningHoursSpecification',
         'subjectOf',
         'telephone',
+        'tourBookingPage',
         'url',
+        'yearBuilt',
     ];
 }

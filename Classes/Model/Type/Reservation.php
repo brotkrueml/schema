@@ -38,6 +38,7 @@ final class Reservation extends AbstractType
         'potentialAction',
         'priceCurrency',
         'programMembershipUsed',
+        'provider',
         'reservationFor',
         'reservationId',
         'reservationStatus',

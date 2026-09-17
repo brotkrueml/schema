@@ -24,6 +24,8 @@ final class BroadcastFrequencySpecification extends AbstractType
         'additionalType',
         'alternateName',
         'broadcastFrequencyValue',
+        'broadcastSignalModulation',
+        'broadcastSubChannel',
         'description',
         'disambiguatingDescription',
         'identifier',

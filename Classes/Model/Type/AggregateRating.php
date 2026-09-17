@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * The average rating based on multiple ratings or reviews.
@@ -39,6 +39,7 @@ final class AggregateRating extends AbstractType
         'owner',
         'potentialAction',
         'ratingCount',
+        'ratingExplanation',
         'ratingValue',
         'reviewAspect',
         'reviewCount',

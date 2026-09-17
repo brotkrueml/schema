@@ -30,6 +30,8 @@ final class LocationFeatureSpecification extends AbstractType
         'image',
         'mainEntityOfPage',
         'maxValue',
+        'measurementMethod',
+        'measurementTechnique',
         'minValue',
         'name',
         'owner',

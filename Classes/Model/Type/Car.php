@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.
@@ -31,9 +31,12 @@ final class Car extends AbstractType
         'audience',
         'award',
         'brand',
+        'callSign',
         'cargoVolume',
         'category',
         'color',
+        'countryOfAssembly',
+        'countryOfLastProcessing',
         'countryOfOrigin',
         'dateVehicleFirstRegistered',
         'depth',
@@ -43,14 +46,20 @@ final class Car extends AbstractType
         'fuelConsumption',
         'fuelEfficiency',
         'fuelType',
+        'funding',
         'gtin12',
         'gtin13',
         'gtin14',
         'gtin8',
         'hasCertification',
+        'hasEnergyConsumptionDetails',
+        'hasGS1DigitalLink',
+        'hasMeasurement',
+        'hasMerchantReturnPolicy',
         'height',
         'identifier',
         'image',
+        'inProductGroupWithID',
         'isAccessoryOrSparePartFor',
         'isConsumableFor',
         'isFamilyFriendly',
@@ -68,6 +77,8 @@ final class Car extends AbstractType
         'model',
         'mpn',
         'name',
+        'negativeNotes',
+        'nsn',
         'numberOfAirbags',
         'numberOfAxles',
         'numberOfDoors',
@@ -75,6 +86,8 @@ final class Car extends AbstractType
         'numberOfPreviousOwners',
         'offers',
         'owner',
+        'pattern',
+        'positiveNotes',
         'potentialAction',
         'productID',
         'productionDate',
@@ -82,6 +95,7 @@ final class Car extends AbstractType
         'releaseDate',
         'review',
         'sameAs',
+        'size',
         'sku',
         'slogan',
         'steeringPosition',

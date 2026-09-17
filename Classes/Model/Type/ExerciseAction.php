@@ -46,6 +46,7 @@ final class ExerciseAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'sportsActivityLocation',

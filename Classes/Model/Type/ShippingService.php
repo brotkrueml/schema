@@ -15,16 +15,18 @@ use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 
 /**
- * Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like '3 kg' or '4 milligrams'.
+ * ShippingService represents the criteria used to determine if and how an offer could be shipped to a customer.
  */
-#[Type('Quantity')]
-final class Quantity extends AbstractType
+#[Type('ShippingService')]
+final class ShippingService extends AbstractType
 {
     protected static array $propertyNames = [
         'additionalType',
         'alternateName',
         'description',
         'disambiguatingDescription',
+        'fulfillmentType',
+        'handlingTime',
         'identifier',
         'image',
         'mainEntityOfPage',
@@ -32,7 +34,9 @@ final class Quantity extends AbstractType
         'owner',
         'potentialAction',
         'sameAs',
+        'shippingConditions',
         'subjectOf',
         'url',
+        'validForMemberTier',
     ];
 }

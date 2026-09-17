@@ -45,6 +45,7 @@ final class ReplyAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'resultComment',

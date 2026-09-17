@@ -40,8 +40,10 @@ final class ParentAudience extends AbstractType
         'requiredMinAge',
         'sameAs',
         'subjectOf',
+        'suggestedAge',
         'suggestedGender',
         'suggestedMaxAge',
+        'suggestedMeasurement',
         'suggestedMinAge',
         'url',
     ];

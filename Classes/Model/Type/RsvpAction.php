@@ -45,6 +45,7 @@ final class RsvpAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'rsvpResponse',

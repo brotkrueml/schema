@@ -32,6 +32,7 @@ final class ActionAccessSpecification extends AbstractType
         'expectsAcceptanceOf',
         'identifier',
         'image',
+        'ineligibleRegion',
         'mainEntityOfPage',
         'name',
         'owner',

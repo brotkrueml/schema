@@ -43,6 +43,7 @@ final class BuyAction extends AbstractType
         'price',
         'priceCurrency',
         'priceSpecification',
+        'provider',
         'result',
         'sameAs',
         'seller',

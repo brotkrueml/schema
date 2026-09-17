@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
@@ -41,6 +41,7 @@ final class AggregateOffer extends AbstractType
         'availableDeliveryMethod',
         'businessFunction',
         'category',
+        'checkoutPageURLTemplate',
         'deliveryLeadTime',
         'description',
         'disambiguatingDescription',
@@ -53,14 +54,19 @@ final class AggregateOffer extends AbstractType
         'gtin13',
         'gtin14',
         'gtin8',
+        'hasGS1DigitalLink',
+        'hasMeasurement',
+        'hasMerchantReturnPolicy',
         'highPrice',
         'identifier',
         'image',
         'includesObject',
+        'ineligibleRegion',
         'inventoryLevel',
         'isFamilyFriendly',
         'itemCondition',
         'itemOffered',
+        'leaseLength',
         'lowPrice',
         'mainEntityOfPage',
         'mpn',
@@ -82,6 +88,7 @@ final class AggregateOffer extends AbstractType
         'sku',
         'subjectOf',
         'url',
+        'validForMemberTier',
         'validFrom',
         'validThrough',
         'warranty',

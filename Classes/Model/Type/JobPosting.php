@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A listing that describes a job opening in a certain organization.
@@ -26,11 +26,15 @@ final class JobPosting extends AbstractType
     protected static array $propertyNames = [
         'additionalType',
         'alternateName',
+        'applicationContact',
         'baseSalary',
         'datePosted',
         'description',
         'disambiguatingDescription',
+        'eligibilityToWorkRequirement',
+        'employerOverview',
         'employmentType',
+        'employmentUnit',
         'estimatedSalary',
         'experienceRequirements',
         'hiringOrganization',
@@ -39,19 +43,26 @@ final class JobPosting extends AbstractType
         'incentiveCompensation',
         'industry',
         'jobBenefits',
+        'jobImmediateStart',
         'jobLocation',
+        'jobLocationType',
+        'jobStartDate',
         'mainEntityOfPage',
         'name',
         'owner',
+        'physicalRequirement',
         'potentialAction',
         'relevantOccupation',
         'responsibilities',
         'salaryCurrency',
         'sameAs',
+        'securityClearanceRequirement',
+        'sensoryRequirement',
         'skills',
         'specialCommitments',
         'subjectOf',
         'title',
+        'totalJobOpenings',
         'url',
         'validThrough',
         'workHours',

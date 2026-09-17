@@ -50,6 +50,7 @@ final class InvestmentOrDeposit extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'providerMobility',
         'review',
         'sameAs',
@@ -57,6 +58,7 @@ final class InvestmentOrDeposit extends AbstractType
         'serviceType',
         'slogan',
         'subjectOf',
+        'termsOfService',
         'url',
     ];
 }

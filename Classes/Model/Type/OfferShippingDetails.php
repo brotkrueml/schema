@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * OfferShippingDetails represents information about shipping destinations.
@@ -42,6 +42,7 @@ final class OfferShippingDetails extends AbstractType
         'description',
         'disambiguatingDescription',
         'doesNotShip',
+        'hasShippingService',
         'height',
         'identifier',
         'image',
@@ -49,12 +50,17 @@ final class OfferShippingDetails extends AbstractType
         'name',
         'owner',
         'potentialAction',
+        'provider',
         'sameAs',
         'shippingDestination',
+        'shippingLabel',
         'shippingOrigin',
         'shippingRate',
+        'shippingSettingsLink',
         'subjectOf',
+        'transitTimeLabel',
         'url',
+        'validForMemberTier',
         'weight',
         'width',
     ];

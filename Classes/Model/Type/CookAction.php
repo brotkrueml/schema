@@ -42,6 +42,7 @@ final class CookAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipe',
         'result',
         'sameAs',

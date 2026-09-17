@@ -46,6 +46,7 @@ final class Flight extends AbstractType
         'offers',
         'owner',
         'potentialAction',
+        'provider',
         'sameAs',
         'seller',
         'subjectOf',

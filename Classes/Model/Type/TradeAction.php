@@ -43,6 +43,7 @@ final class TradeAction extends AbstractType
         'price',
         'priceCurrency',
         'priceSpecification',
+        'provider',
         'result',
         'sameAs',
         'startTime',

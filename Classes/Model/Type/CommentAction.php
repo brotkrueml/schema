@@ -42,6 +42,7 @@ final class CommentAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'recipient',
         'result',
         'resultComment',

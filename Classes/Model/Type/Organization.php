@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An organization such as a school, NGO, corporation, club, etc.
@@ -26,8 +26,10 @@ final class Organization extends AbstractType
 {
     protected static array $propertyNames = [
         'acceptedPaymentMethod',
+        'actionableFeedbackPolicy',
         'additionalType',
         'address',
+        'agentInteractionStatistic',
         'aggregateRating',
         'alternateName',
         'alumni',
@@ -36,29 +38,41 @@ final class Organization extends AbstractType
         'brand',
         'companyRegistration',
         'contactPoint',
+        'correctionsPolicy',
         'department',
         'description',
         'disambiguatingDescription',
         'dissolutionDate',
+        'diversityPolicy',
+        'diversityStaffingReport',
         'duns',
         'email',
         'employee',
+        'ethicsPolicy',
         'event',
         'faxNumber',
         'founder',
         'foundingDate',
         'foundingLocation',
         'funder',
+        'funding',
         'globalLocationNumber',
         'hasCertification',
+        'hasCredential',
+        'hasGS1DigitalLink',
         'hasMemberProgram',
+        'hasMerchantReturnPolicy',
         'hasOfferCatalog',
         'hasPOS',
+        'hasShippingService',
         'identifier',
         'image',
         'interactionStatistic',
         'isicV4',
+        'iso6523Code',
         'keywords',
+        'knowsAbout',
+        'knowsLanguage',
         'legalAddress',
         'legalName',
         'legalRepresentative',
@@ -71,8 +85,10 @@ final class Organization extends AbstractType
         'memberOf',
         'naics',
         'name',
+        'nonprofitStatus',
         'numberOfEmployees',
         'owner',
+        'ownershipFundingInfo',
         'owns',
         'parentOrganization',
         'potentialAction',
@@ -87,6 +103,7 @@ final class Organization extends AbstractType
         'subjectOf',
         'taxID',
         'telephone',
+        'unnamedSourcesPolicy',
         'url',
         'vatID',
     ];

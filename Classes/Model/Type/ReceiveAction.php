@@ -46,6 +46,7 @@ final class ReceiveAction extends AbstractType
         'owner',
         'participant',
         'potentialAction',
+        'provider',
         'result',
         'sameAs',
         'sender',

@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Model\Type;
 
 use Brotkrueml\Schema\Attributes\Manual;
+use Brotkrueml\Schema\Manual\Publisher;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * The price asked for a given offer by the respective organization or person.
@@ -28,7 +28,9 @@ final class UnitPriceSpecification extends AbstractType
     protected static array $propertyNames = [
         'additionalType',
         'alternateName',
+        'billingDuration',
         'billingIncrement',
+        'billingStart',
         'description',
         'disambiguatingDescription',
         'eligibleQuantity',
@@ -37,11 +39,13 @@ final class UnitPriceSpecification extends AbstractType
         'image',
         'mainEntityOfPage',
         'maxPrice',
+        'membershipPointsEarned',
         'minPrice',
         'name',
         'owner',
         'potentialAction',
         'price',
+        'priceComponentType',
         'priceCurrency',
         'priceType',
         'referenceQuantity',
@@ -50,6 +54,7 @@ final class UnitPriceSpecification extends AbstractType
         'unitCode',
         'unitText',
         'url',
+        'validForMemberTier',
         'validFrom',
         'validThrough',
         'valueAddedTaxIncluded',
