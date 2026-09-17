@@ -60,10 +60,7 @@ final class TypeRegistry
      */
     public function addManualForType(string $type, array $manualProperties): void
     {
-        if (! isset($this->manuals[$type])) {
-            $this->manuals[$type] = [];
-        }
-
+        $this->manuals[$type] ??= [];
         $this->manuals[$type][] = new Manual($manualProperties[0], $manualProperties[1], $manualProperties[2]);
     }
 

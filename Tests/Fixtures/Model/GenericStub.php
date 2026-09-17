@@ -57,9 +57,7 @@ class GenericStub implements NodeIdentifierInterface, TypeInterface
 
     public function addProperty(string $propertyName, $propertyValue): static
     {
-        if ($this->properties[$propertyName] === null) {
-            $this->properties[$propertyName] = $propertyValue;
-        }
+        $this->properties[$propertyName] ??= $propertyValue;
 
         return $this;
     }
