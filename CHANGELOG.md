@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.3.0] - 2026-09-18
+
 ### Updated
 - schema.org definition to version 30.1
 
@@ -666,7 +668,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.2.3...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.3.0...HEAD
+[4.3.0]: https://github.com/brotkrueml/schema/compare/v4.2.3...v4.3.0
 [4.2.3]: https://github.com/brotkrueml/schema/compare/v4.2.2...v4.2.3
 [4.2.2]: https://github.com/brotkrueml/schema/compare/v4.2.1...v4.2.2
 [4.2.1]: https://github.com/brotkrueml/schema/compare/v4.2.0...v4.2.1
