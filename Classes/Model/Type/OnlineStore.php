@@ -11,16 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
-use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An eCommerce site.
  */
 #[Type('OnlineStore')]
-#[Manual(Publisher::Google, 'Organization: Online store with return policy', 'https://developers.google.com/search/docs/appearance/structured-data/organization#example-online-store')]
 final class OnlineStore extends AbstractType
 {
     protected static array $propertyNames = [

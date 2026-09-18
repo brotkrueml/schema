@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An OfferCatalog is an ItemList that contains related Offers and/or further OfferCatalogs that are offeredBy the same provider.
  */
 #[Type('OfferCatalog')]
+#[Manual(Publisher::Yandex, 'Catalogs', 'https://yandex.com/support/webmaster/en/supported-schemas/catalogs')]
 final class OfferCatalog extends AbstractType
 {
     protected static array $propertyNames = [

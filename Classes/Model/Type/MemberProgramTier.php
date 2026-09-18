@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A MemberProgramTier specifies a tier under a loyalty (member) program, for example "gold".
  */
 #[Type('MemberProgramTier')]
+#[Manual(Publisher::Google, 'Loyalty program', 'https://developers.google.com/search/docs/appearance/structured-data/loyalty-program#memberprogram-tier-properties')]
 final class MemberProgramTier extends AbstractType
 {
     protected static array $propertyNames = [

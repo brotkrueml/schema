@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * ServicePeriod represents a duration with some constraints about cutoff time and business days. This is used e.g. in shipping for handling times or transit time.
  */
 #[Type('ServicePeriod')]
+#[Manual(Publisher::Google, 'Merchant shipping policy', 'https://developers.google.com/search/docs/appearance/structured-data/shipping-policy#shipping-service-handling-time-properties')]
 final class ServicePeriod extends AbstractType
 {
     protected static array $propertyNames = [

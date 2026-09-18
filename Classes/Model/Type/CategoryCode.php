@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A Category Code.
  */
 #[Type('CategoryCode')]
+#[Manual(Publisher::Google, 'Merchant listing: Product information', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-properties')]
 final class CategoryCode extends AbstractType
 {
     protected static array $propertyNames = [

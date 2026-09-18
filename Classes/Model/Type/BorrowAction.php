@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * The act of obtaining an object under an agreement to return it at a later date. Reciprocal of LendAction.
@@ -21,6 +23,7 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * LendAction: Reciprocal of BorrowAction.
  */
 #[Type('BorrowAction')]
+#[Manual(Publisher::Google, 'Book actions', 'https://developers.google.com/search/docs/appearance/structured-data/book#borrowaction-potentialaction')]
 final class BorrowAction extends AbstractType
 {
     protected static array $propertyNames = [

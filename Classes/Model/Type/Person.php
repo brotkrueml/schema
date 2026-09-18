@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A person (alive, dead, undead, or fictional).
  */
 #[Type('Person')]
-#[Manual(Publisher::Google, 'Profile page', 'https://developers.google.com/search/docs/appearance/structured-data/profile-page')]
+#[Manual(Publisher::Google, 'Profile page', 'https://developers.google.com/search/docs/appearance/structured-data/profile-page#profile-target-specification')]
 final class Person extends AbstractType
 {
     protected static array $propertyNames = [

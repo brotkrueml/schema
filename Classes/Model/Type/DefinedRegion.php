@@ -11,8 +11,10 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A DefinedRegion is a geographic area defined by potentially arbitrary (rather than political, administrative or natural geographical) criteria. Properties are provided for defining a region by reference to sets of postal codes.
@@ -30,6 +32,8 @@ use Brotkrueml\Schema\Core\Model\AbstractType;
  * Region = state, canton, prefecture, autonomous community...
  */
 #[Type('DefinedRegion')]
+#[Manual(Publisher::Google, 'Merchant listing: Shipping', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#defined-region-properties')]
+#[Manual(Publisher::Google, 'Merchant shipping policy', 'https://developers.google.com/search/docs/appearance/structured-data/shipping-policy#defined-region-properties')]
 final class DefinedRegion extends AbstractType
 {
     protected static array $propertyNames = [

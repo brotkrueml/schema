@@ -20,8 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A video file.
  */
 #[Type('VideoObject')]
-#[Manual(Publisher::Google, 'Video', 'https://developers.google.com/search/docs/appearance/structured-data/video')]
-#[Manual(Publisher::Google, 'Learning video', 'https://developers.google.com/search/docs/appearance/structured-data/learning-video')]
+#[Manual(Publisher::Google, 'Video', 'https://developers.google.com/search/docs/appearance/structured-data/video#video-object')]
 #[Manual(Publisher::Yandex, 'Video', 'https://yandex.com/support/video/en/partners/schema-org.html')]
 final class VideoObject extends AbstractType
 {

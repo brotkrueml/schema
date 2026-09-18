@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A single feed providing structured information about one or more entities or topics.
  */
 #[Type('DataFeed')]
+#[Manual(Publisher::Google, 'Book actions', 'https://developers.google.com/search/docs/appearance/structured-data/book#datafeed-entity')]
 final class DataFeed extends AbstractType
 {
     protected static array $propertyNames = [

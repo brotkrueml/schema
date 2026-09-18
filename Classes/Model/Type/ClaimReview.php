@@ -11,16 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
-use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).
  */
 #[Type('ClaimReview')]
-#[Manual(Publisher::Google, 'Fact check', 'https://developers.google.com/search/docs/appearance/structured-data/factcheck')]
 final class ClaimReview extends AbstractType
 {
     protected static array $propertyNames = [

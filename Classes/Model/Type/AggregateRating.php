@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * The average rating based on multiple ratings or reviews.
  */
 #[Type('AggregateRating')]
-#[Manual(Publisher::Google, 'Review snippet', 'https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregate-rating')]
+#[Manual(Publisher::Google, 'Review snippet', 'https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregated-rating-type-definition')]
 #[Manual(Publisher::Google, 'Product snippet: Shopping aggregator page', 'https://developers.google.com/search/docs/appearance/structured-data/product-snippet#shopping-aggregator-page-example')]
 final class AggregateRating extends AbstractType
 {

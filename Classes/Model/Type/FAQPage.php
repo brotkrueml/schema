@@ -11,17 +11,14 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
-use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\WebPageTypeInterface;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A FAQPage is a WebPage presenting one or more "[Frequently asked questions](https://en.wikipedia.org/wiki/FAQ)" (see also QAPage).
  */
 #[Type('FAQPage')]
-#[Manual(Publisher::Google, 'FAQ', 'https://developers.google.com/search/docs/appearance/structured-data/faqpage')]
 final class FAQPage extends AbstractType implements WebPageTypeInterface
 {
     protected static array $propertyNames = [

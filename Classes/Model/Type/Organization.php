@@ -20,7 +20,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  * An organization such as a school, NGO, corporation, club, etc.
  */
 #[Type('Organization')]
-#[Manual(Publisher::Google, 'Organization', 'https://developers.google.com/search/docs/appearance/structured-data/organization')]
+#[Manual(Publisher::Google, 'Organization', 'https://developers.google.com/search/docs/appearance/structured-data/organization#structured-data-type-definitions')]
+#[Manual(Publisher::Google, 'Profile page', 'https://developers.google.com/search/docs/appearance/structured-data/profile-page#profile-target-specification')]
 #[Manual(Publisher::Yandex, 'Addresses and organizations', 'https://yandex.com/support/webmaster/supported-schemas/address-organization.html')]
 final class Organization extends AbstractType
 {

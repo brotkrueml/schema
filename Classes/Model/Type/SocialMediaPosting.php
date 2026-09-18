@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
  */
 #[Type('SocialMediaPosting')]
+#[Manual(Publisher::Google, 'Discussion forum', 'https://developers.google.com/search/docs/appearance/structured-data/discussion-forum#dfp')]
 final class SocialMediaPosting extends AbstractType
 {
     protected static array $propertyNames = [

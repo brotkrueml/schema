@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A set of characteristics belonging to people, e.g. who compose an item's target audience.
  */
 #[Type('PeopleAudience')]
+#[Manual(Publisher::Google, 'Merchant listing: Offer details', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#people-audience-properties')]
 final class PeopleAudience extends AbstractType
 {
     protected static array $propertyNames = [

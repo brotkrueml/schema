@@ -22,7 +22,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A more detailed overview of [schema.org News markup](/docs/news.html) is also available.
  */
 #[Type('NewsArticle')]
-#[Manual(Publisher::Google, 'Article', 'https://developers.google.com/search/docs/appearance/structured-data/article')]
+#[Manual(Publisher::Google, 'Article', 'https://developers.google.com/search/docs/appearance/structured-data/article#article-types')]
 #[Manual(Publisher::Google, 'Subscription and paywalled content', 'https://developers.google.com/search/docs/data-types/paywalled-content')]
 final class NewsArticle extends AbstractType
 {

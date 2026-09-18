@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * ShippingService represents the criteria used to determine if and how an offer could be shipped to a customer.
  */
 #[Type('ShippingService')]
+#[Manual(Publisher::Google, 'Merchant shipping policy', 'https://developers.google.com/search/docs/appearance/structured-data/shipping-policy#merchant-shipping-policy-properties')]
 final class ShippingService extends AbstractType
 {
     protected static array $propertyNames = [

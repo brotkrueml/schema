@@ -22,7 +22,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * Note: AggregateOffers are normally expected to associate multiple offers that all share the same defined businessFunction value, or default to http://purl.org/goodrelations/v1#Sell if businessFunction is not explicitly defined.
  */
 #[Type('AggregateOffer')]
-#[Manual(Publisher::Google, 'Product snippet: Shopping aggregator page', 'https://developers.google.com/search/docs/appearance/structured-data/product-snippet#shopping-aggregator-page-example')]
+#[Manual(Publisher::Google, 'Product snippet: Offer details', 'https://developers.google.com/search/docs/appearance/structured-data/product-snippet#aggregate-offer-properties')]
 final class AggregateOffer extends AbstractType
 {
     protected static array $propertyNames = [

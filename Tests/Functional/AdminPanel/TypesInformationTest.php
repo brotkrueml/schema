@@ -285,7 +285,7 @@ Person
 <span class="icon-markup">
 <img src="typo3conf/ext/schema/Resources/Public/Icons/documentation-google.svg" width="16" height="16" alt="" />
 </span>
-</span> <a class="ext-schema-adminpanel-link" href="https://developers.google.com/search/docs/appearance/structured-data/profile-page" target="_blank" rel="noreferrer">Profile page</a></span></span>
+</span> <a class="ext-schema-adminpanel-link" href="https://developers.google.com/search/docs/appearance/structured-data/profile-page#profile-target-specification" target="_blank" rel="noreferrer">Profile page</a></span></span>
 </td>
 </tr>
 <tr>
@@ -370,7 +370,7 @@ Event
 <span class="icon-markup">
 <img src="typo3conf/ext/schema/Resources/Public/Icons/documentation-google.svg" width="16" height="16" alt="" />
 </span>
-</span> <a class="ext-schema-adminpanel-link" href="https://developers.google.com/search/docs/appearance/structured-data/event" target="_blank" rel="noreferrer">Event</a></span></span>
+</span> <a class="ext-schema-adminpanel-link" href="https://developers.google.com/search/docs/appearance/structured-data/event#structured-data-type-definitions" target="_blank" rel="noreferrer">Event</a></span></span>
 </td>
 </tr>
 <tr>
@@ -401,7 +401,7 @@ Person
 <span class="icon-markup">
 <img src="typo3conf/ext/schema/Resources/Public/Icons/documentation-google.svg" width="16" height="16" alt="" />
 </span>
-</span> <a class="ext-schema-adminpanel-link" href="https://developers.google.com/search/docs/appearance/structured-data/profile-page" target="_blank" rel="noreferrer">Profile page</a></span></span>
+</span> <a class="ext-schema-adminpanel-link" href="https://developers.google.com/search/docs/appearance/structured-data/profile-page#profile-target-specification" target="_blank" rel="noreferrer">Profile page</a></span></span>
 </td>
 </tr>
 <tr>

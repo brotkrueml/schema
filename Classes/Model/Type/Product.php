@@ -20,9 +20,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
  */
 #[Type('Product')]
-#[Manual(Publisher::Google, 'Product', 'https://developers.google.com/search/docs/appearance/structured-data/product')]
-#[Manual(Publisher::Google, 'Product variant', 'https://developers.google.com/search/docs/appearance/structured-data/product-variants')]
-#[Manual(Publisher::Google, 'Merchant listing', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing')]
+#[Manual(Publisher::Google, 'Product', 'https://developers.google.com/search/docs/appearance/structured-data/product-snippet#product-properties')]
+#[Manual(Publisher::Google, 'Merchant listing: Product information', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#product-properties')]
 #[Manual(Publisher::Yandex, 'Product information', 'https://yandex.com/support/webmaster/supported-schemas/goods-prices.html')]
 final class Product extends AbstractType
 {

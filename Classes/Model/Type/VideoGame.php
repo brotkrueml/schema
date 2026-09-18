@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
  */
 #[Type('VideoGame')]
-#[Manual(Publisher::Google, 'Software app', 'https://developers.google.com/search/docs/appearance/structured-data/software-app')]
+#[Manual(Publisher::Google, 'Software app', 'https://developers.google.com/search/docs/appearance/structured-data/software-app#softwareapplication')]
 #[Manual(Publisher::Yandex, 'Software', 'https://yandex.com/support/webmaster/supported-schemas/software.html')]
 final class VideoGame extends AbstractType
 {

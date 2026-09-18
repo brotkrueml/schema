@@ -20,7 +20,8 @@ use Brotkrueml\Schema\Manual\Publisher;
  * A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.
  */
 #[Type('InteractionCounter')]
-#[Manual(Publisher::Google, 'Profile page', 'https://developers.google.com/search/docs/appearance/structured-data/profile-page')]
+#[Manual(Publisher::Google, 'Discussion forum', 'https://developers.google.com/search/docs/appearance/structured-data/discussion-forum#interaction-counter')]
+#[Manual(Publisher::Google, 'Profile page', 'https://developers.google.com/search/docs/appearance/structured-data/profile-page#profile-target-specification')]
 final class InteractionCounter extends AbstractType
 {
     protected static array $propertyNames = [

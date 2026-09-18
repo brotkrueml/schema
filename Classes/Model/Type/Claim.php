@@ -11,10 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
-use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A Claim in Schema.org represents a specific, factually-oriented claim that could be the itemReviewed in a ClaimReview. The content of a claim can be summarized with the text property. Variations on well known claims can have their common identity indicated via sameAs links, and summarized with a name. Ideally, a Claim description includes enough contextual information to minimize the risk of ambiguity or inclarity. In practice, many claims are better understood in the context in which they appear or the interpretations provided by claim reviews.
@@ -24,7 +22,6 @@ use Brotkrueml\Schema\Manual\Publisher;
  * At this time, Schema.org does not define any types of relationship between claims. This is a natural area for future exploration.
  */
 #[Type('Claim')]
-#[Manual(Publisher::Google, 'Fact check: Claim', 'https://developers.google.com/search/docs/appearance/structured-data/factcheck#claim')]
 final class Claim extends AbstractType
 {
     protected static array $propertyNames = [

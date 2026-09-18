@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A MemberProgram defines a loyalty (or membership) program that provides its members with certain benefits, for example better pricing, free shipping or returns, or the ability to earn loyalty points. Member programs may have multiple tiers, for example silver and gold members, each with different benefits.
  */
 #[Type('MemberProgram')]
+#[Manual(Publisher::Google, 'Loyalty program', 'https://developers.google.com/search/docs/appearance/structured-data/loyalty-program#member-program-properties')]
 final class MemberProgram extends AbstractType
 {
     protected static array $propertyNames = [

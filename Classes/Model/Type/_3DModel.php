@@ -21,7 +21,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * case of a single file published after Zip compression, the convention of appending '+zip' to the encodingFormat can be used. Geospatial, AR/VR, artistic/animation, gaming, engineering and scientific content can all be represented using 3DModel.
  */
 #[Type('3DModel')]
-#[Manual(Publisher::Google, 'Merchant listing: 3D Model', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#3d-model-example')]
+#[Manual(Publisher::Google, 'Merchant listing: 3D Model', 'https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#3d-model-properties')]
 final class _3DModel extends AbstractType
 {
     protected static array $propertyNames = [

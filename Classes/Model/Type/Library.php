@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A library.
  */
 #[Type('Library')]
+#[Manual(Publisher::Google, 'Book actions', 'https://developers.google.com/search/docs/appearance/structured-data/book#library-member')]
 final class Library extends AbstractType
 {
     protected static array $propertyNames = [

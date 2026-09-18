@@ -22,7 +22,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * See also [blog post](https://blog.schema.org/2014/09/02/schema-org-support-for-bibliographic-relationships-and-periodicals/).
  */
 #[Type('Article')]
-#[Manual(Publisher::Google, 'Article', 'https://developers.google.com/search/docs/appearance/structured-data/article')]
+#[Manual(Publisher::Google, 'Article', 'https://developers.google.com/search/docs/appearance/structured-data/article#article-types')]
 final class Article extends AbstractType
 {
     protected static array $propertyNames = [

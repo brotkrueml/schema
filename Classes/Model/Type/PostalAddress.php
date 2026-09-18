@@ -20,7 +20,7 @@ use Brotkrueml\Schema\Manual\Publisher;
  * The mailing address.
  */
 #[Type('PostalAddress')]
-#[Manual(Publisher::Google, 'Organization', 'https://developers.google.com/search/docs/appearance/structured-data/organization')]
+#[Manual(Publisher::Google, 'Organization', 'https://developers.google.com/search/docs/appearance/structured-data/organization#structured-data-type-definitions')]
 #[Manual(Publisher::Yandex, 'Addresses and organizations', 'https://yandex.com/support/webmaster/supported-schemas/address-organization.html')]
 final class PostalAddress extends AbstractType
 {

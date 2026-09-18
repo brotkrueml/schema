@@ -11,16 +11,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
-use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
-use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * A profession, may involve prolonged training and/or a formal qualification.
  */
 #[Type('Occupation')]
-#[Manual(Publisher::Google, 'Estimated salary', 'https://developers.google.com/search/docs/appearance/structured-data/estimated-salary')]
 final class Occupation extends AbstractType
 {
     protected static array $propertyNames = [

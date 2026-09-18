@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An over the air or online broadcast event.
  */
 #[Type('BroadcastEvent')]
+#[Manual(Publisher::Google, 'Video', 'https://developers.google.com/search/docs/appearance/structured-data/video#broadcast-event')]
 final class BroadcastEvent extends AbstractType
 {
     protected static array $propertyNames = [

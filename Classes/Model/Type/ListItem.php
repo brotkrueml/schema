@@ -11,13 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Model\Type;
 
+use Brotkrueml\Schema\Attributes\Manual;
 use Brotkrueml\Schema\Attributes\Type;
 use Brotkrueml\Schema\Core\Model\AbstractType;
+use Brotkrueml\Schema\Manual\Publisher;
 
 /**
  * An list item, e.g. a step in a checklist or how-to description.
  */
 #[Type('ListItem')]
+#[Manual(Publisher::Google, 'Breadcrumb', 'https://developers.google.com/search/docs/appearance/structured-data/breadcrumb#list-item')]
 final class ListItem extends AbstractType
 {
     protected static array $propertyNames = [
