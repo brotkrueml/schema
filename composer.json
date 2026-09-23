@@ -79,14 +79,14 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-main": "4.3.x-dev"
+			"dev-main": "4.4.x-dev"
 		},
 		"typo3/cms": {
 			"Package": {
 				"providesPackages": {}
 			},
 			"extension-key": "schema",
-			"version": "4.3.0",
+			"version": "4.4.0-dev",
 			"web-dir": ".Build/web"
 		}
 	}
