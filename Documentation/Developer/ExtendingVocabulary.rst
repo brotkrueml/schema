@@ -94,8 +94,6 @@ For each type create a new PHP class.
 Adding types
 ============
 
-.. versionchanged:: 3.0.0
-
 You can add additional types for use in the :ref:`API <api>` or as a
 :ref:`WebPage type <webpage-types>`. As an example, in March 2020, schema.org
 introduces a new `VirtualLocation`_ type related to the corona crisis, which
@@ -143,7 +141,7 @@ was quickly adopted by Google. The type can be used as `location`_ in the
       :language: php
       :caption: EXT:my_extension/Classes/ViewHelpers/Schema/Type/VirtualLocationViewHelper.php
 
-   .. versionchanged:: 3.0
+   .. note::
       The name of the type must be defined with the :php:`$type` property.
 
    To use the `schema` namespace in Fluid templates also with your custom
@@ -174,8 +172,6 @@ was quickly adopted by Google. The type can be used as `location`_ in the
 
 Add a new WebPage type
 ======================
-
-.. versionchanged:: 3.0.0
 
 If you are responsible for a medical website, the chances are high that you need
 the `MedicalWebPage`_ web page type, which is part of the Health schema.org

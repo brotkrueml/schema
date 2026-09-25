@@ -65,7 +65,7 @@ enrich with structured markup:
 Every type view helper starts with :html:`<schema:type.xxx>` where :html:`xxx`
 is the lower camel case variant of the schema.org type name.
 
-.. versionchanged:: 3.0
+.. note::
    If the type name starts with a number (for example, `3DModel`) then the first
    number of the view helper is written out (:html:`<schema:type.threeDModel`).
 
