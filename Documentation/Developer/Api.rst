@@ -502,6 +502,9 @@ The class exposes the following methods:
          The type model to be added.
 
       :php:`bool $isPrioritised`
+            .. deprecated:: 4.4.0
+               See: :confval:`Deprecation: Prioritisation of mainEntityOfWebPage <deprecation-prioritisation-addMainEntityOfWebPage>`
+
             Set to :php:`true` to :ref:`prioritise <main-entity-prioritisation>`
             a main entity.
 

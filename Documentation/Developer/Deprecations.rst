@@ -6,6 +6,31 @@
 Deprecations
 ============
 
+Introduced in version 4
+=======================
+
+.. confval:: Prioritisation of mainEntityOfWebPage
+   :name: deprecation-prioritisation-addMainEntityOfWebPage
+
+   Deprecated since version
+      4.4.0
+
+   Will be removed in version
+      5.0.0
+
+   Alternative
+      None.
+
+The :ref:`prioritisation <main-entity-prioritisation>` of `mainEntityOfWebPage` via
+:confval:`SchemaManager->addMainEntityOfWebPage() <schemamanager-addmainentityofwebpage>`
+and the :html:`<schema:type>` view helpers has been introduced to override the
+`WebPage` type, for example to force it to a `FAQPage`. This has been claimed by
+Google to be able to show rich snippets. As Google `removed the support of FAQs`_
+for rich snippets in May 2026, this workaround is not necessary anymore.
+
+.. _removed the support of FAQs: https://developers.google.com/search/updates#removing-faq-rich-result
+
+
 Introduced in version 3
 =======================
 

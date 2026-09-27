@@ -138,6 +138,13 @@ final class SchemaManager
 
     public function addMainEntityOfWebPage(TypeInterface $mainEntity, bool $isPrioritised = false): self
     {
+        if ($isPrioritised) {
+            \trigger_error(
+                'Passing argument "$isPrioritised" with true to method "SchemaManager->addMainEntityOfWebPage" is deprecated since version 4.4.0, prioritisation will be removed in version 5.0.0',
+                \E_USER_DEPRECATED,
+            );
+        }
+
         $notPrioritisedTypes = $this->mainEntityOfWebPageBag->add($mainEntity, $isPrioritised);
         foreach ($notPrioritisedTypes as $type) {
             $this->addType($type);

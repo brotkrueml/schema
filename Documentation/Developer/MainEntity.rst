@@ -102,6 +102,9 @@ main type view helper, not in a child type view helper.
 Prioritisation
 ==============
 
+.. deprecated:: 4.4.0
+   See: :confval:`Deprecation: Prioritisation of mainEntityOfWebPage <deprecation-prioritisation-addMainEntityOfWebPage>`
+
 Main entities can be prioritised. This is sometimes necessary when different
 main entities are defined in different places (for example in a controller,
 a Fluid page template or in a content element).

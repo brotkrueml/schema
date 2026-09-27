@@ -17,6 +17,12 @@ Added
 
 * Support of ordered lists via ``@list`` (#159)
 
+Deprecated
+^^^^^^^^^^
+
+
+* Prioritisation of ``mainEntityOfWebPage`` (#164)
+
 `4.3.0 <https://github.com/brotkrueml/schema/compare/v4.2.3...v4.3.0>`_ - 2026-09-18
 ----------------------------------------------------------------------------------------
 

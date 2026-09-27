@@ -10,6 +10,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 - Support of ordered lists via `@list` (#159)
 
+### Deprecated
+- Prioritisation of `mainEntityOfWebPage` (#164)
+
 ## [4.3.0] - 2026-09-18
 
 ### Updated
