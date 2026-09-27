@@ -29,3 +29,13 @@
         text-decoration: underline;
     }
 }
+
+.ext-schema-adminpanel-list {
+    background: #fafafa !important;
+    border: 1px solid #dadada !important;
+    display: inline-block;
+    font-size: 90% !important;
+    font-weight: normal !important;
+    opacity: 0.8;
+    padding-inline: 2px !important;
+}

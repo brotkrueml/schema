@@ -251,11 +251,13 @@ These interfaces can be useful when you want to
    object OtherTypes
    object WebPage
    object Enumeration
+   object OrderedList
    abstract AbstractType
    interface NodeIdentifierInterface
    interface TypeInterface
    interface WebPageTypeInterface
    interface EnumerationInterface
+   interface OrderedListInterface
 
    Thing --|> AbstractType
    Event --|> AbstractType
@@ -265,6 +267,7 @@ These interfaces can be useful when you want to
    TypeInterface --|> NodeIdentifierInterface
    WebPage --|> WebPageTypeInterface
    Enumeration --|> EnumerationInterface
+   OrderedList --|> OrderedListInterface
 
 Each type model delivered with this extension extends the :php:`AbstractType`
 class.
@@ -322,7 +325,7 @@ methods:
       :php:`string $propertyName`
          The property name to set. If the property does not exist in the model,
          an exception is thrown.
-      :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|null $propertyValue`
+      :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|EnumerationInterface|OrderedListInterface|null $propertyValue`
          The value of the property to set. This can be a string, a boolean,
          another model, a node identifier or an array of strings, booleans or
          models. Also null is possible to clear the property value.
@@ -346,7 +349,7 @@ methods:
       :php:`string $propertyName`
          The property name to set. If the property does not exist in the model,
          an exception is thrown.
-      :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|null $propertyValue`
+      :php:`string|array|bool|TypeInterface|NodeIdentifierInterface|EnumerationInterface|OrderedListInterface|null $propertyValue`
          The value of the property to set. This can be a string, a boolean,
          another model, a node identifier or an array of strings, booleans or
          models. Also null is possible to clear the property value.
@@ -555,6 +558,24 @@ The class exposes the following method:
    Return value
       The ID as a string.
 
+
+.. _api-orderedlist:
+
+Ordered list
+------------
+
+An :ref:`ordered list <sets-lists>` requires to implement the interface
+:php:`\Brotkrueml\Schema\Core\Model\OrderedListInterface`.
+
+.. confval:: getItems(): array
+   :name: orderedlistinterface-getItems
+
+   Returns an ordered list of items (
+   :php:`\Brotkrueml\Schema\Core\Model\NodeIdentifierInterface`,
+   :php:`\Brotkrueml\Schema\Core\Model\TypeInterface` or string>) as an array.
+
+   Return value
+      An array of ordered items.
 
 
 Other useful APIs

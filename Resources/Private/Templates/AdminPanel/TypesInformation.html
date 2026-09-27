@@ -62,12 +62,18 @@
 </f:if>
 
 <f:section name="ShowProperty">
-    <f:if condition="{value.0}">
+    <f:variable name="listKey" value="@list"/>
+    <f:if condition="{value.{listKey}}">
         <f:then>
+            <f:for each="{value.{listKey}}" as="subValue">
+                <f:render section="PropertyRow" arguments="{name: name, value: subValue, typeKey: typeKey, idKey: idKey, indent: indent, list: '{true}'}"/>
+            </f:for>
+        </f:then>
+        <f:else if="{value.0}">
             <f:for each="{value}" as="subValue">
                 <f:render section="PropertyRow" arguments="{name: name, value: subValue, typeKey: typeKey, idKey: idKey, indent: indent}"/>
             </f:for>
-        </f:then>
+        </f:else>
         <f:else>
             <f:render section="PropertyRow" arguments="{name: name, value: value, typeKey: typeKey, idKey: idKey, indent: indent}"/>
         </f:else>
@@ -87,6 +93,9 @@
         <th scope="row" class="typo3-adminPanel-table-cell-key">
             {f:format.padding(padLength: '{indent * 18}', padString: '&nbsp;', value: '') -> f:format.raw()}
             {name}
+            <f:if condition="{list}">
+                <span class="ext-schema-adminpanel-list">LIST</span>
+            </f:if>
         </th>
         <td>
             <schema:adminPanel.propertyValue name="{name}" value="{value}"/>

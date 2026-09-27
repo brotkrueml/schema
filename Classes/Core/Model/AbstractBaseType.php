@@ -131,7 +131,8 @@ abstract class AbstractBaseType implements TypeInterface
             || \is_bool($propertyValue)
             || $propertyValue instanceof NodeIdentifierInterface
             || $propertyValue instanceof TypeInterface
-            || $propertyValue instanceof EnumerationInterface;
+            || $propertyValue instanceof EnumerationInterface
+            || $propertyValue instanceof OrderedListInterface;
     }
 
     public function addProperty(string $propertyName, mixed $propertyValue): static

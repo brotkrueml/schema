@@ -27,6 +27,7 @@ class Thing extends AbstractType
         'image',
         'isAccessibleForFree',
         'name',
+        'sameAs',
         'subjectOf',
         'url',
     ];

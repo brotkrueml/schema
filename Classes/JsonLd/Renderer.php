@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\JsonLd;
 
 use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use Brotkrueml\Schema\Core\Model\OrderedListInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Model\DataType\Boolean;
 
@@ -121,7 +122,7 @@ final class Renderer implements RendererInterface
     /**
      * @return array<string, mixed>|string
      */
-    private function getPropertyValueForResult(NodeIdentifierInterface|TypeInterface|EnumerationInterface|bool|string|int|float $value): array|string
+    private function getPropertyValueForResult(NodeIdentifierInterface|TypeInterface|EnumerationInterface|OrderedListInterface|bool|string|int|float $value): array|string
     {
         if ($value instanceof TypeInterface) {
             return (new self())->prepare($value);
@@ -135,6 +136,12 @@ final class Renderer implements RendererInterface
 
         if ($value instanceof EnumerationInterface) {
             return $value->canonical();
+        }
+
+        if ($value instanceof OrderedListInterface) {
+            return [
+                '@list' => \array_map($this->getPropertyValueForResult(...), $value->getItems()),
+            ];
         }
 
         if (\is_bool($value)) {

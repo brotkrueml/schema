@@ -81,6 +81,7 @@ provided by Google: `Understand how structured data works`_.
 
    Developer/Index
    Developer/Api
+   Developer/Lists
    Developer/Enumerations
    Developer/WebPage
    Developer/Breadcrumb

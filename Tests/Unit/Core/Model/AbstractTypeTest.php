@@ -17,6 +17,7 @@ use Brotkrueml\Schema\Core\Exception\UnknownPropertyException;
 use Brotkrueml\Schema\Core\Model\AbstractType;
 use Brotkrueml\Schema\Core\Model\EnumerationInterface;
 use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use Brotkrueml\Schema\Core\Model\OrderedListInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\Type\_3DModel;
@@ -205,6 +206,15 @@ final class AbstractTypeTest extends TestCase
             public function canonical(): string
             {
                 return 'some-canonical';
+            }
+        });
+        $this->subject->setProperty('sameAs', new class implements OrderedListInterface {
+            public function getItems(): array
+            {
+                return [
+                    'some item',
+                    'another item',
+                ];
             }
         });
     }
@@ -438,6 +448,7 @@ final class AbstractTypeTest extends TestCase
                 'image',
                 'isAccessibleForFree',
                 'name',
+                'sameAs',
                 'subjectOf',
                 'url',
             ],

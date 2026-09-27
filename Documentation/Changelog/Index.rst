@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v4.3.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Added
+^^^^^
+
+
+* Support of ordered lists via ``@list`` (#159)
+
 `4.3.0 <https://github.com/brotkrueml/schema/compare/v4.2.3...v4.3.0>`_ - 2026-09-18
 ----------------------------------------------------------------------------------------
 

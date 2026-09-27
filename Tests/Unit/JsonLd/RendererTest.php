@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Tests\Unit\JsonLd;
 
 use Brotkrueml\Schema\Core\Model\NodeIdentifier;
+use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
+use Brotkrueml\Schema\Core\Model\OrderedList;
 use Brotkrueml\Schema\JsonLd\Renderer;
 use Brotkrueml\Schema\Tests\Fixtures\Enumeration\GenericEnumeration;
 use Brotkrueml\Schema\Tests\Fixtures\Model\GenericStub;
@@ -19,12 +21,10 @@ use Brotkrueml\Schema\Tests\Fixtures\Model\ProductStub;
 use Brotkrueml\Schema\Tests\Fixtures\Model\ServiceStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Renderer::class)]
-#[RunTestsInSeparateProcesses]
 final class RendererTest extends TestCase
 {
     private Renderer $subject;
@@ -195,6 +195,52 @@ final class RendererTest extends TestCase
             '{"@context":"https://schema.org/","@type":"GenericStub","some-property":{"@id":"some-node-identifier-id"}}',
         ];
 
+        yield 'Value is an ordered list of strings' => [
+            null,
+            [
+                'some-property' => new OrderedList('some item', 'another item'),
+            ],
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-property":{"@list":["some item","another item"]}}',
+        ];
+
+        yield 'Value is an ordered list of node identifiers' => [
+            null,
+            [
+                'some-property' => new OrderedList(
+                    new class implements NodeIdentifierInterface {
+                        public function getId(): string
+                        {
+                            return 'https://example.org/#some-node';
+                        }
+                    },
+                    new class implements NodeIdentifierInterface {
+                        public function getId(): string
+                        {
+                            return 'https://example.org/#another-node';
+                        }
+                    },
+                ),
+            ],
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-property":{"@list":[{"@id":"https://example.org/#some-node"},{"@id":"https://example.org/#another-node"}]}}',
+        ];
+
+        yield 'Value is an ordered list of types' => [
+            null,
+            [
+                'some-property' => new OrderedList(
+                    (new ProductStub())
+                        ->defineProperties([
+                            'some-property' => 'some-value',
+                        ]),
+                    (new ServiceStub())
+                        ->defineProperties([
+                            'another-property' => 'another-value',
+                        ]),
+                ),
+            ],
+            '{"@context":"https://schema.org/","@type":"GenericStub","some-property":{"@list":[{"@type":"ProductStub","some-property":"some-value"},{"@type":"ServiceStub","another-property":"another-value"}]}}',
+        ];
+
         yield 'Value is a string provoking XSS' => [
             null,
             [
@@ -253,7 +299,7 @@ final class RendererTest extends TestCase
     #[Test]
     public function clearTypesRemovesAllTypes(): void
     {
-        $this->subject->addType(new GenericStub('some-id'));
+        $this->subject->addType(new GenericStub());
         $this->subject->clearTypes();
 
         self::assertSame('', $this->subject->render());

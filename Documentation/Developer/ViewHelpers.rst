@@ -446,6 +446,46 @@ required.
    already.
 
 
+.. _schema-orderedlist-view-helper:
+
+:html:`<schema:orderedList>` view helper
+========================================
+
+.. versionadded:: 4.4.0
+
+The view helpers adds a property value as an :ref:`ordered list <list>` item:
+
+.. code-block:: html
+   :emphasize-lines: 8
+
+   <f:variable name="positiveNotes" value="{
+      0: 'Tougher and water resistant design.',
+      1: 'Cheery bright colours and solid feel.',
+      2: 'Excellent amplification.',
+   }"/>
+
+   <schema:type.review name="Megaphone 11 review">
+      <schema:orderedList -as="positiveNotes" items="{positiveNotes}"/>
+   </schema:type.review>
+
+The :html:`<schema:orderedList>` view helper accepts two argument, both are
+required.
+
+.. confval:: -as
+   :name: viewhelpers-orderedlist-as
+
+   You know already the :html:`-as` attribute from the :ref:`type view helpers
+   <schema-type-view-helpers>`. Its purpose is the same, it references the
+   property in the parent :html:`<schema:type>` view helper.
+
+
+.. confval:: items
+   :name: viewhelpers-orderedlist-items
+
+   The :html:`items` argument sets the value to a list of items (a string or
+   a node identifier).
+
+
 :html:`<schema:breadcrumb>` View Helper
 =======================================
 

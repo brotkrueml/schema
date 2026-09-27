@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Support of ordered lists via `@list` (#159)
+
 ## [4.3.0] - 2026-09-18
 
 ### Updated
