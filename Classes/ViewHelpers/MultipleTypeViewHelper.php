@@ -11,9 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\ViewHelpers;
 
-use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Core\ViewHelpers\AbstractBaseTypeViewHelper;
-use Brotkrueml\Schema\Manager\SchemaManager;
+use Brotkrueml\Schema\Core\ViewHelpers\SchemaTypeHandler;
 use Brotkrueml\Schema\Type\TypeFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -21,11 +20,8 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
 {
     public function __construct(
         private readonly TypeFactory $typeFactory,
-        TypeStack $stack,
-        SchemaManager $schemaManager,
-    ) {
-        parent::__construct($stack, $schemaManager);
-    }
+        private readonly SchemaTypeHandler $typeProcessor,
+    ) {}
 
     /**
      * @var list<string>
@@ -43,16 +39,16 @@ final class MultipleTypeViewHelper extends AbstractBaseTypeViewHelper
     {
         $this->types = GeneralUtility::trimExplode(',', $this->arguments['types'], true);
         $model = $this->typeFactory->create(...$this->types);
-        $this->addTypeToSchemaManager($model);
+        $this->typeProcessor->addToSchema(
+            $model,
+            [
+                ...\array_filter($this->arguments, static fn(string $key): bool => \str_starts_with($key, '-'), \ARRAY_FILTER_USE_KEY),
+                ...$this->arguments['properties'],
+            ],
+            $this->buildRenderChildrenClosure(),
+        );
 
         return '';
-    }
-
-    protected function assignPropertiesToType(): void
-    {
-        foreach ($this->arguments['properties'] as $name => $value) {
-            $this->assignPropertyToType((string) $name, $value);
-        }
     }
 
     protected function getType(): string

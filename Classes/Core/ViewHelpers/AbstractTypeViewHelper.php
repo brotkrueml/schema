@@ -12,8 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\Schema\Core\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
-use Brotkrueml\Schema\Core\TypeStack;
-use Brotkrueml\Schema\Manager\SchemaManager;
 use Brotkrueml\Schema\Type\TypeFactory;
 
 abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
@@ -23,11 +21,9 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
     private readonly TypeInterface $modelTemplate;
 
     public function __construct(
-        TypeStack $stack,
-        SchemaManager $schemaManager,
         private readonly TypeFactory $typeFactory,
+        private readonly SchemaTypeHandler $schemaTypeHandler,
     ) {
-        parent::__construct($stack, $schemaManager);
         $this->modelTemplate = $this->typeFactory->create($this->getType());
     }
 
@@ -44,7 +40,7 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
     public function render(): string
     {
         $model = $this->getSpecificTypeIfDefined() ?? clone $this->modelTemplate;
-        $this->addTypeToSchemaManager($model);
+        $this->schemaTypeHandler->addToSchema($model, $this->arguments, $this->buildRenderChildrenClosure());
 
         return '';
     }

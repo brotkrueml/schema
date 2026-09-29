@@ -13,24 +13,6 @@ parameters:
 			path: Classes/Core/Model/MultipleType.php
 
 		-
-			message: '#^Cannot call method setId\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
-			message: '#^Cannot call method setProperty\(\) on Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
-			message: '#^Parameter \#1 \$value of method SplDoublyLinkedList\<Brotkrueml\\Schema\\Core\\Model\\TypeInterface\>\:\:push\(\) expects Brotkrueml\\Schema\\Core\\Model\\TypeInterface, Brotkrueml\\Schema\\Core\\Model\\TypeInterface\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: Classes/Core/ViewHelpers/AbstractBaseTypeViewHelper.php
-
-		-
 			message: '#^Parameter \#1 \$attributes \(array\{identifier\: string\}\) of method Brotkrueml\\Schema\\Lowlevel\\ConfigurationModuleProvider\\Types\:\:__invoke\(\) should be contravariant with parameter \$attributes \(array\) of method TYPO3\\CMS\\Lowlevel\\ConfigurationModuleProvider\\ProviderInterface\:\:__invoke\(\)$#'
 			identifier: method.childParameterType
 			count: 1
