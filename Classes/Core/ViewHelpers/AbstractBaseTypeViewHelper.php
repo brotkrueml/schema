@@ -15,7 +15,6 @@ use Brotkrueml\Schema\Core\Model\NodeIdentifierInterface;
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Core\TypeStack;
 use Brotkrueml\Schema\Manager\SchemaManager;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
@@ -24,10 +23,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
  */
 abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
 {
-    protected const ARGUMENT_AS = '-as';
-    protected const ARGUMENT_ID = '-id';
-    protected const ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE = '-isMainEntityOfWebPage';
-
     protected string $type = '';
 
     private int $isMainEntityOfWebPage = 0;
@@ -41,13 +36,16 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
 
     public function initializeArguments(): void
     {
-        $typo3Version = (new Typo3Version())->getMajorVersion();
-        $mainEntityType = $typo3Version === 13 ? 'int' : 'int|string|bool';
-
         parent::initializeArguments();
-        $this->registerArgument(static::ARGUMENT_AS, 'string', 'Property name for a child node to merge under the parent node', false, '');
-        $this->registerArgument(static::ARGUMENT_ID, 'mixed', 'IRI or a node identifier to identify the node', false, '');
-        $this->registerArgument(static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE, $mainEntityType, 'Set to true, if the type is the primary content of the web page', false, 0);
+        foreach (NotableArgument::cases() as $argument) {
+            $this->registerArgument(
+                $argument->value,
+                $argument->type(),
+                $argument->description(),
+                false,
+                $argument->default(),
+            );
+        }
     }
 
     protected function addTypeToSchemaManager(TypeInterface $model): void
@@ -57,7 +55,7 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
         $this->checkAsAttribute();
         $this->checkIsMainEntityOfWebPage();
         $this->assignIdToModel();
-        unset($this->arguments[static::ARGUMENT_ID]);
+        unset($this->arguments[NotableArgument::Id->value]);
         $this->assignPropertiesToType();
 
         $this->stack->push($this->model);
@@ -86,14 +84,14 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
     private function checkAsAttribute(): void
     {
         if (! $this->stack->isEmpty()) {
-            $parentPropertyNameFromArgument = $this->arguments[static::ARGUMENT_AS];
+            $parentPropertyNameFromArgument = $this->arguments[NotableArgument::As->value];
 
             if ($parentPropertyNameFromArgument === '') {
                 throw new Exception(
                     \sprintf(
                         'The child view helper of schema type "%s" must have an "%s" argument for embedding into the parent type',
                         $this->getType(),
-                        static::ARGUMENT_AS,
+                        NotableArgument::As->value,
                     ),
                     1561829951,
                 );
@@ -102,12 +100,12 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
             $this->parentPropertyName = $parentPropertyNameFromArgument;
         }
 
-        unset($this->arguments[static::ARGUMENT_AS]);
+        unset($this->arguments[NotableArgument::As->value]);
     }
 
     private function checkIsMainEntityOfWebPage(): void
     {
-        $isMainEntityOfWebPage = $this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE] ?? 0;
+        $isMainEntityOfWebPage = $this->arguments[NotableArgument::IsMainEntityOfWebPage->value] ?? 0;
         $this->isMainEntityOfWebPage = match ($isMainEntityOfWebPage) {
             'true', true => 1,
             'false', false => 0,
@@ -118,7 +116,7 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
             throw new Exception(
                 \sprintf(
                     'The value of argument "%s" must be between 0 and 2, "%d" given (allowed: 0 = not a main entity, 1 = main entity, 2 = prioritised main entity',
-                    static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
+                    NotableArgument::IsMainEntityOfWebPage->value,
                     $this->isMainEntityOfWebPage,
                 ),
                 1636570950,
@@ -129,14 +127,14 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
             throw new Exception(
                 \sprintf(
                     'The argument "%s" must not be used in the child type "%s", only the main type is allowed',
-                    static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE,
+                    NotableArgument::IsMainEntityOfWebPage->value,
                     $this->getType(),
                 ),
                 1562517051,
             );
         }
 
-        unset($this->arguments[static::ARGUMENT_IS_MAIN_ENTITY_OF_WEBPAGE]);
+        unset($this->arguments[NotableArgument::IsMainEntityOfWebPage->value]);
     }
 
     abstract protected function getType(): string;
@@ -167,7 +165,7 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
 
     private function assignIdToModel(): void
     {
-        $id = $this->arguments[static::ARGUMENT_ID];
+        $id = $this->arguments[NotableArgument::Id->value];
         if ($id === '') {
             return;
         }
@@ -176,7 +174,7 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
             throw new Exception(
                 \sprintf(
                     'The %s argument has to be either a string or an instance of %s, %s given',
-                    static::ARGUMENT_ID,
+                    NotableArgument::Id->value,
                     NodeIdentifierInterface::class,
                     \get_debug_type($id),
                 ),
