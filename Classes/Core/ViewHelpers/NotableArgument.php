@@ -22,6 +22,7 @@ enum NotableArgument: string
     case As = '-as';
     case Id = '-id';
     case IsMainEntityOfWebPage = '-isMainEntityOfWebPage';
+    case SpecificType = '-specificType';
 
     public function type(): string
     {
@@ -32,6 +33,7 @@ enum NotableArgument: string
             self::As => 'string',
             self::Id => 'mixed',
             self::IsMainEntityOfWebPage => $mainEntityType,
+            self::SpecificType => 'string',
         };
     }
 
@@ -41,6 +43,7 @@ enum NotableArgument: string
             self::As => 'Property name for a child node to merge under the parent node',
             self::Id => 'IRI or a node identifier to identify the node',
             self::IsMainEntityOfWebPage => 'Set to true, if the type is the primary content of the web page',
+            self::SpecificType => 'A specific type of the chosen type. Only the properties of the chosen type are valid',
         };
     }
 
@@ -48,7 +51,8 @@ enum NotableArgument: string
     {
         return match ($this) {
             self::As,
-            self::Id => '',
+            self::Id,
+            self::SpecificType => '',
             self::IsMainEntityOfWebPage => 0,
         };
     }

@@ -24,6 +24,11 @@ abstract class AbstractBaseTypeViewHelper extends AbstractViewHelper
     {
         parent::initializeArguments();
         foreach (NotableArgument::cases() as $argument) {
+            if ($argument === NotableArgument::SpecificType) {
+                // Only for "real" type view helpers, not MultipleTypeViewHelper
+                continue;
+            }
+
             $this->registerArgument(
                 $argument->value,
                 $argument->type(),

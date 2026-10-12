@@ -36,9 +36,9 @@ final readonly class SchemaTypeHandler
         $isMainEntityOfWebPage = $this->getIsMainEntityOfWebPage($type, $arguments);
         $type->setId($this->getId($arguments));
 
-        unset($arguments[NotableArgument::As->value]);
-        unset($arguments[NotableArgument::Id->value]);
-        unset($arguments[NotableArgument::IsMainEntityOfWebPage->value]);
+        foreach (NotableArgument::cases() as $notableArgument) {
+            unset($arguments[$notableArgument->value]);
+        }
 
         $this->assignPropertiesToType($type, $arguments);
 

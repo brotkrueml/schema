@@ -16,8 +16,6 @@ use Brotkrueml\Schema\Type\TypeFactory;
 
 abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
 {
-    protected const ARGUMENT_SPECIFIC_TYPE = '-specificType';
-
     private readonly TypeInterface $modelTemplate;
 
     public function __construct(
@@ -30,7 +28,13 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument(static::ARGUMENT_SPECIFIC_TYPE, 'string', 'A specific type of the chosen type. Only the properties of the chosen type are valid', false, '');
+        $this->registerArgument(
+            NotableArgument::SpecificType->value,
+            NotableArgument::SpecificType->type(),
+            NotableArgument::SpecificType->description(),
+            false,
+            NotableArgument::SpecificType->default(),
+        );
 
         foreach ($this->modelTemplate->getPropertyNames() as $property) {
             $this->registerArgument($property, 'mixed', 'Property ' . $property);
@@ -47,9 +51,7 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
 
     private function getSpecificTypeIfDefined(): ?TypeInterface
     {
-        $specificTypeFromArguments = $this->arguments[static::ARGUMENT_SPECIFIC_TYPE];
-        unset($this->arguments[static::ARGUMENT_SPECIFIC_TYPE]);
-
+        $specificTypeFromArguments = $this->arguments[NotableArgument::SpecificType->value];
         if ($specificTypeFromArguments === '') {
             return null;
         }
