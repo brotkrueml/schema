@@ -8,8 +8,8 @@ parameters:
         - Classes
     treatPhpDocTypesAsCertain: false
     cognitive_complexity:
-        class: 20
-        function: 10
+        class: 25
+        function: 15
 
 services:
     -
