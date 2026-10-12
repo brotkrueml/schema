@@ -25,9 +25,9 @@
 	},
 	"require": {
 		"php": ">=8.2",
-		"typo3/cms-core": "^13.4 || ^14.3",
-		"typo3/cms-fluid": "^13.4 || ^14.3",
-		"typo3/cms-frontend": "^13.4 || ^14.3"
+		"typo3/cms-core": "^13.4.15 || ^14.3",
+		"typo3/cms-fluid": "^13.4.15 || ^14.3",
+		"typo3/cms-frontend": "^13.4.15 || ^14.3"
 	},
 	"require-dev": {
 		"brotkrueml/coding-standards": "~6.3.1",

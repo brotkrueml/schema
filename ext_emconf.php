@@ -10,7 +10,7 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '4.5.0-dev',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.0-14.3.99',
+            'typo3' => '13.4.15-14.3.99',
         ],
         'suggests' => [
             'adminpanel' => '',
