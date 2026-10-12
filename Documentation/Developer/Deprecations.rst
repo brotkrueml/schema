@@ -9,6 +9,19 @@ Deprecations
 Introduced in version 4
 =======================
 
+.. confval:: -specificType argument in type view helpers
+   :name: deprecation-specificType
+
+   Deprecated since version
+      4.5.0
+
+   Will be removed in version
+      5.0.0
+
+   Alternative
+      None.
+
+
 .. confval:: Prioritisation of mainEntityOfWebPage
    :name: deprecation-prioritisation-addMainEntityOfWebPage
 

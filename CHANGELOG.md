@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Deprecated
+- `-specificType` argument in type view helpers
+
 ## [4.4.0] - 2026-09-28
 
 ### Added

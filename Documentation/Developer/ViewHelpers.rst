@@ -177,6 +177,8 @@ collisions. Let's have a deeper look on them.
 .. confval:: -specificType
    :name: viewhelpers-special-specifictype
 
+   .. deprecated:: 4.5.0
+
    Sometimes it can may be helpful to set a specific type. Imagine you have
    records of places in the backend where you can select which type of specific
    place a record has: for example, `Museum`, `Airport`, `Park` or `Zoo`. In a

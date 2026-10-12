@@ -56,6 +56,15 @@ abstract class AbstractTypeViewHelper extends AbstractBaseTypeViewHelper
             return null;
         }
 
+        \trigger_error(
+            \sprintf(
+                'Passing argument "%s" to the "schema:type.%s" view helper is deprecated since version 4.5.0, the argument will be removed in version 5.0.0',
+                NotableArgument::SpecificType->value,
+                \lcfirst(\is_string($this->modelTemplate->getType()) ? $this->modelTemplate->getType() : ''),
+            ),
+            \E_USER_DEPRECATED,
+        );
+
         return $this->typeFactory->create($specificTypeFromArguments);
     }
 

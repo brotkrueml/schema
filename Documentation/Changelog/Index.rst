@@ -11,6 +11,12 @@ to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 `Unreleased <https://github.com/brotkrueml/schema/compare/v4.4.0...HEAD>`_
 ------------------------------------------------------------------------------
 
+Deprecated
+^^^^^^^^^^
+
+
+* ``-specificType`` argument in type view helpers
+
 `4.4.0 <https://github.com/brotkrueml/schema/compare/v4.3.0...v4.4.0>`_ - 2026-09-28
 ----------------------------------------------------------------------------------------
 
