@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Schema\Core\ViewHelpers;
 
-use Brotkrueml\Schema\Type\ModelClassNotFoundException;
-use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperResolverDelegateInterface;
 
 /**
@@ -20,11 +18,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperResolverDelegateInterface;
  */
 final readonly class SchemaViewHelperResolverDelegate implements ViewHelperResolverDelegateInterface
 {
-    /**
-     * @param string $name ViewHelper name as written in the template, for example "type.person"
-     * @return class-string<ViewHelperInterface>
-     * @throws ModelClassNotFoundException
-     */
     public function resolveViewHelperClassName(string $name): string
     {
         if (\str_starts_with($name, 'type.')) {
@@ -33,11 +26,14 @@ final readonly class SchemaViewHelperResolverDelegate implements ViewHelperResol
 
         $explodedViewHelperName = \explode('.', $name);
 
-        return \sprintf(
+        /** @var class-string $class */
+        $class = \sprintf(
             '%s\%sViewHelper',
             $this->getNamespace(),
             \implode('\\', \array_map(ucfirst(...), $explodedViewHelperName)),
         );
+
+        return $class;
     }
 
     public function getNamespace(): string

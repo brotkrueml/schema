@@ -13,6 +13,7 @@ namespace Brotkrueml\Schema\Core\ViewHelpers;
 
 use Brotkrueml\Schema\Core\Model\TypeInterface;
 use Brotkrueml\Schema\Type\TypeFactory;
+use TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\ViewHelperNode;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ArgumentDefinition;
 
@@ -24,7 +25,7 @@ final class TypeViewHelper extends AbstractViewHelper
     private TypeInterface $schemaType;
 
     /**
-     * @var array<string, list<ArgumentDefinition>>
+     * @var array<string, array<string, ArgumentDefinition>>
      */
     private static array $typeArgumentDefinitions = [];
 
@@ -45,10 +46,11 @@ final class TypeViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @return list<ArgumentDefinition>
+     * @return array<string, ArgumentDefinition>
      */
     public function prepareArguments(): array
     {
+        \assert($this->viewHelperNode instanceof ViewHelperNode);
         $name = $this->viewHelperNode->getName();
         if (! \str_starts_with($name, 'type.')) {
             // There is something wrong, this should not happen
@@ -66,7 +68,7 @@ final class TypeViewHelper extends AbstractViewHelper
         if (! isset(self::$typeArgumentDefinitions[$typeName])) {
             self::$typeArgumentDefinitions[$typeName] = $this->getNotableArguments();
             foreach ($this->schemaType->getPropertyNames() as $propertyName) {
-                self::$typeArgumentDefinitions[$this->schemaType->getType()][$propertyName] = new ArgumentDefinition(
+                self::$typeArgumentDefinitions[$typeName][$propertyName] = new ArgumentDefinition(
                     $propertyName,
                     'mixed',
                     \sprintf('Property "%s"', $propertyName),
@@ -75,11 +77,11 @@ final class TypeViewHelper extends AbstractViewHelper
             }
         }
 
-        return self::$typeArgumentDefinitions[$this->schemaType->getType()];
+        return self::$typeArgumentDefinitions[$typeName];
     }
 
     /**
-     * @return array<string, list<ArgumentDefinition>>
+     * @return array<string, ArgumentDefinition>
      */
     private function getNotableArguments(): array
     {
