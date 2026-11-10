@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.5.0] - 2026-11-10
+
 ### Deprecated
 - `-specificType` argument in type view helpers
 
@@ -679,7 +681,8 @@ Initial release
 - View helpers for usage in Fluid templates
 
 
-[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.4.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/schema/compare/v4.5.0...HEAD
+[4.5.0]: https://github.com/brotkrueml/schema/compare/v4.4.0...v4.5.0
 [4.4.0]: https://github.com/brotkrueml/schema/compare/v4.3.0...v4.4.0
 [4.3.0]: https://github.com/brotkrueml/schema/compare/v4.2.3...v4.3.0
 [4.2.3]: https://github.com/brotkrueml/schema/compare/v4.2.2...v4.2.3
